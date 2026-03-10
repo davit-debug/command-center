@@ -1,0 +1,8 @@
+# Only track command center files
+*
+!command-center.html
+!extract-reports.py
+!reports-data.json
+!.gitignore
+!.github/
+!.github/**

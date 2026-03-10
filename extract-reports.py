@@ -266,5 +266,39 @@ def main():
     for tid, tr in reports.items():
         print(f"  {tid}: {len(tr['runs'])} runs found")
 
+    # Auto-push to GitHub if in a git repo
+    git_push()
+
+def git_push():
+    """Commit and push reports-data.json to GitHub."""
+    import subprocess
+    repo_dir = os.path.dirname(os.path.abspath(__file__))
+    try:
+        # Check if there are changes
+        result = subprocess.run(
+            ["git", "diff", "--quiet", "reports-data.json"],
+            cwd=repo_dir, capture_output=True
+        )
+        if result.returncode == 0:
+            print("No changes to push.")
+            return
+
+        subprocess.run(
+            ["git", "add", "reports-data.json"],
+            cwd=repo_dir, check=True, capture_output=True
+        )
+        subprocess.run(
+            ["git", "commit", "-m", f"Update reports {datetime.now().strftime('%Y-%m-%d %H:%M')}"],
+            cwd=repo_dir, check=True, capture_output=True
+        )
+        subprocess.run(
+            ["git", "push"],
+            cwd=repo_dir, check=True, capture_output=True,
+            timeout=30
+        )
+        print("Pushed to GitHub.")
+    except Exception as e:
+        print(f"Git push failed: {e}")
+
 if __name__ == "__main__":
     main()
