@@ -12,7 +12,9 @@ SESSIONS_DIR = os.path.expanduser(
     "62a5e0e8-fde4-4b80-9461-cd3f05718693"
 )
 SCHEDULED_TASKS_FILE = os.path.join(SESSIONS_DIR, "scheduled-tasks.json")
-OUTPUT_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "reports-data.json")
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+OUTPUT_FILE = os.path.join(SCRIPT_DIR, "reports-data.json")
+USAGE_FILE = os.path.join(SCRIPT_DIR, "usage-data.json")
 
 # Task ID -> keywords to match in session titles OR initial messages
 TASK_KEYWORDS = {
@@ -253,11 +255,22 @@ def main():
 
         reports[task_id] = task_report
 
+    # Load usage data if available
+    usage = None
+    if os.path.exists(USAGE_FILE):
+        try:
+            with open(USAGE_FILE) as f:
+                usage = json.load(f)
+        except Exception:
+            pass
+
     # Write output
     output = {
         "generated_at": datetime.now().isoformat(),
-        "tasks": reports
+        "tasks": reports,
     }
+    if usage:
+        output["usage"] = usage
 
     with open(OUTPUT_FILE, "w") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)

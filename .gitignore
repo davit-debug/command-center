@@ -3,6 +3,7 @@
 !command-center.html
 !extract-reports.py
 !reports-data.json
+!usage-data.json
 !.gitignore
 !.github/
 !.github/**

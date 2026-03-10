@@ -1,0 +1,8 @@
+{
+  "session": {"percent": 14, "resets_in": "4 hr 1 min"},
+  "weekly_all_models": {"percent": 33, "resets": "Sun 9:00 PM"},
+  "weekly_sonnet": {"percent": 4, "resets": "Sun 9:00 PM"},
+  "extra_usage": {"spent": "$5.58", "percent": 28, "limit": "$20", "resets": "Apr 1", "balance": "-$0.05"},
+  "plan": "Max",
+  "scraped_at": "2026-03-10T06:01:15.290Z"
+}
