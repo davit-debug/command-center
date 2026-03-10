@@ -340,7 +340,7 @@
     // Theme toggle
     const themeToggle = document.getElementById('theme-toggle');
     const html = document.documentElement;
-    if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    if (localStorage.getItem('theme') !== 'light') {
       html.classList.add('dark');
     }
     themeToggle.addEventListener('click', () => {
