@@ -74,74 +74,17 @@
       animation: float 4s ease-in-out infinite;
     }
 
-    /* === PYRAMID ANIMATIONS — COMBO === */
-
-    /* Glow Pulse */
+    /* === PYRAMID ANIMATION — Variant 2: Glow Pulse === */
     @keyframes glowPulse {
       0%, 100% {
         filter: drop-shadow(0 0 20px rgba(255, 180, 0, 0.3)) drop-shadow(0 0 40px rgba(88, 230, 255, 0.1));
       }
       50% {
-        filter: drop-shadow(0 0 40px rgba(255, 180, 0, 0.7)) drop-shadow(0 0 80px rgba(88, 230, 255, 0.3)) drop-shadow(0 0 120px rgba(252, 129, 254, 0.15));
+        filter: drop-shadow(0 0 40px rgba(255, 180, 0, 0.7)) drop-shadow(0 0 80px rgba(88, 230, 255, 0.3)) drop-shadow(0 0 120px rgba(252, 129, 254, 0.2));
       }
     }
     .pyramid-glow {
       animation: glowPulse 3s ease-in-out infinite;
-    }
-
-    /* Rising Particles */
-    @keyframes rise {
-      0% { opacity: 0; transform: translateY(0); }
-      15% { opacity: 1; }
-      85% { opacity: 0.6; }
-      100% { opacity: 0; transform: translateY(-300px); }
-    }
-    .particle {
-      position: absolute;
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: radial-gradient(circle, #58E6FF, transparent);
-      box-shadow: 0 0 6px #58E6FF, 0 0 12px rgba(88, 230, 255, 0.3);
-      animation: rise 3.5s ease-out infinite;
-      pointer-events: none;
-    }
-    .particle:nth-child(odd) { background: radial-gradient(circle, #FC81FE, transparent); box-shadow: 0 0 6px #FC81FE; }
-    .particle:nth-child(4n) { background: radial-gradient(circle, #FFD700, transparent); box-shadow: 0 0 6px #FFD700; }
-
-    /* Light Beam */
-    @keyframes beamShoot {
-      0% { opacity: 0; height: 0; }
-      20% { opacity: 0.9; height: 60px; }
-      60% { opacity: 0.6; height: 140px; }
-      100% { opacity: 0; height: 180px; }
-    }
-    @keyframes beamGlow {
-      0%, 100% { opacity: 0.2; transform: scaleX(1); }
-      50% { opacity: 0.6; transform: scaleX(1.3); }
-    }
-    .light-beam {
-      position: absolute;
-      top: 22%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 3px;
-      background: linear-gradient(to top, #FFD700, #58E6FF, transparent);
-      border-radius: 2px;
-      animation: beamShoot 3s ease-out infinite;
-      pointer-events: none;
-      box-shadow: 0 0 10px #58E6FF, 0 0 20px rgba(88, 230, 255, 0.3);
-    }
-    .light-beam-wide {
-      position: absolute;
-      top: 18%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 50px;
-      height: 90px;
-      background: radial-gradient(ellipse at center bottom, rgba(88, 230, 255, 0.12), transparent 70%);
-      animation: beamGlow 3s ease-in-out infinite;
-      pointer-events: none;
     }
 
     /* Gradient text */
@@ -349,18 +292,6 @@
             <div class="absolute top-[18%] left-1/2 -translate-x-1/2 text-center pointer-events-none z-10">
               <span class="font-heading text-xl lg:text-2xl font-bold text-white" style="text-shadow: 0 0 20px rgba(88, 230, 255, 0.8), 0 0 40px rgba(252, 129, 254, 0.5), 0 2px 8px rgba(0,0,0,0.9);">იყავი<br>პირველი</span>
             </div>
-            <!-- Light beam from tip -->
-            <div class="light-beam-wide"></div>
-            <div class="light-beam"></div>
-            <!-- Rising particles -->
-            <div class="particle" style="bottom: 30%; left: 22%; animation-delay: 0s;"></div>
-            <div class="particle" style="bottom: 35%; right: 22%; animation-delay: 0.6s;"></div>
-            <div class="particle" style="bottom: 40%; left: 38%; animation-delay: 1.2s;"></div>
-            <div class="particle" style="bottom: 25%; right: 32%; animation-delay: 1.8s;"></div>
-            <div class="particle" style="bottom: 45%; left: 48%; animation-delay: 2.4s;"></div>
-            <div class="particle" style="bottom: 28%; left: 32%; animation-delay: 0.9s;"></div>
-            <div class="particle" style="bottom: 33%; right: 38%; animation-delay: 2.0s;"></div>
-            <div class="particle" style="bottom: 20%; left: 44%; animation-delay: 1.5s;"></div>
           </div>
         </div>
       </div>
