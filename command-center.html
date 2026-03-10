@@ -190,28 +190,22 @@
         .week-task-dot.blue { background: rgba(59,130,246,0.1); color: var(--blue); }
         .week-task-dot.yellow { background: rgba(245,158,11,0.1); color: var(--warning); }
 
-        /* Usage Section */
-        .usage-section { margin-bottom: 28px; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 20px; }
-        .usage-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
-        .usage-title { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--text-dim); }
-        .usage-plan { font-size: 11px; color: var(--accent); background: var(--accent-dim); padding: 3px 10px; border-radius: 6px; border: 1px solid rgba(34,197,94,0.2); }
-        .usage-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-        .usage-meter { text-align: center; }
-        .usage-ring { position: relative; width: 90px; height: 90px; margin: 0 auto 10px; }
-        .usage-ring svg { width: 90px; height: 90px; transform: rotate(-90deg); }
-        .usage-ring circle { fill: none; stroke-width: 5; }
-        .usage-ring .ring-bg { stroke: rgba(255,255,255,0.05); }
-        .usage-ring .ring-fill { stroke-linecap: round; transition: stroke-dashoffset 1s ease; }
-        .usage-ring .ring-fill.green { stroke: var(--accent); }
-        .usage-ring .ring-fill.blue { stroke: var(--blue); }
-        .usage-ring .ring-fill.yellow { stroke: var(--warning); }
-        .usage-ring .ring-fill.red { stroke: var(--danger); }
-        .usage-percent { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 18px; font-weight: 700; }
-        .usage-label { font-size: 11px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
-        .usage-sub { font-size: 10px; color: var(--text-dim); }
-        .usage-updated { font-size: 9px; color: var(--text-dim); margin-top: 12px; text-align: right; }
-
-        @media (max-width: 700px) { .usage-grid { grid-template-columns: repeat(2, 1fr); } }
+        /* Compact usage meters in header */
+        .usage-compact { display: flex; gap: 12px; align-items: center; }
+        .usage-mini { display: flex; align-items: center; gap: 6px; }
+        .usage-mini-ring { position: relative; width: 32px; height: 32px; }
+        .usage-mini-ring svg { width: 32px; height: 32px; transform: rotate(-90deg); }
+        .usage-mini-ring circle { fill: none; stroke-width: 3; }
+        .usage-mini-ring .ring-bg { stroke: rgba(255,255,255,0.06); }
+        .usage-mini-ring .ring-fill { stroke-linecap: round; transition: stroke-dashoffset 1s ease; }
+        .usage-mini-ring .ring-fill.green { stroke: var(--accent); }
+        .usage-mini-ring .ring-fill.blue { stroke: var(--blue); }
+        .usage-mini-ring .ring-fill.yellow { stroke: var(--warning); }
+        .usage-mini-ring .ring-fill.red { stroke: var(--danger); }
+        .usage-mini-pct { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 8px; font-weight: 700; }
+        .usage-mini-info { display: flex; flex-direction: column; }
+        .usage-mini-label { font-size: 9px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; line-height: 1; }
+        .usage-mini-val { font-size: 11px; font-weight: 600; color: var(--text); line-height: 1.2; }
 
         .scanline { position: fixed; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--accent-glow), transparent); z-index: 100; animation: scanline 4s linear infinite; opacity: 0.5; }
         @keyframes scanline { 0% { top: -2px; } 100% { top: 100vh; } }
@@ -242,6 +236,22 @@
                 <div><h1>Command Center <span>/ Cowork</span></h1></div>
             </div>
             <div style="display: flex; align-items: center; gap: 20px;">
+                <div class="usage-compact" id="usage-compact" style="display:none;">
+                    <div class="usage-mini" id="mini-session">
+                        <div class="usage-mini-ring">
+                            <svg viewBox="0 0 32 32"><circle class="ring-bg" cx="16" cy="16" r="13"/><circle class="ring-fill green" cx="16" cy="16" r="13" stroke-dasharray="81.68" stroke-dashoffset="81.68"/></svg>
+                            <div class="usage-mini-pct">—</div>
+                        </div>
+                        <div class="usage-mini-info"><div class="usage-mini-label">Session</div><div class="usage-mini-val" id="mini-session-val">—</div></div>
+                    </div>
+                    <div class="usage-mini" id="mini-weekly">
+                        <div class="usage-mini-ring">
+                            <svg viewBox="0 0 32 32"><circle class="ring-bg" cx="16" cy="16" r="13"/><circle class="ring-fill blue" cx="16" cy="16" r="13" stroke-dasharray="81.68" stroke-dashoffset="81.68"/></svg>
+                            <div class="usage-mini-pct">—</div>
+                        </div>
+                        <div class="usage-mini-info"><div class="usage-mini-label">Weekly</div><div class="usage-mini-val" id="mini-weekly-val">—</div></div>
+                    </div>
+                </div>
                 <div id="last-updated" style="font-size:10px; color:var(--text-dim); text-align:right; letter-spacing:0.5px;"></div>
                 <div class="live-badge"><div class="live-dot"></div> Live</div>
                 <div>
@@ -256,49 +266,6 @@
             <div class="stat-item"><div class="stat-icon blue">🔄</div><div class="stat-info"><div class="stat-value" id="runs-this-week">0</div><div class="stat-label">Runs This Week</div></div></div>
             <div class="stat-item"><div class="stat-icon yellow">⏳</div><div class="stat-info"><div class="stat-value" id="next-run-stat">--</div><div class="stat-label">Next Run</div></div></div>
             <div class="stat-item"><div class="stat-icon green">✅</div><div class="stat-info"><div class="stat-value" id="health-stat">100%</div><div class="stat-label">Health</div></div></div>
-        </div>
-
-        <!-- Claude Usage -->
-        <div class="usage-section" id="usage-section" style="display:none;">
-            <div class="usage-header">
-                <div class="usage-title">Claude Usage Limits</div>
-                <div class="usage-plan" id="usage-plan">—</div>
-            </div>
-            <div class="usage-grid">
-                <div class="usage-meter" id="meter-session">
-                    <div class="usage-ring">
-                        <svg viewBox="0 0 90 90"><circle class="ring-bg" cx="45" cy="45" r="38"/><circle class="ring-fill green" cx="45" cy="45" r="38" stroke-dasharray="238.76" stroke-dashoffset="238.76"/></svg>
-                        <div class="usage-percent">—</div>
-                    </div>
-                    <div class="usage-label">Session</div>
-                    <div class="usage-sub" id="session-sub">—</div>
-                </div>
-                <div class="usage-meter" id="meter-weekly">
-                    <div class="usage-ring">
-                        <svg viewBox="0 0 90 90"><circle class="ring-bg" cx="45" cy="45" r="38"/><circle class="ring-fill blue" cx="45" cy="45" r="38" stroke-dasharray="238.76" stroke-dashoffset="238.76"/></svg>
-                        <div class="usage-percent">—</div>
-                    </div>
-                    <div class="usage-label">Weekly (All)</div>
-                    <div class="usage-sub" id="weekly-sub">—</div>
-                </div>
-                <div class="usage-meter" id="meter-sonnet">
-                    <div class="usage-ring">
-                        <svg viewBox="0 0 90 90"><circle class="ring-bg" cx="45" cy="45" r="38"/><circle class="ring-fill green" cx="45" cy="45" r="38" stroke-dasharray="238.76" stroke-dashoffset="238.76"/></svg>
-                        <div class="usage-percent">—</div>
-                    </div>
-                    <div class="usage-label">Sonnet Only</div>
-                    <div class="usage-sub" id="sonnet-sub">—</div>
-                </div>
-                <div class="usage-meter" id="meter-extra">
-                    <div class="usage-ring">
-                        <svg viewBox="0 0 90 90"><circle class="ring-bg" cx="45" cy="45" r="38"/><circle class="ring-fill yellow" cx="45" cy="45" r="38" stroke-dasharray="238.76" stroke-dashoffset="238.76"/></svg>
-                        <div class="usage-percent">—</div>
-                    </div>
-                    <div class="usage-label">Extra Usage</div>
-                    <div class="usage-sub" id="extra-sub">—</div>
-                </div>
-            </div>
-            <div class="usage-updated" id="usage-updated"></div>
         </div>
 
         <div class="task-grid" id="task-grid"></div>
@@ -587,49 +554,29 @@
             });
         }
 
-        // Usage data
-        function setRing(meterId, percent, colorClass) {
+        // Usage data (compact header meters)
+        function setMiniRing(meterId, percent, colorClass) {
             const meter = document.getElementById(meterId);
             if (!meter) return;
-            const circumference = 2 * Math.PI * 38; // r=38
-            const offset = circumference - (percent / 100) * circumference;
+            const circ = 2 * Math.PI * 13; // r=13
+            const offset = circ - (percent / 100) * circ;
             const fill = meter.querySelector('.ring-fill');
             fill.style.strokeDashoffset = offset;
-            // Color based on usage level
             fill.className = 'ring-fill ' + (percent >= 80 ? 'red' : percent >= 60 ? 'yellow' : colorClass);
-            meter.querySelector('.usage-percent').textContent = percent + '%';
+            meter.querySelector('.usage-mini-pct').textContent = percent + '%';
         }
 
         function renderUsage(usage) {
             if (!usage) return;
-            const section = document.getElementById('usage-section');
-            section.style.display = 'block';
-
-            document.getElementById('usage-plan').textContent = (usage.plan || 'Pro') + ' Plan';
+            document.getElementById('usage-compact').style.display = 'flex';
 
             if (usage.session) {
-                setRing('meter-session', usage.session.percent, 'green');
-                document.getElementById('session-sub').textContent = 'Resets: ' + (usage.session.resets_in || '—');
+                setMiniRing('mini-session', usage.session.percent, 'green');
+                document.getElementById('mini-session-val').textContent = usage.session.percent + '%';
             }
             if (usage.weekly_all_models) {
-                setRing('meter-weekly', usage.weekly_all_models.percent, 'blue');
-                document.getElementById('weekly-sub').textContent = 'Resets: ' + (usage.weekly_all_models.resets || '—');
-            }
-            if (usage.weekly_sonnet) {
-                setRing('meter-sonnet', usage.weekly_sonnet.percent, 'green');
-                document.getElementById('sonnet-sub').textContent = 'Resets: ' + (usage.weekly_sonnet.resets || '—');
-            }
-            if (usage.extra_usage) {
-                setRing('meter-extra', usage.extra_usage.percent, 'yellow');
-                document.getElementById('extra-sub').textContent =
-                    (usage.extra_usage.spent || '$0') + ' / ' + (usage.extra_usage.limit || '$20');
-            }
-
-            if (usage.scraped_at) {
-                const dt = new Date(usage.scraped_at);
-                const ago = Math.floor((Date.now() - dt) / 60000);
-                const agoStr = ago < 1 ? 'just now' : ago < 60 ? `${ago}m ago` : ago < 1440 ? `${Math.floor(ago/60)}h ago` : `${Math.floor(ago/1440)}d ago`;
-                document.getElementById('usage-updated').textContent = 'Usage data updated: ' + agoStr;
+                setMiniRing('mini-weekly', usage.weekly_all_models.percent, 'blue');
+                document.getElementById('mini-weekly-val').textContent = usage.weekly_all_models.percent + '%';
             }
         }
 
