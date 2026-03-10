@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ka" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>პირამიდის ანიმაციის ვარიანტები — 10XSEO</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/firago@1.0.0/FiraGO.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: { DEFAULT: '#58E6FF', light: '#7AEDFF', dark: '#3ED8F5' },
+            accent: { DEFAULT: '#FC81FE', dark: '#E070E2' },
+            surface: { DEFAULT: '#ffffff', alt: '#f8fafc', dark: '#020710', 'dark-alt': '#0F0F0F' },
+            heading: { DEFAULT: '#0f172a', dark: '#f8fafc' },
+            body: { DEFAULT: '#475569', dark: '#94a3b8' },
+          },
+          fontFamily: {
+            'heading': ['"Dachi the Lynx"', 'sans-serif'],
+            'body': ['FiraGO', 'sans-serif'],
+            'inter': ['Inter', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    @font-face {
+      font-family: 'Dachi the Lynx';
+      src: url('fonts/DachiTheLynx.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    body { font-family: 'FiraGO', 'Inter', sans-serif; }
+    .font-heading { font-family: 'Dachi the Lynx', sans-serif; }
+
+    /* Float animation (shared) */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    .animate-float { animation: float 4s ease-in-out infinite; }
+
+    /* ============================================ */
+    /*  VARIANT 1: Rising Particles                 */
+    /* ============================================ */
+    @keyframes rise {
+      0% { opacity: 0; transform: translateY(0); }
+      15% { opacity: 1; }
+      85% { opacity: 0.6; }
+      100% { opacity: 0; transform: translateY(-250px); }
+    }
+    .v1-particle {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #58E6FF, transparent);
+      box-shadow: 0 0 6px #58E6FF, 0 0 12px rgba(88, 230, 255, 0.3);
+      animation: rise 3.5s ease-out infinite;
+      pointer-events: none;
+    }
+    .v1-particle:nth-child(odd) { background: radial-gradient(circle, #FC81FE, transparent); box-shadow: 0 0 6px #FC81FE; }
+    .v1-particle:nth-child(4n) { background: radial-gradient(circle, #FFD700, transparent); box-shadow: 0 0 6px #FFD700; width: 4px; height: 4px; }
+
+    /* ============================================ */
+    /*  VARIANT 2: Glow Pulse                       */
+    /* ============================================ */
+    @keyframes glowPulse {
+      0%, 100% {
+        filter: drop-shadow(0 0 15px rgba(255, 180, 0, 0.3)) drop-shadow(0 0 30px rgba(88, 230, 255, 0.1));
+      }
+      50% {
+        filter: drop-shadow(0 0 35px rgba(255, 180, 0, 0.7)) drop-shadow(0 0 70px rgba(88, 230, 255, 0.3)) drop-shadow(0 0 100px rgba(252, 129, 254, 0.15));
+      }
+    }
+    .v2-pyramid-glow { animation: glowPulse 3s ease-in-out infinite; }
+
+    /* ============================================ */
+    /*  VARIANT 3: Light Beam                       */
+    /* ============================================ */
+    @keyframes beamShoot {
+      0% { opacity: 0; height: 0; }
+      20% { opacity: 0.9; height: 50px; }
+      60% { opacity: 0.6; height: 120px; }
+      100% { opacity: 0; height: 160px; }
+    }
+    @keyframes beamGlow {
+      0%, 100% { opacity: 0.2; transform: scaleX(1); }
+      50% { opacity: 0.6; transform: scaleX(1.3); }
+    }
+    .v3-light-beam {
+      position: absolute;
+      top: 22%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 3px;
+      background: linear-gradient(to top, #FFD700, #58E6FF, transparent);
+      border-radius: 2px;
+      animation: beamShoot 2.5s ease-out infinite;
+      pointer-events: none;
+      box-shadow: 0 0 10px #58E6FF, 0 0 20px rgba(88, 230, 255, 0.3);
+    }
+    .v3-light-beam-wide {
+      position: absolute;
+      top: 18%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 80px;
+      background: radial-gradient(ellipse at center bottom, rgba(88, 230, 255, 0.12), transparent 70%);
+      animation: beamGlow 3s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    /* ============================================ */
+    /*  VARIANT 4: Combo (all three)                */
+    /* ============================================ */
+    .v4-pyramid-glow { animation: glowPulse 3s ease-in-out infinite; }
+    .v4-particle {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #58E6FF, transparent);
+      box-shadow: 0 0 6px #58E6FF, 0 0 12px rgba(88, 230, 255, 0.3);
+      animation: rise 3.5s ease-out infinite;
+      pointer-events: none;
+    }
+    .v4-particle:nth-child(odd) { background: radial-gradient(circle, #FC81FE, transparent); box-shadow: 0 0 6px #FC81FE; }
+    .v4-particle:nth-child(4n) { background: radial-gradient(circle, #FFD700, transparent); box-shadow: 0 0 6px #FFD700; width: 4px; height: 4px; }
+    .v4-light-beam {
+      position: absolute;
+      top: 22%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 3px;
+      background: linear-gradient(to top, #FFD700, #58E6FF, transparent);
+      border-radius: 2px;
+      animation: beamShoot 3s ease-out infinite;
+      pointer-events: none;
+      box-shadow: 0 0 10px #58E6FF, 0 0 20px rgba(88, 230, 255, 0.3);
+    }
+    .v4-light-beam-wide {
+      position: absolute;
+      top: 18%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 80px;
+      background: radial-gradient(ellipse at center bottom, rgba(88, 230, 255, 0.12), transparent 70%);
+      animation: beamGlow 3s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(135deg, #7AEDFF, #FC81FE);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Active variant highlight */
+    .variant-card {
+      border: 2px solid rgba(255,255,255,0.08);
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .variant-card:hover {
+      border-color: rgba(88, 230, 255, 0.3);
+      box-shadow: 0 0 30px rgba(88, 230, 255, 0.1);
+    }
+  </style>
+  <script>
+    if (localStorage.getItem('theme') !== 'light') {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+</head>
+<body class="bg-surface dark:bg-surface-dark text-body dark:text-body-dark min-h-screen">
+
+  <!-- Header -->
+  <header class="py-6 border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
+      <a href="index.html" class="text-heading dark:text-heading-dark font-heading text-xl">
+        ← მთავარი გვერდი
+      </a>
+      <h1 class="font-heading text-2xl md:text-3xl gradient-text text-center">
+        პირამიდის ანიმაციები
+      </h1>
+      <div class="w-32"></div>
+    </div>
+  </header>
+
+  <!-- Variants Grid -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
+
+    <p class="text-center text-body dark:text-body-dark mb-10 text-lg">
+      აირჩიე რომელი ანიმაცია მოგწონს ყველაზე მეტად პირამიდისთვის
+    </p>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+      <!-- ====== VARIANT 1: Rising Particles ====== -->
+      <div class="variant-card rounded-2xl bg-surface-dark-alt p-6">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="text-2xl">✨</span>
+          <div>
+            <h2 class="font-heading text-xl text-heading dark:text-heading-dark">ვარიანტი 1</h2>
+            <p class="text-primary text-sm font-semibold">ამაღლების ნაწილაკები</p>
+          </div>
+        </div>
+        <p class="text-sm text-body-dark mb-6">მბზინავი Cyan, Pink და ოქროსფერი წერტილები ქვემოდან ზემოთ ადიან — ტრაფიკის/რეიტინგის ზრდის სიმბოლო</p>
+
+        <div class="relative flex items-center justify-center h-[380px] animate-float">
+          <img src="images/pyramid-top.png" alt="Pyramid" class="w-full max-w-xs drop-shadow-2xl">
+          <div class="absolute top-[18%] left-1/2 -translate-x-1/2 text-center pointer-events-none z-10">
+            <span class="font-heading text-lg font-bold text-white" style="text-shadow: 0 0 20px rgba(88, 230, 255, 0.8), 0 0 40px rgba(252, 129, 254, 0.5), 0 2px 8px rgba(0,0,0,0.9);">იყავი<br>პირველი</span>
+          </div>
+          <!-- Particles -->
+          <div class="v1-particle" style="bottom: 28%; left: 22%; animation-delay: 0s;"></div>
+          <div class="v1-particle" style="bottom: 32%; right: 22%; animation-delay: 0.6s;"></div>
+          <div class="v1-particle" style="bottom: 38%; left: 38%; animation-delay: 1.2s;"></div>
+          <div class="v1-particle" style="bottom: 24%; right: 32%; animation-delay: 1.8s;"></div>
+          <div class="v1-particle" style="bottom: 42%; left: 48%; animation-delay: 2.4s;"></div>
+          <div class="v1-particle" style="bottom: 26%; left: 30%; animation-delay: 0.9s;"></div>
+          <div class="v1-particle" style="bottom: 35%; right: 36%; animation-delay: 2.0s;"></div>
+          <div class="v1-particle" style="bottom: 20%; left: 44%; animation-delay: 1.5s;"></div>
+        </div>
+      </div>
+
+      <!-- ====== VARIANT 2: Glow Pulse ====== -->
+      <div class="variant-card rounded-2xl bg-surface-dark-alt p-6">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="text-2xl">💫</span>
+          <div>
+            <h2 class="font-heading text-xl text-heading dark:text-heading-dark">ვარიანტი 2</h2>
+            <p class="text-accent text-sm font-semibold">ოქროს პულსი</p>
+          </div>
+        </div>
+        <p class="text-sm text-body-dark mb-6">პირამიდა "სუნთქავს" — ოქროსფერი, Cyan და Pink glow პულსირებს, თითქოს ენერგიით სავსეა</p>
+
+        <div class="relative flex items-center justify-center h-[380px] animate-float">
+          <img src="images/pyramid-top.png" alt="Pyramid" class="w-full max-w-xs v2-pyramid-glow">
+          <div class="absolute top-[18%] left-1/2 -translate-x-1/2 text-center pointer-events-none z-10">
+            <span class="font-heading text-lg font-bold text-white" style="text-shadow: 0 0 20px rgba(88, 230, 255, 0.8), 0 0 40px rgba(252, 129, 254, 0.5), 0 2px 8px rgba(0,0,0,0.9);">იყავი<br>პირველი</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ====== VARIANT 3: Light Beam ====== -->
+      <div class="variant-card rounded-2xl bg-surface-dark-alt p-6">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="text-2xl">🔺</span>
+          <div>
+            <h2 class="font-heading text-xl text-heading dark:text-heading-dark">ვარიანტი 3</h2>
+            <p class="text-yellow-400 text-sm font-semibold">სინათლის სხივი</p>
+          </div>
+        </div>
+        <p class="text-sm text-body-dark mb-6">წვეტიდან Cyan/ოქროსფერი სხივი ისვრის ზემოთ — #1 პოზიციაზე მისვლის სიმბოლო</p>
+
+        <div class="relative flex items-center justify-center h-[380px] animate-float">
+          <img src="images/pyramid-top.png" alt="Pyramid" class="w-full max-w-xs drop-shadow-2xl">
+          <div class="absolute top-[18%] left-1/2 -translate-x-1/2 text-center pointer-events-none z-10">
+            <span class="font-heading text-lg font-bold text-white" style="text-shadow: 0 0 20px rgba(88, 230, 255, 0.8), 0 0 40px rgba(252, 129, 254, 0.5), 0 2px 8px rgba(0,0,0,0.9);">იყავი<br>პირველი</span>
+          </div>
+          <div class="v3-light-beam-wide"></div>
+          <div class="v3-light-beam"></div>
+        </div>
+      </div>
+
+      <!-- ====== VARIANT 4: Combo ====== -->
+      <div class="variant-card rounded-2xl bg-surface-dark-alt p-6 ring-1 ring-primary/30">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="text-2xl">📈</span>
+          <div>
+            <h2 class="font-heading text-xl text-heading dark:text-heading-dark">ვარიანტი 4</h2>
+            <p class="text-green-400 text-sm font-semibold">კომბო — სამივე ერთად</p>
+          </div>
+          <span class="ml-auto text-xs bg-primary/20 text-primary px-3 py-1 rounded-full font-semibold">რეკომენდაცია</span>
+        </div>
+        <p class="text-sm text-body-dark mb-6">პულსი + ნაწილაკები + სხივი — სრული premium ეფექტი, ზრდასა და ტექნოლოგიურ excellence-ს გამოხატავს</p>
+
+        <div class="relative flex items-center justify-center h-[380px] animate-float">
+          <img src="images/pyramid-top.png" alt="Pyramid" class="w-full max-w-xs v4-pyramid-glow">
+          <div class="absolute top-[18%] left-1/2 -translate-x-1/2 text-center pointer-events-none z-10">
+            <span class="font-heading text-lg font-bold text-white" style="text-shadow: 0 0 20px rgba(88, 230, 255, 0.8), 0 0 40px rgba(252, 129, 254, 0.5), 0 2px 8px rgba(0,0,0,0.9);">იყავი<br>პირველი</span>
+          </div>
+          <div class="v4-light-beam-wide"></div>
+          <div class="v4-light-beam"></div>
+          <div class="v4-particle" style="bottom: 28%; left: 22%; animation-delay: 0s;"></div>
+          <div class="v4-particle" style="bottom: 32%; right: 22%; animation-delay: 0.6s;"></div>
+          <div class="v4-particle" style="bottom: 38%; left: 38%; animation-delay: 1.2s;"></div>
+          <div class="v4-particle" style="bottom: 24%; right: 32%; animation-delay: 1.8s;"></div>
+          <div class="v4-particle" style="bottom: 42%; left: 48%; animation-delay: 2.4s;"></div>
+          <div class="v4-particle" style="bottom: 26%; left: 30%; animation-delay: 0.9s;"></div>
+          <div class="v4-particle" style="bottom: 35%; right: 36%; animation-delay: 2.0s;"></div>
+          <div class="v4-particle" style="bottom: 20%; left: 44%; animation-delay: 1.5s;"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Summary -->
+    <div class="mt-12 text-center text-body-dark text-sm">
+      <p>ყველა ანიმაცია CSS-only — JS ბიბლიოთეკები არ გამოიყენება. Performance-ზე გავლენა: 0.</p>
+    </div>
+
+  </main>
+
+</body>
+</html>
