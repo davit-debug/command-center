@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="ka" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SEO მენეჯმენტი — ყოველთვიური SEO მომსახურება | 10XSEO</title>
+  <meta name="description" content="ყოველთვიური SEO მომსახურება მოიცავს სრულ პასუხისმგებლობას ყველა პროცესზე. რეალური შედეგები, ყოველკვირეული ანგარიშები.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/firago@1.0.0/FiraGO.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: { DEFAULT: '#58E6FF', light: '#7AEDFF', dark: '#3ED8F5' },
+            accent: { DEFAULT: '#FC81FE', dark: '#E070E2' },
+            surface: { DEFAULT: '#ffffff', alt: '#f8fafc', dark: '#020710', 'dark-alt': '#0F0F0F' },
+            heading: { DEFAULT: '#0f172a', dark: '#f8fafc' },
+            body: { DEFAULT: '#475569', dark: '#94a3b8' },
+            success: '#21C743',
+          },
+          fontFamily: {
+            'heading': ['"Dachi the Lynx"', 'sans-serif'],
+            'body': ['FiraGO', 'sans-serif'],
+            'inter': ['Inter', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    @font-face {
+      font-family: 'Dachi the Lynx';
+      src: url('fonts/DachiTheLynx.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    body { font-family: 'FiraGO', 'Inter', sans-serif; }
+    h1, h2, h3 { font-family: 'Dachi the Lynx', sans-serif; }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in-up { opacity: 0; animation: fadeInUp 0.5s ease-out forwards; }
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #58E6FF, #FC81FE);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .dark .gradient-text {
+      background: linear-gradient(135deg, #7AEDFF, #FC81FE);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .gradient-border {
+      position: relative;
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .gradient-border::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      padding: 1.5px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #58E6FF, #FC81FE);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
+    .dark .gradient-border { background: #0F0F0F; }
+
+    .header-scrolled { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    .accent-glow { box-shadow: 0 0 40px rgba(88, 230, 255, 0.15); }
+    .dark .accent-glow { box-shadow: 0 0 60px rgba(88, 230, 255, 0.2); }
+    .safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
+
+    /* Process step connector */
+    .step-connector { position: relative; }
+    .step-connector::after {
+      content: '';
+      position: absolute;
+      top: 40px;
+      left: 20px;
+      width: 2px;
+      height: calc(100% - 40px);
+      background: linear-gradient(to bottom, #58E6FF, #FC81FE);
+      opacity: 0.2;
+    }
+    .step-connector:last-child::after { display: none; }
+
+    /* Feature card hover */
+    .feature-card { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    @media (hover: hover) {
+      .feature-card:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.06); }
+      .dark .feature-card:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+    }
+  </style>
+</head>
+<body class="font-body bg-white dark:bg-surface-dark text-body dark:text-body-dark transition-colors duration-300">
+
+  <!-- ========== HEADER ========== -->
+  <header class="fixed top-0 left-0 right-0 z-50 h-16 lg:h-[72px] bg-white/80 dark:bg-surface-dark/80 header-scrolled border-b border-gray-100 dark:border-gray-800 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-full flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 shrink-0">
+        <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
+          <span class="text-white font-extrabold text-sm">10X</span>
+        </div>
+        <span class="font-heading text-heading dark:text-heading-dark font-bold text-lg">SEO</span>
+      </a>
+      <nav class="hidden lg:flex items-center gap-1">
+        <a href="index.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">მთავარი</a>
+        <div class="relative group">
+          <button class="px-3 py-2 text-sm font-semibold text-primary dark:text-primary-light rounded-lg bg-primary/5 dark:bg-primary-light/10 transition-colors flex items-center gap-1">
+            სერვისები
+            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="absolute top-full left-0 mt-1 w-56 bg-white dark:bg-surface-dark-alt rounded-xl shadow-xl border border-gray-100 dark:border-gray-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 p-2">
+            <a href="seo-management.html" class="block px-3 py-2.5 text-sm rounded-lg bg-primary/5 dark:bg-primary-light/10 text-primary dark:text-primary-light font-medium">SEO მენეჯმენტი</a>
+            <a href="#" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">ლოკალური SEO</a>
+            <a href="#" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">ლინკ ბილდინგი</a>
+            <a href="#" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">ვებ დეველოპმენტი</a>
+          </div>
+        </div>
+        <a href="portfolio.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">პორტფოლიო</a>
+        <a href="blog-post.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">ბლოგი</a>
+        <a href="#" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">კონტაქტი</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <button class="hidden sm:flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark transition-colors">KA / EN</button>
+        <button id="theme-toggle" class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-heading dark:text-heading-dark">
+          <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          <svg class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        </button>
+        <a href="seo-audit.html" class="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-primary to-primary-dark text-white text-sm font-semibold rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-200">უფასო აუდიტი</a>
+        <button id="mobile-menu-btn" class="lg:hidden w-9 h-9 rounded-lg flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-heading dark:text-heading-dark">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== HERO ========== -->
+  <section class="pt-24 lg:pt-32 pb-16 lg:pb-20 bg-gradient-to-b from-surface-alt to-white dark:from-surface-dark dark:to-surface-dark relative overflow-hidden">
+    <!-- Background decoration -->
+    <div class="absolute top-20 right-0 w-96 h-96 bg-primary/5 dark:bg-primary/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 w-72 h-72 bg-accent/5 dark:bg-accent/10 rounded-full blur-3xl"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+      <!-- Breadcrumbs -->
+      <nav class="flex items-center gap-2 text-sm mb-8">
+        <a href="index.html" class="text-body/60 dark:text-body-dark/60 hover:text-primary transition-colors">მთავარი</a>
+        <span class="text-body/30 dark:text-body-dark/30">›</span>
+        <span class="text-body/60 dark:text-body-dark/60">სერვისები</span>
+        <span class="text-body/30 dark:text-body-dark/30">›</span>
+        <span class="text-heading dark:text-heading-dark font-medium">SEO მენეჯმენტი</span>
+      </nav>
+
+      <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+        <div>
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 dark:bg-primary-light/10 text-primary dark:text-primary-light text-sm font-medium mb-6">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+            #1 სერვისი საქართველოში
+          </div>
+
+          <h1 class="font-heading text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-heading dark:text-heading-dark leading-tight mb-6">
+            ყოველთვიური<br>
+            <span class="gradient-text">SEO მომსახურება</span>
+          </h1>
+
+          <p class="text-lg text-body dark:text-body-dark leading-relaxed mb-8">
+            ყოველთვიური SEO სერვისი მოიცავს პასუხისმგებლობას ყველა იმ პროცესზე რაც ეხება SEO-ს. თქვენ გვიკვეთავთ სერვისს — <strong class="text-heading dark:text-heading-dark">ჩვენ ვდებთ შედეგებს.</strong>
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-3 mb-8">
+            <a href="seo-audit.html" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-gradient-to-r from-primary to-primary-dark text-white font-bold rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all text-base">
+              მიიღეთ შემოთავაზება
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+            <a href="tel:+995555123456" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 border border-gray-200 dark:border-gray-700 text-heading dark:text-heading-dark font-semibold rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-all text-base">
+              <svg class="w-5 h-5 text-primary dark:text-primary-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              დაგვირეკეთ
+            </a>
+          </div>
+
+          <!-- Trust signals -->
+          <div class="flex flex-wrap gap-4 text-sm text-body dark:text-body-dark">
+            <div class="flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-success" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              ყოველკვირეული რეპორტი
+            </div>
+            <div class="flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-success" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              10 წუთიანი response time
+            </div>
+            <div class="flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-success" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              50+ კლიენტი
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Stats visual -->
+        <div class="hidden lg:block">
+          <div class="bg-white dark:bg-surface-dark-alt rounded-3xl border border-gray-100 dark:border-gray-800 p-8 accent-glow">
+            <div class="text-center mb-6">
+              <div class="text-sm font-medium text-body dark:text-body-dark">პოზიციის გავლენა ტრაფიკზე</div>
+            </div>
+            <div class="space-y-5">
+              <div>
+                <div class="flex justify-between text-sm mb-2">
+                  <span class="font-semibold text-heading dark:text-heading-dark">#1 პოზიცია</span>
+                  <span class="font-inter font-bold text-success">39.8%</span>
+                </div>
+                <div class="w-full bg-gray-100 dark:bg-gray-800 rounded-full h-3">
+                  <div class="bg-gradient-to-r from-primary to-accent h-3 rounded-full" style="width: 100%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between text-sm mb-2">
+                  <span class="font-semibold text-heading dark:text-heading-dark">#2 პოზიცია</span>
+                  <span class="font-inter font-bold text-primary dark:text-primary-light">18.7%</span>
+                </div>
+                <div class="w-full bg-gray-100 dark:bg-gray-800 rounded-full h-3">
+                  <div class="bg-gradient-to-r from-primary to-primary-light h-3 rounded-full" style="width: 47%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between text-sm mb-2">
+                  <span class="font-semibold text-heading dark:text-heading-dark">#3 პოზიცია</span>
+                  <span class="font-inter font-bold text-body dark:text-body-dark">10.2%</span>
+                </div>
+                <div class="w-full bg-gray-100 dark:bg-gray-800 rounded-full h-3">
+                  <div class="bg-primary/40 h-3 rounded-full" style="width: 26%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between text-sm mb-2">
+                  <span class="text-heading dark:text-heading-dark">#10 პოზიცია</span>
+                  <span class="font-inter text-body/60 dark:text-body-dark/60">2.8%</span>
+                </div>
+                <div class="w-full bg-gray-100 dark:bg-gray-800 rounded-full h-3">
+                  <div class="bg-gray-300 dark:bg-gray-600 h-3 rounded-full" style="width: 7%"></div>
+                </div>
+              </div>
+            </div>
+            <p class="text-xs text-center text-body/60 dark:text-body-dark/60 mt-6">წყარო: Backlinko CTR Study, 2024</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== WHAT'S INCLUDED ========== -->
+  <section class="py-16 lg:py-20 bg-surface-alt dark:bg-surface-dark-alt">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-heading dark:text-heading-dark mb-4">რა შედის სერვისში?</h2>
+        <p class="text-body dark:text-body-dark">ყოველთვიური SEO მომსახურების პაკეტი მოიცავს ყველაფერს რაც საჭიროა ორგანული ზრდისთვის</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <!-- Feature 1 -->
+        <div class="feature-card bg-white dark:bg-surface-dark rounded-2xl p-6 border border-gray-100 dark:border-gray-800">
+          <div class="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-primary dark:text-primary-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          </div>
+          <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark mb-2">საძიებო სიტყვების კვლევა</h3>
+          <p class="text-sm text-body dark:text-body-dark leading-relaxed">ვიკვლევთ როგორ ეძებენ მომხმარებლები თქვენს ბიზნესს — რა სიხშირით, რა განზრახვით და რა ტენდენციებით.</p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-card bg-white dark:bg-surface-dark rounded-2xl p-6 border border-gray-100 dark:border-gray-800">
+          <div class="w-12 h-12 rounded-xl bg-purple-50 dark:bg-purple-900/20 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+          </div>
+          <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark mb-2">Keyword Mapping</h3>
+          <p class="text-sm text-body dark:text-body-dark leading-relaxed">ქივორდებს ვყოფთ თემატურ ჯგუფებად და ვებსაიტის შესაბამის გვერდებს ვუთავსებთ მომხმარებლის განზრახვის მიხედვით.</p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-card bg-white dark:bg-surface-dark rounded-2xl p-6 border border-gray-100 dark:border-gray-800">
+          <div class="w-12 h-12 rounded-xl bg-red-50 dark:bg-red-900/20 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-red-500 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark mb-2">ტექნიკური აუდიტი</h3>
+          <p class="text-sm text-body dark:text-body-dark leading-relaxed">ტექნიკური SEO, On-page, Off-page და კონკურენტების აუდიტი — ყველა ხარვეზის იდენტიფიკაცია და გამოსწორება.</p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="feature-card bg-white dark:bg-surface-dark rounded-2xl p-6 border border-gray-100 dark:border-gray-800">
+          <div class="w-12 h-12 rounded-xl bg-amber-50 dark:bg-amber-900/20 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-amber-500 dark:text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+          </div>
+          <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark mb-2">On-page ოპტიმიზაცია</h3>
+          <p class="text-sm text-body dark:text-body-dark leading-relaxed">გვერდების შიდა ოპტიმიზაცია — მეტა თეგები, სტრუქტურა, შიდა ბმულები და მომხმარებლის განზრახვის დაკმაყოფილება.</p>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="feature-card bg-white dark:bg-surface-dark rounded-2xl p-6 border border-gray-100 dark:border-gray-800">
+          <div class="w-12 h-12 rounded-xl bg-emerald-50 dark:bg-emerald-900/20 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-emerald-500 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
+          </div>
+          <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark mb-2">კონტენტი</h3>
+          <p class="text-sm text-body dark:text-body-dark leading-relaxed">ყოველთვიურად SEO-ოპტიმიზირებული კონტენტი, რომელიც ერგება თქვენი ბრენდის ხმას და ქმნის ღირებულებას.</p>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="feature-card bg-white dark:bg-surface-dark rounded-2xl p-6 border border-gray-100 dark:border-gray-800">
+          <div class="w-12 h-12 rounded-xl bg-indigo-50 dark:bg-indigo-900/20 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-indigo-500 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+          </div>
+          <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark mb-2">ლინკ ბილდინგი</h3>
+          <p class="text-sm text-body dark:text-body-dark leading-relaxed">მაღალი დონის მედია პუბლიკაციები და ავტორიტეტული ბექლინკები თქვენი დომეინის სიძლიერის ასამაღლებლად.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== WHY DIFFERENT (Service Excellence) ========== -->
+  <section class="py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-heading dark:text-heading-dark mb-4">რით განვსხვავდებით?</h2>
+        <p class="text-body dark:text-body-dark">SEO სერვისი ყველგანაა — ჩვენ სერვისის ხარისხით გამოვირჩევით</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Reporting -->
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-primary/10 to-accent/10 dark:from-primary/20 dark:to-accent/20 flex items-center justify-center mb-4">
+            <svg class="w-8 h-8 text-primary dark:text-primary-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          </div>
+          <h3 class="font-heading font-bold text-heading dark:text-heading-dark mb-2">რეპორტინგი</h3>
+          <p class="text-sm text-body dark:text-body-dark">ვიდეო რეპორტი თვეში, ტექსტური რეპორტი + ორ-კვირეული პოზიციების ცვლილება</p>
+        </div>
+
+        <!-- Communication (★ highlighted) -->
+        <div class="text-center relative">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+            <span class="px-2 py-0.5 text-[10px] font-bold rounded-full bg-accent text-surface-dark uppercase tracking-wider">Star</span>
+          </div>
+          <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-accent/20 to-primary/10 dark:from-accent/30 dark:to-primary/20 flex items-center justify-center mb-4 ring-2 ring-accent/30">
+            <svg class="w-8 h-8 text-accent-dark dark:text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+          </div>
+          <h3 class="font-heading font-bold text-heading dark:text-heading-dark mb-2">კომუნიკაცია</h3>
+          <p class="text-sm text-body dark:text-body-dark">სამუშაო საათებში კითხვასა და პასუხს შორის მაქსიმუმ <strong class="text-accent-dark dark:text-accent">10 წუთი!</strong></p>
+        </div>
+
+        <!-- Expertise -->
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-primary/10 to-accent/10 dark:from-primary/20 dark:to-accent/20 flex items-center justify-center mb-4">
+            <svg class="w-8 h-8 text-primary dark:text-primary-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+          </div>
+          <h3 class="font-heading font-bold text-heading dark:text-heading-dark mb-2">ექსპერტიზა</h3>
+          <p class="text-sm text-body dark:text-body-dark">7+ წლის გამოცდილება და საქართველოში საუკეთესო სპეციალისტების გუნდი</p>
+        </div>
+
+        <!-- All-in-one -->
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-primary/10 to-accent/10 dark:from-primary/20 dark:to-accent/20 flex items-center justify-center mb-4">
+            <svg class="w-8 h-8 text-primary dark:text-primary-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+          </div>
+          <h3 class="font-heading font-bold text-heading dark:text-heading-dark mb-2">ყველაფერი ერთ ადგილას</h3>
+          <p class="text-sm text-body dark:text-body-dark">ნაცვლად ცალკეულ ადამიანებთან თანამშრომლობისა — ერთი გუნდი, სრული სერვისი</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PROCESS TIMELINE ========== -->
+  <section class="py-16 lg:py-20 bg-surface-alt dark:bg-surface-dark-alt">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-heading dark:text-heading-dark mb-4">როგორ მიმდინარეობს პროცესი?</h2>
+      </div>
+
+      <div class="space-y-0">
+        <!-- Step 1 -->
+        <div class="step-connector flex gap-5 pb-10">
+          <div class="shrink-0">
+            <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-heading font-bold text-sm">1</div>
+          </div>
+          <div class="pt-1">
+            <h3 class="font-heading font-bold text-heading dark:text-heading-dark text-lg mb-2">კვლევა & სტრატეგია</h3>
+            <p class="text-body dark:text-body-dark text-sm leading-relaxed">საძიებო სიტყვების კვლევა, კონკურენტების ანალიზი, Keyword Mapping და სტრატეგიის შემუშავება. ვადგენთ გეგმას რომელიც მორგებულია თქვენს ბიზნესზე.</p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step-connector flex gap-5 pb-10">
+          <div class="shrink-0">
+            <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-heading font-bold text-sm">2</div>
+          </div>
+          <div class="pt-1">
+            <h3 class="font-heading font-bold text-heading dark:text-heading-dark text-lg mb-2">ტექნიკური ოპტიმიზაცია</h3>
+            <p class="text-body dark:text-body-dark text-sm leading-relaxed">ტექნიკური SEO აუდიტი, საიტის სტრუქტურის გაუმჯობესება, Core Web Vitals ოპტიმიზაცია და On-page SEO — ყველა ტექნიკური ხარვეზის გამოსწორება.</p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step-connector flex gap-5 pb-10">
+          <div class="shrink-0">
+            <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-heading font-bold text-sm">3</div>
+          </div>
+          <div class="pt-1">
+            <h3 class="font-heading font-bold text-heading dark:text-heading-dark text-lg mb-2">კონტენტი & ლინკ ბილდინგი</h3>
+            <p class="text-body dark:text-body-dark text-sm leading-relaxed">ყოველთვიურად ახალი, SEO-ოპტიმიზირებული კონტენტი + ავტორიტეტული ბექლინკები მაღალი დონის მედია პუბლიკაციებიდან.</p>
+          </div>
+        </div>
+
+        <!-- Step 4 (★ highlighted) -->
+        <div class="step-connector flex gap-5 pb-10">
+          <div class="shrink-0">
+            <div class="w-10 h-10 rounded-full bg-accent text-surface-dark flex items-center justify-center font-heading font-bold text-sm ring-4 ring-accent/20">4</div>
+          </div>
+          <div class="pt-1">
+            <h3 class="font-heading font-bold text-heading dark:text-heading-dark text-lg mb-2 flex items-center gap-2">
+              ყოველკვირეული აფდეითები
+              <span class="px-2 py-0.5 text-[10px] font-bold rounded-full bg-accent/20 text-accent-dark dark:text-accent">ჩვენი უპირატესობა</span>
+            </h3>
+            <p class="text-body dark:text-body-dark text-sm leading-relaxed">ვიდეო რეპორტი თვეში ერთხელ, ტექსტური რეპორტი რეგულარულად, პოზიციების ცვლილების აფდეითი ორ-კვირაში ერთხელ. <strong class="text-heading dark:text-heading-dark">10 წუთიანი response time.</strong></p>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="flex gap-5">
+          <div class="shrink-0">
+            <div class="w-10 h-10 rounded-full bg-success text-white flex items-center justify-center font-heading font-bold text-sm">5</div>
+          </div>
+          <div class="pt-1">
+            <h3 class="font-heading font-bold text-heading dark:text-heading-dark text-lg mb-2">შედეგი & სტაბილური ზრდა</h3>
+            <p class="text-body dark:text-body-dark text-sm leading-relaxed">ტრაფიკის ზრდა, პოზიციების გაუმჯობესება და კონვერსიების მატება. თქვენი წარმატება — ჩვენი წარმატებაა.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== RESULTS SNIPPET ========== -->
+  <section class="py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-heading dark:text-heading-dark mb-4">რეალური შედეგები</h2>
+        <p class="text-body dark:text-body-dark">SEO მენეჯმენტის კლიენტების Before/After მეტრიკები</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Result 1 -->
+        <div class="bg-white dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-10 h-10 rounded-xl bg-rose-100 dark:bg-rose-900/30 flex items-center justify-center text-sm font-bold text-rose-600 dark:text-rose-400">BM</div>
+            <div>
+              <div class="font-heading font-bold text-heading dark:text-heading-dark text-sm">Belle Maison</div>
+              <div class="text-xs text-body dark:text-body-dark">ავეჯი</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 mb-2">
+            <div class="flex-1 text-center py-2 rounded-lg bg-red-50 dark:bg-red-900/20">
+              <div class="text-xs text-body dark:text-body-dark">Before</div>
+              <div class="font-inter text-lg font-bold text-red-500">250</div>
+            </div>
+            <svg class="w-5 h-5 text-success shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            <div class="flex-1 text-center py-2 rounded-lg bg-green-50 dark:bg-green-900/20">
+              <div class="text-xs text-body dark:text-body-dark">After</div>
+              <div class="font-inter text-lg font-bold text-success">2,000</div>
+            </div>
+          </div>
+          <div class="text-center text-sm font-bold text-success"><span class="font-inter">+700%</span> ტრაფიკი</div>
+        </div>
+
+        <!-- Result 2 -->
+        <div class="bg-white dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-sm font-bold text-blue-600 dark:text-blue-400">EH</div>
+            <div>
+              <div class="font-heading font-bold text-heading dark:text-heading-dark text-sm">ELEHEAR</div>
+              <div class="text-xs text-body dark:text-body-dark">სმენის აპარატები</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 mb-2">
+            <div class="flex-1 text-center py-2 rounded-lg bg-red-50 dark:bg-red-900/20">
+              <div class="text-xs text-body dark:text-body-dark">Before</div>
+              <div class="font-inter text-lg font-bold text-red-500">1.2K</div>
+            </div>
+            <svg class="w-5 h-5 text-success shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            <div class="flex-1 text-center py-2 rounded-lg bg-green-50 dark:bg-green-900/20">
+              <div class="text-xs text-body dark:text-body-dark">After</div>
+              <div class="font-inter text-lg font-bold text-success">8.5K</div>
+            </div>
+          </div>
+          <div class="text-center text-sm font-bold text-success"><span class="font-inter">+608%</span> ტრაფიკი</div>
+        </div>
+
+        <!-- Result 3 -->
+        <div class="bg-white dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-sm font-bold text-purple-600 dark:text-purple-400">HZ</div>
+            <div>
+              <div class="font-heading font-bold text-heading dark:text-heading-dark text-sm">Horizon</div>
+              <div class="text-xs text-body dark:text-body-dark">უძრავი ქონება</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 mb-2">
+            <div class="flex-1 text-center py-2 rounded-lg bg-red-50 dark:bg-red-900/20">
+              <div class="text-xs text-body dark:text-body-dark">Before</div>
+              <div class="font-inter text-lg font-bold text-red-500">450</div>
+            </div>
+            <svg class="w-5 h-5 text-success shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            <div class="flex-1 text-center py-2 rounded-lg bg-green-50 dark:bg-green-900/20">
+              <div class="text-xs text-body dark:text-body-dark">After</div>
+              <div class="font-inter text-lg font-bold text-success">3.8K</div>
+            </div>
+          </div>
+          <div class="text-center text-sm font-bold text-success"><span class="font-inter">+744%</span> ტრაფიკი</div>
+        </div>
+      </div>
+
+      <div class="text-center mt-8">
+        <a href="portfolio.html" class="inline-flex items-center gap-2 text-primary dark:text-primary-light font-semibold hover:underline">
+          ყველა ქეის სტადი
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FAQ ========== -->
+  <section class="py-16 lg:py-20 bg-surface-alt dark:bg-surface-dark-alt">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <h2 class="font-heading text-2xl sm:text-3xl font-extrabold text-heading dark:text-heading-dark text-center mb-10">ხშირად დასმული კითხვები</h2>
+
+      <div class="space-y-3" id="faq-list">
+        <div class="bg-white dark:bg-surface-dark rounded-xl border border-gray-100 dark:border-gray-800">
+          <button class="w-full flex items-center justify-between p-5 text-left" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+            <span class="font-heading font-semibold text-heading dark:text-heading-dark pr-4">რამდენი ხანი სჭირდება SEO-ს შედეგების ჩვენებას?</span>
+            <svg class="w-5 h-5 shrink-0 text-body dark:text-body-dark transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="hidden px-5 pb-5">
+            <p class="text-sm text-body dark:text-body-dark leading-relaxed">პირველი შედეგები ჩვეულებრივ 2-3 თვეში ჩანს, ხოლო მნიშვნელოვანი ზრდა — 4-6 თვეში. კონკურენტული ნიშებისთვის შეიძლება 6-12 თვეც დასჭირდეს.</p>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-surface-dark rounded-xl border border-gray-100 dark:border-gray-800">
+          <button class="w-full flex items-center justify-between p-5 text-left" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+            <span class="font-heading font-semibold text-heading dark:text-heading-dark pr-4">რა ღირს ყოველთვიური SEO მომსახურება?</span>
+            <svg class="w-5 h-5 shrink-0 text-body dark:text-body-dark transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="hidden px-5 pb-5">
+            <p class="text-sm text-body dark:text-body-dark leading-relaxed">ფასი დამოკიდებულია ბიზნესის მასშტაბზე, კონკურენციაზე და მიზნებზე. დაგვიკავშირდით უფასო კონსულტაციისთვის და მიიღებთ ინდივიდუალურ შემოთავაზებას.</p>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-surface-dark rounded-xl border border-gray-100 dark:border-gray-800">
+          <button class="w-full flex items-center justify-between p-5 text-left" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+            <span class="font-heading font-semibold text-heading dark:text-heading-dark pr-4">გარანტიას იძლევით შედეგებზე?</span>
+            <svg class="w-5 h-5 shrink-0 text-body dark:text-body-dark transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="hidden px-5 pb-5">
+            <p class="text-sm text-body dark:text-body-dark leading-relaxed">SEO-ში კონკრეტულ პოზიციებზე გარანტიის მიცემა შეუძლებელია, თუმცა ჩვენი ტრეკ-რეკორდი თავისთავად მეტყველებს — 50+ კლიენტთან საშუალოდ 340% ტრაფიკის ზრდა.</p>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-surface-dark rounded-xl border border-gray-100 dark:border-gray-800">
+          <button class="w-full flex items-center justify-between p-5 text-left" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+            <span class="font-heading font-semibold text-heading dark:text-heading-dark pr-4">რა ხდება კონტრაქტის გაწყვეტის შემთხვევაში?</span>
+            <svg class="w-5 h-5 shrink-0 text-body dark:text-body-dark transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="hidden px-5 pb-5">
+            <p class="text-sm text-body dark:text-body-dark leading-relaxed">გაწყვეტის შემთხვევაში ყველა გაკეთებული სამუშაო (კონტენტი, ოპტიმიზაცია) რჩება თქვენ. არ არსებობს long-term lock-in — შედეგებს ვდებთ, არა ხელშეკრულებებს.</p>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-surface-dark rounded-xl border border-gray-100 dark:border-gray-800">
+          <button class="w-full flex items-center justify-between p-5 text-left" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+            <span class="font-heading font-semibold text-heading dark:text-heading-dark pr-4">რამდენად ხშირად მივიღებ აფდეითებს?</span>
+            <svg class="w-5 h-5 shrink-0 text-body dark:text-body-dark transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="hidden px-5 pb-5">
+            <p class="text-sm text-body dark:text-body-dark leading-relaxed">თვეში ერთხელ ვიდეო რეპორტი, ორ-კვირაში ერთხელ პოზიციების რეპორტი, და ნებისმიერ კითხვაზე პასუხი 10 წუთში სამუშაო საათებში.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA BANNER ========== -->
+  <section class="py-16 lg:py-20 bg-gradient-to-r from-primary to-blue-600 dark:from-primary-dark dark:to-blue-800 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-10 left-10 w-40 h-40 border border-white/30 rounded-full"></div>
+      <div class="absolute bottom-10 right-10 w-60 h-60 border border-white/20 rounded-full"></div>
+    </div>
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center relative z-10">
+      <h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white mb-4">
+        მზად ხართ SEO-ს გასარკეტინგებლად?
+      </h2>
+      <p class="text-lg text-white/80 mb-8">
+        დაგვიკავშირდით, გაიარეთ უფასო კონსულტაცია და ითანამშრომლეთ საქართველოში საუკეთესო გუნდთან
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="seo-audit.html" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-primary font-bold rounded-2xl hover:shadow-xl transition-all text-lg">
+          მიიღეთ შემოთავაზება
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+        <a href="tel:+995555123456" class="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-2xl hover:bg-white/10 transition-all text-lg">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          დაგვირეკეთ
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="bg-surface-dark text-gray-400 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
+            <span class="text-white font-extrabold text-xs">10X</span>
+          </div>
+          <span class="font-heading text-white font-bold">SEO</span>
+        </div>
+        <div class="flex flex-wrap justify-center gap-6 text-sm">
+          <a href="index.html" class="hover:text-white transition-colors">მთავარი</a>
+          <a href="seo-management.html" class="text-white">SEO მენეჯმენტი</a>
+          <a href="portfolio.html" class="hover:text-white transition-colors">პორტფოლიო</a>
+          <a href="blog-post.html" class="hover:text-white transition-colors">ბლოგი</a>
+          <a href="seo-audit.html" class="hover:text-white transition-colors">აუდიტი</a>
+        </div>
+        <p class="text-sm">&copy; 2025 10XSEO. ყველა უფლება დაცულია.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== STICKY BOTTOM CTA (Mobile) ========== -->
+  <div id="sticky-cta" class="fixed bottom-0 left-0 right-0 z-50 lg:hidden bg-white dark:bg-surface-dark-alt border-t border-gray-200 dark:border-gray-800 p-3 safe-bottom transition-transform duration-300">
+    <div class="flex items-center gap-2 max-w-lg mx-auto">
+      <a href="seo-audit.html" class="flex-1 flex items-center justify-center gap-2 py-3 bg-gradient-to-r from-primary to-primary-dark text-white font-semibold rounded-xl text-sm">მიიღეთ შემოთავაზება</a>
+      <a href="tel:+995555123456" class="w-12 h-12 flex items-center justify-center rounded-xl border border-gray-200 dark:border-gray-700 text-primary dark:text-primary-light">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // Theme toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');
+    themeToggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+    });
+
+    // Sticky CTA hide/show on scroll
+    let lastScroll = 0;
+    const stickyCta = document.getElementById('sticky-cta');
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+      if (currentScroll > lastScroll && currentScroll > 300) {
+        stickyCta.style.transform = 'translateY(100%)';
+      } else {
+        stickyCta.style.transform = 'translateY(0)';
+      }
+      lastScroll = currentScroll;
+    });
+  </script>
+
+</body>
+</html>

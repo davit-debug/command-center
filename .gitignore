@@ -1,4 +1,4 @@
-# Only track command center files
+# Only track command center files + design mockups
 *
 !command-center.html
 !extract-reports.py
@@ -8,3 +8,18 @@
 !.gitignore
 !.github/
 !.github/**
+
+# Design mockup files
+!index.html
+!blog-post.html
+!seo-audit.html
+!seo-management.html
+!portfolio.html
+!font-options.html
+!color-options.html
+
+# Design assets
+!fonts/
+!fonts/**
+!images/
+!images/**
