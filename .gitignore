@@ -4,6 +4,7 @@
 !extract-reports.py
 !reports-data.json
 !usage-data.json
+!robots.txt
 !.gitignore
 !.github/
 !.github/**
