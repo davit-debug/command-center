@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-10T11:35:54.031288",
+  "generated_at": "2026-03-10T11:40:30.247635",
   "tasks": {
     "weekly-employee-analysis": {
       "task_id": "weekly-employee-analysis",
@@ -98,11 +98,11 @@
   },
   "usage": {
     "session": {
-      "percent": 14,
-      "resets_in": "4 hr 1 min"
+      "percent": 31,
+      "resets_in": "2 hr 19 min"
     },
     "weekly_all_models": {
-      "percent": 33,
+      "percent": 34,
       "resets": "Sun 9:00 PM"
     },
     "weekly_sonnet": {
@@ -117,6 +117,6 @@
       "balance": "-$0.05"
     },
     "plan": "Max",
-    "scraped_at": "2026-03-10T06:01:15.290Z"
+    "scraped_at": "2026-03-10T07:43:00.000Z"
   }
 }
