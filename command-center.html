@@ -274,7 +274,7 @@
         // Load reports JSON
         async function loadReports() {
             try {
-                const resp = await fetch('/reports-data.json?t=' + Date.now());
+                const resp = await fetch('reports-data.json?t=' + Date.now());
                 const newData = await resp.json();
                 const changed = JSON.stringify(newData) !== JSON.stringify(reportsData);
                 reportsData = newData;
