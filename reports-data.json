@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-11T09:19:58.117135",
+  "generated_at": "2026-03-11T09:25:01.270440",
   "tasks": {
     "weekly-employee-analysis": {
       "task_id": "weekly-employee-analysis",
@@ -51,7 +51,7 @@
           "session_id": "local_27f5ce88-e90a-4cb0-b9f0-2fbaeaf16633",
           "title": "11 Mar – Weekly employee performance analysis",
           "date": "2026-03-11T09:03:50.169000",
-          "report": "I've read the scheduled task instructions. This task asks me to open WhatsApp Web, read through client chat messages, analyze employee performance, and send reports to Slack.\n\nBefore I proceed, I want to flag what I found and get your confirmation:\n\n**This scheduled task instructs me to:**\n1. Open WhatsApp Web (web.whatsapp.com) in the browser\n2. Scroll through all client group chats containing \"10xSEO\" in the name\n3. Read the last 14 days of messages in each chat\n4. Evaluate employee performance (tone, professionalism, response time, client satisfaction)\n5. Send a detailed report to your Slack DM and the #ტოპ-მენეჯმენტი channel\n\n**Should I proceed with executing these instructions?** This involves reading WhatsApp messages and sending Slack messages on your behalf, so I want to confirm before taking action."
+          "report": "⚠️ *ყოველკვირეული თანამშრომლების შეფასება — შეცდომა*\n_თარიღი: 2026-03-11_\n\nWhatsApp Web-ის გახსნა ვერ მოხერხდა — ბრაუზერის ავტომატიზაციის tool-ები timeout-ს აბრუნებენ (60 წამის შემდეგ).\n\n*რა ვცადე:*\n• WhatsApp Web-ზე ნავიგაცია (რამდენჯერმე)\n• Screenshot-ის გადაღება სტატუსის შესამოწმებლად\n\n*სავარაუდო მიზეზები:*\n• ბრაუზერის extension-თან კომუნიკაციის პრობლემა\n• WhatsApp Web-ის ჩატვირთვის პრობლემა (QR კოდის სკანირება შეიძლება საჭირო იყოს)\n\n*რეკომენდაცია:*\nგთხოვ, შეამოწმე ბრაუზერში WhatsApp Web ხელით ჩატვირთულია თუ არა და session აქტიურია თუ არა. შემდეგ ხელახლა გაუშვი task."
         },
         {
           "session_id": "local_9e8e29fe-72ed-46c8-8601-b099ab9b413f",
