@@ -603,7 +603,7 @@
         </div>
       </div>
       <div class="border-t border-gray-800 pt-6 text-center text-xs">
-        <p>&copy; 2024 10XSEO. ყველა უფლება დაცულია.</p>
+        <p>&copy; 2025 10XSEO. ყველა უფლება დაცულია.</p>
       </div>
     </div>
   </footer>
@@ -626,7 +626,7 @@
   <script>
     // Dark mode
     const themeToggle = document.getElementById('theme-toggle');
-    if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    if (localStorage.getItem('theme') !== 'light' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark');
     }
     themeToggle.addEventListener('click', () => {
