@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="ka" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ქივორდ რისერჩი — უფასო Keyword Research ინსტრუმენტი | 10XSEO</title>
+  <meta name="description" content="პირველი ქივორდ რისერჩის ინსტრუმენტი საქართველოში. გაიგეთ რამდენი ადამიანი ეძებს თქვენს ქივორდს Google-ში — საქართველოს მონაცემები. უფასო keyword research tool.">
+  <link rel="canonical" href="https://10xseo.ge/keyword-research/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ქივორდ რისერჩი — უფასო Keyword Research ინსტრუმენტი | 10XSEO">
+  <meta property="og:description" content="პირველი ქივორდ რისერჩის ინსტრუმენტი საქართველოში. გაიგეთ რამდენი ადამიანი ეძებს თქვენს ქივორდს Google-ში.">
+  <meta property="og:url" content="https://10xseo.ge/keyword-research/">
+  <meta property="og:locale" content="ka_GE">
+  <meta property="og:site_name" content="10XSEO">
+
+  <!-- Schema: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "10XSEO Keyword Research Tool",
+    "description": "პირველი ქივორდ რისერჩის ინსტრუმენტი საქართველოში — გაიგეთ რამდენი ადამიანი ეძებს თქვენს ქივორდს Google-ში.",
+    "url": "https://10xseo.ge/keyword-research/",
+    "applicationCategory": "SEO Tool",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "GEL"
+    },
+    "provider": {
+      "@type": "Organization",
+      "name": "10XSEO",
+      "url": "https://10xseo.ge"
+    }
+  }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/firago@1.0.0/FiraGO.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: { DEFAULT: '#58E6FF', light: '#7AEDFF', dark: '#3ED8F5' },
+            accent: { DEFAULT: '#FC81FE', dark: '#E070E2' },
+            surface: { DEFAULT: '#ffffff', alt: '#f8fafc', dark: '#020710', 'dark-alt': '#0F0F0F' },
+            heading: { DEFAULT: '#0f172a', dark: '#f8fafc' },
+            body: { DEFAULT: '#475569', dark: '#94a3b8' },
+            success: '#21C743',
+          },
+          fontFamily: {
+            'heading': ['"Dachi the Lynx"', 'sans-serif'],
+            'body': ['FiraGO', 'sans-serif'],
+            'inter': ['Inter', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    @font-face {
+      font-family: 'Dachi the Lynx';
+      src: url('fonts/DachiTheLynx.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    body { font-family: 'FiraGO', 'Inter', sans-serif; }
+    h1, h2, h3 { font-family: 'Dachi the Lynx', sans-serif; }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #58E6FF, #FC81FE);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .dark .gradient-text {
+      background: linear-gradient(135deg, #7AEDFF, #FC81FE);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    .header-scrolled { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    .safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
+    .accent-glow { box-shadow: 0 0 40px rgba(88, 230, 255, 0.15); }
+    .dark .accent-glow { box-shadow: 0 0 60px rgba(88, 230, 255, 0.2); }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in-up { opacity: 0; animation: fadeInUp 0.5s ease-out forwards; }
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-400 { animation-delay: 0.4s; }
+
+    /* Search input animated gradient border */
+    @keyframes borderGlow {
+      0%, 100% { border-color: #58E6FF; box-shadow: 0 0 8px rgba(88, 230, 255, 0.1); }
+      50% { border-color: #FC81FE; box-shadow: 0 0 8px rgba(252, 129, 254, 0.1); }
+    }
+    .search-glow:focus-within {
+      animation: borderGlow 3s ease-in-out infinite;
+    }
+    @media (max-width: 640px) {
+      .search-glow:focus-within {
+        box-shadow: none;
+        border-color: #58E6FF;
+        animation: none;
+      }
+    }
+
+    /* Skeleton shimmer */
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    .skeleton {
+      background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s ease-in-out infinite;
+      border-radius: 8px;
+    }
+    .dark .skeleton {
+      background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
+      background-size: 200% 100%;
+    }
+
+    /* Fade in results */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in { animation: fadeIn 0.4s ease-out forwards; }
+
+    /* Chart bar hover */
+    .chart-bar { transition: opacity 0.2s, filter 0.2s; cursor: pointer; }
+    .chart-bar:hover { opacity: 0.85; filter: brightness(1.1); }
+    .dark .chart-bar:hover { filter: brightness(1.2) drop-shadow(0 0 8px rgba(88, 230, 255, 0.4)); }
+
+    /* Chart tooltip */
+    .chart-tooltip {
+      position: absolute;
+      background: #0f172a;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.15s;
+      white-space: nowrap;
+      z-index: 10;
+    }
+    .chart-tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 5px solid transparent;
+      border-top-color: #0f172a;
+    }
+    .dark .chart-tooltip { background: #334155; }
+    .dark .chart-tooltip::after { border-top-color: #334155; }
+
+    /* Table sort icons */
+    .sort-icon { opacity: 0.3; transition: opacity 0.2s; }
+    .sort-active .sort-icon { opacity: 1; }
+
+    /* Volume bar in table */
+    .volume-bar {
+      height: 6px;
+      border-radius: 3px;
+      background: linear-gradient(90deg, #58E6FF, #FC81FE);
+      transition: width 0.3s ease;
+    }
+
+    /* Modal backdrop */
+    .modal-backdrop {
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    /* Pulse animation for counter badge */
+    @keyframes pulse-soft {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    .pulse-soft { animation: pulse-soft 2s ease-in-out infinite; }
+
+    /* FAQ accordion */
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .faq-open .faq-answer { max-height: 500px; }
+    .faq-chevron { transition: transform 0.3s ease; }
+    .faq-open .faq-chevron { transform: rotate(180deg); }
+
+    /* Toast notification */
+    .toast {
+      position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%) translateY(100px);
+      background: #21C743; color: white; padding: 12px 24px; border-radius: 12px;
+      font-weight: 600; font-size: 14px; z-index: 100; transition: transform 0.3s ease;
+      box-shadow: 0 8px 30px rgba(33, 199, 67, 0.3);
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+
+    /* Table horizontal scroll on mobile */
+    .table-scroll::-webkit-scrollbar { height: 4px; }
+    .table-scroll::-webkit-scrollbar-track { background: transparent; }
+    .table-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+    .dark .table-scroll::-webkit-scrollbar-thumb { background: #475569; }
+  </style>
+</head>
+<body class="font-body bg-white dark:bg-surface-dark text-body dark:text-body-dark transition-colors duration-300">
+
+  <!-- ========== HEADER ========== -->
+  <header class="fixed top-0 left-0 right-0 z-50 h-16 lg:h-[72px] bg-white/80 dark:bg-surface-dark/80 header-scrolled border-b border-gray-100 dark:border-gray-800 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-full flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 shrink-0">
+        <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
+          <span class="text-white font-extrabold text-sm">10X</span>
+        </div>
+        <span class="font-heading text-heading dark:text-heading-dark font-bold text-lg">SEO</span>
+      </a>
+      <nav class="hidden lg:flex items-center gap-1">
+        <a href="index.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">მთავარი</a>
+        <div class="relative group">
+          <button class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors flex items-center gap-1">
+            სერვისები
+            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="absolute top-full left-0 mt-1 w-56 bg-white dark:bg-surface-dark-alt rounded-xl shadow-xl border border-gray-100 dark:border-gray-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 p-2">
+            <a href="seo-management.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">SEO მენეჯმენტი</a>
+            <a href="#" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">ლოკალური SEO</a>
+            <a href="#" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">ლინკ ბილდინგი</a>
+            <a href="#" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">ვებ დეველოპმენტი</a>
+            <hr class="my-1.5 border-gray-100 dark:border-gray-800">
+            <a href="seo-consultation.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">SEO კონსულტაცია</a>
+            <a href="seo-strategy.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">სტრატეგიის მონახაზი</a>
+            <a href="seo-copywriting.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">SEO კოპირაიტინგი</a>
+            <a href="cro.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">კონვერსიის ოპტიმიზაცია</a>
+            <a href="google-ads.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">Google Ads</a>
+            <a href="ai-seo.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">AI SEO / GEO</a>
+            <a href="seo-course.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">SEO კურსი</a>
+          </div>
+        </div>
+        <a href="industries.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">ინდუსტრიები</a>
+        <a href="portfolio.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">პორტფოლიო</a>
+        <a href="vacancies.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">ვაკანსიები</a>
+        <a href="blog-post.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">ბლოგი</a>
+        <a href="contact-us.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">კონტაქტი</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <button class="hidden sm:flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark transition-colors">KA / EN</button>
+        <button id="theme-toggle" class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-heading dark:text-heading-dark">
+          <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          <svg class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        </button>
+        <a href="tel:+995510101517" class="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 border-2 border-primary dark:border-primary-light text-primary dark:text-primary-light text-sm font-semibold rounded-xl hover:bg-primary/5 transition-all duration-200">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          დაგვირეკეთ
+        </a>
+        <button id="mobile-menu-btn" class="lg:hidden w-9 h-9 rounded-lg flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-heading dark:text-heading-dark">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== MOBILE MENU ========== -->
+  <div id="mobile-menu" class="fixed inset-0 z-[60] bg-white dark:bg-surface-dark transform translate-x-full transition-transform duration-300 ease-in-out lg:hidden">
+    <div class="flex items-center justify-between h-16 px-4 border-b border-gray-100 dark:border-gray-800">
+      <a href="index.html" class="flex items-center gap-2">
+        <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center"><span class="text-white font-extrabold text-sm">10X</span></div>
+        <span class="font-heading text-heading dark:text-heading-dark font-bold text-lg">SEO</span>
+      </a>
+      <button id="mobile-menu-close" class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-800 text-heading dark:text-heading-dark">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <nav class="px-4 py-6 space-y-1 overflow-y-auto max-h-[calc(100vh-64px)]">
+      <a href="index.html" class="block px-4 py-3 rounded-xl text-base font-medium text-heading dark:text-heading-dark hover:bg-gray-50 dark:hover:bg-gray-800/50">მთავარი</a>
+      <div class="px-4 py-2 text-xs font-semibold text-body/50 dark:text-body-dark/50 uppercase tracking-wider">სერვისები</div>
+      <a href="seo-management.html" class="block px-4 py-3 rounded-xl text-base font-medium text-heading dark:text-heading-dark hover:bg-gray-50 dark:hover:bg-gray-800/50 pl-8">SEO მენეჯმენტი</a>
+      <a href="#" class="block px-4 py-3 rounded-xl text-base font-medium text-heading dark:text-heading-dark hover:bg-gray-50 dark:hover:bg-gray-800/50 pl-8">ლოკალური SEO</a>
+      <a href="#" class="block px-4 py-3 rounded-xl text-base font-medium text-heading dark:text-heading-dark hover:bg-gray-50 dark:hover:bg-gray-800/50 pl-8">ლინკ ბილდინგი</a>
+      <a href="#" class="block px-4 py-3 rounded-xl text-base font-medium text-heading dark:text-heading-dark hover:bg-gray-50 dark:hover:bg-gray-800/50 pl-8">ვებ დეველოპმენტი</a>
+      <a href="seo-consultation.html" class="block px-4 py-3 rounded-xl text-base font-medium text-heading dark:text-heading-dark hover:bg-gray-50 dark:hover:bg-gray-800/50 pl-8">SEO კონსულტაცია</a>
+      <a href="seo-strategy.html" class="block px-4 py-3 rounded-xl text-base font-medium text-heading dark:text-heading-dark hover:bg-gray-50 dark:hover:bg-gray-800/50 pl-8">სტრატეგიის მონახაზი</a>
+      <a href="seo-copywriting.html" class="block px-4 py-3 rounded-xl text-base font-medium text-heading dark:text-heading-dark hover:bg-gray-50 dark:hover:bg-gray-800/50 pl-8">SEO კოპირაიტინგი</a>
+      <a href="cro.html" class="block px-4 py-3 rounded-xl text-base font-medium text-heading dark:text-heading-dark hover:bg-gray-50 dark:hover:bg-gray-800/50 pl-8">კონვერსიის ოპტიმიზაცია</a>
+      <a href="google-ads.html" class="block px-4 py-3 rounded-xl text-base font-medium text-heading dark:text-heading-dark hover:bg-gray-50 dark:hover:bg-gray-800/50 pl-8">Google Ads</a>
+      <a href="ai-seo.html" class="block px-4 py-3 rounded-xl text-base font-medium text-heading dark:text-heading-dark hover:bg-gray-50 dark:hover:bg-gray-800/50 pl-8">AI SEO / GEO</a>
+      <a href="seo-course.html" class="block px-4 py-3 rounded-xl text-base font-medium text-heading dark:text-heading-dark hover:bg-gray-50 dark:hover:bg-gray-800/50 pl-8">SEO კურსი</a>
+      <hr class="my-3 border-gray-100 dark:border-gray-800">
+      <a href="industries.html" class="block px-4 py-3 rounded-xl text-base font-medium text-heading dark:text-heading-dark hover:bg-gray-50 dark:hover:bg-gray-800/50">ინდუსტრიები</a>
+      <a href="portfolio.html" class="block px-4 py-3 rounded-xl text-base font-medium text-heading dark:text-heading-dark hover:bg-gray-50 dark:hover:bg-gray-800/50">პორტფოლიო</a>
+      <a href="vacancies.html" class="block px-4 py-3 rounded-xl text-base font-medium text-heading dark:text-heading-dark hover:bg-gray-50 dark:hover:bg-gray-800/50">ვაკანსიები</a>
+      <a href="blog-post.html" class="block px-4 py-3 rounded-xl text-base font-medium text-heading dark:text-heading-dark hover:bg-gray-50 dark:hover:bg-gray-800/50">ბლოგი</a>
+      <a href="contact-us.html" class="block px-4 py-3 rounded-xl text-base font-medium text-heading dark:text-heading-dark hover:bg-gray-50 dark:hover:bg-gray-800/50">კონტაქტი</a>
+      <div class="pt-4 mt-4 border-t border-gray-100 dark:border-gray-800">
+        <a href="tel:+995510101517" id="mobile-menu-cta" class="block w-full text-center px-6 py-3.5 bg-gradient-to-r from-primary to-primary-dark text-white font-bold rounded-xl text-base">
+          დაგვირეკეთ — +995 510 10 15 17
+        </a>
+      </div>
+    </nav>
+  </div>
+
+  <!-- ========== HERO SECTION ========== -->
+  <section class="relative pt-24 lg:pt-32 pb-16 lg:pb-24 overflow-hidden">
+    <!-- Background decorations -->
+    <div class="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-primary/5 dark:from-surface-dark dark:via-surface-dark dark:to-primary/5"></div>
+    <div class="absolute top-20 right-0 w-[500px] h-[500px] bg-primary/5 dark:bg-primary/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent/5 dark:bg-accent/10 rounded-full blur-3xl"></div>
+    <div class="absolute top-40 left-1/4 w-[200px] h-[200px] bg-primary/3 dark:bg-primary/5 rounded-full blur-2xl"></div>
+
+    <div class="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 text-center">
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary-light text-sm font-semibold mb-6 animate-fade-in-up">
+        <span class="text-lg">&#127468;&#127466;</span>
+        პირველი საქართველოში
+      </div>
+
+      <!-- Headline -->
+      <h1 class="font-heading text-[32px] sm:text-[42px] lg:text-[56px] font-extrabold text-heading dark:text-heading-dark leading-tight mb-4 animate-fade-in-up delay-100">
+        <span class="gradient-text">ქივორდ რისერჩი</span>
+      </h1>
+
+      <!-- Sub -->
+      <p class="text-lg sm:text-xl text-body dark:text-body-dark mb-10 animate-fade-in-up delay-200 max-w-2xl mx-auto">
+        გაიგეთ რამდენი ადამიანი ეძებს თქვენს ქივორდს Google-ში — საქართველოს მონაცემები
+      </p>
+
+      <!-- Search Input -->
+      <div class="animate-fade-in-up delay-300">
+        <div class="relative search-glow rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark-alt transition-all duration-300 max-w-2xl mx-auto">
+          <!-- Counter badge — positioned below the input on mobile -->
+          <div id="search-counter-badge" class="hidden mt-2 sm:mt-0 sm:absolute sm:-top-3 sm:right-4 sm:z-10 text-center sm:text-right">
+            <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold bg-accent/15 text-accent dark:text-accent dark:bg-accent/20">
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+              <span id="search-counter-text">0/5 უფასო ძიება</span>
+            </span>
+          </div>
+
+          <div class="flex items-center">
+            <div class="pl-4 sm:pl-5 text-body/40 dark:text-body-dark/40 shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            </div>
+            <input
+              type="text"
+              id="keyword-input"
+              placeholder="ჩაწერეთ ქივორდი... მაგ: seo"
+              class="flex-1 min-w-0 px-3 sm:px-4 py-4 sm:py-5 bg-transparent text-heading dark:text-heading-dark text-base sm:text-lg placeholder:text-body/40 dark:placeholder:text-body-dark/40 focus:outline-none"
+              autocomplete="off"
+            >
+            <button
+              id="search-btn"
+              onclick="handleSearch()"
+              class="m-1.5 sm:m-2 px-4 sm:px-8 py-3 sm:py-3.5 bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary text-surface-dark font-bold rounded-xl text-sm sm:text-base transition-all duration-200 flex items-center gap-2 shrink-0"
+            >
+              <span id="search-btn-text">ძიება</span>
+              <svg id="search-btn-spinner" class="w-5 h-5 animate-spin hidden" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/></svg>
+            </button>
+          </div>
+        </div>
+        <!-- Georgian keyword info notice -->
+        <div id="georgian-notice" class="hidden max-w-2xl mx-auto mt-3">
+          <div class="flex items-start gap-2 px-4 py-3 rounded-xl bg-yellow-500/10 dark:bg-yellow-500/5 border border-yellow-500/20">
+            <svg class="w-4 h-4 text-yellow-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <p class="text-xs text-yellow-600 dark:text-yellow-400">ქართულენოვანი ქივორდებისთვის Google Ads-ის მონაცემები შეზღუდულია. საუკეთესო შედეგისთვის სცადეთ ლათინური ასოებით (მაგ: "tbilisi hotel" ნაცვლად "თბილისი სასტუმრო").</p>
+          </div>
+        </div>
+        <!-- Example keywords -->
+        <div class="mt-4 text-sm text-body/60 dark:text-body-dark/60 flex flex-wrap items-center justify-center gap-2">
+          <span>მაგ:</span>
+          <button onclick="quickSearch('seo')" class="px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-primary/10 dark:hover:bg-primary/20 text-heading dark:text-heading-dark text-xs font-medium transition-colors">seo</button>
+          <button onclick="quickSearch('digital marketing')" class="px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-primary/10 dark:hover:bg-primary/20 text-heading dark:text-heading-dark text-xs font-medium transition-colors">digital marketing</button>
+          <button onclick="quickSearch('web design')" class="px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-primary/10 dark:hover:bg-primary/20 text-heading dark:text-heading-dark text-xs font-medium transition-colors">web design</button>
+          <button onclick="quickSearch('hosting')" class="px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-primary/10 dark:hover:bg-primary/20 text-heading dark:text-heading-dark text-xs font-medium transition-colors">hosting</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== LOADING SKELETON ========== -->
+  <section id="loading-section" class="hidden pb-16 bg-white dark:bg-surface-dark">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <!-- Skeleton overview cards -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <div class="rounded-2xl border border-gray-100 dark:border-gray-800 p-5"><div class="skeleton h-4 w-20 mb-3"></div><div class="skeleton h-8 w-24 mb-2"></div><div class="skeleton h-3 w-16"></div></div>
+        <div class="rounded-2xl border border-gray-100 dark:border-gray-800 p-5"><div class="skeleton h-4 w-20 mb-3"></div><div class="skeleton h-8 w-24 mb-2"></div><div class="skeleton h-3 w-16"></div></div>
+        <div class="rounded-2xl border border-gray-100 dark:border-gray-800 p-5"><div class="skeleton h-4 w-20 mb-3"></div><div class="skeleton h-8 w-24 mb-2"></div><div class="skeleton h-3 w-16"></div></div>
+        <div class="rounded-2xl border border-gray-100 dark:border-gray-800 p-5"><div class="skeleton h-4 w-20 mb-3"></div><div class="skeleton h-8 w-24 mb-2"></div><div class="skeleton h-3 w-16"></div></div>
+      </div>
+      <!-- Skeleton chart -->
+      <div class="rounded-2xl border border-gray-100 dark:border-gray-800 p-6 mb-8">
+        <div class="skeleton h-5 w-40 mb-6"></div>
+        <div class="flex items-end gap-2 h-48">
+          <div class="skeleton flex-1 h-1/3"></div><div class="skeleton flex-1 h-1/2"></div><div class="skeleton flex-1 h-2/3"></div>
+          <div class="skeleton flex-1 h-1/4"></div><div class="skeleton flex-1 h-3/4"></div><div class="skeleton flex-1 h-1/2"></div>
+          <div class="skeleton flex-1 h-2/5"></div><div class="skeleton flex-1 h-3/5"></div><div class="skeleton flex-1 h-1/3"></div>
+          <div class="skeleton flex-1 h-4/5"></div><div class="skeleton flex-1 h-1/2"></div><div class="skeleton flex-1 h-2/3"></div>
+        </div>
+      </div>
+      <!-- Skeleton table -->
+      <div class="rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
+        <div class="skeleton h-5 w-48 mb-6"></div>
+        <div class="space-y-3">
+          <div class="skeleton h-10 w-full"></div>
+          <div class="skeleton h-10 w-full"></div>
+          <div class="skeleton h-10 w-full"></div>
+          <div class="skeleton h-10 w-full"></div>
+          <div class="skeleton h-10 w-full"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ERROR MESSAGE ========== -->
+  <section id="error-section" class="hidden pb-16 bg-white dark:bg-surface-dark">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 text-center">
+      <div class="bg-red-50 dark:bg-red-900/20 rounded-2xl border border-red-200 dark:border-red-800/50 p-8">
+        <div class="w-14 h-14 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center mx-auto mb-4">
+          <svg class="w-7 h-7 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>
+        </div>
+        <h3 class="font-heading text-xl font-bold text-heading dark:text-heading-dark mb-2" id="error-title">შეცდომა</h3>
+        <p class="text-body dark:text-body-dark mb-4" id="error-message">სერვერი მიუწვდომელია. გაუშვით: node keyword-api-server.js</p>
+        <button onclick="handleSearch()" class="px-6 py-2.5 bg-primary hover:bg-primary-dark text-white font-semibold rounded-xl text-sm transition-colors">ხელახლა ცდა</button>
+        <button onclick="loadDemoData()" class="ml-2 px-6 py-2.5 border-2 border-primary text-primary dark:text-primary-light font-semibold rounded-xl text-sm hover:bg-primary/5 transition-colors">Demo მონაცემები</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== RESULTS SECTION ========== -->
+  <section id="results-section" class="hidden pb-16 lg:pb-24 bg-white dark:bg-surface-dark">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+
+      <!-- Searched keyword display -->
+      <div class="mb-8 fade-in">
+        <div class="flex items-center gap-3 mb-2">
+          <h2 class="font-heading text-xl sm:text-2xl font-bold text-heading dark:text-heading-dark">შედეგები:</h2>
+          <span id="result-keyword-badge" class="inline-flex items-center gap-1 px-4 py-1.5 rounded-full bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary-light font-bold text-sm"></span>
+          <span id="demo-badge" class="hidden inline-flex items-center gap-1 px-3 py-1 rounded-full bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400 text-xs font-semibold">DEMO</span>
+        </div>
+      </div>
+
+      <!-- 1. Keyword Overview Cards -->
+      <div id="overview-cards" class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8 fade-in"></div>
+
+      <!-- 2. Monthly Trend Chart -->
+      <div class="bg-surface-alt dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 p-6 mb-8 fade-in">
+        <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark mb-6 flex items-center gap-2">
+          <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          თვიური ტრენდი
+        </h3>
+        <div id="trend-chart-container" class="relative w-full" style="min-height: 220px;"></div>
+      </div>
+
+      <!-- 3. Related Keywords Table -->
+      <div class="bg-surface-alt dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 p-6 fade-in">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+          <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark flex items-center gap-2">
+            <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+            მსგავსი ქივორდები
+            <span id="related-count" class="text-sm font-normal text-body dark:text-body-dark ml-1"></span>
+          </h3>
+          <button onclick="exportCSV()" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold border border-gray-200 dark:border-gray-700 text-heading dark:text-heading-dark hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            CSV ექსპორტი
+          </button>
+        </div>
+
+        <!-- Table wrapper -->
+        <div class="table-scroll overflow-x-auto -mx-6 px-6">
+          <table class="w-full min-w-[600px]">
+            <thead>
+              <tr class="border-b border-gray-200 dark:border-gray-700">
+                <th class="text-left py-3 px-3 text-xs font-semibold text-body/60 dark:text-body-dark/60 uppercase tracking-wider cursor-pointer hover:text-heading dark:hover:text-heading-dark transition-colors" onclick="sortTable('keyword')">
+                  <span class="flex items-center gap-1">ქივორდი <svg class="w-3 h-3 sort-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"/></svg></span>
+                </th>
+                <th class="text-left py-3 px-3 text-xs font-semibold text-body/60 dark:text-body-dark/60 uppercase tracking-wider cursor-pointer hover:text-heading dark:hover:text-heading-dark transition-colors" onclick="sortTable('searchVolume')">
+                  <span class="flex items-center gap-1">ვოლუმი <svg class="w-3 h-3 sort-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"/></svg></span>
+                </th>
+                <th class="text-left py-3 px-3 text-xs font-semibold text-body/60 dark:text-body-dark/60 uppercase tracking-wider cursor-pointer hover:text-heading dark:hover:text-heading-dark transition-colors" onclick="sortTable('cpc')">
+                  <span class="flex items-center gap-1">CPC <svg class="w-3 h-3 sort-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"/></svg></span>
+                </th>
+                <th class="text-left py-3 px-3 text-xs font-semibold text-body/60 dark:text-body-dark/60 uppercase tracking-wider cursor-pointer hover:text-heading dark:hover:text-heading-dark transition-colors" onclick="sortTable('competition')">
+                  <span class="flex items-center gap-1">კონკურენცია <svg class="w-3 h-3 sort-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"/></svg></span>
+                </th>
+                <th class="text-right py-3 px-3 text-xs font-semibold text-body/60 dark:text-body-dark/60 uppercase tracking-wider"></th>
+              </tr>
+            </thead>
+            <tbody id="related-table-body"></tbody>
+          </table>
+        </div>
+
+        <!-- Pagination -->
+        <div id="pagination" class="flex items-center justify-between mt-6 pt-4 border-t border-gray-200 dark:border-gray-700"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== LEAD MAGNET MODAL ========== -->
+  <div id="lead-modal" class="fixed inset-0 z-[70] hidden">
+    <div class="absolute inset-0 bg-black/60 modal-backdrop" onclick="closeLeadModal()"></div>
+    <div class="absolute inset-0 flex items-center justify-center p-4">
+      <div class="relative bg-white dark:bg-surface-dark-alt rounded-3xl shadow-2xl max-w-md w-full p-8 transform transition-all duration-300 scale-95 opacity-0" id="lead-modal-content">
+        <button onclick="closeLeadModal()" class="absolute top-4 right-4 w-8 h-8 rounded-lg flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-800 text-body dark:text-body-dark transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+
+        <div class="text-center mb-6">
+          <div class="w-16 h-16 rounded-2xl bg-accent/10 dark:bg-accent/20 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          </div>
+          <h3 class="font-heading text-xl font-bold text-heading dark:text-heading-dark mb-2">5 უფასო ძიება გამოყენებულია</h3>
+          <p class="text-body dark:text-body-dark text-sm">განაგრძეთ უფასოდ — დატოვეთ საკონტაქტო ინფორმაცია</p>
+        </div>
+
+        <form id="lead-form" onsubmit="submitLeadForm(event)" class="space-y-4">
+          <div>
+            <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-1.5">სახელი *</label>
+            <input type="text" id="lead-name" required placeholder="თქვენი სახელი" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark placeholder:text-body/40 focus:outline-none focus:border-primary dark:focus:border-primary-light transition-colors">
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-1.5">ემაილი *</label>
+            <input type="email" id="lead-email" required placeholder="you@example.com" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark placeholder:text-body/40 focus:outline-none focus:border-primary dark:focus:border-primary-light transition-colors">
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-1.5">ტელეფონი <span class="text-body/40 font-normal">(არასავალდებულო)</span></label>
+            <input type="tel" id="lead-phone" placeholder="+995 5XX XXX XXX" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark placeholder:text-body/40 focus:outline-none focus:border-primary dark:focus:border-primary-light transition-colors">
+          </div>
+          <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-primary to-accent text-white font-bold rounded-xl text-base hover:opacity-90 transition-opacity">
+            განბლოკვა — უფასოდ
+          </button>
+        </form>
+
+        <div class="mt-5 text-center">
+          <p class="text-xs text-body/50 dark:text-body-dark/50">ან დაგვიკავშირდით: <a href="tel:+995510101517" class="text-primary dark:text-primary-light font-semibold hover:underline">+995 510 10 15 17</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== HOW IT WORKS ========== -->
+  <section class="py-16 lg:py-24 bg-surface-alt dark:bg-surface-dark-alt">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <h2 class="font-heading text-[28px] sm:text-[36px] font-extrabold text-heading dark:text-heading-dark mb-4">როგორ მუშაობს?</h2>
+        <p class="text-body dark:text-body-dark max-w-xl mx-auto">სამი მარტივი ნაბიჯი საქართველოს საძიებო მონაცემების მისაღებად</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Step 1 -->
+        <div class="text-center group">
+          <div class="w-16 h-16 rounded-2xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center mx-auto mb-5 group-hover:scale-110 transition-transform duration-300">
+            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+          </div>
+          <div class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary text-white text-sm font-bold mb-3">1</div>
+          <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark mb-2">ჩაწერეთ ქივორდი</h3>
+          <p class="text-sm text-body dark:text-body-dark">ჩაწერეთ ნებისმიერი სიტყვა ან ფრაზა, რომელიც გაინტერესებთ</p>
+        </div>
+        <!-- Step 2 -->
+        <div class="text-center group">
+          <div class="w-16 h-16 rounded-2xl bg-accent/10 dark:bg-accent/20 flex items-center justify-center mx-auto mb-5 group-hover:scale-110 transition-transform duration-300">
+            <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          </div>
+          <div class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-accent text-white text-sm font-bold mb-3">2</div>
+          <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark mb-2">მიიღეთ მონაცემები</h3>
+          <p class="text-sm text-body dark:text-body-dark">ნახეთ საძიებო ვოლუმი, CPC, კონკურენცია და თვიური ტრენდი</p>
+        </div>
+        <!-- Step 3 -->
+        <div class="text-center group">
+          <div class="w-16 h-16 rounded-2xl bg-success/10 dark:bg-success/20 flex items-center justify-center mx-auto mb-5 group-hover:scale-110 transition-transform duration-300">
+            <svg class="w-8 h-8 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+          </div>
+          <div class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-success text-white text-sm font-bold mb-3">3</div>
+          <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark mb-2">გამოიყენეთ სტრატეგიაში</h3>
+          <p class="text-sm text-body dark:text-body-dark">ექსპორტი CSV-ში, მსგავსი ქივორდების აღმოჩენა და SEO გეგმის შედგენა</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FAQ ========== -->
+  <section class="py-16 lg:py-24 bg-white dark:bg-surface-dark">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <h2 class="font-heading text-[28px] sm:text-[36px] font-extrabold text-heading dark:text-heading-dark mb-4">ხშირად დასმული კითხვები</h2>
+      </div>
+      <div class="space-y-3" id="faq-container">
+        <!-- FAQ 1 -->
+        <div class="faq-item rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between px-6 py-4 text-left">
+            <span class="font-semibold text-heading dark:text-heading-dark text-sm sm:text-base">რა არის Keyword Research?</span>
+            <svg class="w-5 h-5 text-body dark:text-body-dark shrink-0 faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="px-6 pb-4 text-sm text-body dark:text-body-dark leading-relaxed">
+              Keyword Research (ქივორდ რისერჩი) არის პროცესი, რომლის დროსაც იკვლევთ რა სიტყვებს და ფრაზებს იყენებენ ადამიანები Google-ში ძიებისას. ეს ინფორმაცია გეხმარებათ კონტენტის შექმნაში, SEO სტრატეგიის დაგეგმვაში და სამიზნე აუდიტორიის მოძიებაში.
+            </div>
+          </div>
+        </div>
+        <!-- FAQ 2 -->
+        <div class="faq-item rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between px-6 py-4 text-left">
+            <span class="font-semibold text-heading dark:text-heading-dark text-sm sm:text-base">საიდან მოდის მონაცემები?</span>
+            <svg class="w-5 h-5 text-body dark:text-body-dark shrink-0 faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="px-6 pb-4 text-sm text-body dark:text-body-dark leading-relaxed">
+              მონაცემები მოდის Google Ads API-დან და DataForSEO-დან, რომლებიც Google-ის ოფიციალური საძიებო სტატისტიკის წყაროებია. ვოლუმი აჩვენებს თვიურ საშუალო ძიების რაოდენობას საქართველოში (location code: 2268).
+            </div>
+          </div>
+        </div>
+        <!-- FAQ 3 -->
+        <div class="faq-item rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between px-6 py-4 text-left">
+            <span class="font-semibold text-heading dark:text-heading-dark text-sm sm:text-base">რამდენია უფასო ძიების ლიმიტი?</span>
+            <svg class="w-5 h-5 text-body dark:text-body-dark shrink-0 faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="px-6 pb-4 text-sm text-body dark:text-body-dark leading-relaxed">
+              თქვენ შეგიძლიათ 5 უფასო ძიება რეგისტრაციის გარეშე. ამის შემდეგ, საკონტაქტო ინფორმაციის დატოვების შემთხვევაში, ძიება ულიმიტო ხდება — სრულიად უფასოდ.
+            </div>
+          </div>
+        </div>
+        <!-- FAQ 4 -->
+        <div class="faq-item rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between px-6 py-4 text-left">
+            <span class="font-semibold text-heading dark:text-heading-dark text-sm sm:text-base">რა არის Search Volume?</span>
+            <svg class="w-5 h-5 text-body dark:text-body-dark shrink-0 faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="px-6 pb-4 text-sm text-body dark:text-body-dark leading-relaxed">
+              Search Volume (საძიებო ვოლუმი) არის თვიური საშუალო ძიების რაოდენობა კონკრეტული ქივორდისთვის. მაგალითად, თუ "seo" ქივორდს აქვს 720 ვოლუმი, ეს ნიშნავს, რომ საქართველოში ყოველთვიურად დაახლოებით 720-ჯერ ეძებენ ამ სიტყვას.
+            </div>
+          </div>
+        </div>
+        <!-- FAQ 5 -->
+        <div class="faq-item rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between px-6 py-4 text-left">
+            <span class="font-semibold text-heading dark:text-heading-dark text-sm sm:text-base">რა არის CPC და Competition?</span>
+            <svg class="w-5 h-5 text-body dark:text-body-dark shrink-0 faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="px-6 pb-4 text-sm text-body dark:text-body-dark leading-relaxed">
+              CPC (Cost Per Click) არის საშუალო ღირებულება, რომელსაც რეკლამის განმთავსებლები იხდიან ყოველ კლიკზე Google Ads-ში. Competition აჩვენებს რამდენად მაღალია კონკურენცია ამ ქივორდზე რეკლამის განმთავსებლებს შორის (LOW, MEDIUM, HIGH).
+            </div>
+          </div>
+        </div>
+        <!-- FAQ 6 -->
+        <div class="faq-item rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between px-6 py-4 text-left">
+            <span class="font-semibold text-heading dark:text-heading-dark text-sm sm:text-base">შემიძლია მონაცემების ექსპორტი?</span>
+            <svg class="w-5 h-5 text-body dark:text-body-dark shrink-0 faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="px-6 pb-4 text-sm text-body dark:text-body-dark leading-relaxed">
+              დიახ! მსგავსი ქივორდების ცხრილის ზემოთ არის "CSV ექსპორტი" ღილაკი. ერთი კლიკით გადმოიწერეთ ყველა მსგავსი ქივორდი Excel-ისთვის მზა ფორმატში — keyword, search volume, CPC და competition მონაცემებით.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA BANNER ========== -->
+  <section class="py-16 lg:py-24 bg-surface-alt dark:bg-surface-dark-alt">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="relative rounded-3xl overflow-hidden p-8 sm:p-12 text-center accent-glow">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/10 via-accent/5 to-primary/10 dark:from-primary/20 dark:via-accent/10 dark:to-primary/20"></div>
+        <div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-48 h-48 bg-accent/10 rounded-full blur-3xl"></div>
+        <div class="relative z-10">
+          <h2 class="font-heading text-[24px] sm:text-[32px] lg:text-[40px] font-extrabold text-heading dark:text-heading-dark mb-4">გსურთ სრული SEO სტრატეგია?</h2>
+          <p class="text-body dark:text-body-dark mb-8 max-w-xl mx-auto">ქივორდ რისერჩი მხოლოდ დასაწყისია. მიიღეთ სრული SEO აუდიტი და სტრატეგია თქვენი ბიზნესისთვის.</p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="seo-audit.html" class="px-8 py-4 bg-gradient-to-r from-primary to-accent text-white font-bold rounded-xl text-base hover:opacity-90 transition-opacity">
+              უფასო SEO აუდიტი
+            </a>
+            <a href="tel:+995510101517" class="px-8 py-4 border-2 border-primary dark:border-primary-light text-primary dark:text-primary-light font-bold rounded-xl text-base hover:bg-primary/5 transition-colors">
+              დაგვირეკეთ
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="bg-heading dark:bg-surface-dark-alt pt-16 pb-8 border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <!-- Column 1 -->
+        <div>
+          <a href="index.html" class="flex items-center gap-2 mb-4">
+            <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center"><span class="text-white font-extrabold text-sm">10X</span></div>
+            <span class="font-heading text-white font-bold text-lg">SEO</span>
+          </a>
+          <p class="text-gray-400 text-sm leading-relaxed mb-4">პრემიუმ SEO სერვისები საქართველოში. Data-driven მიდგომა, ყოველკვირეული ანგარიშები, რეალური შედეგები.</p>
+          <div class="flex items-center gap-1 text-sm">
+            <span class="text-yellow-400">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <span class="text-gray-400">5.0 Google Reviews</span>
+          </div>
+        </div>
+        <!-- Column 2 -->
+        <div>
+          <h4 class="font-heading font-bold text-white mb-4">სერვისები</h4>
+          <ul class="space-y-2.5 text-sm">
+            <li><a href="seo-management.html" class="text-gray-400 hover:text-primary-light transition-colors">SEO მენეჯმენტი</a></li>
+            <li><a href="seo-audit.html" class="text-gray-400 hover:text-primary-light transition-colors">SEO აუდიტი</a></li>
+            <li><a href="seo-consultation.html" class="text-gray-400 hover:text-primary-light transition-colors">SEO კონსულტაცია</a></li>
+            <li><a href="seo-copywriting.html" class="text-gray-400 hover:text-primary-light transition-colors">SEO კოპირაიტინგი</a></li>
+            <li><a href="google-ads.html" class="text-gray-400 hover:text-primary-light transition-colors">Google Ads</a></li>
+            <li><a href="seo-tools.html" class="text-gray-400 hover:text-primary-light transition-colors">SEO ინსტრუმენტები</a></li>
+            <li><a href="keyword-research.html" class="text-primary-light font-medium">Keyword Research</a></li>
+          </ul>
+        </div>
+        <!-- Column 3 -->
+        <div>
+          <h4 class="font-heading font-bold text-white mb-4">კომპანია</h4>
+          <ul class="space-y-2.5 text-sm">
+            <li><a href="portfolio.html" class="text-gray-400 hover:text-primary-light transition-colors">პორტფოლიო</a></li>
+            <li><a href="blog-post.html" class="text-gray-400 hover:text-primary-light transition-colors">ბლოგი</a></li>
+            <li><a href="ra-aris-seo.html" class="text-gray-400 hover:text-primary-light transition-colors">რა არის SEO?</a></li>
+            <li><a href="vacancies.html" class="text-gray-400 hover:text-primary-light transition-colors">ვაკანსიები</a></li>
+            <li><a href="contact-us.html" class="text-gray-400 hover:text-primary-light transition-colors">კონტაქტი</a></li>
+          </ul>
+        </div>
+        <!-- Column 4 -->
+        <div>
+          <h4 class="font-heading font-bold text-white mb-4">კონტაქტი</h4>
+          <ul class="space-y-3 text-sm">
+            <li class="flex items-center gap-2 text-gray-400">
+              <svg class="w-4 h-4 text-primary-light shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              <a href="tel:+995510101517" class="hover:text-primary-light transition-colors">510 10 15 17</a>
+            </li>
+            <li class="flex items-center gap-2 text-gray-400">
+              <svg class="w-4 h-4 text-primary-light shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              info@10xseo.ge
+            </li>
+            <li class="flex items-center gap-2 text-gray-400">
+              <svg class="w-4 h-4 text-primary-light shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              თბილისი, საქართველო
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 pt-8 text-center">
+        <p class="text-gray-500 text-sm">&copy; 2025 10xSEO. ყველა უფლება დაცულია.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== STICKY BOTTOM CTA (mobile) ========== -->
+  <div id="sticky-cta" class="fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-white dark:bg-surface-dark-alt border-t border-gray-200 dark:border-gray-800 shadow-[0_-4px_20px_rgba(0,0,0,0.1)] safe-bottom transition-transform duration-300" style="transform: translateY(0);">
+    <div class="flex items-center gap-3 px-4 py-3">
+      <a href="seo-audit.html" class="flex-1 text-center py-3 bg-gradient-to-r from-primary to-accent text-white font-bold rounded-xl text-sm">
+        უფასო SEO აუდიტი
+      </a>
+      <a href="tel:+995510101517" class="w-12 h-12 rounded-xl border-2 border-primary dark:border-primary-light flex items-center justify-center text-primary dark:text-primary-light shrink-0">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast">დაკოპირდა!</div>
+
+  <!-- ========== JAVASCRIPT ========== -->
+  <script>
+    // ===== DEMO DATA =====
+    const DEMO_DATA = {
+      keyword: "seo",
+      searchVolume: 720,
+      cpc: 1.18,
+      competition: "LOW",
+      competitionIndex: 31,
+      monthlySearches: [
+        {year:2026,month:2,search_volume:720},{year:2026,month:1,search_volume:590},
+        {year:2025,month:12,search_volume:590},{year:2025,month:11,search_volume:590},
+        {year:2025,month:10,search_volume:720},{year:2025,month:9,search_volume:720},
+        {year:2025,month:8,search_volume:720},{year:2025,month:7,search_volume:720},
+        {year:2025,month:6,search_volume:720},{year:2025,month:5,search_volume:720},
+        {year:2025,month:4,search_volume:880},{year:2025,month:3,search_volume:880}
+      ],
+      relatedKeywords: [
+        {keyword:"surfer seo",searchVolume:170,cpc:4.13,competition:"LOW"},
+        {keyword:"search engine marketing",searchVolume:170,cpc:0,competition:"LOW"},
+        {keyword:"seo agency",searchVolume:70,cpc:1.68,competition:"LOW"},
+        {keyword:"seo company",searchVolume:70,cpc:0.7,competition:"LOW"},
+        {keyword:"se ranking",searchVolume:70,cpc:0.03,competition:"LOW"},
+        {keyword:"best seo companies",searchVolume:70,cpc:0,competition:"LOW"},
+        {keyword:"seo optimization",searchVolume:50,cpc:1.23,competition:"MEDIUM"},
+        {keyword:"search optimization",searchVolume:50,cpc:1.46,competition:"MEDIUM"},
+        {keyword:"seo services",searchVolume:40,cpc:0,competition:"LOW"},
+        {keyword:"seo marketing",searchVolume:30,cpc:0.6,competition:"LOW"},
+        {keyword:"seo specialist",searchVolume:30,cpc:0,competition:"LOW"},
+        {keyword:"seo tools",searchVolume:30,cpc:0.49,competition:"LOW"},
+        {keyword:"seo expert",searchVolume:20,cpc:1.21,competition:"LOW"},
+        {keyword:"local seo",searchVolume:20,cpc:2.84,competition:"MEDIUM"},
+        {keyword:"seo analysis",searchVolume:20,cpc:0.65,competition:"MEDIUM"}
+      ]
+    };
+
+    // ===== STATE =====
+    let currentData = null;
+    let currentRelated = [];
+    let sortCol = 'searchVolume';
+    let sortDir = 'desc';
+    let currentPage = 1;
+    const perPage = 20;
+    let isDemo = false;
+
+    // ===== THEME =====
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+    if (localStorage.getItem('theme') !== 'light') { html.classList.add('dark'); }
+    themeToggle.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+
+    // ===== MOBILE MENU =====
+    const mm = document.getElementById('mobile-menu');
+    document.getElementById('mobile-menu-btn').addEventListener('click', () => { mm.style.transform = 'translateX(0)'; document.body.style.overflow = 'hidden'; });
+    document.getElementById('mobile-menu-close').addEventListener('click', () => { mm.style.transform = 'translateX(100%)'; document.body.style.overflow = ''; });
+    document.getElementById('mobile-menu-cta').addEventListener('click', () => { mm.style.transform = 'translateX(100%)'; document.body.style.overflow = ''; });
+
+    // ===== STICKY CTA =====
+    let lastScrollY = window.scrollY;
+    const stickyCta = document.getElementById('sticky-cta');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > lastScrollY && window.scrollY > 300) { stickyCta.style.transform = 'translateY(100%)'; }
+      else { stickyCta.style.transform = 'translateY(0)'; }
+      lastScrollY = window.scrollY;
+    }, { passive: true });
+
+    // ===== TOAST =====
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg || 'დაკოპირდა!';
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2000);
+    }
+
+    // ===== LEAD MAGNET =====
+    function getSearchCount() { return parseInt(localStorage.getItem('kw_searches_count') || '0'); }
+    function setSearchCount(n) { localStorage.setItem('kw_searches_count', n.toString()); }
+    function isLeadSubmitted() { return localStorage.getItem('kw_lead_submitted') === 'true'; }
+
+    function updateCounterBadge() {
+      const badge = document.getElementById('search-counter-badge');
+      const text = document.getElementById('search-counter-text');
+      const count = getSearchCount();
+      if (isLeadSubmitted()) {
+        badge.classList.add('hidden');
+        return;
+      }
+      if (count > 0) {
+        badge.classList.remove('hidden');
+        badge.classList.add('flex', 'justify-center', 'sm:block');
+        text.textContent = count + '/5 უფასო ძიება';
+      }
+    }
+
+    function checkLeadGate() {
+      if (isLeadSubmitted()) return true;
+      const count = getSearchCount();
+      if (count >= 5) {
+        openLeadModal();
+        return false;
+      }
+      return true;
+    }
+
+    function openLeadModal() {
+      const modal = document.getElementById('lead-modal');
+      const content = document.getElementById('lead-modal-content');
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      requestAnimationFrame(() => {
+        content.style.transform = 'scale(1)';
+        content.style.opacity = '1';
+      });
+    }
+
+    function closeLeadModal() {
+      const modal = document.getElementById('lead-modal');
+      const content = document.getElementById('lead-modal-content');
+      content.style.transform = 'scale(0.95)';
+      content.style.opacity = '0';
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+      }, 200);
+    }
+
+    function submitLeadForm(e) {
+      e.preventDefault();
+      const name = document.getElementById('lead-name').value;
+      const email = document.getElementById('lead-email').value;
+      const phone = document.getElementById('lead-phone').value;
+      // Store locally
+      localStorage.setItem('kw_lead_submitted', 'true');
+      localStorage.setItem('kw_lead_data', JSON.stringify({ name, email, phone, date: new Date().toISOString() }));
+      closeLeadModal();
+      updateCounterBadge();
+      showToast('მადლობა! ძიება განბლოკილია');
+    }
+
+    // ===== SEARCH =====
+    function quickSearch(kw) {
+      document.getElementById('keyword-input').value = kw;
+      handleSearch();
+    }
+
+    async function handleSearch() {
+      const input = document.getElementById('keyword-input');
+      const keyword = input.value.trim();
+      if (!keyword) { input.focus(); return; }
+
+      if (!checkLeadGate()) return;
+
+      // Increment search count
+      setSearchCount(getSearchCount() + 1);
+      updateCounterBadge();
+
+      // UI states
+      showSection('loading');
+      setSearchLoading(true);
+
+      try {
+        const res = await fetch('http://localhost:3001/api/keyword-search', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ keyword, location_code: 2268 })
+        });
+        if (!res.ok) throw new Error('API error: ' + res.status);
+        const data = await res.json();
+        isDemo = false;
+        renderResults(data, keyword);
+      } catch (err) {
+        console.warn('API unavailable, using demo data:', err.message);
+        // Try demo mode silently
+        isDemo = true;
+        const demoResult = { ...DEMO_DATA, keyword };
+        renderResults(demoResult, keyword);
+      } finally {
+        setSearchLoading(false);
+      }
+    }
+
+    function loadDemoData() {
+      isDemo = true;
+      document.getElementById('keyword-input').value = 'seo';
+      renderResults(DEMO_DATA, 'seo');
+      showSection('results');
+    }
+
+    function setSearchLoading(loading) {
+      const btn = document.getElementById('search-btn');
+      const btnText = document.getElementById('search-btn-text');
+      const spinner = document.getElementById('search-btn-spinner');
+      if (loading) {
+        btn.disabled = true;
+        btnText.textContent = 'იტვირთება...';
+        spinner.classList.remove('hidden');
+      } else {
+        btn.disabled = false;
+        btnText.textContent = 'ძიება';
+        spinner.classList.add('hidden');
+      }
+    }
+
+    function showSection(name) {
+      document.getElementById('loading-section').classList.toggle('hidden', name !== 'loading');
+      document.getElementById('error-section').classList.toggle('hidden', name !== 'error');
+      document.getElementById('results-section').classList.toggle('hidden', name !== 'results');
+    }
+
+    // ===== ENTER KEY =====
+    document.getElementById('keyword-input').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') handleSearch();
+    });
+
+    // ===== DETECT GEORGIAN =====
+    function hasGeorgianChars(str) {
+      return /[\u10A0-\u10FF]/.test(str);
+    }
+
+    // ===== RENDER RESULTS =====
+    function renderResults(data, keyword) {
+      currentData = data;
+      showSection('results');
+
+      // Show Georgian notice if keyword has Georgian chars and volume is 0
+      const notice = document.getElementById('georgian-notice');
+      if (hasGeorgianChars(keyword) && (!data.searchVolume || data.searchVolume === 0)) {
+        notice.classList.remove('hidden');
+      } else {
+        notice.classList.add('hidden');
+      }
+
+      // Badge
+      document.getElementById('result-keyword-badge').textContent = '"' + keyword + '"';
+      document.getElementById('demo-badge').classList.toggle('hidden', !isDemo);
+
+      // Scroll to results
+      setTimeout(() => {
+        document.getElementById('results-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+
+      // Overview cards
+      renderOverviewCards(data);
+      // Trend chart
+      renderTrendChart(data.monthlySearches || []);
+      // Related table
+      currentRelated = (data.relatedKeywords || []).slice();
+      sortCol = 'searchVolume';
+      sortDir = 'desc';
+      currentPage = 1;
+      renderRelatedTable();
+    }
+
+    // ===== OVERVIEW CARDS =====
+    function renderOverviewCards(data) {
+      const vol = data.searchVolume || 0;
+      const cpc = data.cpc || 0;
+      const comp = data.competition || 'N/A';
+      const compIdx = data.competitionIndex || 0;
+
+      // Calculate monthly change
+      const months = data.monthlySearches || [];
+      let changeText = '';
+      let changeColor = 'text-body dark:text-body-dark';
+      if (months.length >= 2) {
+        const current = months[0].search_volume;
+        const prev = months[1].search_volume;
+        if (prev > 0) {
+          const pct = Math.round(((current - prev) / prev) * 100);
+          if (pct > 0) { changeText = '&#8593; ' + pct + '%'; changeColor = 'text-success'; }
+          else if (pct < 0) { changeText = '&#8595; ' + Math.abs(pct) + '%'; changeColor = 'text-red-500'; }
+          else { changeText = '&#8596; 0%'; }
+        }
+      }
+
+      const compBadgeColor = comp === 'LOW' ? 'bg-success/10 text-success' : comp === 'MEDIUM' ? 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400' : 'bg-red-100 dark:bg-red-900/30 text-red-500';
+
+      const container = document.getElementById('overview-cards');
+      container.innerHTML = `
+        <div class="bg-surface-alt dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 p-5 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-20 h-20 bg-primary/5 dark:bg-primary/10 rounded-full -mr-6 -mt-6"></div>
+          <p class="text-xs font-semibold text-body/60 dark:text-body-dark/60 uppercase tracking-wider mb-2">საძიებო ვოლუმი</p>
+          <p class="text-3xl sm:text-4xl font-extrabold text-heading dark:text-heading-dark" id="vol-counter">0</p>
+          <p class="text-sm font-semibold mt-1 ${changeColor}">${changeText}</p>
+        </div>
+        <div class="bg-surface-alt dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 p-5 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-20 h-20 bg-accent/5 dark:bg-accent/10 rounded-full -mr-6 -mt-6"></div>
+          <p class="text-xs font-semibold text-body/60 dark:text-body-dark/60 uppercase tracking-wider mb-2">CPC</p>
+          <p class="text-3xl sm:text-4xl font-extrabold text-heading dark:text-heading-dark">$${cpc.toFixed(2)}</p>
+          <p class="text-sm text-body/50 dark:text-body-dark/50 mt-1">საშუალო ფასი</p>
+        </div>
+        <div class="bg-surface-alt dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 p-5 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-20 h-20 bg-success/5 dark:bg-success/10 rounded-full -mr-6 -mt-6"></div>
+          <p class="text-xs font-semibold text-body/60 dark:text-body-dark/60 uppercase tracking-wider mb-2">კონკურენცია</p>
+          <p class="text-xl font-extrabold text-heading dark:text-heading-dark mb-1.5"><span class="inline-flex px-3 py-1 rounded-full text-sm font-bold ${compBadgeColor}">${comp}</span></p>
+          <p class="text-sm text-body/50 dark:text-body-dark/50 mt-1">რეკლამის დონე</p>
+        </div>
+        <div class="bg-surface-alt dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 p-5 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-20 h-20 bg-primary/5 dark:bg-primary/10 rounded-full -mr-6 -mt-6"></div>
+          <p class="text-xs font-semibold text-body/60 dark:text-body-dark/60 uppercase tracking-wider mb-2">კონკურენციის ინდექსი</p>
+          <p class="text-3xl sm:text-4xl font-extrabold text-heading dark:text-heading-dark">${compIdx}</p>
+          <p class="text-sm text-body/50 dark:text-body-dark/50 mt-1">100-დან</p>
+        </div>
+      `;
+
+      // Animate counter
+      animateCounter('vol-counter', vol);
+    }
+
+    // ===== ANIMATED COUNTER =====
+    function animateCounter(elementId, target) {
+      const el = document.getElementById(elementId);
+      if (!el) return;
+      const duration = 1000;
+      const start = performance.now();
+      const from = 0;
+
+      function step(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        // ease out
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.round(from + (target - from) * eased);
+        el.textContent = current.toLocaleString();
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    // ===== TREND CHART =====
+    function renderTrendChart(monthlyData) {
+      const container = document.getElementById('trend-chart-container');
+      if (!monthlyData || monthlyData.length === 0) {
+        container.innerHTML = '<p class="text-center text-body/50 dark:text-body-dark/50 py-12">მონაცემები არ არის ხელმისაწვდომი</p>';
+        return;
+      }
+
+      // Reverse to show oldest first
+      const data = [...monthlyData].reverse();
+      const maxVol = Math.max(...data.map(d => d.search_volume), 1);
+      const monthNames = ['იან', 'თებ', 'მარ', 'აპრ', 'მაი', 'ივნ', 'ივლ', 'აგვ', 'სექ', 'ოქტ', 'ნოე', 'დეკ'];
+
+      const chartH = 200;
+      const chartW = container.clientWidth || 700;
+      const padL = 50;
+      const padR = 20;
+      const padT = 20;
+      const padB = 40;
+      const innerW = chartW - padL - padR;
+      const innerH = chartH - padT - padB;
+      const barW = Math.min((innerW / data.length) * 0.65, 48);
+      const gap = innerW / data.length;
+
+      // Y-axis marks
+      const ySteps = 4;
+      const yMax = Math.ceil(maxVol / 100) * 100;
+
+      let svg = `<svg width="100%" height="${chartH}" viewBox="0 0 ${chartW} ${chartH}" xmlns="http://www.w3.org/2000/svg">`;
+
+      // Gradient definition
+      svg += `<defs>
+        <linearGradient id="barGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#58E6FF"/>
+          <stop offset="100%" stop-color="#FC81FE"/>
+        </linearGradient>
+        <linearGradient id="barGradHover" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#7AEDFF"/>
+          <stop offset="100%" stop-color="#FC81FE"/>
+        </linearGradient>
+      </defs>`;
+
+      // Y-axis grid lines and labels
+      for (let i = 0; i <= ySteps; i++) {
+        const val = Math.round((yMax / ySteps) * i);
+        const y = padT + innerH - (innerH * (val / yMax));
+        svg += `<line x1="${padL}" y1="${y}" x2="${chartW - padR}" y2="${y}" stroke="currentColor" class="text-gray-200 dark:text-gray-700" stroke-width="1" stroke-dasharray="${i === 0 ? '' : '4,4'}"/>`;
+        svg += `<text x="${padL - 8}" y="${y + 4}" text-anchor="end" class="fill-current text-body/50 dark:text-body-dark/50" font-size="11" font-family="Inter, sans-serif">${val}</text>`;
+      }
+
+      // Bars and labels
+      data.forEach((d, i) => {
+        const x = padL + (gap * i) + (gap - barW) / 2;
+        const h = (d.search_volume / yMax) * innerH;
+        const y = padT + innerH - h;
+        const mLabel = monthNames[d.month - 1];
+
+        // Bar
+        svg += `<rect class="chart-bar" x="${x}" y="${y}" width="${barW}" height="${h}" rx="4" ry="4" fill="url(#barGrad)"
+          onmouseenter="showChartTooltip(evt, '${mLabel} ${d.year}: ${d.search_volume.toLocaleString()}')"
+          onmouseleave="hideChartTooltip()"
+        />`;
+
+        // Month label
+        svg += `<text x="${x + barW / 2}" y="${chartH - 8}" text-anchor="middle" class="fill-current text-body/50 dark:text-body-dark/50" font-size="10" font-family="Inter, sans-serif">${mLabel}</text>`;
+      });
+
+      svg += '</svg>';
+
+      container.innerHTML = svg + '<div class="chart-tooltip" id="chart-tooltip"></div>';
+    }
+
+    function showChartTooltip(evt, text) {
+      const tooltip = document.getElementById('chart-tooltip');
+      const container = document.getElementById('trend-chart-container');
+      const rect = container.getBoundingClientRect();
+      tooltip.textContent = text;
+      tooltip.style.opacity = '1';
+      const x = evt.clientX - rect.left;
+      const y = evt.clientY - rect.top;
+      tooltip.style.left = (x - tooltip.offsetWidth / 2) + 'px';
+      tooltip.style.top = (y - 40) + 'px';
+    }
+
+    function hideChartTooltip() {
+      const tooltip = document.getElementById('chart-tooltip');
+      if (tooltip) tooltip.style.opacity = '0';
+    }
+
+    // Resize chart on window resize
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (currentData && currentData.monthlySearches) {
+          renderTrendChart(currentData.monthlySearches);
+        }
+      }, 250);
+    });
+
+    // ===== RELATED KEYWORDS TABLE =====
+    function sortTable(col) {
+      if (sortCol === col) {
+        sortDir = sortDir === 'desc' ? 'asc' : 'desc';
+      } else {
+        sortCol = col;
+        sortDir = col === 'keyword' ? 'asc' : 'desc';
+      }
+      currentPage = 1;
+      renderRelatedTable();
+    }
+
+    function renderRelatedTable() {
+      const sorted = [...currentRelated].sort((a, b) => {
+        let va = a[sortCol], vb = b[sortCol];
+        if (typeof va === 'string') va = va.toLowerCase();
+        if (typeof vb === 'string') vb = vb.toLowerCase();
+        if (va < vb) return sortDir === 'asc' ? -1 : 1;
+        if (va > vb) return sortDir === 'asc' ? 1 : -1;
+        return 0;
+      });
+
+      const total = sorted.length;
+      const totalPages = Math.ceil(total / perPage);
+      const start = (currentPage - 1) * perPage;
+      const page = sorted.slice(start, start + perPage);
+      const maxVol = Math.max(...currentRelated.map(k => k.searchVolume), 1);
+
+      // Count display
+      document.getElementById('related-count').textContent = '(' + total + ' მსგავსი ქივორდი ნაპოვნია)';
+
+      // Table body
+      const tbody = document.getElementById('related-table-body');
+      tbody.innerHTML = page.map((kw, i) => {
+        const volPct = Math.max((kw.searchVolume / maxVol) * 100, 2);
+        const compColor = kw.competition === 'LOW' ? 'bg-success/10 text-success' : kw.competition === 'MEDIUM' ? 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400' : 'bg-red-100 dark:bg-red-900/30 text-red-500';
+        const isEven = i % 2 === 0;
+
+        return `<tr class="${isEven ? 'bg-white dark:bg-surface-dark' : 'bg-surface-alt dark:bg-surface-dark-alt'} hover:bg-primary/5 dark:hover:bg-primary/10 transition-colors">
+          <td class="py-3 px-3">
+            <span class="font-medium text-heading dark:text-heading-dark text-sm">${kw.keyword}</span>
+          </td>
+          <td class="py-3 px-3">
+            <div class="flex items-center gap-3">
+              <span class="font-bold text-heading dark:text-heading-dark text-sm min-w-[40px]">${kw.searchVolume.toLocaleString()}</span>
+              <div class="flex-1 max-w-[80px] bg-gray-100 dark:bg-gray-800 rounded-full h-1.5 overflow-hidden">
+                <div class="volume-bar" style="width: ${volPct}%"></div>
+              </div>
+            </div>
+          </td>
+          <td class="py-3 px-3">
+            <span class="text-sm text-body dark:text-body-dark">${kw.cpc > 0 ? '$' + kw.cpc.toFixed(2) : '-'}</span>
+          </td>
+          <td class="py-3 px-3">
+            <span class="inline-flex px-2 py-0.5 rounded-full text-xs font-bold ${compColor}">${kw.competition}</span>
+          </td>
+          <td class="py-3 px-3 text-right">
+            <button onclick="quickSearch('${kw.keyword.replace(/'/g, "\\'")}')" class="text-xs font-semibold text-primary dark:text-primary-light hover:underline whitespace-nowrap">გამოყენება</button>
+          </td>
+        </tr>`;
+      }).join('');
+
+      // Pagination
+      renderPagination(totalPages);
+    }
+
+    function renderPagination(totalPages) {
+      const container = document.getElementById('pagination');
+      if (totalPages <= 1) {
+        container.innerHTML = '';
+        return;
+      }
+
+      let html = `<p class="text-xs text-body/50 dark:text-body-dark/50">გვერდი ${currentPage}/${totalPages}</p><div class="flex items-center gap-1">`;
+
+      // Previous
+      html += `<button onclick="goPage(${currentPage - 1})" class="w-8 h-8 rounded-lg flex items-center justify-center text-sm ${currentPage === 1 ? 'text-body/30 cursor-not-allowed' : 'text-heading dark:text-heading-dark hover:bg-gray-100 dark:hover:bg-gray-800'} transition-colors" ${currentPage === 1 ? 'disabled' : ''}>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+      </button>`;
+
+      // Page numbers
+      const maxBtns = 5;
+      let startP = Math.max(1, currentPage - Math.floor(maxBtns / 2));
+      let endP = Math.min(totalPages, startP + maxBtns - 1);
+      if (endP - startP < maxBtns - 1) startP = Math.max(1, endP - maxBtns + 1);
+
+      for (let p = startP; p <= endP; p++) {
+        html += `<button onclick="goPage(${p})" class="w-8 h-8 rounded-lg flex items-center justify-center text-sm font-semibold ${p === currentPage ? 'bg-primary text-white' : 'text-heading dark:text-heading-dark hover:bg-gray-100 dark:hover:bg-gray-800'} transition-colors">${p}</button>`;
+      }
+
+      // Next
+      html += `<button onclick="goPage(${currentPage + 1})" class="w-8 h-8 rounded-lg flex items-center justify-center text-sm ${currentPage === totalPages ? 'text-body/30 cursor-not-allowed' : 'text-heading dark:text-heading-dark hover:bg-gray-100 dark:hover:bg-gray-800'} transition-colors" ${currentPage === totalPages ? 'disabled' : ''}>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      </button>`;
+
+      html += '</div>';
+      container.innerHTML = html;
+    }
+
+    function goPage(p) {
+      const total = Math.ceil(currentRelated.length / perPage);
+      if (p < 1 || p > total) return;
+      currentPage = p;
+      renderRelatedTable();
+      // Scroll to table
+      document.getElementById('related-table-body').closest('.bg-surface-alt, .dark\\:bg-surface-dark-alt')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // ===== CSV EXPORT =====
+    function exportCSV() {
+      if (!currentRelated.length) return;
+      const header = 'Keyword,Search Volume,CPC,Competition\n';
+      const rows = currentRelated.map(k => `"${k.keyword}",${k.searchVolume},${k.cpc},"${k.competition}"`).join('\n');
+      const csv = header + rows;
+      const blob = new Blob(['\ufeff' + csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'keyword-research-' + (currentData?.keyword || 'export') + '.csv';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast('CSV ექსპორტი წარმატებულია!');
+    }
+
+    // ===== FAQ ACCORDION =====
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const wasOpen = item.classList.contains('faq-open');
+      // Close all
+      document.querySelectorAll('.faq-item').forEach(fi => fi.classList.remove('faq-open'));
+      // Toggle current
+      if (!wasOpen) item.classList.add('faq-open');
+    }
+
+    // ===== URL PARAMETER =====
+    function checkUrlParam() {
+      const params = new URLSearchParams(window.location.search);
+      const q = params.get('q');
+      if (q) {
+        document.getElementById('keyword-input').value = q;
+        handleSearch();
+      }
+    }
+
+    // ===== INIT =====
+    updateCounterBadge();
+    checkUrlParam();
+  </script>
+</body>
+</html>
