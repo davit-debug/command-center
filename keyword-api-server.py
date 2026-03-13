@@ -144,6 +144,73 @@ def google_autocomplete_expanded(keyword, lang="ka", country="ge"):
     return sorted(all_suggestions)
 
 
+def google_autocomplete_with_scores(keyword, lang="ka", country="ge"):
+    """Get expanded suggestions with popularity scores based on autocomplete ranking.
+
+    Scores are calculated from:
+    - Position in autocomplete results (earlier = more popular)
+    - Whether keyword appears in base query (most important)
+    - How many suffix queries return this keyword (frequency)
+    Returns list of dicts with keyword, popularityScore (1-100), appearances.
+    """
+    keyword_data = defaultdict(lambda: {
+        "count": 0, "best_position": 100, "in_base": False, "original": ""
+    })
+
+    # Base query (most important — these are the top suggestions)
+    base = google_autocomplete(keyword, lang, country)
+    for i, suggestion in enumerate(base):
+        key = suggestion.lower().strip()
+        keyword_data[key]["count"] += 2  # Base counts double
+        keyword_data[key]["best_position"] = min(keyword_data[key]["best_position"], i)
+        keyword_data[key]["in_base"] = True
+        keyword_data[key]["original"] = suggestion
+
+    # Suffix queries — Georgian alphabet letters
+    suffixes = [" ა", " ბ", " გ", " დ", " ე", " ვ", " ზ", " თ", " ი",
+                " კ", " ლ", " მ", " ნ", " ო", " პ", " რ", " ს", " ტ", " უ", " ფ"]
+    for suffix in suffixes[:10]:
+        results = google_autocomplete(keyword + suffix, lang, country)
+        for i, suggestion in enumerate(results):
+            key = suggestion.lower().strip()
+            keyword_data[key]["count"] += 1
+            keyword_data[key]["best_position"] = min(keyword_data[key]["best_position"], i)
+            if not keyword_data[key]["original"]:
+                keyword_data[key]["original"] = suggestion
+
+    # Remove the original keyword itself
+    keyword_data.pop(keyword.lower().strip(), None)
+
+    if not keyword_data:
+        return []
+
+    max_count = max(d["count"] for d in keyword_data.values())
+
+    results = []
+    for key, data in keyword_data.items():
+        # Score formula:
+        # 50% from frequency (how many queries return this keyword)
+        freq_score = (data["count"] / max(max_count, 1)) * 50
+        # 35% from position (earlier in autocomplete = higher score)
+        position_score = max(0, (10 - data["best_position"]) / 10) * 35
+        # 15% bonus for appearing in base query (top suggestions)
+        base_bonus = 15 if data["in_base"] else 0
+
+        score = int(freq_score + position_score + base_bonus)
+        score = max(1, min(100, score))  # Clamp 1-100
+
+        results.append({
+            "keyword": data["original"],
+            "popularityScore": score,
+            "inBase": data["in_base"],
+            "appearances": data["count"],
+        })
+
+    # Sort by score descending
+    results.sort(key=lambda x: x["popularityScore"], reverse=True)
+    return results
+
+
 def search_keyword(keyword, location_code=2268):
     """Search keyword volume and related keywords."""
     cache_key = f"{keyword.lower().strip()}:{location_code}"
@@ -221,22 +288,20 @@ def search_keyword(keyword, location_code=2268):
     except Exception as e:
         pass
 
-    # If Georgian keyword and no related keywords from Google Ads,
-    # use Google Autocomplete to get suggestions
-    autocomplete_suggestions = []
+    # If Georgian keyword, use Google Autocomplete with popularity scoring
     if has_georgian(keyword):
-        autocomplete_suggestions = google_autocomplete_expanded(keyword)
+        scored_suggestions = google_autocomplete_with_scores(keyword)
         main_kw["isGeorgian"] = True
         main_kw["autocompleteSource"] = True
 
-        # If Google Ads returned 0 volume, try to get volume for autocomplete keywords
-        # by batch-querying the top suggestions through Google Ads
-        if autocomplete_suggestions and (not related_keywords or len(related_keywords) == 0):
-            # Get search volumes for autocomplete suggestions (batch of up to 50)
-            batch = autocomplete_suggestions[:50]
-            if batch:
+        if scored_suggestions and (not related_keywords or len(related_keywords) == 0):
+            # Try to get Google Ads volumes for top suggestions
+            batch_kws = [s["keyword"] for s in scored_suggestions[:50]]
+            ads_volumes = {}  # keyword_lower -> {volume, cpc, competition, ...}
+
+            if batch_kws:
                 batch_payload = [{
-                    "keywords": batch,
+                    "keywords": batch_kws,
                     "location_code": location_code,
                     "sort_by": "search_volume"
                 }]
@@ -251,31 +316,34 @@ def search_keyword(keyword, location_code=2268):
                             if r is None:
                                 continue
                             kw_name = r.get("keyword", "")
-                            if kw_name.lower().strip() == keyword.lower().strip():
-                                continue
-                            related_keywords.append({
-                                "keyword": kw_name,
+                            ads_volumes[kw_name.lower().strip()] = {
                                 "searchVolume": r.get("search_volume") or 0,
                                 "cpc": r.get("cpc") or 0,
                                 "competition": r.get("competition"),
                                 "competitionIndex": r.get("competition_index"),
-                                "source": "autocomplete+ads",
-                            })
+                            }
                 except Exception:
                     pass
 
-            # Add remaining autocomplete suggestions that didn't get volume data
-            existing_kws = {r["keyword"].lower() for r in related_keywords}
-            for suggestion in autocomplete_suggestions:
-                if suggestion.lower() not in existing_kws and suggestion.lower() != keyword.lower():
-                    related_keywords.append({
-                        "keyword": suggestion,
-                        "searchVolume": None,  # Unknown volume
-                        "cpc": None,
-                        "competition": None,
-                        "competitionIndex": None,
-                        "source": "autocomplete",
-                    })
+            # Build related keywords with popularity scores
+            for s in scored_suggestions:
+                kw_lower = s["keyword"].lower().strip()
+                if kw_lower == keyword.lower().strip():
+                    continue
+
+                ads_data = ads_volumes.get(kw_lower, {})
+                related_keywords.append({
+                    "keyword": s["keyword"],
+                    "searchVolume": ads_data.get("searchVolume", 0),
+                    "cpc": ads_data.get("cpc", 0),
+                    "competition": ads_data.get("competition"),
+                    "competitionIndex": ads_data.get("competitionIndex"),
+                    "popularityScore": s["popularityScore"],
+                    "source": "autocomplete",
+                })
+
+        # Set main keyword popularity to 100 (it's the seed keyword)
+        main_kw["popularityScore"] = 100
 
     main_kw["relatedKeywords"] = related_keywords
     main_kw["totalRelated"] = len(related_keywords)
