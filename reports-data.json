@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-03-13T10:59:16.446984",
+  "generated_at": "2026-03-13T11:04:19.029689",
   "tasks": {
     "weekly-employee-analysis": {
       "task_id": "weekly-employee-analysis",
       "cron": "0 11 * * 5",
       "enabled": true,
-      "last_run_at": "2026-03-06T07:00:01.494Z",
+      "last_run_at": "2026-03-13T07:03:21.542Z",
       "runs": [
         {
           "session_id": "local_05ce0e5f-ace7-4d3a-b79a-baa8da7a605d",
