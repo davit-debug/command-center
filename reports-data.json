@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-13T09:48:35.889317",
+  "generated_at": "2026-03-13T09:53:38.610029",
   "tasks": {
     "weekly-employee-analysis": {
       "task_id": "weekly-employee-analysis",
@@ -21,6 +21,12 @@
       "enabled": true,
       "last_run_at": "2026-03-12T07:05:19.122Z",
       "runs": [
+        {
+          "session_id": "local_8e2afb51-a6fa-445e-ba21-6afd719899f8",
+          "title": "12 Mar – Alpaca competitor check",
+          "date": "2026-03-12T11:05:19.122000",
+          "report": "Second news post is from **March 2, 2026** — also within the last 7 days (but technically 11 days ago from March 13). Today is March 13, so last 7 days = March 6-13. This one is from March 2 so it's NOT within the last 7 days. Let me now quickly check the other blog sections. Let me navigate to SEO კვლევები, SEO ლექსიკონი, and the EN blog efficiently."
+        },
         {
           "session_id": "local_14b24f29-5b59-467d-b283-46b5430a5140",
           "title": "9 Mar – Alpaca competitor check",
