@@ -375,7 +375,7 @@
         <div id="georgian-notice" class="hidden max-w-2xl mx-auto mt-3">
           <div class="flex items-start gap-2 px-4 py-3 rounded-xl bg-yellow-500/10 dark:bg-yellow-500/5 border border-yellow-500/20">
             <svg class="w-4 h-4 text-yellow-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            <p class="text-xs text-yellow-600 dark:text-yellow-400">ქართულენოვანი ქივორდებისთვის Google Ads-ის მონაცემები შეზღუდულია. საუკეთესო შედეგისთვის სცადეთ ლათინური ასოებით (მაგ: "tbilisi hotel" ნაცვლად "თბილისი სასტუმრო").</p>
+            <p class="text-xs text-yellow-600 dark:text-yellow-400">ქართულენოვანი ქივორდებისთვის ვოლუმის ზუსტი მონაცემები შეზღუდულია. მსგავსი ქივორდები მოწოდებულია Google Autocomplete-ის მეშვეობით. ზუსტი ვოლუმისთვის სცადეთ ლათინური ასოებით.</p>
           </div>
         </div>
         <!-- Example keywords -->
@@ -1002,9 +1002,9 @@
       currentData = data;
       showSection('results');
 
-      // Show Georgian notice if keyword has Georgian chars and volume is 0
+      // Show Georgian notice if keyword has Georgian chars
       const notice = document.getElementById('georgian-notice');
-      if (hasGeorgianChars(keyword) && (!data.searchVolume || data.searchVolume === 0)) {
+      if (hasGeorgianChars(keyword)) {
         notice.classList.remove('hidden');
       } else {
         notice.classList.add('hidden');
@@ -1221,7 +1221,7 @@
 
     function renderRelatedTable() {
       const sorted = [...currentRelated].sort((a, b) => {
-        let va = a[sortCol], vb = b[sortCol];
+        let va = a[sortCol] ?? -1, vb = b[sortCol] ?? -1;
         if (typeof va === 'string') va = va.toLowerCase();
         if (typeof vb === 'string') vb = vb.toLowerCase();
         if (va < vb) return sortDir === 'asc' ? -1 : 1;
@@ -1233,35 +1233,46 @@
       const totalPages = Math.ceil(total / perPage);
       const start = (currentPage - 1) * perPage;
       const page = sorted.slice(start, start + perPage);
-      const maxVol = Math.max(...currentRelated.map(k => k.searchVolume), 1);
+      const maxVol = Math.max(...currentRelated.map(k => k.searchVolume || 0), 1);
 
       // Count display
-      document.getElementById('related-count').textContent = '(' + total + ' მსგავსი ქივორდი ნაპოვნია)';
+      const isAutocomplete = currentData && currentData.autocompleteSource;
+      const sourceLabel = isAutocomplete ? ' — Google Autocomplete' : '';
+      document.getElementById('related-count').textContent = '(' + total + ' მსგავსი ქივორდი ნაპოვნია' + sourceLabel + ')';
 
       // Table body
       const tbody = document.getElementById('related-table-body');
       tbody.innerHTML = page.map((kw, i) => {
-        const volPct = Math.max((kw.searchVolume / maxVol) * 100, 2);
-        const compColor = kw.competition === 'LOW' ? 'bg-success/10 text-success' : kw.competition === 'MEDIUM' ? 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400' : 'bg-red-100 dark:bg-red-900/30 text-red-500';
+        const vol = kw.searchVolume;
+        const hasVol = vol !== null && vol !== undefined;
+        const volDisplay = hasVol ? vol.toLocaleString() : '—';
+        const volPct = hasVol ? Math.max((vol / maxVol) * 100, 2) : 0;
+        const cpcVal = kw.cpc;
+        const cpcDisplay = (cpcVal !== null && cpcVal !== undefined && cpcVal > 0) ? '$' + cpcVal.toFixed(2) : '—';
+        const comp = kw.competition;
+        const compDisplay = comp || '—';
+        const compColor = comp === 'LOW' ? 'bg-success/10 text-success' : comp === 'MEDIUM' ? 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400' : comp === 'HIGH' ? 'bg-red-100 dark:bg-red-900/30 text-red-500' : 'bg-gray-100 dark:bg-gray-800 text-body/50 dark:text-body-dark/50';
         const isEven = i % 2 === 0;
+        const isAutoSrc = kw.source === 'autocomplete';
+        const srcBadge = isAutoSrc ? '<span class="ml-1.5 inline-flex px-1.5 py-0.5 rounded text-[10px] font-medium bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400">Google</span>' : '';
 
         return `<tr class="${isEven ? 'bg-white dark:bg-surface-dark' : 'bg-surface-alt dark:bg-surface-dark-alt'} hover:bg-primary/5 dark:hover:bg-primary/10 transition-colors">
           <td class="py-3 px-3">
-            <span class="font-medium text-heading dark:text-heading-dark text-sm">${kw.keyword}</span>
+            <span class="font-medium text-heading dark:text-heading-dark text-sm">${kw.keyword}</span>${srcBadge}
           </td>
           <td class="py-3 px-3">
             <div class="flex items-center gap-3">
-              <span class="font-bold text-heading dark:text-heading-dark text-sm min-w-[40px]">${kw.searchVolume.toLocaleString()}</span>
-              <div class="flex-1 max-w-[80px] bg-gray-100 dark:bg-gray-800 rounded-full h-1.5 overflow-hidden">
+              <span class="font-bold text-heading dark:text-heading-dark text-sm min-w-[40px]">${volDisplay}</span>
+              ${hasVol && vol > 0 ? `<div class="flex-1 max-w-[80px] bg-gray-100 dark:bg-gray-800 rounded-full h-1.5 overflow-hidden">
                 <div class="volume-bar" style="width: ${volPct}%"></div>
-              </div>
+              </div>` : ''}
             </div>
           </td>
           <td class="py-3 px-3">
-            <span class="text-sm text-body dark:text-body-dark">${kw.cpc > 0 ? '$' + kw.cpc.toFixed(2) : '-'}</span>
+            <span class="text-sm text-body dark:text-body-dark">${cpcDisplay}</span>
           </td>
           <td class="py-3 px-3">
-            <span class="inline-flex px-2 py-0.5 rounded-full text-xs font-bold ${compColor}">${kw.competition}</span>
+            <span class="inline-flex px-2 py-0.5 rounded-full text-xs font-bold ${compColor}">${compDisplay}</span>
           </td>
           <td class="py-3 px-3 text-right">
             <button onclick="quickSearch('${kw.keyword.replace(/'/g, "\\'")}')" class="text-xs font-semibold text-primary dark:text-primary-light hover:underline whitespace-nowrap">გამოყენება</button>

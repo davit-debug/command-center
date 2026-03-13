@@ -101,6 +101,49 @@ def dataforseo_request(endpoint, payload):
         return {"error": str(e)}
 
 
+def has_georgian(text):
+    """Check if text contains Georgian characters."""
+    return any('\u10A0' <= ch <= '\u10FF' for ch in text)
+
+
+def google_autocomplete(keyword, lang="ka", country="ge"):
+    """Get Google Autocomplete suggestions — works for all languages including Georgian."""
+    encoded = urllib.parse.quote(keyword)
+    url = f"https://suggestqueries.google.com/complete/search?client=firefox&q={encoded}&hl={lang}&gl={country}"
+
+    req = urllib.request.Request(url)
+    req.add_header("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)")
+
+    try:
+        with urllib.request.urlopen(req, timeout=10) as response:
+            data = json.loads(response.read().decode("utf-8"))
+            suggestions = data[1] if len(data) > 1 else []
+            # Filter out the original keyword
+            return [s for s in suggestions if s.lower().strip() != keyword.lower().strip()]
+    except Exception:
+        return []
+
+
+def google_autocomplete_expanded(keyword, lang="ka", country="ge"):
+    """Get expanded suggestions by appending common prefixes/suffixes."""
+    all_suggestions = set()
+
+    # Base query
+    base = google_autocomplete(keyword, lang, country)
+    all_suggestions.update(base)
+
+    # Append alphabet letters for more suggestions
+    suffixes = [" ა", " ბ", " გ", " დ", " ე", " ვ", " ზ", " თ", " ი",
+                " კ", " ლ", " მ", " ნ", " ო", " პ", " რ", " ს", " ტ", " უ", " ფ"]
+    for suffix in suffixes[:10]:  # Limit to first 10 to avoid too many requests
+        extra = google_autocomplete(keyword + suffix, lang, country)
+        all_suggestions.update(extra)
+
+    # Remove the original keyword
+    all_suggestions.discard(keyword.lower().strip())
+    return sorted(all_suggestions)
+
+
 def search_keyword(keyword, location_code=2268):
     """Search keyword volume and related keywords."""
     cache_key = f"{keyword.lower().strip()}:{location_code}"
@@ -177,6 +220,62 @@ def search_keyword(keyword, location_code=2268):
                 })
     except Exception as e:
         pass
+
+    # If Georgian keyword and no related keywords from Google Ads,
+    # use Google Autocomplete to get suggestions
+    autocomplete_suggestions = []
+    if has_georgian(keyword):
+        autocomplete_suggestions = google_autocomplete_expanded(keyword)
+        main_kw["isGeorgian"] = True
+        main_kw["autocompleteSource"] = True
+
+        # If Google Ads returned 0 volume, try to get volume for autocomplete keywords
+        # by batch-querying the top suggestions through Google Ads
+        if autocomplete_suggestions and (not related_keywords or len(related_keywords) == 0):
+            # Get search volumes for autocomplete suggestions (batch of up to 50)
+            batch = autocomplete_suggestions[:50]
+            if batch:
+                batch_payload = [{
+                    "keywords": batch,
+                    "location_code": location_code,
+                    "sort_by": "search_volume"
+                }]
+                batch_result = dataforseo_request(
+                    "keywords_data/google_ads/search_volume/live", batch_payload
+                )
+                try:
+                    tasks = batch_result.get("tasks", [{}])
+                    if tasks and tasks[0].get("status_code") == 20000:
+                        batch_items = tasks[0].get("result", [])
+                        for r in (batch_items or []):
+                            if r is None:
+                                continue
+                            kw_name = r.get("keyword", "")
+                            if kw_name.lower().strip() == keyword.lower().strip():
+                                continue
+                            related_keywords.append({
+                                "keyword": kw_name,
+                                "searchVolume": r.get("search_volume") or 0,
+                                "cpc": r.get("cpc") or 0,
+                                "competition": r.get("competition"),
+                                "competitionIndex": r.get("competition_index"),
+                                "source": "autocomplete+ads",
+                            })
+                except Exception:
+                    pass
+
+            # Add remaining autocomplete suggestions that didn't get volume data
+            existing_kws = {r["keyword"].lower() for r in related_keywords}
+            for suggestion in autocomplete_suggestions:
+                if suggestion.lower() not in existing_kws and suggestion.lower() != keyword.lower():
+                    related_keywords.append({
+                        "keyword": suggestion,
+                        "searchVolume": None,  # Unknown volume
+                        "cpc": None,
+                        "competition": None,
+                        "competitionIndex": None,
+                        "source": "autocomplete",
+                    })
 
     main_kw["relatedKeywords"] = related_keywords
     main_kw["totalRelated"] = len(related_keywords)
