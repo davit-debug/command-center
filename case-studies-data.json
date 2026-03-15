@@ -1,0 +1,318 @@
+{
+  "source": "https://10xseo.ge",
+  "scraped_date": "2026-03-15",
+  "case_studies_listing_url": "https://10xseo.ge/en/case-studies/",
+  "listing_thumbnail_images": [
+    "https://10xseo.ge/wp-content/uploads/2025/06/traffic-2x-3m-684139caecb2221-684143c5ab91c.webp",
+    "https://10xseo.ge/wp-content/uploads/2025/06/add-a-heading-4-683fe81957e7b.webp",
+    "https://10xseo.ge/wp-content/uploads/2025/06/add-a-heading-5-683fe8195f2ac.webp",
+    "https://10xseo.ge/wp-content/uploads/2025/06/add-a-heading-6-683fe81aa193c.webp",
+    "https://10xseo.ge/wp-content/uploads/2025/06/1500zarien.webp",
+    "https://10xseo.ge/wp-content/uploads/2025/10/4200-visitors-in-4-months.png",
+    "https://10xseo.ge/wp-content/uploads/2026/02/3.png"
+  ],
+  "case_studies": [
+    {
+      "id": 1,
+      "slug": "3x-in-28-days",
+      "title_en": "3x Increased Traffic In 28 Days",
+      "title_ge": "როგორ გავზარდეთ ტრაფიკი 28 დღეში 3-ჯერ?",
+      "url_en": "https://10xseo.ge/en/case-studies/3x-in-28-days/",
+      "url_ge": "https://10xseo.ge/case-studies/3x-in-28-days/",
+      "published": "2024-11-28",
+      "industry": "Not specified (new project)",
+      "client_name": "Not disclosed",
+      "challenge": "Completely new project, started from 0. Needed to grow traffic rapidly.",
+      "strategy": [
+        "Selected 5 Long-Tail keywords in TOP 10",
+        "All were Buyer Intent keywords (users make purchase/call after searching)",
+        "Pages with higher CTR were identified - meta tags working well",
+        "4 keywords belonged to main page, 1 to product page",
+        "Keywords 1 & 2 used in meta title; keywords 3 & 1 in meta description",
+        "Entire H1 dedicated to keyword 1; keywords 2 & 4 distributed to H2s",
+        "All 4 keywords used in content and Q&A with max 1.5% frequency",
+        "Wrote 2 blogs on keywords 3 & 4, linked back to main page",
+        "Created quality backlinks using keywords 3 & 4 as anchors",
+        "For second page: distributed power from main page, added redirect, made 1 strong backlink"
+      ],
+      "results": {
+        "primary_metric": "3x traffic increase in 28 days",
+        "monthly_clicks": "1500+",
+        "timeframe": "28 days (project total ~6 months)",
+        "keyword_position": "#1 position for the single keyword on product page"
+      },
+      "testimonials": null,
+      "images": [
+        "https://10xseo.ge/wp-content/uploads/2024/11/traffic-growth-674879523aea0-1024x611.webp",
+        "https://10xseo.ge/wp-content/uploads/2024/11/traffic-growth2-1024x611.webp",
+        "https://10xseo.ge/wp-content/uploads/2024/12/engl-1-6750596368a9a-e1733319068116.webp",
+        "https://10xseo.ge/wp-content/uploads/2024/12/casestudyeng.webp",
+        "https://10xseo.ge/wp-content/uploads/2024/11/clickscount-674888cbe9bee-e1732806971451.webp"
+      ]
+    },
+    {
+      "id": 2,
+      "slug": "trafikis-gaormageba-3-tveshi",
+      "title_en": "How We Doubled Traffic in 3 Months",
+      "url_en": "https://10xseo.ge/en/case-studies/doubled-traffic-in-3-months/",
+      "url_ge": "https://10xseo.ge/case-studies/trafikis-gaormageba-3-tveshi/",
+      "published": "2025-06-05",
+      "industry": "Construction",
+      "client_name": "Not disclosed (construction company)",
+      "challenge": "Website did not occupy leading positions. Competitors showed better results. No keyword research or keyword mapping had been done.",
+      "strategy": [
+        "Detailed keyword research - divided into segments: commercial, transactional, informational",
+        "Keyword mapping - connected each keyword to specific page considering user intent",
+        "Transactional keywords to product pages, commercial to category pages, informational to blogs",
+        "Full On-Page SEO: meta tags, internal links, headlines, content optimization",
+        "Quality and thematically relevant backlinks from authoritative sources",
+        "Prioritized directions important for the business"
+      ],
+      "results": {
+        "primary_metric": "100% traffic growth (doubled) in 3 months",
+        "timeframe": "3 months (client for 5 months total)",
+        "trend": "Growing trend continues"
+      },
+      "testimonials": null,
+      "images": [
+        "https://10xseo.ge/wp-content/uploads/2025/06/traffic-2x-3m-684139caecb2221-684143c5ab91c.webp",
+        "https://10xseo.ge/wp-content/uploads/2025/06/whatsapp-image-2025-06-05-at-100115-684138adef693-1024x518.webp"
+      ]
+    },
+    {
+      "id": 3,
+      "slug": "250-percent-increase",
+      "title_en": "250% Growth",
+      "url_en": "https://10xseo.ge/en/case-studies/250-percent-increase/",
+      "url_ge": "https://10xseo.ge/case-studies/250-percent-increase/",
+      "published": "2024-09-05",
+      "industry": "Construction",
+      "client_name": "Not disclosed",
+      "challenge": "Construction website needing organic traffic growth. Average sales volume $30,000.",
+      "strategy": [
+        "Keyword research with business representatives for relevance and prioritization",
+        "Selected keywords in top 10 not yet at #1 - saw potential for rapid growth",
+        "8 pages selected at initial stage",
+        "Keyword mapping to those pages",
+        "On-page optimization and content filling",
+        "Blogs on relevant topics with internal links",
+        "Improved navigation, prioritized selected pages",
+        "Link building: branded anchors for main page, links for selected pages"
+      ],
+      "results": {
+        "primary_metric": "250% organic traffic growth",
+        "timeframe": "3 months",
+        "average_sales_volume": "$30,000",
+        "note": "Growth achieved despite sharp seasonal decrease in August"
+      },
+      "testimonials": null,
+      "images": [
+        "https://10xseo.ge/wp-content/uploads/2025/06/add-a-heading-5-683fe8195f2ac.webp",
+        "https://10xseo.ge/wp-content/uploads/2024/09/250ianizrda-768x379.jpeg"
+      ]
+    },
+    {
+      "id": 4,
+      "slug": "270-percent-increase",
+      "title_en": "How Did We Increase Traffic by 270% and Sales by 45%?",
+      "url_en": "https://10xseo.ge/en/case-studies/270-percent-increase/",
+      "url_ge": "https://10xseo.ge/case-studies/270-percent-increase/",
+      "published": "2025-03-10",
+      "industry": "Tech / E-commerce (Shopify)",
+      "client_name": "Not disclosed (tech startup in US market)",
+      "challenge": "Tech startup operating in US market on Shopify, competing with Apple and Sony. Had done some SEO but results were far from optimal. Technical problems: duplicate content, incorrect indexing, chaotic meta data, poorly structured blogs. ~90 blog articles, 30-40 of them duplicate/insufficiently optimized.",
+      "strategy": [
+        "Fixed technical SEO on Shopify platform",
+        "Resolved duplicate content and incorrect indexing",
+        "Reorganized chaotically set meta data",
+        "In-depth keyword analysis - studied competitors",
+        "Keyword mapping to specific pages",
+        "Eliminated duplicate content from ~90 blog articles",
+        "Rewrote each existing blog/article, adapting for SEO",
+        "Created new content focused on correctly selected keywords",
+        "Wrote meta titles and descriptions for every existing and new blog",
+        "Thorough on-page optimization"
+      ],
+      "results": {
+        "primary_metric": "270% traffic growth",
+        "sales_increase": "45% (in last month alone)",
+        "timeframe": "3 months",
+        "additional": "Achieved positions on keywords nobody dared to think about initially"
+      },
+      "testimonials": null,
+      "images": [
+        "https://10xseo.ge/wp-content/uploads/2025/06/add-a-heading-6-683fe81aa193c.webp",
+        "https://10xseo.ge/wp-content/uploads/2025/03/screenshot-2025-03-10-at-102930-am-67ce8703eca8b-e1741613876645.webp",
+        "https://10xseo.ge/wp-content/uploads/2025/03/screenshot-2025-02-18-at-092405-67ce836a04b90-e1741587394786-1024x410.webp"
+      ]
+    },
+    {
+      "id": 5,
+      "slug": "local-seo-result",
+      "title_en": "How We Increased Calls by 60% in Just 2 Months - Thanks to Local SEO",
+      "url_en": "https://10xseo.ge/en/case-studies/local-seo-result/",
+      "url_ge": "https://10xseo.ge/case-studies/local-seo-result/",
+      "published": "2025-06-26",
+      "industry": "Well-known Georgian brand (services sector)",
+      "client_name": "Not disclosed (one of the most well-known Georgian brands)",
+      "challenge": "Despite being a well-known brand, practically invisible online. Website only got visitors when customers searched by exact company name. No positions on general service terms. Google My Business profile was minimal - description overly general, categories didn't reflect services. Website had technical issues and content problems, no blog strategy, no external authority.",
+      "strategy": [
+        "Google My Business optimization first (fastest way to increase calls)",
+        "Refined GMB profile - categorized services, filled every field, updated descriptions",
+        "Added high-quality photos to GMB",
+        "Attracted real customer positive reviews",
+        "Fixed meta titles and descriptions with appropriate keywords",
+        "Added content to service pages",
+        "Built service structure from scratch - each service got separate optimized page",
+        "Detailed keyword research and content strategy",
+        "Internal linking system",
+        "Blog given new strategic function - FAQ-style articles, internal links to service pages",
+        "Focus on right traffic - users who actually needed the services"
+      ],
+      "results": {
+        "primary_metric": "60% increase in calls",
+        "additional_calls": "Up to 1,500 additional calls through Google profile",
+        "clicks_increase": "370 more clicks",
+        "impressions_increase": "20,000 more impressions",
+        "timeframe": "2 months",
+        "potential": "Still has potential to triple traffic"
+      },
+      "testimonials": null,
+      "images": [
+        "https://10xseo.ge/wp-content/uploads/2025/06/1500zarien.webp",
+        "https://10xseo.ge/wp-content/uploads/2025/06/juba-calls-before.webp",
+        "https://10xseo.ge/wp-content/uploads/2025/06/juba-calls-after.webp",
+        "https://10xseo.ge/wp-content/uploads/2025/06/19199490-1-1024x1024.webp"
+      ]
+    },
+    {
+      "id": 6,
+      "slug": "4200-yoveltviuri-vizitori-4-tveshi",
+      "title_en": "4200+ Monthly Visitors in 4 Months",
+      "url_en": "https://10xseo.ge/en/case-studies/4200-yoveltviuri-vizitori-4-tveshi/",
+      "url_ge": "https://10xseo.ge/case-studies/4200-yoveltviuri-vizitori-4-tveshi/",
+      "published": "2025-10-03",
+      "industry": "Medical / Healthcare",
+      "client_name": "Not disclosed (Georgian medical project)",
+      "challenge": "Medical sector with growing digital competition. Simply having a website is not enough. Needed right SEO strategy for visibility and trust.",
+      "strategy": [
+        "Joined project ~1.5 months before website launch",
+        "Prepared technical SEO foundation during development phase",
+        "Planned site structure and content strategy pre-launch",
+        "Optimized JavaScript-based pages",
+        "Identified key search terms, analyzed correspondence with pages",
+        "Created topical authority map matching user intent and search engine requirements",
+        "Used old authoritative domain with existing backlinks and trust",
+        "Implemented redirect framework preserving SEO value from old URLs",
+        "Content strategy based on search intent - each article answers specific user questions",
+        "Professional medical writer created SEO-optimized content",
+        "Position monitoring from launch, strengthened fast-responding pages",
+        "Continuous content updates, internal link optimization, new topics"
+      ],
+      "results": {
+        "primary_metric": "4200+ monthly organic visitors",
+        "timeframe": "4 months",
+        "growth_trend": "20-25% increase in last 28 days",
+        "note": "Growth trend is constant, not one-time success"
+      },
+      "testimonials": null,
+      "images": [
+        "https://10xseo.ge/wp-content/uploads/2025/10/4200-visitors-in-4-months.png",
+        "https://10xseo.ge/wp-content/uploads/2025/10/4200-visitors.png",
+        "https://10xseo.ge/wp-content/uploads/2025/10/enmedic-search-copnsole.png"
+      ]
+    },
+    {
+      "id": 7,
+      "slug": "seo-krizisidan-top-3mde",
+      "title_en": "From SEO Crisis to Google's Top 3 Positions - In Just 2 Months",
+      "url_en": "https://10xseo.ge/en/case-studies/seo-krizisidan-top-3mde/",
+      "url_ge": "https://10xseo.ge/case-studies/seo-krizisidan-top-3mde/",
+      "published": "2025-10-06",
+      "industry": "B2B / Workplace Safety Consulting",
+      "client_name": "Not disclosed (B2B company in workplace safety sector)",
+      "challenge": "Business almost entirely relies on Google for leads. Page had been penalized by Google due to old technical error. Service page not appearing for main lead-generating keyword. Only a less relevant blog post was appearing on third page. Facebook/other platform advertising doesn't work for this niche.",
+      "strategy": [
+        "Detailed SEO audit to identify why page wasn't appearing",
+        "Discovered Google penalty from old technical error",
+        "Changed URL structure to align with target keyword theme",
+        "Updated meta titles and meta descriptions",
+        "Implemented 301 redirect from old blog post to service page (redistributing content authority)",
+        "Internal link building strategy from thematically related articles to service page",
+        "Added one high-quality backlink from thematically relevant and trusted source",
+        "Page returned to search results at position 10 within days",
+        "Continued adding backlinks, improving internal structure, enriching content"
+      ],
+      "results": {
+        "primary_metric": "Top 3 position for main lead-generating keyword",
+        "starting_position": "Not in search results (penalized) / blog on page 3",
+        "first_milestone": "Position 10 within days",
+        "final_position": "Position 3",
+        "timeframe": "2 months",
+        "next_goal": "First position for highest commercial potential keyword"
+      },
+      "testimonials": null,
+      "images": [
+        "https://10xseo.ge/wp-content/uploads/2025/10/From-SEO-Crisis-to-Googles-Top-3-Positions.png",
+        "https://10xseo.ge/wp-content/uploads/2025/10/results.png"
+      ]
+    },
+    {
+      "id": 8,
+      "slug": "stomatologiuri-klinikis-seo",
+      "title_en": "#1 Position in Google: 1.6K Visitors and 600% Growth in 6 Months",
+      "title_ge": "#1 პოზიცია Google-ში: 1.6K ვიზიტორი და 600%-იანი ზრდა 6 თვეში",
+      "url_en": "https://10xseo.ge/en/case-studies/stomatologiuri-klinikis-seo/",
+      "url_ge": "https://10xseo.ge/case-studies/stomatologiuri-klinikis-seo/",
+      "published": "2026-02-12",
+      "industry": "Dental / Healthcare (Stomatological Clinic)",
+      "client_name": "Not disclosed (dental clinic)",
+      "challenge": "Clinic had website for a long time but visibility was practically zero. Business was losing potential patients who were searching for services digitally. Old methods of patient acquisition (strategic location, walk-ins) no longer sufficient.",
+      "strategy": [
+        "Strategy tailored to business needs - focused on highest revenue service (implantation)",
+        "Built strategy around capturing first positions for implantation-related keywords",
+        "Structural optimization: added individual pages for every service direction",
+        "Local SEO (GMB): added strategic keywords to Google Business Profile title",
+        "Conversion optimization: embedded strategic CTA buttons, implemented results control system",
+        "Goal: every site visit reflected in real calls"
+      ],
+      "results": {
+        "primary_metric": "600% growth in 6 months",
+        "monthly_visitors": "1,620 (from 0)",
+        "28_day_growth": "From 848 to 1,620 clicks (~100% growth in last month)",
+        "impressions_3_months": "63,000 search impressions",
+        "ctr": "52% CTR on keyword 'implant price'",
+        "position": "#1 in Google for target keywords",
+        "timeframe": "6 months",
+        "future_plans": "Triple results, expand to medical tourism with English SEO"
+      },
+      "testimonials": null,
+      "note": "This case study is only available in Georgian on the English URL",
+      "images": [
+        "https://10xseo.ge/wp-content/uploads/2026/02/Screenshot-2026-02-12-at-12.48.55-1024x354.png",
+        "https://10xseo.ge/wp-content/uploads/2026/02/Screenshot-2026-02-12-at-13.34.56-1024x562.png",
+        "https://10xseo.ge/wp-content/uploads/2026/02/Screenshot-2026-02-12-at-12.55.28-1-1024x350.png",
+        "https://10xseo.ge/wp-content/uploads/2026/02/Screenshot-2026-02-12-at-13.01.22-1024x551.png"
+      ]
+    }
+  ],
+  "site_info": {
+    "logo_url": "https://10xseo.ge/wp-content/uploads/2024/12/new-2-675c15c2196cc.webp",
+    "phone": "+995-510-10-15-17",
+    "email": "sales@10xseo.ge",
+    "navigation": {
+      "main": "https://10xseo.ge/en/",
+      "services": {
+        "seo_management": "https://10xseo.ge/en/seo-management/",
+        "seo_audit": "https://10xseo.ge/en/seo-audit/",
+        "link_building": "https://10xseo.ge/en/link-building/"
+      },
+      "results": "https://10xseo.ge/en/case-studies/",
+      "portfolio": "https://10xseo.ge/en/portfolio/",
+      "contact": "https://10xseo.ge/en/contact-us/",
+      "about_us": "https://10xseo.ge/en/about-us/",
+      "blog": "https://10xseo.ge/en/blog/",
+      "get_an_offer": "https://10xseo.ge/en/get-an-offer/"
+    }
+  }
+}

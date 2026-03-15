@@ -31,6 +31,11 @@
 !seo-tools.html
 !blog.html
 !case-studies.html
+!case-studies-options.html
+!blog-layout-options.html
+!case-studies/
+!case-studies/**
+!case-studies-data.json
 !keyword-research.html
 !keyword-api-server.js
 !keyword-api-server.py
