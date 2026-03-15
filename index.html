@@ -54,6 +54,18 @@
     .logo-scroll { animation: scroll-left 25s linear infinite; }
     .logo-scroll:hover { animation-play-state: paused; }
 
+    /* Stock ticker */
+    @keyframes ticker-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .ticker-scroll { animation: ticker-scroll 30s linear infinite; }
+    .ticker-scroll:hover { animation-play-state: paused; }
+    .ticker-fade {
+      mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    }
+
     /* Fade in up animation */
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(24px); }
@@ -174,6 +186,37 @@
 
     /* Safe area for mobile */
     .safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
+
+    /* Editorial card styles */
+    .editorial-card {
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .editorial-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(139,92,246,0.15);
+    }
+    .editorial-line {
+      width: 0;
+      transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .editorial-card:hover .editorial-line { width: 100%; }
+    .logo-gray { filter: grayscale(40%) brightness(1.6); opacity: 0.9; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+    .logo-gray:hover, .group:hover .logo-gray { filter: grayscale(0%) brightness(1.2); opacity: 1; }
+
+    /* Honeycomb */
+    .hex-cell {
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .hex-cell:hover { transform: scale(1.08); }
+    .hex-cell::before {
+      content: '';
+      position: absolute;
+      inset: 1px;
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      background: #ffffff;
+      z-index: 0;
+    }
   </style>
 </head>
 <body class="font-body bg-white dark:bg-surface-dark text-body dark:text-body-dark transition-colors duration-300">
@@ -183,7 +226,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 h-full flex items-center justify-between">
       <!-- Logo -->
       <a href="#" class="flex items-center shrink-0">
-        <img src="images/logo.png" alt="10XSEO" class="h-12 lg:h-14 w-auto">
+        <img src="images/logo-glow.png" alt="10XSEO" class="h-14 lg:h-16 w-auto dark:mix-blend-screen">
       </a>
 
       <!-- Desktop Nav -->
@@ -262,14 +305,14 @@
   </header>
 
   <!-- ========== HERO SECTION ========== -->
-  <section class="relative flex items-center pt-16 lg:pt-20 pb-12 lg:pb-16 overflow-hidden">
+  <section class="relative flex items-center pt-16 lg:pt-8 pb-2 lg:pb-4 overflow-hidden">
     <!-- Background gradient -->
     <div class="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-cyan-50/30 dark:from-surface-dark dark:via-surface-dark dark:to-cyan-950/20"></div>
     <!-- Decorative blobs -->
     <div class="absolute top-20 right-0 w-[500px] h-[500px] bg-primary/5 dark:bg-primary/10 rounded-full blur-3xl -z-0"></div>
     <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent/5 dark:bg-accent/10 rounded-full blur-3xl -z-0"></div>
 
-    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full py-12 lg:py-20">
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full py-12 lg:py-8">
       <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <!-- Left: Text -->
         <div class="text-center lg:text-left">
@@ -279,7 +322,7 @@
             SEO სააგენტო #1 საქართველოში
           </div>
           <!-- Headline -->
-          <h1 class="font-heading animate-fade-in-up delay-100 text-[32px] sm:text-[40px] lg:text-[56px] leading-[1.1] lg:leading-[1.05] font-extrabold text-heading dark:text-heading-dark mb-6">
+          <h1 class="font-heading animate-fade-in-up delay-100 text-[32px] sm:text-[40px] lg:text-[56px] !leading-[1.15] font-extrabold text-heading dark:text-heading-dark mb-6">
             გეძებთ<br>
             <span class="gradient-text">10X SEO შედეგს?</span>
           </h1>
@@ -300,9 +343,8 @@
           </div>
           <!-- Urgency badge -->
           <div class="animate-fade-in-up delay-300 flex justify-center lg:justify-start mt-10">
-            <div class="flex items-center gap-2 text-sm text-body dark:text-body-dark">
-              <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
-              <span class="font-dachi font-semibold text-yellow-400 text-lg">2</span> <span class="font-dachi">ადგილი დარჩა ამ თვეში</span>
+            <div class="flex items-center justify-center gap-2 text-sm text-body dark:text-body-dark">
+              <span class="font-dachi text-white" id="current-month-name"></span> <span class="font-dachi text-white">დარჩენილია</span> <span class="font-dachi font-semibold text-yellow-400 text-3xl">2</span> <span class="font-dachi text-white">ადგილი</span>
             </div>
           </div>
         </div>
@@ -321,123 +363,131 @@
     </div>
   </section>
 
-  <!-- ========== STATS BAR ========== -->
-  <section class="relative bg-gradient-to-r from-primary via-accent to-primary-dark py-10 lg:py-12 overflow-hidden">
-    <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.03%22%3E%3Cpath%20d%3D%22M20%200L40%2020L20%2040L0%2020Z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-50"></div>
-    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 text-center">
-        <a href="#results" class="group cursor-pointer">
-          <p class="font-inter text-[36px] lg:text-[56px] font-extrabold text-white leading-none counter" data-target="68">0%</p>
-          <p class="text-white/70 text-sm lg:text-base mt-2 group-hover:text-white transition-colors">საშ. ტრაფიკის ზრდა</p>
-        </a>
-        <a href="#results" class="group cursor-pointer">
-          <p class="font-inter text-[36px] lg:text-[56px] font-extrabold text-white leading-none counter" data-target="86">0%</p>
-          <p class="text-white/70 text-sm lg:text-base mt-2 group-hover:text-white transition-colors">Keywords გაუმჯობესება</p>
-        </a>
-        <a href="#results" class="group cursor-pointer">
-          <p class="font-inter text-[36px] lg:text-[56px] font-extrabold text-white leading-none counter" data-target="54.4">0%</p>
-          <p class="text-white/70 text-sm lg:text-base mt-2 group-hover:text-white transition-colors">Top 3 პოზიციებზე</p>
-        </a>
-        <a href="#results" class="group cursor-pointer">
-          <p class="font-inter text-[36px] lg:text-[56px] font-extrabold text-white leading-none counter" data-target="27">0%</p>
-          <p class="text-white/70 text-sm lg:text-base mt-2 group-hover:text-white transition-colors">კონვერსიის მაჩვენებელი</p>
-        </a>
+  <!-- ========== CLIENT LOGOS — V38: EDITORIAL ========== -->
+  <section class="py-8 lg:py-12 bg-surface-alt dark:bg-[#111827]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-10">
+        <p class="text-sm font-semibold text-primary dark:text-primary-light uppercase tracking-wider mb-3">ჩვენი კლიენტები</p>
+        <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-heading dark:text-heading-dark leading-[1.3]">
+          კომპანიები რომლებიც <span class="gradient-text">გვენდობიან</span>
+        </h2>
       </div>
-    </div>
-  </section>
 
-  <!-- ========== CLIENT LOGOS (Refined) ========== -->
-  <section class="py-14 lg:py-20 bg-surface-alt dark:bg-surface-dark-alt overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <!-- Header with accent line -->
-      <div class="flex flex-col items-center mb-10">
-        <div class="w-12 h-1 ai-cta-animate rounded-full mb-4"></div>
-        <p class="text-center text-sm font-semibold text-body dark:text-body-dark uppercase tracking-[0.2em]">
-          ნდობა გვიცხადებენ
-        </p>
-        <p class="text-center text-xs text-body/50 dark:text-body-dark/50 mt-1">50+ კომპანია საქართველოში და საერთაშორისო ბაზარზე</p>
-      </div>
-    </div>
-
-    <!-- Scrolling logo strip with fade edges -->
-    <div class="relative">
-      <!-- Fade left -->
-      <div class="absolute left-0 top-0 bottom-0 w-24 lg:w-40 bg-gradient-to-r from-surface-alt dark:from-surface-dark-alt to-transparent z-10 pointer-events-none"></div>
-      <!-- Fade right -->
-      <div class="absolute right-0 top-0 bottom-0 w-24 lg:w-40 bg-gradient-to-l from-surface-alt dark:from-surface-dark-alt to-transparent z-10 pointer-events-none"></div>
-
-      <div class="flex logo-scroll" style="width: max-content;">
-        <!-- Set 1 -->
-        <div class="flex items-center gap-6 lg:gap-8 px-3 lg:px-4">
-          <div class="flex items-center gap-4 px-7 py-5 rounded-2xl border border-gray-200/60 dark:border-gray-700/40 bg-white/70 dark:bg-white/[0.04] hover:border-primary/50 dark:hover:border-primary/40 hover:bg-white dark:hover:bg-white/[0.08] hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 whitespace-nowrap group/logo">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br shadow-md from-amber-400 to-orange-500 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">BM</div>
-            <span class="text-gray-500 dark:text-gray-400 font-bold text-lg group-hover/logo:text-heading dark:group-hover/logo:text-heading-dark transition-colors">Belle Maison</span>
+      <!-- Client logos — Honeycomb -->
+      <div class="flex flex-col items-center gap-1">
+        <!-- Row 1 — 4 hexagons -->
+        <div class="flex gap-2">
+          <div class="hex-cell relative w-32 h-32 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center group cursor-default">
+            <img src="images/clients/gpc.png" alt="GPC" class="relative z-10 w-[80%] h-[80%] object-contain">
           </div>
-          <div class="flex items-center gap-4 px-7 py-5 rounded-2xl border border-gray-200/60 dark:border-gray-700/40 bg-white/70 dark:bg-white/[0.04] hover:border-primary/50 dark:hover:border-primary/40 hover:bg-white dark:hover:bg-white/[0.08] hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 whitespace-nowrap group/logo">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br shadow-md from-sky-400 to-blue-600 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">H</div>
-            <span class="text-gray-500 dark:text-gray-400 font-bold text-lg group-hover/logo:text-heading dark:group-hover/logo:text-heading-dark transition-colors">Horizon</span>
+          <div class="hex-cell relative w-32 h-32 bg-gradient-to-br from-accent/30 to-primary/20 flex items-center justify-center group cursor-default">
+            <img src="images/clients/pharmadepot-hq.png" alt="Pharmadepot" class="relative z-10 w-[80%] h-[80%] object-contain">
           </div>
-          <div class="flex items-center gap-4 px-7 py-5 rounded-2xl border border-gray-200/60 dark:border-gray-700/40 bg-white/70 dark:bg-white/[0.04] hover:border-primary/50 dark:hover:border-primary/40 hover:bg-white dark:hover:bg-white/[0.08] hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 whitespace-nowrap group/logo">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br shadow-md from-emerald-400 to-teal-600 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">ნ</div>
-            <span class="text-gray-500 dark:text-gray-400 font-bold text-lg group-hover/logo:text-heading dark:group-hover/logo:text-heading-dark transition-colors">ნაგომი</span>
+          <div class="hex-cell relative w-32 h-32 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center group cursor-default">
+            <img src="images/clients/todua-clinic.svg" alt="Todua Clinic" class="relative z-10 w-[80%] h-[80%] object-contain">
           </div>
-          <div class="flex items-center gap-4 px-7 py-5 rounded-2xl border border-gray-200/60 dark:border-gray-700/40 bg-white/70 dark:bg-white/[0.04] hover:border-primary/50 dark:hover:border-primary/40 hover:bg-white dark:hover:bg-white/[0.08] hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 whitespace-nowrap group/logo">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br shadow-md from-blue-400 to-indigo-600 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">EH</div>
-            <span class="text-gray-500 dark:text-gray-400 font-bold text-lg group-hover/logo:text-heading dark:group-hover/logo:text-heading-dark transition-colors">ELEHEAR</span>
-          </div>
-          <div class="flex items-center gap-4 px-7 py-5 rounded-2xl border border-gray-200/60 dark:border-gray-700/40 bg-white/70 dark:bg-white/[0.04] hover:border-primary/50 dark:hover:border-primary/40 hover:bg-white dark:hover:bg-white/[0.08] hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 whitespace-nowrap group/logo">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br shadow-md from-violet-400 to-purple-600 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">J</div>
-            <span class="text-gray-500 dark:text-gray-400 font-bold text-lg group-hover/logo:text-heading dark:group-hover/logo:text-heading-dark transition-colors">Juba</span>
-          </div>
-          <div class="flex items-center gap-4 px-7 py-5 rounded-2xl border border-gray-200/60 dark:border-gray-700/40 bg-white/70 dark:bg-white/[0.04] hover:border-primary/50 dark:hover:border-primary/40 hover:bg-white dark:hover:bg-white/[0.08] hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 whitespace-nowrap group/logo">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br shadow-md from-rose-400 to-pink-600 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">L</div>
-            <span class="text-gray-500 dark:text-gray-400 font-bold text-lg group-hover/logo:text-heading dark:group-hover/logo:text-heading-dark transition-colors">Legi</span>
-          </div>
-          <div class="flex items-center gap-4 px-7 py-5 rounded-2xl border border-gray-200/60 dark:border-gray-700/40 bg-white/70 dark:bg-white/[0.04] hover:border-primary/50 dark:hover:border-primary/40 hover:bg-white dark:hover:bg-white/[0.08] hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 whitespace-nowrap group/logo">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br shadow-md from-cyan-400 to-sky-600 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">Y</div>
-            <span class="text-gray-500 dark:text-gray-400 font-bold text-lg group-hover/logo:text-heading dark:group-hover/logo:text-heading-dark transition-colors">Yandy</span>
-          </div>
-          <div class="flex items-center gap-4 px-7 py-5 rounded-2xl border border-gray-200/60 dark:border-gray-700/40 bg-white/70 dark:bg-white/[0.04] hover:border-primary/50 dark:hover:border-primary/40 hover:bg-white dark:hover:bg-white/[0.08] hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 whitespace-nowrap group/logo">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br shadow-md from-red-400 to-rose-600 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">M</div>
-            <span class="text-gray-500 dark:text-gray-400 font-bold text-lg group-hover/logo:text-heading dark:group-hover/logo:text-heading-dark transition-colors">MediHub</span>
+          <div class="hex-cell relative w-32 h-32 bg-gradient-to-br from-accent/30 to-primary/20 flex items-center justify-center group cursor-default">
+            <img src="images/clients/irao.png" alt="IRAO" class="relative z-10 w-[80%] h-[80%] object-contain">
           </div>
         </div>
-        <!-- Set 2 (duplicate for infinite scroll) -->
-        <div class="flex items-center gap-6 lg:gap-8 px-3 lg:px-4">
-          <div class="flex items-center gap-4 px-7 py-5 rounded-2xl border border-gray-200/60 dark:border-gray-700/40 bg-white/70 dark:bg-white/[0.04] hover:border-primary/50 dark:hover:border-primary/40 hover:bg-white dark:hover:bg-white/[0.08] hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 whitespace-nowrap group/logo">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br shadow-md from-amber-400 to-orange-500 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">BM</div>
-            <span class="text-gray-500 dark:text-gray-400 font-bold text-lg group-hover/logo:text-heading dark:group-hover/logo:text-heading-dark transition-colors">Belle Maison</span>
+        <!-- Row 2 — 5 hexagons (offset) -->
+        <div class="flex gap-2 -mt-4">
+          <div class="hex-cell relative w-32 h-32 bg-gradient-to-br from-accent/30 to-primary/20 flex items-center justify-center group cursor-default">
+            <img src="images/clients/ibccs-tax.png" alt="ibcss.tax" class="relative z-10 w-[80%] h-[80%] object-contain">
           </div>
-          <div class="flex items-center gap-4 px-7 py-5 rounded-2xl border border-gray-200/60 dark:border-gray-700/40 bg-white/70 dark:bg-white/[0.04] hover:border-primary/50 dark:hover:border-primary/40 hover:bg-white dark:hover:bg-white/[0.08] hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 whitespace-nowrap group/logo">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br shadow-md from-sky-400 to-blue-600 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">H</div>
-            <span class="text-gray-500 dark:text-gray-400 font-bold text-lg group-hover/logo:text-heading dark:group-hover/logo:text-heading-dark transition-colors">Horizon</span>
+          <div class="hex-cell relative w-32 h-32 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center group cursor-default">
+            <img src="images/clients/elehear.png" alt="ELEHEAR" class="relative z-10 w-[80%] h-[80%] object-contain">
           </div>
-          <div class="flex items-center gap-4 px-7 py-5 rounded-2xl border border-gray-200/60 dark:border-gray-700/40 bg-white/70 dark:bg-white/[0.04] hover:border-primary/50 dark:hover:border-primary/40 hover:bg-white dark:hover:bg-white/[0.08] hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 whitespace-nowrap group/logo">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br shadow-md from-emerald-400 to-teal-600 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">ნ</div>
-            <span class="text-gray-500 dark:text-gray-400 font-bold text-lg group-hover/logo:text-heading dark:group-hover/logo:text-heading-dark transition-colors">ნაგომი</span>
+          <div class="hex-cell relative w-32 h-32 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center group cursor-default">
+            <img src="images/clients/belle-maison.png" alt="Belle Maison" class="relative z-10 w-[80%] h-[80%] object-contain">
           </div>
-          <div class="flex items-center gap-4 px-7 py-5 rounded-2xl border border-gray-200/60 dark:border-gray-700/40 bg-white/70 dark:bg-white/[0.04] hover:border-primary/50 dark:hover:border-primary/40 hover:bg-white dark:hover:bg-white/[0.08] hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 whitespace-nowrap group/logo">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br shadow-md from-blue-400 to-indigo-600 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">EH</div>
-            <span class="text-gray-500 dark:text-gray-400 font-bold text-lg group-hover/logo:text-heading dark:group-hover/logo:text-heading-dark transition-colors">ELEHEAR</span>
+          <div class="hex-cell relative w-32 h-32 bg-gradient-to-br from-accent/30 to-primary/20 flex items-center justify-center group cursor-default">
+            <img src="images/clients/kvareli-lake.png" alt="Kvareli Lake" class="relative z-10 w-[80%] h-[80%] object-contain">
           </div>
-          <div class="flex items-center gap-4 px-7 py-5 rounded-2xl border border-gray-200/60 dark:border-gray-700/40 bg-white/70 dark:bg-white/[0.04] hover:border-primary/50 dark:hover:border-primary/40 hover:bg-white dark:hover:bg-white/[0.08] hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 whitespace-nowrap group/logo">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br shadow-md from-violet-400 to-purple-600 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">J</div>
-            <span class="text-gray-500 dark:text-gray-400 font-bold text-lg group-hover/logo:text-heading dark:group-hover/logo:text-heading-dark transition-colors">Juba</span>
+          <div class="hex-cell relative w-32 h-32 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center group cursor-default">
+            <img src="images/clients/horizon.png" alt="Horizon" class="relative z-10 w-[80%] h-[80%] object-contain">
           </div>
-          <div class="flex items-center gap-4 px-7 py-5 rounded-2xl border border-gray-200/60 dark:border-gray-700/40 bg-white/70 dark:bg-white/[0.04] hover:border-primary/50 dark:hover:border-primary/40 hover:bg-white dark:hover:bg-white/[0.08] hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 whitespace-nowrap group/logo">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br shadow-md from-rose-400 to-pink-600 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">L</div>
-            <span class="text-gray-500 dark:text-gray-400 font-bold text-lg group-hover/logo:text-heading dark:group-hover/logo:text-heading-dark transition-colors">Legi</span>
+        </div>
+        <!-- Row 3 — 4 hexagons -->
+        <div class="flex gap-2 -mt-4">
+          <div class="hex-cell relative w-32 h-32 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center group cursor-default">
+            <img src="images/clients/legi.png" alt="Legi" class="relative z-10 w-[80%] h-[80%] object-contain">
           </div>
-          <div class="flex items-center gap-4 px-7 py-5 rounded-2xl border border-gray-200/60 dark:border-gray-700/40 bg-white/70 dark:bg-white/[0.04] hover:border-primary/50 dark:hover:border-primary/40 hover:bg-white dark:hover:bg-white/[0.08] hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 whitespace-nowrap group/logo">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br shadow-md from-cyan-400 to-sky-600 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">Y</div>
-            <span class="text-gray-500 dark:text-gray-400 font-bold text-lg group-hover/logo:text-heading dark:group-hover/logo:text-heading-dark transition-colors">Yandy</span>
+          <div class="hex-cell relative w-32 h-32 bg-gradient-to-br from-accent/30 to-primary/20 flex items-center justify-center group cursor-default">
+            <img src="images/clients/yandy.png" alt="Yandy" class="relative z-10 w-[80%] h-[80%] object-contain">
           </div>
-          <div class="flex items-center gap-4 px-7 py-5 rounded-2xl border border-gray-200/60 dark:border-gray-700/40 bg-white/70 dark:bg-white/[0.04] hover:border-primary/50 dark:hover:border-primary/40 hover:bg-white dark:hover:bg-white/[0.08] hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 whitespace-nowrap group/logo">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br shadow-md from-red-400 to-rose-600 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">M</div>
-            <span class="text-gray-500 dark:text-gray-400 font-bold text-lg group-hover/logo:text-heading dark:group-hover/logo:text-heading-dark transition-colors">MediHub</span>
+          <div class="hex-cell relative w-32 h-32 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center group cursor-default">
+            <img src="images/clients/juba.png" alt="Juba" class="relative z-10 w-[80%] h-[80%] object-contain">
+          </div>
+          <div class="hex-cell relative w-32 h-32 bg-gradient-to-br from-accent/30 to-primary/20 flex items-center justify-center group cursor-default">
+            <img src="images/clients/temu.png" alt="TEMU" class="relative z-10 w-[80%] h-[80%] object-contain">
+          </div>
+        </div>
+        <!-- Row 4 — 3 hexagons -->
+        <div class="flex gap-2 -mt-4">
+          <div class="hex-cell relative w-32 h-32 bg-gradient-to-br from-accent/30 to-primary/20 flex items-center justify-center group cursor-default">
+            <img src="images/clients/fchain.png" alt="FChain" class="relative z-10 w-[80%] h-[80%] object-contain">
+          </div>
+          <div class="hex-cell relative w-32 h-32 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center group cursor-default">
+            <img src="images/clients/nicolo.png" alt="Nicolo" class="relative z-10 w-[80%] h-[80%] object-contain">
+          </div>
+          <div class="hex-cell relative w-32 h-32 bg-gradient-to-br from-accent/30 to-primary/20 flex items-center justify-center group cursor-default">
+            <img src="images/clients/bedstar.png" alt="Bedstar" class="relative z-10 w-[80%] h-[80%] object-contain">
           </div>
         </div>
       </div>
+
+      <!-- Stock Ticker -->
+      <div class="mt-10 relative overflow-hidden border-y border-white/[0.06] py-3 ticker-fade">
+        <div class="flex whitespace-nowrap ticker-scroll">
+          <div class="flex items-center gap-8 px-4 shrink-0">
+            <span class="flex items-center gap-2"><span class="text-emerald-400 text-xs font-mono">&#9650;</span><span class="text-white/80 text-sm font-medium tracking-wide">GPC</span><span class="text-emerald-400 text-xs font-mono">+340%</span></span>
+            <span class="text-white/10">|</span>
+            <span class="flex items-center gap-2"><span class="text-emerald-400 text-xs font-mono">&#9650;</span><span class="text-white/80 text-sm font-medium tracking-wide">PHARMADEPOT</span><span class="text-emerald-400 text-xs font-mono">+185%</span></span>
+            <span class="text-white/10">|</span>
+            <span class="flex items-center gap-2"><span class="text-emerald-400 text-xs font-mono">&#9650;</span><span class="text-white/80 text-sm font-medium tracking-wide">TODUA CLINIC</span><span class="text-emerald-400 text-xs font-mono">+290%</span></span>
+            <span class="text-white/10">|</span>
+            <span class="flex items-center gap-2"><span class="text-emerald-400 text-xs font-mono">&#9650;</span><span class="text-white/80 text-sm font-medium tracking-wide">IRAO</span><span class="text-emerald-400 text-xs font-mono">+420%</span></span>
+            <span class="text-white/10">|</span>
+            <span class="flex items-center gap-2"><span class="text-emerald-400 text-xs font-mono">&#9650;</span><span class="text-white/80 text-sm font-medium tracking-wide">IBCSS.TAX</span><span class="text-emerald-400 text-xs font-mono">+210%</span></span>
+            <span class="text-white/10">|</span>
+            <span class="flex items-center gap-2"><span class="text-emerald-400 text-xs font-mono">&#9650;</span><span class="text-white/80 text-sm font-medium tracking-wide">ELEHEAR</span><span class="text-emerald-400 text-xs font-mono">+520%</span></span>
+            <span class="text-white/10">|</span>
+            <span class="flex items-center gap-2"><span class="text-emerald-400 text-xs font-mono">&#9650;</span><span class="text-white/80 text-sm font-medium tracking-wide">KVARELI LAKE</span><span class="text-emerald-400 text-xs font-mono">+175%</span></span>
+            <span class="text-white/10">|</span>
+            <span class="flex items-center gap-2"><span class="text-emerald-400 text-xs font-mono">&#9650;</span><span class="text-white/80 text-sm font-medium tracking-wide">BELLE MAISON</span><span class="text-emerald-400 text-xs font-mono">+310%</span></span>
+            <span class="text-white/10">|</span>
+            <span class="flex items-center gap-2"><span class="text-emerald-400 text-xs font-mono">&#9650;</span><span class="text-white/80 text-sm font-medium tracking-wide">JUBA</span><span class="text-emerald-400 text-xs font-mono">+260%</span></span>
+            <span class="text-white/10">|</span>
+            <span class="flex items-center gap-2"><span class="text-emerald-400 text-xs font-mono">&#9650;</span><span class="text-white/80 text-sm font-medium tracking-wide">LEGI</span><span class="text-emerald-400 text-xs font-mono">+195%</span></span>
+            <span class="text-white/10">|</span>
+          </div>
+          <!-- Duplicate for seamless loop -->
+          <div class="flex items-center gap-8 px-4 shrink-0">
+            <span class="flex items-center gap-2"><span class="text-emerald-400 text-xs font-mono">&#9650;</span><span class="text-white/80 text-sm font-medium tracking-wide">GPC</span><span class="text-emerald-400 text-xs font-mono">+340%</span></span>
+            <span class="text-white/10">|</span>
+            <span class="flex items-center gap-2"><span class="text-emerald-400 text-xs font-mono">&#9650;</span><span class="text-white/80 text-sm font-medium tracking-wide">PHARMADEPOT</span><span class="text-emerald-400 text-xs font-mono">+185%</span></span>
+            <span class="text-white/10">|</span>
+            <span class="flex items-center gap-2"><span class="text-emerald-400 text-xs font-mono">&#9650;</span><span class="text-white/80 text-sm font-medium tracking-wide">TODUA CLINIC</span><span class="text-emerald-400 text-xs font-mono">+290%</span></span>
+            <span class="text-white/10">|</span>
+            <span class="flex items-center gap-2"><span class="text-emerald-400 text-xs font-mono">&#9650;</span><span class="text-white/80 text-sm font-medium tracking-wide">IRAO</span><span class="text-emerald-400 text-xs font-mono">+420%</span></span>
+            <span class="text-white/10">|</span>
+            <span class="flex items-center gap-2"><span class="text-emerald-400 text-xs font-mono">&#9650;</span><span class="text-white/80 text-sm font-medium tracking-wide">IBCSS.TAX</span><span class="text-emerald-400 text-xs font-mono">+210%</span></span>
+            <span class="text-white/10">|</span>
+            <span class="flex items-center gap-2"><span class="text-emerald-400 text-xs font-mono">&#9650;</span><span class="text-white/80 text-sm font-medium tracking-wide">ELEHEAR</span><span class="text-emerald-400 text-xs font-mono">+520%</span></span>
+            <span class="text-white/10">|</span>
+            <span class="flex items-center gap-2"><span class="text-emerald-400 text-xs font-mono">&#9650;</span><span class="text-white/80 text-sm font-medium tracking-wide">KVARELI LAKE</span><span class="text-emerald-400 text-xs font-mono">+175%</span></span>
+            <span class="text-white/10">|</span>
+            <span class="flex items-center gap-2"><span class="text-emerald-400 text-xs font-mono">&#9650;</span><span class="text-white/80 text-sm font-medium tracking-wide">BELLE MAISON</span><span class="text-emerald-400 text-xs font-mono">+310%</span></span>
+            <span class="text-white/10">|</span>
+            <span class="flex items-center gap-2"><span class="text-emerald-400 text-xs font-mono">&#9650;</span><span class="text-white/80 text-sm font-medium tracking-wide">JUBA</span><span class="text-emerald-400 text-xs font-mono">+260%</span></span>
+            <span class="text-white/10">|</span>
+            <span class="flex items-center gap-2"><span class="text-emerald-400 text-xs font-mono">&#9650;</span><span class="text-white/80 text-sm font-medium tracking-wide">LEGI</span><span class="text-emerald-400 text-xs font-mono">+195%</span></span>
+            <span class="text-white/10">|</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -446,13 +496,13 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="text-center mb-12 lg:mb-16">
         <p class="text-sm font-semibold text-primary dark:text-primary-light uppercase tracking-wider mb-3">ჩვენი სერვისები</p>
-        <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-heading dark:text-heading-dark leading-tight">
+        <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-heading dark:text-heading-dark leading-[1.3]">
           სრული SEO მომსახურება<br class="hidden sm:block"> თქვენი ბიზნესისთვის
         </h2>
       </div>
       <div class="grid sm:grid-cols-2 gap-6 lg:gap-8">
         <!-- Card 1: SEO Management -->
-        <div class="gradient-border p-6 lg:p-8 hover:-translate-y-1 transition-transform duration-200 cursor-pointer group">
+        <a href="seo-management.html" class="gradient-border p-6 lg:p-8 hover:-translate-y-1 transition-transform duration-200 cursor-pointer group block">
           <div class="relative z-10">
             <div class="w-14 h-14 rounded-2xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
               <svg class="w-7 h-7 text-primary dark:text-primary-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
@@ -464,49 +514,49 @@
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
             </span>
           </div>
-        </div>
-        <!-- Card 2: Local SEO -->
-        <div class="gradient-border p-6 lg:p-8 hover:-translate-y-1 transition-transform duration-200 cursor-pointer group">
+        </a>
+        <!-- Card 2: AI SEO -->
+        <a href="ai-seo.html" class="gradient-border p-6 lg:p-8 hover:-translate-y-1 transition-transform duration-200 cursor-pointer group block">
           <div class="relative z-10">
             <div class="w-14 h-14 rounded-2xl bg-success/10 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-              <svg class="w-7 h-7 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              <svg class="w-7 h-7 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
             </div>
-            <h3 class="font-heading text-xl font-bold text-heading dark:text-heading-dark mb-3">ლოკალური SEO</h3>
-            <p class="text-body dark:text-body-dark mb-4 leading-relaxed">Google Business Profile ოპტიმიზაცია, ლოკალური citations, რუქებზე #1 პოზიცია თქვენს ქალაქში.</p>
+            <h3 class="font-heading text-xl font-bold text-heading dark:text-heading-dark mb-3">AI SEO</h3>
+            <p class="text-body dark:text-body-dark mb-4 leading-relaxed">გახადეთ თქვენი ბრენდი ხილული ChatGPT-ში, Gemini-ში, Perplexity-ში — GEO და AEO ოპტიმიზაცია.</p>
             <span class="inline-flex items-center gap-1 text-primary dark:text-primary-light font-semibold text-sm group-hover:gap-2 transition-all">
               გაიგეთ მეტი
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
             </span>
           </div>
-        </div>
-        <!-- Card 3: Link Building -->
-        <div class="gradient-border p-6 lg:p-8 hover:-translate-y-1 transition-transform duration-200 cursor-pointer group">
+        </a>
+        <!-- Card 3: CRO -->
+        <a href="cro.html" class="gradient-border p-6 lg:p-8 hover:-translate-y-1 transition-transform duration-200 cursor-pointer group block">
           <div class="relative z-10">
             <div class="w-14 h-14 rounded-2xl bg-accent/10 dark:bg-accent/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-              <svg class="w-7 h-7 text-accent-dark dark:text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+              <svg class="w-7 h-7 text-accent-dark dark:text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
             </div>
-            <h3 class="font-heading text-xl font-bold text-heading dark:text-heading-dark mb-3">ლინკ ბილდინგი</h3>
-            <p class="text-body dark:text-body-dark mb-4 leading-relaxed">მაღალი ხარისხის backlinks მოპოვება, ავტორიტეტული დომეინებიდან, white-hat მეთოდებით.</p>
+            <h3 class="font-heading text-xl font-bold text-heading dark:text-heading-dark mb-3">კონვერსიის ოპტიმიზაცია</h3>
+            <p class="text-body dark:text-body-dark mb-4 leading-relaxed">გაზარდეთ კონვერსია A/B ტესტინგით, UX ოპტიმიზაციით და data-driven მიდგომით — მეტი lead, მეტი გაყიდვა.</p>
             <span class="inline-flex items-center gap-1 text-primary dark:text-primary-light font-semibold text-sm group-hover:gap-2 transition-all">
               გაიგეთ მეტი
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
             </span>
           </div>
-        </div>
-        <!-- Card 4: Web Development -->
-        <div class="gradient-border p-6 lg:p-8 hover:-translate-y-1 transition-transform duration-200 cursor-pointer group">
+        </a>
+        <!-- Card 4: SEO Consultation -->
+        <a href="seo-consultation.html" class="gradient-border p-6 lg:p-8 hover:-translate-y-1 transition-transform duration-200 cursor-pointer group block">
           <div class="relative z-10">
             <div class="w-14 h-14 rounded-2xl bg-purple-500/10 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-              <svg class="w-7 h-7 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+              <svg class="w-7 h-7 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
             </div>
-            <h3 class="font-heading text-xl font-bold text-heading dark:text-heading-dark mb-3">ვებ დეველოპმენტი</h3>
-            <p class="text-body dark:text-body-dark mb-4 leading-relaxed">SEO-ოპტიმიზებული, სწრაფი ვებსაიტები — Next.js, React, WordPress. Core Web Vitals ALL GREEN.</p>
+            <h3 class="font-heading text-xl font-bold text-heading dark:text-heading-dark mb-3">SEO კონსულტაცია</h3>
+            <p class="text-body dark:text-body-dark mb-4 leading-relaxed">1-საათიანი კონსულტაცია 13 წლიანი გამოცდილების მქონე ექსპერტთან — რთული პრობლემები, სტრატეგიის აუდიტი.</p>
             <span class="inline-flex items-center gap-1 text-primary dark:text-primary-light font-semibold text-sm group-hover:gap-2 transition-all">
               გაიგეთ მეტი
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
             </span>
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </section>
@@ -520,14 +570,14 @@
       <!-- Section Header -->
       <div class="text-center mb-12 lg:mb-16">
         <p class="text-sm font-semibold text-primary dark:text-primary-light uppercase tracking-wider mb-3">რეალური შედეგები</p>
-        <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-heading dark:text-heading-dark leading-tight mb-4">
+        <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-heading dark:text-heading-dark leading-[1.3] mb-4">
           ჩვენი კლიენტების წარმატების ისტორიები
         </h2>
         <p class="text-body dark:text-body-dark max-w-2xl mx-auto">ყველა მეტრიკა რეალურია — Google Analytics და Search Console-ის მონაცემები.</p>
       </div>
 
-      <!-- ★ FEATURED HERO CASE STUDY — Belle Maison -->
-      <div class="mb-8 lg:mb-12 group">
+      <!-- ★ FEATURED HERO CASE STUDY — სტომატოლოგიური კლინიკა -->
+      <a href="case-studies/stomatologiuri-klinikis-seo.html" class="mb-8 lg:mb-12 group block">
         <div class="relative bg-white dark:bg-surface-dark rounded-3xl border border-gray-100 dark:border-gray-800 overflow-hidden hover:shadow-2xl hover:shadow-primary/10 dark:hover:shadow-primary/5 transition-all duration-500">
           <!-- Gradient border glow on hover -->
           <div class="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background: linear-gradient(135deg, rgba(88,230,255,0.15), rgba(252,129,254,0.15)); pointer-events:none;"></div>
@@ -536,37 +586,37 @@
             <!-- Left: Metrics & Chart -->
             <div class="p-8 lg:p-10">
               <div class="flex items-center gap-3 mb-2">
-                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-amber-500/20">BM</div>
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-pink-400 to-rose-600 flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-pink-500/20">სტ</div>
                 <div>
-                  <h3 class="font-heading text-xl lg:text-2xl font-bold text-heading dark:text-heading-dark">Belle Maison</h3>
-                  <p class="text-sm text-body dark:text-body-dark">ინტერიერის დიზაინი • ქართული ბაზარი</p>
+                  <h3 class="font-heading text-xl lg:text-2xl font-bold text-heading dark:text-heading-dark">სტომატოლოგიური კლინიკა</h3>
+                  <p class="text-sm text-body dark:text-body-dark">მედიცინა • იმპლანტაცია</p>
                 </div>
-                <span class="ml-auto hidden sm:inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary-light">⭐ TOP RESULT</span>
+                <span class="ml-auto hidden sm:inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-success/10 dark:bg-success/20 text-success">#1 Google</span>
               </div>
 
               <!-- Challenge → Result narrative -->
               <p class="text-sm text-body dark:text-body-dark mt-4 mb-6 leading-relaxed">
-                <span class="font-semibold text-heading dark:text-heading-dark">გამოწვევა:</span> ახალი საიტი, ნულოვანი ორგანული ტრაფიკი. კონკურენტები წლებია ბაზარზე იყვნენ.
+                <span class="font-semibold text-heading dark:text-heading-dark">გამოწვევა:</span> 0 ორგანული ტრაფიკი, ახალი კლინიკა კონკურენტულ ბაზარზე.
                 <br>
-                <span class="font-semibold text-heading dark:text-heading-dark">სტრატეგია:</span> ტექნიკური SEO, კონტენტ მარკეტინგი, ლინკ ბილდინგი.
+                <span class="font-semibold text-heading dark:text-heading-dark">სტრატეგია:</span> ტექნიკური SEO, კონტენტ მარკეტინგი, ონ-პეიჯ ოპტიმიზაცია.
               </p>
 
               <!-- Big metrics row -->
               <div class="grid grid-cols-3 gap-4 mb-6">
                 <div class="text-center p-4 bg-gradient-to-br from-red-50 to-red-100/50 dark:from-red-950/30 dark:to-red-900/10 rounded-2xl">
                   <p class="text-xs text-body dark:text-body-dark mb-1 uppercase tracking-wide">Before</p>
-                  <p class="font-inter text-2xl lg:text-3xl font-extrabold text-red-500">230</p>
+                  <p class="font-inter text-2xl lg:text-3xl font-extrabold text-red-500">0</p>
                   <p class="text-[11px] text-body/60 dark:text-body-dark/60 mt-0.5">ვიზიტი/თვე</p>
                 </div>
                 <div class="text-center p-4 bg-gradient-to-br from-green-50 to-green-100/50 dark:from-green-950/30 dark:to-green-900/10 rounded-2xl">
                   <p class="text-xs text-body dark:text-body-dark mb-1 uppercase tracking-wide">After</p>
-                  <p class="font-inter text-2xl lg:text-3xl font-extrabold text-success">1,840</p>
+                  <p class="font-inter text-2xl lg:text-3xl font-extrabold text-success">1,620</p>
                   <p class="text-[11px] text-body/60 dark:text-body-dark/60 mt-0.5">ვიზიტი/თვე</p>
                 </div>
                 <div class="text-center p-4 bg-gradient-to-br from-primary/5 to-accent/5 dark:from-primary/10 dark:to-accent/10 rounded-2xl border border-primary/20 dark:border-primary/30">
                   <p class="text-xs text-body dark:text-body-dark mb-1 uppercase tracking-wide">ზრდა</p>
-                  <p class="font-inter text-2xl lg:text-3xl font-extrabold gradient-text">+700%</p>
-                  <p class="text-[11px] text-body/60 dark:text-body-dark/60 mt-0.5">8 თვეში</p>
+                  <p class="font-inter text-2xl lg:text-3xl font-extrabold gradient-text">+600%</p>
+                  <p class="text-[11px] text-body/60 dark:text-body-dark/60 mt-0.5">52% CTR</p>
                 </div>
               </div>
 
@@ -574,55 +624,55 @@
               <div class="flex items-start gap-3 p-4 bg-gray-50 dark:bg-gray-900/50 rounded-2xl border-l-4 border-primary dark:border-primary-light">
                 <svg class="w-6 h-6 text-primary/40 dark:text-primary-light/40 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983z"/></svg>
                 <div>
-                  <p class="text-sm text-body dark:text-body-dark italic leading-relaxed">"10XSEO-მ ჩვენი საიტის ტრაფიკი 8 თვეში 700%-ით გაზარდა. ყოველკვირეული ანგარიშები დეტალურია."</p>
-                  <p class="text-xs font-semibold text-heading dark:text-heading-dark mt-2">— ნინო კაპანაძე, დამფუძნებელი</p>
+                  <p class="text-sm text-body dark:text-body-dark italic leading-relaxed">"იმპლანტაციის ქივორდზე #1 ვართ. 52% CTR-ით და 63K იმფრეშენით."</p>
+                  <p class="text-xs font-semibold text-heading dark:text-heading-dark mt-2">— სტომატოლოგიური კლინიკა</p>
                 </div>
               </div>
             </div>
 
             <!-- Right: Growth Chart Visualization -->
             <div class="p-8 lg:p-10 bg-gradient-to-br from-gray-50/50 to-primary/5 dark:from-gray-900/30 dark:to-primary/5 flex flex-col justify-center">
-              <p class="text-xs text-body dark:text-body-dark uppercase tracking-wider mb-4 font-semibold">ორგანული ტრაფიკის ზრდა (8 თვე)</p>
+              <p class="text-xs text-body dark:text-body-dark uppercase tracking-wider mb-4 font-semibold">ორგანული ტრაფიკის ზრდა (0 → 1,620)</p>
               <!-- Large bar chart -->
-              <div class="flex items-end gap-2 h-40 lg:h-48 mb-4">
+              <div class="flex gap-2 h-40 lg:h-48 mb-4">
                 <div class="flex-1 flex flex-col items-center gap-1">
-                  <span class="text-[10px] text-body/60 dark:text-body-dark/60 font-inter">230</span>
-                  <div class="w-full bg-red-300 dark:bg-red-800/60 rounded-t-lg transition-all duration-300 group-hover:bg-red-400" style="height:13%"></div>
+                  <span class="text-[10px] text-body/60 dark:text-body-dark/60 font-inter">0</span>
+                  <div class="flex-1 w-full flex items-end"><div class="w-full bg-red-300 dark:bg-red-800/60 rounded-t-lg transition-all duration-300 group-hover:bg-red-400" style="height:2%"></div></div>
                   <span class="text-[9px] text-body/50 dark:text-body-dark/50">თვე 1</span>
                 </div>
                 <div class="flex-1 flex flex-col items-center gap-1">
-                  <span class="text-[10px] text-body/60 dark:text-body-dark/60 font-inter">310</span>
-                  <div class="w-full bg-orange-300 dark:bg-orange-800/60 rounded-t-lg" style="height:17%"></div>
+                  <span class="text-[10px] text-body/60 dark:text-body-dark/60 font-inter">45</span>
+                  <div class="flex-1 w-full flex items-end"><div class="w-full bg-orange-300 dark:bg-orange-800/60 rounded-t-lg" style="height:5%"></div></div>
                   <span class="text-[9px] text-body/50 dark:text-body-dark/50">თვე 2</span>
                 </div>
                 <div class="flex-1 flex flex-col items-center gap-1">
-                  <span class="text-[10px] text-body/60 dark:text-body-dark/60 font-inter">480</span>
-                  <div class="w-full bg-primary/40 dark:bg-primary/30 rounded-t-lg" style="height:26%"></div>
+                  <span class="text-[10px] text-body/60 dark:text-body-dark/60 font-inter">180</span>
+                  <div class="flex-1 w-full flex items-end"><div class="w-full bg-primary/40 dark:bg-primary/30 rounded-t-lg" style="height:18%"></div></div>
                   <span class="text-[9px] text-body/50 dark:text-body-dark/50">თვე 3</span>
                 </div>
                 <div class="flex-1 flex flex-col items-center gap-1">
-                  <span class="text-[10px] text-body/60 dark:text-body-dark/60 font-inter">650</span>
-                  <div class="w-full bg-primary/50 dark:bg-primary/40 rounded-t-lg" style="height:35%"></div>
+                  <span class="text-[10px] text-body/60 dark:text-body-dark/60 font-inter">420</span>
+                  <div class="flex-1 w-full flex items-end"><div class="w-full bg-primary/50 dark:bg-primary/40 rounded-t-lg" style="height:35%"></div></div>
                   <span class="text-[9px] text-body/50 dark:text-body-dark/50">თვე 4</span>
                 </div>
                 <div class="flex-1 flex flex-col items-center gap-1">
-                  <span class="text-[10px] text-body/60 dark:text-body-dark/60 font-inter">890</span>
-                  <div class="w-full bg-primary/60 dark:bg-primary/50 rounded-t-lg" style="height:48%"></div>
+                  <span class="text-[10px] text-body/60 dark:text-body-dark/60 font-inter">680</span>
+                  <div class="flex-1 w-full flex items-end"><div class="w-full bg-primary/60 dark:bg-primary/50 rounded-t-lg" style="height:55%"></div></div>
                   <span class="text-[9px] text-body/50 dark:text-body-dark/50">თვე 5</span>
                 </div>
                 <div class="flex-1 flex flex-col items-center gap-1">
-                  <span class="text-[10px] text-body/60 dark:text-body-dark/60 font-inter">1.2K</span>
-                  <div class="w-full bg-primary/70 dark:bg-primary/60 rounded-t-lg" style="height:65%"></div>
+                  <span class="text-[10px] text-body/60 dark:text-body-dark/60 font-inter">950</span>
+                  <div class="flex-1 w-full flex items-end"><div class="w-full bg-primary/70 dark:bg-primary/60 rounded-t-lg" style="height:72%"></div></div>
                   <span class="text-[9px] text-body/50 dark:text-body-dark/50">თვე 6</span>
                 </div>
                 <div class="flex-1 flex flex-col items-center gap-1">
-                  <span class="text-[10px] text-body/60 dark:text-body-dark/60 font-inter">1.5K</span>
-                  <div class="w-full bg-primary/80 dark:bg-primary/70 rounded-t-lg" style="height:82%"></div>
+                  <span class="text-[10px] text-body/60 dark:text-body-dark/60 font-inter">1.3K</span>
+                  <div class="flex-1 w-full flex items-end"><div class="w-full bg-primary/85 dark:bg-primary/75 rounded-t-lg" style="height:88%"></div></div>
                   <span class="text-[9px] text-body/50 dark:text-body-dark/50">თვე 7</span>
                 </div>
                 <div class="flex-1 flex flex-col items-center gap-1">
-                  <span class="text-[10px] text-primary dark:text-primary-light font-bold font-inter">1.8K</span>
-                  <div class="w-full bg-gradient-to-t from-primary to-primary-light dark:from-primary dark:to-primary-light rounded-t-lg shadow-lg shadow-primary/30" style="height:100%"></div>
+                  <span class="text-[10px] text-primary dark:text-primary-light font-bold font-inter">1.6K</span>
+                  <div class="flex-1 w-full flex items-end"><div class="w-full bg-gradient-to-t from-primary to-primary-light dark:from-primary dark:to-primary-light rounded-t-lg shadow-lg shadow-primary/30" style="height:100%"></div></div>
                   <span class="text-[9px] text-primary dark:text-primary-light font-bold">თვე 8</span>
                 </div>
               </div>
@@ -634,8 +684,8 @@
                     <svg class="w-4 h-4 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                   </div>
                   <div>
-                    <p class="font-inter text-sm font-bold text-heading dark:text-heading-dark">Top 3</p>
-                    <p class="text-[10px] text-body dark:text-body-dark">42 keyword</p>
+                    <p class="font-inter text-sm font-bold text-heading dark:text-heading-dark">#1</p>
+                    <p class="text-[10px] text-body dark:text-body-dark">პოზიცია Google-ში</p>
                   </div>
                 </div>
                 <div class="flex items-center gap-2 p-3 bg-white/60 dark:bg-gray-800/40 rounded-xl">
@@ -643,64 +693,64 @@
                     <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
                   </div>
                   <div>
-                    <p class="font-inter text-sm font-bold text-heading dark:text-heading-dark">+340%</p>
-                    <p class="text-[10px] text-body dark:text-body-dark">ლიდები</p>
+                    <p class="font-inter text-sm font-bold text-heading dark:text-heading-dark">63K</p>
+                    <p class="text-[10px] text-body dark:text-body-dark">იმფრეშენი</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </a>
 
       <!-- Two smaller case studies -->
       <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
-        <!-- Case Study 2: ELEHEAR -->
-        <div class="group relative bg-white dark:bg-surface-dark rounded-2xl p-6 lg:p-8 border border-gray-100 dark:border-gray-800 hover:shadow-xl hover:shadow-primary/5 dark:hover:shadow-primary/5 hover:-translate-y-1 transition-all duration-300">
+        <!-- Case Study 2: 4200+ ვიზიტორი 4 თვეში -->
+        <a href="case-studies/4200-yoveltviuri-vizitori-4-tveshi.html" class="group relative bg-white dark:bg-surface-dark rounded-2xl p-6 lg:p-8 border border-gray-100 dark:border-gray-800 hover:shadow-xl hover:shadow-primary/5 dark:hover:shadow-primary/5 hover:-translate-y-1 transition-all duration-300 block">
           <!-- Gradient border glow on hover -->
           <div class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background: linear-gradient(135deg, rgba(88,230,255,0.08), rgba(252,129,254,0.08)); pointer-events:none;"></div>
 
           <div class="relative z-10">
             <div class="flex items-center gap-3 mb-2">
-              <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-blue-400 to-indigo-600 flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-blue-500/20">EH</div>
+              <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-rose-400 to-pink-600 flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-rose-500/20">სმ</div>
               <div>
-                <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark">ELEHEAR</h3>
-                <p class="text-xs text-body dark:text-body-dark">სმენის აპარატები • USA ბაზარი</p>
+                <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark">სამედიცინო პროექტი</h3>
+                <p class="text-xs text-body dark:text-body-dark">მედიცინა • 4 თვე</p>
               </div>
-              <span class="ml-auto flex items-center gap-1 text-xs font-semibold text-blue-500 dark:text-blue-400">
-                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.012 6.012 0 011.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 019 7.5V8a2 2 0 004 0 2 2 0 011.523-1.943A5.977 5.977 0 0116 10c0 .34-.028.675-.083 1H15a2 2 0 00-2 2v2.197A5.973 5.973 0 0110 16v-2a2 2 0 00-2-2 2 2 0 01-2-2 2 2 0 00-1.668-1.973z"/></svg>
-                Global SEO
+              <span class="ml-auto flex items-center gap-1 text-xs font-semibold text-rose-500 dark:text-rose-400">
+                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/></svg>
+                Medical SEO
               </span>
             </div>
 
             <p class="text-sm text-body dark:text-body-dark mt-3 mb-5 leading-relaxed">
-              <span class="font-semibold text-heading dark:text-heading-dark">გამოწვევა:</span> USA-ს კონკურენტულ ბაზარზე ახალი ბრენდი.
-              <span class="font-semibold text-heading dark:text-heading-dark">შედეგი:</span> 6 თვეში 608% ორგანული ზრდა.
+              <span class="font-semibold text-heading dark:text-heading-dark">გამოწვევა:</span> ახალი საიტი, 0 ტრაფიკი, SEO გაშვებამდე.
+              <span class="font-semibold text-heading dark:text-heading-dark">შედეგი:</span> 0-დან 4,200+ ვიზიტორი 4 თვეში.
             </p>
 
             <div class="grid grid-cols-3 gap-3 mb-5">
               <div class="text-center p-3 bg-red-50 dark:bg-red-950/30 rounded-xl">
                 <p class="text-[10px] text-body dark:text-body-dark mb-0.5">Before</p>
-                <p class="font-inter text-lg font-extrabold text-red-500">1.2K</p>
+                <p class="font-inter text-lg font-extrabold text-red-500">0</p>
               </div>
               <div class="text-center p-3 bg-green-50 dark:bg-green-950/30 rounded-xl">
                 <p class="text-[10px] text-body dark:text-body-dark mb-0.5">After</p>
-                <p class="font-inter text-lg font-extrabold text-success">8.5K</p>
+                <p class="font-inter text-lg font-extrabold text-success">4,200+</p>
               </div>
               <div class="text-center p-3 bg-primary/5 dark:bg-primary/10 rounded-xl border border-primary/20">
-                <p class="text-[10px] text-body dark:text-body-dark mb-0.5">ზრდა</p>
-                <p class="font-inter text-lg font-extrabold gradient-text">+608%</p>
+                <p class="text-[10px] text-body dark:text-body-dark mb-0.5">ზრდა/თვე</p>
+                <p class="font-inter text-lg font-extrabold gradient-text">20-25%</p>
               </div>
             </div>
 
             <!-- Mini chart -->
             <div class="flex items-end gap-1.5 h-16 mb-4">
-              <div class="flex-1 bg-red-200 dark:bg-red-900/40 rounded-t" style="height:14%"></div>
-              <div class="flex-1 bg-red-200 dark:bg-red-900/40 rounded-t" style="height:16%"></div>
-              <div class="flex-1 bg-primary/30 dark:bg-primary/25 rounded-t" style="height:28%"></div>
-              <div class="flex-1 bg-primary/40 dark:bg-primary/35 rounded-t" style="height:42%"></div>
-              <div class="flex-1 bg-primary/55 dark:bg-primary/45 rounded-t" style="height:58%"></div>
-              <div class="flex-1 bg-primary/65 dark:bg-primary/55 rounded-t" style="height:72%"></div>
+              <div class="flex-1 bg-red-200 dark:bg-red-900/40 rounded-t" style="height:3%"></div>
+              <div class="flex-1 bg-primary/25 dark:bg-primary/20 rounded-t" style="height:12%"></div>
+              <div class="flex-1 bg-primary/35 dark:bg-primary/30 rounded-t" style="height:25%"></div>
+              <div class="flex-1 bg-primary/45 dark:bg-primary/40 rounded-t" style="height:42%"></div>
+              <div class="flex-1 bg-primary/60 dark:bg-primary/50 rounded-t" style="height:58%"></div>
+              <div class="flex-1 bg-primary/70 dark:bg-primary/60 rounded-t" style="height:72%"></div>
               <div class="flex-1 bg-primary/80 dark:bg-primary/70 rounded-t" style="height:86%"></div>
               <div class="flex-1 bg-gradient-to-t from-primary to-primary-light rounded-t shadow-md shadow-primary/20" style="height:100%"></div>
             </div>
@@ -708,21 +758,21 @@
             <!-- Client quote -->
             <div class="flex items-start gap-2 p-3 bg-gray-50 dark:bg-gray-900/40 rounded-xl border-l-3 border-primary/50">
               <svg class="w-4 h-4 text-primary/30 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983z"/></svg>
-              <p class="text-xs text-body dark:text-body-dark italic">"USA მარკეტზე SEO ოპტიმიზაცია გვჭირდებოდა. 10XSEO-მ მოლოდინს გადააჭარბა." <span class="not-italic font-semibold text-heading dark:text-heading-dark">— James Lee, ELEHEAR</span></p>
+              <p class="text-xs text-body dark:text-body-dark italic">"საიტის გაშვებამდე დაწყებულმა SEO-მ 4 თვეში 4,200+ ვიზიტორი მოიტანა." <span class="not-italic font-semibold text-heading dark:text-heading-dark">— სამედიცინო პროექტი</span></p>
             </div>
           </div>
-        </div>
+        </a>
 
-        <!-- Case Study 3: ნაგომი -->
-        <div class="group relative bg-white dark:bg-surface-dark rounded-2xl p-6 lg:p-8 border border-gray-100 dark:border-gray-800 hover:shadow-xl hover:shadow-primary/5 dark:hover:shadow-primary/5 hover:-translate-y-1 transition-all duration-300">
+        <!-- Case Study 3: ლოკალური SEO — ზარების +60% -->
+        <a href="case-studies/local-seo-result.html" class="group relative bg-white dark:bg-surface-dark rounded-2xl p-6 lg:p-8 border border-gray-100 dark:border-gray-800 hover:shadow-xl hover:shadow-primary/5 dark:hover:shadow-primary/5 hover:-translate-y-1 transition-all duration-300 block">
           <div class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background: linear-gradient(135deg, rgba(88,230,255,0.08), rgba(252,129,254,0.08)); pointer-events:none;"></div>
 
           <div class="relative z-10">
             <div class="flex items-center gap-3 mb-2">
-              <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-emerald-500/20">NG</div>
+              <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-emerald-500/20">ქბ</div>
               <div>
-                <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark">ნაგომი</h3>
-                <p class="text-xs text-body dark:text-body-dark">იაპონური რესტორანი • Local SEO</p>
+                <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark">ქართული ბრენდი</h3>
+                <p class="text-xs text-body dark:text-body-dark">ლოკალური SEO • GMB</p>
               </div>
               <span class="ml-auto flex items-center gap-1 text-xs font-semibold text-emerald-500 dark:text-emerald-400">
                 <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
@@ -731,49 +781,49 @@
             </div>
 
             <p class="text-sm text-body dark:text-body-dark mt-3 mb-5 leading-relaxed">
-              <span class="font-semibold text-heading dark:text-heading-dark">გამოწვევა:</span> Google Maps-ზე არ ჩანდა, ტრაფიკი მინიმალური.
-              <span class="font-semibold text-heading dark:text-heading-dark">შედეგი:</span> 982% ზრდა ლოკალურ ძიებაში.
+              <span class="font-semibold text-heading dark:text-heading-dark">გამოწვევა:</span> ცნობილი ბრენდი ონლაინ სივრცეში არ ჩანდა.
+              <span class="font-semibold text-heading dark:text-heading-dark">შედეგი:</span> +60% ზარები, +1,500 ზარი GMB-დან.
             </p>
 
             <div class="grid grid-cols-3 gap-3 mb-5">
               <div class="text-center p-3 bg-red-50 dark:bg-red-950/30 rounded-xl">
-                <p class="text-[10px] text-body dark:text-body-dark mb-0.5">Before</p>
-                <p class="font-inter text-lg font-extrabold text-red-500">85</p>
+                <p class="text-[10px] text-body dark:text-body-dark mb-0.5">ზარები</p>
+                <p class="font-inter text-lg font-extrabold text-heading dark:text-heading-dark">+60%</p>
               </div>
               <div class="text-center p-3 bg-green-50 dark:bg-green-950/30 rounded-xl">
-                <p class="text-[10px] text-body dark:text-body-dark mb-0.5">After</p>
-                <p class="font-inter text-lg font-extrabold text-success">920</p>
+                <p class="text-[10px] text-body dark:text-body-dark mb-0.5">კლიკები</p>
+                <p class="font-inter text-lg font-extrabold text-success">+370</p>
               </div>
               <div class="text-center p-3 bg-primary/5 dark:bg-primary/10 rounded-xl border border-primary/20">
-                <p class="text-[10px] text-body dark:text-body-dark mb-0.5">ზრდა</p>
-                <p class="font-inter text-lg font-extrabold gradient-text">+982%</p>
+                <p class="text-[10px] text-body dark:text-body-dark mb-0.5">იმფრეშენი</p>
+                <p class="font-inter text-lg font-extrabold gradient-text">+20K</p>
               </div>
             </div>
 
             <!-- Mini chart -->
             <div class="flex items-end gap-1.5 h-16 mb-4">
-              <div class="flex-1 bg-red-200 dark:bg-red-900/40 rounded-t" style="height:9%"></div>
-              <div class="flex-1 bg-red-200 dark:bg-red-900/40 rounded-t" style="height:12%"></div>
+              <div class="flex-1 bg-red-200 dark:bg-red-900/40 rounded-t" style="height:10%"></div>
               <div class="flex-1 bg-primary/25 dark:bg-primary/20 rounded-t" style="height:22%"></div>
               <div class="flex-1 bg-primary/35 dark:bg-primary/30 rounded-t" style="height:38%"></div>
-              <div class="flex-1 bg-primary/50 dark:bg-primary/40 rounded-t" style="height:55%"></div>
-              <div class="flex-1 bg-primary/60 dark:bg-primary/50 rounded-t" style="height:70%"></div>
-              <div class="flex-1 bg-primary/75 dark:bg-primary/65 rounded-t" style="height:85%"></div>
+              <div class="flex-1 bg-primary/50 dark:bg-primary/40 rounded-t" style="height:52%"></div>
+              <div class="flex-1 bg-primary/60 dark:bg-primary/50 rounded-t" style="height:65%"></div>
+              <div class="flex-1 bg-primary/70 dark:bg-primary/60 rounded-t" style="height:78%"></div>
+              <div class="flex-1 bg-primary/80 dark:bg-primary/70 rounded-t" style="height:90%"></div>
               <div class="flex-1 bg-gradient-to-t from-primary to-primary-light rounded-t shadow-md shadow-primary/20" style="height:100%"></div>
             </div>
 
             <!-- Client quote -->
             <div class="flex items-start gap-2 p-3 bg-gray-50 dark:bg-gray-900/40 rounded-xl border-l-3 border-primary/50">
               <svg class="w-4 h-4 text-primary/30 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983z"/></svg>
-              <p class="text-xs text-body dark:text-body-dark italic">"Google Maps-ზე პირველ 3-ში ვართ. ბევრი ახალი კლიენტი მოგვდის ძიებიდან." <span class="not-italic font-semibold text-heading dark:text-heading-dark">— ნაგომი, მენეჯერი</span></p>
+              <p class="text-xs text-body dark:text-body-dark italic">"GMB ოპტიმიზაციით ზარები 60%-ით გაიზარდა. ონლაინ ხილვადობა დრამატულად შეიცვალა." <span class="not-italic font-semibold text-heading dark:text-heading-dark">— ქართული ბრენდი</span></p>
             </div>
           </div>
-        </div>
+        </a>
       </div>
 
       <!-- CTA -->
       <div class="text-center mt-10 lg:mt-14">
-        <a href="portfolio.html" class="group/btn inline-flex items-center gap-3 px-8 py-4 ai-cta-animate text-white font-bold text-lg rounded-2xl shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 transition-all duration-200">
+        <a href="case-studies.html" class="group/btn inline-flex items-center gap-3 px-8 py-4 ai-cta-animate text-white font-bold text-lg rounded-2xl shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 transition-all duration-200">
           ყველა ქეის სტადი ნახეთ
           <svg class="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
         </a>
@@ -787,7 +837,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="text-center mb-14">
         <p class="text-sm font-semibold text-primary dark:text-primary-light uppercase tracking-wider mb-3">რატომ ჩვენ</p>
-        <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-heading dark:text-heading-dark leading-tight mb-4">
+        <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-heading dark:text-heading-dark leading-[1.3] mb-4">
           რატომ <span class="gradient-text">10XSEO</span>?
         </h2>
         <p class="text-lg text-body dark:text-body-dark max-w-2xl mx-auto">
@@ -799,9 +849,6 @@
         <!-- Card 1: Weekly Reports — HIGHLIGHTED -->
         <div class="relative gradient-border p-0 group">
           <div class="relative z-10 bg-white dark:bg-surface-dark-alt rounded-2xl p-6 h-full">
-            <div class="absolute -top-3 right-4">
-              <span class="ai-cta-animate text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">★ მთავარი უპირატესობა</span>
-            </div>
             <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
               <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>
             </div>
@@ -838,12 +885,17 @@
         </div>
 
         <!-- Card 5: Fast Response -->
-        <div class="bg-white dark:bg-surface-dark-alt rounded-2xl p-6 border border-gray-100 dark:border-gray-800 hover:border-primary/30 dark:hover:border-primary/30 transition-colors group">
+        <div class="bg-white dark:bg-surface-dark-alt rounded-2xl p-6 border border-gray-100 dark:border-gray-800 hover:border-accent/30 dark:hover:border-accent/30 transition-colors group relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-24 h-24 bg-accent/5 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-500"></div>
           <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
             <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
           </div>
           <h3 class="text-lg font-bold text-heading dark:text-heading-dark mb-2">სწრაფი რეაგირება</h3>
-          <p class="text-sm text-body dark:text-body-dark leading-relaxed">24 საათის განმავლობაში პასუხი ნებისმიერ კითხვაზე. პირადი მენეჯერი ყველა კლიენტისთვის.</p>
+          <div class="flex items-baseline gap-1.5 mb-2">
+            <span class="text-3xl font-extrabold bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">10</span>
+            <span class="text-sm font-semibold text-accent">წუთი</span>
+          </div>
+          <p class="text-sm text-body dark:text-body-dark leading-relaxed">საშუალო response time სამუშაო საათებში. პირადი მენეჯერი ყველა კლიენტისთვის.</p>
         </div>
 
         <!-- Card 6: Data-Driven -->
@@ -863,7 +915,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="text-center mb-12 lg:mb-16">
         <p class="text-sm font-semibold text-primary dark:text-primary-light uppercase tracking-wider mb-3">პროცესი</p>
-        <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-heading dark:text-heading-dark leading-tight">
+        <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-heading dark:text-heading-dark leading-[1.3]">
           როგორ ვმუშაობთ
         </h2>
       </div>
@@ -929,7 +981,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="text-center mb-14">
         <p class="text-sm font-semibold text-primary dark:text-primary-light uppercase tracking-wider mb-3">გუნდი</p>
-        <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-heading dark:text-heading-dark leading-tight mb-4">
+        <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-heading dark:text-heading-dark leading-[1.3] mb-4">
           გუნდი, რომელიც <span class="gradient-text">შედეგებს</span> აღწევს
         </h2>
         <p class="text-lg text-body dark:text-body-dark max-w-2xl mx-auto">
@@ -1048,7 +1100,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="text-center mb-12 lg:mb-16">
         <p class="text-sm font-semibold text-primary dark:text-primary-light uppercase tracking-wider mb-3">ტესტიმონიალები</p>
-        <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-heading dark:text-heading-dark leading-tight">
+        <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-heading dark:text-heading-dark leading-[1.3]">
           რას ამბობენ ჩვენი კლიენტები
         </h2>
         <div class="flex items-center justify-center gap-2 mt-4">
@@ -1066,61 +1118,244 @@
           <div class="clutch-widget" data-url="https://widget.clutch.co" data-widget-type="1" data-height="40" data-nofollow="false" data-expandifr="true" data-clutchcompany-id="2453604"></div>
         </div>
       </div>
-      <!-- Testimonial cards -->
-      <div id="testimonials-slider" class="flex gap-6 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-4 -mx-4 px-4">
-        <!-- Testimonial 1 -->
-        <div class="min-w-[300px] sm:min-w-[380px] snap-center bg-white dark:bg-surface-dark rounded-2xl p-6 lg:p-8 border border-gray-100 dark:border-gray-800 flex-shrink-0">
-          <div class="flex text-yellow-400 mb-4">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-          </div>
-          <p class="text-body dark:text-body-dark leading-relaxed mb-6">"10XSEO-მ ჩვენი საიტის ტრაფიკი 8 თვეში 700%-ით გაზარდა. ყოველკვირეული ანგარიშები დეტალურია და ყოველთვის ვიცით რა ხდება."</p>
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-white font-bold text-sm">ნ.კ</div>
+      <!-- Clutch Reviews Carousel -->
+      <div class="relative">
+        <div id="clutch-reviews-slider" class="flex gap-6 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-4 -mx-4 px-4 scroll-smooth">
+          <!-- Review 1 -->
+          <div class="w-[340px] sm:w-[420px] snap-center bg-white dark:bg-surface-dark rounded-2xl p-6 lg:p-8 border border-gray-100 dark:border-gray-800 flex-shrink-0 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
             <div>
-              <p class="font-semibold text-heading dark:text-heading-dark text-sm">ნინო კაპანაძე</p>
-              <p class="text-xs text-body dark:text-body-dark">Belle Maison, დამფუძნებელი</p>
+              <div class="flex items-center gap-2 mb-4">
+                <div class="flex text-yellow-400">
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                </div>
+                <span class="text-xs font-medium text-primary dark:text-primary-light bg-primary/10 dark:bg-primary-light/10 px-2 py-0.5 rounded-full">5.0</span>
+              </div>
+              <p class="text-body dark:text-body-dark leading-relaxed mb-4 italic">"They are proactive, attentive to detail, and truly committed to achieving measurable success."</p>
+              <p class="text-xs text-body/60 dark:text-body-dark/60 mb-4">SEO Services for Environmental Protection Co</p>
+            </div>
+            <div class="flex items-center gap-3 pt-4 border-t border-gray-100 dark:border-gray-800">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center text-white font-bold text-sm">TG</div>
+              <div>
+                <p class="font-semibold text-heading dark:text-heading-dark text-sm">Tako Gvasalia</p>
+                <p class="text-xs text-body dark:text-body-dark">Projects Manager, GERGILI</p>
+              </div>
+              <svg class="w-4 h-4 ml-auto opacity-60" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="#14B8A6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="10" stroke="#14B8A6" stroke-width="2"/></svg>
+            </div>
+          </div>
+          <!-- Review 2 -->
+          <div class="w-[340px] sm:w-[420px] snap-center bg-white dark:bg-surface-dark rounded-2xl p-6 lg:p-8 border border-gray-100 dark:border-gray-800 flex-shrink-0 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+            <div>
+              <div class="flex items-center gap-2 mb-4">
+                <div class="flex text-yellow-400">
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                </div>
+                <span class="text-xs font-medium text-primary dark:text-primary-light bg-primary/10 dark:bg-primary-light/10 px-2 py-0.5 rounded-full">5.0</span>
+              </div>
+              <p class="text-body dark:text-body-dark leading-relaxed mb-4 italic">"Their professionalism, meticulous attention to detail, and results-driven approach clearly set them apart."</p>
+              <p class="text-xs text-body/60 dark:text-body-dark/60 mb-4">SEO & Web Optimization for Resort Hotel Complex</p>
+            </div>
+            <div class="flex items-center gap-3 pt-4 border-t border-gray-100 dark:border-gray-800">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-indigo-600 flex items-center justify-center text-white font-bold text-sm">NI</div>
+              <div>
+                <p class="font-semibold text-heading dark:text-heading-dark text-sm">Nino Isakadze</p>
+                <p class="text-xs text-body dark:text-body-dark">Director of Sales, Kvareli Lake Resort</p>
+              </div>
+              <svg class="w-4 h-4 ml-auto opacity-60" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="#14B8A6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="10" stroke="#14B8A6" stroke-width="2"/></svg>
+            </div>
+          </div>
+          <!-- Review 3 -->
+          <div class="w-[340px] sm:w-[420px] snap-center bg-white dark:bg-surface-dark rounded-2xl p-6 lg:p-8 border border-gray-100 dark:border-gray-800 flex-shrink-0 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+            <div>
+              <div class="flex items-center gap-2 mb-4">
+                <div class="flex text-yellow-400">
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                </div>
+                <span class="text-xs font-medium text-primary dark:text-primary-light bg-primary/10 dark:bg-primary-light/10 px-2 py-0.5 rounded-full">5.0</span>
+              </div>
+              <p class="text-body dark:text-body-dark leading-relaxed mb-4 italic">"I highly recommend them to every business."</p>
+              <p class="text-xs text-body/60 dark:text-body-dark/60 mb-4">SEO & Social Media Marketing for Construction Co</p>
+            </div>
+            <div class="flex items-center gap-3 pt-4 border-t border-gray-100 dark:border-gray-800">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center text-white font-bold text-sm">K</div>
+              <div>
+                <p class="font-semibold text-heading dark:text-heading-dark text-sm">Kotejebi.ge</p>
+                <p class="text-xs text-body dark:text-body-dark">Founder, Kotejebi.ge</p>
+              </div>
+              <svg class="w-4 h-4 ml-auto opacity-60" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="#14B8A6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="10" stroke="#14B8A6" stroke-width="2"/></svg>
+            </div>
+          </div>
+          <!-- Review 4 -->
+          <div class="w-[340px] sm:w-[420px] snap-center bg-white dark:bg-surface-dark rounded-2xl p-6 lg:p-8 border border-gray-100 dark:border-gray-800 flex-shrink-0 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+            <div>
+              <div class="flex items-center gap-2 mb-4">
+                <div class="flex text-yellow-400">
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                </div>
+                <span class="text-xs font-medium text-primary dark:text-primary-light bg-primary/10 dark:bg-primary-light/10 px-2 py-0.5 rounded-full">5.0</span>
+              </div>
+              <p class="text-body dark:text-body-dark leading-relaxed mb-4 italic">"They know how to rank in extremely high competition, not just regular SEO."</p>
+              <p class="text-xs text-body/60 dark:text-body-dark/60 mb-4">SEO & Content Optimization for Airline Ticket Platform</p>
+            </div>
+            <div class="flex items-center gap-3 pt-4 border-t border-gray-100 dark:border-gray-800">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-violet-400 to-purple-600 flex items-center justify-center text-white font-bold text-sm">ST</div>
+              <div>
+                <p class="font-semibold text-heading dark:text-heading-dark text-sm">Shota Teliashvili</p>
+                <p class="text-xs text-body dark:text-body-dark">Founder, Avia.ge</p>
+              </div>
+              <svg class="w-4 h-4 ml-auto opacity-60" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="#14B8A6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="10" stroke="#14B8A6" stroke-width="2"/></svg>
+            </div>
+          </div>
+          <!-- Review 5 -->
+          <div class="w-[340px] sm:w-[420px] snap-center bg-white dark:bg-surface-dark rounded-2xl p-6 lg:p-8 border border-gray-100 dark:border-gray-800 flex-shrink-0 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+            <div>
+              <div class="flex items-center gap-2 mb-4">
+                <div class="flex text-yellow-400">
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                </div>
+                <span class="text-xs font-medium text-primary dark:text-primary-light bg-primary/10 dark:bg-primary-light/10 px-2 py-0.5 rounded-full">5.0</span>
+              </div>
+              <p class="text-body dark:text-body-dark leading-relaxed mb-4 italic">"We had almost daily communication, developed plans together, and conducted regular monitoring."</p>
+              <p class="text-xs text-body/60 dark:text-body-dark/60 mb-4">SEO & Blog Writing for Medical Center</p>
+            </div>
+            <div class="flex items-center gap-3 pt-4 border-t border-gray-100 dark:border-gray-800">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-pink-400 to-rose-600 flex items-center justify-center text-white font-bold text-sm">ND</div>
+              <div>
+                <p class="font-semibold text-heading dark:text-heading-dark text-sm">Natalia Darchiashvili</p>
+                <p class="text-xs text-body dark:text-body-dark">Head of Marketing, Todua Clinic</p>
+              </div>
+              <svg class="w-4 h-4 ml-auto opacity-60" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="#14B8A6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="10" stroke="#14B8A6" stroke-width="2"/></svg>
+            </div>
+          </div>
+          <!-- Review 6 -->
+          <div class="w-[340px] sm:w-[420px] snap-center bg-white dark:bg-surface-dark rounded-2xl p-6 lg:p-8 border border-gray-100 dark:border-gray-800 flex-shrink-0 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+            <div>
+              <div class="flex items-center gap-2 mb-4">
+                <div class="flex text-yellow-400">
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                </div>
+                <span class="text-xs font-medium text-primary dark:text-primary-light bg-primary/10 dark:bg-primary-light/10 px-2 py-0.5 rounded-full">5.0</span>
+              </div>
+              <p class="text-body dark:text-body-dark leading-relaxed mb-4 italic">"Communication is always on time."</p>
+              <p class="text-xs text-body/60 dark:text-body-dark/60 mb-4">SEO for Concrete Products Manufacturer</p>
+            </div>
+            <div class="flex items-center gap-3 pt-4 border-t border-gray-100 dark:border-gray-800">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-white font-bold text-sm">MY</div>
+              <div>
+                <p class="font-semibold text-heading dark:text-heading-dark text-sm">Maksym Yezik</p>
+                <p class="text-xs text-body dark:text-body-dark">Head of Development</p>
+              </div>
+              <svg class="w-4 h-4 ml-auto opacity-60" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="#14B8A6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="10" stroke="#14B8A6" stroke-width="2"/></svg>
+            </div>
+          </div>
+          <!-- Review 7 -->
+          <div class="w-[340px] sm:w-[420px] snap-center bg-white dark:bg-surface-dark rounded-2xl p-6 lg:p-8 border border-gray-100 dark:border-gray-800 flex-shrink-0 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+            <div>
+              <div class="flex items-center gap-2 mb-4">
+                <div class="flex text-yellow-400">
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                </div>
+                <span class="text-xs font-medium text-primary dark:text-primary-light bg-primary/10 dark:bg-primary-light/10 px-2 py-0.5 rounded-full">5.0</span>
+              </div>
+              <p class="text-body dark:text-body-dark leading-relaxed mb-4 italic">"They are motivated to grow."</p>
+              <p class="text-xs text-body/60 dark:text-body-dark/60 mb-4">SEO Services for Website & Brand Design Agency</p>
+            </div>
+            <div class="flex items-center gap-3 pt-4 border-t border-gray-100 dark:border-gray-800">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center text-white font-bold text-sm">AM</div>
+              <div>
+                <p class="font-semibold text-heading dark:text-heading-dark text-sm">Anastasia Martynenko</p>
+                <p class="text-xs text-body dark:text-body-dark">Designer, AMdesign</p>
+              </div>
+              <svg class="w-4 h-4 ml-auto opacity-60" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="#14B8A6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="10" stroke="#14B8A6" stroke-width="2"/></svg>
+            </div>
+          </div>
+          <!-- Review 8 -->
+          <div class="w-[340px] sm:w-[420px] snap-center bg-white dark:bg-surface-dark rounded-2xl p-6 lg:p-8 border border-gray-100 dark:border-gray-800 flex-shrink-0 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+            <div>
+              <div class="flex items-center gap-2 mb-4">
+                <div class="flex text-yellow-400">
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                </div>
+                <span class="text-xs font-medium text-primary dark:text-primary-light bg-primary/10 dark:bg-primary-light/10 px-2 py-0.5 rounded-full">5.0</span>
+              </div>
+              <p class="text-body dark:text-body-dark leading-relaxed mb-4 italic">"10xSEO always delivers on time and has strict action plans, and we get everything documented."</p>
+              <p class="text-xs text-body/60 dark:text-body-dark/60 mb-4">SEO & Content Writing for AI Hearing Aids Company</p>
+            </div>
+            <div class="flex items-center gap-3 pt-4 border-t border-gray-100 dark:border-gray-800">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center text-white font-bold text-sm">DG</div>
+              <div>
+                <p class="font-semibold text-heading dark:text-heading-dark text-sm">Davit Giorgadze</p>
+                <p class="text-xs text-body dark:text-body-dark">E-Commerce Manager, Elehear</p>
+              </div>
+              <svg class="w-4 h-4 ml-auto opacity-60" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="#14B8A6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="10" stroke="#14B8A6" stroke-width="2"/></svg>
+            </div>
+          </div>
+          <!-- Review 9 -->
+          <div class="w-[340px] sm:w-[420px] snap-center bg-white dark:bg-surface-dark rounded-2xl p-6 lg:p-8 border border-gray-100 dark:border-gray-800 flex-shrink-0 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+            <div>
+              <div class="flex items-center gap-2 mb-4">
+                <div class="flex text-yellow-400">
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                </div>
+                <span class="text-xs font-medium text-primary dark:text-primary-light bg-primary/10 dark:bg-primary-light/10 px-2 py-0.5 rounded-full">5.0</span>
+              </div>
+              <p class="text-body dark:text-body-dark leading-relaxed mb-4 italic">"The enthusiasm and time 10xSEO puts into the work are remarkable."</p>
+              <p class="text-xs text-body/60 dark:text-body-dark/60 mb-4">SEO & Content Writing for Insurance Company</p>
+            </div>
+            <div class="flex items-center gap-3 pt-4 border-t border-gray-100 dark:border-gray-800">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-slate-400 to-gray-600 flex items-center justify-center text-white font-bold text-sm">IR</div>
+              <div>
+                <p class="font-semibold text-heading dark:text-heading-dark text-sm">Department Head</p>
+                <p class="text-xs text-body dark:text-body-dark">Irao Insurance</p>
+              </div>
+              <svg class="w-4 h-4 ml-auto opacity-60" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="#14B8A6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="10" stroke="#14B8A6" stroke-width="2"/></svg>
             </div>
           </div>
         </div>
-        <!-- Testimonial 2 -->
-        <div class="min-w-[300px] sm:min-w-[380px] snap-center bg-white dark:bg-surface-dark rounded-2xl p-6 lg:p-8 border border-gray-100 dark:border-gray-800 flex-shrink-0">
-          <div class="flex text-yellow-400 mb-4">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-          </div>
-          <p class="text-body dark:text-body-dark leading-relaxed mb-6">"პროფესიონალური გუნდი. სწრაფი რეაგირება, გამჭვირვალე პროცესი. ჩვენი keywords-ის 86% გაუმჯობესდა პირველი 4 თვეში."</p>
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-indigo-600 flex items-center justify-center text-white font-bold text-sm">გ.მ</div>
-            <div>
-              <p class="font-semibold text-heading dark:text-heading-dark text-sm">გიორგი მამულაშვილი</p>
-              <p class="text-xs text-body dark:text-body-dark">Horizon, CEO</p>
-            </div>
-          </div>
-        </div>
-        <!-- Testimonial 3 -->
-        <div class="min-w-[300px] sm:min-w-[380px] snap-center bg-white dark:bg-surface-dark rounded-2xl p-6 lg:p-8 border border-gray-100 dark:border-gray-800 flex-shrink-0">
-          <div class="flex text-yellow-400 mb-4">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-          </div>
-          <p class="text-body dark:text-body-dark leading-relaxed mb-6">"USA მარკეტზე SEO ოპტიმიზაცია გვჭირდებოდა. 10XSEO-მ 6 თვეში ტრაფიკი 608%-ით გაზარდა. ძალიან კმაყოფილი ვარ."</p>
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center text-white font-bold text-sm">JL</div>
-            <div>
-              <p class="font-semibold text-heading dark:text-heading-dark text-sm">James Lee</p>
-              <p class="text-xs text-body dark:text-body-dark">ELEHEAR, Marketing Director</p>
-            </div>
-          </div>
+        <!-- Scroll indicators -->
+        <div class="flex items-center justify-center gap-2 mt-6">
+          <button onclick="document.getElementById('clutch-reviews-slider').scrollBy({left: -420, behavior: 'smooth'})" class="w-10 h-10 rounded-full border border-gray-200 dark:border-gray-700 flex items-center justify-center text-body dark:text-body-dark hover:bg-primary hover:text-white hover:border-primary transition-colors">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+          </button>
+          <a href="https://clutch.co/profile/10xseo#reviews" target="_blank" rel="noopener" class="text-sm font-medium text-primary dark:text-primary-light hover:underline px-4">ყველა review Clutch.co-ზე</a>
+          <button onclick="document.getElementById('clutch-reviews-slider').scrollBy({left: 420, behavior: 'smooth'})" class="w-10 h-10 rounded-full border border-gray-200 dark:border-gray-700 flex items-center justify-center text-body dark:text-body-dark hover:bg-primary hover:text-white hover:border-primary transition-colors">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </button>
         </div>
       </div>
     </div>
@@ -1133,7 +1368,7 @@
       <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
     </div>
     <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
-      <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[40px] font-extrabold text-white leading-tight mb-6">
+      <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[40px] font-extrabold text-white leading-[1.3] mb-6">
         მზად ხართ 10X SEO შედეგისთვის?
       </h2>
       <p class="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
@@ -1157,7 +1392,7 @@
     <div class="max-w-3xl mx-auto px-4 sm:px-6">
       <div class="text-center mb-12">
         <p class="text-sm font-semibold text-primary dark:text-primary-light uppercase tracking-wider mb-3">ხშირად დასმული კითხვები</p>
-        <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-heading dark:text-heading-dark leading-tight">FAQ</h2>
+        <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-heading dark:text-heading-dark leading-[1.3]">FAQ</h2>
       </div>
       <!-- Filter tabs -->
       <div class="flex gap-2 justify-center mb-8 flex-wrap">
@@ -1237,7 +1472,7 @@
       <div class="flex items-end justify-between mb-12">
         <div>
           <p class="text-sm font-semibold text-primary dark:text-primary-light uppercase tracking-wider mb-3">ბლოგი</p>
-          <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-heading dark:text-heading-dark leading-tight">ბოლო სტატიები</h2>
+          <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-heading dark:text-heading-dark leading-[1.3]">ბოლო სტატიები</h2>
         </div>
         <a href="#" class="hidden sm:inline-flex items-center gap-2 text-primary dark:text-primary-light font-semibold hover:gap-3 transition-all">
           ყველა სტატია
@@ -1306,7 +1541,7 @@
       <div class="grid lg:grid-cols-2 gap-12 lg:gap-16">
         <div>
           <p class="text-sm font-semibold text-primary dark:text-primary-light uppercase tracking-wider mb-3">კონტაქტი</p>
-          <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-heading dark:text-heading-dark leading-tight mb-6">
+          <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-heading dark:text-heading-dark leading-[1.3] mb-6">
             დაგვიკავშირდით
           </h2>
           <p class="text-body dark:text-body-dark mb-8 leading-relaxed">
@@ -1361,12 +1596,9 @@
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
         <!-- Col 1: Info -->
         <div class="col-span-2 lg:col-span-1">
-          <div class="flex items-center gap-2 mb-4">
-            <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-              <span class="text-white font-extrabold text-sm">10X</span>
-            </div>
-            <span class="font-heading text-white font-bold text-lg">SEO</span>
-          </div>
+          <a href="index.html" class="flex items-center gap-2 mb-4">
+            <img src="images/logo.png" alt="10XSEO" class="h-12 w-auto">
+          </a>
           <p class="text-sm leading-relaxed mb-4">საქართველოს #1 SEO სააგენტო. რეალური შედეგები, ყოველკვირეული ანგარიშები, სწრაფი მომსახურება.</p>
           <div class="flex gap-3">
             <a href="#" class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-primary transition-colors">
@@ -1536,6 +1768,12 @@
     }, { threshold: 0.3 });
     const statsSection = document.querySelector('.counter')?.closest('section');
     if (statsSection) statsObserver.observe(statsSection);
+  </script>
+
+  <script>
+    const monthNames = ['იანვარში', 'თებერვალში', 'მარტში', 'აპრილში', 'მაისში', 'ივნისში', 'ივლისში', 'აგვისტოში', 'სექტემბერში', 'ოქტომბერში', 'ნოემბერში', 'დეკემბერში'];
+    const monthEl = document.getElementById('current-month-name');
+    if (monthEl) monthEl.textContent = monthNames[new Date().getMonth()];
   </script>
 
 </body>
