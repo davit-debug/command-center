@@ -158,6 +158,174 @@
       pointer-events: none;
     }
 
+    /* ============================================ */
+    /*  VARIANT 5: Sweeping Divider Lines            */
+    /*  გამყოფ ხაზებზე სინათლის სვლა               */
+    /* ============================================ */
+    .v5-wrap { position: relative; display: inline-block; }
+    .v5-divider {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 3px;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 5;
+    }
+    /* Positioned on top of the PNG — divider line locations (measured from image) */
+    .v5-d1 { top: 43%; width: 28%; }
+    .v5-d2 { top: 56%; width: 52%; }
+    .v5-d3 { top: 60%; width: 74%; }
+
+    .v5-divider::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 40%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, #58E6FF, #FC81FE, transparent);
+      animation: v5Sweep 2.8s linear infinite;
+    }
+    .v5-divider::after {
+      content: '';
+      position: absolute;
+      top: -6px; left: -100%;
+      width: 30%;
+      height: 15px;
+      background: radial-gradient(ellipse, rgba(88,230,255,0.5), transparent 70%);
+      animation: v5Sweep 2.8s linear infinite;
+      filter: blur(4px);
+    }
+    @keyframes v5Sweep {
+      0%   { left: -40%; }
+      100% { left: 140%; }
+    }
+    .v5-d2::before, .v5-d2::after { animation-delay: 0.9s; }
+    .v5-d3::before, .v5-d3::after { animation-delay: 1.8s; }
+
+    /* ============================================ */
+    /*  VARIANT 6: Sequential Tier Glow + Text       */
+    /*  შრე-შრე განათება + ტექსტის გამოჩენა         */
+    /* ============================================ */
+    @keyframes v6TierLight {
+      0%, 8%   { opacity: 0; }
+      14%, 68% { opacity: 1; }
+      78%, 100%{ opacity: 0; }
+    }
+    .v6-glow-line {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 4px;
+      border-radius: 2px;
+      pointer-events: none;
+      z-index: 5;
+      opacity: 0;
+    }
+    .v6-g1 { top: 43%; width: 28%; background: linear-gradient(90deg, transparent, #FFD700, #58E6FF, #FFD700, transparent); box-shadow: 0 0 12px #58E6FF, 0 0 25px rgba(88,230,255,0.4); animation: v6TierLight 8s ease 3.5s infinite; }
+    .v6-g2 { top: 56%; width: 52%; background: linear-gradient(90deg, transparent, #FFD700, #FC81FE, #FFD700, transparent); box-shadow: 0 0 12px #FC81FE, 0 0 25px rgba(252,129,254,0.4); animation: v6TierLight 8s ease 2s infinite; }
+    .v6-g3 { top: 60%; width: 74%; background: linear-gradient(90deg, transparent, #FFD700, #58E6FF, #FFD700, transparent); box-shadow: 0 0 12px #FFD700, 0 0 25px rgba(255,215,0,0.4); animation: v6TierLight 8s ease 0.5s infinite; }
+
+    .v6-label {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #fff;
+      text-shadow: 0 0 10px rgba(0,0,0,0.95), 0 0 20px rgba(88,230,255,0.3);
+      opacity: 0;
+      z-index: 10;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+    .v6-l4 { top: 65%; animation: v6TierLight 8s ease 0.8s infinite; }
+    .v6-l3 { top: 61%; animation: v6TierLight 8s ease 2.3s infinite; }
+    .v6-l2 { top: 48%; animation: v6TierLight 8s ease 3.8s infinite; }
+    .v6-l1 { top: 38%; animation: v6TierLight 8s ease 5s infinite; color: #FFD700; font-size: 14px; text-shadow: 0 0 15px rgba(255,215,0,0.7); }
+
+    /* Tier brightness pulse overlay */
+    @keyframes v6BrightenTier {
+      0%, 8%   { filter: brightness(1); }
+      14%, 68% { filter: brightness(1.5) drop-shadow(0 0 15px rgba(255,215,0,0.3)); }
+      78%, 100%{ filter: brightness(1); }
+    }
+
+    /* ============================================ */
+    /*  VARIANT 7: Dot-by-Dot Dividers + Crown       */
+    /*  ნაწილ-ნაწილ წერტილები + გვირგვინი            */
+    /* ============================================ */
+    .v7-dots-row {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      z-index: 5;
+      pointer-events: none;
+    }
+    .v7-dr1 { top: 43%; width: 28%; }
+    .v7-dr2 { top: 56%; width: 52%; }
+    .v7-dr3 { top: 60%; width: 74%; }
+
+    .v7-dot {
+      width: 6px;
+      height: 4px;
+      border-radius: 50%;
+      background: rgba(255,215,0,0.15);
+      opacity: 0.2;
+    }
+    @keyframes v7DotGlow {
+      0%, 6%   { opacity: 0.15; background: rgba(255,215,0,0.15); box-shadow: none; }
+      12%      { opacity: 1; background: #58E6FF; box-shadow: 0 0 6px #58E6FF, 0 0 12px rgba(88,230,255,0.5); }
+      25%      { opacity: 1; background: #FFD700; box-shadow: 0 0 6px #FFD700; }
+      45%, 100%{ opacity: 0.25; background: rgba(255,215,0,0.2); box-shadow: none; }
+    }
+
+    .v7-label-overlay {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #fff;
+      text-shadow: 0 0 10px rgba(0,0,0,0.95), 0 0 15px rgba(88,230,255,0.2);
+      opacity: 0;
+      z-index: 10;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+    @keyframes v7TextPop {
+      0%, 8%   { opacity: 0; transform: translateX(-50%) scale(0.85); }
+      16%, 72% { opacity: 1; transform: translateX(-50%) scale(1); }
+      84%, 100%{ opacity: 0; transform: translateX(-50%) scale(0.85); }
+    }
+    .v7-lo4 { top: 65%; animation: v7TextPop 9s ease 0.5s infinite; }
+    .v7-lo3 { top: 61%; animation: v7TextPop 9s ease 2.2s infinite; }
+    .v7-lo2 { top: 48%; animation: v7TextPop 9s ease 3.9s infinite; }
+    .v7-lo1 { top: 36%; animation: v7TextPop 9s ease 5.5s infinite; color: #FFD700; font-size: 14px; }
+
+    @keyframes v7CrownFloat {
+      0%, 60%  { opacity: 0; transform: translate(-50%, 6px) scale(0.4); }
+      68%, 86% { opacity: 1; transform: translate(-50%, -10px) scale(1.2); }
+      94%, 100%{ opacity: 0; transform: translate(-50%, -16px) scale(0.7); }
+    }
+    .v7-crown-top {
+      position: absolute;
+      top: 8%;
+      left: 50%;
+      font-size: 28px;
+      z-index: 10;
+      opacity: 0;
+      animation: v7CrownFloat 9s ease 6.8s infinite;
+      filter: drop-shadow(0 0 10px rgba(255,215,0,0.8));
+      pointer-events: none;
+    }
+
     /* Gradient text */
     .gradient-text {
       background: linear-gradient(135deg, #7AEDFF, #FC81FE);
@@ -301,6 +469,142 @@
           <div class="v4-particle" style="bottom: 26%; left: 30%; animation-delay: 0.9s;"></div>
           <div class="v4-particle" style="bottom: 35%; right: 36%; animation-delay: 2.0s;"></div>
           <div class="v4-particle" style="bottom: 20%; left: 44%; animation-delay: 1.5s;"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Divider between old and new variants -->
+    <div class="my-16 flex items-center gap-4">
+      <div class="flex-1 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent"></div>
+      <h2 class="font-heading text-2xl md:text-3xl gradient-text whitespace-nowrap">ახალი ვარიანტები</h2>
+      <div class="flex-1 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent"></div>
+    </div>
+
+    <p class="text-center text-body dark:text-body-dark mb-10 text-lg">
+      არსებული პირამიდის სურათზე CSS ანიმაციების overlay — გამყოფი ხაზები ანიმირდება, შრეები თანმიმდევრულად აქტიურდება
+    </p>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+      <!-- ====== VARIANT 5: Sweeping Divider Lines ====== -->
+      <div class="variant-card rounded-2xl bg-surface-dark-alt p-6">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="text-2xl">⚡</span>
+          <div>
+            <h2 class="font-heading text-xl text-heading dark:text-heading-dark">ვარიანტი 5</h2>
+            <p class="text-primary text-sm font-semibold">სინათლის სვლა გამყოფ ხაზებზე</p>
+          </div>
+        </div>
+        <p class="text-sm text-body-dark mb-6">Cyan/Pink სინათლის ზოლი გამყოფ ხაზებზე უწყვეტად მოძრაობს — ენერგიის ნაკადი მწვერვალისკენ</p>
+
+        <div class="relative flex items-center justify-center h-[380px] animate-float">
+          <div class="v5-wrap">
+            <img src="images/pyramid-top.png" alt="Pyramid" class="w-full max-w-xs drop-shadow-2xl">
+            <!-- Sweeping light overlays on divider lines -->
+            <div class="v5-divider v5-d1"></div>
+            <div class="v5-divider v5-d2"></div>
+            <div class="v5-divider v5-d3"></div>
+          </div>
+          <div class="absolute top-[18%] left-1/2 -translate-x-1/2 text-center pointer-events-none z-10">
+            <span class="font-heading text-lg font-bold text-white" style="text-shadow: 0 0 20px rgba(88, 230, 255, 0.8), 0 0 40px rgba(252, 129, 254, 0.5), 0 2px 8px rgba(0,0,0,0.9);">იყავი<br>პირველი</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ====== VARIANT 6: Sequential Tier Glow + Text ====== -->
+      <div class="variant-card rounded-2xl bg-surface-dark-alt p-6">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="text-2xl">🏔️</span>
+          <div>
+            <h2 class="font-heading text-xl text-heading dark:text-heading-dark">ვარიანტი 6</h2>
+            <p class="text-yellow-400 text-sm font-semibold">შრე-შრე განათება + ტექსტი</p>
+          </div>
+        </div>
+        <p class="text-sm text-body-dark mb-6">ქვემოდან ზემოთ — გამყოფი ხაზები თანმიმდევრულად ნათდება, თითოეულ შრეს ტექსტი ამოუდის</p>
+
+        <div class="relative flex items-center justify-center h-[380px] animate-float">
+          <div class="v5-wrap">
+            <img src="images/pyramid-top.png" alt="Pyramid" class="w-full max-w-xs drop-shadow-2xl">
+            <!-- Glow lines on dividers -->
+            <div class="v6-glow-line v6-g3"></div>
+            <div class="v6-glow-line v6-g2"></div>
+            <div class="v6-glow-line v6-g1"></div>
+            <!-- Sequential text labels -->
+            <span class="v6-label v6-l4">ინდექსაცია</span>
+            <span class="v6-label v6-l3">ტექნიკური SEO</span>
+            <span class="v6-label v6-l2">ავტორიტეტი</span>
+            <span class="v6-label v6-l1">TOP 1</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ====== VARIANT 7: Dot-by-Dot Dividers + Crown ====== -->
+      <div class="variant-card rounded-2xl bg-surface-dark-alt p-6 ring-1 ring-primary/30 lg:col-span-2 max-w-2xl mx-auto w-full">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="text-2xl">🚀</span>
+          <div>
+            <h2 class="font-heading text-xl text-heading dark:text-heading-dark">ვარიანტი 7</h2>
+            <p class="text-green-400 text-sm font-semibold">წერტილ-წერტილ განათება + გვირგვინი</p>
+          </div>
+          <span class="ml-auto text-xs bg-primary/20 text-primary px-3 py-1 rounded-full font-semibold">ახალი</span>
+        </div>
+        <p class="text-sm text-body-dark mb-6">წერტილები ნაწილ-ნაწილ ანთია გამყოფ ხაზზე ქვემოდან ზემოთ, ტექსტი ამოდის, ბოლოს გვირგვინი ჩნდება მწვერვალზე</p>
+
+        <div class="relative flex items-center justify-center h-[420px] animate-float">
+          <div class="v5-wrap">
+            <img src="images/pyramid-top.png" alt="Pyramid" class="w-full max-w-xs drop-shadow-2xl">
+
+            <!-- Bottom divider dots (row 3 — lights up first) -->
+            <div class="v7-dots-row v7-dr3">
+              <div class="v7-dot" style="animation: v7DotGlow 9s ease 0.3s infinite"></div>
+              <div class="v7-dot" style="animation: v7DotGlow 9s ease 0.38s infinite"></div>
+              <div class="v7-dot" style="animation: v7DotGlow 9s ease 0.46s infinite"></div>
+              <div class="v7-dot" style="animation: v7DotGlow 9s ease 0.54s infinite"></div>
+              <div class="v7-dot" style="animation: v7DotGlow 9s ease 0.62s infinite"></div>
+              <div class="v7-dot" style="animation: v7DotGlow 9s ease 0.70s infinite"></div>
+              <div class="v7-dot" style="animation: v7DotGlow 9s ease 0.78s infinite"></div>
+              <div class="v7-dot" style="animation: v7DotGlow 9s ease 0.86s infinite"></div>
+              <div class="v7-dot" style="animation: v7DotGlow 9s ease 0.94s infinite"></div>
+              <div class="v7-dot" style="animation: v7DotGlow 9s ease 1.02s infinite"></div>
+              <div class="v7-dot" style="animation: v7DotGlow 9s ease 1.10s infinite"></div>
+              <div class="v7-dot" style="animation: v7DotGlow 9s ease 1.18s infinite"></div>
+              <div class="v7-dot" style="animation: v7DotGlow 9s ease 1.26s infinite"></div>
+            </div>
+
+            <!-- Middle divider dots (row 2) -->
+            <div class="v7-dots-row v7-dr2">
+              <div class="v7-dot" style="animation: v7DotGlow 9s ease 2.0s infinite"></div>
+              <div class="v7-dot" style="animation: v7DotGlow 9s ease 2.1s infinite"></div>
+              <div class="v7-dot" style="animation: v7DotGlow 9s ease 2.2s infinite"></div>
+              <div class="v7-dot" style="animation: v7DotGlow 9s ease 2.3s infinite"></div>
+              <div class="v7-dot" style="animation: v7DotGlow 9s ease 2.4s infinite"></div>
+              <div class="v7-dot" style="animation: v7DotGlow 9s ease 2.5s infinite"></div>
+              <div class="v7-dot" style="animation: v7DotGlow 9s ease 2.6s infinite"></div>
+              <div class="v7-dot" style="animation: v7DotGlow 9s ease 2.7s infinite"></div>
+              <div class="v7-dot" style="animation: v7DotGlow 9s ease 2.8s infinite"></div>
+              <div class="v7-dot" style="animation: v7DotGlow 9s ease 2.9s infinite"></div>
+            </div>
+
+            <!-- Top divider dots (row 1) -->
+            <div class="v7-dots-row v7-dr1">
+              <div class="v7-dot" style="animation: v7DotGlow 9s ease 3.7s infinite"></div>
+              <div class="v7-dot" style="animation: v7DotGlow 9s ease 3.82s infinite"></div>
+              <div class="v7-dot" style="animation: v7DotGlow 9s ease 3.94s infinite"></div>
+              <div class="v7-dot" style="animation: v7DotGlow 9s ease 4.06s infinite"></div>
+              <div class="v7-dot" style="animation: v7DotGlow 9s ease 4.18s infinite"></div>
+              <div class="v7-dot" style="animation: v7DotGlow 9s ease 4.30s infinite"></div>
+            </div>
+
+            <!-- Sequential text labels -->
+            <span class="v7-label-overlay v7-lo4">ინდექსაცია</span>
+            <span class="v7-label-overlay v7-lo3">ტექნიკური SEO</span>
+            <span class="v7-label-overlay v7-lo2">ავტორიტეტი</span>
+            <span class="v7-label-overlay v7-lo1">იყავი პირველი</span>
+
+            <!-- Crown at peak -->
+            <div class="v7-crown-top">👑</div>
+          </div>
         </div>
       </div>
 

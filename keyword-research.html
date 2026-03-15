@@ -279,8 +279,7 @@
   <div id="mobile-menu" class="fixed inset-0 z-[60] bg-white dark:bg-surface-dark transform translate-x-full transition-transform duration-300 ease-in-out lg:hidden">
     <div class="flex items-center justify-between h-16 px-4 border-b border-gray-100 dark:border-gray-800">
       <a href="index.html" class="flex items-center gap-2">
-        <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center"><span class="text-white font-extrabold text-sm">10X</span></div>
-        <span class="font-heading text-heading dark:text-heading-dark font-bold text-lg">SEO</span>
+        <img src="images/logo.png" alt="10XSEO" class="h-12 lg:h-14 w-auto">
       </a>
       <button id="mobile-menu-close" class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-800 text-heading dark:text-heading-dark">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
@@ -375,7 +374,7 @@
         <div id="georgian-notice" class="hidden max-w-2xl mx-auto mt-3">
           <div class="flex items-start gap-2 px-4 py-3 rounded-xl bg-yellow-500/10 dark:bg-yellow-500/5 border border-yellow-500/20">
             <svg class="w-4 h-4 text-yellow-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            <p class="text-xs text-yellow-600 dark:text-yellow-400">ქართულენოვანი ქივორდებისთვის ნაჩვენებია <strong>პოპულარობის ქულა</strong> (1-100) Google Autocomplete-ის რანჟირებაზე დაფუძნებული. რაც მეტია ქულა, მით უფრო ხშირად ეძებენ. ზუსტი ვოლუმისთვის სცადეთ ინგლისურად.</p>
+            <p class="text-xs text-yellow-600 dark:text-yellow-400">ქართული ქივორდებისთვის ნაჩვენებია <strong>Google Trends ინტერესი</strong> (0-100) — ოფიციალური Google მონაცემი, რომელიც აჩვენებს ძიების ინტენსივობას. 100 = პიკური ინტერესი. მსგავსი ქივორდები აღმოჩენილია Google Autocomplete-ით.</p>
           </div>
         </div>
         <!-- Example keywords -->
@@ -457,7 +456,7 @@
 
       <!-- 2. Monthly Trend Chart -->
       <div class="bg-surface-alt dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 p-6 mb-8 fade-in">
-        <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark mb-6 flex items-center gap-2">
+        <h3 id="trend-chart-title" class="font-heading text-lg font-bold text-heading dark:text-heading-dark mb-6 flex items-center gap-2">
           <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
           თვიური ტრენდი
         </h3>
@@ -702,8 +701,7 @@
         <!-- Column 1 -->
         <div>
           <a href="index.html" class="flex items-center gap-2 mb-4">
-            <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center"><span class="text-white font-extrabold text-sm">10X</span></div>
-            <span class="font-heading text-white font-bold text-lg">SEO</span>
+            <img src="images/logo.png" alt="10XSEO" class="h-12 lg:h-14 w-auto">
           </a>
           <p class="text-gray-400 text-sm leading-relaxed mb-4">პრემიუმ SEO სერვისები საქართველოში. Data-driven მიდგომა, ყოველკვირეული ანგარიშები, რეალური შედეგები.</p>
           <div class="flex items-center gap-1 text-sm">
@@ -1022,7 +1020,18 @@
       // Overview cards
       renderOverviewCards(data);
       // Trend chart
-      renderTrendChart(data.monthlySearches || []);
+      const chartTitle = document.getElementById('trend-chart-title');
+      if (chartTitle) {
+        if (data.isGeorgian && data.trendsSource) {
+          chartTitle.innerHTML = `<svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+            Google Trends — ინტერესი (0-100)
+            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400">GOOGLE DATA</span>`;
+        } else {
+          chartTitle.innerHTML = `<svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+            თვიური ტრენდი`;
+        }
+      }
+      renderTrendChart(data.monthlySearches || [], data.isGeorgian && data.trendsSource);
       // Related table
       currentRelated = (data.relatedKeywords || []).slice();
       sortCol = 'searchVolume';
@@ -1063,31 +1072,51 @@
       const container = document.getElementById('overview-cards');
 
       if (isGeorgian) {
-        // Georgian layout: Popularity | Related Count | Source | Trend
+        // Georgian layout: Trends Interest | Popularity | Related Count | Source
+        const trendsInterest = data.trendsInterest || 0;
+        const hasTrends = data.trendsSource === true;
+        const trendsLatest = data.trendsLatest || 0;
+        const trendsPeak = data.trendsPeak || 0;
+
+        const trendColor = trendsInterest >= 60 ? 'text-success' : trendsInterest >= 30 ? 'text-yellow-500' : 'text-orange-500';
+        const trendBarColor = trendsInterest >= 60 ? 'bg-success' : trendsInterest >= 30 ? 'bg-yellow-500' : 'bg-orange-500';
         const popColor = popScore >= 70 ? 'text-success' : popScore >= 40 ? 'text-yellow-500' : 'text-orange-500';
         const popBarColor = popScore >= 70 ? 'bg-success' : popScore >= 40 ? 'bg-yellow-500' : 'bg-orange-500';
 
         container.innerHTML = `
           <div class="bg-surface-alt dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 p-5 relative overflow-hidden">
             <div class="absolute top-0 right-0 w-20 h-20 bg-primary/5 dark:bg-primary/10 rounded-full -mr-6 -mt-6"></div>
+            <p class="text-xs font-semibold text-body/60 dark:text-body-dark/60 uppercase tracking-wider mb-2">
+              <span class="inline-flex items-center gap-1">
+                <svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                Google Trends
+              </span>
+            </p>
+            ${hasTrends ? `
+              <p class="text-3xl sm:text-4xl font-extrabold ${trendColor}" id="trends-counter">0</p>
+              <div class="mt-2 w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                <div class="${trendBarColor} h-2 rounded-full transition-all duration-1000" style="width: 0%" id="trends-bar"></div>
+              </div>
+              <p class="text-xs text-body/50 dark:text-body-dark/50 mt-1.5">ინტერესი 100-დან (12 თვე)</p>
+            ` : `
+              <p class="text-lg font-bold text-body/40 dark:text-body-dark/40 mt-2">მოგვიანებით</p>
+              <p class="text-xs text-body/50 dark:text-body-dark/50 mt-1.5">დროებით მიუწვდომელია</p>
+            `}
+          </div>
+          <div class="bg-surface-alt dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 p-5 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-20 h-20 bg-accent/5 dark:bg-accent/10 rounded-full -mr-6 -mt-6"></div>
             <p class="text-xs font-semibold text-body/60 dark:text-body-dark/60 uppercase tracking-wider mb-2">პოპულარობა</p>
             <p class="text-3xl sm:text-4xl font-extrabold ${popColor}" id="pop-counter">0</p>
             <div class="mt-2 w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
               <div class="${popBarColor} h-2 rounded-full transition-all duration-1000" style="width: 0%" id="pop-bar"></div>
             </div>
-            <p class="text-xs text-body/50 dark:text-body-dark/50 mt-1.5">100-დან (Google Autocomplete)</p>
-          </div>
-          <div class="bg-surface-alt dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 p-5 relative overflow-hidden">
-            <div class="absolute top-0 right-0 w-20 h-20 bg-accent/5 dark:bg-accent/10 rounded-full -mr-6 -mt-6"></div>
-            <p class="text-xs font-semibold text-body/60 dark:text-body-dark/60 uppercase tracking-wider mb-2">მსგავსი ქივორდები</p>
-            <p class="text-3xl sm:text-4xl font-extrabold text-heading dark:text-heading-dark" id="rel-counter">0</p>
-            <p class="text-sm text-body/50 dark:text-body-dark/50 mt-1">ნაპოვნი შემოთავაზებები</p>
+            <p class="text-xs text-body/50 dark:text-body-dark/50 mt-1.5">100-დან (Autocomplete)</p>
           </div>
           <div class="bg-surface-alt dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 p-5 relative overflow-hidden">
             <div class="absolute top-0 right-0 w-20 h-20 bg-success/5 dark:bg-success/10 rounded-full -mr-6 -mt-6"></div>
-            <p class="text-xs font-semibold text-body/60 dark:text-body-dark/60 uppercase tracking-wider mb-2">წყარო</p>
-            <p class="text-xl font-extrabold text-heading dark:text-heading-dark mb-1"><span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-bold bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>Google</span></p>
-            <p class="text-sm text-body/50 dark:text-body-dark/50 mt-1">Autocomplete Data</p>
+            <p class="text-xs font-semibold text-body/60 dark:text-body-dark/60 uppercase tracking-wider mb-2">მსგავსი ქივორდები</p>
+            <p class="text-3xl sm:text-4xl font-extrabold text-heading dark:text-heading-dark" id="rel-counter">0</p>
+            <p class="text-sm text-body/50 dark:text-body-dark/50 mt-1">ნაპოვნი შემოთავაზებები</p>
           </div>
           <div class="bg-surface-alt dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 p-5 relative overflow-hidden">
             <div class="absolute top-0 right-0 w-20 h-20 bg-primary/5 dark:bg-primary/10 rounded-full -mr-6 -mt-6"></div>
@@ -1099,10 +1128,16 @@
           </div>
         `;
 
-        // Animate popularity score
+        // Animate counters
+        if (hasTrends) {
+          animateCounter('trends-counter', Math.round(trendsInterest));
+          setTimeout(() => {
+            const bar = document.getElementById('trends-bar');
+            if (bar) bar.style.width = trendsInterest + '%';
+          }, 100);
+        }
         animateCounter('pop-counter', popScore);
         animateCounter('rel-counter', relatedCount);
-        // Animate bar
         setTimeout(() => {
           const bar = document.getElementById('pop-bar');
           if (bar) bar.style.width = popScore + '%';
@@ -1163,16 +1198,17 @@
     }
 
     // ===== TREND CHART =====
-    function renderTrendChart(monthlyData) {
+    function renderTrendChart(monthlyData, isTrendsData) {
       const container = document.getElementById('trend-chart-container');
       if (!monthlyData || monthlyData.length === 0) {
         container.innerHTML = '<p class="text-center text-body/50 dark:text-body-dark/50 py-12">მონაცემები არ არის ხელმისაწვდომი</p>';
         return;
       }
 
-      // Reverse to show oldest first
-      const data = [...monthlyData].reverse();
-      const maxVol = Math.max(...data.map(d => d.search_volume), 1);
+      // DataForSEO sends newest-first, so reverse to chronological order.
+      // Google Trends data is already chronological — do NOT reverse.
+      const data = isTrendsData ? [...monthlyData] : [...monthlyData].reverse();
+      const maxVol = isTrendsData ? 100 : Math.max(...data.map(d => d.search_volume), 1);
       const monthNames = ['იან', 'თებ', 'მარ', 'აპრ', 'მაი', 'ივნ', 'ივლ', 'აგვ', 'სექ', 'ოქტ', 'ნოე', 'დეკ'];
 
       const chartH = 200;
@@ -1187,8 +1223,8 @@
       const gap = innerW / data.length;
 
       // Y-axis marks
-      const ySteps = 4;
-      const yMax = Math.ceil(maxVol / 100) * 100;
+      const ySteps = isTrendsData ? 4 : 4;
+      const yMax = isTrendsData ? 100 : Math.ceil(maxVol / 100) * 100;
 
       let svg = `<svg width="100%" height="${chartH}" viewBox="0 0 ${chartW} ${chartH}" xmlns="http://www.w3.org/2000/svg">`;
 
@@ -1220,8 +1256,11 @@
         const mLabel = monthNames[d.month - 1];
 
         // Bar
+        const tooltipText = isTrendsData
+          ? `${mLabel} ${d.year}: ${d.search_volume}/100`
+          : `${mLabel} ${d.year}: ${d.search_volume.toLocaleString()}`;
         svg += `<rect class="chart-bar" x="${x}" y="${y}" width="${barW}" height="${h}" rx="4" ry="4" fill="url(#barGrad)"
-          onmouseenter="showChartTooltip(evt, '${mLabel} ${d.year}: ${d.search_volume.toLocaleString()}')"
+          onmouseenter="showChartTooltip(evt, '${tooltipText}')"
           onmouseleave="hideChartTooltip()"
         />`;
 
@@ -1257,7 +1296,7 @@
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
         if (currentData && currentData.monthlySearches) {
-          renderTrendChart(currentData.monthlySearches);
+          renderTrendChart(currentData.monthlySearches, currentData.isGeorgian && currentData.trendsSource);
         }
       }, 250);
     });
