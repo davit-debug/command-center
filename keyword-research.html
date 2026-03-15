@@ -49,8 +49,9 @@
       theme: {
         extend: {
           colors: {
-            primary: { DEFAULT: '#58E6FF', light: '#7AEDFF', dark: '#3ED8F5' },
-            accent: { DEFAULT: '#FC81FE', dark: '#E070E2' },
+            primary: { DEFAULT: '#8B5CF6', light: '#A78BFA', dark: '#7C3AED' },
+            accent: { DEFAULT: '#14B8A6', dark: '#0D9488' },
+            'ai-blue': '#3B82F6',
             surface: { DEFAULT: '#ffffff', alt: '#f8fafc', dark: '#020710', 'dark-alt': '#0F0F0F' },
             heading: { DEFAULT: '#0f172a', dark: '#f8fafc' },
             body: { DEFAULT: '#475569', dark: '#94a3b8' },
@@ -78,18 +79,31 @@
     h1, h2, h3 { font-family: 'Dachi the Lynx', sans-serif; }
 
     .gradient-text {
-      background: linear-gradient(135deg, #58E6FF, #FC81FE);
+      background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
     .dark .gradient-text {
-      background: linear-gradient(135deg, #7AEDFF, #FC81FE);
+      background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    /* AI SEO animated gradient for CTA */
+    @keyframes aiGradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .ai-cta-animate {
+      background: linear-gradient(-45deg, #8B5CF6, #3B82F6, #14B8A6, #8B5CF6) !important;
+      background-size: 300% 300% !important;
+      animation: aiGradient 4s ease infinite;
+      box-shadow: 0 4px 25px rgba(139, 92, 246, 0.35);
     }
 
     .header-scrolled { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
     .safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
-    .accent-glow { box-shadow: 0 0 40px rgba(88, 230, 255, 0.15); }
-    .dark .accent-glow { box-shadow: 0 0 60px rgba(88, 230, 255, 0.2); }
+    .accent-glow { box-shadow: 0 0 40px rgba(139, 92, 246, 0.15); }
+    .dark .accent-glow { box-shadow: 0 0 60px rgba(139, 92, 246, 0.2); }
 
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(24px); }
@@ -103,8 +117,8 @@
 
     /* Search input animated gradient border */
     @keyframes borderGlow {
-      0%, 100% { border-color: #58E6FF; box-shadow: 0 0 8px rgba(88, 230, 255, 0.1); }
-      50% { border-color: #FC81FE; box-shadow: 0 0 8px rgba(252, 129, 254, 0.1); }
+      0%, 100% { border-color: #8B5CF6; box-shadow: 0 0 8px rgba(139, 92, 246, 0.1); }
+      50% { border-color: #14B8A6; box-shadow: 0 0 8px rgba(20, 184, 166, 0.1); }
     }
     .search-glow:focus-within {
       animation: borderGlow 3s ease-in-out infinite;
@@ -112,7 +126,7 @@
     @media (max-width: 640px) {
       .search-glow:focus-within {
         box-shadow: none;
-        border-color: #58E6FF;
+        border-color: #8B5CF6;
         animation: none;
       }
     }
@@ -143,7 +157,7 @@
     /* Chart bar hover */
     .chart-bar { transition: opacity 0.2s, filter 0.2s; cursor: pointer; }
     .chart-bar:hover { opacity: 0.85; filter: brightness(1.1); }
-    .dark .chart-bar:hover { filter: brightness(1.2) drop-shadow(0 0 8px rgba(88, 230, 255, 0.4)); }
+    .dark .chart-bar:hover { filter: brightness(1.2) drop-shadow(0 0 8px rgba(139, 92, 246, 0.4)); }
 
     /* Chart tooltip */
     .chart-tooltip {
@@ -180,7 +194,7 @@
     .volume-bar {
       height: 6px;
       border-radius: 3px;
-      background: linear-gradient(90deg, #58E6FF, #FC81FE);
+      background: linear-gradient(90deg, #8B5CF6, #14B8A6);
       transition: width 0.3s ease;
     }
 
@@ -524,7 +538,7 @@
             <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-1.5">ტელეფონი <span class="text-body/40 font-normal">(არასავალდებულო)</span></label>
             <input type="tel" id="lead-phone" placeholder="+995 5XX XXX XXX" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark placeholder:text-body/40 focus:outline-none focus:border-primary dark:focus:border-primary-light transition-colors">
           </div>
-          <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-primary to-accent text-white font-bold rounded-xl text-base hover:opacity-90 transition-opacity">
+          <button type="submit" class="w-full py-3.5 ai-cta-animate text-white font-bold rounded-xl text-base hover:opacity-90 transition-opacity">
             განბლოკვა — უფასოდ
           </button>
         </form>
@@ -669,7 +683,7 @@
           <h2 class="font-heading text-[24px] sm:text-[32px] lg:text-[40px] font-extrabold text-heading dark:text-heading-dark mb-4">გსურთ სრული SEO სტრატეგია?</h2>
           <p class="text-body dark:text-body-dark mb-8 max-w-xl mx-auto">ქივორდ რისერჩი მხოლოდ დასაწყისია. მიიღეთ სრული SEO აუდიტი და სტრატეგია თქვენი ბიზნესისთვის.</p>
           <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="seo-audit.html" class="px-8 py-4 bg-gradient-to-r from-primary to-accent text-white font-bold rounded-xl text-base hover:opacity-90 transition-opacity">
+            <a href="seo-audit.html" class="px-8 py-4 ai-cta-animate text-white font-bold rounded-xl text-base hover:opacity-90 transition-opacity">
               უფასო SEO აუდიტი
             </a>
             <a href="tel:+995510101517" class="px-8 py-4 border-2 border-primary dark:border-primary-light text-primary dark:text-primary-light font-bold rounded-xl text-base hover:bg-primary/5 transition-colors">
@@ -748,7 +762,7 @@
   <!-- ========== STICKY BOTTOM CTA (mobile) ========== -->
   <div id="sticky-cta" class="fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-white dark:bg-surface-dark-alt border-t border-gray-200 dark:border-gray-800 shadow-[0_-4px_20px_rgba(0,0,0,0.1)] safe-bottom transition-transform duration-300" style="transform: translateY(0);">
     <div class="flex items-center gap-3 px-4 py-3">
-      <a href="seo-audit.html" class="flex-1 text-center py-3 bg-gradient-to-r from-primary to-accent text-white font-bold rounded-xl text-sm">
+      <a href="seo-audit.html" class="flex-1 text-center py-3 ai-cta-animate text-white font-bold rounded-xl text-sm">
         უფასო SEO აუდიტი
       </a>
       <a href="tel:+995510101517" class="w-12 h-12 rounded-xl border-2 border-primary dark:border-primary-light flex items-center justify-center text-primary dark:text-primary-light shrink-0">
@@ -1218,12 +1232,12 @@
       // Gradient definition
       svg += `<defs>
         <linearGradient id="barGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#58E6FF"/>
-          <stop offset="100%" stop-color="#FC81FE"/>
+          <stop offset="0%" stop-color="#8B5CF6"/>
+          <stop offset="100%" stop-color="#14B8A6"/>
         </linearGradient>
         <linearGradient id="barGradHover" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#7AEDFF"/>
-          <stop offset="100%" stop-color="#FC81FE"/>
+          <stop offset="0%" stop-color="#A78BFA"/>
+          <stop offset="100%" stop-color="#14B8A6"/>
         </linearGradient>
       </defs>`;
 

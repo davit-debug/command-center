@@ -16,8 +16,9 @@
       theme: {
         extend: {
           colors: {
-            primary: { DEFAULT: '#58E6FF', light: '#7AEDFF', dark: '#3ED8F5' },
-            accent: { DEFAULT: '#FC81FE', dark: '#E070E2' },
+            primary: { DEFAULT: '#8B5CF6', light: '#A78BFA', dark: '#7C3AED' },
+            accent: { DEFAULT: '#14B8A6', dark: '#0D9488' },
+            'ai-blue': '#3B82F6',
             surface: { DEFAULT: '#ffffff', alt: '#f8fafc', dark: '#020710', 'dark-alt': '#0F0F0F' },
             heading: { DEFAULT: '#0f172a', dark: '#f8fafc' },
             body: { DEFAULT: '#475569', dark: '#94a3b8' },
@@ -44,15 +45,28 @@
     .header-scrolled { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
     .safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
     .gradient-text {
-      background: linear-gradient(135deg, #58E6FF, #FC81FE);
+      background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
     .dark .gradient-text {
-      background: linear-gradient(135deg, #7AEDFF, #FC81FE);
+      background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
-    .accent-glow { box-shadow: 0 0 40px rgba(88, 230, 255, 0.15); }
-    .dark .accent-glow { box-shadow: 0 0 60px rgba(88, 230, 255, 0.2); }
+
+    /* AI SEO animated gradient for CTA */
+    @keyframes aiGradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .ai-cta-animate {
+      background: linear-gradient(-45deg, #8B5CF6, #3B82F6, #14B8A6, #8B5CF6) !important;
+      background-size: 300% 300% !important;
+      animation: aiGradient 4s ease infinite;
+      box-shadow: 0 4px 25px rgba(139, 92, 246, 0.35);
+    }
+    .accent-glow { box-shadow: 0 0 40px rgba(139, 92, 246, 0.15); }
+    .dark .accent-glow { box-shadow: 0 0 60px rgba(139, 92, 246, 0.2); }
   </style>
 </head>
 <body class="font-body bg-white dark:bg-surface-dark text-body dark:text-body-dark transition-colors duration-300">
@@ -150,7 +164,7 @@
       <p class="text-lg text-body dark:text-body-dark mb-8 max-w-xl mx-auto">
         გაიგეთ რა აკლია თქვენს საიტს, სად არის ზრდის შესაძლებლობები, და მიიღეთ კონკრეტული სამოქმედო გეგმა.
       </p>
-      <a href="#audit-form" class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary to-accent text-white text-lg font-bold rounded-2xl hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 transition-all duration-200">
+      <a href="#audit-form" class="inline-flex items-center gap-2 px-8 py-4 ai-cta-animate text-white text-lg font-bold rounded-2xl hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 transition-all duration-200">
         შეავსეთ ფორმა
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
       </a>
@@ -304,7 +318,7 @@
             <option>სხვა</option>
           </select>
         </div>
-        <button type="submit" class="w-full py-4 bg-gradient-to-r from-primary to-accent text-white text-lg font-bold rounded-xl hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-2">
+        <button type="submit" class="w-full py-4 ai-cta-animate text-white text-lg font-bold rounded-xl hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-2">
           გაგზავნა
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
         </button>
@@ -571,7 +585,7 @@
       </h2>
       <p class="text-body dark:text-body-dark mb-8 text-lg">შეავსეთ ფორმა ან დაგვირეკეთ — პასუხს 24 საათში მიიღებთ.</p>
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="#audit-form" class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary to-accent text-white text-lg font-bold rounded-2xl hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 transition-all duration-200">
+        <a href="#audit-form" class="inline-flex items-center gap-2 px-8 py-4 ai-cta-animate text-white text-lg font-bold rounded-2xl hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 transition-all duration-200">
           უფასო აუდიტის მიღება
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
         </a>
@@ -707,7 +721,7 @@
       </div>
       <h3 class="font-heading text-xl font-extrabold text-heading dark:text-heading-dark mb-3">მოიცადეთ!</h3>
       <p class="text-body dark:text-body-dark mb-6">მიიღეთ უფასო SEO აუდიტი სანამ წახვალთ. გაიგეთ რა აკლია თქვენს საიტს — სრულიად უფასოდ.</p>
-      <a href="#audit-form" onclick="document.getElementById('exit-popup').classList.add('hidden')" class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary to-accent text-white text-lg font-bold rounded-2xl hover:shadow-xl transition-all w-full justify-center">
+      <a href="#audit-form" onclick="document.getElementById('exit-popup').classList.add('hidden')" class="inline-flex items-center gap-2 px-8 py-4 ai-cta-animate text-white text-lg font-bold rounded-2xl hover:shadow-xl transition-all w-full justify-center">
         უფასო აუდიტის მიღება
       </a>
       <p class="text-xs text-body/40 dark:text-body-dark/40 mt-3">არავითარი ვალდებულება</p>
@@ -779,7 +793,7 @@
   <!-- ========== STICKY BOTTOM CTA (mobile) ========== -->
   <div id="sticky-cta" class="fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-white dark:bg-surface-dark-alt border-t border-gray-200 dark:border-gray-800 shadow-[0_-4px_20px_rgba(0,0,0,0.1)] safe-bottom transition-transform duration-300" style="transform: translateY(0);">
     <div class="flex items-center gap-3 px-4 py-3">
-      <a href="#audit-form" class="flex-1 text-center py-3 bg-gradient-to-r from-primary to-accent text-white font-bold rounded-xl text-sm">
+      <a href="#audit-form" class="flex-1 text-center py-3 ai-cta-animate text-white font-bold rounded-xl text-sm">
         უფასო SEO აუდიტი
       </a>
       <a href="tel:+995510101517" class="w-12 h-12 rounded-xl border-2 border-primary dark:border-primary-light flex items-center justify-center text-primary dark:text-primary-light shrink-0">

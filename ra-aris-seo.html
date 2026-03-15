@@ -110,8 +110,9 @@
       theme: {
         extend: {
           colors: {
-            primary: { DEFAULT: '#58E6FF', light: '#7AEDFF', dark: '#3ED8F5' },
-            accent: { DEFAULT: '#FC81FE', dark: '#E070E2' },
+            primary: { DEFAULT: '#8B5CF6', light: '#A78BFA', dark: '#7C3AED' },
+            accent: { DEFAULT: '#14B8A6', dark: '#0D9488' },
+            'ai-blue': '#3B82F6',
             surface: { DEFAULT: '#ffffff', alt: '#f8fafc', dark: '#020710', 'dark-alt': '#0F0F0F' },
             heading: { DEFAULT: '#0f172a', dark: '#f8fafc' },
             body: { DEFAULT: '#475569', dark: '#94a3b8' },
@@ -149,28 +150,28 @@
     .prose li { margin-bottom: 0.5rem; line-height: 1.7; }
     .prose ul li { list-style-type: disc; }
     .prose ol li { list-style-type: decimal; }
-    .prose blockquote { border-left: 4px solid #58E6FF; padding: 1rem 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0; background: rgba(88, 230, 255, 0.05); }
-    .dark .prose blockquote { background: rgba(88, 230, 255, 0.08); }
+    .prose blockquote { border-left: 4px solid #8B5CF6; padding: 1rem 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0; background: rgba(139, 92, 246, 0.05); }
+    .dark .prose blockquote { background: rgba(139, 92, 246, 0.08); }
     .prose img { border-radius: 12px; margin: 1.5rem 0; }
-    .prose a { color: #58E6FF; text-decoration: underline; }
-    .dark .prose a { color: #7AEDFF; }
-    .dark .prose blockquote { border-left-color: #7AEDFF; }
+    .prose a { color: #8B5CF6; text-decoration: underline; }
+    .dark .prose a { color: #A78BFA; }
+    .dark .prose blockquote { border-left-color: #A78BFA; }
     /* TOC active state */
-    .toc-link.active { color: #58E6FF; font-weight: 600; border-left-color: #58E6FF; }
-    .dark .toc-link.active { color: #7AEDFF; border-left-color: #7AEDFF; }
+    .toc-link.active { color: #8B5CF6; font-weight: 600; border-left-color: #8B5CF6; }
+    .dark .toc-link.active { color: #A78BFA; border-left-color: #A78BFA; }
     /* Stats highlight */
     .stat-highlight {
       display: inline-flex;
       align-items: center;
       gap: 0.25rem;
-      background: linear-gradient(135deg, rgba(88, 230, 255, 0.1), rgba(252, 129, 254, 0.1));
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(20, 184, 166, 0.1));
       padding: 0.125rem 0.5rem;
       border-radius: 0.375rem;
       font-weight: 700;
       color: #0f172a;
     }
     .dark .stat-highlight {
-      background: linear-gradient(135deg, rgba(88, 230, 255, 0.15), rgba(252, 129, 254, 0.15));
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(20, 184, 166, 0.15));
       color: #f8fafc;
     }
     /* Animate fade in */
@@ -182,13 +183,26 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
+    /* AI SEO animated gradient for CTA */
+    @keyframes aiGradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .ai-cta-animate {
+      background: linear-gradient(-45deg, #8B5CF6, #3B82F6, #14B8A6, #8B5CF6) !important;
+      background-size: 300% 300% !important;
+      animation: aiGradient 4s ease infinite;
+      box-shadow: 0 4px 25px rgba(139, 92, 246, 0.35);
+    }
   </style>
 </head>
 <body class="font-body bg-white dark:bg-surface-dark text-body dark:text-body-dark transition-colors duration-300">
 
   <!-- Reading Progress Bar -->
   <div class="fixed top-0 left-0 right-0 z-[60] h-1 bg-gray-200/50 dark:bg-gray-800/50">
-    <div id="reading-progress" class="h-full bg-gradient-to-r from-primary to-accent w-0"></div>
+    <div id="reading-progress" class="h-full ai-cta-animate w-0"></div>
   </div>
 
   <!-- ========== HEADER ========== -->
@@ -261,7 +275,7 @@
       <a href="blog-post.html" class="block px-4 py-3 rounded-xl text-base font-medium text-heading dark:text-heading-dark hover:bg-gray-50 dark:hover:bg-gray-800/50">ბლოგი</a>
 
       <div class="pt-4">
-        <a id="mobile-menu-cta" href="seo-audit.html" class="block w-full text-center px-6 py-3.5 bg-gradient-to-r from-primary to-accent text-white font-bold rounded-xl">უფასო SEO აუდიტი</a>
+        <a id="mobile-menu-cta" href="seo-audit.html" class="block w-full text-center px-6 py-3.5 ai-cta-animate text-white font-bold rounded-xl">უფასო SEO აუდიტი</a>
       </div>
     </nav>
   </div>
@@ -665,7 +679,7 @@
   <!-- ========== STICKY BOTTOM CTA (Mobile) ========== -->
   <div id="sticky-cta" class="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-white dark:bg-surface-dark border-t border-gray-200 dark:border-gray-800 px-4 py-3 safe-bottom transition-transform duration-300">
     <div class="flex gap-3">
-      <a href="seo-audit.html" class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-primary to-accent text-white text-sm font-bold rounded-xl">
+      <a href="seo-audit.html" class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 ai-cta-animate text-white text-sm font-bold rounded-xl">
         უფასო SEO აუდიტი
       </a>
       <a href="tel:+995510101517" class="w-12 h-12 flex items-center justify-center border-2 border-primary dark:border-primary-light rounded-xl text-primary dark:text-primary-light shrink-0">

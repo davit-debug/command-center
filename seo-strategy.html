@@ -30,8 +30,9 @@
       theme: {
         extend: {
           colors: {
-            primary: { DEFAULT: '#58E6FF', light: '#7AEDFF', dark: '#3ED8F5' },
-            accent: { DEFAULT: '#FC81FE', dark: '#E070E2' },
+            primary: { DEFAULT: '#8B5CF6', light: '#A78BFA', dark: '#7C3AED' },
+            accent: { DEFAULT: '#14B8A6', dark: '#0D9488' },
+            'ai-blue': '#3B82F6',
             surface: { DEFAULT: '#ffffff', alt: '#f8fafc', dark: '#020710', 'dark-alt': '#0F0F0F' },
             heading: { DEFAULT: '#0f172a', dark: '#f8fafc' },
             body: { DEFAULT: '#475569', dark: '#94a3b8' },
@@ -57,11 +58,24 @@
     .delay-200 { animation-delay: 0.2s; }
     .delay-300 { animation-delay: 0.3s; }
 
-    .gradient-text { background: linear-gradient(135deg, #58E6FF, #FC81FE); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .dark .gradient-text { background: linear-gradient(135deg, #7AEDFF, #FC81FE); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .gradient-text { background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .dark .gradient-text { background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+    /* AI SEO animated gradient for CTA */
+    @keyframes aiGradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .ai-cta-animate {
+      background: linear-gradient(-45deg, #8B5CF6, #3B82F6, #14B8A6, #8B5CF6) !important;
+      background-size: 300% 300% !important;
+      animation: aiGradient 4s ease infinite;
+      box-shadow: 0 4px 25px rgba(139, 92, 246, 0.35);
+    }
 
     .gradient-border { position: relative; background: white; border-radius: 16px; overflow: hidden; }
-    .gradient-border::before { content: ''; position: absolute; inset: 0; padding: 1.5px; border-radius: 16px; background: linear-gradient(135deg, #58E6FF, #FC81FE); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; }
+    .gradient-border::before { content: ''; position: absolute; inset: 0; padding: 1.5px; border-radius: 16px; background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; }
     .dark .gradient-border { background: #0F0F0F; }
 
     .header-scrolled { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
@@ -76,13 +90,13 @@
       left: 24px;
       width: 2px;
       height: calc(100% - 32px);
-      background: linear-gradient(to bottom, #58E6FF, #FC81FE);
+      background: linear-gradient(to bottom, #8B5CF6, #14B8A6);
       opacity: 0.15;
     }
 
     /* Form focus glow */
     input:focus, textarea:focus, select:focus {
-      box-shadow: 0 0 0 3px rgba(88, 230, 255, 0.15);
+      box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
     }
   </style>
 </head>

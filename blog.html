@@ -33,8 +33,9 @@
       theme: {
         extend: {
           colors: {
-            primary: { DEFAULT: '#58E6FF', light: '#7AEDFF', dark: '#3ED8F5' },
-            accent: { DEFAULT: '#FC81FE', dark: '#E070E2' },
+            primary: { DEFAULT: '#8B5CF6', light: '#A78BFA', dark: '#7C3AED' },
+            accent: { DEFAULT: '#14B8A6', dark: '#0D9488' },
+            'ai-blue': '#3B82F6',
             surface: { DEFAULT: '#ffffff', alt: '#f8fafc', dark: '#020710', 'dark-alt': '#0F0F0F' },
             heading: { DEFAULT: '#0f172a', dark: '#f8fafc' },
             body: { DEFAULT: '#475569', dark: '#94a3b8' },
@@ -61,16 +62,29 @@
     .font-heading { font-family: 'Dachi the Lynx', sans-serif; }
 
     .gradient-text {
-      background: linear-gradient(135deg, #58E6FF, #FC81FE);
+      background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
     .dark .gradient-text {
-      background: linear-gradient(135deg, #7AEDFF, #FC81FE);
+      background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+    }
+
+    /* AI SEO animated gradient for CTA */
+    @keyframes aiGradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .ai-cta-animate {
+      background: linear-gradient(-45deg, #8B5CF6, #3B82F6, #14B8A6, #8B5CF6) !important;
+      background-size: 300% 300% !important;
+      animation: aiGradient 4s ease infinite;
+      box-shadow: 0 4px 25px rgba(139, 92, 246, 0.35);
     }
 
     .gradient-border {
@@ -85,7 +99,7 @@
       inset: 0;
       padding: 1.5px;
       border-radius: 16px;
-      background: linear-gradient(135deg, #58E6FF, #FC81FE);
+      background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6);
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
       mask-composite: exclude;
@@ -111,7 +125,7 @@
       box-shadow: 0 20px 40px -12px rgba(0,0,0,0.15);
     }
     .dark .blog-card:hover {
-      box-shadow: 0 20px 40px -12px rgba(88, 230, 255, 0.08);
+      box-shadow: 0 20px 40px -12px rgba(139, 92, 246, 0.08);
     }
 
     /* Post show/hide animation */
@@ -299,7 +313,7 @@
                 <span class="text-sm font-medium text-primary/60 dark:text-primary-light/60">Featured Article</span>
               </div>
               <!-- Featured badge -->
-              <div class="absolute top-4 left-4 px-3 py-1.5 bg-gradient-to-r from-primary to-accent text-white text-xs font-bold rounded-lg">
+              <div class="absolute top-4 left-4 px-3 py-1.5 ai-cta-animate text-white text-xs font-bold rounded-lg">
                 რჩეული
               </div>
             </div>

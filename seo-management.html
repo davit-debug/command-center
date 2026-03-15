@@ -88,8 +88,9 @@
       theme: {
         extend: {
           colors: {
-            primary: { DEFAULT: '#58E6FF', light: '#7AEDFF', dark: '#3ED8F5' },
-            accent: { DEFAULT: '#FC81FE', dark: '#E070E2' },
+            primary: { DEFAULT: '#8B5CF6', light: '#A78BFA', dark: '#7C3AED' },
+            accent: { DEFAULT: '#14B8A6', dark: '#0D9488' },
+            'ai-blue': '#3B82F6',
             surface: { DEFAULT: '#ffffff', alt: '#f8fafc', dark: '#020710', 'dark-alt': '#0F0F0F' },
             heading: { DEFAULT: '#0f172a', dark: '#f8fafc' },
             body: { DEFAULT: '#475569', dark: '#94a3b8' },
@@ -126,16 +127,29 @@
     .delay-300 { animation-delay: 0.3s; }
 
     .gradient-text {
-      background: linear-gradient(135deg, #58E6FF, #FC81FE);
+      background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
     .dark .gradient-text {
-      background: linear-gradient(135deg, #7AEDFF, #FC81FE);
+      background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+    }
+
+    /* AI SEO animated gradient for CTA */
+    @keyframes aiGradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .ai-cta-animate {
+      background: linear-gradient(-45deg, #8B5CF6, #3B82F6, #14B8A6, #8B5CF6) !important;
+      background-size: 300% 300% !important;
+      animation: aiGradient 4s ease infinite;
+      box-shadow: 0 4px 25px rgba(139, 92, 246, 0.35);
     }
 
     .gradient-border {
@@ -150,7 +164,7 @@
       inset: 0;
       padding: 1.5px;
       border-radius: 16px;
-      background: linear-gradient(135deg, #58E6FF, #FC81FE);
+      background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6);
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
       mask-composite: exclude;
@@ -158,8 +172,8 @@
     .dark .gradient-border { background: #0F0F0F; }
 
     .header-scrolled { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
-    .accent-glow { box-shadow: 0 0 40px rgba(88, 230, 255, 0.15); }
-    .dark .accent-glow { box-shadow: 0 0 60px rgba(88, 230, 255, 0.2); }
+    .accent-glow { box-shadow: 0 0 40px rgba(139, 92, 246, 0.15); }
+    .dark .accent-glow { box-shadow: 0 0 60px rgba(139, 92, 246, 0.2); }
     .safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
 
     /* Process step connector */
@@ -171,7 +185,7 @@
       left: 20px;
       width: 2px;
       height: calc(100% - 40px);
-      background: linear-gradient(to bottom, #58E6FF, #FC81FE);
+      background: linear-gradient(to bottom, #8B5CF6, #14B8A6);
       opacity: 0.2;
     }
     .step-connector:last-child::after { display: none; }
@@ -197,12 +211,12 @@
 
     /* Pricing card highlight */
     .pricing-highlight {
-      background: linear-gradient(135deg, rgba(88, 230, 255, 0.05), rgba(252, 129, 254, 0.05));
-      border-color: #58E6FF;
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(20, 184, 166, 0.05));
+      border-color: #8B5CF6;
     }
     .dark .pricing-highlight {
-      background: linear-gradient(135deg, rgba(88, 230, 255, 0.1), rgba(252, 129, 254, 0.1));
-      border-color: #58E6FF;
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(20, 184, 166, 0.1));
+      border-color: #8B5CF6;
     }
 
     /* Testimonial card */
@@ -365,7 +379,7 @@
                   <span class="font-inter font-bold text-success">39.8%</span>
                 </div>
                 <div class="w-full bg-gray-100 dark:bg-gray-800 rounded-full h-3">
-                  <div class="bg-gradient-to-r from-primary to-accent h-3 rounded-full" style="width: 100%"></div>
+                  <div class="ai-cta-animate h-3 rounded-full" style="width: 100%"></div>
                 </div>
               </div>
               <div>
@@ -921,7 +935,7 @@
         <!-- Growth (Highlighted) -->
         <div class="bg-white dark:bg-surface-dark rounded-2xl pricing-highlight border-2 p-7 flex flex-col relative">
           <div class="absolute -top-3 left-1/2 -translate-x-1/2">
-            <span class="px-4 py-1 text-xs font-bold rounded-full bg-gradient-to-r from-primary to-accent text-white">პოპულარული</span>
+            <span class="px-4 py-1 text-xs font-bold rounded-full ai-cta-animate text-white">პოპულარული</span>
           </div>
           <div class="mb-6">
             <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark mb-1">Growth</h3>

@@ -16,8 +16,9 @@
       theme: {
         extend: {
           colors: {
-            primary: { DEFAULT: '#58E6FF', light: '#7AEDFF', dark: '#3ED8F5' },
-            accent: { DEFAULT: '#FC81FE', dark: '#E070E2' },
+            primary: { DEFAULT: '#8B5CF6', light: '#A78BFA', dark: '#7C3AED' },
+            accent: { DEFAULT: '#14B8A6', dark: '#0D9488' },
+            'ai-blue': '#3B82F6',
             surface: { DEFAULT: '#ffffff', alt: '#f8fafc', dark: '#020710', 'dark-alt': '#0F0F0F' },
             heading: { DEFAULT: '#0f172a', dark: '#f8fafc' },
             body: { DEFAULT: '#475569', dark: '#94a3b8' },
@@ -66,16 +67,29 @@
     .delay-300 { animation-delay: 0.3s; }
 
     .gradient-text {
-      background: linear-gradient(135deg, #58E6FF, #FC81FE);
+      background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
     .dark .gradient-text {
-      background: linear-gradient(135deg, #7AEDFF, #FC81FE);
+      background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+    }
+
+    /* AI SEO animated gradient for CTA */
+    @keyframes aiGradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .ai-cta-animate {
+      background: linear-gradient(-45deg, #8B5CF6, #3B82F6, #14B8A6, #8B5CF6) !important;
+      background-size: 300% 300% !important;
+      animation: aiGradient 4s ease infinite;
+      box-shadow: 0 4px 25px rgba(139, 92, 246, 0.35);
     }
 
     .gradient-border {
@@ -90,7 +104,7 @@
       inset: 0;
       padding: 1.5px;
       border-radius: 16px;
-      background: linear-gradient(135deg, #58E6FF, #FC81FE);
+      background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6);
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
       mask-composite: exclude;
@@ -98,8 +112,8 @@
     .dark .gradient-border { background: #0F0F0F; }
 
     .header-scrolled { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
-    .accent-glow { box-shadow: 0 0 40px rgba(88, 230, 255, 0.15); }
-    .dark .accent-glow { box-shadow: 0 0 60px rgba(88, 230, 255, 0.2); }
+    .accent-glow { box-shadow: 0 0 40px rgba(139, 92, 246, 0.15); }
+    .dark .accent-glow { box-shadow: 0 0 60px rgba(139, 92, 246, 0.2); }
     .safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
@@ -111,7 +125,7 @@
     }
 
     .filter-tab.active {
-      background: linear-gradient(135deg, #58E6FF, #FC81FE);
+      background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6);
       color: white;
       border-color: transparent;
     }
@@ -278,7 +292,7 @@
 
         <!-- Case 1 -->
         <article class="case-card showing bg-white dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 overflow-hidden" data-industry="ecommerce">
-          <div class="h-1.5 bg-gradient-to-r from-primary to-accent"></div>
+          <div class="h-1.5 ai-cta-animate"></div>
           <div class="p-6 lg:p-8">
             <div class="flex flex-wrap items-center gap-3 mb-5">
               <span class="px-3 py-1 text-xs font-semibold rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300">E-commerce</span>
@@ -325,7 +339,7 @@
 
         <!-- Case 2 -->
         <article class="case-card showing bg-white dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 overflow-hidden" data-industry="medicine">
-          <div class="h-1.5 bg-gradient-to-r from-primary to-accent"></div>
+          <div class="h-1.5 ai-cta-animate"></div>
           <div class="p-6 lg:p-8">
             <div class="flex flex-wrap items-center gap-3 mb-5">
               <span class="px-3 py-1 text-xs font-semibold rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300">მედიცინა</span>
@@ -372,7 +386,7 @@
 
         <!-- Case 3 -->
         <article class="case-card showing bg-white dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 overflow-hidden" data-industry="law">
-          <div class="h-1.5 bg-gradient-to-r from-primary to-accent"></div>
+          <div class="h-1.5 ai-cta-animate"></div>
           <div class="p-6 lg:p-8">
             <div class="flex flex-wrap items-center gap-3 mb-5">
               <span class="px-3 py-1 text-xs font-semibold rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300">სამართალი</span>
@@ -425,7 +439,7 @@
 
         <!-- Case 4 -->
         <article class="case-card showing bg-white dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 overflow-hidden" data-industry="realestate">
-          <div class="h-1.5 bg-gradient-to-r from-primary to-accent"></div>
+          <div class="h-1.5 ai-cta-animate"></div>
           <div class="p-6 lg:p-8">
             <div class="flex flex-wrap items-center gap-3 mb-5">
               <span class="px-3 py-1 text-xs font-semibold rounded-full bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300">უძრავი ქონება</span>
@@ -472,7 +486,7 @@
 
         <!-- Case 5 -->
         <article class="case-card showing bg-white dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 overflow-hidden" data-industry="ecommerce">
-          <div class="h-1.5 bg-gradient-to-r from-primary to-accent"></div>
+          <div class="h-1.5 ai-cta-animate"></div>
           <div class="p-6 lg:p-8">
             <div class="flex flex-wrap items-center gap-3 mb-5">
               <span class="px-3 py-1 text-xs font-semibold rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300">E-commerce</span>
@@ -519,7 +533,7 @@
 
         <!-- Case 6 -->
         <article class="case-card showing bg-white dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 overflow-hidden" data-industry="tech">
-          <div class="h-1.5 bg-gradient-to-r from-primary to-accent"></div>
+          <div class="h-1.5 ai-cta-animate"></div>
           <div class="p-6 lg:p-8">
             <div class="flex flex-wrap items-center gap-3 mb-5">
               <span class="px-3 py-1 text-xs font-semibold rounded-full bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300">ტექნოლოგია</span>
@@ -566,7 +580,7 @@
 
         <!-- Case 7 -->
         <article class="case-card showing bg-white dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 overflow-hidden" data-industry="tourism">
-          <div class="h-1.5 bg-gradient-to-r from-primary to-accent"></div>
+          <div class="h-1.5 ai-cta-animate"></div>
           <div class="p-6 lg:p-8">
             <div class="flex flex-wrap items-center gap-3 mb-5">
               <span class="px-3 py-1 text-xs font-semibold rounded-full bg-rose-100 dark:bg-rose-900/30 text-rose-700 dark:text-rose-300">ტურიზმი</span>
@@ -700,7 +714,7 @@
       <h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-heading dark:text-heading-dark mb-4">გსურთ <span class="gradient-text">მსგავსი შედეგების</span> მიღწევა?</h2>
       <p class="text-lg text-body dark:text-body-dark mb-8">მოითხოვეთ უფასო SEO აუდიტი და გაიგეთ თქვენი საიტის პოტენციალი</p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="seo-audit.html" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-primary to-accent text-white text-lg font-bold rounded-2xl hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 transition-all duration-200">
+        <a href="seo-audit.html" class="inline-flex items-center justify-center gap-2 px-8 py-4 ai-cta-animate text-white text-lg font-bold rounded-2xl hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 transition-all duration-200">
           უფასო SEO აუდიტი
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
         </a>

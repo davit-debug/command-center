@@ -40,8 +40,9 @@
       theme: {
         extend: {
           colors: {
-            primary: { DEFAULT: '#58E6FF', light: '#7AEDFF', dark: '#3ED8F5' },
-            accent: { DEFAULT: '#FC81FE', dark: '#E070E2' },
+            primary: { DEFAULT: '#8B5CF6', light: '#A78BFA', dark: '#7C3AED' },
+            accent: { DEFAULT: '#14B8A6', dark: '#0D9488' },
+            'ai-blue': '#3B82F6',
             surface: { DEFAULT: '#ffffff', alt: '#f8fafc', dark: '#020710', 'dark-alt': '#0F0F0F' },
             heading: { DEFAULT: '#0f172a', dark: '#f8fafc' },
             body: { DEFAULT: '#475569', dark: '#94a3b8' },
@@ -78,16 +79,29 @@
     .delay-300 { animation-delay: 0.3s; }
 
     .gradient-text {
-      background: linear-gradient(135deg, #58E6FF, #FC81FE);
+      background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
     .dark .gradient-text {
-      background: linear-gradient(135deg, #7AEDFF, #FC81FE);
+      background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+    }
+
+    /* AI SEO animated gradient for CTA */
+    @keyframes aiGradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .ai-cta-animate {
+      background: linear-gradient(-45deg, #8B5CF6, #3B82F6, #14B8A6, #8B5CF6) !important;
+      background-size: 300% 300% !important;
+      animation: aiGradient 4s ease infinite;
+      box-shadow: 0 4px 25px rgba(139, 92, 246, 0.35);
     }
 
     .gradient-border {
@@ -102,7 +116,7 @@
       inset: 0;
       padding: 1.5px;
       border-radius: 16px;
-      background: linear-gradient(135deg, #58E6FF, #FC81FE);
+      background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6);
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
       mask-composite: exclude;
@@ -115,21 +129,21 @@
     }
 
     .accent-glow {
-      box-shadow: 0 0 40px rgba(88, 230, 255, 0.15);
+      box-shadow: 0 0 40px rgba(139, 92, 246, 0.15);
     }
     .dark .accent-glow {
-      box-shadow: 0 0 60px rgba(88, 230, 255, 0.2);
+      box-shadow: 0 0 60px rgba(139, 92, 246, 0.2);
     }
 
     .safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
 
     /* Timeline */
     .timeline-line {
-      background: linear-gradient(180deg, #58E6FF, #FC81FE);
+      background: linear-gradient(180deg, #8B5CF6, #14B8A6);
     }
     .timeline-dot {
-      background: linear-gradient(135deg, #58E6FF, #FC81FE);
-      box-shadow: 0 0 20px rgba(88, 230, 255, 0.4);
+      background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6);
+      box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
     }
 
     /* Team card hover */
@@ -178,7 +192,7 @@
 
       <!-- Right side -->
       <div class="flex items-center gap-2">
-        <button class="hidden sm:flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark transition-colors">KA / EN</button><a href="seo-audit.html" class="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-primary to-accent text-white text-sm font-semibold rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-200">
+        <button class="hidden sm:flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark transition-colors">KA / EN</button><a href="seo-audit.html" class="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 ai-cta-animate text-white text-sm font-semibold rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-200">
           უფასო აუდიტი
         </a>
         <button id="mobile-menu-btn" class="lg:hidden w-9 h-9 rounded-lg flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-heading dark:text-heading-dark">
@@ -209,7 +223,7 @@
         <a href="case-studies.html" class="block px-4 py-3 text-lg font-medium text-heading dark:text-heading-dark rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800/50">შედეგები</a>
         <a href="blog-post.html" class="block px-4 py-3 text-lg font-medium text-heading dark:text-heading-dark rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800/50">ბლოგი</a>
         <hr class="my-3 border-gray-100 dark:border-gray-800">
-        <a href="seo-audit.html" class="block text-center px-6 py-4 bg-gradient-to-r from-primary to-accent text-white text-lg font-bold rounded-xl mt-2">
+        <a href="seo-audit.html" class="block text-center px-6 py-4 ai-cta-animate text-white text-lg font-bold rounded-xl mt-2">
           უფასო SEO აუდიტი
         </a>
         <a href="tel:+995510101517" class="block text-center px-6 py-3 border-2 border-primary dark:border-primary-light text-primary dark:text-primary-light text-lg font-bold rounded-xl flex items-center justify-center gap-2">
@@ -649,7 +663,7 @@
             მოდი, ერთად გავზარდოთ<br><span class="gradient-text">შენი ბიზნესი</span>
           </h2>
           <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="seo-audit.html" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-primary to-accent text-white text-lg font-bold rounded-2xl hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 transition-all duration-200">
+            <a href="seo-audit.html" class="inline-flex items-center justify-center gap-2 px-8 py-4 ai-cta-animate text-white text-lg font-bold rounded-2xl hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 transition-all duration-200">
               უფასო SEO აუდიტი
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
             </a>
@@ -736,7 +750,7 @@
   <!-- ========== STICKY BOTTOM CTA (Mobile Only) ========== -->
   <div id="sticky-cta" class="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-white dark:bg-surface-dark border-t border-gray-200 dark:border-gray-800 px-4 py-3 safe-bottom transition-transform duration-300">
     <div class="flex gap-3">
-      <a href="seo-audit.html" class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-primary to-accent text-white text-sm font-bold rounded-xl">
+      <a href="seo-audit.html" class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 ai-cta-animate text-white text-sm font-bold rounded-xl">
         უფასო SEO აუდიტი
       </a>
       <a href="tel:+995510101517" class="w-12 h-12 flex items-center justify-center border-2 border-primary dark:border-primary-light rounded-xl text-primary dark:text-primary-light shrink-0">
