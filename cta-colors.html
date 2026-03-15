@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ka" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CTA ფერების ტესტი — 10XSEO</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/firago@1.0.0/FiraGO.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: { DEFAULT: '#58E6FF', light: '#7AEDFF', dark: '#3ED8F5' },
+            accent: { DEFAULT: '#FC81FE', dark: '#E070E2' },
+            surface: { DEFAULT: '#ffffff', alt: '#f8fafc', dark: '#020710', 'dark-alt': '#0F0F0F' },
+            heading: { DEFAULT: '#0f172a', dark: '#f8fafc' },
+            body: { DEFAULT: '#475569', dark: '#94a3b8' },
+          },
+          fontFamily: {
+            'heading': ['"Dachi the Lynx"', 'sans-serif'],
+            'body': ['FiraGO', 'sans-serif'],
+            'inter': ['Inter', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    @font-face {
+      font-family: 'Dachi the Lynx';
+      src: url('fonts/DachiTheLynx.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    body { font-family: 'FiraGO', 'Inter', sans-serif; }
+    .font-heading { font-family: 'Dachi the Lynx', sans-serif; }
+  </style>
+</head>
+<body class="bg-[#020710] text-gray-300 min-h-screen py-12 px-4">
+
+  <div class="max-w-4xl mx-auto">
+    <h1 class="font-heading text-3xl lg:text-4xl text-white text-center mb-4">CTA ფერების ტესტი</h1>
+    <p class="text-center text-gray-400 mb-12">აირჩიე რომელი ფერი ჯობია "უფასო SEO აუდიტი" ღილაკისთვის</p>
+
+    <!-- ========== VARIANT 1: Current (Cyan → Pink) ========== -->
+    <div class="mb-10 p-6 rounded-2xl border border-gray-800 bg-[#0F0F0F]">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <h2 class="text-white font-bold text-lg">ვარიანტი 1 — ახლანდელი</h2>
+          <p class="text-sm text-gray-500">Cyan → Pink (#58E6FF → #FC81FE)</p>
+        </div>
+        <span class="text-xs px-3 py-1 rounded-full bg-gray-800 text-gray-400">ახლანდელი</span>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="#" class="flex-1 inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-[#58E6FF] to-[#FC81FE] text-white text-lg font-bold rounded-2xl hover:shadow-xl hover:shadow-[#58E6FF]/30 hover:-translate-y-0.5 transition-all duration-200">
+          უფასო SEO აუდიტი
+        </a>
+        <a href="#" class="flex-1 inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-[#58E6FF] to-[#FC81FE] text-white text-sm font-semibold rounded-xl hover:shadow-lg transition-all duration-200">
+          უფასო აუდიტი (header)
+        </a>
+      </div>
+      <!-- Sticky bottom preview -->
+      <div class="mt-4 flex gap-2">
+        <div class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-[#58E6FF] to-[#FC81FE] text-white text-sm font-bold rounded-xl">
+          უფასო SEO აუდიტი (sticky)
+        </div>
+        <div class="w-12 h-12 rounded-xl border-2 border-[#58E6FF] flex items-center justify-center text-[#58E6FF]">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== VARIANT 2: Logo Style (Gold/Yellow) ========== -->
+    <div class="mb-10 p-6 rounded-2xl border border-gray-800 bg-[#0F0F0F]">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <h2 class="text-white font-bold text-lg">ვარიანტი 2 — ლოგოს სტილი</h2>
+          <p class="text-sm text-gray-500">Gold → Amber (#F5A623 → #FF8C00)</p>
+        </div>
+        <span class="text-xs px-3 py-1 rounded-full bg-yellow-900/30 text-yellow-400">ლოგოს ფერი</span>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="#" class="flex-1 inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-[#F5A623] to-[#FF8C00] text-white text-lg font-bold rounded-2xl hover:shadow-xl hover:shadow-[#F5A623]/30 hover:-translate-y-0.5 transition-all duration-200">
+          უფასო SEO აუდიტი
+        </a>
+        <a href="#" class="flex-1 inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-[#F5A623] to-[#FF8C00] text-white text-sm font-semibold rounded-xl hover:shadow-lg transition-all duration-200">
+          უფასო აუდიტი (header)
+        </a>
+      </div>
+      <div class="mt-4 flex gap-2">
+        <div class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-[#F5A623] to-[#FF8C00] text-white text-sm font-bold rounded-xl">
+          უფასო SEO აუდიტი (sticky)
+        </div>
+        <div class="w-12 h-12 rounded-xl border-2 border-[#F5A623] flex items-center justify-center text-[#F5A623]">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== VARIANT 3: AI SEO Style (Purple → Blue) ========== -->
+    <div class="mb-10 p-6 rounded-2xl border border-gray-800 bg-[#0F0F0F]">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <h2 class="text-white font-bold text-lg">ვარიანტი 3 — AI SEO სტილი</h2>
+          <p class="text-sm text-gray-500">Purple → Blue (#8B5CF6 → #3B82F6)</p>
+        </div>
+        <span class="text-xs px-3 py-1 rounded-full bg-purple-900/30 text-purple-400">AI SEO</span>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="#" class="flex-1 inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-[#8B5CF6] to-[#3B82F6] text-white text-lg font-bold rounded-2xl hover:shadow-xl hover:shadow-[#8B5CF6]/30 hover:-translate-y-0.5 transition-all duration-200">
+          უფასო SEO აუდიტი
+        </a>
+        <a href="#" class="flex-1 inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-[#8B5CF6] to-[#3B82F6] text-white text-sm font-semibold rounded-xl hover:shadow-lg transition-all duration-200">
+          უფასო აუდიტი (header)
+        </a>
+      </div>
+      <div class="mt-4 flex gap-2">
+        <div class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-[#8B5CF6] to-[#3B82F6] text-white text-sm font-bold rounded-xl">
+          უფასო SEO აუდიტი (sticky)
+        </div>
+        <div class="w-12 h-12 rounded-xl border-2 border-[#8B5CF6] flex items-center justify-center text-[#8B5CF6]">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== VARIANT 4: Emerald Green (Trust/Growth) ========== -->
+    <div class="mb-10 p-6 rounded-2xl border border-gray-800 bg-[#0F0F0F]">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <h2 class="text-white font-bold text-lg">ვარიანტი 4 — ზრდის მწვანე</h2>
+          <p class="text-sm text-gray-500">Emerald → Teal (#10B981 → #14B8A6)</p>
+        </div>
+        <span class="text-xs px-3 py-1 rounded-full bg-emerald-900/30 text-emerald-400">ზრდა & ნდობა</span>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="#" class="flex-1 inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-[#10B981] to-[#14B8A6] text-white text-lg font-bold rounded-2xl hover:shadow-xl hover:shadow-[#10B981]/30 hover:-translate-y-0.5 transition-all duration-200">
+          უფასო SEO აუდიტი
+        </a>
+        <a href="#" class="flex-1 inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-[#10B981] to-[#14B8A6] text-white text-sm font-semibold rounded-xl hover:shadow-lg transition-all duration-200">
+          უფასო აუდიტი (header)
+        </a>
+      </div>
+      <div class="mt-4 flex gap-2">
+        <div class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-[#10B981] to-[#14B8A6] text-white text-sm font-bold rounded-xl">
+          უფასო SEO აუდიტი (sticky)
+        </div>
+        <div class="w-12 h-12 rounded-xl border-2 border-[#10B981] flex items-center justify-center text-[#10B981]">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== VARIANT 5: Electric Orange → Red (Urgency) ========== -->
+    <div class="mb-10 p-6 rounded-2xl border border-gray-800 bg-[#0F0F0F]">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <h2 class="text-white font-bold text-lg">ვარიანტი 5 — აქცია/გადაუდებლობა</h2>
+          <p class="text-sm text-gray-500">Orange → Red (#F97316 → #EF4444)</p>
+        </div>
+        <span class="text-xs px-3 py-1 rounded-full bg-orange-900/30 text-orange-400">urgency</span>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="#" class="flex-1 inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-[#F97316] to-[#EF4444] text-white text-lg font-bold rounded-2xl hover:shadow-xl hover:shadow-[#F97316]/30 hover:-translate-y-0.5 transition-all duration-200">
+          უფასო SEO აუდიტი
+        </a>
+        <a href="#" class="flex-1 inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-[#F97316] to-[#EF4444] text-white text-sm font-semibold rounded-xl hover:shadow-lg transition-all duration-200">
+          უფასო აუდიტი (header)
+        </a>
+      </div>
+      <div class="mt-4 flex gap-2">
+        <div class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-[#F97316] to-[#EF4444] text-white text-sm font-bold rounded-xl">
+          უფასო SEO აუდიტი (sticky)
+        </div>
+        <div class="w-12 h-12 rounded-xl border-2 border-[#F97316] flex items-center justify-center text-[#F97316]">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== VARIANT 6: Gold Solid (Logo exact match) ========== -->
+    <div class="mb-10 p-6 rounded-2xl border border-gray-800 bg-[#0F0F0F]">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <h2 class="text-white font-bold text-lg">ვარიანტი 6 — ლოგოს ზუსტი ფერი (solid)</h2>
+          <p class="text-sm text-gray-500">Solid Gold (#F5A623) — gradient-ის გარეშე</p>
+        </div>
+        <span class="text-xs px-3 py-1 rounded-full bg-yellow-900/30 text-yellow-400">solid gold</span>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="#" class="flex-1 inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#F5A623] text-white text-lg font-bold rounded-2xl hover:shadow-xl hover:shadow-[#F5A623]/30 hover:-translate-y-0.5 hover:bg-[#E09620] transition-all duration-200">
+          უფასო SEO აუდიტი
+        </a>
+        <a href="#" class="flex-1 inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#F5A623] text-white text-sm font-semibold rounded-xl hover:shadow-lg hover:bg-[#E09620] transition-all duration-200">
+          უფასო აუდიტი (header)
+        </a>
+      </div>
+      <div class="mt-4 flex gap-2">
+        <div class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 bg-[#F5A623] text-white text-sm font-bold rounded-xl">
+          უფასო SEO აუდიტი (sticky)
+        </div>
+        <div class="w-12 h-12 rounded-xl border-2 border-[#F5A623] flex items-center justify-center text-[#F5A623]">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== VARIANT 7: Royal Blue → Cyan (Authority) ========== -->
+    <div class="mb-10 p-6 rounded-2xl border border-gray-800 bg-[#0F0F0F]">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <h2 class="text-white font-bold text-lg">ვარიანტი 7 — Royal Blue</h2>
+          <p class="text-sm text-gray-500">Blue → Cyan (#3B5BF5 → #58E6FF)</p>
+        </div>
+        <span class="text-xs px-3 py-1 rounded-full bg-blue-900/30 text-blue-400">authority</span>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="#" class="flex-1 inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-[#3B5BF5] to-[#58E6FF] text-white text-lg font-bold rounded-2xl hover:shadow-xl hover:shadow-[#3B5BF5]/30 hover:-translate-y-0.5 transition-all duration-200">
+          უფასო SEO აუდიტი
+        </a>
+        <a href="#" class="flex-1 inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-[#3B5BF5] to-[#58E6FF] text-white text-sm font-semibold rounded-xl hover:shadow-lg transition-all duration-200">
+          უფასო აუდიტი (header)
+        </a>
+      </div>
+      <div class="mt-4 flex gap-2">
+        <div class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-[#3B5BF5] to-[#58E6FF] text-white text-sm font-bold rounded-xl">
+          უფასო SEO აუდიტი (sticky)
+        </div>
+        <div class="w-12 h-12 rounded-xl border-2 border-[#3B5BF5] flex items-center justify-center text-[#3B5BF5]">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
