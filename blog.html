@@ -247,48 +247,30 @@
   </div>
 
   <!-- ========== HERO SECTION ========== -->
-  <section class="pt-24 lg:pt-32 pb-12 lg:pb-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center">
-      <!-- Badge -->
-      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 dark:bg-primary/10 border border-primary/20 dark:border-primary/20 mb-6 animate-fade-in-up">
-        <svg class="w-4 h-4 text-primary dark:text-primary-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
-        <span class="text-sm font-semibold text-primary dark:text-primary-light">10xSEO ბლოგი</span>
-      </div>
-
-      <!-- Heading -->
-      <h1 class="font-heading text-[32px] sm:text-[44px] lg:text-[56px] font-extrabold text-heading dark:text-heading-dark !leading-[1.15] mb-6 animate-fade-in-up delay-100">
-        SEO სიახლეები და <span class="gradient-text">ექსპერტული სტატიები</span>
+  <section class="pt-24 lg:pt-32 pb-6 lg:pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <h1 class="font-heading text-[32px] sm:text-[44px] lg:text-[56px] font-extrabold text-heading dark:text-heading-dark !leading-[1.15] mb-4 animate-fade-in-up">
+        SEO <span class="gradient-text">ბლოგი</span>
       </h1>
-
-      <!-- Subtitle -->
-      <p class="text-lg sm:text-xl text-body dark:text-body-dark max-w-2xl mx-auto animate-fade-in-up delay-200">
+      <p class="text-lg text-body dark:text-body-dark max-w-2xl animate-fade-in-up delay-100">
         პრაქტიკული რჩევები, ქეის სტადიები და ინდუსტრიის ტრენდები — პირდაპირ SEO ექსპერტებისგან
       </p>
     </div>
   </section>
 
-  <!-- ========== FILTER / CATEGORY BAR ========== -->
-  <section class="sticky top-16 lg:top-[72px] z-40 bg-white/90 dark:bg-surface-dark/90 backdrop-blur-lg border-b border-gray-100 dark:border-gray-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4">
-      <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-        <!-- Category chips -->
-        <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1 w-full sm:w-auto sm:flex-1">
-          <button data-filter="all" class="category-chip active shrink-0 px-4 py-2 text-sm font-medium rounded-full border transition-all duration-200 bg-primary text-white border-primary">ყველა</button>
-          <button data-filter="seo-strategy" class="category-chip shrink-0 px-4 py-2 text-sm font-medium rounded-full border transition-all duration-200 bg-transparent text-heading dark:text-heading-dark border-gray-200 dark:border-gray-700 hover:border-primary hover:text-primary dark:hover:border-primary-light dark:hover:text-primary-light">SEO სტრატეგია</button>
-          <button data-filter="technical-seo" class="category-chip shrink-0 px-4 py-2 text-sm font-medium rounded-full border transition-all duration-200 bg-transparent text-heading dark:text-heading-dark border-gray-200 dark:border-gray-700 hover:border-primary hover:text-primary dark:hover:border-primary-light dark:hover:text-primary-light">ტექნიკური SEO</button>
-          <button data-filter="content-marketing" class="category-chip shrink-0 px-4 py-2 text-sm font-medium rounded-full border transition-all duration-200 bg-transparent text-heading dark:text-heading-dark border-gray-200 dark:border-gray-700 hover:border-primary hover:text-primary dark:hover:border-primary-light dark:hover:text-primary-light">კონტენტ მარკეტინგი</button>
-          <button data-filter="link-building" class="category-chip shrink-0 px-4 py-2 text-sm font-medium rounded-full border transition-all duration-200 bg-transparent text-heading dark:text-heading-dark border-gray-200 dark:border-gray-700 hover:border-primary hover:text-primary dark:hover:border-primary-light dark:hover:text-primary-light">ლინკ ბილდინგი</button>
-          <button data-filter="local-seo" class="category-chip shrink-0 px-4 py-2 text-sm font-medium rounded-full border transition-all duration-200 bg-transparent text-heading dark:text-heading-dark border-gray-200 dark:border-gray-700 hover:border-primary hover:text-primary dark:hover:border-primary-light dark:hover:text-primary-light">ლოკალური SEO</button>
-          <button data-filter="google-ads" class="category-chip shrink-0 px-4 py-2 text-sm font-medium rounded-full border transition-all duration-200 bg-transparent text-heading dark:text-heading-dark border-gray-200 dark:border-gray-700 hover:border-primary hover:text-primary dark:hover:border-primary-light dark:hover:text-primary-light">Google Ads</button>
-          <button data-filter="analytics" class="category-chip shrink-0 px-4 py-2 text-sm font-medium rounded-full border transition-all duration-200 bg-transparent text-heading dark:text-heading-dark border-gray-200 dark:border-gray-700 hover:border-primary hover:text-primary dark:hover:border-primary-light dark:hover:text-primary-light">ვებ ანალიტიკა</button>
-          <button data-filter="ai-seo" class="category-chip shrink-0 px-4 py-2 text-sm font-medium rounded-full border transition-all duration-200 bg-transparent text-heading dark:text-heading-dark border-gray-200 dark:border-gray-700 hover:border-primary hover:text-primary dark:hover:border-primary-light dark:hover:text-primary-light">AI & SEO</button>
-        </div>
-
-        <!-- Search -->
-        <div class="relative w-full sm:w-64 shrink-0">
-          <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-body/40 dark:text-body-dark/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-          <input id="blog-search" type="text" placeholder="სტატიის ძიება..." class="w-full pl-10 pr-4 py-2.5 text-sm rounded-xl bg-surface-alt dark:bg-surface-dark-alt border border-gray-200 dark:border-gray-700 text-heading dark:text-heading-dark placeholder:text-body/40 dark:placeholder:text-body-dark/40 focus:outline-none focus:border-primary dark:focus:border-primary-light focus:ring-1 focus:ring-primary/20 dark:focus:ring-primary-light/20 transition-colors">
-        </div>
+  <!-- ========== CATEGORY NAVIGATION BAR ========== -->
+  <section class="sticky top-16 lg:top-[72px] z-40 border-y border-gray-100 dark:border-white/5 bg-surface-alt dark:bg-surface-dark-alt">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex items-center gap-1 overflow-x-auto no-scrollbar py-3">
+        <button data-filter="all" class="category-chip active shrink-0 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all bg-primary text-white">ყველა</button>
+        <button data-filter="seo-strategy" class="category-chip shrink-0 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all text-body dark:text-body-dark hover:text-heading dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/5">SEO</button>
+        <button data-filter="technical-seo" class="category-chip shrink-0 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all text-body dark:text-body-dark hover:text-heading dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/5">ტექნიკური SEO</button>
+        <button data-filter="content-marketing" class="category-chip shrink-0 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all text-body dark:text-body-dark hover:text-heading dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/5">კონტენტ მარკეტინგი</button>
+        <button data-filter="link-building" class="category-chip shrink-0 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all text-body dark:text-body-dark hover:text-heading dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/5">ბექლინკები</button>
+        <button data-filter="local-seo" class="category-chip shrink-0 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all text-body dark:text-body-dark hover:text-heading dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/5">ლოკალური SEO</button>
+        <button data-filter="google-ads" class="category-chip shrink-0 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all text-body dark:text-body-dark hover:text-heading dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/5">Google Ads</button>
+        <button data-filter="analytics" class="category-chip shrink-0 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all text-body dark:text-body-dark hover:text-heading dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/5">ვებ ანალიტიკა</button>
+        <button data-filter="ai-seo" class="category-chip shrink-0 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all text-body dark:text-body-dark hover:text-heading dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/5">AI & SEO</button>
       </div>
     </div>
   </section>
@@ -298,273 +280,194 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
 
       <!-- ========== FEATURED POST ========== -->
-      <section class="mt-8 mb-12 lg:mb-16 blog-post-item" data-category="seo-strategy" data-title="SEO 2025: 10 ტრენდი რომელიც ყველა ბიზნესმა უნდა იცოდეს">
-        <a href="blog-post.html" class="block blog-card rounded-2xl overflow-hidden bg-white dark:bg-surface-dark-alt border border-gray-100 dark:border-gray-800">
-          <div class="grid lg:grid-cols-2 gap-0">
-            <!-- Image -->
-            <div class="relative h-64 lg:h-full min-h-[320px] bg-gradient-to-br from-primary/20 via-accent/10 to-primary/5 dark:from-primary/10 dark:via-accent/5 dark:to-primary/5 flex items-center justify-center">
-              <div class="text-center">
-                <div class="w-20 h-20 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-primary/30 to-accent/30 flex items-center justify-center">
-                  <svg class="w-10 h-10 text-primary dark:text-primary-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
-                </div>
-                <span class="text-sm font-medium text-primary/60 dark:text-primary-light/60">Featured Article</span>
-              </div>
-              <!-- Featured badge -->
-              <div class="absolute top-4 left-4 px-3 py-1.5 ai-cta-animate text-white text-xs font-bold rounded-lg">
-                რჩეული
+      <section class="mt-8 mb-12 lg:mb-16 blog-post-item" data-category="seo-strategy" data-title="Google-ის 2026 წლის ალგორითმის განახლება: რა უნდა იცოდეთ">
+        <a href="blog-post.html" class="group block gradient-border bg-white dark:bg-surface-dark-alt">
+          <div class="grid md:grid-cols-2 gap-0">
+            <div class="aspect-[16/10] md:aspect-auto bg-gradient-to-br from-primary/20 via-ai-blue/10 to-accent/20 dark:from-primary/20 dark:via-ai-blue/10 dark:to-accent/20 flex items-center justify-center rounded-t-2xl md:rounded-l-2xl md:rounded-tr-none">
+              <div class="text-center p-8">
+                <svg class="w-16 h-16 mx-auto text-primary/50 dark:text-primary/50 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>
+                <span class="text-sm text-body/60 dark:text-body-dark/60">Featured Article</span>
               </div>
             </div>
-            <!-- Content -->
-            <div class="p-6 lg:p-10 flex flex-col justify-center">
-              <span class="inline-flex items-center px-3 py-1 text-xs font-semibold rounded-full bg-primary/10 text-primary dark:text-primary-light w-fit mb-4">SEO სტრატეგია</span>
-              <h2 class="font-heading text-2xl sm:text-3xl lg:text-[36px] font-extrabold text-heading dark:text-heading-dark leading-[1.3] mb-4">
-                SEO 2025: 10 ტრენდი რომელიც ყველა ბიზნესმა უნდა იცოდეს
-              </h2>
-              <p class="text-body dark:text-body-dark leading-relaxed mb-6 line-clamp-3">
-                Google-ის ალგორითმის უახლესი ცვლილებები, AI-ის გავლენა საძიებო სისტემებზე, და პრაქტიკული სტრატეგიები რომლებიც 2025 წელს რეალურ შედეგებს მოგცემთ.
-              </p>
-              <div class="flex items-center gap-4 text-sm text-body/60 dark:text-body-dark/60">
-                <div class="flex items-center gap-2">
-                  <div class="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-[10px]">10X</div>
-                  <span class="font-medium text-heading dark:text-heading-dark">10xSEO</span>
+            <div class="p-6 sm:p-8 md:p-10 flex flex-col justify-center">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="px-3 py-1 text-xs font-medium bg-primary/10 text-primary dark:text-primary-light rounded-full">SEO</span>
+                <span class="text-xs text-body/60 dark:text-body-dark/60">15 მარტი, 2026</span>
+              </div>
+              <h2 class="font-heading text-2xl sm:text-3xl font-extrabold text-heading dark:text-heading-dark mb-3 group-hover:text-primary transition leading-[1.3]">Google-ის 2026 წლის ალგორითმის განახლება: რა უნდა იცოდეთ</h2>
+              <p class="text-body dark:text-body-dark mb-6 line-clamp-3">Google-მა მარტის Core Update-ით მნიშვნელოვანი ცვლილებები შეიტანა რანჟირების ფაქტორებში. ამ სტატიაში გავაანალიზებთ, რა შეიცვალა და როგორ მოვერგოთ ახალ რეალობას.</p>
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-ai-blue flex items-center justify-center text-white font-bold text-[10px]">10X</div>
+                <div>
+                  <span class="text-sm font-medium text-heading dark:text-heading-dark">დავით ინაშვილი</span>
+                  <span class="text-xs text-body/60 dark:text-body-dark/60 block">SEO ექსპერტი</span>
                 </div>
-                <span class="font-inter">2025-03-10</span>
-                <span>&#183;</span>
-                <span>15 წთ</span>
               </div>
             </div>
           </div>
         </a>
       </section>
 
-      <!-- ========== BLOG POSTS GRID ========== -->
-      <div id="blog-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+      <!-- ========== CONTENT GRID + SIDEBAR ========== -->
+      <div class="grid lg:grid-cols-3 gap-8">
+        <!-- Main grid — 2 columns -->
+        <div class="lg:col-span-2">
+          <div id="blog-grid" class="grid sm:grid-cols-2 gap-6">
 
-        <!-- Post 1 -->
-        <article class="blog-post-item" data-category="seo-strategy" data-title="როგორ გავზარდოთ ორგანული ტრაფიკი 3 თვეში">
-          <a href="blog-post.html" class="blog-card block rounded-2xl overflow-hidden bg-white dark:bg-surface-dark-alt border border-gray-100 dark:border-gray-800 h-full">
-            <div class="h-48 bg-gradient-to-br from-primary/20 via-blue-500/10 to-primary/5 dark:from-primary/10 dark:via-blue-500/5 dark:to-primary/5 flex items-center justify-center">
-              <div class="w-14 h-14 rounded-xl bg-primary/20 dark:bg-primary/10 flex items-center justify-center">
-                <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
-              </div>
-            </div>
-            <div class="p-5">
-              <span class="inline-flex px-2.5 py-1 text-[11px] font-semibold rounded-full bg-primary/10 text-primary dark:text-primary-light mb-3">SEO სტრატეგია</span>
-              <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark leading-snug mb-2 line-clamp-2">როგორ გავზარდოთ ორგანული ტრაფიკი 3 თვეში</h3>
-              <p class="text-sm text-body dark:text-body-dark leading-relaxed mb-4 line-clamp-3">პრაქტიკული ნაბიჯები და სტრატეგიები რომლებიც დაგეხმარებათ ორგანული ტრაფიკის სწრაფ ზრდაში.</p>
-              <div class="flex items-center gap-3 text-xs text-body/50 dark:text-body-dark/50 pt-4 border-t border-gray-100 dark:border-gray-800">
-                <div class="flex items-center gap-1.5">
-                  <div class="w-6 h-6 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-[8px]">10X</div>
-                  <span class="font-medium">10xSEO</span>
+            <!-- Card 1 -->
+            <article class="blog-post-item" data-category="technical-seo" data-title="Core Web Vitals 2026: ახალი მეტრიკები და მათი ოპტიმიზაცია">
+              <a href="blog-post.html" class="blog-card group block bg-white dark:bg-surface-dark-alt rounded-2xl overflow-hidden border border-gray-100 dark:border-white/5 h-full">
+                <div class="aspect-[16/10] bg-gradient-to-br from-accent/20 to-ai-blue/10 dark:from-accent/20 dark:to-ai-blue/10 flex items-center justify-center">
+                  <svg class="w-10 h-10 text-accent/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5"/></svg>
                 </div>
-                <span class="font-inter">2025-03-05</span>
-                <span>&#183;</span>
-                <span>8 წთ</span>
-              </div>
-            </div>
-          </a>
-        </article>
-
-        <!-- Post 2 -->
-        <article class="blog-post-item" data-category="technical-seo" data-title="Core Web Vitals: სრული გზამკვლევი 2025">
-          <a href="blog-post.html" class="blog-card block rounded-2xl overflow-hidden bg-white dark:bg-surface-dark-alt border border-gray-100 dark:border-gray-800 h-full">
-            <div class="h-48 bg-gradient-to-br from-yellow-500/20 via-orange-500/10 to-yellow-500/5 dark:from-yellow-500/10 dark:via-orange-500/5 dark:to-yellow-500/5 flex items-center justify-center">
-              <div class="w-14 h-14 rounded-xl bg-yellow-500/20 dark:bg-yellow-500/10 flex items-center justify-center">
-                <svg class="w-7 h-7 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-              </div>
-            </div>
-            <div class="p-5">
-              <span class="inline-flex px-2.5 py-1 text-[11px] font-semibold rounded-full bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 mb-3">ტექნიკური SEO</span>
-              <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark leading-snug mb-2 line-clamp-2">Core Web Vitals: სრული გზამკვლევი 2025</h3>
-              <p class="text-sm text-body dark:text-body-dark leading-relaxed mb-4 line-clamp-3">რა არის CWV, რატომ არის მნიშვნელოვანი და როგორ გავაუმჯობესოთ LCP, INP და CLS მაჩვენებლები.</p>
-              <div class="flex items-center gap-3 text-xs text-body/50 dark:text-body-dark/50 pt-4 border-t border-gray-100 dark:border-gray-800">
-                <div class="flex items-center gap-1.5">
-                  <div class="w-6 h-6 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-[8px]">10X</div>
-                  <span class="font-medium">10xSEO</span>
+                <div class="p-5">
+                  <span class="text-xs font-medium text-accent">ტექნიკური SEO</span>
+                  <h3 class="text-lg text-heading dark:text-heading-dark mt-2 mb-2 font-medium group-hover:text-primary transition line-clamp-2">Core Web Vitals 2026: ახალი მეტრიკები და მათი ოპტიმიზაცია</h3>
+                  <p class="text-sm text-body dark:text-body-dark line-clamp-2">INP, CLS და LCP — რა სტანდარტები მოქმედებს 2026 წელს და როგორ გავუმჯობესოთ.</p>
+                  <div class="flex items-center gap-2 mt-4 text-xs text-body/50 dark:text-body-dark/50">
+                    <span>12 მარტი</span>
+                    <span class="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600"></span>
+                    <span>8 წთ</span>
+                  </div>
                 </div>
-                <span class="font-inter">2025-02-28</span>
-                <span>&#183;</span>
-                <span>12 წთ</span>
-              </div>
-            </div>
-          </a>
-        </article>
+              </a>
+            </article>
 
-        <!-- Post 3 -->
-        <article class="blog-post-item" data-category="content-marketing" data-title="SEO კოპირაიტინგის 15 აუცილებელი წესი">
-          <a href="blog-post.html" class="blog-card block rounded-2xl overflow-hidden bg-white dark:bg-surface-dark-alt border border-gray-100 dark:border-gray-800 h-full">
-            <div class="h-48 bg-gradient-to-br from-green-500/20 via-emerald-500/10 to-green-500/5 dark:from-green-500/10 dark:via-emerald-500/5 dark:to-green-500/5 flex items-center justify-center">
-              <div class="w-14 h-14 rounded-xl bg-green-500/20 dark:bg-green-500/10 flex items-center justify-center">
-                <svg class="w-7 h-7 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
-              </div>
-            </div>
-            <div class="p-5">
-              <span class="inline-flex px-2.5 py-1 text-[11px] font-semibold rounded-full bg-green-500/10 text-green-600 dark:text-green-400 mb-3">კონტენტ მარკეტინგი</span>
-              <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark leading-snug mb-2 line-clamp-2">SEO კოპირაიტინგის 15 აუცილებელი წესი</h3>
-              <p class="text-sm text-body dark:text-body-dark leading-relaxed mb-4 line-clamp-3">როგორ დავწეროთ კონტენტი რომელიც ერთდროულად მოეწონება Google-ს და მკითხველს.</p>
-              <div class="flex items-center gap-3 text-xs text-body/50 dark:text-body-dark/50 pt-4 border-t border-gray-100 dark:border-gray-800">
-                <div class="flex items-center gap-1.5">
-                  <div class="w-6 h-6 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-[8px]">10X</div>
-                  <span class="font-medium">10xSEO</span>
+            <!-- Card 2 -->
+            <article class="blog-post-item" data-category="link-building" data-title="ბექლინკ სტრატეგია 2026: რა მუშაობს და რა არა">
+              <a href="blog-post.html" class="blog-card group block bg-white dark:bg-surface-dark-alt rounded-2xl overflow-hidden border border-gray-100 dark:border-white/5 h-full">
+                <div class="aspect-[16/10] bg-gradient-to-br from-primary/20 to-accent/10 dark:from-primary/20 dark:to-accent/10 flex items-center justify-center">
+                  <svg class="w-10 h-10 text-primary/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m9.86-1.06l4.5-4.5a4.5 4.5 0 00-6.364-6.364l-1.757 1.757"/></svg>
                 </div>
-                <span class="font-inter">2025-02-20</span>
-                <span>&#183;</span>
-                <span>10 წთ</span>
-              </div>
-            </div>
-          </a>
-        </article>
-
-        <!-- Post 4 -->
-        <article class="blog-post-item" data-category="link-building" data-title="ლინკ ბილდინგი 2025: რა მუშაობს და რა არა">
-          <a href="blog-post.html" class="blog-card block rounded-2xl overflow-hidden bg-white dark:bg-surface-dark-alt border border-gray-100 dark:border-gray-800 h-full">
-            <div class="h-48 bg-gradient-to-br from-violet-500/20 via-purple-500/10 to-violet-500/5 dark:from-violet-500/10 dark:via-purple-500/5 dark:to-violet-500/5 flex items-center justify-center">
-              <div class="w-14 h-14 rounded-xl bg-violet-500/20 dark:bg-violet-500/10 flex items-center justify-center">
-                <svg class="w-7 h-7 text-violet-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
-              </div>
-            </div>
-            <div class="p-5">
-              <span class="inline-flex px-2.5 py-1 text-[11px] font-semibold rounded-full bg-violet-500/10 text-violet-600 dark:text-violet-400 mb-3">ლინკ ბილდინგი</span>
-              <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark leading-snug mb-2 line-clamp-2">ლინკ ბილდინგი 2025: რა მუშაობს და რა არა</h3>
-              <p class="text-sm text-body dark:text-body-dark leading-relaxed mb-4 line-clamp-3">თანამედროვე ლინკ ბილდინგის სტრატეგიები, საფრთხეები და საუკეთესო პრაქტიკები.</p>
-              <div class="flex items-center gap-3 text-xs text-body/50 dark:text-body-dark/50 pt-4 border-t border-gray-100 dark:border-gray-800">
-                <div class="flex items-center gap-1.5">
-                  <div class="w-6 h-6 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-[8px]">10X</div>
-                  <span class="font-medium">10xSEO</span>
+                <div class="p-5">
+                  <span class="text-xs font-medium text-primary">ბექლინკები</span>
+                  <h3 class="text-lg text-heading dark:text-heading-dark mt-2 mb-2 font-medium group-hover:text-primary transition line-clamp-2">ბექლინკ სტრატეგია 2026: რა მუშაობს და რა არა</h3>
+                  <p class="text-sm text-body dark:text-body-dark line-clamp-2">Digital PR, HARO, და Broken Link Building — პრაქტიკული გზამკვლევი.</p>
+                  <div class="flex items-center gap-2 mt-4 text-xs text-body/50 dark:text-body-dark/50">
+                    <span>10 მარტი</span>
+                    <span class="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600"></span>
+                    <span>12 წთ</span>
+                  </div>
                 </div>
-                <span class="font-inter">2025-02-15</span>
-                <span>&#183;</span>
-                <span>9 წთ</span>
-              </div>
-            </div>
-          </a>
-        </article>
+              </a>
+            </article>
 
-        <!-- Post 5 -->
-        <article class="blog-post-item" data-category="local-seo" data-title="Google Business Profile ოპტიმიზაცია: ნაბიჯ-ნაბიჯ">
-          <a href="blog-post.html" class="blog-card block rounded-2xl overflow-hidden bg-white dark:bg-surface-dark-alt border border-gray-100 dark:border-gray-800 h-full">
-            <div class="h-48 bg-gradient-to-br from-rose-500/20 via-pink-500/10 to-rose-500/5 dark:from-rose-500/10 dark:via-pink-500/5 dark:to-rose-500/5 flex items-center justify-center">
-              <div class="w-14 h-14 rounded-xl bg-rose-500/20 dark:bg-rose-500/10 flex items-center justify-center">
-                <svg class="w-7 h-7 text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-              </div>
-            </div>
-            <div class="p-5">
-              <span class="inline-flex px-2.5 py-1 text-[11px] font-semibold rounded-full bg-rose-500/10 text-rose-600 dark:text-rose-400 mb-3">ლოკალური SEO</span>
-              <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark leading-snug mb-2 line-clamp-2">Google Business Profile ოპტიმიზაცია: ნაბიჯ-ნაბიჯ</h3>
-              <p class="text-sm text-body dark:text-body-dark leading-relaxed mb-4 line-clamp-3">სრული გზამკვლევი GBP პროფილის ოპტიმიზაციისთვის, ლოკალური ძიების შედეგებში პირველ ადგილზე მოხვედრისთვის.</p>
-              <div class="flex items-center gap-3 text-xs text-body/50 dark:text-body-dark/50 pt-4 border-t border-gray-100 dark:border-gray-800">
-                <div class="flex items-center gap-1.5">
-                  <div class="w-6 h-6 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-[8px]">10X</div>
-                  <span class="font-medium">10xSEO</span>
+            <!-- Card 3 -->
+            <article class="blog-post-item" data-category="ai-seo" data-title="AI-ით კონტენტის შექმნა: Google-ის პოზიცია და საუკეთესო პრაქტიკა">
+              <a href="blog-post.html" class="blog-card group block bg-white dark:bg-surface-dark-alt rounded-2xl overflow-hidden border border-gray-100 dark:border-white/5 h-full">
+                <div class="aspect-[16/10] bg-gradient-to-br from-ai-blue/20 to-primary/10 dark:from-ai-blue/20 dark:to-primary/10 flex items-center justify-center">
+                  <svg class="w-10 h-10 text-ai-blue/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z"/></svg>
                 </div>
-                <span class="font-inter">2025-02-10</span>
-                <span>&#183;</span>
-                <span>7 წთ</span>
-              </div>
-            </div>
-          </a>
-        </article>
-
-        <!-- Post 6 -->
-        <article class="blog-post-item" data-category="google-ads" data-title="Google Ads vs SEO: სად ჩადოთ ბიუჯეტი?">
-          <a href="blog-post.html" class="blog-card block rounded-2xl overflow-hidden bg-white dark:bg-surface-dark-alt border border-gray-100 dark:border-gray-800 h-full">
-            <div class="h-48 bg-gradient-to-br from-blue-500/20 via-indigo-500/10 to-blue-500/5 dark:from-blue-500/10 dark:via-indigo-500/5 dark:to-blue-500/5 flex items-center justify-center">
-              <div class="w-14 h-14 rounded-xl bg-blue-500/20 dark:bg-blue-500/10 flex items-center justify-center">
-                <svg class="w-7 h-7 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-              </div>
-            </div>
-            <div class="p-5">
-              <span class="inline-flex px-2.5 py-1 text-[11px] font-semibold rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 mb-3">Google Ads</span>
-              <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark leading-snug mb-2 line-clamp-2">Google Ads vs SEO: სად ჩადოთ ბიუჯეტი?</h3>
-              <p class="text-sm text-body dark:text-body-dark leading-relaxed mb-4 line-clamp-3">დეტალური შედარება ორგანულ და ფასიან ტრაფიკს შორის — ROI, ხარჯები და სტრატეგია.</p>
-              <div class="flex items-center gap-3 text-xs text-body/50 dark:text-body-dark/50 pt-4 border-t border-gray-100 dark:border-gray-800">
-                <div class="flex items-center gap-1.5">
-                  <div class="w-6 h-6 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-[8px]">10X</div>
-                  <span class="font-medium">10xSEO</span>
+                <div class="p-5">
+                  <span class="text-xs font-medium text-ai-blue">AI & SEO</span>
+                  <h3 class="text-lg text-heading dark:text-heading-dark mt-2 mb-2 font-medium group-hover:text-primary transition line-clamp-2">AI-ით კონტენტის შექმნა: Google-ის პოზიცია და საუკეთესო პრაქტიკა</h3>
+                  <p class="text-sm text-body dark:text-body-dark line-clamp-2">AI-გენერირებული კონტენტი vs ხელით დაწერილი — რას ამბობს Google.</p>
+                  <div class="flex items-center gap-2 mt-4 text-xs text-body/50 dark:text-body-dark/50">
+                    <span>8 მარტი</span>
+                    <span class="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600"></span>
+                    <span>10 წთ</span>
+                  </div>
                 </div>
-                <span class="font-inter">2025-02-05</span>
-                <span>&#183;</span>
-                <span>6 წთ</span>
-              </div>
-            </div>
-          </a>
-        </article>
+              </a>
+            </article>
 
-        <!-- Post 7 -->
-        <article class="blog-post-item" data-category="analytics" data-title="GA4 მიგრაცია: რა უნდა იცოდეთ">
-          <a href="blog-post.html" class="blog-card block rounded-2xl overflow-hidden bg-white dark:bg-surface-dark-alt border border-gray-100 dark:border-gray-800 h-full">
-            <div class="h-48 bg-gradient-to-br from-teal-500/20 via-cyan-500/10 to-teal-500/5 dark:from-teal-500/10 dark:via-cyan-500/5 dark:to-teal-500/5 flex items-center justify-center">
-              <div class="w-14 h-14 rounded-xl bg-teal-500/20 dark:bg-teal-500/10 flex items-center justify-center">
-                <svg class="w-7 h-7 text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-              </div>
-            </div>
-            <div class="p-5">
-              <span class="inline-flex px-2.5 py-1 text-[11px] font-semibold rounded-full bg-teal-500/10 text-teal-600 dark:text-teal-400 mb-3">ვებ ანალიტიკა</span>
-              <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark leading-snug mb-2 line-clamp-2">GA4 მიგრაცია: რა უნდა იცოდეთ</h3>
-              <p class="text-sm text-body dark:text-body-dark leading-relaxed mb-4 line-clamp-3">Google Analytics 4-ზე გადასვლის სრული გზამკვლევი — მოვლენები, კონვერსიები და რეპორტინგი.</p>
-              <div class="flex items-center gap-3 text-xs text-body/50 dark:text-body-dark/50 pt-4 border-t border-gray-100 dark:border-gray-800">
-                <div class="flex items-center gap-1.5">
-                  <div class="w-6 h-6 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-[8px]">10X</div>
-                  <span class="font-medium">10xSEO</span>
+            <!-- Card 4 -->
+            <article class="blog-post-item" data-category="seo-strategy" data-title="როგორ გავზარდეთ ტრაფიკი 340%-ით 6 თვეში — რეალური ქეისი">
+              <a href="blog-post.html" class="blog-card group block bg-white dark:bg-surface-dark-alt rounded-2xl overflow-hidden border border-gray-100 dark:border-white/5 h-full">
+                <div class="aspect-[16/10] bg-gradient-to-br from-yellow-500/20 to-primary/10 dark:from-yellow-500/20 dark:to-primary/10 flex items-center justify-center">
+                  <svg class="w-10 h-10 text-yellow-500/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/></svg>
                 </div>
-                <span class="font-inter">2025-01-28</span>
-                <span>&#183;</span>
-                <span>11 წთ</span>
-              </div>
-            </div>
-          </a>
-        </article>
-
-        <!-- Post 8 -->
-        <article class="blog-post-item" data-category="ai-seo" data-title="ChatGPT და SEO: საფრთხე თუ შესაძლებლობა?">
-          <a href="blog-post.html" class="blog-card block rounded-2xl overflow-hidden bg-white dark:bg-surface-dark-alt border border-gray-100 dark:border-gray-800 h-full">
-            <div class="h-48 bg-gradient-to-br from-accent/20 via-pink-500/10 to-accent/5 dark:from-accent/10 dark:via-pink-500/5 dark:to-accent/5 flex items-center justify-center">
-              <div class="w-14 h-14 rounded-xl bg-accent/20 dark:bg-accent/10 flex items-center justify-center">
-                <svg class="w-7 h-7 text-accent dark:text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
-              </div>
-            </div>
-            <div class="p-5">
-              <span class="inline-flex px-2.5 py-1 text-[11px] font-semibold rounded-full bg-accent/10 text-accent dark:text-accent mb-3">AI & SEO</span>
-              <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark leading-snug mb-2 line-clamp-2">ChatGPT და SEO: საფრთხე თუ შესაძლებლობა?</h3>
-              <p class="text-sm text-body dark:text-body-dark leading-relaxed mb-4 line-clamp-3">ხელოვნური ინტელექტის გავლენა SEO-ზე, AI-ით შექმნილი კონტენტი და მომავლის პერსპექტივები.</p>
-              <div class="flex items-center gap-3 text-xs text-body/50 dark:text-body-dark/50 pt-4 border-t border-gray-100 dark:border-gray-800">
-                <div class="flex items-center gap-1.5">
-                  <div class="w-6 h-6 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-[8px]">10X</div>
-                  <span class="font-medium">10xSEO</span>
+                <div class="p-5">
+                  <span class="text-xs font-medium text-yellow-500">ქეის სტადი</span>
+                  <h3 class="text-lg text-heading dark:text-heading-dark mt-2 mb-2 font-medium group-hover:text-primary transition line-clamp-2">როგორ გავზარდეთ ტრაფიკი 340%-ით 6 თვეში — რეალური ქეისი</h3>
+                  <p class="text-sm text-body dark:text-body-dark line-clamp-2">ქართული e-commerce საიტის SEO ტრანსფორმაცია ნაბიჯ-ნაბიჯ.</p>
+                  <div class="flex items-center gap-2 mt-4 text-xs text-body/50 dark:text-body-dark/50">
+                    <span>5 მარტი</span>
+                    <span class="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600"></span>
+                    <span>15 წთ</span>
+                  </div>
                 </div>
-                <span class="font-inter">2025-01-20</span>
-                <span>&#183;</span>
-                <span>8 წთ</span>
-              </div>
-            </div>
-          </a>
-        </article>
+              </a>
+            </article>
 
-        <!-- Post 9 -->
-        <article class="blog-post-item" data-category="seo-strategy" data-title="E-commerce SEO: სრული სტრატეგია">
-          <a href="blog-post.html" class="blog-card block rounded-2xl overflow-hidden bg-white dark:bg-surface-dark-alt border border-gray-100 dark:border-gray-800 h-full">
-            <div class="h-48 bg-gradient-to-br from-amber-500/20 via-orange-500/10 to-amber-500/5 dark:from-amber-500/10 dark:via-orange-500/5 dark:to-amber-500/5 flex items-center justify-center">
-              <div class="w-14 h-14 rounded-xl bg-amber-500/20 dark:bg-amber-500/10 flex items-center justify-center">
-                <svg class="w-7 h-7 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z"/></svg>
-              </div>
-            </div>
-            <div class="p-5">
-              <span class="inline-flex px-2.5 py-1 text-[11px] font-semibold rounded-full bg-primary/10 text-primary dark:text-primary-light mb-3">SEO სტრატეგია</span>
-              <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark leading-snug mb-2 line-clamp-2">E-commerce SEO: სრული სტრატეგია</h3>
-              <p class="text-sm text-body dark:text-body-dark leading-relaxed mb-4 line-clamp-3">ონლაინ მაღაზიების SEO ოპტიმიზაცია — პროდუქტის გვერდები, კატეგორიები, ტექნიკური SEO და კონტენტი.</p>
-              <div class="flex items-center gap-3 text-xs text-body/50 dark:text-body-dark/50 pt-4 border-t border-gray-100 dark:border-gray-800">
-                <div class="flex items-center gap-1.5">
-                  <div class="w-6 h-6 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-[8px]">10X</div>
-                  <span class="font-medium">10xSEO</span>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="space-y-8">
+          <!-- Popular posts -->
+          <div class="bg-surface-alt dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-white/5 p-6">
+            <h3 class="font-heading text-lg text-heading dark:text-heading-dark mb-5">პოპულარული სტატიები</h3>
+            <div class="space-y-4">
+              <a href="#" class="flex gap-3 group">
+                <span class="font-inter text-2xl font-bold text-primary/30 group-hover:text-primary transition shrink-0">01</span>
+                <div>
+                  <h4 class="text-sm text-heading dark:text-heading-dark group-hover:text-primary transition line-clamp-2">SEO აუდიტის ჩეკლისტი 2026 — 47 პუნქტიანი გზამკვლევი</h4>
+                  <span class="text-xs text-body/50 dark:text-body-dark/50 mt-1 block font-inter">2.4K ნახვა</span>
                 </div>
-                <span class="font-inter">2025-01-15</span>
-                <span>&#183;</span>
-                <span>14 წთ</span>
-              </div>
+              </a>
+              <a href="#" class="flex gap-3 group">
+                <span class="font-inter text-2xl font-bold text-primary/30 group-hover:text-primary transition shrink-0">02</span>
+                <div>
+                  <h4 class="text-sm text-heading dark:text-heading-dark group-hover:text-primary transition line-clamp-2">საქართველოში SEO-ს ფასი: რატომ ღირს ინვესტიცია</h4>
+                  <span class="text-xs text-body/50 dark:text-body-dark/50 mt-1 block font-inter">1.8K ნახვა</span>
+                </div>
+              </a>
+              <a href="#" class="flex gap-3 group">
+                <span class="font-inter text-2xl font-bold text-primary/30 group-hover:text-primary transition shrink-0">03</span>
+                <div>
+                  <h4 class="text-sm text-heading dark:text-heading-dark group-hover:text-primary transition line-clamp-2">Keyword Research: როგორ ვიპოვოთ სწორი საკვანძო სიტყვები</h4>
+                  <span class="text-xs text-body/50 dark:text-body-dark/50 mt-1 block font-inter">1.5K ნახვა</span>
+                </div>
+              </a>
+              <a href="#" class="flex gap-3 group">
+                <span class="font-inter text-2xl font-bold text-primary/30 group-hover:text-primary transition shrink-0">04</span>
+                <div>
+                  <h4 class="text-sm text-heading dark:text-heading-dark group-hover:text-primary transition line-clamp-2">E-E-A-T: რატომ არის მნიშვნელოვანი და როგორ გავაძლიეროთ</h4>
+                  <span class="text-xs text-body/50 dark:text-body-dark/50 mt-1 block font-inter">1.2K ნახვა</span>
+                </div>
+              </a>
             </div>
-          </a>
-        </article>
+          </div>
 
+          <!-- Newsletter signup -->
+          <div class="gradient-border bg-white dark:bg-surface-dark-alt p-6">
+            <div class="relative z-10">
+              <h3 class="font-heading text-lg text-heading dark:text-heading-dark mb-2">SEO ნიუსლეთერი</h3>
+              <p class="text-sm text-body dark:text-body-dark mb-4">მიიღეთ ყოველკვირეული SEO ინსაითები და სიახლეები პირდაპირ ინბოქსში.</p>
+              <input type="email" placeholder="თქვენი ელ-ფოსტა" class="w-full px-4 py-3 rounded-xl bg-surface-alt dark:bg-surface-dark border border-gray-200 dark:border-white/10 text-heading dark:text-heading-dark placeholder-body/40 dark:placeholder-body-dark/40 text-sm focus:outline-none focus:border-primary/50 mb-3">
+              <button class="w-full ai-cta-animate text-white font-medium py-3 rounded-xl text-sm transition hover:opacity-90">გამოწერა</button>
+              <p class="text-xs text-body/50 dark:text-body-dark/50 mt-3 text-center font-inter">1,200+ გამომწერი. სპამი არ იქნება.</p>
+            </div>
+          </div>
+
+          <!-- Categories -->
+          <div class="bg-surface-alt dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-white/5 p-6">
+            <h3 class="font-heading text-lg text-heading dark:text-heading-dark mb-4">კატეგორიები</h3>
+            <div class="space-y-2">
+              <a href="#" class="flex justify-between items-center py-2 px-3 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 transition">
+                <span class="text-sm text-heading dark:text-heading-dark">SEO</span>
+                <span class="text-xs font-inter text-body/50 dark:text-body-dark/50 bg-gray-100 dark:bg-white/5 px-2 py-0.5 rounded-full">24</span>
+              </a>
+              <a href="#" class="flex justify-between items-center py-2 px-3 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 transition">
+                <span class="text-sm text-heading dark:text-heading-dark">ტექნიკური SEO</span>
+                <span class="text-xs font-inter text-body/50 dark:text-body-dark/50 bg-gray-100 dark:bg-white/5 px-2 py-0.5 rounded-full">18</span>
+              </a>
+              <a href="#" class="flex justify-between items-center py-2 px-3 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 transition">
+                <span class="text-sm text-heading dark:text-heading-dark">კონტენტ მარკეტინგი</span>
+                <span class="text-xs font-inter text-body/50 dark:text-body-dark/50 bg-gray-100 dark:bg-white/5 px-2 py-0.5 rounded-full">15</span>
+              </a>
+              <a href="#" class="flex justify-between items-center py-2 px-3 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 transition">
+                <span class="text-sm text-heading dark:text-heading-dark">ბექლინკები</span>
+                <span class="text-xs font-inter text-body/50 dark:text-body-dark/50 bg-gray-100 dark:bg-white/5 px-2 py-0.5 rounded-full">12</span>
+              </a>
+              <a href="#" class="flex justify-between items-center py-2 px-3 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 transition">
+                <span class="text-sm text-heading dark:text-heading-dark">ქეის სტადები</span>
+                <span class="text-xs font-inter text-body/50 dark:text-body-dark/50 bg-gray-100 dark:bg-white/5 px-2 py-0.5 rounded-full">9</span>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- No results message -->
@@ -576,28 +479,8 @@
         <p class="text-body dark:text-body-dark">სცადეთ სხვა საძიებო სიტყვა ან კატეგორია</p>
       </div>
 
-      <!-- ========== PAGINATION ========== -->
-      <nav class="mt-12 lg:mt-16 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <span class="text-sm text-body/60 dark:text-body-dark/60">გვერდი <span class="font-inter font-semibold text-heading dark:text-heading-dark">1</span> / <span class="font-inter">5</span></span>
-        <div class="flex items-center gap-2">
-          <button disabled class="w-10 h-10 rounded-xl flex items-center justify-center border border-gray-200 dark:border-gray-700 text-body/40 dark:text-body-dark/40 cursor-not-allowed">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-          </button>
-          <button class="w-10 h-10 rounded-xl flex items-center justify-center bg-primary text-white font-inter font-semibold text-sm">1</button>
-          <button class="w-10 h-10 rounded-xl flex items-center justify-center border border-gray-200 dark:border-gray-700 text-heading dark:text-heading-dark hover:bg-gray-50 dark:hover:bg-gray-800/50 font-inter text-sm transition-colors">2</button>
-          <button class="w-10 h-10 rounded-xl flex items-center justify-center border border-gray-200 dark:border-gray-700 text-heading dark:text-heading-dark hover:bg-gray-50 dark:hover:bg-gray-800/50 font-inter text-sm transition-colors">3</button>
-          <span class="text-body/40 dark:text-body-dark/40 px-1">...</span>
-          <button class="w-10 h-10 rounded-xl flex items-center justify-center border border-gray-200 dark:border-gray-700 text-heading dark:text-heading-dark hover:bg-gray-50 dark:hover:bg-gray-800/50 font-inter text-sm transition-colors">5</button>
-          <button class="w-10 h-10 rounded-xl flex items-center justify-center border border-gray-200 dark:border-gray-700 text-heading dark:text-heading-dark hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-          </button>
-        </div>
-      </nav>
-
     </div>
   </main>
-    </div>
-  </section>
 
   <!-- ========== NEWSLETTER CTA ========== -->
   <section class="py-16 lg:py-24 bg-surface-alt dark:bg-surface-dark-alt border-t border-b border-gray-100 dark:border-gray-800">
