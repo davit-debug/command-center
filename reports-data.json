@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-16T11:18:38.757933",
+  "generated_at": "2026-03-16T11:23:41.914109",
   "tasks": {
     "weekly-employee-analysis": {
       "task_id": "weekly-employee-analysis",
@@ -27,6 +27,12 @@
       "enabled": true,
       "last_run_at": "2026-03-16T07:05:22.060Z",
       "runs": [
+        {
+          "session_id": "local_88f0d150-6f5d-43ce-aac8-0059bff655e9",
+          "title": "16 Mar – Alpaca competitor check",
+          "date": "2026-03-16T11:05:22.059000",
+          "report": "I can see 3 ads and 2 more below. Let me capture the details of these ads.\n\nAd 1: Europroduct case study (started Dec 17, 2025) - \"0-დან თვეში 27,000+ ვიზიტორამდე\"\nAd 2: SEO წიგნი promotion (started Dec 17, 2025) - \"პირველი ქართული SEO სახელმძღვანელო\"  \nAd 3: SEO მომსახურება/გუნდის გაზრდა (started Jan 5, 2026) - \"გუნდს და ვერ გაუძლონ?\"\n\nLet me scroll down for the remaining 2."
+        },
         {
           "session_id": "local_8e2afb51-a6fa-445e-ba21-6afd719899f8",
           "title": "12 Mar – Alpaca competitor check",
