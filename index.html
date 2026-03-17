@@ -184,23 +184,24 @@
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-    /* FAQ accordion smooth animation */
-    .faq-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease, padding 0.35s ease;
-      opacity: 0;
-    }
-    .faq-item.open .faq-content {
-      max-height: 300px;
-      opacity: 1;
-    }
-    .faq-item .faq-chevron {
-      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .faq-item.open .faq-chevron {
-      transform: rotate(180deg);
-    }
+    /* FAQ v29 Gold Glassmorphism */
+    .v29-tab { padding: 8px 18px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.3s; border: 1px solid rgba(245,158,11,0.15); background: rgba(245,158,11,0.03); color: #64748B; }
+    .v29-tab:hover { border-color: rgba(245,158,11,0.35); color: #FBBF24; }
+    .v29-tab.v29-active { background: rgba(245,158,11,0.12); color: #FBBF24; border-color: #D97706; box-shadow: 0 0 12px rgba(245,158,11,0.1); }
+    .v29-card { border-radius: 14px; overflow: hidden; background: rgba(255,255,255,0.025); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(245,158,11,0.08); transition: all 0.35s; }
+    .v29-card:hover { border-color: rgba(245,158,11,0.2); }
+    .v29-card.v29-open { border-color: rgba(245,158,11,0.35); background: rgba(245,158,11,0.04); box-shadow: 0 0 30px rgba(245,158,11,0.06); }
+    .v29-card.v29-hidden { display: none; }
+    .v29-cq { display: flex; align-items: center; padding: 14px 18px; cursor: pointer; gap: 14px; }
+    .v29-cq .v29-badge { width: 34px; height: 34px; border-radius: 8px; background: rgba(245,158,11,0.08); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.3s; }
+    .v29-open .v29-badge { background: rgba(245,158,11,0.18); box-shadow: 0 0 10px rgba(245,158,11,0.15); }
+    .v29-cq .v29-badge svg { width: 16px; height: 16px; stroke: #FBBF24; transition: transform 0.3s; }
+    .v29-open .v29-badge svg { transform: rotate(180deg); }
+    .v29-cq .v29-txt { flex: 1; font-weight: 600; color: #E2E8F0; font-size: 15px; }
+    .v29-cq .v29-cat { font-size: 10px; font-weight: 700; color: #D97706; background: rgba(245,158,11,0.1); padding: 3px 8px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; }
+    .v29-ca { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1), padding 0.3s; padding: 0 18px 0 66px; }
+    .v29-open .v29-ca { max-height: 300px; padding: 0 18px 14px 66px; }
+    .v29-ca p { color: #94A3B8; font-size: 14px; line-height: 1.7; }
 
     /* Mobile menu animation */
     #mobile-menu {
@@ -259,12 +260,18 @@
     /* Honeycomb */
     .hex-cell {
       clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      opacity: 0;
+      transform: scale(0);
+      transition: opacity 0.3s ease, transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
+    .hex-cell.hex-visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .hex-cell.hex-visible:hover { transform: scale(1.08); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
     @media (max-width: 639px) {
       .hex-cell { width: 72px !important; height: 72px !important; }
     }
-    .hex-cell:hover { transform: scale(1.08); }
     .hex-cell::before {
       content: '';
       position: absolute;
@@ -307,7 +314,7 @@
         <a href="industries.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors" data-ka="ინდუსტრიები" data-en="Industries">ინდუსტრიები</a>
         <a href="portfolio.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors" data-ka="პორტფოლიო" data-en="Portfolio">პორტფოლიო</a>
         <a href="case-studies.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors" data-ka="შედეგები" data-en="Results">შედეგები</a>
-        <a href="blog-post.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors" data-ka="ბლოგი" data-en="Blog">ბლოგი</a>
+        <a href="blog.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors" data-ka="ბლოგი" data-en="Blog">ბლოგი</a>
       </nav>
 
       <!-- Right side -->
@@ -352,7 +359,7 @@
       <a href="industries.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.44s" data-ka="ინდუსტრიები" data-en="Industries">ინდუსტრიები</a>
       <a href="portfolio.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.47s" data-ka="პორტფოლიო" data-en="Portfolio">პორტფოლიო</a>
       <a href="case-studies.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.5s" data-ka="შედეგები" data-en="Results">შედეგები</a>
-      <a href="blog-post.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.53s" data-ka="ბლოგი" data-en="Blog">ბლოგი</a>
+      <a href="blog.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.53s" data-ka="ბლოგი" data-en="Blog">ბლოგი</a>
       <hr class="menu-link my-3 border-gray-800" style="transition-delay:0.56s">
       <a href="seo-audit.html" class="menu-link block text-center px-6 py-4 ai-cta-animate text-white text-lg font-bold rounded-xl mt-2" style="transition-delay:0.59s" data-ka="უფასო SEO აუდიტი" data-en="Free SEO Audit">
         უფასო SEO აუდიტი
@@ -970,70 +977,133 @@
     </div>
   </section>
 
-  <!-- ========== PROCESS TIMELINE ========== -->
-  <section class="py-16 lg:py-24 bg-surface-alt dark:bg-surface-dark-alt">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-12 lg:mb-16">
-        <p class="text-sm font-semibold text-primary dark:text-primary-light uppercase tracking-wider mb-3">პროცესი</p>
-        <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-heading dark:text-heading-dark leading-[1.3]">
+  <!-- ========== PROCESS TIMELINE V22 — Zigzag Serpentine Path ========== -->
+  <section class="relative py-16 lg:py-24 overflow-hidden" id="process-v22-section">
+    <div class="absolute inset-0" style="background: #0A0A0A;"></div>
+    <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-10">
+        <p class="text-sm font-semibold uppercase tracking-wider mb-3" style="color: rgba(255,215,0,0.7);">პროცესი</p>
+        <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold leading-[1.3] text-white">
           როგორ ვმუშაობთ
         </h2>
       </div>
-      <!-- Desktop: horizontal / Mobile: vertical -->
-      <div class="grid md:grid-cols-4 gap-8 lg:gap-6 relative">
-        <!-- Connecting line (desktop) -->
-        <div class="hidden md:block absolute top-12 left-[12.5%] right-[12.5%] h-0.5 bg-gray-200 dark:bg-gray-800"></div>
-
-        <!-- Step 1 -->
-        <div class="relative text-center">
-          <div class="w-24 h-24 mx-auto rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center mb-5 relative z-10">
-            <div class="w-16 h-16 rounded-full bg-primary/20 dark:bg-primary/30 flex items-center justify-center">
-              <svg class="w-8 h-8 text-primary dark:text-primary-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+      <style>
+        @keyframes pv22slideLeft { from { opacity: 0; transform: translateX(-60px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes pv22slideRight { from { opacity: 0; transform: translateX(60px); } to { opacity: 1; transform: translateX(0); } }
+        .pv22-card {
+          backdrop-filter: blur(8px);
+          transition: all 0.4s ease;
+        }
+        .pv22-card:hover {
+          transform: translateY(-4px);
+        }
+        .pv22-card-1 { border: 1px solid rgba(139,92,246,0.2); background: linear-gradient(145deg, rgba(139,92,246,0.06), rgba(0,0,0,0.3)); }
+        .pv22-card-1:hover { border-color: rgba(139,92,246,0.5); box-shadow: 0 0 30px rgba(139,92,246,0.12); }
+        .pv22-card-2 { border: 1px solid rgba(236,72,153,0.2); background: linear-gradient(145deg, rgba(236,72,153,0.06), rgba(0,0,0,0.3)); }
+        .pv22-card-2:hover { border-color: rgba(236,72,153,0.5); box-shadow: 0 0 30px rgba(236,72,153,0.12); }
+        .pv22-card-3 { border: 1px solid rgba(20,184,166,0.3); background: linear-gradient(145deg, rgba(20,184,166,0.08), rgba(0,0,0,0.3)); box-shadow: 0 0 20px rgba(20,184,166,0.06); }
+        .pv22-card-3:hover { border-color: rgba(20,184,166,0.5); box-shadow: 0 0 30px rgba(20,184,166,0.15); }
+        .pv22-card-4 { border: 1px solid rgba(34,197,94,0.2); background: linear-gradient(145deg, rgba(34,197,94,0.06), rgba(0,0,0,0.3)); }
+        .pv22-card-4:hover { border-color: rgba(34,197,94,0.5); box-shadow: 0 0 30px rgba(34,197,94,0.12); }
+        .pv22-num {
+          width: 36px; height: 36px; border-radius: 50%;
+          display: flex; align-items: center; justify-content: center;
+          font-weight: 800; font-size: 14px;
+          flex-shrink: 0;
+        }
+        .pv22-num-1 { background: linear-gradient(135deg, #8B5CF6, #7C3AED); color: #fff; }
+        .pv22-num-2 { background: linear-gradient(135deg, #EC4899, #DB2777); color: #fff; }
+        .pv22-num-3 { background: linear-gradient(135deg, #14B8A6, #0D9488); color: #fff; }
+        .pv22-num-4 { background: linear-gradient(135deg, #22C55E, #16A34A); color: #fff; }
+        .pv22-step { opacity: 0; }
+        .pv22-step.pv22-visible-l { animation: pv22slideLeft 0.7s ease forwards; }
+        .pv22-step.pv22-visible-r { animation: pv22slideRight 0.7s ease forwards; }
+        .pv22-highlight-badge {
+          display: inline-flex; align-items: center; gap: 4px;
+          margin-top: 8px; padding: 4px 10px; border-radius: 9999px;
+          background: rgba(20,184,166,0.15); color: #14B8A6;
+          font-size: 11px; font-weight: 600;
+        }
+      </style>
+      <div class="mx-auto max-w-[600px] relative">
+        <!-- SVG connecting path -->
+        <svg class="absolute inset-0 w-full h-full pointer-events-none z-0" viewBox="0 0 600 780" fill="none" preserveAspectRatio="none">
+          <path d="M150 60 C150 130, 450 130, 450 220 C450 310, 150 310, 150 400 C150 490, 450 490, 450 580 C450 660, 300 720, 300 760" stroke="rgba(255,215,0,0.2)" stroke-width="2" fill="none" stroke-dasharray="6 6"/>
+          <circle r="4" fill="#FFD700" opacity="0">
+            <animateMotion dur="6s" repeatCount="indefinite" path="M150 60 C150 130, 450 130, 450 220 C450 310, 150 310, 150 400 C150 490, 450 490, 450 580 C450 660, 300 720, 300 760"/>
+            <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.05;0.95;1" dur="6s" repeatCount="indefinite"/>
+          </circle>
+          <circle r="8" fill="rgba(255,215,0,0.25)" opacity="0">
+            <animateMotion dur="6s" repeatCount="indefinite" path="M150 60 C150 130, 450 130, 450 220 C450 310, 150 310, 150 400 C150 490, 450 490, 450 580 C450 660, 300 720, 300 760"/>
+            <animate attributeName="opacity" values="0;0.4;0.4;0" keyTimes="0;0.05;0.95;1" dur="6s" repeatCount="indefinite"/>
+          </circle>
+        </svg>
+        <!-- Cards -->
+        <div class="relative z-10 flex flex-col gap-10">
+          <!-- Step 1 — Left (Purple) -->
+          <div class="pv22-step flex justify-start" data-dir="l">
+            <div class="pv22-card pv22-card-1 rounded-2xl p-5 max-w-[320px] flex items-start gap-4">
+              <div class="pv22-num pv22-num-1">1</div>
+              <div>
+                <span class="font-heading text-base font-bold" style="color: #A78BFA;">აუდიტი & სტრატეგია</span>
+                <p class="text-[12px] mt-1.5 leading-relaxed" style="color: rgba(167,139,250,0.55);">საიტის სრული ტექნიკური აუდიტი, კონკურენტების ანალიზი, და ინდივიდუალური სტრატეგიის შემუშავება.</p>
+              </div>
             </div>
           </div>
-          <div class="w-8 h-8 mx-auto rounded-full bg-primary text-white flex items-center justify-center text-sm font-bold mb-3 -mt-2 relative z-10">1</div>
-          <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark mb-2">აუდიტი & სტრატეგია</h3>
-          <p class="text-sm text-body dark:text-body-dark leading-relaxed">საიტის სრული ტექნიკური აუდიტი, კონკურენტების ანალიზი, და ინდივიდუალური სტრატეგიის შემუშავება.</p>
-        </div>
-        <!-- Step 2 -->
-        <div class="relative text-center">
-          <div class="w-24 h-24 mx-auto rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center mb-5 relative z-10">
-            <div class="w-16 h-16 rounded-full bg-primary/20 dark:bg-primary/30 flex items-center justify-center">
-              <svg class="w-8 h-8 text-primary dark:text-primary-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          <!-- Step 2 — Right (Pink) -->
+          <div class="pv22-step flex justify-end" data-dir="r">
+            <div class="pv22-card pv22-card-2 rounded-2xl p-5 max-w-[320px] flex items-start gap-4">
+              <div class="pv22-num pv22-num-2">2</div>
+              <div>
+                <span class="font-heading text-base font-bold" style="color: #F472B6;">იმპლემენტაცია</span>
+                <p class="text-[12px] mt-1.5 leading-relaxed" style="color: rgba(244,114,182,0.55);">On-page ოპტიმიზაცია, კონტენტის შექმნა, ტექნიკური გაუმჯობესებები, ლინკ ბილდინგი.</p>
+              </div>
             </div>
           </div>
-          <div class="w-8 h-8 mx-auto rounded-full bg-primary text-white flex items-center justify-center text-sm font-bold mb-3 -mt-2 relative z-10">2</div>
-          <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark mb-2">იმპლემენტაცია</h3>
-          <p class="text-sm text-body dark:text-body-dark leading-relaxed">On-page ოპტიმიზაცია, კონტენტის შექმნა, ტექნიკური გაუმჯობესებები, ლინკ ბილდინგი.</p>
-        </div>
-        <!-- Step 3 — HIGHLIGHTED -->
-        <div class="relative text-center">
-          <div class="w-24 h-24 mx-auto rounded-full bg-accent/20 dark:bg-accent/30 flex items-center justify-center mb-5 relative z-10 ring-4 ring-accent/30 dark:ring-accent/40">
-            <div class="w-16 h-16 rounded-full bg-accent/30 dark:bg-accent/40 flex items-center justify-center">
-              <svg class="w-8 h-8 text-accent-dark dark:text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+          <!-- Step 3 — Left (Teal - Highlighted) -->
+          <div class="pv22-step flex justify-start" data-dir="l">
+            <div class="pv22-card pv22-card-3 rounded-2xl p-5 max-w-[340px] flex items-start gap-4">
+              <div class="pv22-num pv22-num-3">3</div>
+              <div>
+                <span class="font-heading text-base font-bold" style="color: #2DD4BF;">ყოველკვირეული აფდეითები</span>
+                <p class="text-[12px] mt-1.5 leading-relaxed" style="color: rgba(45,212,191,0.55);">ყოველ კვირას დეტალური ანგარიში — რა გაკეთდა, რა შედეგებია, რა არის შემდეგი ნაბიჯი.</p>
+                <span class="pv22-highlight-badge">
+                  <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  ჩვენი გამორჩეულობა
+                </span>
+              </div>
             </div>
           </div>
-          <div class="w-8 h-8 mx-auto rounded-full bg-accent-dark dark:bg-accent text-white dark:text-surface-dark flex items-center justify-center text-sm font-bold mb-3 -mt-2 relative z-10">3</div>
-          <h3 class="font-heading text-lg font-bold text-accent-dark dark:text-accent mb-2">ყოველკვირეული აფდეითები</h3>
-          <p class="text-sm text-body dark:text-body-dark leading-relaxed">ყოველ კვირას დეტალური ანგარიში — რა გაკეთდა, რა შედეგებია, რა არის შემდეგი ნაბიჯი.</p>
-          <span class="inline-flex items-center gap-1 mt-3 px-3 py-1 rounded-full bg-accent/10 dark:bg-accent/20 text-accent-dark dark:text-accent text-xs font-semibold">
-            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            ჩვენი გამორჩეულობა
-          </span>
-        </div>
-        <!-- Step 4 -->
-        <div class="relative text-center">
-          <div class="w-24 h-24 mx-auto rounded-full bg-success/10 flex items-center justify-center mb-5 relative z-10">
-            <div class="w-16 h-16 rounded-full bg-success/20 flex items-center justify-center">
-              <svg class="w-8 h-8 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+          <!-- Step 4 — Right (Green) -->
+          <div class="pv22-step flex justify-end" data-dir="r">
+            <div class="pv22-card pv22-card-4 rounded-2xl p-5 max-w-[320px] flex items-start gap-4">
+              <div class="pv22-num pv22-num-4">4</div>
+              <div>
+                <span class="font-heading text-base font-bold" style="color: #4ADE80;">შედეგი & ზრდა</span>
+                <p class="text-[12px] mt-1.5 leading-relaxed" style="color: rgba(74,222,128,0.55);">ორგანული ტრაფიკის, პოზიციების, და კონვერსიების მდგრადი ზრდა თვიდან თვემდე.</p>
+              </div>
             </div>
           </div>
-          <div class="w-8 h-8 mx-auto rounded-full bg-success text-white flex items-center justify-center text-sm font-bold mb-3 -mt-2 relative z-10">4</div>
-          <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark mb-2">შედეგი & ზრდა</h3>
-          <p class="text-sm text-body dark:text-body-dark leading-relaxed">ორგანული ტრაფიკის, პოზიციების, და კონვერსიების მდგრადი ზრდა თვიდან თვემდე.</p>
         </div>
       </div>
     </div>
+    <script>
+      (function(){
+        var steps = document.querySelectorAll('#process-v22-section .pv22-step');
+        var observer = new IntersectionObserver(function(entries){
+          entries.forEach(function(e){
+            if(e.isIntersecting){
+              var dir = e.target.dataset.dir;
+              var idx = Array.from(steps).indexOf(e.target);
+              setTimeout(function(){
+                e.target.classList.add(dir === 'l' ? 'pv22-visible-l' : 'pv22-visible-r');
+              }, idx * 200);
+            }
+          });
+        }, {threshold: 0.3});
+        steps.forEach(function(s){ observer.observe(s); });
+      })();
+    </script>
   </section>
 
   <!-- ========== TEAM / FOUNDERS ========== -->
@@ -1447,83 +1517,46 @@
     </div>
   </section>
 
-  <!-- ========== FAQ ACCORDION ========== -->
-  <section id="faq" class="py-16 lg:py-24 bg-white dark:bg-surface-dark">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-12">
-        <p class="text-sm font-semibold text-primary dark:text-primary-light uppercase tracking-wider mb-3" data-ka="ხშირად დასმული კითხვები" data-en="Frequently Asked Questions">ხშირად დასმული კითხვები</p>
-        <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-heading dark:text-heading-dark leading-[1.3]">FAQ</h2>
+  <!-- ========== FAQ — V29 Gold Glassmorphism ========== -->
+  <section id="faq" class="relative py-16 lg:py-24 overflow-hidden bg-white dark:bg-surface-dark">
+    <div class="absolute inset-0 dark:block hidden" style="background: radial-gradient(ellipse at 30% 20%, rgba(245,158,11,0.04) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, rgba(217,119,6,0.03) 0%, transparent 50%);"></div>
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 relative z-10">
+      <div class="text-center mb-8">
+        <p class="text-sm font-semibold text-primary dark:text-primary-light uppercase tracking-wider mb-3">FAQ</p>
+        <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-heading dark:text-heading-dark leading-[1.3]">ხშირად დასმული კითხვები</h2>
       </div>
-      <!-- Filter tabs -->
-      <div class="flex gap-2 justify-center mb-8 flex-wrap">
-        <button class="faq-tab px-4 py-2 text-sm font-semibold rounded-full bg-primary text-white transition-colors" data-category="all" data-ka="ყველა" data-en="All">ყველა</button>
-        <button class="faq-tab px-4 py-2 text-sm font-semibold rounded-full bg-gray-100 dark:bg-gray-800 text-body dark:text-body-dark hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" data-category="general" data-ka="ზოგადი" data-en="General">ზოგადი</button>
-        <button class="faq-tab px-4 py-2 text-sm font-semibold rounded-full bg-gray-100 dark:bg-gray-800 text-body dark:text-body-dark hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" data-category="pricing" data-ka="ფასები" data-en="Pricing">ფასები</button>
-        <button class="faq-tab px-4 py-2 text-sm font-semibold rounded-full bg-gray-100 dark:bg-gray-800 text-body dark:text-body-dark hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" data-category="technical" data-ka="ტექნიკური" data-en="Technical">ტექნიკური</button>
-      </div>
-      <div class="space-y-3" id="faq-list">
-        <!-- FAQ 1 -->
-        <div class="faq-item border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden" data-category="general">
-          <button class="faq-toggle w-full px-6 py-5 text-left flex items-center justify-between gap-4 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
-            <span class="font-semibold text-heading dark:text-heading-dark" data-ka="რა არის SEO და რატომ არის მნიშვნელოვანი?" data-en="What is SEO and why is it important?">რა არის SEO და რატომ არის მნიშვნელოვანი?</span>
-            <svg class="w-5 h-5 text-body dark:text-body-dark shrink-0 faq-chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="faq-content px-6 pb-5">
-            <p class="text-body dark:text-body-dark leading-relaxed" data-ka="SEO (Search Engine Optimization) — საძიებო სისტემების ოპტიმიზაცია არის პროცესი, რომელიც ეხმარება თქვენს ვებსაიტს Google-ში მაღალ პოზიციებზე გამოჩენას. ეს ნიშნავს მეტი ორგანული (უფასო) ტრაფიკი, მეტი პოტენციური კლიენტი, და მეტი გაყიდვები." data-en="SEO (Search Engine Optimization) is the process of helping your website appear at the top of Google search results. This means more organic (free) traffic, more potential customers, and more sales.">SEO (Search Engine Optimization) — საძიებო სისტემების ოპტიმიზაცია არის პროცესი, რომელიც ეხმარება თქვენს ვებსაიტს Google-ში მაღალ პოზიციებზე გამოჩენას. ეს ნიშნავს მეტი ორგანული (უფასო) ტრაფიკი, მეტი პოტენციური კლიენტი, და მეტი გაყიდვები.</p>
-          </div>
-        </div>
-        <!-- FAQ 2 -->
-        <div class="faq-item border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden" data-category="pricing">
-          <button class="faq-toggle w-full px-6 py-5 text-left flex items-center justify-between gap-4 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
-            <span class="font-semibold text-heading dark:text-heading-dark" data-ka="რა ღირს SEO მომსახურება?" data-en="How much does SEO service cost?">რა ღირს SEO მომსახურება?</span>
-            <svg class="w-5 h-5 text-body dark:text-body-dark shrink-0 faq-chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="faq-content px-6 pb-5">
-            <p class="text-body dark:text-body-dark leading-relaxed" data-ka="ფასი დამოკიდებულია პროექტის მასშტაბზე, კონკურენციის დონეზე, და თქვენს მიზნებზე. ჩვენ ვთავაზობთ ინდივიდუალურ გეგმებს. დაგვიკავშირდით უფასო კონსულტაციისთვის და მიიღეთ პერსონალიზებული შეთავაზება." data-en="Pricing depends on project scale, competition level, and your goals. We offer individual plans. Contact us for a free consultation and receive a personalized proposal.">ფასი დამოკიდებულია პროექტის მასშტაბზე, კონკურენციის დონეზე, და თქვენს მიზნებზე. ჩვენ ვთავაზობთ ინდივიდუალურ გეგმებს. დაგვიკავშირდით უფასო კონსულტაციისთვის და მიიღეთ პერსონალიზებული შეთავაზება.</p>
-          </div>
-        </div>
-        <!-- FAQ 3 -->
-        <div class="faq-item border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden" data-category="general">
-          <button class="faq-toggle w-full px-6 py-5 text-left flex items-center justify-between gap-4 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
-            <span class="font-semibold text-heading dark:text-heading-dark" data-ka="რამდენ ხანში ჩანს SEO-ს შედეგები?" data-en="How long until SEO results are visible?">რამდენ ხანში ჩანს SEO-ს შედეგები?</span>
-            <svg class="w-5 h-5 text-body dark:text-body-dark shrink-0 faq-chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="faq-content px-6 pb-5">
-            <p class="text-body dark:text-body-dark leading-relaxed" data-ka="პირველი შედეგები ჩვეულებრივ 2-3 თვეში ჩანს, მნიშვნელოვანი ზრდა კი 4-6 თვეში. თუმცა, ყოველკვირეული ანგარიშებით თქვენ ხედავთ პროგრესს პირველი კვირიდანვე — ინდექსაცია, ტექნიკური გაუმჯობესებები, კონტენტის ოპტიმიზაცია." data-en="Initial results typically appear within 2-3 months, with significant growth in 4-6 months. However, through weekly reports you can see progress from the very first week — indexing, technical improvements, content optimization.">პირველი შედეგები ჩვეულებრივ 2-3 თვეში ჩანს, მნიშვნელოვანი ზრდა კი 4-6 თვეში. თუმცა, ყოველკვირეული ანგარიშებით თქვენ ხედავთ პროგრესს პირველი კვირიდანვე — ინდექსაცია, ტექნიკური გაუმჯობესებები, კონტენტის ოპტიმიზაცია.</p>
-          </div>
-        </div>
-        <!-- FAQ 4 -->
-        <div class="faq-item border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden" data-category="technical">
-          <button class="faq-toggle w-full px-6 py-5 text-left flex items-center justify-between gap-4 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
-            <span class="font-semibold text-heading dark:text-heading-dark" data-ka="რა შედის ყოველკვირეულ ანგარიშში?" data-en="What's included in the weekly report?">რა შედის ყოველკვირეულ ანგარიშში?</span>
-            <svg class="w-5 h-5 text-body dark:text-body-dark shrink-0 faq-chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="faq-content px-6 pb-5">
-            <p class="text-body dark:text-body-dark leading-relaxed" data-ka="ყოველკვირეული ანგარიში მოიცავს: გაკეთებული სამუშაოს დეტალებს, keywords-ის პოზიციების ცვლილებას, ტრაფიკის სტატისტიკას, და მომავალი კვირის გეგმას. სრული გამჭვირვალობა — ყოველთვის იცით რა ხდება." data-en="The weekly report includes: details of completed work, keyword position changes, traffic statistics, and next week's plan. Full transparency — you always know what's happening.">ყოველკვირეული ანგარიში მოიცავს: გაკეთებული სამუშაოს დეტალებს, keywords-ის პოზიციების ცვლილებას, ტრაფიკის სტატისტიკას, და მომავალი კვირის გეგმას. სრული გამჭვირვალობა — ყოველთვის იცით რა ხდება.</p>
-          </div>
-        </div>
-        <!-- FAQ 5 -->
-        <div class="faq-item border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden" data-category="technical">
-          <button class="faq-toggle w-full px-6 py-5 text-left flex items-center justify-between gap-4 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
-            <span class="font-semibold text-heading dark:text-heading-dark" data-ka="რა მეთოდებს იყენებთ?" data-en="What methods do you use?">რა მეთოდებს იყენებთ?</span>
-            <svg class="w-5 h-5 text-body dark:text-body-dark shrink-0 faq-chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="faq-content px-6 pb-5">
-            <p class="text-body dark:text-body-dark leading-relaxed" data-ka="ვიყენებთ მხოლოდ White-Hat SEO მეთოდებს: ტექნიკური ოპტიმიზაცია, ხარისხიანი კონტენტის შექმნა, ავტორიტეტული ლინკების მოპოვება, და Google-ის გაიდლაინებთან სრული შესაბამისობა. არანაირი Black-Hat ტექნიკა." data-en="We use only White-Hat SEO methods: technical optimization, quality content creation, authoritative link building, and full compliance with Google guidelines. No Black-Hat techniques.">ვიყენებთ მხოლოდ White-Hat SEO მეთოდებს: ტექნიკური ოპტიმიზაცია, ხარისხიანი კონტენტის შექმნა, ავტორიტეტული ლინკების მოპოვება, და Google-ის გაიდლაინებთან სრული შესაბამისობა. არანაირი Black-Hat ტექნიკა.</p>
-          </div>
-        </div>
-        <!-- FAQ 6 -->
-        <div class="faq-item border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden" data-category="pricing">
-          <button class="faq-toggle w-full px-6 py-5 text-left flex items-center justify-between gap-4 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
-            <span class="font-semibold text-heading dark:text-heading-dark" data-ka="აქვს ხელშეკრულებას მინიმალური ვადა?" data-en="Is there a minimum contract period?">აქვს ხელშეკრულებას მინიმალური ვადა?</span>
-            <svg class="w-5 h-5 text-body dark:text-body-dark shrink-0 faq-chevron transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="faq-content px-6 pb-5">
-            <p class="text-body dark:text-body-dark leading-relaxed" data-ka="ჩვენ ვურჩევთ მინიმუმ 6-თვიან თანამშრომლობას საუკეთესო შედეგებისთვის, თუმცა არ გვაქვს სავალდებულო გრძელვადიანი კონტრაქტები. შედეგები თავად გადაწყვეტენ — ჩვენი კლიენტების 90%+ აგრძელებს თანამშრომლობას." data-en="We recommend a minimum 6-month collaboration for the best results, but we don't have mandatory long-term contracts. Results speak for themselves — 90%+ of our clients continue their partnership.">ჩვენ ვურჩევთ მინიმუმ 6-თვიან თანამშრომლობას საუკეთესო შედეგებისთვის, თუმცა არ გვაქვს სავალდებულო გრძელვადიანი კონტრაქტები. შედეგები თავად გადაწყვეტენ — ჩვენი კლიენტების 90%+ აგრძელებს თანამშრომლობას.</p>
-          </div>
-        </div>
-      </div>
+      <div class="flex flex-wrap justify-center gap-2 mb-8" id="v29-tabs"></div>
+      <div class="space-y-3" id="v29-items"></div>
     </div>
+    <script>
+      (function(){
+        var faqData = [
+          { q: "რას აკეთებს SEO სააგენტო?", a: "ჩვენ ვართ პროფესიონალთა გუნდი, რომელიც საძიებო სისტემებში უკეთ პოზიციონირებაში ეხმარება ბიზნესს. ეს ნიშნავს, რომ თქვენი საიტი ძიების შედეგებში უფრო მაღლა გამოჩნდება და ორგანული ვიზიტორების რაოდენობა გაიზრდება. ამისთვის ვიყენებთ სხვადასხვა მიდგომებს – ტექნიკური გაუმჯობესებიდან დაწყებული, შინაარსის ოპტიმიზაციითა და გარე ლინკების სტრატეგიებით დამთავრებული.", cat: "ზოგადი" },
+          { q: "რამდენი ხანი სჭირდება SEO შედეგების მიღებას?", a: "SEO გრძელვადიანი სტრატეგიაა, პირველი შედეგები ჩვეულებრივ 3-დან 6 თვემდე პერიოდში შეიმჩნევა. ჩვენს გამოცდილებაზე დაყრდნობით, ხშირ შემთხვევაში გაუმჯობესება მეორე თვიდანვე იწყება – ამ პერიოდში არაერთ პროექტში დაფიქსირებულა 50–60%-იანი ტრაფიკის ზრდა.", cat: "შედეგები" },
+          { q: "რა ღირს SEO მომსახურეობა?", a: "SEO მომსახურების ფასი შეიძლება განსხვავდებოდეს შეძენილი პაკეტის, თანამშრომლობის ხანგრძლივობისა თუ სამუშაოს სპეციფიკის გათვალისწინებით. 10xSEO-ში მინიმალური პაკეტის ღირებულება 1880 ლარიდან იწყება. სააგენტო სრულად ერგება პარტნიორი კომპანიის ინტერესებსა და მიზნებს.", cat: "ფასი" },
+          { q: "როგორ იზომება შედეგები?", a: "ვაკვირდებით ისეთ საკვანძო მაჩვენებლებს, როგორიცაა: ძიების შედეგებში პოზიციების გაუმჯობესება, ორგანული ტრაფიკის ზრდა და კონვერსიის მატება. ჩვენი რეპორტინგის სისტემა გაჩვენებთ, რა შედეგს იძლევა ჩვენი სტრატეგია რეალურ ციფრებში.", cat: "შედეგები" },
+          { q: "რატომ უნდა ავირჩიოთ სააგენტო და არა In-House გუნდი?", a: "SEO კომპლექსური პროცესია სადაც პროექტზე გუნდი მუშაობს — SEO სპეციალისტი, სტრატეგოსი, კონტენტის მწერალი და ვებ დეველოპერი. ზოგიერთ შემთხვევაში OFF-PAGE ან Local SEO სპეციალისტი დამატებით ერთვება პროექტში. კადრების აყვანა და მართვა In-House გუნდისთვის მნიშვნელოვნად უფრო რთული და ძვირია.", cat: "ზოგადი" },
+          { q: "რატომ არის 10xSEO საქართველოში საუკეთესო SEO სააგენტო?", a: "ჩვენ ვმუშაობთ თქვენი ბიზნესის რეალური მიზნებისა და შედეგებისთვის. გვაქვს სრულფასოვანი „Done-for-You\" პაკეტი, რომელიც AI-ით მხარდაჭერილ AEO/GEO ოპტიმიზაციას, დეტალურად გაზომვად შედეგებსა და მაღალკვალიფიციურ პროექტ მენეჯმენტს მოიცავს. ჩვენი გუნდი შედგება 12+ წლიანი გამოცდილების მქონე სპეციალისტებისგან.", cat: "ზოგადი" }
+        ];
+        var faqCategories = ["ყველა", "ზოგადი", "ფასი", "შედეგები"];
+        var tabs=document.getElementById('v29-tabs'), list=document.getElementById('v29-items'), activeCat='ყველა';
+        faqCategories.forEach(function(cat){
+          var t=document.createElement('button');
+          t.className='v29-tab'+(cat==='ყველა'?' v29-active':'');
+          t.textContent=cat;
+          t.onclick=function(){ activeCat=cat; tabs.querySelectorAll('.v29-tab').forEach(function(b){b.classList.remove('v29-active');}); t.classList.add('v29-active'); filter(); };
+          tabs.appendChild(t);
+        });
+        faqData.forEach(function(faq){
+          var d=document.createElement('div');
+          d.className='v29-card'; d.setAttribute('data-cat',faq.cat);
+          d.innerHTML='<div class="v29-cq"><div class="v29-badge"><svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></div><span class="v29-txt">'+faq.q+'</span><span class="v29-cat">'+faq.cat+'</span></div><div class="v29-ca"><p>'+faq.a+'</p></div>';
+          d.querySelector('.v29-cq').onclick=function(){ var o=d.classList.contains('v29-open'); list.querySelectorAll('.v29-card').forEach(function(el){el.classList.remove('v29-open');}); if(!o) d.classList.add('v29-open'); };
+          list.appendChild(d);
+        });
+        function filter(){ list.querySelectorAll('.v29-card').forEach(function(el){ el.classList.remove('v29-open'); if(activeCat==='ყველა'||el.getAttribute('data-cat')===activeCat) el.classList.remove('v29-hidden'); else el.classList.add('v29-hidden'); }); }
+      })();
+    </script>
   </section>
 
   <!-- ========== BLOG PREVIEW ========== -->
@@ -1541,7 +1574,7 @@
       </div>
       <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
         <!-- Blog Card 1 -->
-        <a href="blog-post.html" class="group bg-white dark:bg-surface-dark rounded-2xl border border-gray-100 dark:border-gray-800 overflow-hidden hover:shadow-lg transition-shadow">
+        <a href="blog.html" class="group bg-white dark:bg-surface-dark rounded-2xl border border-gray-100 dark:border-gray-800 overflow-hidden hover:shadow-lg transition-shadow">
           <div class="aspect-[16/9] bg-gradient-to-br from-primary/10 to-accent/10 dark:from-primary/20 dark:to-accent/20 flex items-center justify-center">
             <svg class="w-12 h-12 text-primary/30 dark:text-primary-light/30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
           </div>
@@ -1556,7 +1589,7 @@
           </div>
         </a>
         <!-- Blog Card 2 -->
-        <a href="blog-post.html" class="group bg-white dark:bg-surface-dark rounded-2xl border border-gray-100 dark:border-gray-800 overflow-hidden hover:shadow-lg transition-shadow">
+        <a href="blog.html" class="group bg-white dark:bg-surface-dark rounded-2xl border border-gray-100 dark:border-gray-800 overflow-hidden hover:shadow-lg transition-shadow">
           <div class="aspect-[16/9] bg-gradient-to-br from-success/10 to-emerald-200/20 dark:from-success/20 dark:to-emerald-900/20 flex items-center justify-center">
             <svg class="w-12 h-12 text-success/30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
           </div>
@@ -1571,7 +1604,7 @@
           </div>
         </a>
         <!-- Blog Card 3 -->
-        <a href="blog-post.html" class="group bg-white dark:bg-surface-dark rounded-2xl border border-gray-100 dark:border-gray-800 overflow-hidden hover:shadow-lg transition-shadow">
+        <a href="blog.html" class="group bg-white dark:bg-surface-dark rounded-2xl border border-gray-100 dark:border-gray-800 overflow-hidden hover:shadow-lg transition-shadow">
           <div class="aspect-[16/9] bg-gradient-to-br from-purple-100 to-pink-100/20 dark:from-purple-900/20 dark:to-pink-900/20 flex items-center justify-center">
             <svg class="w-12 h-12 text-purple-400/30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
           </div>
@@ -1774,39 +1807,7 @@
         requestAnimationFrame(update);
       });
     }
-    // FAQ accordion with smooth animation
-    document.querySelectorAll('.faq-toggle').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const item = btn.parentElement;
-        const wasOpen = item.classList.contains('open');
-        // Close all other items
-        document.querySelectorAll('.faq-item.open').forEach(openItem => {
-          if (openItem !== item) openItem.classList.remove('open');
-        });
-        // Toggle current
-        item.classList.toggle('open', !wasOpen);
-      });
-    });
-
-    // FAQ category filter
-    document.querySelectorAll('.faq-tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        document.querySelectorAll('.faq-tab').forEach(t => {
-          t.classList.remove('bg-primary', 'text-white');
-          t.classList.add('bg-gray-100', 'dark:bg-gray-800', 'text-body', 'dark:text-body-dark');
-        });
-        tab.classList.remove('bg-gray-100', 'dark:bg-gray-800', 'text-body', 'dark:text-body-dark');
-        tab.classList.add('bg-primary', 'text-white');
-        const cat = tab.dataset.category;
-        document.querySelectorAll('.faq-item').forEach(item => {
-          if (cat === 'all' || item.dataset.category === cat) {
-            item.style.display = '';
-          } else {
-            item.style.display = 'none';
-          }
-        });
-      });
-    });
+    // FAQ is handled by v29 inline script
 
     // Sticky bottom CTA — hide on scroll down, show on scroll up
     let lastScrollY = 0;
@@ -1885,6 +1886,30 @@
     }, { threshold: 0.3 });
     const statsSection = document.querySelector('.counter')?.closest('section');
     if (statsSection) statsObserver.observe(statsSection);
+
+    // Honeycomb scroll reveal — Pop Elastic, random order
+    const hexCells = [...document.querySelectorAll('.hex-cell')];
+    let hexTriggered = false;
+    const hexSection = hexCells[0]?.closest('section');
+    if (hexSection) {
+      const hexObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !hexTriggered) {
+            hexTriggered = true;
+            const indices = hexCells.map((_, i) => i);
+            for (let i = indices.length - 1; i > 0; i--) {
+              const j = Math.floor(Math.random() * (i + 1));
+              [indices[i], indices[j]] = [indices[j], indices[i]];
+            }
+            indices.forEach((cellIdx, step) => {
+              setTimeout(() => hexCells[cellIdx].classList.add('hex-visible'), step * 100);
+            });
+            hexObserver.disconnect();
+          }
+        });
+      }, { threshold: 0.15 });
+      hexObserver.observe(hexSection);
+    }
   </script>
 
   <script>
