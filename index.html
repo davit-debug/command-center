@@ -558,18 +558,18 @@
     </div>
   </section>
 
-  <!-- ═══ ვარიანტი 9 — Interactive 3D Pyramid (პორტფოლიოს ქვემოთ) ═══ -->
-  <section class="py-16 lg:py-24 bg-surface-dark relative overflow-hidden">
+  <!-- ========== SERVICES — ვარიანტი 9 (Interactive 3D Pyramid) ========== -->
+  <section id="services" class="py-16 lg:py-24 bg-surface-dark relative overflow-hidden">
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/[0.04] rounded-full blur-[120px]"></div>
     <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6">
       <div class="text-center mb-10">
-        <p class="text-sm font-semibold text-primary dark:text-primary-light uppercase tracking-wider mb-3">აირჩიეთ სერვისი</p>
+        <p class="text-sm font-semibold text-primary-light uppercase tracking-wider mb-3" data-ka="ჩვენი სერვისები" data-en="Our Services">ჩვენი სერვისები</p>
         <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-heading-dark leading-[1.3]">
-          თითოეული პირამიდის უჯრა კლიკვადია
+          აირჩიეთ სერვისი — თითოეული პირამიდის უჯრა კლიკვადია
         </h2>
       </div>
       <div class="mx-auto max-w-[550px]" style="perspective: 1200px;">
-        <div id="pyramid3d-portfolio" style="transform-style: preserve-3d; transform: rotateX(8deg) rotateY(-5deg); transition: transform 0.6s cubic-bezier(0.23,1,0.32,1);">
+        <div id="pyramid3d-services" style="transform-style: preserve-3d; transform: rotateX(8deg) rotateY(-5deg); transition: transform 0.6s cubic-bezier(0.23,1,0.32,1);">
           <a href="seo-management.html" class="block relative mx-auto mb-3 group" style="width: 30%; transition: all 0.4s cubic-bezier(0.23,1,0.32,1);">
             <div class="relative overflow-hidden rounded-xl p-4 text-center border border-purple-500/40" style="background: linear-gradient(135deg, rgba(139,92,246,0.25), rgba(139,92,246,0.08)); backdrop-filter: blur(12px); transition: all 0.4s cubic-bezier(0.23,1,0.32,1);">
               <div class="absolute inset-0 bg-gradient-to-r from-purple-500/0 via-purple-500/20 to-purple-500/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
@@ -607,7 +607,7 @@
     </div>
     <script>
       (function(){
-        var w = document.getElementById('pyramid3d-portfolio');
+        var w = document.getElementById('pyramid3d-services');
         if(!w) return;
         w.parentElement.addEventListener('mousemove', function(e){
           var r = this.getBoundingClientRect();
@@ -622,445 +622,144 @@
     </script>
   </section>
 
-  <!-- ========== SERVICES GRID ========== -->
-  <section id="services" class="py-16 lg:py-24 bg-white dark:bg-surface-dark">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-12 lg:mb-16">
-        <p class="text-sm font-semibold text-primary dark:text-primary-light uppercase tracking-wider mb-3" data-ka="ჩვენი სერვისები" data-en="Our Services">ჩვენი სერვისები</p>
-        <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-heading dark:text-heading-dark leading-[1.3]">
-          სრული SEO მომსახურება<br class="hidden sm:block"> თქვენი ბიზნესისთვის
-        </h2>
-      </div>
-      <div class="grid sm:grid-cols-2 gap-6 lg:gap-8">
-        <!-- Card 1: SEO Management -->
-        <a href="seo-management.html" class="gradient-border p-6 lg:p-8 hover:-translate-y-1 transition-transform duration-200 cursor-pointer group block">
-          <div class="relative z-10">
-            <div class="w-14 h-14 rounded-2xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-              <svg class="w-7 h-7 text-primary dark:text-primary-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-            </div>
-            <h3 class="font-heading text-xl font-bold text-heading dark:text-heading-dark mb-3">SEO მენეჯმენტი</h3>
-            <p class="text-body dark:text-body-dark mb-4 leading-relaxed">სრული SEO სტრატეგია და იმპლემენტაცია — ტექნიკური ოპტიმიზაცია, კონტენტ სტრატეგია, ყოველკვირეული ანგარიშები.</p>
-            <span class="inline-flex items-center gap-1 text-primary dark:text-primary-light font-semibold text-sm group-hover:gap-2 transition-all">
-              გაიგეთ მეტი
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-            </span>
-          </div>
-        </a>
-        <!-- Card 2: AI SEO -->
-        <a href="ai-seo.html" class="gradient-border p-6 lg:p-8 hover:-translate-y-1 transition-transform duration-200 cursor-pointer group block">
-          <div class="relative z-10">
-            <div class="w-14 h-14 rounded-2xl bg-success/10 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-              <svg class="w-7 h-7 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
-            </div>
-            <h3 class="font-heading text-xl font-bold text-heading dark:text-heading-dark mb-3">AI SEO</h3>
-            <p class="text-body dark:text-body-dark mb-4 leading-relaxed">გახადეთ თქვენი ბრენდი ხილული ChatGPT-ში, Gemini-ში, Perplexity-ში — GEO და AEO ოპტიმიზაცია.</p>
-            <span class="inline-flex items-center gap-1 text-primary dark:text-primary-light font-semibold text-sm group-hover:gap-2 transition-all">
-              გაიგეთ მეტი
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-            </span>
-          </div>
-        </a>
-        <!-- Card 3: CRO -->
-        <a href="cro.html" class="gradient-border p-6 lg:p-8 hover:-translate-y-1 transition-transform duration-200 cursor-pointer group block">
-          <div class="relative z-10">
-            <div class="w-14 h-14 rounded-2xl bg-accent/10 dark:bg-accent/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-              <svg class="w-7 h-7 text-accent-dark dark:text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
-            </div>
-            <h3 class="font-heading text-xl font-bold text-heading dark:text-heading-dark mb-3">კონვერსიის ოპტიმიზაცია</h3>
-            <p class="text-body dark:text-body-dark mb-4 leading-relaxed">გაზარდეთ კონვერსია A/B ტესტინგით, UX ოპტიმიზაციით და data-driven მიდგომით — მეტი lead, მეტი გაყიდვა.</p>
-            <span class="inline-flex items-center gap-1 text-primary dark:text-primary-light font-semibold text-sm group-hover:gap-2 transition-all">
-              გაიგეთ მეტი
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-            </span>
-          </div>
-        </a>
-        <!-- Card 4: SEO Consultation -->
-        <a href="seo-consultation.html" class="gradient-border p-6 lg:p-8 hover:-translate-y-1 transition-transform duration-200 cursor-pointer group block">
-          <div class="relative z-10">
-            <div class="w-14 h-14 rounded-2xl bg-purple-500/10 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-              <svg class="w-7 h-7 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-            </div>
-            <h3 class="font-heading text-xl font-bold text-heading dark:text-heading-dark mb-3">SEO კონსულტაცია</h3>
-            <p class="text-body dark:text-body-dark mb-4 leading-relaxed">1-საათიანი კონსულტაცია 13 წლიანი გამოცდილების მქონე ექსპერტთან — რთული პრობლემები, სტრატეგიის აუდიტი.</p>
-            <span class="inline-flex items-center gap-1 text-primary dark:text-primary-light font-semibold text-sm group-hover:gap-2 transition-all">
-              გაიგეთ მეტი
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-            </span>
-          </div>
-        </a>
-      </div>
-
-      <!-- ═══ ვარიანტი 3 — Rounded Rectangles Pyramid ═══ -->
-      <div class="mt-16 lg:mt-24">
-        <div class="text-center mb-8">
-          <span class="inline-block px-4 py-1.5 text-xs font-semibold rounded-full border border-primary/30 text-primary-light bg-primary/10">ვარიანტი 3</span>
-        </div>
-        <div class="mx-auto max-w-[580px]">
-          <svg viewBox="0 0 600 560" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto">
-            <defs>
-              <linearGradient id="amberGrad3idx" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#F59E0B"/>
-                <stop offset="50%" stop-color="#FBBF24"/>
-                <stop offset="100%" stop-color="#D97706"/>
-              </linearGradient>
-              <filter id="rectGlowIdx" x="-15%" y="-15%" width="130%" height="130%">
-                <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur"/>
-                <feFlood flood-color="#F59E0B" flood-opacity="0.15"/>
-                <feComposite in2="blur" operator="in"/>
-                <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
-              </filter>
-              <filter id="rectHoverGlowIdx" x="-25%" y="-25%" width="150%" height="150%">
-                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"/>
-                <feFlood flood-color="#FBBF24" flood-opacity="0.25"/>
-                <feComposite in2="blur" operator="in"/>
-                <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
-              </filter>
-            </defs>
-            <path d="M300 0 L308 15 L292 15 Z" fill="#F59E0B" opacity="0.4"/>
-            <a href="seo-management.html">
-              <rect x="185" y="25" width="230" height="95" rx="22" stroke="url(#amberGrad3idx)" stroke-width="6" fill="rgba(245,158,11,0.04)" filter="url(#rectGlowIdx)" style="transition: all 0.3s ease"/>
-              <text x="300" y="68" text-anchor="middle" fill="#FBBF24" font-family="'Dachi the Lynx', FiraGO, sans-serif" font-size="17" font-weight="bold">SEO</text>
-              <text x="300" y="90" text-anchor="middle" fill="#FBBF24" font-family="FiraGO, sans-serif" font-size="13" font-weight="600">მენეჯმენტი</text>
-              <text x="300" y="108" text-anchor="middle" fill="#92400E" font-family="FiraGO, sans-serif" font-size="10">სრული SEO სტრატეგია</text>
-            </a>
-            <a href="ai-seo.html">
-              <rect x="120" y="140" width="360" height="100" rx="22" stroke="url(#amberGrad3idx)" stroke-width="6" fill="rgba(245,158,11,0.04)" filter="url(#rectGlowIdx)" style="transition: all 0.3s ease"/>
-              <text x="300" y="190" text-anchor="middle" fill="#FBBF24" font-family="'Dachi the Lynx', FiraGO, sans-serif" font-size="19" font-weight="bold">AI SEO / GEO</text>
-              <text x="300" y="216" text-anchor="middle" fill="#D97706" font-family="FiraGO, sans-serif" font-size="11">ChatGPT, Gemini ოპტიმიზაცია</text>
-            </a>
-            <a href="cro.html">
-              <rect x="55" y="260" width="490" height="115" rx="22" stroke="url(#amberGrad3idx)" stroke-width="6" fill="rgba(245,158,11,0.04)" filter="url(#rectGlowIdx)" style="transition: all 0.3s ease"/>
-              <text x="300" y="315" text-anchor="middle" fill="#FBBF24" font-family="'Dachi the Lynx', FiraGO, sans-serif" font-size="19" font-weight="bold">კონვერსიის ოპტიმიზაცია</text>
-              <text x="300" y="345" text-anchor="middle" fill="#D97706" font-family="FiraGO, sans-serif" font-size="11">A/B ტესტინგი, UX, მეტი lead</text>
-            </a>
-            <a href="seo-consultation.html">
-              <rect x="10" y="395" width="580" height="125" rx="22" stroke="url(#amberGrad3idx)" stroke-width="6" fill="rgba(245,158,11,0.04)" filter="url(#rectGlowIdx)" style="transition: all 0.3s ease"/>
-              <text x="300" y="455" text-anchor="middle" fill="#FBBF24" font-family="'Dachi the Lynx', FiraGO, sans-serif" font-size="20" font-weight="bold">SEO კონსულტაცია</text>
-              <text x="300" y="485" text-anchor="middle" fill="#D97706" font-family="FiraGO, sans-serif" font-size="11">1-საათიანი კონსულტაცია ექსპერტთან</text>
-            </a>
-          </svg>
-        </div>
-      </div>
-
-      <!-- ═══ ვარიანტი 9 — Interactive 3D Pyramid ═══ -->
-      <div class="mt-16 lg:mt-24">
-        <div class="text-center mb-8">
-          <span class="inline-block px-4 py-1.5 text-xs font-semibold rounded-full border border-primary/30 text-primary-light bg-primary/10">ვარიანტი 9</span>
-        </div>
-        <div class="mx-auto max-w-[550px]" style="perspective: 1200px;">
-          <div id="pyramid3d-v9-idx" style="transform-style: preserve-3d; transform: rotateX(8deg) rotateY(-5deg); transition: transform 0.6s cubic-bezier(0.23,1,0.32,1);">
-            <a href="seo-management.html" class="block relative mx-auto mb-3 group" style="width: 30%; transition: all 0.4s cubic-bezier(0.23,1,0.32,1);">
-              <div class="relative overflow-hidden rounded-xl p-4 text-center border border-purple-500/40" style="background: linear-gradient(135deg, rgba(139,92,246,0.25), rgba(139,92,246,0.08)); backdrop-filter: blur(12px); transition: all 0.4s cubic-bezier(0.23,1,0.32,1);">
-                <div class="absolute inset-0 bg-gradient-to-r from-purple-500/0 via-purple-500/20 to-purple-500/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
-                <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-purple-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <span class="font-heading text-sm font-bold text-purple-300 relative z-10">SEO</span><br>
-                <span class="font-heading text-xs text-purple-400/80 relative z-10">მენეჯმენტი</span>
-              </div>
-            </a>
-            <a href="ai-seo.html" class="block relative mx-auto mb-3 group" style="width: 50%; transition: all 0.4s cubic-bezier(0.23,1,0.32,1) 0.05s;">
-              <div class="relative overflow-hidden rounded-xl p-5 text-center border border-indigo-500/40" style="background: linear-gradient(135deg, rgba(99,102,241,0.25), rgba(99,102,241,0.08)); backdrop-filter: blur(12px); transition: all 0.4s cubic-bezier(0.23,1,0.32,1);">
-                <div class="absolute inset-0 bg-gradient-to-r from-indigo-500/0 via-indigo-500/20 to-indigo-500/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
-                <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-indigo-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <span class="font-heading text-base font-bold text-indigo-300 relative z-10">AI SEO / GEO</span><br>
-                <span class="text-xs text-indigo-400/70 relative z-10">ChatGPT, Gemini ოპტიმიზაცია</span>
-              </div>
-            </a>
-            <a href="cro.html" class="block relative mx-auto mb-3 group" style="width: 72%; transition: all 0.4s cubic-bezier(0.23,1,0.32,1) 0.1s;">
-              <div class="relative overflow-hidden rounded-xl p-5 text-center border border-blue-500/40" style="background: linear-gradient(135deg, rgba(59,130,246,0.25), rgba(59,130,246,0.08)); backdrop-filter: blur(12px); transition: all 0.4s cubic-bezier(0.23,1,0.32,1);">
-                <div class="absolute inset-0 bg-gradient-to-r from-blue-500/0 via-blue-500/20 to-blue-500/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
-                <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <span class="font-heading text-base font-bold text-blue-300 relative z-10">კონვერსიის ოპტიმიზაცია</span><br>
-                <span class="text-xs text-blue-400/70 relative z-10">A/B ტესტინგი, UX, ლიდი lead</span>
-              </div>
-            </a>
-            <a href="seo-consultation.html" class="block relative mx-auto group" style="width: 95%; transition: all 0.4s cubic-bezier(0.23,1,0.32,1) 0.15s;">
-              <div class="relative overflow-hidden rounded-xl p-6 text-center border border-teal-500/40" style="background: linear-gradient(135deg, rgba(20,184,166,0.25), rgba(20,184,166,0.08)); backdrop-filter: blur(12px); transition: all 0.4s cubic-bezier(0.23,1,0.32,1);">
-                <div class="absolute inset-0 bg-gradient-to-r from-teal-500/0 via-teal-500/20 to-teal-500/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
-                <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-teal-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <span class="font-heading text-lg font-bold text-teal-300 relative z-10">SEO კონსულტაცია</span><br>
-                <span class="text-xs text-teal-400/70 relative z-10">1-საათიანი კონსულტაცია ექსპერტთან</span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <script>
-          (function(){
-            var wrap = document.getElementById('pyramid3d-v9-idx');
-            if(!wrap) return;
-            wrap.parentElement.addEventListener('mousemove', function(e){
-              var rect = this.getBoundingClientRect();
-              var x = (e.clientX - rect.left) / rect.width - 0.5;
-              var y = (e.clientY - rect.top) / rect.height - 0.5;
-              wrap.style.transform = 'rotateX(' + (-y * 15 + 5) + 'deg) rotateY(' + (x * 15) + 'deg)';
-            });
-            wrap.parentElement.addEventListener('mouseleave', function(){
-              wrap.style.transform = 'rotateX(8deg) rotateY(-5deg)';
-            });
-          })();
-        </script>
-      </div>
-
-    </div>
-  </section>
-
   <!-- ========== RESULTS SHOWCASE (Redesigned) ========== -->
-  <section id="results" class="py-16 lg:py-24 bg-surface-alt dark:bg-surface-dark-alt relative overflow-hidden">
-    <!-- Subtle background glow -->
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-primary/5 dark:bg-primary/3 rounded-full blur-[120px] pointer-events-none"></div>
+  <section id="results" class="py-16 lg:py-24 bg-surface-dark relative overflow-hidden">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-primary/[0.03] rounded-full blur-[120px] pointer-events-none"></div>
 
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
-      <!-- Section Header -->
       <div class="text-center mb-12 lg:mb-16">
-        <p class="text-sm font-semibold text-primary dark:text-primary-light uppercase tracking-wider mb-3" data-ka="რეალური შედეგები" data-en="Real Results">რეალური შედეგები</p>
-        <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-heading dark:text-heading-dark leading-[1.3] mb-4">
+        <p class="text-sm font-semibold text-primary-light uppercase tracking-wider mb-3" data-ka="რეალური შედეგები" data-en="Real Results">რეალური შედეგები</p>
+        <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-heading-dark leading-[1.3] mb-4">
           ჩვენი კლიენტების წარმატების ისტორიები
         </h2>
-        <p class="text-body dark:text-body-dark max-w-2xl mx-auto">ყველა მეტრიკა რეალურია — Google Analytics და Search Console-ის მონაცემები.</p>
+        <p class="text-body-dark max-w-2xl mx-auto">ყველა მეტრიკა რეალურია — Google Analytics და Search Console-ის მონაცემები.</p>
       </div>
 
-      <!-- ★ FEATURED HERO CASE STUDY — სტომატოლოგიური კლინიკა -->
-      <a href="case-studies/stomatologiuri-klinikis-seo.html" class="mb-8 lg:mb-12 group block">
-        <div class="relative bg-white dark:bg-surface-dark rounded-3xl border border-gray-100 dark:border-gray-800 overflow-hidden hover:shadow-2xl hover:shadow-primary/10 dark:hover:shadow-primary/5 transition-all duration-500">
-          <!-- Gradient border glow on hover -->
-          <div class="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background: linear-gradient(135deg, rgba(88,230,255,0.15), rgba(252,129,254,0.15)); pointer-events:none;"></div>
+      <!-- 6 Case Study Cards — 3x2 Grid -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
 
-          <div class="grid lg:grid-cols-2 gap-0 overflow-hidden">
-            <!-- Left: Metrics & Chart -->
-            <div class="p-5 sm:p-8 lg:p-10 min-w-0 overflow-hidden">
-              <div class="flex items-center gap-3 mb-2">
-                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-br from-pink-400 to-rose-600 flex items-center justify-center text-white font-bold text-sm sm:text-lg shadow-lg shadow-pink-500/20 shrink-0">სტ</div>
-                <div class="min-w-0">
-                  <h3 class="font-heading text-lg sm:text-xl lg:text-2xl font-bold text-heading dark:text-heading-dark truncate">სტომატოლოგიური კლინიკა</h3>
-                  <p class="text-sm text-body dark:text-body-dark">მედიცინა • იმპლანტაცია</p>
-                </div>
-                <span class="ml-auto hidden sm:inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-success/10 dark:bg-success/20 text-success">#1 Google</span>
-              </div>
-
-              <!-- Challenge → Result narrative -->
-              <p class="text-sm text-body dark:text-body-dark mt-4 mb-6 leading-relaxed">
-                <span class="font-semibold text-heading dark:text-heading-dark">გამოწვევა:</span> 0 ორგანული ტრაფიკი, ახალი კლინიკა კონკურენტულ ბაზარზე.
-                <br>
-                <span class="font-semibold text-heading dark:text-heading-dark">სტრატეგია:</span> ტექნიკური SEO, კონტენტ მარკეტინგი, ონ-პეიჯ ოპტიმიზაცია.
-              </p>
-
-              <!-- Big metrics row -->
-              <div class="grid grid-cols-3 gap-2 sm:gap-4 mb-6">
-                <div class="text-center p-2.5 sm:p-4 bg-gradient-to-br from-red-50 to-red-100/50 dark:from-red-950/30 dark:to-red-900/10 rounded-xl sm:rounded-2xl">
-                  <p class="text-[10px] sm:text-xs text-body dark:text-body-dark mb-1 uppercase tracking-wide">Before</p>
-                  <p class="font-inter text-xl sm:text-2xl lg:text-3xl font-extrabold text-red-500">0</p>
-                  <p class="text-[10px] sm:text-[11px] text-body/60 dark:text-body-dark/60 mt-0.5">ვიზიტი/თვე</p>
-                </div>
-                <div class="text-center p-2.5 sm:p-4 bg-gradient-to-br from-green-50 to-green-100/50 dark:from-green-950/30 dark:to-green-900/10 rounded-xl sm:rounded-2xl">
-                  <p class="text-[10px] sm:text-xs text-body dark:text-body-dark mb-1 uppercase tracking-wide">After</p>
-                  <p class="font-inter text-xl sm:text-2xl lg:text-3xl font-extrabold text-success">1,620</p>
-                  <p class="text-[10px] sm:text-[11px] text-body/60 dark:text-body-dark/60 mt-0.5">ვიზიტი/თვე</p>
-                </div>
-                <div class="text-center p-2.5 sm:p-4 bg-gradient-to-br from-primary/5 to-accent/5 dark:from-primary/10 dark:to-accent/10 rounded-xl sm:rounded-2xl border border-primary/20 dark:border-primary/30">
-                  <p class="text-[10px] sm:text-xs text-body dark:text-body-dark mb-1 uppercase tracking-wide">ზრდა</p>
-                  <p class="font-inter text-xl sm:text-2xl lg:text-3xl font-extrabold gradient-text">+600%</p>
-                  <p class="text-[10px] sm:text-[11px] text-body/60 dark:text-body-dark/60 mt-0.5">52% CTR</p>
-                </div>
-              </div>
-
-              <!-- Client quote -->
-              <div class="flex items-start gap-3 p-4 bg-gray-50 dark:bg-gray-900/50 rounded-2xl border-l-4 border-primary dark:border-primary-light">
-                <svg class="w-6 h-6 text-primary/40 dark:text-primary-light/40 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983z"/></svg>
-                <div>
-                  <p class="text-sm text-body dark:text-body-dark italic leading-relaxed">"იმპლანტაციის ქივორდზე #1 ვართ. 52% CTR-ით და 63K იმფრეშენით."</p>
-                  <p class="text-xs font-semibold text-heading dark:text-heading-dark mt-2">— სტომატოლოგიური კლინიკა</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Right: Growth Chart Visualization -->
-            <div class="p-5 sm:p-8 lg:p-10 bg-gradient-to-br from-gray-50/50 to-primary/5 dark:from-gray-900/30 dark:to-primary/5 flex flex-col justify-center min-w-0 overflow-hidden">
-              <p class="text-[10px] sm:text-xs text-body dark:text-body-dark uppercase tracking-wider mb-4 font-semibold">ორგანული ტრაფიკის ზრდა (0 → 1,620)</p>
-              <!-- Large bar chart -->
-              <div class="flex gap-1 sm:gap-2 h-32 sm:h-40 lg:h-48 mb-4">
-                <div class="flex-1 flex flex-col items-center gap-1">
-                  <span class="text-[10px] text-body/60 dark:text-body-dark/60 font-inter">0</span>
-                  <div class="flex-1 w-full flex items-end"><div class="w-full bg-red-300 dark:bg-red-800/60 rounded-t-lg transition-all duration-300 group-hover:bg-red-400" style="height:2%"></div></div>
-                  <span class="text-[9px] text-body/50 dark:text-body-dark/50">თვე 1</span>
-                </div>
-                <div class="flex-1 flex flex-col items-center gap-1">
-                  <span class="text-[10px] text-body/60 dark:text-body-dark/60 font-inter">45</span>
-                  <div class="flex-1 w-full flex items-end"><div class="w-full bg-orange-300 dark:bg-orange-800/60 rounded-t-lg" style="height:5%"></div></div>
-                  <span class="text-[9px] text-body/50 dark:text-body-dark/50">თვე 2</span>
-                </div>
-                <div class="flex-1 flex flex-col items-center gap-1">
-                  <span class="text-[10px] text-body/60 dark:text-body-dark/60 font-inter">180</span>
-                  <div class="flex-1 w-full flex items-end"><div class="w-full bg-primary/40 dark:bg-primary/30 rounded-t-lg" style="height:18%"></div></div>
-                  <span class="text-[9px] text-body/50 dark:text-body-dark/50">თვე 3</span>
-                </div>
-                <div class="flex-1 flex flex-col items-center gap-1">
-                  <span class="text-[10px] text-body/60 dark:text-body-dark/60 font-inter">420</span>
-                  <div class="flex-1 w-full flex items-end"><div class="w-full bg-primary/50 dark:bg-primary/40 rounded-t-lg" style="height:35%"></div></div>
-                  <span class="text-[9px] text-body/50 dark:text-body-dark/50">თვე 4</span>
-                </div>
-                <div class="flex-1 flex flex-col items-center gap-1">
-                  <span class="text-[10px] text-body/60 dark:text-body-dark/60 font-inter">680</span>
-                  <div class="flex-1 w-full flex items-end"><div class="w-full bg-primary/60 dark:bg-primary/50 rounded-t-lg" style="height:55%"></div></div>
-                  <span class="text-[9px] text-body/50 dark:text-body-dark/50">თვე 5</span>
-                </div>
-                <div class="flex-1 flex flex-col items-center gap-1">
-                  <span class="text-[10px] text-body/60 dark:text-body-dark/60 font-inter">950</span>
-                  <div class="flex-1 w-full flex items-end"><div class="w-full bg-primary/70 dark:bg-primary/60 rounded-t-lg" style="height:72%"></div></div>
-                  <span class="text-[9px] text-body/50 dark:text-body-dark/50">თვე 6</span>
-                </div>
-                <div class="flex-1 flex flex-col items-center gap-1">
-                  <span class="text-[10px] text-body/60 dark:text-body-dark/60 font-inter">1.3K</span>
-                  <div class="flex-1 w-full flex items-end"><div class="w-full bg-primary/85 dark:bg-primary/75 rounded-t-lg" style="height:88%"></div></div>
-                  <span class="text-[9px] text-body/50 dark:text-body-dark/50">თვე 7</span>
-                </div>
-                <div class="flex-1 flex flex-col items-center gap-1">
-                  <span class="text-[10px] text-primary dark:text-primary-light font-bold font-inter">1.6K</span>
-                  <div class="flex-1 w-full flex items-end"><div class="w-full bg-gradient-to-t from-primary to-primary-light dark:from-primary dark:to-primary-light rounded-t-lg shadow-lg shadow-primary/30" style="height:100%"></div></div>
-                  <span class="text-[9px] text-primary dark:text-primary-light font-bold">თვე 8</span>
-                </div>
-              </div>
-
-              <!-- Additional metrics -->
-              <div class="grid grid-cols-2 gap-3 mt-4">
-                <div class="flex items-center gap-2 p-3 bg-white/60 dark:bg-gray-800/40 rounded-xl">
-                  <div class="w-8 h-8 rounded-lg bg-success/10 flex items-center justify-center">
-                    <svg class="w-4 h-4 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                  </div>
-                  <div>
-                    <p class="font-inter text-sm font-bold text-heading dark:text-heading-dark">#1</p>
-                    <p class="text-[10px] text-body dark:text-body-dark">პოზიცია Google-ში</p>
-                  </div>
-                </div>
-                <div class="flex items-center gap-2 p-3 bg-white/60 dark:bg-gray-800/40 rounded-xl">
-                  <div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
-                    <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
-                  </div>
-                  <div>
-                    <p class="font-inter text-sm font-bold text-heading dark:text-heading-dark">63K</p>
-                    <p class="text-[10px] text-body dark:text-body-dark">იმფრეშენი</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <!-- Card 1: ტრაფიკის გაორმაგება -->
+        <a href="case-studies.html" class="group block rounded-2xl border border-gray-800 bg-[#0d1117] p-6 hover:border-primary/40 hover:-translate-y-1 transition-all duration-300">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-xs font-semibold text-success bg-success/10 px-2.5 py-1 rounded-full">↑ +100%</span>
           </div>
-        </div>
-      </a>
+          <p class="font-inter text-4xl font-extrabold text-white mb-1">2x</p>
+          <p class="font-heading text-lg font-bold text-white mb-1">ტრაფიკის გაორმაგება</p>
+          <p class="text-sm text-body-dark mb-5">სამშენებლო | 3 თვე</p>
+          <div class="flex items-end gap-1.5 h-14">
+            <div class="flex-1 bg-gray-700/40 rounded-t" style="height:15%"></div>
+            <div class="flex-1 bg-gray-700/50 rounded-t" style="height:20%"></div>
+            <div class="flex-1 bg-primary/30 rounded-t" style="height:30%"></div>
+            <div class="flex-1 bg-primary/40 rounded-t" style="height:42%"></div>
+            <div class="flex-1 bg-primary/50 rounded-t" style="height:55%"></div>
+            <div class="flex-1 bg-primary/60 rounded-t" style="height:70%"></div>
+            <div class="flex-1 bg-primary/75 rounded-t" style="height:85%"></div>
+            <div class="flex-1 bg-primary rounded-t" style="height:100%"></div>
+          </div>
+        </a>
 
-      <!-- Two smaller case studies -->
-      <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
-        <!-- Case Study 2: 4200+ ვიზიტორი 4 თვეში -->
-        <a href="case-studies/4200-yoveltviuri-vizitori-4-tveshi.html" class="group relative bg-white dark:bg-surface-dark rounded-2xl p-4 sm:p-6 lg:p-8 border border-gray-100 dark:border-gray-800 hover:shadow-xl hover:shadow-primary/5 dark:hover:shadow-primary/5 hover:-translate-y-1 transition-all duration-300 block">
-          <!-- Gradient border glow on hover -->
-          <div class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background: linear-gradient(135deg, rgba(88,230,255,0.08), rgba(252,129,254,0.08)); pointer-events:none;"></div>
+        <!-- Card 2: 3x ზრდა 28 დღეში -->
+        <a href="case-studies.html" class="group block rounded-2xl border border-gray-800 bg-[#0d1117] p-6 hover:border-primary/40 hover:-translate-y-1 transition-all duration-300">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-xs font-semibold text-primary-light bg-primary/15 px-2.5 py-1 rounded-full">TOP</span>
+          </div>
+          <p class="font-inter text-4xl font-extrabold text-success mb-1">3x</p>
+          <p class="font-heading text-lg font-bold text-white mb-1">ზრდა 28 დღეში</p>
+          <p class="text-sm text-body-dark mb-5">სამშენებლო | 28 დღე</p>
+          <div class="flex items-end gap-1.5 h-14">
+            <div class="flex-1 bg-gray-700/40 rounded-t" style="height:10%"></div>
+            <div class="flex-1 bg-gray-700/50 rounded-t" style="height:15%"></div>
+            <div class="flex-1 bg-primary/30 rounded-t" style="height:25%"></div>
+            <div class="flex-1 bg-primary/40 rounded-t" style="height:40%"></div>
+            <div class="flex-1 bg-primary/50 rounded-t" style="height:55%"></div>
+            <div class="flex-1 bg-primary/65 rounded-t" style="height:72%"></div>
+            <div class="flex-1 bg-primary/80 rounded-t" style="height:88%"></div>
+            <div class="flex-1 bg-primary rounded-t" style="height:100%"></div>
+          </div>
+        </a>
 
-          <div class="relative z-10">
-            <div class="flex items-center gap-3 mb-2">
-              <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-rose-400 to-pink-600 flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-rose-500/20">სმ</div>
-              <div>
-                <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark">სამედიცინო პროექტი</h3>
-                <p class="text-xs text-body dark:text-body-dark">მედიცინა • 4 თვე</p>
-              </div>
-              <span class="ml-auto flex items-center gap-1 text-xs font-semibold text-rose-500 dark:text-rose-400">
-                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/></svg>
-                Medical SEO
-              </span>
+        <!-- Card 3: +250% ტრაფიკის ზრდა -->
+        <a href="case-studies.html" class="group block rounded-2xl border border-gray-800 bg-[#0d1117] p-6 hover:border-primary/40 hover:-translate-y-1 transition-all duration-300">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-xs font-semibold text-success bg-success/10 px-2.5 py-1 rounded-full">↑ +250%</span>
+          </div>
+          <p class="font-inter text-4xl font-extrabold text-success mb-1">+250%</p>
+          <p class="font-heading text-lg font-bold text-white mb-1">ტრაფიკის ზრდა</p>
+          <p class="text-sm text-body-dark mb-5">სამშენებლო | 3 თვე</p>
+          <div class="flex justify-between text-sm text-body-dark mt-auto">
+            <div><span class="text-body-dark/60">გვერდები</span></div>
+            <div><span class="text-white font-bold">8</span></div>
+          </div>
+          <div class="flex justify-between text-sm mt-2">
+            <div><span class="text-body-dark/60">გაყიდვა</span></div>
+            <div><span class="text-red-400 font-bold">$30K</span></div>
+          </div>
+        </a>
+
+        <!-- Card 4: ლოკალური SEO -->
+        <a href="case-studies/local-seo-result.html" class="group block rounded-2xl border border-gray-800 bg-[#0d1117] p-6 hover:border-accent/40 hover:-translate-y-1 transition-all duration-300">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-xs font-semibold text-accent bg-accent/10 px-2.5 py-1 rounded-full">◆ GMB</span>
+          </div>
+          <p class="font-inter text-4xl font-extrabold text-white mb-1">+60%</p>
+          <p class="font-heading text-lg font-bold text-white mb-1">ლოკალური SEO</p>
+          <p class="text-sm text-body-dark mb-5">ქართული ბრენდი | GMB</p>
+          <div class="grid grid-cols-2 gap-3 mt-auto">
+            <div class="text-center p-3 bg-gray-800/50 rounded-xl">
+              <p class="font-inter text-lg font-bold text-white">+370</p>
+              <p class="text-[11px] text-body-dark">კლიკი</p>
             </div>
-
-            <p class="text-sm text-body dark:text-body-dark mt-3 mb-5 leading-relaxed">
-              <span class="font-semibold text-heading dark:text-heading-dark">გამოწვევა:</span> ახალი საიტი, 0 ტრაფიკი, SEO გაშვებამდე.
-              <span class="font-semibold text-heading dark:text-heading-dark">შედეგი:</span> 0-დან 4,200+ ვიზიტორი 4 თვეში.
-            </p>
-
-            <div class="grid grid-cols-3 gap-2 sm:gap-3 mb-5">
-              <div class="text-center p-3 bg-red-50 dark:bg-red-950/30 rounded-xl">
-                <p class="text-[10px] text-body dark:text-body-dark mb-0.5">Before</p>
-                <p class="font-inter text-lg font-extrabold text-red-500">0</p>
-              </div>
-              <div class="text-center p-3 bg-green-50 dark:bg-green-950/30 rounded-xl">
-                <p class="text-[10px] text-body dark:text-body-dark mb-0.5">After</p>
-                <p class="font-inter text-lg font-extrabold text-success">4,200+</p>
-              </div>
-              <div class="text-center p-3 bg-primary/5 dark:bg-primary/10 rounded-xl border border-primary/20">
-                <p class="text-[10px] text-body dark:text-body-dark mb-0.5">ზრდა/თვე</p>
-                <p class="font-inter text-lg font-extrabold gradient-text">20-25%</p>
-              </div>
-            </div>
-
-            <!-- Mini chart -->
-            <div class="flex items-end gap-1.5 h-16 mb-4">
-              <div class="flex-1 bg-red-200 dark:bg-red-900/40 rounded-t" style="height:3%"></div>
-              <div class="flex-1 bg-primary/25 dark:bg-primary/20 rounded-t" style="height:12%"></div>
-              <div class="flex-1 bg-primary/35 dark:bg-primary/30 rounded-t" style="height:25%"></div>
-              <div class="flex-1 bg-primary/45 dark:bg-primary/40 rounded-t" style="height:42%"></div>
-              <div class="flex-1 bg-primary/60 dark:bg-primary/50 rounded-t" style="height:58%"></div>
-              <div class="flex-1 bg-primary/70 dark:bg-primary/60 rounded-t" style="height:72%"></div>
-              <div class="flex-1 bg-primary/80 dark:bg-primary/70 rounded-t" style="height:86%"></div>
-              <div class="flex-1 bg-gradient-to-t from-primary to-primary-light rounded-t shadow-md shadow-primary/20" style="height:100%"></div>
-            </div>
-
-            <!-- Client quote -->
-            <div class="flex items-start gap-2 p-3 bg-gray-50 dark:bg-gray-900/40 rounded-xl border-l-3 border-primary/50">
-              <svg class="w-4 h-4 text-primary/30 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983z"/></svg>
-              <p class="text-xs text-body dark:text-body-dark italic">"საიტის გაშვებამდე დაწყებულმა SEO-მ 4 თვეში 4,200+ ვიზიტორი მოიტანა." <span class="not-italic font-semibold text-heading dark:text-heading-dark">— სამედიცინო პროექტი</span></p>
+            <div class="text-center p-3 bg-gray-800/50 rounded-xl">
+              <p class="font-inter text-lg font-bold text-accent">+20K</p>
+              <p class="text-[11px] text-body-dark">იმფრეშენი</p>
             </div>
           </div>
         </a>
 
-        <!-- Case Study 3: ლოკალური SEO — ზარების +60% -->
-        <a href="case-studies/local-seo-result.html" class="group relative bg-white dark:bg-surface-dark rounded-2xl p-4 sm:p-6 lg:p-8 border border-gray-100 dark:border-gray-800 hover:shadow-xl hover:shadow-primary/5 dark:hover:shadow-primary/5 hover:-translate-y-1 transition-all duration-300 block">
-          <div class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background: linear-gradient(135deg, rgba(88,230,255,0.08), rgba(252,129,254,0.08)); pointer-events:none;"></div>
+        <!-- Card 5: 4,200+ ვიზიტორი -->
+        <a href="case-studies/4200-yoveltviuri-vizitori-4-tveshi.html" class="group block rounded-2xl border border-gray-800 bg-[#0d1117] p-6 hover:border-rose-500/40 hover:-translate-y-1 transition-all duration-300">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-xs font-semibold text-rose-400 bg-rose-500/10 px-2.5 py-1 rounded-full">❤ Medical</span>
+          </div>
+          <p class="font-inter text-4xl font-extrabold text-white mb-1">4,200+</p>
+          <p class="font-heading text-lg font-bold text-white mb-1">ვიზიტორი 4 თვეში</p>
+          <p class="text-sm text-body-dark mb-5">მედიცინა | 0-დან</p>
+          <div class="flex items-end gap-1.5 h-14">
+            <div class="flex-1 bg-gray-700/40 rounded-t" style="height:3%"></div>
+            <div class="flex-1 bg-rose-900/30 rounded-t" style="height:12%"></div>
+            <div class="flex-1 bg-rose-800/40 rounded-t" style="height:28%"></div>
+            <div class="flex-1 bg-rose-700/50 rounded-t" style="height:45%"></div>
+            <div class="flex-1 bg-rose-600/55 rounded-t" style="height:60%"></div>
+            <div class="flex-1 bg-rose-500/65 rounded-t" style="height:75%"></div>
+            <div class="flex-1 bg-rose-500/80 rounded-t" style="height:88%"></div>
+            <div class="flex-1 bg-rose-400 rounded-t" style="height:100%"></div>
+          </div>
+        </a>
 
-          <div class="relative z-10">
-            <div class="flex items-center gap-3 mb-2">
-              <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-emerald-500/20">ქბ</div>
-              <div>
-                <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark">ქართული ბრენდი</h3>
-                <p class="text-xs text-body dark:text-body-dark">ლოკალური SEO • GMB</p>
-              </div>
-              <span class="ml-auto flex items-center gap-1 text-xs font-semibold text-emerald-500 dark:text-emerald-400">
-                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
-                Local SEO
-              </span>
+        <!-- Card 6: სტომატოლოგია +600% -->
+        <a href="case-studies/stomatologiuri-klinikis-seo.html" class="group block rounded-2xl border border-gray-800 bg-[#0d1117] p-6 hover:border-success/40 hover:-translate-y-1 transition-all duration-300">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-xs font-semibold text-white bg-success/20 px-2.5 py-1 rounded-full">#1</span>
+          </div>
+          <p class="font-inter text-4xl font-extrabold text-red-400 mb-1">+600%</p>
+          <p class="font-heading text-lg font-bold text-white mb-1">სტომატოლოგია</p>
+          <p class="text-sm text-body-dark mb-4">მედიცინა | იმპლანტაცია</p>
+          <div class="space-y-2 mt-auto">
+            <div class="flex justify-between text-sm">
+              <span class="text-body-dark/60">ვიზიტორი</span>
+              <span class="text-white font-bold">1,620</span>
             </div>
-
-            <p class="text-sm text-body dark:text-body-dark mt-3 mb-5 leading-relaxed">
-              <span class="font-semibold text-heading dark:text-heading-dark">გამოწვევა:</span> ცნობილი ბრენდი ონლაინ სივრცეში არ ჩანდა.
-              <span class="font-semibold text-heading dark:text-heading-dark">შედეგი:</span> +60% ზარები, +1,500 ზარი GMB-დან.
-            </p>
-
-            <div class="grid grid-cols-3 gap-2 sm:gap-3 mb-5">
-              <div class="text-center p-3 bg-red-50 dark:bg-red-950/30 rounded-xl">
-                <p class="text-[10px] text-body dark:text-body-dark mb-0.5">ზარები</p>
-                <p class="font-inter text-lg font-extrabold text-heading dark:text-heading-dark">+60%</p>
-              </div>
-              <div class="text-center p-3 bg-green-50 dark:bg-green-950/30 rounded-xl">
-                <p class="text-[10px] text-body dark:text-body-dark mb-0.5">კლიკები</p>
-                <p class="font-inter text-lg font-extrabold text-success">+370</p>
-              </div>
-              <div class="text-center p-3 bg-primary/5 dark:bg-primary/10 rounded-xl border border-primary/20">
-                <p class="text-[10px] text-body dark:text-body-dark mb-0.5">იმფრეშენი</p>
-                <p class="font-inter text-lg font-extrabold gradient-text">+20K</p>
-              </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-body-dark/60">CTR</span>
+              <span class="text-success font-bold">52%</span>
             </div>
-
-            <!-- Mini chart -->
-            <div class="flex items-end gap-1.5 h-16 mb-4">
-              <div class="flex-1 bg-red-200 dark:bg-red-900/40 rounded-t" style="height:10%"></div>
-              <div class="flex-1 bg-primary/25 dark:bg-primary/20 rounded-t" style="height:22%"></div>
-              <div class="flex-1 bg-primary/35 dark:bg-primary/30 rounded-t" style="height:38%"></div>
-              <div class="flex-1 bg-primary/50 dark:bg-primary/40 rounded-t" style="height:52%"></div>
-              <div class="flex-1 bg-primary/60 dark:bg-primary/50 rounded-t" style="height:65%"></div>
-              <div class="flex-1 bg-primary/70 dark:bg-primary/60 rounded-t" style="height:78%"></div>
-              <div class="flex-1 bg-primary/80 dark:bg-primary/70 rounded-t" style="height:90%"></div>
-              <div class="flex-1 bg-gradient-to-t from-primary to-primary-light rounded-t shadow-md shadow-primary/20" style="height:100%"></div>
-            </div>
-
-            <!-- Client quote -->
-            <div class="flex items-start gap-2 p-3 bg-gray-50 dark:bg-gray-900/40 rounded-xl border-l-3 border-primary/50">
-              <svg class="w-4 h-4 text-primary/30 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983z"/></svg>
-              <p class="text-xs text-body dark:text-body-dark italic">"GMB ოპტიმიზაციით ზარები 60%-ით გაიზარდა. ონლაინ ხილვადობა დრამატულად შეიცვალა." <span class="not-italic font-semibold text-heading dark:text-heading-dark">— ქართული ბრენდი</span></p>
+            <div class="flex justify-between text-sm">
+              <span class="text-body-dark/60">იმფრეშენი</span>
+              <span class="text-accent font-bold">63K</span>
             </div>
           </div>
         </a>
+
       </div>
 
       <!-- CTA -->
@@ -1070,84 +769,6 @@
           <svg class="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
         </a>
         <p class="text-sm text-body dark:text-body-dark mt-3">50+ კლიენტი • საშუალო ზრდა +430%</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== WHY CHOOSE US ========== -->
-  <section id="why-us" class="py-16 lg:py-24 bg-white dark:bg-surface-dark">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-14">
-        <p class="text-sm font-semibold text-primary dark:text-primary-light uppercase tracking-wider mb-3">რატომ ჩვენ</p>
-        <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-heading dark:text-heading-dark leading-[1.3] mb-4">
-          რატომ <span class="gradient-text">10XSEO</span>?
-        </h2>
-        <p class="text-lg text-body dark:text-body-dark max-w-2xl mx-auto">
-          რა გამოგვარჩევს სხვა სააგენტოებისგან — 6 მიზეზი, თუ რატომ ირჩევენ კლიენტები ჩვენს გუნდს
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-        <!-- Card 1: Weekly Reports — HIGHLIGHTED -->
-        <div class="relative gradient-border p-0 group">
-          <div class="relative z-10 bg-white dark:bg-surface-dark-alt rounded-2xl p-6 h-full">
-            <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>
-            </div>
-            <h3 class="text-lg font-bold text-heading dark:text-heading-dark mb-2">ყოველკვირეული რეპორტები</h3>
-            <p class="text-sm text-body dark:text-body-dark leading-relaxed">ყოველ კვირა მიიღებთ დეტალურ ანგარიშს — რა გაკეთდა, რა შეიცვალა და რა არის შემდეგი ნაბიჯი. არა თვეში ერთხელ, არამედ ყოველ კვირა.</p>
-          </div>
-        </div>
-
-        <!-- Card 2: Transparency -->
-        <div class="bg-white dark:bg-surface-dark-alt rounded-2xl p-6 border border-gray-100 dark:border-gray-800 hover:border-primary/30 dark:hover:border-primary/30 transition-colors group">
-          <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-            <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
-          </div>
-          <h3 class="text-lg font-bold text-heading dark:text-heading-dark mb-2">სრული გამჭვირვალობა</h3>
-          <p class="text-sm text-body dark:text-body-dark leading-relaxed">Google Search Console, Analytics — ყველაფერს ხედავთ რეალურ დროში. არანაირი დამალული მეტრიკა.</p>
-        </div>
-
-        <!-- Card 3: No Lock-in -->
-        <div class="bg-white dark:bg-surface-dark-alt rounded-2xl p-6 border border-gray-100 dark:border-gray-800 hover:border-primary/30 dark:hover:border-primary/30 transition-colors group">
-          <div class="w-12 h-12 rounded-xl bg-success/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-            <svg class="w-6 h-6 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"/></svg>
-          </div>
-          <h3 class="text-lg font-bold text-heading dark:text-heading-dark mb-2">არ არის კონტრაქტი</h3>
-          <p class="text-sm text-body dark:text-body-dark leading-relaxed">არ ვაბამთ გრძელვადიან კონტრაქტში. შედეგები გვაკავშირებს, არა ხელშეკრულება.</p>
-        </div>
-
-        <!-- Card 4: ROI Focus -->
-        <div class="bg-white dark:bg-surface-dark-alt rounded-2xl p-6 border border-gray-100 dark:border-gray-800 hover:border-primary/30 dark:hover:border-primary/30 transition-colors group">
-          <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
-          </div>
-          <h3 class="text-lg font-bold text-heading dark:text-heading-dark mb-2">ROI-ზე ფოკუსი</h3>
-          <p class="text-sm text-body dark:text-body-dark leading-relaxed">ტრაფიკი კი არა, შემოსავალი. ყველა სტრატეგია თქვენი ბიზნესის რეალურ ზრდაზეა ორიენტირებული.</p>
-        </div>
-
-        <!-- Card 5: Fast Response -->
-        <div class="bg-white dark:bg-surface-dark-alt rounded-2xl p-6 border border-gray-100 dark:border-gray-800 hover:border-accent/30 dark:hover:border-accent/30 transition-colors group relative overflow-hidden">
-          <div class="absolute top-0 right-0 w-24 h-24 bg-accent/5 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-500"></div>
-          <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-            <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-          </div>
-          <h3 class="text-lg font-bold text-heading dark:text-heading-dark mb-2">სწრაფი რეაგირება</h3>
-          <div class="flex items-baseline gap-1.5 mb-2">
-            <span class="text-3xl font-extrabold bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">10</span>
-            <span class="text-sm font-semibold text-accent">წუთი</span>
-          </div>
-          <p class="text-sm text-body dark:text-body-dark leading-relaxed">საშუალო response time სამუშაო საათებში. პირადი მენეჯერი ყველა კლიენტისთვის.</p>
-        </div>
-
-        <!-- Card 6: Data-Driven -->
-        <div class="bg-white dark:bg-surface-dark-alt rounded-2xl p-6 border border-gray-100 dark:border-gray-800 hover:border-primary/30 dark:hover:border-primary/30 transition-colors group">
-          <div class="w-12 h-12 rounded-xl bg-success/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-            <svg class="w-6 h-6 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-          </div>
-          <h3 class="text-lg font-bold text-heading dark:text-heading-dark mb-2">მონაცემებზე დაფუძნებული</h3>
-          <p class="text-sm text-body dark:text-body-dark leading-relaxed">ყოველი გადაწყვეტილება ანალიტიკაზეა დაფუძნებული. A/B ტესტინგი, Heatmaps, Keyword Research — ყველაფერი მონაცემებით.</p>
-        </div>
       </div>
     </div>
   </section>
@@ -1279,6 +900,72 @@
         steps.forEach(function(s){ observer.observe(s); });
       })();
     </script>
+  </section>
+
+  <!-- ========== WHY CHOOSE US ========== -->
+  <section id="why-us" class="py-16 lg:py-24 bg-white dark:bg-surface-dark">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-14">
+        <p class="text-sm font-semibold text-primary dark:text-primary-light uppercase tracking-wider mb-3">რატომ ჩვენ</p>
+        <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-heading dark:text-heading-dark leading-[1.3] mb-4">
+          რატომ <span class="gradient-text">10XSEO</span>?
+        </h2>
+        <p class="text-lg text-body dark:text-body-dark max-w-2xl mx-auto">
+          რა გამოგვარჩევს სხვა სააგენტოებისგან — 6 მიზეზი, თუ რატომ ირჩევენ კლიენტები ჩვენს გუნდს
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div class="relative gradient-border p-0 group">
+          <div class="relative z-10 bg-white dark:bg-surface-dark-alt rounded-2xl p-6 h-full">
+            <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-heading dark:text-heading-dark mb-2">ყოველკვირეული რეპორტები</h3>
+            <p class="text-sm text-body dark:text-body-dark leading-relaxed">ყოველ კვირა მიიღებთ დეტალურ ანგარიშს — რა გაკეთდა, რა შეიცვალა და რა არის შემდეგი ნაბიჯი.</p>
+          </div>
+        </div>
+        <div class="bg-white dark:bg-surface-dark-alt rounded-2xl p-6 border border-gray-100 dark:border-gray-800 hover:border-primary/30 dark:hover:border-primary/30 transition-colors group">
+          <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-heading dark:text-heading-dark mb-2">სრული გამჭვირვალობა</h3>
+          <p class="text-sm text-body dark:text-body-dark leading-relaxed">Google Search Console, Analytics — ყველაფერს ხედავთ რეალურ დროში.</p>
+        </div>
+        <div class="bg-white dark:bg-surface-dark-alt rounded-2xl p-6 border border-gray-100 dark:border-gray-800 hover:border-primary/30 dark:hover:border-primary/30 transition-colors group">
+          <div class="w-12 h-12 rounded-xl bg-success/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <svg class="w-6 h-6 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-heading dark:text-heading-dark mb-2">არ არის კონტრაქტი</h3>
+          <p class="text-sm text-body dark:text-body-dark leading-relaxed">არ ვაბამთ გრძელვადიან კონტრაქტში. შედეგები გვაკავშირებს.</p>
+        </div>
+        <div class="bg-white dark:bg-surface-dark-alt rounded-2xl p-6 border border-gray-100 dark:border-gray-800 hover:border-primary/30 dark:hover:border-primary/30 transition-colors group">
+          <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-heading dark:text-heading-dark mb-2">ROI-ზე ფოკუსი</h3>
+          <p class="text-sm text-body dark:text-body-dark leading-relaxed">ტრაფიკი კი არა, შემოსავალი. სტრატეგია რეალურ ზრდაზეა ორიენტირებული.</p>
+        </div>
+        <div class="bg-white dark:bg-surface-dark-alt rounded-2xl p-6 border border-gray-100 dark:border-gray-800 hover:border-accent/30 dark:hover:border-accent/30 transition-colors group relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-24 h-24 bg-accent/5 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-500"></div>
+          <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-heading dark:text-heading-dark mb-2">სწრაფი რეაგირება</h3>
+          <div class="flex items-baseline gap-1.5 mb-2">
+            <span class="text-3xl font-extrabold bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">10</span>
+            <span class="text-sm font-semibold text-accent">წუთი</span>
+          </div>
+          <p class="text-sm text-body dark:text-body-dark leading-relaxed">საშუალო response time სამუშაო საათებში.</p>
+        </div>
+        <div class="bg-white dark:bg-surface-dark-alt rounded-2xl p-6 border border-gray-100 dark:border-gray-800 hover:border-primary/30 dark:hover:border-primary/30 transition-colors group">
+          <div class="w-12 h-12 rounded-xl bg-success/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <svg class="w-6 h-6 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-heading dark:text-heading-dark mb-2">მონაცემებზე დაფუძნებული</h3>
+          <p class="text-sm text-body dark:text-body-dark leading-relaxed">A/B ტესტინგი, Heatmaps, Keyword Research — ყველაფერი მონაცემებით.</p>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- ========== TEAM / FOUNDERS ========== -->
