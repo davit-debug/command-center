@@ -1176,6 +1176,97 @@
   <hr class="border-gray-800/50 mx-auto max-w-xs">
 
   <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- Variant 13b — Floating Orbit + V9 Colors/Text            -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <section class="relative py-16 lg:py-24 overflow-hidden">
+    <div class="absolute inset-0 bg-surface-dark"></div>
+    <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-10">
+        <span class="option-label">ვარიანტი 13b</span>
+        <p class="text-sm text-body-dark mt-3">Floating Orbit + V9 ფერები და ტექსტები</p>
+      </div>
+      <style>
+        @keyframes v13bfloat1 { 0%,100%{ transform: translateY(0px); } 50%{ transform: translateY(-8px); } }
+        @keyframes v13bfloat2 { 0%,100%{ transform: translateY(0px); } 50%{ transform: translateY(-6px); } }
+        @keyframes v13bfloat3 { 0%,100%{ transform: translateY(0px); } 50%{ transform: translateY(-5px); } }
+        @keyframes v13bfloat4 { 0%,100%{ transform: translateY(0px); } 50%{ transform: translateY(-4px); } }
+        @keyframes v13borbit { 0%{ transform: rotate(0deg) translateX(12px) rotate(0deg); } 100%{ transform: rotate(360deg) translateX(12px) rotate(-360deg); } }
+        @keyframes v13bshimmer { 0%{ background-position: -200% 0; } 100%{ background-position: 200% 0; } }
+        .v13b-tier-1 { animation: v13bfloat1 4s ease-in-out infinite; }
+        .v13b-tier-2 { animation: v13bfloat2 4.5s ease-in-out infinite 0.3s; }
+        .v13b-tier-3 { animation: v13bfloat3 5s ease-in-out infinite 0.6s; }
+        .v13b-tier-4 { animation: v13bfloat4 5.5s ease-in-out infinite 0.9s; }
+        .v13b-orbit-dot { animation: v13borbit 3s linear infinite; }
+        .v13b-shimmer {
+          background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.08) 50%, transparent 100%);
+          background-size: 200% 100%;
+          animation: v13bshimmer 3s ease-in-out infinite;
+        }
+      </style>
+      <div class="mx-auto max-w-[580px] flex flex-col items-center gap-4">
+        <!-- Tier 1 -->
+        <a href="seo-management.html" class="v13b-tier-1 relative block group" style="width:30%;">
+          <div class="relative rounded-2xl p-4 text-center border border-purple-500/40 overflow-hidden" style="background: linear-gradient(135deg, rgba(139,92,246,0.25), rgba(139,92,246,0.08)); backdrop-filter: blur(12px); box-shadow: 0 8px 32px rgba(139,92,246,0.15), inset 0 1px 0 rgba(255,255,255,0.1);">
+            <div class="v13b-shimmer absolute inset-0 rounded-2xl"></div>
+            <div class="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-purple-400 v13b-orbit-dot" style="animation-duration:2.5s;"></div>
+            <div class="absolute -bottom-1 -left-1 w-2 h-2 rounded-full bg-purple-300 v13b-orbit-dot" style="animation-duration:3.5s; animation-direction:reverse;"></div>
+            <span class="font-heading text-sm font-bold text-purple-300 relative z-10">SEO</span><br>
+            <span class="font-heading text-xs text-purple-400/80 relative z-10">მენეჯმენტი</span>
+          </div>
+          <div class="absolute -inset-2 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background: radial-gradient(circle, rgba(139,92,246,0.15) 0%, transparent 70%);"></div>
+        </a>
+        <div class="flex flex-col items-center gap-1 opacity-30">
+          <div class="w-1 h-1 rounded-full bg-purple-400"></div>
+          <div class="w-1 h-1 rounded-full bg-indigo-400"></div>
+        </div>
+        <!-- Tier 2 -->
+        <a href="ai-seo.html" class="v13b-tier-2 relative block group" style="width:50%;">
+          <div class="relative rounded-2xl p-5 text-center border border-indigo-500/40 overflow-hidden" style="background: linear-gradient(135deg, rgba(99,102,241,0.25), rgba(99,102,241,0.08)); backdrop-filter: blur(12px); box-shadow: 0 8px 32px rgba(99,102,241,0.15), inset 0 1px 0 rgba(255,255,255,0.1);">
+            <div class="v13b-shimmer absolute inset-0 rounded-2xl"></div>
+            <div class="absolute -top-1 -right-2 w-3 h-3 rounded-full bg-indigo-400 v13b-orbit-dot" style="animation-duration:3s;"></div>
+            <div class="absolute -bottom-1 -left-2 w-2 h-2 rounded-full bg-indigo-300 v13b-orbit-dot" style="animation-duration:4s; animation-direction:reverse;"></div>
+            <span class="font-heading text-base font-bold text-indigo-300 relative z-10">AI SEO / GEO</span><br>
+            <span class="text-xs text-indigo-400/70 relative z-10">ChatGPT, Gemini ოპტიმიზაცია</span>
+          </div>
+          <div class="absolute -inset-2 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%);"></div>
+        </a>
+        <div class="flex flex-col items-center gap-1 opacity-30">
+          <div class="w-1 h-1 rounded-full bg-indigo-400"></div>
+          <div class="w-1 h-1 rounded-full bg-blue-400"></div>
+        </div>
+        <!-- Tier 3 -->
+        <a href="cro.html" class="v13b-tier-3 relative block group" style="width:72%;">
+          <div class="relative rounded-2xl p-5 text-center border border-blue-500/40 overflow-hidden" style="background: linear-gradient(135deg, rgba(59,130,246,0.25), rgba(59,130,246,0.08)); backdrop-filter: blur(12px); box-shadow: 0 8px 32px rgba(59,130,246,0.15), inset 0 1px 0 rgba(255,255,255,0.1);">
+            <div class="v13b-shimmer absolute inset-0 rounded-2xl"></div>
+            <div class="absolute -top-1 -right-2 w-3 h-3 rounded-full bg-blue-400 v13b-orbit-dot" style="animation-duration:3.5s;"></div>
+            <div class="absolute -bottom-1 -left-2 w-2 h-2 rounded-full bg-blue-300 v13b-orbit-dot" style="animation-duration:4.5s; animation-direction:reverse;"></div>
+            <span class="font-heading text-base font-bold text-blue-300 relative z-10">კონვერსიის ოპტიმიზაცია</span><br>
+            <span class="text-xs text-blue-400/70 relative z-10">A/B ტესტინგი, UX, ლიდი lead</span>
+          </div>
+          <div class="absolute -inset-2 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background: radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%);"></div>
+        </a>
+        <div class="flex flex-col items-center gap-1 opacity-30">
+          <div class="w-1 h-1 rounded-full bg-blue-400"></div>
+          <div class="w-1 h-1 rounded-full bg-teal-400"></div>
+        </div>
+        <!-- Tier 4 -->
+        <a href="seo-consultation.html" class="v13b-tier-4 relative block group" style="width:95%;">
+          <div class="relative rounded-2xl p-6 text-center border border-teal-500/40 overflow-hidden" style="background: linear-gradient(135deg, rgba(20,184,166,0.25), rgba(20,184,166,0.08)); backdrop-filter: blur(12px); box-shadow: 0 8px 32px rgba(20,184,166,0.15), inset 0 1px 0 rgba(255,255,255,0.1);">
+            <div class="v13b-shimmer absolute inset-0 rounded-2xl"></div>
+            <div class="absolute -top-1 -right-2 w-3 h-3 rounded-full bg-teal-400 v13b-orbit-dot" style="animation-duration:4s;"></div>
+            <div class="absolute -bottom-1 -left-2 w-2 h-2 rounded-full bg-teal-300 v13b-orbit-dot" style="animation-duration:5s; animation-direction:reverse;"></div>
+            <span class="font-heading text-lg font-bold text-teal-300 relative z-10">SEO კონსულტაცია</span><br>
+            <span class="text-xs text-teal-400/70 relative z-10">1-საათიანი კონსულტაცია ექსპერტთან</span>
+          </div>
+          <div class="absolute -inset-2 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background: radial-gradient(circle, rgba(20,184,166,0.15) 0%, transparent 70%);"></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="border-gray-800/50 mx-auto max-w-xs">
+
+  <!-- ══════════════════════════════════════════════════════════ -->
   <!-- Variant 14 — DNA Helix Pyramid                           -->
   <!-- ══════════════════════════════════════════════════════════ -->
   <section class="relative py-16 lg:py-24 overflow-hidden">
