@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>რატომ 10XSEO — 15 ვარიანტი</title>
+  <title>რატომ 10XSEO — 20 ვარიანტი</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/firago@1.0.0/FiraGO.css" rel="stylesheet">
@@ -76,11 +76,66 @@
     .tb-card:hover{border-color:rgba(139,92,246,0.3);transform:translateY(-2px)}
     .tb-top{padding:24px;background:rgba(13,17,23,0.9)}
     .tb-bottom{padding:20px 24px;background:rgba(255,255,255,0.02);border-top:1px solid rgba(255,255,255,0.04)}
+
+    /* V16 Rotating Cube */
+    .cube-scene{width:220px;height:220px;perspective:600px;margin:0 auto}
+    .cube{width:100%;height:100%;position:relative;transform-style:preserve-3d;animation:cubeRotate 18s infinite linear;transition:transform 0.3s}
+    .cube-scene:hover .cube{animation-play-state:paused}
+    @keyframes cubeRotate{0%{transform:rotateX(-15deg) rotateY(0deg)}100%{transform:rotateX(-15deg) rotateY(360deg)}}
+    .cube-face{position:absolute;width:220px;height:220px;border:1px solid rgba(139,92,246,0.2);border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;text-align:center;backface-visibility:hidden;transition:all 0.3s}
+    .cube-face:hover{transform:scale(1.05)}
+    .cube-face--front{transform:rotateY(0deg) translateZ(110px)}
+    .cube-face--right{transform:rotateY(90deg) translateZ(110px)}
+    .cube-face--back{transform:rotateY(180deg) translateZ(110px)}
+    .cube-face--left{transform:rotateY(-90deg) translateZ(110px)}
+    .cube-face--top{transform:rotateX(90deg) translateZ(110px)}
+    .cube-face--bottom{transform:rotateX(-90deg) translateZ(110px)}
+
+    /* V17 Progress Rings */
+    .ring-card{text-align:center}
+    .ring-svg{width:120px;height:120px;transform:rotate(-90deg)}
+    .ring-bg{fill:none;stroke:rgba(255,255,255,0.06);stroke-width:8}
+    .ring-fill{fill:none;stroke-width:8;stroke-linecap:round;stroke-dasharray:314;stroke-dashoffset:314;transition:stroke-dashoffset 1.5s ease}
+    .ring-card.ring-visible .ring-fill{stroke-dashoffset:var(--ring-offset)}
+    .ring-icon{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(90deg);font-size:28px}
+
+    /* V18 Glassmorphism */
+    .glass-card{background:rgba(255,255,255,0.04);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:28px;position:relative;overflow:hidden;transition:all 0.4s;animation:glassFloat 6s ease-in-out infinite}
+    .glass-card:nth-child(2){animation-delay:-1s}.glass-card:nth-child(3){animation-delay:-2s}.glass-card:nth-child(4){animation-delay:-3s}.glass-card:nth-child(5){animation-delay:-4s}.glass-card:nth-child(6){animation-delay:-5s}
+    @keyframes glassFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+    .glass-card:hover{border-color:rgba(139,92,246,0.4);background:rgba(255,255,255,0.06)}
+    .glass-orb{position:absolute;width:120px;height:120px;border-radius:50%;filter:blur(40px);opacity:0.4;transition:all 0.4s;pointer-events:none}
+    .glass-card:hover .glass-orb{opacity:0.6;transform:translate(10px,-10px)}
+
+    /* V19 Terminal */
+    .terminal{background:#0d1117;border:1px solid rgba(255,255,255,0.1);border-radius:12px;overflow:hidden;font-family:'Fira Code','Courier New',monospace}
+    .terminal-bar{background:rgba(255,255,255,0.05);padding:10px 16px;display:flex;align-items:center;gap:8px}
+    .terminal-dot{width:12px;height:12px;border-radius:50%}
+    .terminal-body{padding:20px 24px;font-size:13px;line-height:2.2}
+    .term-prompt{color:#21C743}.term-cmd{color:#94a3b8}.term-output{color:#14B8A6}
+    .term-check{color:#21C743}.term-line{opacity:0;animation:termType 0.4s forwards}
+    @keyframes termType{from{opacity:0;transform:translateX(-8px)}to{opacity:1;transform:translateX(0)}}
+    .term-cursor{display:inline-block;width:8px;height:16px;background:#21C743;animation:cursorBlink 1s step-end infinite;vertical-align:text-bottom;margin-left:4px}
+    @keyframes cursorBlink{0%,100%{opacity:1}50%{opacity:0}}
+
+    /* V20 Newspaper */
+    .news-section{font-family:'FiraGO','Georgia','Times New Roman',serif}
+    .news-rule{border:none;border-top:3px double rgba(255,255,255,0.15);margin:16px 0}
+    .news-rule-thin{border:none;border-top:1px solid rgba(255,255,255,0.08);margin:12px 0}
+    .news-grid{display:grid;gap:20px;grid-template-columns:1fr}
+    @media(min-width:640px){.news-grid{grid-template-columns:1fr 1fr}}
+    @media(min-width:1024px){.news-grid{grid-template-columns:2fr 1fr 1fr}}
+    .news-featured{grid-column:1/-1}
+    @media(min-width:1024px){.news-featured{grid-column:1/2;grid-row:1/3}}
+    .news-article{padding:16px 0;transition:all 0.3s}
+    .news-article:hover{opacity:0.85}
+    .news-headline{font-family:'Dachi the Lynx',serif;font-weight:700;line-height:1.25;margin-bottom:8px}
+    .news-gold{color:#FBBF24}
   </style>
 </head>
 <body>
-<header class="fixed top-0 left-0 right-0 z-50 bg-surface-dark/80 backdrop-blur-xl border-b border-gray-800/50"><div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between"><a href="index.html" class="font-heading text-2xl font-bold text-yellow-300" style="text-shadow:0 0 20px rgba(250,204,21,0.3)">10xSEO</a><span class="text-sm text-body-dark">რატომ 10xSEO — 15 ვარიანტი</span></div></header>
-<section class="pt-28 pb-8 text-center px-4"><p class="text-sm font-semibold text-primary-light uppercase tracking-wider mb-3">Section Variants</p><h1 class="font-heading text-[28px] sm:text-[36px] lg:text-[44px] font-bold leading-tight mb-4">რატომ <span class="gradient-text">10XSEO</span>?</h1><p class="text-body-dark max-w-xl mx-auto">15 სხვადასხვა ვარიანტი — აირჩიე მთავარი გვერდისთვის</p></section>
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface-dark/80 backdrop-blur-xl border-b border-gray-800/50"><div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between"><a href="index.html" class="font-heading text-2xl font-bold text-yellow-300" style="text-shadow:0 0 20px rgba(250,204,21,0.3)">10xSEO</a><span class="text-sm text-body-dark">რატომ 10xSEO — 20 ვარიანტი</span></div></header>
+<section class="pt-28 pb-8 text-center px-4"><p class="text-sm font-semibold text-primary-light uppercase tracking-wider mb-3">Section Variants</p><h1 class="font-heading text-[28px] sm:text-[36px] lg:text-[44px] font-bold leading-tight mb-4">რატომ <span class="gradient-text">10XSEO</span>?</h1><p class="text-body-dark max-w-xl mx-auto">20 სხვადასხვა ვარიანტი — აირჩიე მთავარი გვერდისთვის</p></section>
 
 <!-- V1 Bento --><section class="py-16 lg:py-24"><div class="max-w-6xl mx-auto px-4"><div class="text-center mb-10"><span class="opt">ვარიანტი 1</span><p class="text-sm text-body-dark mt-3">Bento Grid — ასიმეტრიული grid დიდი რიცხვებით</p></div><div class="text-center mb-12"><p class="text-sm font-semibold text-primary-light uppercase tracking-wider mb-3">რატომ ჩვენ</p><h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold">რატომ <span class="gradient-text">10XSEO</span>?</h2></div><div class="grid grid-cols-2 lg:grid-cols-4 gap-4"><div class="cd col-span-2 row-span-2 p-7 flex flex-col justify-between"><div><p class="font-inter text-6xl lg:text-7xl font-black bg-gradient-to-r from-primary-light to-ai-blue bg-clip-text text-transparent mb-2">92%</p><h3 class="font-heading text-xl font-bold mb-2">კლიენტების რეტენცია</h3><p class="text-sm text-body-dark">კლიენტები რჩებიან, რადგან შედეგები ლაპარაკობს.</p></div><div class="mt-6 flex items-center gap-3"><div class="flex -space-x-2"><div class="w-8 h-8 rounded-full bg-purple-500/30 border-2 border-surface-dark"></div><div class="w-8 h-8 rounded-full bg-blue-500/30 border-2 border-surface-dark"></div><div class="w-8 h-8 rounded-full bg-teal-500/30 border-2 border-surface-dark"></div></div><span class="text-xs text-body-dark">50+ კლიენტი</span></div></div><div class="cd p-6"><p class="font-inter text-3xl font-extrabold text-accent mb-1">10<span class="text-lg">წთ</span></p><h3 class="font-heading text-sm font-bold mb-1">სწრაფი რეაგირება</h3></div><div class="cd p-6"><p class="font-inter text-3xl font-extrabold text-success mb-1">0</p><h3 class="font-heading text-sm font-bold mb-1">კონტრაქტი</h3></div><div class="cd p-6"><h3 class="font-heading text-sm font-bold mb-1">გამჭვირვალობა</h3><p class="text-xs text-body-dark">GSC + GA წვდომა</p></div><div class="cd p-6"><h3 class="font-heading text-sm font-bold mb-1">ROI ფოკუსი</h3><p class="text-xs text-body-dark">შემოსავალი > ტრაფიკი</p></div><div class="cd col-span-2 p-6 flex items-center gap-6"><div class="flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center"><svg class="w-7 h-7 text-primary-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg></div><div><h3 class="font-heading text-lg font-bold mb-1">ყოველკვირეული რეპორტები</h3><p class="text-sm text-body-dark">რა გაკეთდა, რა შეიცვალა, რა არის შემდეგი.</p></div></div><div class="cd col-span-2 p-6 flex items-center gap-6"><div class="flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-success/20 to-accent/20 flex items-center justify-center"><svg class="w-7 h-7 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg></div><div><h3 class="font-heading text-lg font-bold mb-1">Data-Driven</h3><p class="text-sm text-body-dark">A/B ტესტინგი, Heatmaps, Keyword Research.</p></div></div></div></div></section><hr class="border-gray-800/50 mx-auto max-w-xs">
 
@@ -635,10 +690,477 @@
   </div>
 </section>
 
+<hr class="border-gray-800/50 mx-auto max-w-xs">
+
+<!-- V16 Rotating Cube -->
+<section class="relative py-16 lg:py-24 overflow-hidden">
+  <div class="absolute inset-0 bg-surface-dark"></div>
+  <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-10">
+      <span class="inline-block px-4 py-1.5 text-xs font-semibold rounded-full border border-primary/30 text-primary-light bg-primary/10">ვარიანტი 16</span>
+      <p class="text-sm text-body-dark mt-3">Rotating Cube — 3D კუბი CSS ანიმაციით, თითოეულ წახნაგზე უპირატესობა</p>
+    </div>
+    <div class="text-center mb-14">
+      <p class="text-sm font-semibold text-primary-light uppercase tracking-wider mb-3">რატომ ჩვენ</p>
+      <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold">რატომ <span class="gradient-text">10XSEO</span>?</h2>
+    </div>
+    <div class="flex flex-col items-center gap-8">
+      <div class="cube-scene">
+        <div class="cube" id="v16cube">
+          <!-- Front -->
+          <div class="cube-face cube-face--front" style="background:linear-gradient(135deg,rgba(139,92,246,0.15),rgba(13,17,23,0.95))" data-idx="0">
+            <svg class="w-10 h-10 text-primary-light mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+            <p class="font-heading text-sm font-bold">ყოველკვირეული რეპორტები</p>
+          </div>
+          <!-- Right -->
+          <div class="cube-face cube-face--right" style="background:linear-gradient(135deg,rgba(59,130,246,0.15),rgba(13,17,23,0.95))" data-idx="1">
+            <svg class="w-10 h-10 text-ai-blue mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+            <p class="font-heading text-sm font-bold">სრული გამჭვირვალობა</p>
+          </div>
+          <!-- Back -->
+          <div class="cube-face cube-face--back" style="background:linear-gradient(135deg,rgba(33,199,67,0.15),rgba(13,17,23,0.95))" data-idx="2">
+            <svg class="w-10 h-10 text-success mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"/></svg>
+            <p class="font-heading text-sm font-bold">არ არის კონტრაქტი</p>
+          </div>
+          <!-- Left -->
+          <div class="cube-face cube-face--left" style="background:linear-gradient(135deg,rgba(20,184,166,0.15),rgba(13,17,23,0.95))" data-idx="3">
+            <svg class="w-10 h-10 text-accent mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+            <p class="font-heading text-sm font-bold">ROI-ზე ფოკუსი</p>
+          </div>
+          <!-- Top -->
+          <div class="cube-face cube-face--top" style="background:linear-gradient(135deg,rgba(249,115,22,0.15),rgba(13,17,23,0.95))" data-idx="4">
+            <svg class="w-10 h-10 text-orange-400 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            <p class="font-heading text-sm font-bold">სწრაფი რეაგირება</p>
+          </div>
+          <!-- Bottom -->
+          <div class="cube-face cube-face--bottom" style="background:linear-gradient(135deg,rgba(236,72,153,0.15),rgba(13,17,23,0.95))" data-idx="5">
+            <svg class="w-10 h-10 text-pink-400 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+            <p class="font-heading text-sm font-bold">Data-Driven</p>
+          </div>
+        </div>
+      </div>
+      <!-- Description area below cube -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 max-w-lg mx-auto text-center">
+        <div class="p-3 rounded-xl bg-primary/5 border border-primary/10"><p class="text-xs font-semibold text-primary-light">52 რეპორტი/წელი</p></div>
+        <div class="p-3 rounded-xl bg-ai-blue/5 border border-ai-blue/10"><p class="text-xs font-semibold text-ai-blue">GSC + Analytics</p></div>
+        <div class="p-3 rounded-xl bg-success/5 border border-success/10"><p class="text-xs font-semibold text-success">0 კონტრაქტი</p></div>
+        <div class="p-3 rounded-xl bg-accent/5 border border-accent/10"><p class="text-xs font-semibold text-accent">შემოსავალი</p></div>
+        <div class="p-3 rounded-xl bg-orange-500/5 border border-orange-500/10"><p class="text-xs font-semibold text-orange-400">10წთ response</p></div>
+        <div class="p-3 rounded-xl bg-pink-500/5 border border-pink-500/10"><p class="text-xs font-semibold text-pink-400">A/B + Heatmaps</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="border-gray-800/50 mx-auto max-w-xs">
+
+<!-- V17 Animated Progress Rings -->
+<section class="relative py-16 lg:py-24 overflow-hidden">
+  <div class="absolute inset-0 bg-surface-dark"></div>
+  <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-10">
+      <span class="inline-block px-4 py-1.5 text-xs font-semibold rounded-full border border-primary/30 text-primary-light bg-primary/10">ვარიანტი 17</span>
+      <p class="text-sm text-body-dark mt-3">Animated Progress Rings — SVG წრიული პროგრესი scroll-ზე ანიმაციით</p>
+    </div>
+    <div class="text-center mb-14">
+      <p class="text-sm font-semibold text-primary-light uppercase tracking-wider mb-3">რატომ ჩვენ</p>
+      <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold">რატომ <span class="gradient-text">10XSEO</span>?</h2>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto" id="v17rings">
+      <!-- Ring 1: Reports 100% -->
+      <div class="ring-card" style="--ring-offset:0">
+        <div class="relative inline-block">
+          <svg class="ring-svg" viewBox="0 0 120 120">
+            <circle class="ring-bg" cx="60" cy="60" r="50"/>
+            <circle class="ring-fill" cx="60" cy="60" r="50" stroke="#8B5CF6"/>
+          </svg>
+          <div class="ring-icon">
+            <svg class="w-7 h-7 text-primary-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+          </div>
+        </div>
+        <p class="font-inter text-2xl font-black text-primary-light mt-3">100%</p>
+        <h3 class="font-heading text-sm font-bold mt-1">ყოველკვირეული რეპორტები</h3>
+        <p class="text-xs text-body-dark mt-1">ყოველ კვირა დეტალური ანგარიში</p>
+      </div>
+      <!-- Ring 2: Transparency 100% -->
+      <div class="ring-card" style="--ring-offset:0">
+        <div class="relative inline-block">
+          <svg class="ring-svg" viewBox="0 0 120 120">
+            <circle class="ring-bg" cx="60" cy="60" r="50"/>
+            <circle class="ring-fill" cx="60" cy="60" r="50" stroke="#3B82F6"/>
+          </svg>
+          <div class="ring-icon">
+            <svg class="w-7 h-7 text-ai-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+          </div>
+        </div>
+        <p class="font-inter text-2xl font-black text-ai-blue mt-3">100%</p>
+        <h3 class="font-heading text-sm font-bold mt-1">სრული გამჭვირვალობა</h3>
+        <p class="text-xs text-body-dark mt-1">GSC, Analytics ხილული რეალურ დროში</p>
+      </div>
+      <!-- Ring 3: Contracts 0% -->
+      <div class="ring-card" style="--ring-offset:314">
+        <div class="relative inline-block">
+          <svg class="ring-svg" viewBox="0 0 120 120">
+            <circle class="ring-bg" cx="60" cy="60" r="50"/>
+            <circle class="ring-fill" cx="60" cy="60" r="50" stroke="#21C743"/>
+          </svg>
+          <div class="ring-icon">
+            <svg class="w-7 h-7 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"/></svg>
+          </div>
+        </div>
+        <p class="font-inter text-2xl font-black text-success mt-3">0%</p>
+        <h3 class="font-heading text-sm font-bold mt-1">არ არის კონტრაქტი</h3>
+        <p class="text-xs text-body-dark mt-1">შედეგები გვაკავშირებს, არა ხელშეკრულება</p>
+      </div>
+      <!-- Ring 4: ROI -->
+      <div class="ring-card" style="--ring-offset:0">
+        <div class="relative inline-block">
+          <svg class="ring-svg" viewBox="0 0 120 120">
+            <circle class="ring-bg" cx="60" cy="60" r="50"/>
+            <circle class="ring-fill" cx="60" cy="60" r="50" stroke="#14B8A6"/>
+          </svg>
+          <div class="ring-icon">
+            <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+          </div>
+        </div>
+        <p class="font-inter text-2xl font-black text-accent mt-3">10X</p>
+        <h3 class="font-heading text-sm font-bold mt-1">ROI-ზე ფოკუსი</h3>
+        <p class="text-xs text-body-dark mt-1">ტრაფიკი კი არა, შემოსავალი</p>
+      </div>
+      <!-- Ring 5: Response 95% -->
+      <div class="ring-card" style="--ring-offset:16">
+        <div class="relative inline-block">
+          <svg class="ring-svg" viewBox="0 0 120 120">
+            <circle class="ring-bg" cx="60" cy="60" r="50"/>
+            <circle class="ring-fill" cx="60" cy="60" r="50" stroke="#F97316"/>
+          </svg>
+          <div class="ring-icon">
+            <svg class="w-7 h-7 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+        </div>
+        <p class="font-inter text-2xl font-black text-orange-400 mt-3">95%</p>
+        <h3 class="font-heading text-sm font-bold mt-1">სწრაფი რეაგირება</h3>
+        <p class="text-xs text-body-dark mt-1">10 წუთი საშუალო response time</p>
+      </div>
+      <!-- Ring 6: Data 100% -->
+      <div class="ring-card" style="--ring-offset:0">
+        <div class="relative inline-block">
+          <svg class="ring-svg" viewBox="0 0 120 120">
+            <circle class="ring-bg" cx="60" cy="60" r="50"/>
+            <circle class="ring-fill" cx="60" cy="60" r="50" stroke="#EC4899"/>
+          </svg>
+          <div class="ring-icon">
+            <svg class="w-7 h-7 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          </div>
+        </div>
+        <p class="font-inter text-2xl font-black text-pink-400 mt-3">100%</p>
+        <h3 class="font-heading text-sm font-bold mt-1">მონაცემებზე დაფუძნებული</h3>
+        <p class="text-xs text-body-dark mt-1">A/B ტესტინგი, Heatmaps, Keyword Research</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="border-gray-800/50 mx-auto max-w-xs">
+
+<!-- V18 Glassmorphism Cards with Parallax -->
+<section class="relative py-16 lg:py-24 overflow-hidden">
+  <div class="absolute inset-0 bg-surface-dark"></div>
+  <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-10">
+      <span class="inline-block px-4 py-1.5 text-xs font-semibold rounded-full border border-primary/30 text-primary-light bg-primary/10">ვარიანტი 18</span>
+      <p class="text-sm text-body-dark mt-3">Glassmorphism Cards — ყინულოვანი მინის ეფექტი პარალაქს ორბებით</p>
+    </div>
+    <div class="text-center mb-14">
+      <p class="text-sm font-semibold text-primary-light uppercase tracking-wider mb-3">რატომ ჩვენ</p>
+      <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold">რატომ <span class="gradient-text">10XSEO</span>?</h2>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
+      <!-- Glass 1 -->
+      <div class="glass-card" onmousemove="this.querySelector('.glass-orb').style.transform='translate('+(event.offsetX/6-10)+'px,'+(event.offsetY/6-10)+'px)'" onmouseleave="this.querySelector('.glass-orb').style.transform='translate(0,0)'">
+        <div class="glass-orb" style="background:radial-gradient(circle,#8B5CF6,transparent);top:-20px;right:-20px"></div>
+        <div class="relative z-10">
+          <svg class="w-10 h-10 text-primary-light mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+          <h3 class="font-heading text-lg font-bold mb-2">ყოველკვირეული რეპორტები</h3>
+          <p class="text-sm text-body-dark">ყოველ კვირა დეტალური ანგარიში — რა გაკეთდა, რა შეიცვალა, შემდეგი ნაბიჯი.</p>
+        </div>
+      </div>
+      <!-- Glass 2 -->
+      <div class="glass-card" onmousemove="this.querySelector('.glass-orb').style.transform='translate('+(event.offsetX/6-10)+'px,'+(event.offsetY/6-10)+'px)'" onmouseleave="this.querySelector('.glass-orb').style.transform='translate(0,0)'">
+        <div class="glass-orb" style="background:radial-gradient(circle,#3B82F6,transparent);top:-20px;right:-20px"></div>
+        <div class="relative z-10">
+          <svg class="w-10 h-10 text-ai-blue mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+          <h3 class="font-heading text-lg font-bold mb-2">სრული გამჭვირვალობა</h3>
+          <p class="text-sm text-body-dark">Google Search Console, Analytics ხილული რეალურ დროში.</p>
+        </div>
+      </div>
+      <!-- Glass 3 -->
+      <div class="glass-card" onmousemove="this.querySelector('.glass-orb').style.transform='translate('+(event.offsetX/6-10)+'px,'+(event.offsetY/6-10)+'px)'" onmouseleave="this.querySelector('.glass-orb').style.transform='translate(0,0)'">
+        <div class="glass-orb" style="background:radial-gradient(circle,#21C743,transparent);top:-20px;right:-20px"></div>
+        <div class="relative z-10">
+          <svg class="w-10 h-10 text-success mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"/></svg>
+          <h3 class="font-heading text-lg font-bold mb-2">არ არის კონტრაქტი</h3>
+          <p class="text-sm text-body-dark">შედეგები გვაკავშირებს, არა ხელშეკრულება. თავისუფალი ხართ.</p>
+        </div>
+      </div>
+      <!-- Glass 4 -->
+      <div class="glass-card" onmousemove="this.querySelector('.glass-orb').style.transform='translate('+(event.offsetX/6-10)+'px,'+(event.offsetY/6-10)+'px)'" onmouseleave="this.querySelector('.glass-orb').style.transform='translate(0,0)'">
+        <div class="glass-orb" style="background:radial-gradient(circle,#14B8A6,transparent);top:-20px;right:-20px"></div>
+        <div class="relative z-10">
+          <svg class="w-10 h-10 text-accent mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+          <h3 class="font-heading text-lg font-bold mb-2">ROI-ზე ფოკუსი</h3>
+          <p class="text-sm text-body-dark">ტრაფიკი კი არა, შემოსავალი. ყველა გადაწყვეტილება ROI-ზეა ორიენტირებული.</p>
+        </div>
+      </div>
+      <!-- Glass 5 -->
+      <div class="glass-card" onmousemove="this.querySelector('.glass-orb').style.transform='translate('+(event.offsetX/6-10)+'px,'+(event.offsetY/6-10)+'px)'" onmouseleave="this.querySelector('.glass-orb').style.transform='translate(0,0)'">
+        <div class="glass-orb" style="background:radial-gradient(circle,#F97316,transparent);top:-20px;right:-20px"></div>
+        <div class="relative z-10">
+          <svg class="w-10 h-10 text-orange-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          <h3 class="font-heading text-lg font-bold mb-2">სწრაფი რეაგირება</h3>
+          <p class="text-sm text-body-dark">10 წუთი საშუალო response time. არანაირი ლოდინი.</p>
+        </div>
+      </div>
+      <!-- Glass 6 -->
+      <div class="glass-card" onmousemove="this.querySelector('.glass-orb').style.transform='translate('+(event.offsetX/6-10)+'px,'+(event.offsetY/6-10)+'px)'" onmouseleave="this.querySelector('.glass-orb').style.transform='translate(0,0)'">
+        <div class="glass-orb" style="background:radial-gradient(circle,#EC4899,transparent);top:-20px;right:-20px"></div>
+        <div class="relative z-10">
+          <svg class="w-10 h-10 text-pink-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          <h3 class="font-heading text-lg font-bold mb-2">მონაცემებზე დაფუძნებული</h3>
+          <p class="text-sm text-body-dark">A/B ტესტინგი, Heatmaps, Keyword Research — ყველაფერი მონაცემებზე.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="border-gray-800/50 mx-auto max-w-xs">
+
+<!-- V19 Command Line / Terminal -->
+<section class="relative py-16 lg:py-24 overflow-hidden">
+  <div class="absolute inset-0 bg-surface-dark"></div>
+  <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-10">
+      <span class="inline-block px-4 py-1.5 text-xs font-semibold rounded-full border border-primary/30 text-primary-light bg-primary/10">ვარიანტი 19</span>
+      <p class="text-sm text-body-dark mt-3">Command Line / Terminal — ტერმინალის სტილი typing ანიმაციით</p>
+    </div>
+    <div class="text-center mb-14">
+      <p class="text-sm font-semibold text-primary-light uppercase tracking-wider mb-3">რატომ ჩვენ</p>
+      <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold">რატომ <span class="gradient-text">10XSEO</span>?</h2>
+    </div>
+    <div class="terminal max-w-3xl mx-auto">
+      <div class="terminal-bar">
+        <div class="terminal-dot" style="background:#FF5F57"></div>
+        <div class="terminal-dot" style="background:#FEBC2E"></div>
+        <div class="terminal-dot" style="background:#28C840"></div>
+        <span class="text-xs text-body-dark ml-3 font-mono">10xseo@agency ~ % audit --why</span>
+      </div>
+      <div class="terminal-body" id="v19terminal">
+        <div class="term-line" style="animation-delay:0.2s">
+          <span class="term-prompt">$</span> <span class="term-cmd">check reports</span>
+        </div>
+        <div class="term-line" style="animation-delay:0.6s">
+          <span class="term-check">&#10003;</span> <span class="term-output">ყოველკვირეული რეპორტები</span> <span class="text-body-dark">— 52 რეპორტი წელიწადში, დეტალური ანგარიში</span>
+        </div>
+        <div class="term-line" style="animation-delay:1.2s">
+          <span class="term-prompt">$</span> <span class="term-cmd">check transparency</span>
+        </div>
+        <div class="term-line" style="animation-delay:1.6s">
+          <span class="term-check">&#10003;</span> <span class="term-output">სრული გამჭვირვალობა</span> <span class="text-body-dark">— GSC, Analytics ხილული რეალურ დროში</span>
+        </div>
+        <div class="term-line" style="animation-delay:2.2s">
+          <span class="term-prompt">$</span> <span class="term-cmd">check contract</span>
+        </div>
+        <div class="term-line" style="animation-delay:2.6s">
+          <span class="term-check">&#10003;</span> <span class="term-output">არ არის კონტრაქტი</span> <span class="text-body-dark">— შედეგები გვაკავშირებს, არა ხელშეკრულება</span>
+        </div>
+        <div class="term-line" style="animation-delay:3.2s">
+          <span class="term-prompt">$</span> <span class="term-cmd">check roi</span>
+        </div>
+        <div class="term-line" style="animation-delay:3.6s">
+          <span class="term-check">&#10003;</span> <span class="term-output">ROI-ზე ფოკუსი</span> <span class="text-body-dark">— ტრაფიკი კი არა, შემოსავალი</span>
+        </div>
+        <div class="term-line" style="animation-delay:4.2s">
+          <span class="term-prompt">$</span> <span class="term-cmd">check response-time</span>
+        </div>
+        <div class="term-line" style="animation-delay:4.6s">
+          <span class="term-check">&#10003;</span> <span class="term-output">სწრაფი რეაგირება</span> <span class="text-body-dark">— 10 წუთი საშუალო response time</span>
+        </div>
+        <div class="term-line" style="animation-delay:5.2s">
+          <span class="term-prompt">$</span> <span class="term-cmd">check data-approach</span>
+        </div>
+        <div class="term-line" style="animation-delay:5.6s">
+          <span class="term-check">&#10003;</span> <span class="term-output">მონაცემებზე დაფუძნებული</span> <span class="text-body-dark">— A/B ტესტინგი, Heatmaps, Keyword Research</span>
+        </div>
+        <div class="term-line" style="animation-delay:6.2s">
+          <br>
+          <span class="term-prompt" style="color:#8B5CF6">&#9608;</span> <span style="color:#A78BFA;font-weight:600">audit complete: 6/6 checks passed</span>
+        </div>
+        <div class="term-line" style="animation-delay:6.8s">
+          <span class="term-prompt">$</span> <span class="term-cursor"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="border-gray-800/50 mx-auto max-w-xs">
+
+<!-- V20 Newspaper / Editorial -->
+<section class="relative py-16 lg:py-24 overflow-hidden">
+  <div class="absolute inset-0 bg-surface-dark"></div>
+  <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-10">
+      <span class="inline-block px-4 py-1.5 text-xs font-semibold rounded-full border border-primary/30 text-primary-light bg-primary/10">ვარიანტი 20</span>
+      <p class="text-sm text-body-dark mt-3">Newspaper / Editorial — კლასიკური საგაზეთო სტილი ოქროსფერი აქცენტებით</p>
+    </div>
+    <div class="news-section max-w-4xl mx-auto">
+      <!-- Masthead -->
+      <div class="text-center mb-2">
+        <hr class="news-rule">
+        <h2 class="font-heading text-[32px] sm:text-[42px] lg:text-[52px] font-bold leading-none my-4">
+          რატომ <span class="news-gold">10XSEO</span>?
+        </h2>
+        <div class="flex items-center justify-center gap-4 text-xs text-body-dark mb-1">
+          <span>SEO სააგენტო</span>
+          <span class="news-gold">|</span>
+          <span>საქართველო</span>
+          <span class="news-gold">|</span>
+          <span>6 უპირატესობა</span>
+        </div>
+        <hr class="news-rule">
+      </div>
+
+      <!-- Intro columns -->
+      <div class="columns-1 sm:columns-2 gap-8 text-sm text-body-dark leading-relaxed mb-6">
+        <p class="mb-4">რა განასხვავებს 10xSEO-ს სხვა სააგენტოებისგან? ექვსი ფუნდამენტური პრინციპი, რომელიც ყოველდღიურ საქმიანობაში ვლინდება. არა დაპირებები, არამედ მოქმედებები და შედეგები.</p>
+        <p class="mb-4">ქვემოთ წარმოდგენილია თითოეული უპირატესობა, რომელიც ჩვენს კლიენტებს რეალურ განსხვავებას აძლევს ბაზარზე.</p>
+      </div>
+
+      <hr class="news-rule">
+
+      <!-- News grid -->
+      <div class="news-grid mt-6">
+        <!-- Featured article (large) -->
+        <div class="news-article news-featured">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="inline-block w-8 h-1 bg-gradient-to-r from-primary to-ai-blue rounded"></span>
+            <span class="text-[10px] font-semibold text-primary-light uppercase tracking-widest">მთავარი</span>
+          </div>
+          <h3 class="news-headline text-[22px] sm:text-[26px] lg:text-[30px]">
+            ყოველკვირეული რეპორტები — <span class="news-gold">52 ანგარიში</span> წელიწადში
+          </h3>
+          <hr class="news-rule-thin">
+          <p class="text-sm text-body-dark leading-relaxed mb-4">ყოველ კვირა დეტალური ანგარიში: რა გაკეთდა, რა შეიცვალა, რა არის შემდეგი ნაბიჯი. არანაირი ბუნდოვნება, მხოლოდ კონკრეტული მონაცემები და მოქმედებები.</p>
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+              <svg class="w-6 h-6 text-primary-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+            </div>
+            <div>
+              <p class="font-inter text-3xl font-black news-gold">52</p>
+              <p class="text-xs text-body-dark">რეპორტი / წელი</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Article 2 -->
+        <div class="news-article">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="inline-block w-6 h-0.5 bg-ai-blue rounded"></span>
+            <span class="text-[10px] font-semibold text-ai-blue uppercase tracking-widest">გამჭვირვალობა</span>
+          </div>
+          <h3 class="news-headline text-base">სრული გამჭვირვალობა</h3>
+          <hr class="news-rule-thin">
+          <p class="text-xs text-body-dark leading-relaxed">Google Search Console, Analytics ხილული რეალურ დროში. თქვენ ხედავთ ყველაფერს.</p>
+        </div>
+
+        <!-- Article 3 -->
+        <div class="news-article">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="inline-block w-6 h-0.5 bg-success rounded"></span>
+            <span class="text-[10px] font-semibold text-success uppercase tracking-widest">თავისუფლება</span>
+          </div>
+          <h3 class="news-headline text-base">არ არის კონტრაქტი</h3>
+          <hr class="news-rule-thin">
+          <p class="text-xs text-body-dark leading-relaxed">შედეგები გვაკავშირებს, არა ხელშეკრულება. ნებისმიერ დროს შეგიძლიათ შეწყვიტოთ.</p>
+        </div>
+
+        <!-- Article 4 -->
+        <div class="news-article">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="inline-block w-6 h-0.5 bg-accent rounded"></span>
+            <span class="text-[10px] font-semibold text-accent uppercase tracking-widest">შედეგი</span>
+          </div>
+          <h3 class="news-headline text-base">ROI-ზე ფოკუსი</h3>
+          <hr class="news-rule-thin">
+          <p class="text-xs text-body-dark leading-relaxed">ტრაფიკი კი არა, შემოსავალი. ყველა სტრატეგია ორიენტირებულია ინვესტიციის ანაზღაურებაზე.</p>
+        </div>
+
+        <!-- Article 5 -->
+        <div class="news-article">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="inline-block w-6 h-0.5 bg-orange-400 rounded"></span>
+            <span class="text-[10px] font-semibold text-orange-400 uppercase tracking-widest">სისწრაფე</span>
+          </div>
+          <h3 class="news-headline text-base">სწრაფი რეაგირება — <span class="news-gold">10 წუთი</span></h3>
+          <hr class="news-rule-thin">
+          <p class="text-xs text-body-dark leading-relaxed">10 წუთი საშუალო response time. არ მოგიწევთ დღეების ლოდინი.</p>
+        </div>
+
+        <!-- Article 6 -->
+        <div class="news-article">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="inline-block w-6 h-0.5 bg-pink-400 rounded"></span>
+            <span class="text-[10px] font-semibold text-pink-400 uppercase tracking-widest">მონაცემები</span>
+          </div>
+          <h3 class="news-headline text-base">მონაცემებზე დაფუძნებული</h3>
+          <hr class="news-rule-thin">
+          <p class="text-xs text-body-dark leading-relaxed">A/B ტესტინგი, Heatmaps, Keyword Research — ინტუიცია კი არა, მონაცემები.</p>
+        </div>
+      </div>
+
+      <hr class="news-rule mt-6">
+      <p class="text-center text-xs text-body-dark mt-3 italic">10xSEO — იყავი პირველი</p>
+    </div>
+  </div>
+</section>
+
 <div class="py-16 text-center"><a href="index.html" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-primary to-ai-blue text-white font-semibold hover:opacity-90 transition-opacity"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>მთავარ გვერდზე დაბრუნება</a></div>
 <script>
 function tA(i){var o=i.classList.contains('open');document.querySelectorAll('.ai').forEach(function(e){e.classList.remove('open')});if(!o)i.classList.add('open')}
 function toggleFaq(el){var wasOpen=el.classList.contains('faq-open');document.querySelectorAll('.faq-item').forEach(function(e){e.classList.remove('faq-open')});if(!wasOpen)el.classList.add('faq-open')}
+
+/* V17 Progress Rings - animate on scroll */
+(function(){
+  var ringObs=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.querySelectorAll('.ring-card').forEach(function(c){c.classList.add('ring-visible')});
+        ringObs.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.3});
+  var rg=document.getElementById('v17rings');
+  if(rg)ringObs.observe(rg);
+})();
+
+/* V19 Terminal - restart animation on scroll */
+(function(){
+  var termObs=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        var lines=entry.target.querySelectorAll('.term-line');
+        lines.forEach(function(l){
+          l.style.animation='none';
+          l.offsetHeight;
+          l.style.animation='';
+        });
+      }
+    });
+  },{threshold:0.2});
+  var tm=document.getElementById('v19terminal');
+  if(tm)termObs.observe(tm);
+})();
 </script>
 </body>
 </html>
