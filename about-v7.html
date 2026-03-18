@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ჩვენს შესახებ — 10XSEO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --violet: #8B5CF6;
+            --violet-light: #A78BFA;
+            --blue: #3B82F6;
+            --teal: #14B8A6;
+            --gold: #F5A623;
+            --surface: #020710;
+            --surface-light: #060d1f;
+            --text: #e2e8f0;
+            --text-muted: #94a3b8;
+            --text-dim: #475569;
+            --neon-violet: 139, 92, 246;
+            --neon-blue: 59, 130, 246;
+            --neon-teal: 20, 184, 166;
+            --grid-color: rgba(139, 92, 246, 0.06);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans Georgian', sans-serif;
+            background: var(--surface);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Background grid */
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background-image:
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        /* Scanline overlay */
+        .scanline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 0, 0, 0.03) 2px,
+                rgba(0, 0, 0, 0.03) 4px
+            );
+        }
+
+        /* Utility */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+        .reveal-delay-5 { transition-delay: 0.5s; }
+
+        /* Neon glow utility */
+        .neon-violet {
+            box-shadow: 0 0 15px rgba(var(--neon-violet), 0.3), 0 0 45px rgba(var(--neon-violet), 0.1), inset 0 0 15px rgba(var(--neon-violet), 0.05);
+            border: 1px solid rgba(var(--neon-violet), 0.3);
+        }
+
+        .neon-blue {
+            box-shadow: 0 0 15px rgba(var(--neon-blue), 0.3), 0 0 45px rgba(var(--neon-blue), 0.1), inset 0 0 15px rgba(var(--neon-blue), 0.05);
+            border: 1px solid rgba(var(--neon-blue), 0.3);
+        }
+
+        .neon-teal {
+            box-shadow: 0 0 15px rgba(var(--neon-teal), 0.3), 0 0 45px rgba(var(--neon-teal), 0.1), inset 0 0 15px rgba(var(--neon-teal), 0.05);
+            border: 1px solid rgba(var(--neon-teal), 0.3);
+        }
+
+        .neon-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(var(--neon-violet), 0.15);
+            border-radius: 12px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .neon-card:hover {
+            border-color: rgba(var(--neon-violet), 0.5);
+            box-shadow: 0 0 20px rgba(var(--neon-violet), 0.15), 0 0 60px rgba(var(--neon-violet), 0.05), inset 0 0 20px rgba(var(--neon-violet), 0.03);
+            transform: translateY(-4px);
+        }
+
+        .section-tag {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--teal);
+            padding: 6px 16px;
+            border: 1px solid rgba(var(--neon-teal), 0.3);
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 580px;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding: 120px 24px 80px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(var(--neon-violet), 0.08), rgba(var(--neon-blue), 0.05), transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            color: var(--teal);
+            padding: 8px 20px;
+            border: 1px solid rgba(var(--neon-teal), 0.3);
+            border-radius: 4px;
+            margin-bottom: 36px;
+            animation: fadeInDown 1s ease 0.2s both;
+            letter-spacing: 2px;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 7vw, 5.5rem);
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 24px;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .hero-title .neon-text {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--gold);
+            display: inline-block;
+            position: relative;
+            text-shadow:
+                0 0 10px rgba(245, 166, 35, 0.5),
+                0 0 40px rgba(245, 166, 35, 0.2),
+                0 0 80px rgba(245, 166, 35, 0.1);
+            animation: neonPulse 3s ease-in-out infinite, fadeInUp 1s ease 0.4s both;
+        }
+
+        @keyframes neonPulse {
+            0%, 100% {
+                text-shadow:
+                    0 0 10px rgba(245, 166, 35, 0.5),
+                    0 0 40px rgba(245, 166, 35, 0.2),
+                    0 0 80px rgba(245, 166, 35, 0.1);
+            }
+            50% {
+                text-shadow:
+                    0 0 15px rgba(245, 166, 35, 0.7),
+                    0 0 50px rgba(245, 166, 35, 0.3),
+                    0 0 100px rgba(245, 166, 35, 0.15);
+            }
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .hero-line {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            color: var(--text-dim);
+            margin-top: 40px;
+            animation: fadeInUp 1s ease 0.8s both;
+        }
+
+        .hero-line .blink {
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            animation: bounce 2s ease-in-out infinite;
+            color: var(--text-dim);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* ===== STATS ===== */
+        .stats {
+            padding: 100px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .stat-card {
+            padding: 36px 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--violet), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .stat-card:hover::before {
+            opacity: 1;
+        }
+
+        .stat-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 800;
+            color: var(--gold);
+            margin-bottom: 8px;
+            text-shadow: 0 0 20px rgba(245, 166, 35, 0.3);
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .stat-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--teal);
+            margin-top: 8px;
+            letter-spacing: 1px;
+        }
+
+        /* ===== TEAM ===== */
+        .team {
+            padding: 120px 0;
+        }
+
+        .team-header {
+            margin-bottom: 64px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 16px;
+        }
+
+        .team-member {
+            padding: 28px 16px;
+            text-align: center;
+            position: relative;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            background: rgba(var(--neon-violet), 0.05);
+            border: none;
+            transition: all 0.4s ease;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .team-member:hover {
+            background: rgba(var(--neon-violet), 0.12);
+        }
+
+        .team-member .initials {
+            width: 56px;
+            height: 56px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+
+        .team-member:nth-child(1) .initials { background: linear-gradient(135deg, var(--gold), #e6930e); }
+        .team-member:nth-child(2) .initials { background: linear-gradient(135deg, var(--violet), #6d28d9); }
+        .team-member:nth-child(3) .initials { background: linear-gradient(135deg, var(--blue), #2563eb); }
+        .team-member:nth-child(4) .initials { background: linear-gradient(135deg, var(--teal), #0d9488); }
+        .team-member:nth-child(5) .initials { background: linear-gradient(135deg, #ec4899, #db2777); }
+        .team-member:nth-child(6) .initials { background: linear-gradient(135deg, var(--violet), var(--blue)); }
+        .team-member:nth-child(7) .initials { background: linear-gradient(135deg, var(--blue), var(--teal)); }
+        .team-member:nth-child(8) .initials { background: linear-gradient(135deg, var(--gold), var(--violet)); }
+        .team-member:nth-child(9) .initials { background: linear-gradient(135deg, var(--teal), var(--blue)); }
+        .team-member:nth-child(10) .initials { background: linear-gradient(135deg, #f43f5e, #ec4899); }
+        .team-member:nth-child(11) .initials { background: linear-gradient(135deg, var(--blue), var(--violet)); }
+
+        .team-member .name {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .team-member .role {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            color: var(--text-dim);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .team-member.founder .initials {
+            width: 64px;
+            height: 64px;
+            font-size: 1.2rem;
+            box-shadow: 0 0 20px rgba(245, 166, 35, 0.3);
+        }
+
+        .founder-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.6rem;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 4px;
+            text-shadow: 0 0 10px rgba(245, 166, 35, 0.3);
+        }
+
+        /* Alt team grid for mobile */
+        @media (max-width: 768px) {
+            .team-member {
+                clip-path: none;
+                border-radius: 12px;
+                border: 1px solid rgba(var(--neon-violet), 0.15);
+                min-height: auto;
+                padding: 20px 12px;
+            }
+        }
+
+        /* ===== SERVICES ===== */
+        .services {
+            padding: 120px 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 16px;
+        }
+
+        .service-card {
+            padding: 32px 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--violet), var(--blue), var(--teal));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .service-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            border-color: rgba(var(--neon-blue), 0.4);
+            box-shadow: 0 0 20px rgba(var(--neon-blue), 0.1), inset 0 0 20px rgba(var(--neon-blue), 0.02);
+        }
+
+        .service-icon {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .service-name {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .service-desc {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+
+        .service-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            color: var(--violet-light);
+            letter-spacing: 1px;
+            margin-top: 12px;
+            display: inline-block;
+        }
+
+        /* ===== TIMELINE ===== */
+        .timeline {
+            padding: 120px 0;
+        }
+
+        .timeline-track {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 0;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline-track::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--violet), var(--blue), var(--teal));
+            z-index: 0;
+        }
+
+        .timeline-node {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            padding: 0 16px;
+        }
+
+        .timeline-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            margin: 32px auto 20px;
+            position: relative;
+        }
+
+        .timeline-node:nth-child(1) .timeline-dot {
+            background: var(--violet);
+            box-shadow: 0 0 15px rgba(var(--neon-violet), 0.5);
+        }
+
+        .timeline-node:nth-child(2) .timeline-dot {
+            background: var(--blue);
+            box-shadow: 0 0 15px rgba(var(--neon-blue), 0.5);
+            animation: pulseNode 2s ease-in-out infinite;
+        }
+
+        .timeline-node:nth-child(3) .timeline-dot {
+            background: var(--teal);
+            box-shadow: 0 0 15px rgba(var(--neon-teal), 0.5);
+        }
+
+        @keyframes pulseNode {
+            0%, 100% { box-shadow: 0 0 15px rgba(var(--neon-blue), 0.5); }
+            50% { box-shadow: 0 0 25px rgba(var(--neon-blue), 0.8), 0 0 50px rgba(var(--neon-blue), 0.3); }
+        }
+
+        .timeline-year {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .timeline-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-top: 8px;
+            line-height: 1.5;
+        }
+
+        .timeline-badge {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            padding: 3px 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+            letter-spacing: 1px;
+        }
+
+        .timeline-node:nth-child(1) .timeline-badge {
+            background: rgba(var(--neon-violet), 0.1);
+            color: var(--violet-light);
+            border: 1px solid rgba(var(--neon-violet), 0.3);
+        }
+
+        .timeline-node:nth-child(2) .timeline-badge {
+            background: rgba(var(--neon-blue), 0.1);
+            color: var(--blue);
+            border: 1px solid rgba(var(--neon-blue), 0.3);
+        }
+
+        .timeline-node:nth-child(3) .timeline-badge {
+            background: rgba(var(--neon-teal), 0.1);
+            color: var(--teal);
+            border: 1px solid rgba(var(--neon-teal), 0.3);
+        }
+
+        /* ===== CTA ===== */
+        .cta {
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 300px;
+            background: radial-gradient(ellipse, rgba(var(--neon-violet), 0.08), transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+
+        .cta-title .accent {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--gold);
+            text-shadow: 0 0 20px rgba(245, 166, 35, 0.3);
+        }
+
+        .cta-text {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 500px;
+            margin: 0 auto 40px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-neon {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 36px;
+            background: transparent;
+            color: #fff;
+            font-family: 'Noto Sans Georgian', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            border: 2px solid var(--violet);
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 0 15px rgba(var(--neon-violet), 0.2);
+            animation: btnPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes btnPulse {
+            0%, 100% { box-shadow: 0 0 15px rgba(var(--neon-violet), 0.2); }
+            50% { box-shadow: 0 0 25px rgba(var(--neon-violet), 0.4), 0 0 50px rgba(var(--neon-violet), 0.1); }
+        }
+
+        .btn-neon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(var(--neon-violet), 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-neon:hover::before {
+            left: 100%;
+        }
+
+        .btn-neon:hover {
+            background: rgba(var(--neon-violet), 0.1);
+            box-shadow: 0 0 30px rgba(var(--neon-violet), 0.4), 0 0 60px rgba(var(--neon-violet), 0.1);
+            transform: translateY(-2px);
+        }
+
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 36px;
+            background: transparent;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn-ghost:hover {
+            color: var(--text);
+            border-color: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer p {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        .footer a {
+            color: var(--violet-light);
+            text-decoration: none;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-track {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 40px;
+                padding-left: 40px;
+            }
+
+            .timeline-track::before {
+                top: 0;
+                bottom: 0;
+                left: 20px;
+                right: auto;
+                width: 2px;
+                height: auto;
+            }
+
+            .timeline-node {
+                text-align: left;
+                padding: 0;
+            }
+
+            .timeline-dot {
+                position: absolute;
+                left: -32px;
+                top: 0;
+                margin: 0;
+            }
+
+            .timeline-year {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stats-grid {
+                gap: 12px;
+            }
+
+            .stat-card {
+                padding: 24px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="scanline"></div>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-badge">// ♥ ჩვენს შესახებ</div>
+        <h1 class="hero-title">
+            ჩვენ ვართ<br>
+            <span class="neon-text">10xელები</span>
+        </h1>
+        <p class="hero-subtitle">
+            საქართველოს #1 SEO სააგენტო. AI-ზე დაფუძნებული SEO ოპტიმიზაცია, რომელიც რეალურ შედეგებს აჩვენებს.
+        </p>
+        <div class="hero-line">
+            <span style="color: var(--violet-light)">$</span> init --mission <span style="color: var(--teal)">"იყავი_პირველი"</span><span class="blink">_</span>
+        </div>
+    </div>
+    <div class="hero-scroll">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+    </div>
+</section>
+
+<!-- ===== STATS ===== -->
+<section class="stats">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="neon-card stat-card reveal">
+                <div class="stat-number" data-target="50" data-suffix="+">0</div>
+                <div class="stat-label">კლიენტი მომსახურებული</div>
+                <div class="stat-tag">// CLIENTS_SERVED</div>
+            </div>
+            <div class="neon-card stat-card reveal reveal-delay-1">
+                <div class="stat-number" data-target="700" data-suffix="%" data-prefix="+">0</div>
+                <div class="stat-label">საშუალო ტრაფიკის ზრდა</div>
+                <div class="stat-tag">// AVG_TRAFFIC_GROWTH</div>
+            </div>
+            <div class="neon-card stat-card reveal reveal-delay-2">
+                <div class="stat-number" data-target="540" data-suffix="%" data-prefix="+">0</div>
+                <div class="stat-label">საკვანძო სიტყვების ზრდა</div>
+                <div class="stat-tag">// KEYWORD_GROWTH</div>
+            </div>
+            <div class="neon-card stat-card reveal reveal-delay-3">
+                <div class="stat-number" data-target="10" data-suffix="+">0</div>
+                <div class="stat-label">გუნდის წევრი</div>
+                <div class="stat-tag">// TEAM_SIZE</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== TEAM ===== -->
+<section class="team">
+    <div class="container">
+        <div class="team-header">
+            <div class="section-tag reveal">TEAM</div>
+            <h2 class="section-title reveal">ჩვენი <span class="mono" style="color: var(--gold);">10xელები</span></h2>
+            <p class="section-subtitle reveal">10+ ახალგაზრდა SEO სპეციალისტი, რომლებსაც ერთი მიზანი აერთიანებთ — იყვნენ საუკეთესოები.</p>
+        </div>
+
+        <div class="team-grid">
+            <div class="team-member founder reveal">
+                <div class="initials">დწ</div>
+                <div class="name">დავით წილოსანი</div>
+                <div class="role">CEO</div>
+                <div class="founder-label">FOUNDER</div>
+            </div>
+            <div class="team-member reveal reveal-delay-1">
+                <div class="initials">ან</div>
+                <div class="name">ანა</div>
+                <div class="role">SEO</div>
+            </div>
+            <div class="team-member reveal reveal-delay-1">
+                <div class="initials">მლ</div>
+                <div class="name">მარიამ ლაბაძე</div>
+                <div class="role">SEO</div>
+            </div>
+            <div class="team-member reveal reveal-delay-2">
+                <div class="initials">ნბ</div>
+                <div class="name">ნინო ბუბუნაური</div>
+                <div class="role">SEO</div>
+            </div>
+            <div class="team-member reveal reveal-delay-2">
+                <div class="initials">თმ</div>
+                <div class="name">თეო მაისურაძე</div>
+                <div class="role">SEO</div>
+            </div>
+            <div class="team-member reveal reveal-delay-3">
+                <div class="initials">თი</div>
+                <div class="name">თინათინი</div>
+                <div class="role">SEO</div>
+            </div>
+            <div class="team-member reveal reveal-delay-3">
+                <div class="initials">თო</div>
+                <div class="name">თამუნა ონიანი</div>
+                <div class="role">SEO</div>
+            </div>
+            <div class="team-member reveal reveal-delay-4">
+                <div class="initials">სგ</div>
+                <div class="name">სოფო გოზალიშვილი</div>
+                <div class="role">SEO</div>
+            </div>
+            <div class="team-member reveal reveal-delay-4">
+                <div class="initials">დგ</div>
+                <div class="name">დავით გუბანოვი</div>
+                <div class="role">SEO</div>
+            </div>
+            <div class="team-member reveal reveal-delay-5">
+                <div class="initials">ლუ</div>
+                <div class="name">ლუკა</div>
+                <div class="role">SEO</div>
+            </div>
+            <div class="team-member reveal reveal-delay-5">
+                <div class="initials">ნი</div>
+                <div class="name">ნინა</div>
+                <div class="role">SEO</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section class="services">
+    <div class="container">
+        <div class="section-tag reveal">SERVICES</div>
+        <h2 class="section-title reveal">რას <span class="mono" style="color: var(--violet-light);">ვაკეთებთ</span></h2>
+        <p class="section-subtitle reveal" style="margin-bottom: 64px;">სრული SEO ეკოსისტემა — აუდიტიდან ხელოვნურ ინტელექტამდე</p>
+
+        <div class="services-grid">
+            <div class="neon-card service-card reveal">
+                <span class="service-icon">🔍</span>
+                <div class="service-name">SEO აუდიტი</div>
+                <div class="service-desc">ვებგვერდის სრული ტექნიკური და კონტენტის ანალიზი Ahrefs-ით</div>
+                <div class="service-tag">// AUDIT</div>
+            </div>
+            <div class="neon-card service-card reveal reveal-delay-1">
+                <span class="service-icon">📈</span>
+                <div class="service-name">SEO მენეჯმენტი</div>
+                <div class="service-desc">სრული SEO სტრატეგიის მართვა და ყოველთვიური ოპტიმიზაცია</div>
+                <div class="service-tag">// MANAGEMENT</div>
+            </div>
+            <div class="neon-card service-card reveal reveal-delay-1">
+                <span class="service-icon">📝</span>
+                <div class="service-name">კონტენტ სტრატეგია</div>
+                <div class="service-desc">SEO-ზე ოპტიმიზებული კონტენტის დაგეგმვა და შექმნა</div>
+                <div class="service-tag">// CONTENT</div>
+            </div>
+            <div class="neon-card service-card reveal reveal-delay-2">
+                <span class="service-icon">🔑</span>
+                <div class="service-name">Keyword Research</div>
+                <div class="service-desc">საკვანძო სიტყვების კვლევა და კონკურენტული ანალიზი</div>
+                <div class="service-tag">// KEYWORDS</div>
+            </div>
+            <div class="neon-card service-card reveal reveal-delay-2">
+                <span class="service-icon">🤖</span>
+                <div class="service-name">AI SEO / AEO</div>
+                <div class="service-desc">ხელოვნური ინტელექტის ინტეგრაცია SEO პროცესებში</div>
+                <div class="service-tag">// AI_OPTIMIZATION</div>
+            </div>
+            <div class="neon-card service-card reveal reveal-delay-3">
+                <span class="service-icon">🎯</span>
+                <div class="service-name">CRO ოპტიმიზაცია</div>
+                <div class="service-desc">კონვერსიის განაკვეთის გაზრდა A/B ტესტირებით</div>
+                <div class="service-tag">// CRO</div>
+            </div>
+            <div class="neon-card service-card reveal reveal-delay-3">
+                <span class="service-icon">💰</span>
+                <div class="service-name">Google Ads</div>
+                <div class="service-desc">ფასიანი რეკლამის კამპანიების მართვა და ოპტიმიზაცია</div>
+                <div class="service-tag">// PAID_ADS</div>
+            </div>
+            <div class="neon-card service-card reveal reveal-delay-4">
+                <span class="service-icon">🔗</span>
+                <div class="service-name">Backlink Building</div>
+                <div class="service-desc">მაღალი ხარისხის ბმულების მოპოვება და პროფილის გაძლიერება</div>
+                <div class="service-tag">// BACKLINKS</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== TIMELINE ===== -->
+<section class="timeline">
+    <div class="container" style="text-align: center;">
+        <div class="section-tag reveal">TIMELINE</div>
+        <h2 class="section-title reveal">ჩვენი <span class="mono" style="color: var(--blue);">გზა</span></h2>
+        <p class="section-subtitle reveal" style="margin: 0 auto 80px;">დაარსებიდან გლობალურ ექსპანსიამდე</p>
+
+        <div class="timeline-track reveal">
+            <div class="timeline-node">
+                <div class="timeline-year mono">2024</div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-desc">10XSEO დაფუძნდა საქართველოში. პირველი კლიენტები, პირველი წარმატებები.</div>
+                <div class="timeline-badge">GENESIS</div>
+            </div>
+            <div class="timeline-node">
+                <div class="timeline-year mono">2025–26</div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-desc">50+ კლიენტი. საერთაშორისო გაფართოება — აშშ, ევროპა. Ahrefs ვერიფიცირებული სააგენტო.</div>
+                <div class="timeline-badge">SCALING</div>
+            </div>
+            <div class="timeline-node">
+                <div class="timeline-year mono">NEXT→</div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-desc">დუბაიში ექსპანსია. რეგიონის #1 AI-ზე დაფუძნებული SEO სააგენტო.</div>
+                <div class="timeline-badge">DUBAI</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta">
+    <div class="container" style="position: relative; z-index: 2;">
+        <div class="section-tag reveal">CONNECT</div>
+        <h2 class="cta-title reveal"><span class="accent mono">იყავი_პირველი</span></h2>
+        <p class="cta-text reveal">მზად ხარ ციფრულ სამყაროში პირველობისთვის? შემოგვიერთდი და ერთად შევქმნათ შენი წარმატების ისტორია.</p>
+        <div class="cta-buttons reveal">
+            <a href="https://calendly.com/10xseo-sales" class="btn-neon" target="_blank">
+                კონსულტაციის დაჯავშნა
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+            <a href="tel:+995510101517" class="btn-ghost">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                510 10 15 17
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+    <div class="container">
+        <p>// &copy; 2024-2026 <a href="https://10xseo.ge" target="_blank">10XSEO.ge</a> — იყავი_პირველი</p>
+    </div>
+</footer>
+
+<script>
+    // IntersectionObserver for reveal animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Animated counters
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const target = parseInt(el.dataset.target);
+                const suffix = el.dataset.suffix || '';
+                const prefix = el.dataset.prefix || '';
+                const duration = 2000;
+                const start = performance.now();
+
+                function update(now) {
+                    const elapsed = now - start;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const eased = 1 - Math.pow(1 - progress, 3);
+                    const current = Math.round(eased * target);
+                    el.textContent = prefix + current + suffix;
+                    if (progress < 1) requestAnimationFrame(update);
+                }
+
+                requestAnimationFrame(update);
+                counterObserver.unobserve(el);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.stat-number[data-target]').forEach(el => counterObserver.observe(el));
+</script>
+
+</body>
+</html>

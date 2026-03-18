@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ჩვენს შესახებ — 10xSEO | კლიენტის წარმატება</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Noto+Sans+Georgian:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --violet: #8B5CF6;
+  --blue: #3B82F6;
+  --teal: #14B8A6;
+  --gold: #F5A623;
+  --dark: #020710;
+  --surface: #0a0e1a;
+  --surface2: #111827;
+  --text: #e2e8f0;
+  --text-dim: #94a3b8;
+  --green: #21C743;
+  --border: rgba(139,92,246,0.08);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans Georgian', 'DM Sans', sans-serif;
+  background: var(--dark);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* Hero */
+.hero {
+  padding: 120px 0 80px;
+  position: relative;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background: radial-gradient(ellipse at 70% 30%, rgba(139,92,246,0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.hero-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.verified-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background: rgba(33,199,67,0.08);
+  border: 1px solid rgba(33,199,67,0.2);
+  border-radius: 100px;
+  font-size: 0.75rem;
+  color: var(--green);
+  font-weight: 500;
+}
+
+.verified-badge::before {
+  content: '✓';
+  width: 16px;
+  height: 16px;
+  background: var(--green);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6rem;
+  font-weight: 700;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  max-width: 800px;
+}
+
+.hero h1 .accent {
+  background: linear-gradient(135deg, var(--gold), #ffd700);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-desc {
+  margin-top: 20px;
+  font-size: 1.15rem;
+  color: var(--text-dim);
+  max-width: 600px;
+  line-height: 1.8;
+}
+
+/* Proof bar */
+.proof-bar {
+  display: flex;
+  gap: 48px;
+  padding: 40px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin: 48px 0;
+  flex-wrap: wrap;
+}
+
+.proof-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.proof-num {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--text);
+}
+
+.proof-num.violet { color: var(--violet); }
+.proof-num.blue { color: var(--blue); }
+.proof-num.teal { color: var(--teal); }
+.proof-num.gold { color: var(--gold); }
+
+.proof-label {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  margin-top: 4px;
+}
+
+/* Case studies */
+.section-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--violet);
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 40px;
+}
+
+.case-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: 80px;
+}
+
+.case-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.case-card:hover {
+  border-color: rgba(139,92,246,0.15);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.3);
+}
+
+.case-header {
+  padding: 28px 28px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.case-client {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.case-flag {
+  font-size: 1.5rem;
+}
+
+.case-industry {
+  padding: 0 28px;
+  margin-top: 4px;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.case-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin: 20px 28px;
+  background: var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.case-metric {
+  padding: 16px 12px;
+  background: var(--dark);
+  text-align: center;
+}
+
+.case-metric-value {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--green);
+}
+
+.case-metric-label {
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  margin-top: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.case-desc {
+  padding: 0 28px 24px;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+
+.case-services {
+  padding: 0 28px 28px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.case-service-tag {
+  padding: 4px 12px;
+  background: rgba(139,92,246,0.06);
+  border-radius: 100px;
+  font-size: 0.7rem;
+  color: var(--violet);
+}
+
+/* Testimonial strip */
+.testimonials {
+  padding: 80px 0;
+  border-top: 1px solid var(--border);
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.testimonial-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+  position: relative;
+}
+
+.testimonial-card::before {
+  content: '"';
+  font-size: 4rem;
+  line-height: 1;
+  color: var(--violet);
+  opacity: 0.15;
+  position: absolute;
+  top: 16px;
+  left: 24px;
+}
+
+.testimonial-text {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: var(--text-dim);
+  margin-top: 20px;
+  font-style: italic;
+}
+
+.testimonial-text em {
+  color: var(--text);
+  font-style: normal;
+  font-weight: 500;
+}
+
+.testimonial-author {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.testimonial-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--violet), var(--blue));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: white;
+}
+
+.testimonial-info .name {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.testimonial-info .company {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+/* ROI Section */
+.roi-section {
+  padding: 80px 0;
+  border-top: 1px solid var(--border);
+}
+
+.roi-banner {
+  background: linear-gradient(135deg, rgba(245,166,35,0.06), rgba(139,92,246,0.04));
+  border: 1px solid rgba(245,166,35,0.1);
+  border-radius: 20px;
+  padding: 56px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.roi-left h2 {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.roi-left h2 .gold { color: var(--gold); }
+
+.roi-left p {
+  font-size: 1rem;
+  color: var(--text-dim);
+  line-height: 1.8;
+}
+
+.roi-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.roi-stat {
+  background: rgba(0,0,0,0.3);
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+}
+
+.roi-stat-value {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.roi-stat-value.gold { color: var(--gold); }
+.roi-stat-value.green { color: var(--green); }
+.roi-stat-value.violet { color: var(--violet); }
+.roi-stat-value.blue { color: var(--blue); }
+
+.roi-stat-label {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  margin-top: 6px;
+}
+
+/* Services overview */
+.services-section {
+  padding: 80px 0;
+  border-top: 1px solid var(--border);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.service-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 28px 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.service-card:hover {
+  border-color: rgba(139,92,246,0.15);
+  transform: translateY(-3px);
+}
+
+.service-icon {
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+}
+
+.service-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* CTA */
+.final-cta {
+  padding: 100px 0;
+  text-align: center;
+}
+
+.final-cta h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.final-cta p {
+  font-size: 1.05rem;
+  color: var(--text-dim);
+  margin-bottom: 32px;
+}
+
+.final-cta .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 40px;
+  background: var(--gold);
+  color: var(--dark);
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.final-cta .btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(245,166,35,0.25);
+}
+
+.final-cta .phone {
+  margin-top: 16px;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+.final-cta .phone a {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+/* Animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: all 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 1024px) {
+  .case-grid { grid-template-columns: 1fr; }
+  .testimonial-grid { grid-template-columns: 1fr; }
+  .roi-banner { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .container { padding: 0 20px; }
+  .proof-bar { gap: 24px; }
+  .roi-banner { padding: 32px; }
+  .services-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Hero -->
+  <section class="hero fade-in">
+    <div class="hero-top">
+      <div class="verified-badge">Ahrefs Verified Agency</div>
+    </div>
+    <h1>შედეგები, რომლებიც <span class="accent">თავად ლაპარაკობენ</span></h1>
+    <p class="hero-desc">
+      50+ კომპანია გვენდობა საკუთარი ციფრული ზრდისთვის. ყველა შედეგი გაზომვადია, ყველა წარმატება — რეალური.
+    </p>
+
+    <div class="proof-bar">
+      <div class="proof-item">
+        <div class="proof-num violet">50+</div>
+        <div class="proof-label">მომსახურე კომპანია</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num blue">+700%</div>
+        <div class="proof-label">საშუალო ტრაფიკის ზრდა</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num teal">+540%</div>
+        <div class="proof-label">ქივორდების ზრდა</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num gold">2024</div>
+        <div class="proof-label">წლიდან ბაზარზე</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Studies -->
+  <section class="fade-in">
+    <div class="section-label">ქეის სთადი</div>
+    <div class="section-title">კლიენტების წარმატების ისტორიები</div>
+
+    <div class="case-grid">
+      <div class="case-card">
+        <div class="case-header">
+          <div class="case-client">Elehear</div>
+          <div class="case-flag">🇺🇸</div>
+        </div>
+        <div class="case-industry">სამედიცინო მოწყობილობები · აშშ</div>
+        <div class="case-metrics">
+          <div class="case-metric"><div class="case-metric-value">+850%</div><div class="case-metric-label">ტრაფიკი</div></div>
+          <div class="case-metric"><div class="case-metric-value">TOP 3</div><div class="case-metric-label">პოზიციები</div></div>
+          <div class="case-metric"><div class="case-metric-value">+420%</div><div class="case-metric-label">ქივორდები</div></div>
+        </div>
+        <div class="case-desc">სრული SEO სტრატეგია ამერიკული ბაზრისთვის — კონტენტის გეგმა, AEO ოპტიმიზაცია, ბექლინქ სტრატეგია და on-page ოპტიმიზაცია.</div>
+        <div class="case-services">
+          <span class="case-service-tag">SEO მენეჯმენტი</span>
+          <span class="case-service-tag">AEO</span>
+          <span class="case-service-tag">კონტენტი</span>
+          <span class="case-service-tag">ბექლინქები</span>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-header">
+          <div class="case-client">ClearMinds</div>
+          <div class="case-flag">🇬🇧</div>
+        </div>
+        <div class="case-industry">ფსიქოთერაპია · გაერთიანებული სამეფო</div>
+        <div class="case-metrics">
+          <div class="case-metric"><div class="case-metric-value">+600%</div><div class="case-metric-label">ტრაფიკი</div></div>
+          <div class="case-metric"><div class="case-metric-value">8</div><div class="case-metric-label">ბლოგი/თვე</div></div>
+          <div class="case-metric"><div class="case-metric-value">TOP 5</div><div class="case-metric-label">GMB</div></div>
+        </div>
+        <div class="case-desc">ბლოგ კონტენტის სტრატეგია, Google My Business ოპტიმიზაცია, Trustpilot რეგისტრაცია და ლოკალური SEO.</div>
+        <div class="case-services">
+          <span class="case-service-tag">ლოკალური SEO</span>
+          <span class="case-service-tag">GMB</span>
+          <span class="case-service-tag">კონტენტი</span>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-header">
+          <div class="case-client">1ClickBlinds</div>
+          <div class="case-flag">🇺🇸</div>
+        </div>
+        <div class="case-industry">E-Commerce · ჟალუზები · აშშ</div>
+        <div class="case-metrics">
+          <div class="case-metric"><div class="case-metric-value">+750%</div><div class="case-metric-label">ტრაფიკი</div></div>
+          <div class="case-metric"><div class="case-metric-value">+380%</div><div class="case-metric-label">გაყიდვები</div></div>
+          <div class="case-metric"><div class="case-metric-value">3</div><div class="case-metric-label">კონკურენტი</div></div>
+        </div>
+        <div class="case-desc">ქივორდ მეპინგი, კატეგორიების ოპტიმიზაცია, Backlink Gap ანალიზი 3 კონკურენტთან, ბლოგ კონტენტის სტრატეგია.</div>
+        <div class="case-services">
+          <span class="case-service-tag">ქივორდ რისერჩი</span>
+          <span class="case-service-tag">ბექლინქები</span>
+          <span class="case-service-tag">ტექნიკური</span>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-header">
+          <div class="case-client">IBCCS</div>
+          <div class="case-flag">🇬🇪</div>
+        </div>
+        <div class="case-industry">იმიგრაცია & ბიზნესი · საქართველო</div>
+        <div class="case-metrics">
+          <div class="case-metric"><div class="case-metric-value">+900%</div><div class="case-metric-label">ტრაფიკი</div></div>
+          <div class="case-metric"><div class="case-metric-value">12</div><div class="case-metric-label">GMB პოსტი/თვე</div></div>
+          <div class="case-metric"><div class="case-metric-value">+560%</div><div class="case-metric-label">ქივორდები</div></div>
+        </div>
+        <div class="case-desc">სრული SEO აუდიტი, ტექნიკური რეკომენდაციები, სერვისის გვერდების აღწერა, ბლოგები, GMB ოპტიმიზაცია.</div>
+        <div class="case-services">
+          <span class="case-service-tag">SEO აუდიტი</span>
+          <span class="case-service-tag">GMB</span>
+          <span class="case-service-tag">კონტენტი</span>
+          <span class="case-service-tag">ბექლინქები</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials fade-in">
+    <div class="section-label">ნდობა</div>
+    <div class="section-title">რას ამბობენ ჩვენზე</div>
+
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-text">
+          „10xSEO-სთან თანამშრომლობით ძალიან <em>კარგი შედეგები მივიღეთ</em>. ტრაფიკი მნიშვნელოვნად გაიზარდა და გაყიდვებიც მომატებულია. რეკომენდაციას ვუწევ ყველას."
+        </div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">IT</div>
+          <div class="testimonial-info">
+            <div class="name">IT კომპანია</div>
+            <div class="company">თბილისი</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-text">
+          „საიტს დიდი პოტენციალი ჰქონდა ძიების შედეგებში. ჩვენს პარტნიორებს 10xSEO ვთხოვეთ გადაეხედათ და აშკარაა, რომ <em>მეტი კლიენტის მოყვანა შეიძლება</em>."
+        </div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">SM</div>
+          <div class="testimonial-info">
+            <div class="name">სტარტაპი</div>
+            <div class="company">ციფრული მომსახურება</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-text">
+          „10xSEO-მ ჩვენი საერთაშორისო ხილვადობა ფუნდამენტურად <em>შეცვალა</em>. ამერიკულ ბაზარზე ახლა ვართ TOP 3 პოზიციაზე — ეს წარმოუდგენელი იყო ადრე."
+        </div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">EH</div>
+          <div class="testimonial-info">
+            <div class="name">Elehear</div>
+            <div class="company">აშშ · სამედიცინო</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROI Section -->
+  <section class="roi-section fade-in">
+    <div class="roi-banner">
+      <div class="roi-left">
+        <h2>SEO-ს <span class="gold">R.O.I.</span> 700%-ია</h2>
+        <p>SEO არის ყველაზე მაღალი ROI-ის ციფრული მარკეტინგის არხი. ჩვენი კლიენტების საშუალო ROI 700%-ს აღწევს — ეს ნიშნავს, რომ ყოველ ინვესტირებულ ლარზე 7 ლარი ბრუნდება.</p>
+      </div>
+      <div class="roi-stats">
+        <div class="roi-stat">
+          <div class="roi-stat-value gold">700%</div>
+          <div class="roi-stat-label">საშუალო ROI</div>
+        </div>
+        <div class="roi-stat">
+          <div class="roi-stat-value green">40%</div>
+          <div class="roi-stat-label">ტრაფიკი ორგანულიდან</div>
+        </div>
+        <div class="roi-stat">
+          <div class="roi-stat-value violet">10x</div>
+          <div class="roi-stat-label">ბიზნესის ზრდა</div>
+        </div>
+        <div class="roi-stat">
+          <div class="roi-stat-value blue">#1</div>
+          <div class="roi-stat-label">საქართველოში</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="services-section fade-in">
+    <div class="section-label">სერვისები</div>
+    <div class="section-title">რას ვთავაზობთ</div>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🔍</div>
+        <div class="service-name">SEO აუდიტი</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📊</div>
+        <div class="service-name">SEO მენეჯმენტი</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">✍️</div>
+        <div class="service-name">კონტენტ სტრატეგია</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔑</div>
+        <div class="service-name">ქივორდ რისერჩი</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🤖</div>
+        <div class="service-name">AI SEO / AEO</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🎯</div>
+        <div class="service-name">CRO</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📣</div>
+        <div class="service-name">Google Ads</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔗</div>
+        <div class="service-name">ბექლინქ სტრატეგია</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta fade-in">
+    <h2>შენი წარმატების ისტორია შემდეგია</h2>
+    <p>დაჯავშნე 15-წუთიანი უფასო კონსულტაცია და გაიგე, როგორ შეგვიძლია შენი ბიზნესის ზრდა.</p>
+    <a href="https://calendly.com/10xseo-sales" class="btn">
+      უფასო კონსულტაცია →
+    </a>
+    <div class="phone">ან დარეკე: <a href="tel:+995510101517">510 10 15 17</a></div>
+  </section>
+
+</div>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

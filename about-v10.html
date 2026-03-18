@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ჩვენ შესახებ — 10XSEO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Georgian:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #F5A623;
+            --gold-dim: rgba(245, 166, 35, 0.15);
+            --bg: #020710;
+            --text: #ffffff;
+            --text-muted: rgba(255, 255, 255, 0.4);
+            --text-dim: rgba(255, 255, 255, 0.15);
+            --border: rgba(255, 255, 255, 0.08);
+        }
+
+        html {
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', 'Noto Sans Georgian', sans-serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Scroll sections */
+        .section {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        /* Reveal animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.15s; }
+        .reveal-delay-2 { transition-delay: 0.3s; }
+        .reveal-delay-3 { transition-delay: 0.45s; }
+
+        /* Hairline separator */
+        .hairline {
+            width: 60px;
+            height: 1px;
+            background: var(--border);
+            margin: 3rem auto;
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 0 2rem;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            font-family: 'Noto Sans Georgian', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            border: 1px solid var(--border);
+            padding: 0.5rem 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-family: 'Noto Sans Georgian', sans-serif;
+            font-size: clamp(3rem, 10vw, 8rem);
+            font-weight: 700;
+            line-height: 1.05;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h1 .gold {
+            color: var(--gold);
+        }
+
+        .hero-sub {
+            font-family: 'Noto Sans Georgian', sans-serif;
+            font-size: 1rem;
+            color: var(--text-muted);
+            max-width: 400px;
+            margin: 0 auto;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        /* Glow behind hero text */
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(245, 166, 35, 0.04) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Stats */
+        .stats-grid {
+            display: flex;
+            gap: 6rem;
+            text-align: center;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .stat-item {
+            min-width: 120px;
+        }
+
+        .stat-number {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(3.5rem, 8vw, 6rem);
+            font-weight: 700;
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-family: 'Noto Sans Georgian', sans-serif;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+        }
+
+        /* Mission */
+        .mission-text {
+            font-family: 'Noto Sans Georgian', sans-serif;
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            font-weight: 300;
+            line-height: 2;
+            max-width: 700px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .mission-text strong {
+            color: var(--gold);
+            font-weight: 500;
+        }
+
+        /* Services horizontal scroll */
+        .services-section {
+            align-items: flex-start;
+            padding: 0;
+        }
+
+        .services-label {
+            font-family: 'Noto Sans Georgian', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            padding: 4rem 2rem 2rem;
+            align-self: flex-start;
+            margin-left: 4rem;
+        }
+
+        .services-scroll {
+            display: flex;
+            overflow-x: auto;
+            gap: 0;
+            width: 100%;
+            padding: 2rem 4rem 4rem;
+            scrollbar-width: none;
+            flex: 1;
+            align-items: center;
+        }
+
+        .services-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .service-item {
+            flex-shrink: 0;
+            font-family: 'Noto Sans Georgian', sans-serif;
+            font-size: clamp(0.85rem, 1.2vw, 1rem);
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.5);
+            padding: 0 2.5rem;
+            border-right: 1px solid var(--border);
+            white-space: nowrap;
+            transition: color 0.3s ease;
+        }
+
+        .service-item:last-child {
+            border-right: none;
+        }
+
+        .service-item:hover {
+            color: var(--gold);
+        }
+
+        /* Team list */
+        .team-section {
+            max-width: 600px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .team-label {
+            font-family: 'Noto Sans Georgian', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 3rem;
+        }
+
+        .team-list {
+            list-style: none;
+            width: 100%;
+        }
+
+        .team-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+            font-family: 'Noto Sans Georgian', sans-serif;
+        }
+
+        .team-list li:first-child {
+            border-top: 1px solid var(--border);
+        }
+
+        .team-name {
+            font-size: 1rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .team-name.founder {
+            color: var(--gold);
+        }
+
+        .team-role {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 300;
+        }
+
+        /* Clients */
+        .clients-row {
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 800px;
+        }
+
+        .client-name {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .client-name:hover {
+            color: var(--text-muted);
+        }
+
+        /* Culture */
+        .culture-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            max-width: 700px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .culture-item h3 {
+            font-family: 'Noto Sans Georgian', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0.5rem;
+        }
+
+        .culture-item p {
+            font-family: 'Noto Sans Georgian', sans-serif;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        /* CTA / Contact */
+        .cta-section {
+            text-align: center;
+        }
+
+        .cta-heading {
+            font-family: 'Noto Sans Georgian', sans-serif;
+            font-size: clamp(1.5rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .cta-heading .gold {
+            color: var(--gold);
+        }
+
+        .cta-phone {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            margin-bottom: 2rem;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            font-family: 'Noto Sans Georgian', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            color: var(--bg);
+            background: var(--gold);
+            padding: 1rem 3rem;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            opacity: 0.85;
+        }
+
+        /* Footer */
+        .footer {
+            min-height: auto;
+            scroll-snap-align: none;
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            letter-spacing: 0.1em;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .stats-grid {
+                gap: 3rem;
+            }
+
+            .services-label {
+                margin-left: 2rem;
+            }
+
+            .services-scroll {
+                padding: 2rem;
+            }
+
+            .service-item {
+                padding: 0 1.5rem;
+            }
+
+            .team-section {
+                padding: 0 1rem;
+            }
+
+            html {
+                scroll-snap-type: y proximity;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                flex-direction: column;
+                gap: 2.5rem;
+            }
+
+            .services-label {
+                margin-left: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero -->
+    <section class="section hero">
+        <div class="reveal hero-badge">10XSEO.GE — საქართველოს #1 SEO სააგენტო</div>
+        <h1 class="reveal reveal-delay-1">ჩვენ ვართ<br><span class="gold">10xელები</span></h1>
+        <p class="reveal reveal-delay-2 hero-sub">იყავი პირველი — AI-ზე დაფუძნებული SEO სააგენტო, დაარსებული 2024 წელს საქართველოში</p>
+    </section>
+
+    <!-- Stats -->
+    <section class="section">
+        <div class="stats-grid">
+            <div class="stat-item reveal">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">კლიენტი</div>
+            </div>
+            <div class="stat-item reveal reveal-delay-1">
+                <div class="stat-number">700%</div>
+                <div class="stat-label">ტრაფიკის ზრდა</div>
+            </div>
+            <div class="stat-item reveal reveal-delay-2">
+                <div class="stat-number">540%</div>
+                <div class="stat-label">ქივორდების ზრდა</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission -->
+    <section class="section">
+        <div class="hairline reveal"></div>
+        <p class="mission-text reveal reveal-delay-1">
+            ჩვენი მისიაა გავხდეთ რეგიონის <strong>საუკეთესო SEO სააგენტო</strong>.
+            ვპიონერობთ AI-ზე დაფუძნებულ SEO მიდგომებს და ვეხმარებით ბიზნესებს
+            ციფრულ სივრცეში <strong>პირველები</strong> გახდნენ.
+        </p>
+        <div class="hairline reveal reveal-delay-2"></div>
+    </section>
+
+    <!-- Services -->
+    <section class="section services-section">
+        <div class="services-label reveal">სერვისები</div>
+        <div class="services-scroll">
+            <div class="service-item reveal">SEO აუდიტი</div>
+            <div class="service-item reveal reveal-delay-1">SEO მენეჯმენტი</div>
+            <div class="service-item reveal">კონტენტ სტრატეგია</div>
+            <div class="service-item reveal reveal-delay-1">ქივორდ რისერჩი</div>
+            <div class="service-item reveal">AI SEO / AEO</div>
+            <div class="service-item reveal reveal-delay-1">CRO ოპტიმიზაცია</div>
+            <div class="service-item reveal">Google Ads</div>
+            <div class="service-item reveal reveal-delay-1">ბექლინკ ბილდინგი</div>
+        </div>
+    </section>
+
+    <!-- Team -->
+    <section class="section">
+        <div class="team-section">
+            <div class="team-label reveal">გუნდი — 10+ სპეციალისტი</div>
+            <ul class="team-list">
+                <li class="reveal">
+                    <span class="team-name founder">დავით წილოსანი</span>
+                    <span class="team-role">დამფუძნებელი & CEO</span>
+                </li>
+                <li class="reveal reveal-delay-1">
+                    <span class="team-name">ანა</span>
+                    <span class="team-role">SEO სპეციალისტი</span>
+                </li>
+                <li class="reveal">
+                    <span class="team-name">მარიამ ლაბაძე</span>
+                    <span class="team-role">SEO სპეციალისტი</span>
+                </li>
+                <li class="reveal reveal-delay-1">
+                    <span class="team-name">ნინო ბუბუნაური</span>
+                    <span class="team-role">SEO სპეციალისტი</span>
+                </li>
+                <li class="reveal">
+                    <span class="team-name">თეო მაისურაძე</span>
+                    <span class="team-role">SEO სპეციალისტი</span>
+                </li>
+                <li class="reveal reveal-delay-1">
+                    <span class="team-name">თინათინი</span>
+                    <span class="team-role">SEO სპეციალისტი</span>
+                </li>
+                <li class="reveal">
+                    <span class="team-name">თამუნა ონიანი</span>
+                    <span class="team-role">SEO სპეციალისტი</span>
+                </li>
+                <li class="reveal reveal-delay-1">
+                    <span class="team-name">სოფო გოზალიშვილი</span>
+                    <span class="team-role">SEO სპეციალისტი</span>
+                </li>
+                <li class="reveal">
+                    <span class="team-name">დავით გუბანოვი</span>
+                    <span class="team-role">SEO სპეციალისტი</span>
+                </li>
+                <li class="reveal reveal-delay-1">
+                    <span class="team-name">ლუკა</span>
+                    <span class="team-role">SEO სპეციალისტი</span>
+                </li>
+                <li class="reveal">
+                    <span class="team-name">ნინა</span>
+                    <span class="team-role">SEO სპეციალისტი</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Clients -->
+    <section class="section">
+        <div class="team-label reveal" style="text-align:center;margin-bottom:3rem;">კლიენტები</div>
+        <div class="clients-row reveal reveal-delay-1">
+            <span class="client-name">Elehear</span>
+            <span class="client-name">1ClickBlinds</span>
+            <span class="client-name">ClearMinds</span>
+            <span class="client-name">IBCCS</span>
+            <span class="client-name">Alpaca.ge</span>
+        </div>
+        <div class="hairline reveal reveal-delay-2"></div>
+        <p class="reveal reveal-delay-3" style="font-family:'Noto Sans Georgian',sans-serif;font-size:0.8rem;color:var(--text-muted);margin-top:1.5rem;text-align:center;max-width:500px;line-height:1.8;">
+            საერთაშორისო კლიენტები აშშ-დან და ევროპიდან. ქართული ბიზნესები Alpaca ბრენდის მეშვეობით.
+            Ahrefs-ის ვერიფიცირებული სააგენტო.
+        </p>
+    </section>
+
+    <!-- Culture -->
+    <section class="section">
+        <div class="team-label reveal" style="text-align:center;margin-bottom:3rem;">კულტურა</div>
+        <div class="culture-grid">
+            <div class="culture-item reveal">
+                <h3>დისტანციური</h3>
+                <p>Remote-first მიდგომა, თავისუფალი სამუშაო გარემო</p>
+            </div>
+            <div class="culture-item reveal reveal-delay-1">
+                <h3>ცოდნის გაზიარება</h3>
+                <p>ყოველკვირეული გუნდური შეხვედრები და ტრეინინგები</p>
+            </div>
+            <div class="culture-item reveal reveal-delay-2">
+                <h3>ინოვაცია</h3>
+                <p>AI-ზე დაფუძნებული SEO მეთოდების პიონერები რეგიონში</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section cta-section">
+        <h2 class="cta-heading reveal">მზად ხარ იყო<br><span class="gold">პირველი?</span></h2>
+        <div class="cta-phone reveal reveal-delay-1">510 10 15 17</div>
+        <a href="https://calendly.com/10xseo-sales" class="cta-btn reveal reveal-delay-2">დაჯავშნე კონსულტაცია</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="footer-text">&copy; 2024–2026 10XSEO.GE — საქართველო · დუბაი</p>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
