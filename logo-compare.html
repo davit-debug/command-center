@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ka" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ლოგო შედარება — V5 vs V22</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&family=FiraGO:wght@400;500;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: { DEFAULT: '#58E6FF', light: '#58E6FF' },
+            accent: '#FC81FE',
+            success: '#21C743',
+            heading: { DEFAULT: '#0f172a', dark: '#f1f5f9' },
+            body: { DEFAULT: '#475569', dark: '#94a3b8' },
+            surface: { alt: '#f8fafc', dark: '#020617', 'dark-alt': '#0f172a' },
+          },
+          fontFamily: {
+            heading: ['"Noto Sans Georgian"', 'Inter', 'sans-serif'],
+            inter: ['Inter', 'sans-serif'],
+            body: ['FiraGO', '"Noto Sans Georgian"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'FiraGO', 'Noto Sans Georgian', sans-serif; }
+
+    /* V5 hover styles — dramatic effect for dark mode */
+    .v5-logo {
+      filter: grayscale(1) brightness(0.4);
+      opacity: 0.35;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      transform: scale(0.95);
+    }
+    .v5-logo:hover {
+      filter: grayscale(0) brightness(1);
+      opacity: 1;
+      transform: scale(1.08);
+    }
+    .v5-logo:hover svg text {
+      filter: drop-shadow(0 0 12px currentColor);
+    }
+
+    /* V22 testimonial peek styles - adapted for both modes */
+    .v22-card {
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+    }
+    .v22-card .peek-quote {
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+    .v22-card:hover .peek-quote {
+      transform: translateY(0);
+    }
+    .v22-card .logo-text {
+      transition: all 0.3s ease;
+    }
+    .v22-card:hover .logo-text {
+      transform: translateY(-6px);
+    }
+  </style>
+</head>
+<body class="bg-surface-dark text-body-dark">
+
+  <!-- Navigation between variants -->
+  <div class="fixed top-0 left-0 right-0 z-50 bg-surface-dark/90 backdrop-blur-lg border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <h1 class="font-heading text-lg font-bold text-heading-dark">ლოგო სტრიპის შედარება</h1>
+      <div class="flex gap-3">
+        <a href="#v22" class="px-4 py-2 rounded-lg bg-primary/10 text-primary text-sm font-semibold hover:bg-primary/20 transition">V22 — Testimonial Peek</a>
+        <a href="#v5" class="px-4 py-2 rounded-lg bg-accent/10 text-accent text-sm font-semibold hover:bg-accent/20 transition">V5 — SEO Sherpa Clean</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="pt-16"></div>
+
+  <!-- ================================================================ -->
+  <!-- VARIANT 22: TESTIMONIAL PEEK                                     -->
+  <!-- ================================================================ -->
+  <div id="v22" class="pt-8">
+    <div class="max-w-7xl mx-auto px-4 mb-6">
+      <div class="flex items-center gap-3">
+        <span class="px-3 py-1 bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase rounded-full">ვარიანტი 22</span>
+        <span class="text-heading-dark font-heading font-bold text-xl">Testimonial Peek — ციტატა hover-ზე</span>
+      </div>
+      <p class="text-body-dark text-sm mt-1">ლოგოზე hover-ით კლიენტის მინი-ციტატა ჩანს. Grid layout, არ სქროლავს.</p>
+    </div>
+
+    <!-- Simulated Stats Bar above -->
+    <div class="bg-gradient-to-r from-[#1e1b4b] via-[#172554] to-[#1e1b4b] py-4">
+      <div class="max-w-7xl mx-auto px-4 flex justify-center gap-12 text-white/50 text-sm">
+        <span>▲ Stats Bar ზემოთ</span>
+      </div>
+    </div>
+
+    <!-- === V22 LOGO SECTION (as it would appear in index.html) === -->
+    <section class="py-14 lg:py-20 bg-surface-alt dark:bg-surface-dark-alt overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <!-- Header with accent line -->
+        <div class="flex flex-col items-center mb-10">
+          <div class="w-12 h-1 bg-gradient-to-r from-primary to-accent rounded-full mb-4"></div>
+          <p class="text-center text-sm font-semibold text-body dark:text-body-dark uppercase tracking-[0.2em]">
+            ნდობა გვიცხადებენ
+          </p>
+          <p class="text-center text-xs text-body/50 dark:text-body-dark/50 mt-1">50+ კომპანია საქართველოში და საერთაშორისო ბაზარზე</p>
+        </div>
+
+        <!-- V22: Grid with testimonial peek on hover -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
+          <!-- Belle Maison -->
+          <div class="v22-card group p-6 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:border-primary/30 transition-all duration-300 text-center h-28 flex items-center justify-center">
+            <span class="logo-text text-sm font-bold text-white/40 group-hover:text-white/80 transition-all duration-300" style="font-family: Georgia, serif; letter-spacing: 3px;">BELLE MAISON</span>
+            <div class="peek-quote absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-primary/10 to-transparent">
+              <p class="text-[10px] text-primary/70 italic">"საუკეთესო SEO გუნდი"</p>
+            </div>
+          </div>
+          <!-- Horizon -->
+          <div class="v22-card group p-6 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:border-primary/30 transition-all duration-300 text-center h-28 flex items-center justify-center">
+            <span class="logo-text text-lg font-extrabold text-white/40 group-hover:text-white/80 transition-all duration-300 tracking-wide">HORIZON</span>
+            <div class="peek-quote absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-primary/10 to-transparent">
+              <p class="text-[10px] text-primary/70 italic">"ტრაფიკი 3x გაიზარდა"</p>
+            </div>
+          </div>
+          <!-- ნაგომი -->
+          <div class="v22-card group p-6 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:border-accent/30 transition-all duration-300 text-center h-28 flex items-center justify-center">
+            <span class="logo-text text-lg font-bold text-white/40 group-hover:text-white/80 transition-all duration-300">ნაგომი</span>
+            <div class="peek-quote absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-accent/10 to-transparent">
+              <p class="text-[10px] text-accent/70 italic">"Top 3-ში 54 keyword"</p>
+            </div>
+          </div>
+          <!-- ELEHEAR -->
+          <div class="v22-card group p-6 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:border-primary/30 transition-all duration-300 text-center h-28 flex items-center justify-center">
+            <span class="logo-text text-lg font-extrabold text-white/40 group-hover:text-white/80 transition-all duration-300 tracking-wider">ELEHEAR</span>
+            <div class="peek-quote absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-primary/10 to-transparent">
+              <p class="text-[10px] text-primary/70 italic">"Revenue +520%"</p>
+            </div>
+          </div>
+          <!-- Juba -->
+          <div class="v22-card group p-6 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:border-accent/30 transition-all duration-300 text-center h-28 flex items-center justify-center">
+            <span class="logo-text text-lg font-bold text-white/40 group-hover:text-white/80 transition-all duration-300">Juba</span>
+            <div class="peek-quote absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-accent/10 to-transparent">
+              <p class="text-[10px] text-accent/70 italic">"პროფესიონალური მიდგომა"</p>
+            </div>
+          </div>
+          <!-- Legi -->
+          <div class="v22-card group p-6 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:border-primary/30 transition-all duration-300 text-center h-28 flex items-center justify-center">
+            <span class="logo-text text-lg font-bold text-white/40 group-hover:text-white/80 transition-all duration-300">Legi</span>
+            <div class="peek-quote absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-primary/10 to-transparent">
+              <p class="text-[10px] text-primary/70 italic">"ვიზიტორები +430%"</p>
+            </div>
+          </div>
+          <!-- Yandy -->
+          <div class="v22-card group p-6 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:border-accent/30 transition-all duration-300 text-center h-28 flex items-center justify-center">
+            <span class="logo-text text-lg font-bold text-white/40 group-hover:text-white/80 transition-all duration-300">Yandy</span>
+            <div class="peek-quote absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-accent/10 to-transparent">
+              <p class="text-[10px] text-accent/70 italic">"Conversion +67%"</p>
+            </div>
+          </div>
+          <!-- MediHub -->
+          <div class="v22-card group p-6 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:border-primary/30 transition-all duration-300 text-center h-28 flex items-center justify-center">
+            <span class="logo-text text-lg font-bold text-white/40 group-hover:text-white/80 transition-all duration-300">MediHub</span>
+            <div class="peek-quote absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-primary/10 to-transparent">
+              <p class="text-[10px] text-primary/70 italic">"ორგანული ტრაფიკი +290%"</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Simulated Services section below -->
+    <section class="py-8 bg-white dark:bg-surface-dark">
+      <div class="max-w-7xl mx-auto px-4 text-center text-body-dark/50 text-sm">
+        ▼ Services Grid ქვემოთ ▼
+      </div>
+    </section>
+  </div>
+
+  <!-- Divider -->
+  <div class="py-12 text-center">
+    <div class="w-24 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mx-auto mb-4"></div>
+    <p class="text-body-dark/40 text-xs uppercase tracking-widest">vs</p>
+    <div class="w-24 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mx-auto mt-4"></div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- VARIANT 5: SEO SHERPA CLEAN WHITE BOX                            -->
+  <!-- ================================================================ -->
+  <div id="v5" class="pt-8">
+    <div class="max-w-7xl mx-auto px-4 mb-6">
+      <div class="flex items-center gap-3">
+        <span class="px-3 py-1 bg-accent/10 text-accent text-xs font-bold tracking-widest uppercase rounded-full">ვარიანტი 5</span>
+        <span class="text-heading-dark font-heading font-bold text-xl">SEO Sherpa — სუფთა თეთრი ბოქსი</span>
+      </div>
+      <p class="text-body-dark text-sm mt-1">White box container, grayscale → color on hover. კლასიკური, სუფთა, პრემიუმ.</p>
+    </div>
+
+    <!-- Simulated Stats Bar above -->
+    <div class="bg-gradient-to-r from-[#1e1b4b] via-[#172554] to-[#1e1b4b] py-4">
+      <div class="max-w-7xl mx-auto px-4 flex justify-center gap-12 text-white/50 text-sm">
+        <span>▲ Stats Bar ზემოთ</span>
+      </div>
+    </div>
+
+    <!-- === V5 LOGO SECTION (as it would appear in index.html) === -->
+    <section class="py-14 lg:py-20 bg-surface-alt dark:bg-surface-dark-alt overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <!-- Header with accent line -->
+        <div class="flex flex-col items-center mb-10">
+          <div class="w-12 h-1 bg-gradient-to-r from-primary to-accent rounded-full mb-4"></div>
+          <p class="text-center text-sm font-semibold text-body dark:text-body-dark uppercase tracking-[0.2em]">
+            ნდობა გვიცხადებენ
+          </p>
+          <p class="text-center text-xs text-body/50 dark:text-body-dark/50 mt-1">50+ კომპანია საქართველოში და საერთაშორისო ბაზარზე</p>
+        </div>
+
+        <!-- V5: Dark glass box with grayscale → vivid color logos -->
+        <div class="bg-white/[0.02] border border-white/[0.08] rounded-2xl p-8 md:p-12 max-w-5xl mx-auto backdrop-blur-sm">
+          <!-- Logos row 1 -->
+          <div class="flex items-center justify-between gap-6 lg:gap-10 flex-wrap md:flex-nowrap">
+            <!-- Belle Maison -->
+            <div class="v5-logo flex items-center justify-center flex-1 min-w-[120px] cursor-pointer py-3">
+              <svg viewBox="0 0 220 40" class="h-8 md:h-10 w-auto">
+                <text x="110" y="28" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="17" font-weight="400" letter-spacing="5" fill="#f59e0b">BELLE MAISON</text>
+              </svg>
+            </div>
+            <!-- Horizon -->
+            <div class="v5-logo flex items-center justify-center flex-1 min-w-[100px] cursor-pointer py-3">
+              <svg viewBox="0 0 150 40" class="h-8 md:h-10 w-auto">
+                <text x="75" y="28" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="22" font-weight="800" letter-spacing="2" fill="#58E6FF">HORIZON</text>
+              </svg>
+            </div>
+            <!-- ნაგომი -->
+            <div class="v5-logo flex items-center justify-center flex-1 min-w-[100px] cursor-pointer py-3">
+              <svg viewBox="0 0 130 40" class="h-8 md:h-10 w-auto">
+                <text x="65" y="28" text-anchor="middle" font-family="'Noto Sans Georgian', sans-serif" font-size="22" font-weight="700" fill="#21C743">ნაგომი</text>
+              </svg>
+            </div>
+            <!-- ELEHEAR -->
+            <div class="v5-logo flex items-center justify-center flex-1 min-w-[100px] cursor-pointer py-3">
+              <svg viewBox="0 0 160 40" class="h-8 md:h-10 w-auto">
+                <text x="80" y="28" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="22" font-weight="800" letter-spacing="1" fill="#818cf8">ELEHEAR</text>
+              </svg>
+            </div>
+            <!-- Juba -->
+            <div class="v5-logo flex items-center justify-center flex-1 min-w-[80px] cursor-pointer py-3">
+              <svg viewBox="0 0 100 40" class="h-8 md:h-10 w-auto">
+                <text x="50" y="28" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="24" font-weight="700" fill="#FC81FE">Juba</text>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Logos row 2 -->
+          <div class="flex items-center justify-center gap-6 lg:gap-10 flex-wrap md:flex-nowrap mt-4">
+            <!-- Legi -->
+            <div class="v5-logo flex items-center justify-center flex-1 min-w-[80px] cursor-pointer py-3">
+              <svg viewBox="0 0 100 40" class="h-8 md:h-10 w-auto">
+                <text x="50" y="28" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="22" font-weight="700" fill="#f87171">Legi</text>
+              </svg>
+            </div>
+            <!-- Yandy -->
+            <div class="v5-logo flex items-center justify-center flex-1 min-w-[80px] cursor-pointer py-3">
+              <svg viewBox="0 0 120 40" class="h-8 md:h-10 w-auto">
+                <text x="60" y="28" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="22" font-weight="700" fill="#58E6FF">Yandy</text>
+              </svg>
+            </div>
+            <!-- MediHub -->
+            <div class="v5-logo flex items-center justify-center flex-1 min-w-[100px] cursor-pointer py-3">
+              <svg viewBox="0 0 150 40" class="h-8 md:h-10 w-auto">
+                <text x="75" y="28" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-size="22" font-weight="800" fill="#fb923c">MediHub</text>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Subtitle -->
+          <div class="mt-8 pt-6 border-t border-white/[0.06] text-center">
+            <p class="text-body-dark/50 text-sm">50+ კომპანია საქართველოში და საერთაშორისო ბაზარზე იზრდება 10XSEO-სთან ერთად</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Simulated Services section below -->
+    <section class="py-8 bg-white dark:bg-surface-dark">
+      <div class="max-w-7xl mx-auto px-4 text-center text-body-dark/50 text-sm">
+        ▼ Services Grid ქვემოთ ▼
+      </div>
+    </section>
+  </div>
+
+  <!-- Quick comparison summary -->
+  <div class="py-16 max-w-4xl mx-auto px-4">
+    <h2 class="font-heading text-2xl font-bold text-heading-dark text-center mb-8">შედარება</h2>
+    <div class="grid md:grid-cols-2 gap-6">
+      <!-- V22 pros -->
+      <div class="rounded-2xl border border-primary/20 bg-primary/5 p-6">
+        <h3 class="font-heading font-bold text-primary mb-3">V22 — Testimonial Peek</h3>
+        <ul class="space-y-2 text-sm text-body-dark">
+          <li>✅ ინტერაქტიული — hover-ზე ციტატა ჩანს</li>
+          <li>✅ Social proof + ლოგო ერთად</li>
+          <li>✅ Grid layout — ყველა ერთნაირად ჩანს</li>
+          <li>✅ Dead clicks-ის პრობლემას აგვარებს</li>
+          <li>⚠️ მობილურზე hover არ მუშაობს (tap საჭიროა)</li>
+          <li>⚠️ მეტ ვერტიკალურ სივრცეს იკავებს</li>
+        </ul>
+      </div>
+      <!-- V5 pros -->
+      <div class="rounded-2xl border border-accent/20 bg-accent/5 p-6">
+        <h3 class="font-heading font-bold text-accent mb-3">V5 — SEO Sherpa Clean</h3>
+        <ul class="space-y-2 text-sm text-body-dark">
+          <li>✅ კლასიკური, პრემიუმ look</li>
+          <li>✅ Grayscale → color hover ეფექტი</li>
+          <li>✅ კომპაქტური — ნაკლებ სივრცეს იკავებს</li>
+          <li>✅ რეალური ლოგოებით კიდევ უკეთესი იქნება</li>
+          <li>⚠️ ინტერაქცია მინიმალურია</li>
+          <li>⚠️ არ აძლევს დამატებით ინფორმაციას</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="pb-20"></div>
+</body>
+</html>

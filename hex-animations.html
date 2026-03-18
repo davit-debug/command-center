@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="ka" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hex Animation Variants</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/firago@1.0.0/FiraGO.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: { DEFAULT: '#8B5CF6', light: '#A78BFA', dark: '#7C3AED' },
+            accent: { DEFAULT: '#14B8A6', dark: '#0D9488' },
+            surface: { DEFAULT: '#ffffff', alt: '#f8fafc', dark: '#020710' },
+            heading: { DEFAULT: '#0f172a', dark: '#f8fafc' },
+            body: { DEFAULT: '#475569', dark: '#94a3b8' },
+          },
+          fontFamily: {
+            'heading': ['"Dachi the Lynx"', 'sans-serif'],
+            'body': ['FiraGO', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    @font-face {
+      font-family: 'Dachi the Lynx';
+      src: url('fonts/DachiTheLynx.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    body { font-family: 'FiraGO', 'Inter', sans-serif; }
+    .font-heading { font-family: 'Dachi the Lynx', sans-serif; }
+
+    .hex-cell {
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    }
+    .hex-cell::before {
+      content: '';
+      position: absolute;
+      inset: 1px;
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      background: #ffffff;
+      z-index: 0;
+    }
+
+    /* ====== VARIANT 1: Scale Up + Fade (ამჟამინდელი) ====== */
+    .v1 .hex-cell {
+      opacity: 0;
+      transform: scale(0.5) translateY(30px);
+      transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .v1 .hex-cell.hex-visible {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+
+    /* ====== VARIANT 2: Spiral In — ცენტრიდან სპირალურად ====== */
+    .v2 .hex-cell {
+      opacity: 0;
+      transform: scale(0) rotate(180deg);
+      transition: opacity 0.7s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .v2 .hex-cell.hex-visible {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+    }
+
+    /* ====== VARIANT 3: Drop In — ზემოდან ჩამოვარდნა ====== */
+    .v3 .hex-cell {
+      opacity: 0;
+      transform: translateY(-80px) scale(0.8);
+      transition: opacity 0.5s ease-out, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .v3 .hex-cell.hex-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    /* ====== VARIANT 4: Flip In 3D — 3D გადატრიალება ====== */
+    .v4 .hex-cell {
+      opacity: 0;
+      transform: perspective(600px) rotateY(90deg) scale(0.7);
+      transition: opacity 0.6s ease, transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .v4 .hex-cell.hex-visible {
+      opacity: 1;
+      transform: perspective(600px) rotateY(0deg) scale(1);
+    }
+
+    /* ====== VARIANT 5: Pop Elastic — ელასტიკური პოპ ====== */
+    .v5 .hex-cell {
+      opacity: 0;
+      transform: scale(0);
+      transition: opacity 0.3s ease, transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .v5 .hex-cell.hex-visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* ====== VARIANT 6: Wave Slide — ტალღური შემოსვლა ====== */
+    .v6 .hex-cell {
+      opacity: 0;
+      transform: translateX(-60px) translateY(40px) scale(0.6);
+      transition: opacity 0.5s ease, transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .v6 .hex-cell.hex-visible {
+      opacity: 1;
+      transform: translateX(0) translateY(0) scale(1);
+    }
+
+    /* ====== VARIANT 7: Random Scatter — სხვადასხვა მიმართულებიდან ====== */
+    .v7 .hex-cell {
+      opacity: 0;
+      transform: translate(var(--rx, 0px), var(--ry, 0px)) scale(0.3) rotate(var(--rr, 0deg));
+      transition: opacity 0.6s ease, transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .v7 .hex-cell.hex-visible {
+      opacity: 1;
+      transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+
+    /* ====== VARIANT 8: Blur Fade — ბუნდოვანი გაჩენა ====== */
+    .v8 .hex-cell {
+      opacity: 0;
+      filter: blur(20px);
+      transform: scale(1.2);
+      transition: opacity 0.7s ease, filter 0.7s ease, transform 0.7s ease;
+    }
+    .v8 .hex-cell.hex-visible {
+      opacity: 1;
+      filter: blur(0px);
+      transform: scale(1);
+    }
+
+    /* ====== VARIANT 9: Swing In — ქანაობით შემოსვლა ====== */
+    .v9 .hex-cell {
+      opacity: 0;
+      transform: rotate(-15deg) translateY(60px) scale(0.7);
+      transform-origin: top center;
+      transition: opacity 0.5s ease, transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .v9 .hex-cell.hex-visible {
+      opacity: 1;
+      transform: rotate(0deg) translateY(0) scale(1);
+    }
+
+    /* ====== VARIANT 10: Zoom Burst — ზუმ აფეთქება ====== */
+    .v10 .hex-cell {
+      opacity: 0;
+      transform: scale(2.5);
+      transition: opacity 0.4s ease, transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .v10 .hex-cell.hex-visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* ====== VARIANT 11: Slide Right — მარჯვნიდან შემოსვლა ====== */
+    .v11 .hex-cell {
+      opacity: 0;
+      transform: translateX(100px) scale(0.8);
+      transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .v11 .hex-cell.hex-visible {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
+
+    /* ====== VARIANT 12: Flip X — ჰორიზონტალური გადატრიალება ====== */
+    .v12 .hex-cell {
+      opacity: 0;
+      transform: perspective(600px) rotateX(-90deg) scale(0.8);
+      transition: opacity 0.5s ease, transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .v12 .hex-cell.hex-visible {
+      opacity: 1;
+      transform: perspective(600px) rotateX(0deg) scale(1);
+    }
+
+    /* ====== VARIANT 13: Glitch In — გლიჩ ეფექტი ====== */
+    .v13 .hex-cell {
+      opacity: 0;
+      transform: skewX(20deg) translateX(-40px) scale(0.9);
+      transition: opacity 0.3s ease, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .v13 .hex-cell.hex-visible {
+      opacity: 1;
+      transform: skewX(0deg) translateX(0) scale(1);
+    }
+
+    /* ====== VARIANT 14: Bounce Up — ქვემოდან ხტომა ====== */
+    .v14 .hex-cell {
+      opacity: 0;
+      transform: translateY(120px) scale(0.6);
+      transition: opacity 0.4s ease, transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .v14 .hex-cell.hex-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    /* ====== VARIANT 15: Diagonal Sweep — დიაგონალური შემოსვლა ====== */
+    .v15 .hex-cell {
+      opacity: 0;
+      transform: translate(-50px, -50px) scale(0.5);
+      transition: opacity 0.5s ease, transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .v15 .hex-cell.hex-visible {
+      opacity: 1;
+      transform: translate(0, 0) scale(1);
+    }
+
+    /* ====== VARIANT 16: Implode — შიგნით აფეთქება ====== */
+    .v16 .hex-cell {
+      opacity: 0;
+      transform: scale(0) rotate(90deg);
+      transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .v16 .hex-cell.hex-visible {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+    }
+
+    .variant-section {
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .replay-btn {
+      transition: all 0.2s ease;
+    }
+    .replay-btn:hover {
+      background: rgba(139, 92, 246, 0.3);
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body class="bg-[#020710] text-white">
+
+  <!-- Header -->
+  <div class="sticky top-0 z-50 bg-[#020710]/90 backdrop-blur-md border-b border-white/10 py-4 px-6">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <h1 class="font-heading text-2xl">Hex ანიმაციის ვარიანტები</h1>
+      <div class="flex items-center gap-4">
+        <button onclick="toggleOrder()" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-sm text-white/70 hover:bg-primary/20 transition-all">
+          <span id="order-dot" class="w-2 h-2 rounded-full bg-accent"></span>
+          <span id="order-label">რენდომ თანმიმდევრობა</span>
+        </button>
+        <button onclick="replayAll()" class="replay-btn px-4 py-2 rounded-lg bg-primary/20 border border-primary/30 text-sm text-white/80 flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          ყველას Replay
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Variant 1 -->
+  <section class="variant-section py-16 v1" data-variant="v1">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <span class="text-primary text-xs font-mono tracking-wider">VARIANT 1</span>
+          <h2 class="text-xl font-bold text-white mt-1">Scale Up + Fade — გაფართოება + გაჩენა</h2>
+          <p class="text-white/40 text-sm mt-1">პატარა ზომიდან სრულ ზომამდე, ქვემოდან ზემოთ მოძრაობით</p>
+        </div>
+        <button onclick="replay('v1')" class="replay-btn px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-sm text-white/70 flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          Replay
+        </button>
+      </div>
+      <div class="flex flex-col items-center gap-1">
+        <div class="flex gap-1 md:gap-2">
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center"><img src="images/clients/gpc.png" alt="GPC" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-accent/30 to-primary/20 flex items-center justify-center"><img src="images/clients/pharmadepot-hq.png" alt="Pharmadepot" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center"><img src="images/clients/todua-clinic.svg" alt="Todua" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-accent/30 to-primary/20 flex items-center justify-center"><img src="images/clients/irao.png" alt="IRAO" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+        </div>
+        <div class="flex gap-1 md:gap-2 -mt-2 md:-mt-3">
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-accent/30 to-primary/20 flex items-center justify-center"><img src="images/clients/ibccs-tax.png" alt="ibcss.tax" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center"><img src="images/clients/elehear.png" alt="ELEHEAR" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center"><img src="images/clients/belle-maison.png" alt="Belle Maison" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-accent/30 to-primary/20 flex items-center justify-center"><img src="images/clients/kvareli-lake.png" alt="Kvareli Lake" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center"><img src="images/clients/horizon.png" alt="Horizon" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+        </div>
+        <div class="flex gap-1 md:gap-2 -mt-2 md:-mt-3">
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center"><img src="images/clients/legi.png" alt="Legi" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-accent/30 to-primary/20 flex items-center justify-center"><img src="images/clients/yandy.png" alt="Yandy" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center"><img src="images/clients/juba.png" alt="Juba" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-accent/30 to-primary/20 flex items-center justify-center"><img src="images/clients/temu.png" alt="TEMU" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Variant 2 -->
+  <section class="variant-section py-16 v2" data-variant="v2">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <span class="text-primary text-xs font-mono tracking-wider">VARIANT 2</span>
+          <h2 class="text-xl font-bold text-white mt-1">Spiral In — სპირალური შემობრუნება</h2>
+          <p class="text-white/40 text-sm mt-1">0-დან სრულ ზომამდე 180° ბრუნვით, ბაუნს ეფექტით</p>
+        </div>
+        <button onclick="replay('v2')" class="replay-btn px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-sm text-white/70 flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          Replay
+        </button>
+      </div>
+      <div class="flex flex-col items-center gap-1">
+        <div class="flex gap-1 md:gap-2">
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center"><img src="images/clients/gpc.png" alt="GPC" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-accent/30 to-primary/20 flex items-center justify-center"><img src="images/clients/pharmadepot-hq.png" alt="Pharmadepot" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center"><img src="images/clients/todua-clinic.svg" alt="Todua" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-accent/30 to-primary/20 flex items-center justify-center"><img src="images/clients/irao.png" alt="IRAO" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+        </div>
+        <div class="flex gap-1 md:gap-2 -mt-2 md:-mt-3">
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-accent/30 to-primary/20 flex items-center justify-center"><img src="images/clients/ibccs-tax.png" alt="ibcss.tax" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center"><img src="images/clients/elehear.png" alt="ELEHEAR" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center"><img src="images/clients/belle-maison.png" alt="Belle Maison" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-accent/30 to-primary/20 flex items-center justify-center"><img src="images/clients/kvareli-lake.png" alt="Kvareli Lake" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center"><img src="images/clients/horizon.png" alt="Horizon" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+        </div>
+        <div class="flex gap-1 md:gap-2 -mt-2 md:-mt-3">
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center"><img src="images/clients/legi.png" alt="Legi" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-accent/30 to-primary/20 flex items-center justify-center"><img src="images/clients/yandy.png" alt="Yandy" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center"><img src="images/clients/juba.png" alt="Juba" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-accent/30 to-primary/20 flex items-center justify-center"><img src="images/clients/temu.png" alt="TEMU" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Variant 3 -->
+  <section class="variant-section py-16 v3" data-variant="v3">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <span class="text-primary text-xs font-mono tracking-wider">VARIANT 3</span>
+          <h2 class="text-xl font-bold text-white mt-1">Drop In — ზემოდან ჩამოვარდნა</h2>
+          <p class="text-white/40 text-sm mt-1">ზემოდან ჩამოდის ბაუნს ეფექტით, თითქოს ცვივა</p>
+        </div>
+        <button onclick="replay('v3')" class="replay-btn px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-sm text-white/70 flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          Replay
+        </button>
+      </div>
+      <div class="flex flex-col items-center gap-1">
+        <div class="flex gap-1 md:gap-2">
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center"><img src="images/clients/gpc.png" alt="GPC" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-accent/30 to-primary/20 flex items-center justify-center"><img src="images/clients/pharmadepot-hq.png" alt="Pharmadepot" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center"><img src="images/clients/todua-clinic.svg" alt="Todua" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-accent/30 to-primary/20 flex items-center justify-center"><img src="images/clients/irao.png" alt="IRAO" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+        </div>
+        <div class="flex gap-1 md:gap-2 -mt-2 md:-mt-3">
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-accent/30 to-primary/20 flex items-center justify-center"><img src="images/clients/ibccs-tax.png" alt="ibcss.tax" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center"><img src="images/clients/elehear.png" alt="ELEHEAR" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center"><img src="images/clients/belle-maison.png" alt="Belle Maison" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-accent/30 to-primary/20 flex items-center justify-center"><img src="images/clients/kvareli-lake.png" alt="Kvareli Lake" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center"><img src="images/clients/horizon.png" alt="Horizon" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+        </div>
+        <div class="flex gap-1 md:gap-2 -mt-2 md:-mt-3">
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center"><img src="images/clients/legi.png" alt="Legi" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-accent/30 to-primary/20 flex items-center justify-center"><img src="images/clients/yandy.png" alt="Yandy" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center"><img src="images/clients/juba.png" alt="Juba" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-accent/30 to-primary/20 flex items-center justify-center"><img src="images/clients/temu.png" alt="TEMU" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Variant 4 -->
+  <section class="variant-section py-16 v4" data-variant="v4">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <span class="text-primary text-xs font-mono tracking-wider">VARIANT 4</span>
+          <h2 class="text-xl font-bold text-white mt-1">Flip In 3D — 3D გადატრიალება</h2>
+          <p class="text-white/40 text-sm mt-1">Y ღერძზე 90°-დან 0°-მდე გადატრიალება, კარტის ეფექტი</p>
+        </div>
+        <button onclick="replay('v4')" class="replay-btn px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-sm text-white/70 flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          Replay
+        </button>
+      </div>
+      <div class="flex flex-col items-center gap-1">
+        <div class="flex gap-1 md:gap-2">
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center"><img src="images/clients/gpc.png" alt="GPC" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-accent/30 to-primary/20 flex items-center justify-center"><img src="images/clients/pharmadepot-hq.png" alt="Pharmadepot" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center"><img src="images/clients/todua-clinic.svg" alt="Todua" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-accent/30 to-primary/20 flex items-center justify-center"><img src="images/clients/irao.png" alt="IRAO" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+        </div>
+        <div class="flex gap-1 md:gap-2 -mt-2 md:-mt-3">
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-accent/30 to-primary/20 flex items-center justify-center"><img src="images/clients/ibccs-tax.png" alt="ibcss.tax" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center"><img src="images/clients/elehear.png" alt="ELEHEAR" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center"><img src="images/clients/belle-maison.png" alt="Belle Maison" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-accent/30 to-primary/20 flex items-center justify-center"><img src="images/clients/kvareli-lake.png" alt="Kvareli Lake" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center"><img src="images/clients/horizon.png" alt="Horizon" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+        </div>
+        <div class="flex gap-1 md:gap-2 -mt-2 md:-mt-3">
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center"><img src="images/clients/legi.png" alt="Legi" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-accent/30 to-primary/20 flex items-center justify-center"><img src="images/clients/yandy.png" alt="Yandy" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center"><img src="images/clients/juba.png" alt="Juba" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-accent/30 to-primary/20 flex items-center justify-center"><img src="images/clients/temu.png" alt="TEMU" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Variant 5 -->
+  <section class="variant-section py-16 v5" data-variant="v5">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <span class="text-primary text-xs font-mono tracking-wider">VARIANT 5</span>
+          <h2 class="text-xl font-bold text-white mt-1">Pop Elastic — ელასტიკური პოპ</h2>
+          <p class="text-white/40 text-sm mt-1">0-დან "გადახტომით" სრულ ზომამდე, რეზინის ეფექტი</p>
+        </div>
+        <button onclick="replay('v5')" class="replay-btn px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-sm text-white/70 flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          Replay
+        </button>
+      </div>
+      <div class="flex flex-col items-center gap-1">
+        <div class="flex gap-1 md:gap-2">
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center"><img src="images/clients/gpc.png" alt="GPC" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-accent/30 to-primary/20 flex items-center justify-center"><img src="images/clients/pharmadepot-hq.png" alt="Pharmadepot" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center"><img src="images/clients/todua-clinic.svg" alt="Todua" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-accent/30 to-primary/20 flex items-center justify-center"><img src="images/clients/irao.png" alt="IRAO" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+        </div>
+        <div class="flex gap-1 md:gap-2 -mt-2 md:-mt-3">
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-accent/30 to-primary/20 flex items-center justify-center"><img src="images/clients/ibccs-tax.png" alt="ibcss.tax" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center"><img src="images/clients/elehear.png" alt="ELEHEAR" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center"><img src="images/clients/belle-maison.png" alt="Belle Maison" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-accent/30 to-primary/20 flex items-center justify-center"><img src="images/clients/kvareli-lake.png" alt="Kvareli Lake" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center"><img src="images/clients/horizon.png" alt="Horizon" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+        </div>
+        <div class="flex gap-1 md:gap-2 -mt-2 md:-mt-3">
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center"><img src="images/clients/legi.png" alt="Legi" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-accent/30 to-primary/20 flex items-center justify-center"><img src="images/clients/yandy.png" alt="Yandy" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center"><img src="images/clients/juba.png" alt="Juba" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-accent/30 to-primary/20 flex items-center justify-center"><img src="images/clients/temu.png" alt="TEMU" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Variant 6 -->
+  <section class="variant-section py-16 v6" data-variant="v6">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <span class="text-primary text-xs font-mono tracking-wider">VARIANT 6</span>
+          <h2 class="text-xl font-bold text-white mt-1">Wave Slide — ტალღური შემოსვლა</h2>
+          <p class="text-white/40 text-sm mt-1">მარცხნიდან-ქვემოდან ტალღურად მოდის, ფუტკრის ბუდის აწყობის ეფექტი</p>
+        </div>
+        <button onclick="replay('v6')" class="replay-btn px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-sm text-white/70 flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          Replay
+        </button>
+      </div>
+      <div class="flex flex-col items-center gap-1">
+        <div class="flex gap-1 md:gap-2">
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center"><img src="images/clients/gpc.png" alt="GPC" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-accent/30 to-primary/20 flex items-center justify-center"><img src="images/clients/pharmadepot-hq.png" alt="Pharmadepot" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center"><img src="images/clients/todua-clinic.svg" alt="Todua" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-accent/30 to-primary/20 flex items-center justify-center"><img src="images/clients/irao.png" alt="IRAO" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+        </div>
+        <div class="flex gap-1 md:gap-2 -mt-2 md:-mt-3">
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-accent/30 to-primary/20 flex items-center justify-center"><img src="images/clients/ibccs-tax.png" alt="ibcss.tax" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center"><img src="images/clients/elehear.png" alt="ELEHEAR" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center"><img src="images/clients/belle-maison.png" alt="Belle Maison" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-accent/30 to-primary/20 flex items-center justify-center"><img src="images/clients/kvareli-lake.png" alt="Kvareli Lake" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center"><img src="images/clients/horizon.png" alt="Horizon" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+        </div>
+        <div class="flex gap-1 md:gap-2 -mt-2 md:-mt-3">
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center"><img src="images/clients/legi.png" alt="Legi" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-accent/30 to-primary/20 flex items-center justify-center"><img src="images/clients/yandy.png" alt="Yandy" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center"><img src="images/clients/juba.png" alt="Juba" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+          <div class="hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-accent/30 to-primary/20 flex items-center justify-center"><img src="images/clients/temu.png" alt="TEMU" class="relative z-10 w-[80%] h-[80%] object-contain"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Variant 7 -->
+  <section class="variant-section py-16 v7" data-variant="v7">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <span class="text-accent text-xs font-mono tracking-wider">VARIANT 7</span>
+          <h2 class="text-xl font-bold text-white mt-1">Random Scatter — სხვადასხვა მიმართულებიდან</h2>
+          <p class="text-white/40 text-sm mt-1">თითოეული უჯრა რენდომ მიმართულებიდან მოდის, სხვადასხვა კუთხით</p>
+        </div>
+        <button onclick="replay('v7')" class="replay-btn px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-sm text-white/70 flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          Replay
+        </button>
+      </div>
+      <div class="hex-grid"></div>
+    </div>
+  </section>
+
+  <!-- Variant 8 -->
+  <section class="variant-section py-16 v8" data-variant="v8">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <span class="text-accent text-xs font-mono tracking-wider">VARIANT 8</span>
+          <h2 class="text-xl font-bold text-white mt-1">Blur Fade — ბუნდოვანი გაჩენა</h2>
+          <p class="text-white/40 text-sm mt-1">ბუნდოვანიდან მკაფიომდე, რბილი გამოჩენა</p>
+        </div>
+        <button onclick="replay('v8')" class="replay-btn px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-sm text-white/70 flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          Replay
+        </button>
+      </div>
+      <div class="hex-grid"></div>
+    </div>
+  </section>
+
+  <!-- Variant 9 -->
+  <section class="variant-section py-16 v9" data-variant="v9">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <span class="text-accent text-xs font-mono tracking-wider">VARIANT 9</span>
+          <h2 class="text-xl font-bold text-white mt-1">Swing In — ქანაობით შემოსვლა</h2>
+          <p class="text-white/40 text-sm mt-1">ქანაობს და ჩამოჯდება ადგილზე, ქანქარას ეფექტი</p>
+        </div>
+        <button onclick="replay('v9')" class="replay-btn px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-sm text-white/70 flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          Replay
+        </button>
+      </div>
+      <div class="hex-grid"></div>
+    </div>
+  </section>
+
+  <!-- Variant 10 -->
+  <section class="variant-section py-16 v10" data-variant="v10">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <span class="text-accent text-xs font-mono tracking-wider">VARIANT 10</span>
+          <h2 class="text-xl font-bold text-white mt-1">Zoom Burst — ზუმ აფეთქება</h2>
+          <p class="text-white/40 text-sm mt-1">დიდი ზომიდან ჩაზუმვა ნორმალურამდე</p>
+        </div>
+        <button onclick="replay('v10')" class="replay-btn px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-sm text-white/70 flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          Replay
+        </button>
+      </div>
+      <div class="hex-grid"></div>
+    </div>
+  </section>
+
+  <!-- Variant 11 -->
+  <section class="variant-section py-16 v11" data-variant="v11">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <span class="text-accent text-xs font-mono tracking-wider">VARIANT 11</span>
+          <h2 class="text-xl font-bold text-white mt-1">Slide Right — მარჯვნიდან შემოსვლა</h2>
+          <p class="text-white/40 text-sm mt-1">მარჯვენა მხრიდან სრიალით შემოდის</p>
+        </div>
+        <button onclick="replay('v11')" class="replay-btn px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-sm text-white/70 flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          Replay
+        </button>
+      </div>
+      <div class="hex-grid"></div>
+    </div>
+  </section>
+
+  <!-- Variant 12 -->
+  <section class="variant-section py-16 v12" data-variant="v12">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <span class="text-accent text-xs font-mono tracking-wider">VARIANT 12</span>
+          <h2 class="text-xl font-bold text-white mt-1">Flip X — ჰორიზონტალური გადატრიალება</h2>
+          <p class="text-white/40 text-sm mt-1">X ღერძზე -90°-დან 0°-მდე, ზემოდან გადმობრუნება</p>
+        </div>
+        <button onclick="replay('v12')" class="replay-btn px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-sm text-white/70 flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          Replay
+        </button>
+      </div>
+      <div class="hex-grid"></div>
+    </div>
+  </section>
+
+  <!-- Variant 13 -->
+  <section class="variant-section py-16 v13" data-variant="v13">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <span class="text-accent text-xs font-mono tracking-wider">VARIANT 13</span>
+          <h2 class="text-xl font-bold text-white mt-1">Glitch In — გლიჩ ეფექტი</h2>
+          <p class="text-white/40 text-sm mt-1">Skew-ით დამახინჯებული, თითქოს გლიჩავს</p>
+        </div>
+        <button onclick="replay('v13')" class="replay-btn px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-sm text-white/70 flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          Replay
+        </button>
+      </div>
+      <div class="hex-grid"></div>
+    </div>
+  </section>
+
+  <!-- Variant 14 -->
+  <section class="variant-section py-16 v14" data-variant="v14">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <span class="text-accent text-xs font-mono tracking-wider">VARIANT 14</span>
+          <h2 class="text-xl font-bold text-white mt-1">Bounce Up — ქვემოდან ხტომა</h2>
+          <p class="text-white/40 text-sm mt-1">ქვემოდან ბაუნსით ამოდის, ბურთის ეფექტი</p>
+        </div>
+        <button onclick="replay('v14')" class="replay-btn px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-sm text-white/70 flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          Replay
+        </button>
+      </div>
+      <div class="hex-grid"></div>
+    </div>
+  </section>
+
+  <!-- Variant 15 -->
+  <section class="variant-section py-16 v15" data-variant="v15">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <span class="text-accent text-xs font-mono tracking-wider">VARIANT 15</span>
+          <h2 class="text-xl font-bold text-white mt-1">Diagonal Sweep — დიაგონალური შემოსვლა</h2>
+          <p class="text-white/40 text-sm mt-1">ზედა-მარცხენა კუთხიდან დიაგონალურად</p>
+        </div>
+        <button onclick="replay('v15')" class="replay-btn px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-sm text-white/70 flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          Replay
+        </button>
+      </div>
+      <div class="hex-grid"></div>
+    </div>
+  </section>
+
+  <!-- Variant 16 -->
+  <section class="variant-section py-16 v16" data-variant="v16">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <span class="text-accent text-xs font-mono tracking-wider">VARIANT 16</span>
+          <h2 class="text-xl font-bold text-white mt-1">Implode — შიგნით აფეთქება</h2>
+          <p class="text-white/40 text-sm mt-1">0-დან სწრაფი ბრუნვით და ელასტიკური ზრდით</p>
+        </div>
+        <button onclick="replay('v16')" class="replay-btn px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-sm text-white/70 flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          Replay
+        </button>
+      </div>
+      <div class="hex-grid"></div>
+    </div>
+  </section>
+
+  <div class="h-20"></div>
+
+  <script>
+    // Shuffle array helper
+    function shuffle(arr) {
+      const a = [...arr];
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
+
+    // Generate hex grids for sections that use .hex-grid placeholder
+    const clients = [
+      {img: 'images/clients/gpc.png', alt: 'GPC', grad: 'from-primary/30 to-accent/20'},
+      {img: 'images/clients/pharmadepot-hq.png', alt: 'Pharmadepot', grad: 'from-accent/30 to-primary/20'},
+      {img: 'images/clients/todua-clinic.svg', alt: 'Todua', grad: 'from-primary/30 to-accent/20'},
+      {img: 'images/clients/irao.png', alt: 'IRAO', grad: 'from-accent/30 to-primary/20'},
+      {img: 'images/clients/ibccs-tax.png', alt: 'ibcss.tax', grad: 'from-accent/30 to-primary/20'},
+      {img: 'images/clients/elehear.png', alt: 'ELEHEAR', grad: 'from-primary/30 to-accent/20'},
+      {img: 'images/clients/belle-maison.png', alt: 'Belle Maison', grad: 'from-primary/30 to-accent/20'},
+      {img: 'images/clients/kvareli-lake.png', alt: 'Kvareli Lake', grad: 'from-accent/30 to-primary/20'},
+      {img: 'images/clients/horizon.png', alt: 'Horizon', grad: 'from-primary/30 to-accent/20'},
+      {img: 'images/clients/legi.png', alt: 'Legi', grad: 'from-primary/30 to-accent/20'},
+      {img: 'images/clients/yandy.png', alt: 'Yandy', grad: 'from-accent/30 to-primary/20'},
+      {img: 'images/clients/juba.png', alt: 'Juba', grad: 'from-primary/30 to-accent/20'},
+      {img: 'images/clients/temu.png', alt: 'TEMU', grad: 'from-accent/30 to-primary/20'},
+    ];
+    const rows = [[0,1,2,3],[4,5,6,7,8],[9,10,11,12]];
+
+    document.querySelectorAll('.hex-grid').forEach(grid => {
+      const container = document.createElement('div');
+      container.className = 'flex flex-col items-center gap-1';
+      rows.forEach((row, ri) => {
+        const rowDiv = document.createElement('div');
+        rowDiv.className = 'flex gap-1 md:gap-2' + (ri > 0 ? ' -mt-2 md:-mt-3' : '');
+        row.forEach(ci => {
+          const c = clients[ci];
+          const cell = document.createElement('div');
+          cell.className = `hex-cell relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br ${c.grad} flex items-center justify-center`;
+          cell.innerHTML = `<img src="${c.img}" alt="${c.alt}" class="relative z-10 w-[80%] h-[80%] object-contain">`;
+          rowDiv.appendChild(cell);
+        });
+        container.appendChild(rowDiv);
+      });
+      grid.replaceWith(container);
+    });
+
+    // Set random scatter directions for v7
+    document.querySelectorAll('.v7 .hex-cell').forEach(cell => {
+      const angle = Math.random() * Math.PI * 2;
+      const dist = 80 + Math.random() * 120;
+      cell.style.setProperty('--rx', Math.cos(angle) * dist + 'px');
+      cell.style.setProperty('--ry', Math.sin(angle) * dist + 'px');
+      cell.style.setProperty('--rr', (Math.random() * 360 - 180) + 'deg');
+    });
+
+    // State: sequential or random — default RANDOM
+    let useRandom = true;
+
+    // Auto-play all sections on scroll
+    document.querySelectorAll('.variant-section').forEach(section => {
+      const cells = section.querySelectorAll('.hex-cell');
+
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateCells(cells);
+            obs.disconnect();
+          }
+        });
+      }, { threshold: 0.2 });
+
+      obs.observe(section);
+    });
+
+    function animateCells(cells) {
+      const order = useRandom ? shuffle([...Array(cells.length).keys()]) : [...Array(cells.length).keys()];
+      order.forEach((cellIndex, step) => {
+        setTimeout(() => cells[cellIndex].classList.add('hex-visible'), step * 100);
+      });
+    }
+
+    // Replay function
+    function replay(variant) {
+      const section = document.querySelector(`.${variant}`);
+      const cells = section.querySelectorAll('.hex-cell');
+
+      cells.forEach(cell => cell.classList.remove('hex-visible'));
+
+      // Re-randomize scatter directions for v7
+      if (variant === 'v7') {
+        cells.forEach(cell => {
+          const angle = Math.random() * Math.PI * 2;
+          const dist = 80 + Math.random() * 120;
+          cell.style.setProperty('--rx', Math.cos(angle) * dist + 'px');
+          cell.style.setProperty('--ry', Math.sin(angle) * dist + 'px');
+          cell.style.setProperty('--rr', (Math.random() * 360 - 180) + 'deg');
+        });
+      }
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          animateCells(cells);
+        });
+      });
+    }
+
+    // Replay all
+    function replayAll() {
+      document.querySelectorAll('.variant-section').forEach(section => {
+        const variant = section.dataset.variant;
+        const cells = section.querySelectorAll('.hex-cell');
+        cells.forEach(cell => cell.classList.remove('hex-visible'));
+      });
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          document.querySelectorAll('.variant-section').forEach(section => {
+            animateCells(section.querySelectorAll('.hex-cell'));
+          });
+        });
+      });
+    }
+
+    // Toggle order mode
+    function toggleOrder() {
+      useRandom = !useRandom;
+      document.getElementById('order-label').textContent = useRandom ? 'რენდომ თანმიმდევრობა' : 'მიყოლებითი თანმიმდევრობა';
+      document.getElementById('order-dot').className = useRandom ? 'w-2 h-2 rounded-full bg-accent' : 'w-2 h-2 rounded-full bg-primary';
+      replayAll();
+    }
+  </script>
+
+</body>
+</html>

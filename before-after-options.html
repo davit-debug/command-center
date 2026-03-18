@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ka" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Before/After — 4 ვარიანტი</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#8B5CF6', 'primary-light': '#A78BFA',
+            'ai-blue': '#3B82F6', accent: '#14B8A6',
+            success: '#10B981',
+            surface: { alt: '#F8FAFC', dark: '#0F172A', 'dark-alt': '#1E293B' },
+            heading: { DEFAULT: '#0F172A', dark: '#F1F5F9' },
+            body: { DEFAULT: '#64748B', dark: '#94A3B8' },
+          },
+          fontFamily: { inter: ['Inter', 'sans-serif'], heading: ['Inter', 'sans-serif'] },
+        }
+      }
+    }
+  </script>
+  <style>
+    .gradient-text { background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .variant-btn { transition: all 0.3s ease; }
+    .variant-btn.active { background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6); color: white; border-color: transparent; }
+    .pulse-glow { animation: pulseGlow 3s ease-in-out infinite; }
+    @keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } 50% { box-shadow: 0 0 30px 5px rgba(16, 185, 129, 0.15); } }
+  </style>
+</head>
+<body class="bg-surface-dark text-body-dark min-h-screen">
+
+  <!-- Nav -->
+  <header class="sticky top-0 z-50 bg-surface-dark/95 backdrop-blur-md border-b border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between py-3">
+      <span class="text-sm font-medium text-heading-dark">Before/After — 4 ვარიანტი</span>
+      <div class="flex items-center gap-2">
+        <button onclick="showBA(1)" class="variant-btn active whitespace-nowrap px-3 py-1.5 text-xs font-semibold rounded-lg border border-gray-700 text-heading-dark">1. Arrow Flow</button>
+        <button onclick="showBA(2)" class="variant-btn whitespace-nowrap px-3 py-1.5 text-xs font-semibold rounded-lg border border-gray-700 text-heading-dark">2. Horizontal Bar</button>
+        <button onclick="showBA(3)" class="variant-btn whitespace-nowrap px-3 py-1.5 text-xs font-semibold rounded-lg border border-gray-700 text-heading-dark">3. Single Row</button>
+        <button onclick="showBA(4)" class="variant-btn whitespace-nowrap px-3 py-1.5 text-xs font-semibold rounded-lg border border-gray-700 text-heading-dark">4. Gradient Split</button>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- ============================================ -->
+  <!-- VARIANT 1: Arrow Flow — მეტრიკები ისრებით   -->
+  <!-- ============================================ -->
+  <div id="ba-1" class="ba-section">
+    <section class="bg-surface-alt dark:bg-surface-dark-alt py-12 lg:py-16">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6">
+        <h2 class="font-heading text-2xl text-heading dark:text-heading-dark mb-3 text-center">Before / After</h2>
+        <p class="text-sm text-body dark:text-body-dark text-center max-w-2xl mx-auto mb-10 leading-relaxed">
+          თანამშრომლობის დაწყებამდე კლინიკას არ ჰყავდა ონლაინ პაციენტები. 6 თვის შემდეგ სურათი რადიკალურად შეიცვალა.
+        </p>
+        <div class="space-y-4">
+          <!-- Row 1 -->
+          <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-4">
+            <div class="rounded-xl bg-white dark:bg-surface-dark border border-red-200/30 dark:border-red-900/30 p-4 text-right">
+              <p class="text-xs text-body dark:text-body-dark mb-1">ყოველთვიური ვიზიტორი</p>
+              <p class="font-inter text-2xl font-black text-red-500">0</p>
+            </div>
+            <div class="flex flex-col items-center gap-1">
+              <svg class="w-8 h-8 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+              <span class="text-[10px] font-bold text-success">+∞</span>
+            </div>
+            <div class="rounded-xl bg-white dark:bg-surface-dark border border-success/30 p-4">
+              <p class="text-xs text-body dark:text-body-dark mb-1">ყოველთვიური ვიზიტორი</p>
+              <p class="font-inter text-2xl font-black text-success">1,620</p>
+            </div>
+          </div>
+          <!-- Row 2 -->
+          <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-4">
+            <div class="rounded-xl bg-white dark:bg-surface-dark border border-red-200/30 dark:border-red-900/30 p-4 text-right">
+              <p class="text-xs text-body dark:text-body-dark mb-1">Google პოზიცია</p>
+              <p class="font-inter text-2xl font-black text-red-500">100+</p>
+            </div>
+            <div class="flex flex-col items-center gap-1">
+              <svg class="w-8 h-8 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+              <span class="text-[10px] font-bold text-success">↑ 99</span>
+            </div>
+            <div class="rounded-xl bg-white dark:bg-surface-dark border border-success/30 p-4">
+              <p class="text-xs text-body dark:text-body-dark mb-1">Google პოზიცია</p>
+              <p class="font-inter text-2xl font-black text-success">#1</p>
+            </div>
+          </div>
+          <!-- Row 3 -->
+          <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-4">
+            <div class="rounded-xl bg-white dark:bg-surface-dark border border-red-200/30 dark:border-red-900/30 p-4 text-right">
+              <p class="text-xs text-body dark:text-body-dark mb-1">იმფრეშენი</p>
+              <p class="font-inter text-2xl font-black text-red-500">~0</p>
+            </div>
+            <div class="flex flex-col items-center gap-1">
+              <svg class="w-8 h-8 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+              <span class="text-[10px] font-bold text-success">+∞</span>
+            </div>
+            <div class="rounded-xl bg-white dark:bg-surface-dark border border-success/30 p-4">
+              <p class="text-xs text-body dark:text-body-dark mb-1">იმფრეშენი (3 თვე)</p>
+              <p class="font-inter text-2xl font-black text-success">63,000</p>
+            </div>
+          </div>
+          <!-- Row 4 -->
+          <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-4">
+            <div class="rounded-xl bg-white dark:bg-surface-dark border border-red-200/30 dark:border-red-900/30 p-4 text-right">
+              <p class="text-xs text-body dark:text-body-dark mb-1">ონლაინ პაციენტები</p>
+              <p class="font-inter text-2xl font-black text-red-500">0</p>
+            </div>
+            <div class="flex flex-col items-center gap-1">
+              <svg class="w-8 h-8 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+              <span class="text-[10px] font-bold text-success">4x AVG</span>
+            </div>
+            <div class="rounded-xl bg-white dark:bg-surface-dark border border-success/30 p-4">
+              <p class="text-xs text-body dark:text-body-dark mb-1">CTR</p>
+              <p class="font-inter text-2xl font-black text-success">52%</p>
+            </div>
+          </div>
+        </div>
+        <!-- Labels -->
+        <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-4 mt-4">
+          <p class="text-xs text-red-400 text-right uppercase tracking-wider font-bold">Before</p>
+          <div class="w-8"></div>
+          <p class="text-xs text-success uppercase tracking-wider font-bold">After</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <!-- ============================================ -->
+  <!-- VARIANT 2: Horizontal Progress Bars          -->
+  <!-- ============================================ -->
+  <div id="ba-2" class="ba-section hidden">
+    <section class="bg-surface-alt dark:bg-surface-dark-alt py-12 lg:py-16">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6">
+        <h2 class="font-heading text-2xl text-heading dark:text-heading-dark mb-3 text-center">Before / After</h2>
+        <p class="text-sm text-body dark:text-body-dark text-center max-w-2xl mx-auto mb-10 leading-relaxed">
+          თანამშრომლობის დაწყებამდე კლინიკას არ ჰყავდა ონლაინ პაციენტები. 6 თვის შემდეგ სურათი რადიკალურად შეიცვალა.
+        </p>
+        <div class="space-y-6">
+          <!-- Metric 1 -->
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-sm text-heading dark:text-heading-dark font-medium">ყოველთვიური ვიზიტორი</span>
+              <div class="flex items-center gap-3">
+                <span class="font-inter text-sm font-bold text-red-500">0</span>
+                <svg class="w-4 h-4 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                <span class="font-inter text-sm font-bold text-success">1,620</span>
+              </div>
+            </div>
+            <div class="h-3 rounded-full bg-red-500/10 dark:bg-red-500/5 overflow-hidden">
+              <div class="h-full rounded-full bg-gradient-to-r from-success to-accent" style="width: 100%; transition: width 1.5s ease;"></div>
+            </div>
+            <p class="text-[10px] text-success font-bold mt-1 text-right">+∞ ზრდა</p>
+          </div>
+          <!-- Metric 2 -->
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-sm text-heading dark:text-heading-dark font-medium">Google პოზიცია</span>
+              <div class="flex items-center gap-3">
+                <span class="font-inter text-sm font-bold text-red-500">100+</span>
+                <svg class="w-4 h-4 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                <span class="font-inter text-sm font-bold text-success">#1</span>
+              </div>
+            </div>
+            <div class="h-3 rounded-full bg-red-500/10 dark:bg-red-500/5 overflow-hidden">
+              <div class="h-full rounded-full bg-gradient-to-r from-primary to-ai-blue" style="width: 99%;"></div>
+            </div>
+            <p class="text-[10px] text-primary font-bold mt-1 text-right">↑ 99 პოზიცია</p>
+          </div>
+          <!-- Metric 3 -->
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-sm text-heading dark:text-heading-dark font-medium">იმფრეშენი (3 თვე)</span>
+              <div class="flex items-center gap-3">
+                <span class="font-inter text-sm font-bold text-red-500">~0</span>
+                <svg class="w-4 h-4 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                <span class="font-inter text-sm font-bold text-success">63,000</span>
+              </div>
+            </div>
+            <div class="h-3 rounded-full bg-red-500/10 dark:bg-red-500/5 overflow-hidden">
+              <div class="h-full rounded-full bg-gradient-to-r from-ai-blue to-accent" style="width: 95%;"></div>
+            </div>
+            <p class="text-[10px] text-ai-blue font-bold mt-1 text-right">+∞ ზრდა</p>
+          </div>
+          <!-- Metric 4 -->
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-sm text-heading dark:text-heading-dark font-medium">CTR</span>
+              <div class="flex items-center gap-3">
+                <span class="font-inter text-sm font-bold text-red-500">0%</span>
+                <svg class="w-4 h-4 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                <span class="font-inter text-sm font-bold text-success">52%</span>
+              </div>
+            </div>
+            <div class="h-3 rounded-full bg-red-500/10 dark:bg-red-500/5 overflow-hidden">
+              <div class="h-full rounded-full bg-gradient-to-r from-accent to-success" style="width: 52%;"></div>
+            </div>
+            <p class="text-[10px] text-accent font-bold mt-1 text-right">4x ინდუსტრიის საშუალო</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <!-- ============================================ -->
+  <!-- VARIANT 3: Single Row Compact                -->
+  <!-- ============================================ -->
+  <div id="ba-3" class="ba-section hidden">
+    <section class="bg-surface-alt dark:bg-surface-dark-alt py-12 lg:py-16">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6">
+        <h2 class="font-heading text-2xl text-heading dark:text-heading-dark mb-3 text-center">Before / After</h2>
+        <p class="text-sm text-body dark:text-body-dark text-center max-w-2xl mx-auto mb-10 leading-relaxed">
+          თანამშრომლობის დაწყებამდე კლინიკას არ ჰყავდა ონლაინ პაციენტები. 6 თვის შემდეგ სურათი რადიკალურად შეიცვალა.
+        </p>
+        <!-- Single unified table-style -->
+        <div class="rounded-2xl border border-gray-100 dark:border-gray-800 bg-white dark:bg-surface-dark overflow-hidden">
+          <!-- Header -->
+          <div class="grid grid-cols-3 bg-surface-alt dark:bg-surface-dark-alt border-b border-gray-100 dark:border-gray-800">
+            <div class="px-6 py-3 text-xs font-bold text-body dark:text-body-dark uppercase tracking-wider">მეტრიკა</div>
+            <div class="px-6 py-3 text-xs font-bold text-red-500 uppercase tracking-wider text-center">Before</div>
+            <div class="px-6 py-3 text-xs font-bold text-success uppercase tracking-wider text-center">After</div>
+          </div>
+          <!-- Rows -->
+          <div class="grid grid-cols-3 border-b border-gray-50 dark:border-gray-800/50 items-center">
+            <div class="px-6 py-4 text-sm text-heading dark:text-heading-dark font-medium">ყოველთვიური ვიზიტორი</div>
+            <div class="px-6 py-4 text-center"><span class="font-inter text-lg font-black text-red-500/60 line-through">0</span></div>
+            <div class="px-6 py-4 text-center"><span class="font-inter text-lg font-black text-success">1,620</span></div>
+          </div>
+          <div class="grid grid-cols-3 border-b border-gray-50 dark:border-gray-800/50 items-center">
+            <div class="px-6 py-4 text-sm text-heading dark:text-heading-dark font-medium">Google პოზიცია</div>
+            <div class="px-6 py-4 text-center"><span class="font-inter text-lg font-black text-red-500/60 line-through">100+</span></div>
+            <div class="px-6 py-4 text-center"><span class="font-inter text-lg font-black text-success">#1</span></div>
+          </div>
+          <div class="grid grid-cols-3 border-b border-gray-50 dark:border-gray-800/50 items-center">
+            <div class="px-6 py-4 text-sm text-heading dark:text-heading-dark font-medium">იმფრეშენი (3 თვე)</div>
+            <div class="px-6 py-4 text-center"><span class="font-inter text-lg font-black text-red-500/60 line-through">~0</span></div>
+            <div class="px-6 py-4 text-center"><span class="font-inter text-lg font-black text-success">63,000</span></div>
+          </div>
+          <div class="grid grid-cols-3 items-center">
+            <div class="px-6 py-4 text-sm text-heading dark:text-heading-dark font-medium">CTR</div>
+            <div class="px-6 py-4 text-center"><span class="font-inter text-lg font-black text-red-500/60 line-through">0%</span></div>
+            <div class="px-6 py-4 text-center"><span class="font-inter text-lg font-black text-success">52%</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <!-- ============================================ -->
+  <!-- VARIANT 4: Gradient Split — Big Numbers      -->
+  <!-- ============================================ -->
+  <div id="ba-4" class="ba-section hidden">
+    <section class="py-12 lg:py-16 overflow-hidden">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6">
+        <h2 class="font-heading text-2xl text-heading dark:text-heading-dark mb-3 text-center">Before / After</h2>
+        <p class="text-sm text-body dark:text-body-dark text-center max-w-2xl mx-auto mb-10 leading-relaxed">
+          თანამშრომლობის დაწყებამდე კლინიკას არ ჰყავდა ონლაინ პაციენტები. 6 თვის შემდეგ სურათი რადიკალურად შეიცვალა.
+        </p>
+        <div class="grid sm:grid-cols-2 gap-0 rounded-2xl overflow-hidden">
+          <!-- Before Side -->
+          <div class="bg-gradient-to-br from-red-950/40 to-red-900/20 p-8 sm:p-10 border-r border-red-900/20">
+            <p class="text-xs font-bold text-red-400 uppercase tracking-widest mb-8">Before</p>
+            <div class="space-y-6">
+              <div>
+                <p class="font-inter text-4xl font-black text-red-500/40">0</p>
+                <p class="text-sm text-red-300/60 mt-1">ვიზიტორი / თვე</p>
+              </div>
+              <div>
+                <p class="font-inter text-4xl font-black text-red-500/40">100+</p>
+                <p class="text-sm text-red-300/60 mt-1">Google პოზიცია</p>
+              </div>
+              <div>
+                <p class="font-inter text-4xl font-black text-red-500/40">~0</p>
+                <p class="text-sm text-red-300/60 mt-1">იმფრეშენი</p>
+              </div>
+              <div>
+                <p class="font-inter text-4xl font-black text-red-500/40">0%</p>
+                <p class="text-sm text-red-300/60 mt-1">CTR</p>
+              </div>
+            </div>
+          </div>
+          <!-- After Side -->
+          <div class="bg-gradient-to-br from-success/5 to-accent/10 p-8 sm:p-10">
+            <p class="text-xs font-bold text-success uppercase tracking-widest mb-8">After</p>
+            <div class="space-y-6">
+              <div>
+                <p class="font-inter text-4xl font-black text-success">1,620</p>
+                <p class="text-sm text-body dark:text-body-dark mt-1">ვიზიტორი / თვე</p>
+              </div>
+              <div>
+                <p class="font-inter text-4xl font-black text-success">#1</p>
+                <p class="text-sm text-body dark:text-body-dark mt-1">Google პოზიცია</p>
+              </div>
+              <div>
+                <p class="font-inter text-4xl font-black text-success">63,000</p>
+                <p class="text-sm text-body dark:text-body-dark mt-1">იმფრეშენი (3 თვე)</p>
+              </div>
+              <div>
+                <p class="font-inter text-4xl font-black text-success">52%</p>
+                <p class="text-sm text-body dark:text-body-dark mt-1">CTR</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <script>
+    if (localStorage.getItem('theme') !== 'light') document.documentElement.classList.add('dark');
+
+    function showBA(n) {
+      document.querySelectorAll('.ba-section').forEach(s => s.classList.add('hidden'));
+      document.getElementById('ba-' + n).classList.remove('hidden');
+      document.querySelectorAll('.variant-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.variant-btn')[n - 1].classList.add('active');
+    }
+  </script>
+</body>
+</html>

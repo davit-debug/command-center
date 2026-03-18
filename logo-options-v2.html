@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="ka" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ლოგო სტრიპი — 10 ახალი ვარიანტი</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/firago@1.0.0/FiraGO.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: { DEFAULT: '#58E6FF', light: '#7AEDFF', dark: '#3ED8F5' },
+            accent: { DEFAULT: '#FC81FE', dark: '#E070E2' },
+            surface: { DEFAULT: '#ffffff', alt: '#f8fafc', dark: '#020710', 'dark-alt': '#0F0F0F' },
+            heading: { DEFAULT: '#0f172a', dark: '#f8fafc' },
+            body: { DEFAULT: '#475569', dark: '#94a3b8' },
+          },
+          fontFamily: {
+            'heading': ['"Dachi the Lynx"', 'sans-serif'],
+            'body': ['FiraGO', 'sans-serif'],
+            'inter': ['Inter', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    @font-face {
+      font-family: 'Dachi the Lynx';
+      src: url('fonts/DachiTheLynx.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    body { font-family: 'FiraGO', 'Inter', sans-serif; }
+    .font-heading { font-family: 'Dachi the Lynx', sans-serif; }
+
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    @keyframes scroll-right {
+      0% { transform: translateX(-50%); }
+      100% { transform: translateX(0); }
+    }
+    .scroll-left { animation: scroll-left 30s linear infinite; }
+    .scroll-left:hover { animation-play-state: paused; }
+    .scroll-right { animation: scroll-right 30s linear infinite; }
+    .scroll-right:hover { animation-play-state: paused; }
+    .scroll-slow { animation-duration: 40s; }
+    .scroll-fast { animation-duration: 20s; }
+
+    .fade-mask {
+      mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    }
+  </style>
+</head>
+<body class="bg-surface-dark min-h-screen text-body-dark">
+
+  <!-- Page Header -->
+  <div class="py-16 text-center px-6">
+    <h1 class="font-heading text-4xl md:text-5xl text-heading-dark mb-3">ლოგო სტრიპი — V2</h1>
+    <p class="text-body-dark text-sm">ტოპ სააგენტოების კვლევაზე დაფუძნებული 10 ვარიანტი</p>
+    <div class="mt-4 flex flex-wrap justify-center gap-2 text-xs text-body-dark/60">
+      <span class="px-2 py-1 rounded bg-white/5">SEO Sherpa</span>
+      <span class="px-2 py-1 rounded bg-white/5">WebFX</span>
+      <span class="px-2 py-1 rounded bg-white/5">Ignite Visibility</span>
+      <span class="px-2 py-1 rounded bg-white/5">Neil Patel</span>
+      <span class="px-2 py-1 rounded bg-white/5">Victorious</span>
+      <span class="px-2 py-1 rounded bg-white/5">SearchBloom</span>
+      <span class="px-2 py-1 rounded bg-white/5">Moz</span>
+      <span class="px-2 py-1 rounded bg-white/5">The HOTH</span>
+    </div>
+  </div>
+
+
+  <!-- ==================== V8: DUAL ROW — OPPOSITE SCROLL ==================== -->
+  <section class="py-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <span class="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase rounded-full mb-4">ვარიანტი 8</span>
+      <h2 class="font-heading text-2xl md:text-3xl text-heading-dark mb-2">DUAL ROW — საპირისპირო სქროლი</h2>
+      <p class="text-body-dark text-sm mb-10">ორი რიგი საპირისპირო მიმართულებით • WebFX / Ignite Visibility სტილი</p>
+
+      <div class="space-y-4">
+        <!-- Row 1 → scrolls left -->
+        <div class="fade-mask overflow-hidden">
+          <div class="flex scroll-left whitespace-nowrap">
+            <div class="flex items-center gap-12 px-6 shrink-0">
+              <span class="text-2xl font-bold text-white/20 hover:text-white/70 transition-all duration-500 tracking-wider" style="font-family: Georgia, serif; letter-spacing: 4px;">BELLE MAISON</span>
+              <span class="text-2xl font-extrabold text-white/20 hover:text-primary/80 transition-all duration-500 tracking-wide">HORIZON</span>
+              <span class="text-2xl font-bold text-white/20 hover:text-emerald-400/80 transition-all duration-500">ნაგომი</span>
+              <span class="text-2xl font-extrabold text-white/20 hover:text-white/70 transition-all duration-500 tracking-wider">ELEHEAR</span>
+              <span class="text-2xl font-bold text-white/20 hover:text-violet-400/80 transition-all duration-500">Juba</span>
+              <span class="text-2xl font-bold text-white/20 hover:text-rose-400/80 transition-all duration-500">Legi</span>
+              <span class="text-2xl font-bold text-white/20 hover:text-accent/80 transition-all duration-500">Yandy</span>
+              <span class="text-2xl font-bold text-white/20 hover:text-red-400/80 transition-all duration-500">MediHub</span>
+            </div>
+            <div class="flex items-center gap-12 px-6 shrink-0">
+              <span class="text-2xl font-bold text-white/20 hover:text-white/70 transition-all duration-500 tracking-wider" style="font-family: Georgia, serif; letter-spacing: 4px;">BELLE MAISON</span>
+              <span class="text-2xl font-extrabold text-white/20 hover:text-primary/80 transition-all duration-500 tracking-wide">HORIZON</span>
+              <span class="text-2xl font-bold text-white/20 hover:text-emerald-400/80 transition-all duration-500">ნაგომი</span>
+              <span class="text-2xl font-extrabold text-white/20 hover:text-white/70 transition-all duration-500 tracking-wider">ELEHEAR</span>
+              <span class="text-2xl font-bold text-white/20 hover:text-violet-400/80 transition-all duration-500">Juba</span>
+              <span class="text-2xl font-bold text-white/20 hover:text-rose-400/80 transition-all duration-500">Legi</span>
+              <span class="text-2xl font-bold text-white/20 hover:text-accent/80 transition-all duration-500">Yandy</span>
+              <span class="text-2xl font-bold text-white/20 hover:text-red-400/80 transition-all duration-500">MediHub</span>
+            </div>
+          </div>
+        </div>
+        <!-- Row 2 → scrolls right -->
+        <div class="fade-mask overflow-hidden">
+          <div class="flex scroll-right whitespace-nowrap">
+            <div class="flex items-center gap-12 px-6 shrink-0">
+              <span class="text-2xl font-bold text-white/20 hover:text-white/70 transition-all duration-500">Yandy</span>
+              <span class="text-2xl font-bold text-white/20 hover:text-white/70 transition-all duration-500">Legi</span>
+              <span class="text-2xl font-extrabold text-white/20 hover:text-white/70 transition-all duration-500 tracking-wider">ELEHEAR</span>
+              <span class="text-2xl font-bold text-white/20 hover:text-white/70 transition-all duration-500" style="font-family: Georgia, serif; letter-spacing: 4px;">BELLE MAISON</span>
+              <span class="text-2xl font-bold text-white/20 hover:text-white/70 transition-all duration-500">MediHub</span>
+              <span class="text-2xl font-extrabold text-white/20 hover:text-white/70 transition-all duration-500 tracking-wide">HORIZON</span>
+              <span class="text-2xl font-bold text-white/20 hover:text-white/70 transition-all duration-500">ნაგომი</span>
+              <span class="text-2xl font-bold text-white/20 hover:text-white/70 transition-all duration-500">Juba</span>
+            </div>
+            <div class="flex items-center gap-12 px-6 shrink-0">
+              <span class="text-2xl font-bold text-white/20 hover:text-white/70 transition-all duration-500">Yandy</span>
+              <span class="text-2xl font-bold text-white/20 hover:text-white/70 transition-all duration-500">Legi</span>
+              <span class="text-2xl font-extrabold text-white/20 hover:text-white/70 transition-all duration-500 tracking-wider">ELEHEAR</span>
+              <span class="text-2xl font-bold text-white/20 hover:text-white/70 transition-all duration-500" style="font-family: Georgia, serif; letter-spacing: 4px;">BELLE MAISON</span>
+              <span class="text-2xl font-bold text-white/20 hover:text-white/70 transition-all duration-500">MediHub</span>
+              <span class="text-2xl font-extrabold text-white/20 hover:text-white/70 transition-all duration-500 tracking-wide">HORIZON</span>
+              <span class="text-2xl font-bold text-white/20 hover:text-white/70 transition-all duration-500">ნაგომი</span>
+              <span class="text-2xl font-bold text-white/20 hover:text-white/70 transition-all duration-500">Juba</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="text-center text-white/20 text-sm mt-6">50+ კომპანია გვენდობა</p>
+    </div>
+  </section>
+
+
+  <!-- ==================== V9: LOGO + METRIC PAIRS ==================== -->
+  <section class="py-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <span class="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase rounded-full mb-4">ვარიანტი 9</span>
+      <h2 class="font-heading text-2xl md:text-3xl text-heading-dark mb-2">ლოგო + მეტრიკა</h2>
+      <p class="text-body-dark text-sm mb-10">თითოეული კლიენტი შედეგთან ერთად • Victorious / SearchBloom სტილი</p>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="relative group p-6 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:border-primary/30 hover:bg-white/[0.05] transition-all duration-300 text-center">
+          <div class="text-lg font-bold text-white/50 group-hover:text-white/90 transition-colors mb-1" style="font-family: Georgia, serif; letter-spacing: 3px; font-size: 14px;">BELLE MAISON</div>
+          <div class="text-3xl font-black text-primary mt-3">+890%</div>
+          <div class="text-xs text-white/30 mt-1">ორგანული ტრაფიკი</div>
+        </div>
+        <div class="relative group p-6 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:border-primary/30 hover:bg-white/[0.05] transition-all duration-300 text-center">
+          <div class="text-lg font-extrabold text-white/50 group-hover:text-white/90 transition-colors tracking-wide">HORIZON</div>
+          <div class="text-3xl font-black text-emerald-400 mt-3">+340%</div>
+          <div class="text-xs text-white/30 mt-1">ლიდების ზრდა</div>
+        </div>
+        <div class="relative group p-6 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:border-primary/30 hover:bg-white/[0.05] transition-all duration-300 text-center">
+          <div class="text-lg font-bold text-white/50 group-hover:text-white/90 transition-colors">ნაგომი</div>
+          <div class="text-3xl font-black text-accent mt-3">TOP 3</div>
+          <div class="text-xs text-white/30 mt-1">54 keyword</div>
+        </div>
+        <div class="relative group p-6 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:border-primary/30 hover:bg-white/[0.05] transition-all duration-300 text-center">
+          <div class="text-lg font-extrabold text-white/50 group-hover:text-white/90 transition-colors tracking-wider">ELEHEAR</div>
+          <div class="text-3xl font-black text-yellow-400 mt-3">+520%</div>
+          <div class="text-xs text-white/30 mt-1">revenue growth</div>
+        </div>
+        <div class="relative group p-6 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:border-primary/30 hover:bg-white/[0.05] transition-all duration-300 text-center">
+          <div class="text-lg font-bold text-white/50 group-hover:text-white/90 transition-colors">Juba</div>
+          <div class="text-3xl font-black text-primary mt-3">+180%</div>
+          <div class="text-xs text-white/30 mt-1">ორგანული ტრაფიკი</div>
+        </div>
+        <div class="relative group p-6 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:border-primary/30 hover:bg-white/[0.05] transition-all duration-300 text-center">
+          <div class="text-lg font-bold text-white/50 group-hover:text-white/90 transition-colors">Legi</div>
+          <div class="text-3xl font-black text-emerald-400 mt-3">+430%</div>
+          <div class="text-xs text-white/30 mt-1">ვიზიტორები</div>
+        </div>
+        <div class="relative group p-6 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:border-primary/30 hover:bg-white/[0.05] transition-all duration-300 text-center">
+          <div class="text-lg font-bold text-white/50 group-hover:text-white/90 transition-colors">Yandy</div>
+          <div class="text-3xl font-black text-accent mt-3">+67%</div>
+          <div class="text-xs text-white/30 mt-1">conversion rate</div>
+        </div>
+        <div class="relative group p-6 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:border-primary/30 hover:bg-white/[0.05] transition-all duration-300 text-center">
+          <div class="text-lg font-bold text-white/50 group-hover:text-white/90 transition-colors">MediHub</div>
+          <div class="text-3xl font-black text-primary mt-3">+290%</div>
+          <div class="text-xs text-white/30 mt-1">ორგანული ტრაფიკი</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== V10: HERO SPOTLIGHT + SMALL STRIP ==================== -->
+  <section class="py-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <span class="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase rounded-full mb-4">ვარიანტი 10</span>
+      <h2 class="font-heading text-2xl md:text-3xl text-heading-dark mb-2">HERO SPOTLIGHT + პატარა სტრიპი</h2>
+      <p class="text-body-dark text-sm mb-10">3 მთავარი კლიენტი დიდად + დანარჩენი პატარად • Neil Patel სტილი</p>
+
+      <!-- 3 Hero logos -->
+      <div class="grid grid-cols-3 gap-6 mb-8">
+        <div class="flex items-center justify-center h-28 md:h-36 rounded-2xl border border-white/[0.08] bg-white/[0.03] hover:bg-white/[0.07] hover:border-primary/20 transition-all duration-300 group">
+          <span class="text-2xl md:text-3xl font-bold text-white/30 group-hover:text-white/80 transition-colors" style="font-family: Georgia, serif; letter-spacing: 5px;">BELLE MAISON</span>
+        </div>
+        <div class="flex items-center justify-center h-28 md:h-36 rounded-2xl border border-white/[0.08] bg-white/[0.03] hover:bg-white/[0.07] hover:border-primary/20 transition-all duration-300 group">
+          <span class="text-3xl md:text-4xl font-extrabold text-white/30 group-hover:text-white/80 tracking-wider transition-colors">ELEHEAR</span>
+        </div>
+        <div class="flex items-center justify-center h-28 md:h-36 rounded-2xl border border-white/[0.08] bg-white/[0.03] hover:bg-white/[0.07] hover:border-primary/20 transition-all duration-300 group">
+          <span class="text-3xl md:text-4xl font-extrabold text-white/30 group-hover:text-white/80 tracking-wide transition-colors">HORIZON</span>
+        </div>
+      </div>
+      <!-- Smaller strip -->
+      <div class="flex items-center justify-center gap-8 md:gap-12 flex-wrap py-4">
+        <span class="text-base text-white/20 font-semibold hover:text-white/50 transition-colors">ნაგომი</span>
+        <span class="text-white/10">•</span>
+        <span class="text-base text-white/20 font-semibold hover:text-white/50 transition-colors">Juba</span>
+        <span class="text-white/10">•</span>
+        <span class="text-base text-white/20 font-semibold hover:text-white/50 transition-colors">Legi</span>
+        <span class="text-white/10">•</span>
+        <span class="text-base text-white/20 font-semibold hover:text-white/50 transition-colors">Yandy</span>
+        <span class="text-white/10">•</span>
+        <span class="text-base text-white/20 font-semibold hover:text-white/50 transition-colors">MediHub</span>
+        <span class="text-white/10">•</span>
+        <span class="text-sm text-primary/40 font-bold">+40 სხვა</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== V11: FULL WIDTH TICKER BAR ==================== -->
+  <section class="py-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <span class="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase rounded-full mb-4">ვარიანტი 11</span>
+      <h2 class="font-heading text-2xl md:text-3xl text-heading-dark mb-2">FULL-WIDTH TICKER BAR</h2>
+      <p class="text-body-dark text-sm mb-10">სრულ სიგანეზე გადაჭიმული ტიკერი • The HOTH სტილი</p>
+    </div>
+    <!-- Full width bar -->
+    <div class="bg-gradient-to-r from-primary/5 via-primary/10 to-accent/5 border-y border-white/[0.06] py-6">
+      <div class="fade-mask overflow-hidden">
+        <div class="flex scroll-left scroll-fast whitespace-nowrap">
+          <div class="flex items-center gap-16 px-8 shrink-0">
+            <span class="text-xl font-bold text-white/40 tracking-wider" style="font-family: Georgia, serif; letter-spacing: 4px;">BELLE MAISON</span>
+            <span class="text-xl font-extrabold text-white/40 tracking-wide">HORIZON</span>
+            <span class="text-xl font-bold text-white/40">ნაგომი</span>
+            <span class="text-xl font-extrabold text-white/40 tracking-wider">ELEHEAR</span>
+            <span class="text-xl font-bold text-white/40">Juba</span>
+            <span class="text-xl font-bold text-white/40">Legi</span>
+            <span class="text-xl font-bold text-white/40">Yandy</span>
+            <span class="text-xl font-bold text-white/40">MediHub</span>
+          </div>
+          <div class="flex items-center gap-16 px-8 shrink-0">
+            <span class="text-xl font-bold text-white/40 tracking-wider" style="font-family: Georgia, serif; letter-spacing: 4px;">BELLE MAISON</span>
+            <span class="text-xl font-extrabold text-white/40 tracking-wide">HORIZON</span>
+            <span class="text-xl font-bold text-white/40">ნაგომი</span>
+            <span class="text-xl font-extrabold text-white/40 tracking-wider">ELEHEAR</span>
+            <span class="text-xl font-bold text-white/40">Juba</span>
+            <span class="text-xl font-bold text-white/40">Legi</span>
+            <span class="text-xl font-bold text-white/40">Yandy</span>
+            <span class="text-xl font-bold text-white/40">MediHub</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== V12: CENTERED STACK — MOBILE FIRST ==================== -->
+  <section class="py-16 px-6">
+    <div class="max-w-3xl mx-auto">
+      <span class="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase rounded-full mb-4">ვარიანტი 12</span>
+      <h2 class="font-heading text-2xl md:text-3xl text-heading-dark mb-2">CENTERED STACK — მობილური-FIRST</h2>
+      <p class="text-body-dark text-sm mb-10">ცენტრირებული, ვერტიკალური რიტმი • მობილურზე იდეალური</p>
+
+      <div class="text-center space-y-1">
+        <p class="text-white/25 text-xs uppercase tracking-[0.3em] mb-6">ნდობა გვიცხადებენ</p>
+        <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
+          <span class="text-xl md:text-2xl font-bold text-white/15 hover:text-white/60 transition-all duration-500" style="font-family: Georgia, serif; letter-spacing: 4px;">BELLE MAISON</span>
+          <span class="text-xl md:text-2xl font-extrabold text-white/15 hover:text-white/60 transition-all duration-500 tracking-wide">HORIZON</span>
+          <span class="text-xl md:text-2xl font-bold text-white/15 hover:text-white/60 transition-all duration-500">ნაგომი</span>
+          <span class="text-xl md:text-2xl font-extrabold text-white/15 hover:text-white/60 transition-all duration-500 tracking-wider">ELEHEAR</span>
+          <span class="text-xl md:text-2xl font-bold text-white/15 hover:text-white/60 transition-all duration-500">Juba</span>
+          <span class="text-xl md:text-2xl font-bold text-white/15 hover:text-white/60 transition-all duration-500">Legi</span>
+          <span class="text-xl md:text-2xl font-bold text-white/15 hover:text-white/60 transition-all duration-500">Yandy</span>
+          <span class="text-xl md:text-2xl font-bold text-white/15 hover:text-white/60 transition-all duration-500">MediHub</span>
+        </div>
+        <p class="text-white/15 text-xs mt-6">საქართველო • USA • ევროპა</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== V13: GRADIENT BORDER CARDS ==================== -->
+  <section class="py-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <span class="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase rounded-full mb-4">ვარიანტი 13</span>
+      <h2 class="font-heading text-2xl md:text-3xl text-heading-dark mb-2">GRADIENT BORDER CARDS</h2>
+      <p class="text-body-dark text-sm mb-10">გრადიენტ ბორდერით ბარათები • Premium სტილი</p>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="relative group">
+          <div class="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative m-[1px] bg-surface-dark rounded-xl p-6 flex items-center justify-center h-24 group-hover:bg-surface-dark-alt transition-colors">
+            <span class="text-sm font-bold text-white/30 group-hover:text-white/90 transition-colors tracking-wider" style="font-family: Georgia, serif; letter-spacing: 3px;">BELLE MAISON</span>
+          </div>
+        </div>
+        <div class="relative group">
+          <div class="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative m-[1px] bg-surface-dark rounded-xl p-6 flex items-center justify-center h-24 group-hover:bg-surface-dark-alt transition-colors">
+            <span class="text-xl font-extrabold text-white/30 group-hover:text-white/90 transition-colors tracking-wide">HORIZON</span>
+          </div>
+        </div>
+        <div class="relative group">
+          <div class="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative m-[1px] bg-surface-dark rounded-xl p-6 flex items-center justify-center h-24 group-hover:bg-surface-dark-alt transition-colors">
+            <span class="text-xl font-bold text-white/30 group-hover:text-white/90 transition-colors">ნაგომი</span>
+          </div>
+        </div>
+        <div class="relative group">
+          <div class="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative m-[1px] bg-surface-dark rounded-xl p-6 flex items-center justify-center h-24 group-hover:bg-surface-dark-alt transition-colors">
+            <span class="text-xl font-extrabold text-white/30 group-hover:text-white/90 transition-colors tracking-wider">ELEHEAR</span>
+          </div>
+        </div>
+        <div class="relative group">
+          <div class="absolute inset-0 bg-gradient-to-r from-accent to-primary rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative m-[1px] bg-surface-dark rounded-xl p-6 flex items-center justify-center h-24 group-hover:bg-surface-dark-alt transition-colors">
+            <span class="text-xl font-bold text-white/30 group-hover:text-white/90 transition-colors">Juba</span>
+          </div>
+        </div>
+        <div class="relative group">
+          <div class="absolute inset-0 bg-gradient-to-r from-accent to-primary rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative m-[1px] bg-surface-dark rounded-xl p-6 flex items-center justify-center h-24 group-hover:bg-surface-dark-alt transition-colors">
+            <span class="text-xl font-bold text-white/30 group-hover:text-white/90 transition-colors">Legi</span>
+          </div>
+        </div>
+        <div class="relative group">
+          <div class="absolute inset-0 bg-gradient-to-r from-accent to-primary rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative m-[1px] bg-surface-dark rounded-xl p-6 flex items-center justify-center h-24 group-hover:bg-surface-dark-alt transition-colors">
+            <span class="text-xl font-bold text-white/30 group-hover:text-white/90 transition-colors">Yandy</span>
+          </div>
+        </div>
+        <div class="relative group">
+          <div class="absolute inset-0 bg-gradient-to-r from-accent to-primary rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative m-[1px] bg-surface-dark rounded-xl p-6 flex items-center justify-center h-24 group-hover:bg-surface-dark-alt transition-colors">
+            <span class="text-xl font-bold text-white/30 group-hover:text-white/90 transition-colors">MediHub</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== V14: NEON GLOW STRIP ==================== -->
+  <section class="py-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <span class="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase rounded-full mb-4">ვარიანტი 14</span>
+      <h2 class="font-heading text-2xl md:text-3xl text-heading-dark mb-2">NEON GLOW STRIP</h2>
+      <p class="text-body-dark text-sm mb-10">ნეონ ეფექტი hover-ზე • ტექნოლოგიური, futuristic</p>
+
+      <div class="fade-mask overflow-hidden py-4">
+        <div class="flex scroll-left whitespace-nowrap">
+          <div class="flex items-center gap-16 px-8 shrink-0">
+            <span class="text-2xl font-bold text-white/10 hover:text-primary hover:drop-shadow-[0_0_20px_rgba(88,230,255,0.5)] transition-all duration-500 cursor-default" style="font-family: Georgia, serif; letter-spacing: 4px;">BELLE MAISON</span>
+            <span class="text-2xl font-extrabold text-white/10 hover:text-primary hover:drop-shadow-[0_0_20px_rgba(88,230,255,0.5)] transition-all duration-500 cursor-default tracking-wide">HORIZON</span>
+            <span class="text-2xl font-bold text-white/10 hover:text-accent hover:drop-shadow-[0_0_20px_rgba(252,129,254,0.5)] transition-all duration-500 cursor-default">ნაგომი</span>
+            <span class="text-2xl font-extrabold text-white/10 hover:text-primary hover:drop-shadow-[0_0_20px_rgba(88,230,255,0.5)] transition-all duration-500 cursor-default tracking-wider">ELEHEAR</span>
+            <span class="text-2xl font-bold text-white/10 hover:text-accent hover:drop-shadow-[0_0_20px_rgba(252,129,254,0.5)] transition-all duration-500 cursor-default">Juba</span>
+            <span class="text-2xl font-bold text-white/10 hover:text-primary hover:drop-shadow-[0_0_20px_rgba(88,230,255,0.5)] transition-all duration-500 cursor-default">Legi</span>
+            <span class="text-2xl font-bold text-white/10 hover:text-accent hover:drop-shadow-[0_0_20px_rgba(252,129,254,0.5)] transition-all duration-500 cursor-default">Yandy</span>
+            <span class="text-2xl font-bold text-white/10 hover:text-primary hover:drop-shadow-[0_0_20px_rgba(88,230,255,0.5)] transition-all duration-500 cursor-default">MediHub</span>
+          </div>
+          <div class="flex items-center gap-16 px-8 shrink-0">
+            <span class="text-2xl font-bold text-white/10 hover:text-primary hover:drop-shadow-[0_0_20px_rgba(88,230,255,0.5)] transition-all duration-500 cursor-default" style="font-family: Georgia, serif; letter-spacing: 4px;">BELLE MAISON</span>
+            <span class="text-2xl font-extrabold text-white/10 hover:text-primary hover:drop-shadow-[0_0_20px_rgba(88,230,255,0.5)] transition-all duration-500 cursor-default tracking-wide">HORIZON</span>
+            <span class="text-2xl font-bold text-white/10 hover:text-accent hover:drop-shadow-[0_0_20px_rgba(252,129,254,0.5)] transition-all duration-500 cursor-default">ნაგომი</span>
+            <span class="text-2xl font-extrabold text-white/10 hover:text-primary hover:drop-shadow-[0_0_20px_rgba(88,230,255,0.5)] transition-all duration-500 cursor-default tracking-wider">ELEHEAR</span>
+            <span class="text-2xl font-bold text-white/10 hover:text-accent hover:drop-shadow-[0_0_20px_rgba(252,129,254,0.5)] transition-all duration-500 cursor-default">Juba</span>
+            <span class="text-2xl font-bold text-white/10 hover:text-primary hover:drop-shadow-[0_0_20px_rgba(88,230,255,0.5)] transition-all duration-500 cursor-default">Legi</span>
+            <span class="text-2xl font-bold text-white/10 hover:text-accent hover:drop-shadow-[0_0_20px_rgba(252,129,254,0.5)] transition-all duration-500 cursor-default">Yandy</span>
+            <span class="text-2xl font-bold text-white/10 hover:text-primary hover:drop-shadow-[0_0_20px_rgba(88,230,255,0.5)] transition-all duration-500 cursor-default">MediHub</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== V15: TRUST BADGES STYLE ==================== -->
+  <section class="py-16 px-6">
+    <div class="max-w-5xl mx-auto">
+      <span class="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase rounded-full mb-4">ვარიანტი 15</span>
+      <h2 class="font-heading text-2xl md:text-3xl text-heading-dark mb-2">TRUST BADGES სტილი</h2>
+      <p class="text-body-dark text-sm mb-10">მრგვალი badges + ინდუსტრია • Moz / OuterBox სტილი</p>
+
+      <div class="flex flex-wrap items-center justify-center gap-6">
+        <div class="flex flex-col items-center group cursor-default">
+          <div class="w-20 h-20 rounded-full border-2 border-white/10 group-hover:border-primary/50 bg-white/[0.03] group-hover:bg-white/[0.07] flex items-center justify-center transition-all duration-300">
+            <span class="text-xs font-bold text-white/40 group-hover:text-white/90 transition-colors text-center leading-tight" style="font-family: Georgia, serif; letter-spacing: 1px; font-size: 8px;">BELLE<br>MAISON</span>
+          </div>
+          <span class="text-[10px] text-white/20 mt-2 group-hover:text-white/50 transition-colors">ინტერიერი</span>
+        </div>
+        <div class="flex flex-col items-center group cursor-default">
+          <div class="w-20 h-20 rounded-full border-2 border-white/10 group-hover:border-primary/50 bg-white/[0.03] group-hover:bg-white/[0.07] flex items-center justify-center transition-all duration-300">
+            <span class="text-sm font-extrabold text-white/40 group-hover:text-white/90 transition-colors tracking-wide">H</span>
+          </div>
+          <span class="text-[10px] text-white/20 mt-2 group-hover:text-white/50 transition-colors">Horizon</span>
+        </div>
+        <div class="flex flex-col items-center group cursor-default">
+          <div class="w-20 h-20 rounded-full border-2 border-white/10 group-hover:border-accent/50 bg-white/[0.03] group-hover:bg-white/[0.07] flex items-center justify-center transition-all duration-300">
+            <span class="text-lg font-bold text-white/40 group-hover:text-white/90 transition-colors">ნ</span>
+          </div>
+          <span class="text-[10px] text-white/20 mt-2 group-hover:text-white/50 transition-colors">ნაგომი</span>
+        </div>
+        <div class="flex flex-col items-center group cursor-default">
+          <div class="w-20 h-20 rounded-full border-2 border-white/10 group-hover:border-primary/50 bg-white/[0.03] group-hover:bg-white/[0.07] flex items-center justify-center transition-all duration-300">
+            <span class="text-xs font-extrabold text-white/40 group-hover:text-white/90 transition-colors tracking-wider">EH</span>
+          </div>
+          <span class="text-[10px] text-white/20 mt-2 group-hover:text-white/50 transition-colors">ELEHEAR</span>
+        </div>
+        <div class="flex flex-col items-center group cursor-default">
+          <div class="w-20 h-20 rounded-full border-2 border-white/10 group-hover:border-accent/50 bg-white/[0.03] group-hover:bg-white/[0.07] flex items-center justify-center transition-all duration-300">
+            <span class="text-lg font-bold text-white/40 group-hover:text-white/90 transition-colors">J</span>
+          </div>
+          <span class="text-[10px] text-white/20 mt-2 group-hover:text-white/50 transition-colors">Juba</span>
+        </div>
+        <div class="flex flex-col items-center group cursor-default">
+          <div class="w-20 h-20 rounded-full border-2 border-white/10 group-hover:border-primary/50 bg-white/[0.03] group-hover:bg-white/[0.07] flex items-center justify-center transition-all duration-300">
+            <span class="text-lg font-bold text-white/40 group-hover:text-white/90 transition-colors">L</span>
+          </div>
+          <span class="text-[10px] text-white/20 mt-2 group-hover:text-white/50 transition-colors">Legi</span>
+        </div>
+        <div class="flex flex-col items-center group cursor-default">
+          <div class="w-20 h-20 rounded-full border-2 border-white/10 group-hover:border-accent/50 bg-white/[0.03] group-hover:bg-white/[0.07] flex items-center justify-center transition-all duration-300">
+            <span class="text-lg font-bold text-white/40 group-hover:text-white/90 transition-colors">Y</span>
+          </div>
+          <span class="text-[10px] text-white/20 mt-2 group-hover:text-white/50 transition-colors">Yandy</span>
+        </div>
+        <div class="flex flex-col items-center group cursor-default">
+          <div class="w-20 h-20 rounded-full border-2 border-white/10 group-hover:border-primary/50 bg-white/[0.03] group-hover:bg-white/[0.07] flex items-center justify-center transition-all duration-300">
+            <span class="text-lg font-bold text-white/40 group-hover:text-white/90 transition-colors">M</span>
+          </div>
+          <span class="text-[10px] text-white/20 mt-2 group-hover:text-white/50 transition-colors">MediHub</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <div class="w-20 h-20 rounded-full border-2 border-dashed border-white/[0.08] flex items-center justify-center">
+            <span class="text-xs text-white/15 font-bold">+40</span>
+          </div>
+          <span class="text-[10px] text-white/15 mt-2">სხვა</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== V16: SPLIT — STAT LEFT + LOGOS RIGHT ==================== -->
+  <section class="py-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <span class="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase rounded-full mb-4">ვარიანტი 16</span>
+      <h2 class="font-heading text-2xl md:text-3xl text-heading-dark mb-2">SPLIT — სტატისტიკა + ლოგოები</h2>
+      <p class="text-body-dark text-sm mb-10">მარცხნივ ციფრი, მარჯვნივ ლოგოები • Victorious სტილი</p>
+
+      <div class="grid md:grid-cols-[280px_1fr] gap-8 items-center">
+        <!-- Left stat -->
+        <div class="text-center md:text-left md:border-r border-white/[0.06] md:pr-8">
+          <div class="text-6xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">50+</div>
+          <div class="text-white/50 text-sm mt-2">კომპანია გვენდობა<br>საქართველოში და მსოფლიოში</div>
+        </div>
+        <!-- Right logos grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          <div class="flex items-center justify-center h-16 rounded-lg bg-white/[0.03] border border-white/[0.05] hover:border-white/[0.15] transition-all">
+            <span class="text-xs font-bold text-white/30 hover:text-white/70 transition-colors" style="font-family: Georgia, serif; letter-spacing: 2px;">BELLE MAISON</span>
+          </div>
+          <div class="flex items-center justify-center h-16 rounded-lg bg-white/[0.03] border border-white/[0.05] hover:border-white/[0.15] transition-all">
+            <span class="text-sm font-extrabold text-white/30 hover:text-white/70 transition-colors tracking-wide">HORIZON</span>
+          </div>
+          <div class="flex items-center justify-center h-16 rounded-lg bg-white/[0.03] border border-white/[0.05] hover:border-white/[0.15] transition-all">
+            <span class="text-sm font-bold text-white/30 hover:text-white/70 transition-colors">ნაგომი</span>
+          </div>
+          <div class="flex items-center justify-center h-16 rounded-lg bg-white/[0.03] border border-white/[0.05] hover:border-white/[0.15] transition-all">
+            <span class="text-sm font-extrabold text-white/30 hover:text-white/70 transition-colors tracking-wider">ELEHEAR</span>
+          </div>
+          <div class="flex items-center justify-center h-16 rounded-lg bg-white/[0.03] border border-white/[0.05] hover:border-white/[0.15] transition-all">
+            <span class="text-sm font-bold text-white/30 hover:text-white/70 transition-colors">Juba</span>
+          </div>
+          <div class="flex items-center justify-center h-16 rounded-lg bg-white/[0.03] border border-white/[0.05] hover:border-white/[0.15] transition-all">
+            <span class="text-sm font-bold text-white/30 hover:text-white/70 transition-colors">Legi</span>
+          </div>
+          <div class="flex items-center justify-center h-16 rounded-lg bg-white/[0.03] border border-white/[0.05] hover:border-white/[0.15] transition-all">
+            <span class="text-sm font-bold text-white/30 hover:text-white/70 transition-colors">Yandy</span>
+          </div>
+          <div class="flex items-center justify-center h-16 rounded-lg bg-white/[0.03] border border-white/[0.05] hover:border-white/[0.15] transition-all">
+            <span class="text-sm font-bold text-white/30 hover:text-white/70 transition-colors">MediHub</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== V17: MINIMAL DIVIDER STYLE ==================== -->
+  <section class="py-16 px-6">
+    <div class="max-w-5xl mx-auto">
+      <span class="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase rounded-full mb-4">ვარიანტი 17</span>
+      <h2 class="font-heading text-2xl md:text-3xl text-heading-dark mb-2">MINIMAL DIVIDER — ულტრა-სუფთა</h2>
+      <p class="text-body-dark text-sm mb-10">თხელი ხაზები გამყოფით • ყველაზე მინიმალისტური</p>
+
+      <div class="border-t border-b border-white/[0.06] py-8">
+        <p class="text-center text-[10px] text-white/20 uppercase tracking-[0.5em] mb-6">TRUSTED BY</p>
+        <div class="flex items-center justify-center divide-x divide-white/[0.06]">
+          <div class="px-6 md:px-8">
+            <span class="text-sm md:text-base font-bold text-white/25 hover:text-white/60 transition-colors" style="font-family: Georgia, serif; letter-spacing: 3px;">BELLE MAISON</span>
+          </div>
+          <div class="px-6 md:px-8">
+            <span class="text-sm md:text-base font-extrabold text-white/25 hover:text-white/60 transition-colors tracking-wide">HORIZON</span>
+          </div>
+          <div class="px-6 md:px-8">
+            <span class="text-sm md:text-base font-bold text-white/25 hover:text-white/60 transition-colors">ნაგომი</span>
+          </div>
+          <div class="px-6 md:px-8">
+            <span class="text-sm md:text-base font-extrabold text-white/25 hover:text-white/60 transition-colors tracking-wider">ELEHEAR</span>
+          </div>
+          <div class="px-6 md:px-8 hidden md:block">
+            <span class="text-sm md:text-base font-bold text-white/25 hover:text-white/60 transition-colors">Juba</span>
+          </div>
+          <div class="px-6 md:px-8 hidden lg:block">
+            <span class="text-sm md:text-base font-bold text-white/25 hover:text-white/60 transition-colors">Legi</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Footer -->
+  <div class="py-12 text-center text-body-dark/40 text-sm px-6">
+    <p>10XSEO Logo Strip V2 — ტოპ სააგენტოების კვლევაზე დაფუძნებული</p>
+    <p class="mt-2 text-xs text-body-dark/25">V8: Dual Row | V9: Logo+Metric | V10: Hero Spotlight | V11: Ticker Bar | V12: Centered Stack | V13: Gradient Border | V14: Neon Glow | V15: Trust Badges | V16: Split Layout | V17: Minimal Divider</p>
+  </div>
+
+</body>
+</html>
