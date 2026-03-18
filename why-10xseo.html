@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>რატომ 10XSEO — 10 ვარიანტი</title>
+  <title>რატომ 10XSEO — 15 ვარიანტი</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/firago@1.0.0/FiraGO.css" rel="stylesheet">
@@ -19,11 +19,68 @@
     .flip-card{perspective:800px;height:280px}.flip-inner{position:relative;width:100%;height:100%;transition:transform 0.7s;transform-style:preserve-3d}.flip-card:hover .flip-inner{transform:rotateY(180deg)}.flip-front,.flip-back{position:absolute;inset:0;backface-visibility:hidden;border-radius:16px;padding:28px;display:flex;flex-direction:column;justify-content:center}.flip-back{transform:rotateY(180deg)}
     .cr:hover{background:rgba(139,92,246,0.04)}
     .ac{max-height:0;overflow:hidden;transition:max-height 0.4s}.ai.open .ac{max-height:200px}.ai.open .ax{transform:rotate(45deg)}.ax{transition:transform 0.3s}
+
+    /* V11 Accordion FAQ */
+    .faq-item{border:1px solid rgba(255,255,255,0.06);border-radius:16px;background:rgba(13,17,23,0.8);backdrop-filter:blur(12px);overflow:hidden;transition:all 0.3s}
+    .faq-item:hover{border-color:rgba(139,92,246,0.25)}
+    .faq-item.faq-open{border-color:rgba(139,92,246,0.4);background:rgba(13,17,23,0.95)}
+    .faq-header{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;cursor:pointer;gap:16px}
+    .faq-left{display:flex;align-items:center;gap:16px}
+    .faq-num{font-family:'Inter',sans-serif;font-size:14px;font-weight:800;width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .faq-chev{width:24px;height:24px;transition:transform 0.3s ease;flex-shrink:0;color:#94a3b8}
+    .faq-item.faq-open .faq-chev{transform:rotate(180deg);color:#A78BFA}
+    .faq-body{max-height:0;overflow:hidden;transition:max-height 0.4s ease}
+    .faq-item.faq-open .faq-body{max-height:200px}
+    .faq-inner{padding:0 24px 20px 76px}
+
+    /* V12 Kanban */
+    .kanban-col{background:rgba(13,17,23,0.6);border:1px solid rgba(255,255,255,0.06);border-radius:16px;min-height:200px}
+    .kanban-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:16px;transition:all 0.3s}
+    .kanban-card:hover{border-color:rgba(139,92,246,0.3);transform:translateY(-2px)}
+    .kanban-handle{width:20px;height:12px;display:flex;flex-direction:column;gap:2px;opacity:0.3}
+    .kanban-handle span{display:block;height:2px;background:currentColor;border-radius:1px}
+
+    /* V13 Before/After */
+    .ba-panel{position:relative;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.06)}
+    .ba-before,.ba-after{padding:32px 28px}
+    .ba-before{background:linear-gradient(135deg,rgba(239,68,68,0.08),rgba(239,68,68,0.02))}
+    .ba-after{background:linear-gradient(135deg,rgba(33,199,67,0.08),rgba(20,184,166,0.02))}
+    .ba-item{display:flex;align-items:start;gap:12px;margin-bottom:16px}
+    .ba-item:last-child{margin-bottom:0}
+    .ba-divider{position:relative;height:3px;background:linear-gradient(90deg,rgba(239,68,68,0.3),rgba(139,92,246,0.5),rgba(33,199,67,0.3));overflow:visible}
+    .ba-divider::after{content:'VS';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#020710;border:2px solid rgba(139,92,246,0.5);border-radius:999px;padding:4px 16px;font-size:12px;font-weight:700;color:#A78BFA;letter-spacing:2px}
+    @media(min-width:1024px){
+      .ba-split{display:grid;grid-template-columns:1fr 3px 1fr}
+      .ba-divider{height:auto;width:3px;background:linear-gradient(180deg,rgba(239,68,68,0.3),rgba(139,92,246,0.5),rgba(33,199,67,0.3))}
+      .ba-divider::after{top:50%;left:50%;transform:translate(-50%,-50%);writing-mode:vertical-rl;padding:16px 4px}
+    }
+
+    /* V14 Hexagonal */
+    .hex-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;max-width:500px;margin:0 auto}
+    .hex-wrap{width:140px;height:162px;position:relative;transition:all 0.4s}
+    .hex-wrap:nth-child(4),.hex-wrap:nth-child(5),.hex-wrap:nth-child(6){transform:translateX(0)}
+    @media(min-width:640px){
+      .hex-grid{gap:8px;max-width:520px}
+      .hex-wrap{width:160px;height:185px}
+      .hex-wrap:nth-child(4),.hex-wrap:nth-child(5),.hex-wrap:nth-child(6){transform:translateY(-20px)}
+    }
+    .hex-shape{width:100%;height:100%;clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);background:rgba(13,17,23,0.9);border:none;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;text-align:center;transition:all 0.4s;position:relative}
+    .hex-shape::before{content:'';position:absolute;inset:-2px;clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);background:rgba(255,255,255,0.06);z-index:-1;transition:all 0.4s}
+    .hex-wrap:hover .hex-shape::before{background:linear-gradient(135deg,#8B5CF6,#3B82F6,#14B8A6)}
+    .hex-wrap:hover .hex-shape{background:rgba(13,17,23,1);box-shadow:0 0 40px rgba(139,92,246,0.15)}
+    .hex-desc{opacity:0;max-height:0;overflow:hidden;transition:all 0.4s;text-align:center;padding:0 20px}
+    .hex-wrap:hover .hex-desc{opacity:1;max-height:60px;padding-top:8px}
+
+    /* V15 Testimonial-backed */
+    .tb-card{border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,0.06);transition:all 0.3s}
+    .tb-card:hover{border-color:rgba(139,92,246,0.3);transform:translateY(-2px)}
+    .tb-top{padding:24px;background:rgba(13,17,23,0.9)}
+    .tb-bottom{padding:20px 24px;background:rgba(255,255,255,0.02);border-top:1px solid rgba(255,255,255,0.04)}
   </style>
 </head>
 <body>
-<header class="fixed top-0 left-0 right-0 z-50 bg-surface-dark/80 backdrop-blur-xl border-b border-gray-800/50"><div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between"><a href="index.html" class="font-heading text-2xl font-bold text-yellow-300" style="text-shadow:0 0 20px rgba(250,204,21,0.3)">10xSEO</a><span class="text-sm text-body-dark">რატომ 10xSEO — 10 ვარიანტი</span></div></header>
-<section class="pt-28 pb-8 text-center px-4"><p class="text-sm font-semibold text-primary-light uppercase tracking-wider mb-3">Section Variants</p><h1 class="font-heading text-[28px] sm:text-[36px] lg:text-[44px] font-bold leading-tight mb-4">რატომ <span class="gradient-text">10XSEO</span>?</h1><p class="text-body-dark max-w-xl mx-auto">10 სხვადასხვა ვარიანტი — აირჩიე მთავარი გვერდისთვის</p></section>
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface-dark/80 backdrop-blur-xl border-b border-gray-800/50"><div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between"><a href="index.html" class="font-heading text-2xl font-bold text-yellow-300" style="text-shadow:0 0 20px rgba(250,204,21,0.3)">10xSEO</a><span class="text-sm text-body-dark">რატომ 10xSEO — 15 ვარიანტი</span></div></header>
+<section class="pt-28 pb-8 text-center px-4"><p class="text-sm font-semibold text-primary-light uppercase tracking-wider mb-3">Section Variants</p><h1 class="font-heading text-[28px] sm:text-[36px] lg:text-[44px] font-bold leading-tight mb-4">რატომ <span class="gradient-text">10XSEO</span>?</h1><p class="text-body-dark max-w-xl mx-auto">15 სხვადასხვა ვარიანტი — აირჩიე მთავარი გვერდისთვის</p></section>
 
 <!-- V1 Bento --><section class="py-16 lg:py-24"><div class="max-w-6xl mx-auto px-4"><div class="text-center mb-10"><span class="opt">ვარიანტი 1</span><p class="text-sm text-body-dark mt-3">Bento Grid — ასიმეტრიული grid დიდი რიცხვებით</p></div><div class="text-center mb-12"><p class="text-sm font-semibold text-primary-light uppercase tracking-wider mb-3">რატომ ჩვენ</p><h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold">რატომ <span class="gradient-text">10XSEO</span>?</h2></div><div class="grid grid-cols-2 lg:grid-cols-4 gap-4"><div class="cd col-span-2 row-span-2 p-7 flex flex-col justify-between"><div><p class="font-inter text-6xl lg:text-7xl font-black bg-gradient-to-r from-primary-light to-ai-blue bg-clip-text text-transparent mb-2">92%</p><h3 class="font-heading text-xl font-bold mb-2">კლიენტების რეტენცია</h3><p class="text-sm text-body-dark">კლიენტები რჩებიან, რადგან შედეგები ლაპარაკობს.</p></div><div class="mt-6 flex items-center gap-3"><div class="flex -space-x-2"><div class="w-8 h-8 rounded-full bg-purple-500/30 border-2 border-surface-dark"></div><div class="w-8 h-8 rounded-full bg-blue-500/30 border-2 border-surface-dark"></div><div class="w-8 h-8 rounded-full bg-teal-500/30 border-2 border-surface-dark"></div></div><span class="text-xs text-body-dark">50+ კლიენტი</span></div></div><div class="cd p-6"><p class="font-inter text-3xl font-extrabold text-accent mb-1">10<span class="text-lg">წთ</span></p><h3 class="font-heading text-sm font-bold mb-1">სწრაფი რეაგირება</h3></div><div class="cd p-6"><p class="font-inter text-3xl font-extrabold text-success mb-1">0</p><h3 class="font-heading text-sm font-bold mb-1">კონტრაქტი</h3></div><div class="cd p-6"><h3 class="font-heading text-sm font-bold mb-1">გამჭვირვალობა</h3><p class="text-xs text-body-dark">GSC + GA წვდომა</p></div><div class="cd p-6"><h3 class="font-heading text-sm font-bold mb-1">ROI ფოკუსი</h3><p class="text-xs text-body-dark">შემოსავალი > ტრაფიკი</p></div><div class="cd col-span-2 p-6 flex items-center gap-6"><div class="flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center"><svg class="w-7 h-7 text-primary-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg></div><div><h3 class="font-heading text-lg font-bold mb-1">ყოველკვირეული რეპორტები</h3><p class="text-sm text-body-dark">რა გაკეთდა, რა შეიცვალა, რა არის შემდეგი.</p></div></div><div class="cd col-span-2 p-6 flex items-center gap-6"><div class="flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-success/20 to-accent/20 flex items-center justify-center"><svg class="w-7 h-7 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg></div><div><h3 class="font-heading text-lg font-bold mb-1">Data-Driven</h3><p class="text-sm text-body-dark">A/B ტესტინგი, Heatmaps, Keyword Research.</p></div></div></div></div></section><hr class="border-gray-800/50 mx-auto max-w-xs">
 
@@ -45,7 +102,543 @@
 
 <!-- V10 Features + Testimonial --><section class="py-16 lg:py-24"><div class="max-w-6xl mx-auto px-4"><div class="text-center mb-10"><span class="opt">ვარიანტი 10</span><p class="text-sm text-body-dark mt-3">Features + Testimonial — grid + ციტატა</p></div><div class="grid lg:grid-cols-2 gap-10 items-center"><div><p class="text-sm font-semibold text-primary-light uppercase tracking-wider mb-3">რატომ ჩვენ</p><h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold mb-8">რატომ <span class="gradient-text">10XSEO</span>?</h2><div class="grid grid-cols-2 gap-4"><div class="rounded-xl cd p-5 hover:border-primary/30"><p class="font-inter text-2xl font-black text-primary-light mb-1">7d</p><h3 class="font-semibold text-sm mb-1">რეპორტი</h3><p class="text-xs text-body-dark">ყოველკვირეული</p></div><div class="rounded-xl cd p-5 hover:border-ai-blue/30"><p class="font-inter text-2xl font-black text-ai-blue mb-1">100%</p><h3 class="font-semibold text-sm mb-1">გამჭვირვალობა</h3><p class="text-xs text-body-dark">სრული წვდომა</p></div><div class="rounded-xl cd p-5 hover:border-success/30"><p class="font-inter text-2xl font-black text-success mb-1">0</p><h3 class="font-semibold text-sm mb-1">კონტრაქტი</h3><p class="text-xs text-body-dark">თავისუფლება</p></div><div class="rounded-xl cd p-5 hover:border-accent/30"><p class="font-inter text-2xl font-black text-accent mb-1">ROI</p><h3 class="font-semibold text-sm mb-1">ფოკუსი</h3><p class="text-xs text-body-dark">შემოსავალი</p></div><div class="rounded-xl cd p-5 hover:border-orange-500/30"><p class="font-inter text-2xl font-black text-orange-400 mb-1">10'</p><h3 class="font-semibold text-sm mb-1">Response</h3><p class="text-xs text-body-dark">სწრაფი</p></div><div class="rounded-xl cd p-5 hover:border-pink-500/30"><p class="font-inter text-2xl font-black text-pink-400 mb-1">A/B</p><h3 class="font-semibold text-sm mb-1">Data-Driven</h3><p class="text-xs text-body-dark">მონაცემები</p></div></div></div><div class="rounded-2xl bg-gradient-to-br from-primary/10 via-ai-blue/5 to-accent/10 border border-primary/20 p-8 lg:p-10"><svg class="w-10 h-10 text-primary/30 mb-6" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151C7.546 6.068 5.983 8.789 5.983 11H10v10H0z"/></svg><p class="text-lg leading-relaxed mb-6 italic">"10XSEO-სთან თანამშრომლობამ ჩვენი ბიზნესი სრულიად შეცვალა. 3 თვეში ტრაფიკი გაორმაგდა."</p><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center"><span class="text-sm font-bold text-primary-light">GP</span></div><div><p class="font-semibold text-sm">GPC</p><p class="text-xs text-body-dark">სამშენებლო კომპანია</p></div></div></div></div></div></section>
 
+<hr class="border-gray-800/50 mx-auto max-w-xs">
+
+<!-- V11 Accordion FAQ Style -->
+<section class="relative py-16 lg:py-24 overflow-hidden">
+  <div class="absolute inset-0 bg-surface-dark"></div>
+  <div class="relative z-10 max-w-3xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-10">
+      <span class="opt">ვარიანტი 11</span>
+      <p class="text-sm text-body-dark mt-3">Accordion FAQ Style — გახსნადი ბარათები glassmorphism ეფექტით</p>
+    </div>
+    <div class="text-center mb-14">
+      <p class="text-sm font-semibold text-primary-light uppercase tracking-wider mb-3">რატომ ჩვენ</p>
+      <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold">რატომ <span class="gradient-text">10XSEO</span>?</h2>
+    </div>
+    <div class="space-y-3" id="faq-list">
+      <!-- 1 -->
+      <div class="faq-item faq-open" onclick="toggleFaq(this)">
+        <div class="faq-header">
+          <div class="faq-left">
+            <div class="faq-num bg-primary/15 text-primary-light">01</div>
+            <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-primary-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+            </div>
+            <h3 class="font-heading text-base font-bold">ყოველკვირეული რეპორტები</h3>
+          </div>
+          <svg class="faq-chev" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </div>
+        <div class="faq-body">
+          <div class="faq-inner">
+            <p class="text-sm text-body-dark mb-3">ყოველ კვირა დეტალური ანგარიში — რა გაკეთდა, რა შეიცვალა, რა არის შემდეგი ნაბიჯი.</p>
+            <div class="flex items-center gap-3">
+              <div class="h-1.5 flex-1 rounded-full bg-gray-800 overflow-hidden"><div class="h-full w-[92%] rounded-full bg-gradient-to-r from-primary to-ai-blue"></div></div>
+              <span class="text-xs font-semibold text-primary-light">92% კმაყოფილება</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 2 -->
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-header">
+          <div class="faq-left">
+            <div class="faq-num bg-ai-blue/15 text-ai-blue">02</div>
+            <div class="w-10 h-10 rounded-xl bg-ai-blue/10 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-ai-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+            </div>
+            <h3 class="font-heading text-base font-bold">სრული გამჭვირვალობა</h3>
+          </div>
+          <svg class="faq-chev" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </div>
+        <div class="faq-body">
+          <div class="faq-inner">
+            <p class="text-sm text-body-dark mb-3">Google Search Console, Analytics — ხილული რეალურ დროში. არანაირი დამალული მონაცემი.</p>
+            <div class="flex items-center gap-2"><div class="w-2 h-2 rounded-full bg-success animate-pulse"></div><span class="text-xs text-success">Live Dashboard</span></div>
+          </div>
+        </div>
+      </div>
+      <!-- 3 -->
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-header">
+          <div class="faq-left">
+            <div class="faq-num bg-success/15 text-success">03</div>
+            <div class="w-10 h-10 rounded-xl bg-success/10 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"/></svg>
+            </div>
+            <h3 class="font-heading text-base font-bold">არ არის კონტრაქტი</h3>
+          </div>
+          <svg class="faq-chev" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </div>
+        <div class="faq-body">
+          <div class="faq-inner">
+            <p class="text-sm text-body-dark mb-3">შედეგები გვაკავშირებს, არა ხელშეკრულება. თავისუფალი ხართ ნებისმიერ დროს.</p>
+            <span class="inline-block px-3 py-1 rounded-full bg-success/10 text-success text-xs font-semibold">თავისუფლება</span>
+          </div>
+        </div>
+      </div>
+      <!-- 4 -->
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-header">
+          <div class="faq-left">
+            <div class="faq-num bg-accent/15 text-accent">04</div>
+            <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+            </div>
+            <h3 class="font-heading text-base font-bold">ROI-ზე ფოკუსი</h3>
+          </div>
+          <svg class="faq-chev" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </div>
+        <div class="faq-body">
+          <div class="faq-inner">
+            <p class="text-sm text-body-dark mb-3">ტრაფიკი კი არა, შემოსავალი. ყველა ოპტიმიზაცია ROI-ზეა ორიენტირებული.</p>
+            <div class="flex gap-4">
+              <div class="text-center"><p class="font-inter text-lg font-black text-accent">3.2x</p><p class="text-[10px] text-body-dark">ROI</p></div>
+              <div class="text-center"><p class="font-inter text-lg font-black text-accent">+240%</p><p class="text-[10px] text-body-dark">Revenue</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 5 -->
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-header">
+          <div class="faq-left">
+            <div class="faq-num bg-orange-500/15 text-orange-400">05</div>
+            <div class="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            </div>
+            <h3 class="font-heading text-base font-bold">სწრაფი რეაგირება</h3>
+          </div>
+          <svg class="faq-chev" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </div>
+        <div class="faq-body">
+          <div class="faq-inner">
+            <p class="text-sm text-body-dark mb-3">10 წუთი საშუალო response time. არა საათები, არა დღეები.</p>
+            <p class="font-inter text-2xl font-black text-orange-400">10 წუთი</p>
+          </div>
+        </div>
+      </div>
+      <!-- 6 -->
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-header">
+          <div class="faq-left">
+            <div class="faq-num bg-pink-500/15 text-pink-400">06</div>
+            <div class="w-10 h-10 rounded-xl bg-pink-500/10 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+            </div>
+            <h3 class="font-heading text-base font-bold">მონაცემებზე დაფუძნებული</h3>
+          </div>
+          <svg class="faq-chev" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </div>
+        <div class="faq-body">
+          <div class="faq-inner">
+            <p class="text-sm text-body-dark mb-3">A/B ტესტინგი, Heatmaps, Keyword Research — ყველა გადაწყვეტილება მონაცემებზეა დაფუძნებული.</p>
+            <div class="flex gap-2">
+              <span class="px-2 py-1 rounded-md bg-pink-500/10 text-pink-400 text-[10px] font-semibold">A/B Tests</span>
+              <span class="px-2 py-1 rounded-md bg-pink-500/10 text-pink-400 text-[10px] font-semibold">Heatmaps</span>
+              <span class="px-2 py-1 rounded-md bg-pink-500/10 text-pink-400 text-[10px] font-semibold">KW Research</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="border-gray-800/50 mx-auto max-w-xs">
+
+<!-- V12 Kanban Board -->
+<section class="relative py-16 lg:py-24 overflow-hidden">
+  <div class="absolute inset-0 bg-surface-dark"></div>
+  <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-10">
+      <span class="opt">ვარიანტი 12</span>
+      <p class="text-sm text-body-dark mt-3">Kanban Board — პროექტის მართვის სტილი, 3 სვეტი</p>
+    </div>
+    <div class="text-center mb-14">
+      <p class="text-sm font-semibold text-primary-light uppercase tracking-wider mb-3">რატომ ჩვენ</p>
+      <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold">რატომ <span class="gradient-text">10XSEO</span>?</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <!-- Column 1: What we promise -->
+      <div class="kanban-col p-4">
+        <div class="flex items-center gap-2 mb-4 pb-3 border-b border-gray-800/50">
+          <div class="w-3 h-3 rounded-full bg-primary"></div>
+          <h3 class="font-heading text-sm font-bold text-primary-light">რას ვპირდებით</h3>
+          <span class="ml-auto text-xs text-body-dark bg-gray-800/50 rounded-full px-2 py-0.5">2</span>
+        </div>
+        <div class="space-y-3">
+          <div class="kanban-card">
+            <div class="flex items-center gap-2 mb-2">
+              <div class="kanban-handle text-body-dark"><span></span><span></span><span></span></div>
+              <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-primary/15 text-primary-light">რეპორტინგი</span>
+            </div>
+            <h4 class="font-semibold text-sm mb-1">ყოველკვირეული რეპორტები</h4>
+            <p class="text-xs text-body-dark">ყოველ კვირა დეტალური ანგარიში</p>
+          </div>
+          <div class="kanban-card">
+            <div class="flex items-center gap-2 mb-2">
+              <div class="kanban-handle text-body-dark"><span></span><span></span><span></span></div>
+              <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-success/15 text-success">თავისუფლება</span>
+            </div>
+            <h4 class="font-semibold text-sm mb-1">არ არის კონტრაქტი</h4>
+            <p class="text-xs text-body-dark">შედეგები გვაკავშირებს, არა ხელშეკრულება</p>
+          </div>
+        </div>
+      </div>
+      <!-- Column 2: How we do it -->
+      <div class="kanban-col p-4">
+        <div class="flex items-center gap-2 mb-4 pb-3 border-b border-gray-800/50">
+          <div class="w-3 h-3 rounded-full bg-ai-blue"></div>
+          <h3 class="font-heading text-sm font-bold text-ai-blue">როგორ ვაკეთებთ</h3>
+          <span class="ml-auto text-xs text-body-dark bg-gray-800/50 rounded-full px-2 py-0.5">2</span>
+        </div>
+        <div class="space-y-3">
+          <div class="kanban-card">
+            <div class="flex items-center gap-2 mb-2">
+              <div class="kanban-handle text-body-dark"><span></span><span></span><span></span></div>
+              <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-ai-blue/15 text-ai-blue">გამჭვირვალობა</span>
+            </div>
+            <h4 class="font-semibold text-sm mb-1">სრული გამჭვირვალობა</h4>
+            <p class="text-xs text-body-dark">GSC, Analytics ხილული რეალურ დროში</p>
+          </div>
+          <div class="kanban-card">
+            <div class="flex items-center gap-2 mb-2">
+              <div class="kanban-handle text-body-dark"><span></span><span></span><span></span></div>
+              <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-pink-500/15 text-pink-400">მონაცემები</span>
+            </div>
+            <h4 class="font-semibold text-sm mb-1">მონაცემებზე დაფუძნებული</h4>
+            <p class="text-xs text-body-dark">A/B ტესტინგი, Heatmaps, Keyword Research</p>
+          </div>
+        </div>
+      </div>
+      <!-- Column 3: What you get -->
+      <div class="kanban-col p-4">
+        <div class="flex items-center gap-2 mb-4 pb-3 border-b border-gray-800/50">
+          <div class="w-3 h-3 rounded-full bg-success"></div>
+          <h3 class="font-heading text-sm font-bold text-success">რას იღებთ</h3>
+          <span class="ml-auto text-xs text-body-dark bg-gray-800/50 rounded-full px-2 py-0.5">2</span>
+        </div>
+        <div class="space-y-3">
+          <div class="kanban-card">
+            <div class="flex items-center gap-2 mb-2">
+              <div class="kanban-handle text-body-dark"><span></span><span></span><span></span></div>
+              <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-accent/15 text-accent">ROI</span>
+            </div>
+            <h4 class="font-semibold text-sm mb-1">ROI-ზე ფოკუსი</h4>
+            <p class="text-xs text-body-dark">ტრაფიკი კი არა, შემოსავალი</p>
+          </div>
+          <div class="kanban-card">
+            <div class="flex items-center gap-2 mb-2">
+              <div class="kanban-handle text-body-dark"><span></span><span></span><span></span></div>
+              <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-orange-500/15 text-orange-400">სისწრაფე</span>
+            </div>
+            <h4 class="font-semibold text-sm mb-1">სწრაფი რეაგირება</h4>
+            <p class="text-xs text-body-dark">10 წუთი საშუალო response time</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="border-gray-800/50 mx-auto max-w-xs">
+
+<!-- V13 Before/After Slider -->
+<section class="relative py-16 lg:py-24 overflow-hidden">
+  <div class="absolute inset-0 bg-surface-dark"></div>
+  <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-10">
+      <span class="opt">ვარიანტი 13</span>
+      <p class="text-sm text-body-dark mt-3">Before/After — სხვა სააგენტო vs 10xSEO შედარება</p>
+    </div>
+    <div class="text-center mb-14">
+      <p class="text-sm font-semibold text-primary-light uppercase tracking-wider mb-3">რატომ ჩვენ</p>
+      <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold">რატომ <span class="gradient-text">10XSEO</span>?</h2>
+    </div>
+    <div class="ba-panel">
+      <div class="ba-split">
+        <!-- Before -->
+        <div class="ba-before">
+          <div class="flex items-center gap-2 mb-6">
+            <div class="w-8 h-8 rounded-lg bg-red-500/20 flex items-center justify-center">
+              <svg class="w-4 h-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </div>
+            <h3 class="font-heading text-lg font-bold text-red-400">სხვა სააგენტოსთან</h3>
+          </div>
+          <div class="ba-item">
+            <svg class="w-5 h-5 text-red-400/60 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            <div><p class="text-sm font-medium text-red-300/80">თვეში ერთხელ რეპორტი</p><p class="text-xs text-body-dark mt-0.5">ბუნდოვანი, ზოგადი ანგარიში</p></div>
+          </div>
+          <div class="ba-item">
+            <svg class="w-5 h-5 text-red-400/60 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            <div><p class="text-sm font-medium text-red-300/80">დამალული მონაცემები</p><p class="text-xs text-body-dark mt-0.5">არ გაქვთ წვდომა Analytics-ზე</p></div>
+          </div>
+          <div class="ba-item">
+            <svg class="w-5 h-5 text-red-400/60 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            <div><p class="text-sm font-medium text-red-300/80">6-12 თვიანი კონტრაქტი</p><p class="text-xs text-body-dark mt-0.5">ჩაკეტილი ხართ</p></div>
+          </div>
+          <div class="ba-item">
+            <svg class="w-5 h-5 text-red-400/60 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            <div><p class="text-sm font-medium text-red-300/80">ტრაფიკზე ფოკუსი</p><p class="text-xs text-body-dark mt-0.5">ვიზიტები, არა შემოსავალი</p></div>
+          </div>
+          <div class="ba-item">
+            <svg class="w-5 h-5 text-red-400/60 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            <div><p class="text-sm font-medium text-red-300/80">24-48 საათი პასუხი</p><p class="text-xs text-body-dark mt-0.5">ნელი კომუნიკაცია</p></div>
+          </div>
+          <div class="ba-item">
+            <svg class="w-5 h-5 text-red-400/60 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            <div><p class="text-sm font-medium text-red-300/80">ინტუიციაზე დაფუძნებული</p><p class="text-xs text-body-dark mt-0.5">არ იყენებენ ტესტინგს</p></div>
+          </div>
+        </div>
+        <!-- Divider -->
+        <div class="ba-divider"></div>
+        <!-- After -->
+        <div class="ba-after">
+          <div class="flex items-center gap-2 mb-6">
+            <div class="w-8 h-8 rounded-lg bg-success/20 flex items-center justify-center">
+              <svg class="w-4 h-4 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <h3 class="font-heading text-lg font-bold text-success">10xSEO-სთან</h3>
+          </div>
+          <div class="ba-item">
+            <svg class="w-5 h-5 text-success flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            <div><p class="text-sm font-medium text-success/90">ყოველკვირეული რეპორტი</p><p class="text-xs text-body-dark mt-0.5">დეტალური ანგარიში ყოველ კვირა</p></div>
+          </div>
+          <div class="ba-item">
+            <svg class="w-5 h-5 text-success flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            <div><p class="text-sm font-medium text-success/90">სრული გამჭვირვალობა</p><p class="text-xs text-body-dark mt-0.5">GSC, Analytics რეალურ დროში</p></div>
+          </div>
+          <div class="ba-item">
+            <svg class="w-5 h-5 text-success flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            <div><p class="text-sm font-medium text-success/90">არ არის კონტრაქტი</p><p class="text-xs text-body-dark mt-0.5">შედეგები გვაკავშირებს</p></div>
+          </div>
+          <div class="ba-item">
+            <svg class="w-5 h-5 text-success flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            <div><p class="text-sm font-medium text-success/90">ROI-ზე ფოკუსი</p><p class="text-xs text-body-dark mt-0.5">ტრაფიკი კი არა, შემოსავალი</p></div>
+          </div>
+          <div class="ba-item">
+            <svg class="w-5 h-5 text-success flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            <div><p class="text-sm font-medium text-success/90">10 წუთი response</p><p class="text-xs text-body-dark mt-0.5">სწრაფი რეაგირება</p></div>
+          </div>
+          <div class="ba-item">
+            <svg class="w-5 h-5 text-success flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            <div><p class="text-sm font-medium text-success/90">Data-Driven მიდგომა</p><p class="text-xs text-body-dark mt-0.5">A/B ტესტინგი, Heatmaps</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="border-gray-800/50 mx-auto max-w-xs">
+
+<!-- V14 Hexagonal Grid -->
+<section class="relative py-16 lg:py-24 overflow-hidden">
+  <div class="absolute inset-0 bg-surface-dark"></div>
+  <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-10">
+      <span class="opt">ვარიანტი 14</span>
+      <p class="text-sm text-body-dark mt-3">Hexagonal Grid — ფუტურისტული თაფლის ფიჭა</p>
+    </div>
+    <div class="text-center mb-14">
+      <p class="text-sm font-semibold text-primary-light uppercase tracking-wider mb-3">რატომ ჩვენ</p>
+      <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold">რატომ <span class="gradient-text">10XSEO</span>?</h2>
+    </div>
+    <div class="hex-grid">
+      <!-- Hex 1 -->
+      <div class="hex-wrap">
+        <div class="hex-shape">
+          <svg class="w-7 h-7 text-primary-light mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+          <p class="font-heading text-xs font-bold leading-tight">ყოველკვირეული რეპორტები</p>
+        </div>
+        <div class="hex-desc">
+          <p class="text-xs text-body-dark">ყოველ კვირა დეტალური ანგარიში</p>
+        </div>
+      </div>
+      <!-- Hex 2 -->
+      <div class="hex-wrap">
+        <div class="hex-shape">
+          <svg class="w-7 h-7 text-ai-blue mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+          <p class="font-heading text-xs font-bold leading-tight">სრული გამჭვირვალობა</p>
+        </div>
+        <div class="hex-desc">
+          <p class="text-xs text-body-dark">GSC, Analytics რეალურ დროში</p>
+        </div>
+      </div>
+      <!-- Hex 3 -->
+      <div class="hex-wrap">
+        <div class="hex-shape">
+          <svg class="w-7 h-7 text-success mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"/></svg>
+          <p class="font-heading text-xs font-bold leading-tight">არ არის კონტრაქტი</p>
+        </div>
+        <div class="hex-desc">
+          <p class="text-xs text-body-dark">შედეგები გვაკავშირებს</p>
+        </div>
+      </div>
+      <!-- Hex 4 -->
+      <div class="hex-wrap">
+        <div class="hex-shape">
+          <svg class="w-7 h-7 text-accent mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+          <p class="font-heading text-xs font-bold leading-tight">ROI-ზე ფოკუსი</p>
+        </div>
+        <div class="hex-desc">
+          <p class="text-xs text-body-dark">ტრაფიკი კი არა, შემოსავალი</p>
+        </div>
+      </div>
+      <!-- Hex 5 -->
+      <div class="hex-wrap">
+        <div class="hex-shape">
+          <svg class="w-7 h-7 text-orange-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          <p class="font-heading text-xs font-bold leading-tight">სწრაფი რეაგირება</p>
+        </div>
+        <div class="hex-desc">
+          <p class="text-xs text-body-dark">10 წუთი საშუალო response time</p>
+        </div>
+      </div>
+      <!-- Hex 6 -->
+      <div class="hex-wrap">
+        <div class="hex-shape">
+          <svg class="w-7 h-7 text-pink-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          <p class="font-heading text-xs font-bold leading-tight">Data-Driven</p>
+        </div>
+        <div class="hex-desc">
+          <p class="text-xs text-body-dark">A/B ტესტინგი, Heatmaps</p>
+        </div>
+      </div>
+    </div>
+    <!-- Connecting lines visual -->
+    <div class="hidden sm:block relative mx-auto mt-4" style="max-width:520px;height:2px">
+      <div class="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
+    </div>
+  </div>
+</section>
+
+<hr class="border-gray-800/50 mx-auto max-w-xs">
+
+<!-- V15 Testimonial-Backed Features -->
+<section class="relative py-16 lg:py-24 overflow-hidden">
+  <div class="absolute inset-0 bg-surface-dark"></div>
+  <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-10">
+      <span class="opt">ვარიანტი 15</span>
+      <p class="text-sm text-body-dark mt-3">Testimonial-Backed Features — თითოეულ უპირატესობას კლიენტის ციტატა ამყარებს</p>
+    </div>
+    <div class="text-center mb-14">
+      <p class="text-sm font-semibold text-primary-light uppercase tracking-wider mb-3">რატომ ჩვენ</p>
+      <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold">რატომ <span class="gradient-text">10XSEO</span>?</h2>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- Card 1 -->
+      <div class="tb-card">
+        <div class="tb-top">
+          <div class="w-12 h-12 rounded-xl bg-primary/15 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-primary-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+          </div>
+          <h3 class="font-heading text-base font-bold mb-1">ყოველკვირეული რეპორტები</h3>
+          <p class="text-xs text-body-dark">ყოველ კვირა დეტალური ანგარიში</p>
+        </div>
+        <div class="tb-bottom">
+          <p class="text-sm text-body-dark italic leading-relaxed">"ყოველ ორშაბათს ვიცი ზუსტად რა ხდება ჩემს საიტზე. სხვა სააგენტოში თვეში ერთხელ იგზავნებოდა ბუნდოვანი PDF."</p>
+          <div class="flex items-center gap-2 mt-3">
+            <div class="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center"><span class="text-[10px] font-bold text-primary-light">ნ.კ.</span></div>
+            <span class="text-[11px] text-body-dark">ე-კომერცია</span>
+          </div>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="tb-card">
+        <div class="tb-top">
+          <div class="w-12 h-12 rounded-xl bg-ai-blue/15 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-ai-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+          </div>
+          <h3 class="font-heading text-base font-bold mb-1">სრული გამჭვირვალობა</h3>
+          <p class="text-xs text-body-dark">GSC, Analytics ხილული რეალურ დროში</p>
+        </div>
+        <div class="tb-bottom">
+          <p class="text-sm text-body-dark italic leading-relaxed">"პირველად მივიღე წვდომა ჩემს საკუთარ მონაცემებზე. ახლა თვითონ ვხედავ პროგრესს."</p>
+          <div class="flex items-center gap-2 mt-3">
+            <div class="w-6 h-6 rounded-full bg-ai-blue/20 flex items-center justify-center"><span class="text-[10px] font-bold text-ai-blue">გ.მ.</span></div>
+            <span class="text-[11px] text-body-dark">SaaS კომპანია</span>
+          </div>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="tb-card">
+        <div class="tb-top">
+          <div class="w-12 h-12 rounded-xl bg-success/15 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="font-heading text-base font-bold mb-1">არ არის კონტრაქტი</h3>
+          <p class="text-xs text-body-dark">შედეგები გვაკავშირებს, არა ხელშეკრულება</p>
+        </div>
+        <div class="tb-bottom">
+          <p class="text-sm text-body-dark italic leading-relaxed">"კონტრაქტის არარსებობამ ნდობა გამიჩინა. დარწმუნდი რომ შედეგებზე არიან ფოკუსირებულები."</p>
+          <div class="flex items-center gap-2 mt-3">
+            <div class="w-6 h-6 rounded-full bg-success/20 flex items-center justify-center"><span class="text-[10px] font-bold text-success">ლ.ბ.</span></div>
+            <span class="text-[11px] text-body-dark">კლინიკა</span>
+          </div>
+        </div>
+      </div>
+      <!-- Card 4 -->
+      <div class="tb-card">
+        <div class="tb-top">
+          <div class="w-12 h-12 rounded-xl bg-accent/15 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+          </div>
+          <h3 class="font-heading text-base font-bold mb-1">ROI-ზე ფოკუსი</h3>
+          <p class="text-xs text-body-dark">ტრაფიკი კი არა, შემოსავალი</p>
+        </div>
+        <div class="tb-bottom">
+          <p class="text-sm text-body-dark italic leading-relaxed">"პირველად მნიშვნელოვანი იყო შემოსავალი და არა ვიზიტების რაოდენობა. 6 თვეში ROI 3x-ით გაიზარდა."</p>
+          <div class="flex items-center gap-2 mt-3">
+            <div class="w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center"><span class="text-[10px] font-bold text-accent">დ.ჩ.</span></div>
+            <span class="text-[11px] text-body-dark">ონლაინ მაღაზია</span>
+          </div>
+        </div>
+      </div>
+      <!-- Card 5 -->
+      <div class="tb-card">
+        <div class="tb-top">
+          <div class="w-12 h-12 rounded-xl bg-orange-500/15 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h3 class="font-heading text-base font-bold mb-1">სწრაფი რეაგირება</h3>
+          <p class="text-xs text-body-dark">10 წუთი საშუალო response time</p>
+        </div>
+        <div class="tb-bottom">
+          <p class="text-sm text-body-dark italic leading-relaxed">"კითხვაზე პასუხი 10 წუთში მივიღე. ძველ სააგენტოში 2 დღე ველოდი ელ-ფოსტის პასუხს."</p>
+          <div class="flex items-center gap-2 mt-3">
+            <div class="w-6 h-6 rounded-full bg-orange-500/20 flex items-center justify-center"><span class="text-[10px] font-bold text-orange-400">ა.ჯ.</span></div>
+            <span class="text-[11px] text-body-dark">რესტორანი</span>
+          </div>
+        </div>
+      </div>
+      <!-- Card 6 -->
+      <div class="tb-card">
+        <div class="tb-top">
+          <div class="w-12 h-12 rounded-xl bg-pink-500/15 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          </div>
+          <h3 class="font-heading text-base font-bold mb-1">მონაცემებზე დაფუძნებული</h3>
+          <p class="text-xs text-body-dark">A/B ტესტინგი, Heatmaps, Keyword Research</p>
+        </div>
+        <div class="tb-bottom">
+          <p class="text-sm text-body-dark italic leading-relaxed">"Heatmap-ებმა აჩვენა რომ მომხმარებლები CTA ღილაკს ვერ ხედავდნენ. შეცვალეს და კონვერსია 40%-ით გაიზარდა."</p>
+          <div class="flex items-center gap-2 mt-3">
+            <div class="w-6 h-6 rounded-full bg-pink-500/20 flex items-center justify-center"><span class="text-[10px] font-bold text-pink-400">თ.გ.</span></div>
+            <span class="text-[11px] text-body-dark">ტექ. კომპანია</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <div class="py-16 text-center"><a href="index.html" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-primary to-ai-blue text-white font-semibold hover:opacity-90 transition-opacity"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>მთავარ გვერდზე დაბრუნება</a></div>
-<script>function tA(i){var o=i.classList.contains('open');document.querySelectorAll('.ai').forEach(function(e){e.classList.remove('open')});if(!o)i.classList.add('open')}</script>
+<script>
+function tA(i){var o=i.classList.contains('open');document.querySelectorAll('.ai').forEach(function(e){e.classList.remove('open')});if(!o)i.classList.add('open')}
+function toggleFaq(el){var wasOpen=el.classList.contains('faq-open');document.querySelectorAll('.faq-item').forEach(function(e){e.classList.remove('faq-open')});if(!wasOpen)el.classList.add('faq-open')}
+</script>
 </body>
 </html>
