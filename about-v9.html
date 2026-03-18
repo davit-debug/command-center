@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ჩვენს შესახებ — 10XSEO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@300;400;500;600;700;800;900&family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --violet: #8B5CF6;
+            --violet-glow: rgba(139, 92, 246, 0.3);
+            --blue: #3B82F6;
+            --teal: #14B8A6;
+            --gold: #F5A623;
+            --gold-glow: rgba(245, 166, 35, 0.25);
+            --surface: #020710;
+            --surface-card: #0A0F1E;
+            --surface-elevated: #111835;
+            --text: #E8E4F0;
+            --text-muted: #8B89A0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--surface);
+            color: var(--text);
+            font-family: 'Noto Sans Georgian', sans-serif;
+            font-weight: 400;
+            line-height: 1.7;
+            overflow-x: hidden;
+            perspective: 1200px;
+        }
+
+        .accent-font {
+            font-family: 'Sora', sans-serif;
+        }
+
+        /* ===== REVEAL ANIMATIONS ===== */
+        .reveal {
+            opacity: 0;
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal.from-left {
+            transform: translateX(-80px) translateZ(-50px);
+        }
+        .reveal.from-right {
+            transform: translateX(80px) translateZ(-50px);
+        }
+        .reveal.from-bottom {
+            transform: translateY(60px) translateZ(-30px);
+        }
+        .reveal.from-scale {
+            transform: scale(0.9) translateZ(-60px);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateX(0) translateY(0) translateZ(0) scale(1);
+        }
+
+        /* ===== DEPTH BACKGROUND LAYERS ===== */
+        .depth-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .depth-layer {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+        }
+
+        .depth-layer-1 {
+            width: 800px;
+            height: 800px;
+            background: rgba(139, 92, 246, 0.04);
+            top: -200px;
+            right: -300px;
+            animation: floatLayer1 20s ease-in-out infinite;
+        }
+
+        .depth-layer-2 {
+            width: 600px;
+            height: 600px;
+            background: rgba(59, 130, 246, 0.03);
+            bottom: 10%;
+            left: -200px;
+            animation: floatLayer2 25s ease-in-out infinite;
+        }
+
+        .depth-layer-3 {
+            width: 500px;
+            height: 500px;
+            background: rgba(245, 166, 35, 0.03);
+            top: 40%;
+            right: -100px;
+            animation: floatLayer3 18s ease-in-out infinite;
+        }
+
+        @keyframes floatLayer1 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-50px, 30px) scale(1.1); }
+        }
+        @keyframes floatLayer2 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(40px, -40px) scale(1.05); }
+        }
+        @keyframes floatLayer3 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-30px, 50px) scale(0.95); }
+        }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1.2rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(2, 7, 16, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+        }
+
+        .nav-logo {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--gold), var(--violet));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: 'Sora', sans-serif;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--violet);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.8rem;
+            border: 1px solid rgba(245, 166, 35, 0.35);
+            border-radius: 50px;
+            color: var(--gold);
+            font-family: 'Sora', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 0 30px rgba(245, 166, 35, 0.08);
+        }
+
+        .hero-title {
+            font-family: 'Sora', sans-serif;
+            font-size: clamp(3rem, 8vw, 6.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+
+        .hero-title .depth-text {
+            display: inline-block;
+            color: var(--gold);
+            text-shadow:
+                0 1px 0 #d4900f,
+                0 2px 0 #c4850e,
+                0 3px 0 #b47a0d,
+                0 4px 0 #a46f0c,
+                0 5px 0 #94640b,
+                0 6px 10px rgba(0, 0, 0, 0.4),
+                0 8px 20px rgba(245, 166, 35, 0.15),
+                0 12px 40px rgba(245, 166, 35, 0.1);
+            transform: perspective(500px) rotateX(2deg);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            font-weight: 300;
+            color: var(--text-muted);
+            max-width: 550px;
+        }
+
+        .hero-glow {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(245, 166, 35, 0.07) 0%, rgba(139, 92, 246, 0.04) 40%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        /* ===== CONTAINER ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-space {
+            padding: 7rem 0;
+        }
+
+        .section-title {
+            font-family: 'Sora', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text), var(--violet));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 1rem;
+            max-width: 550px;
+            margin: 0 auto 3.5rem;
+        }
+
+        /* ===== FLOATING CARDS ===== */
+        .float-card {
+            background: var(--surface-card);
+            border: 1px solid rgba(139, 92, 246, 0.1);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow:
+                0 10px 40px rgba(0, 0, 0, 0.4),
+                0 2px 10px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.03);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .float-card:hover {
+            transform: translateY(-8px) translateZ(20px);
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.5),
+                0 5px 20px rgba(139, 92, 246, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        /* ===== ABOUT TWO CARDS ===== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+        }
+
+        .about-grid .float-card h3 {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .about-grid .float-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.9;
+        }
+
+        /* ===== STATS ===== */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .stat-card .stat-number {
+            font-family: 'Sora', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--gold), var(--violet));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: none;
+        }
+
+        .stat-card .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        /* ===== SERVICES FLOATING CARDS ===== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .service-float {
+            padding: 2rem;
+            position: relative;
+        }
+
+        .service-float:nth-child(odd) {
+            transform: translateY(-10px);
+        }
+
+        .service-float:nth-child(even) {
+            transform: translateY(10px);
+        }
+
+        .service-float:hover {
+            transform: translateY(-18px) translateZ(20px) !important;
+        }
+
+        .service-icon {
+            font-family: 'Sora', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--violet);
+            opacity: 0.3;
+            margin-bottom: 0.8rem;
+        }
+
+        .service-float h4 {
+            font-family: 'Sora', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .service-float p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* ===== PYRAMID SVG ===== */
+        .pyramid-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 0;
+        }
+
+        .pyramid-container {
+            perspective: 800px;
+        }
+
+        .pyramid-svg {
+            width: 220px;
+            height: 250px;
+            animation: rotatePyramid 8s ease-in-out infinite;
+            filter: drop-shadow(0 15px 30px rgba(245, 166, 35, 0.2));
+        }
+
+        @keyframes rotatePyramid {
+            0%, 100% { transform: rotateY(-15deg) rotateX(5deg); }
+            50% { transform: rotateY(15deg) rotateX(-5deg); }
+        }
+
+        /* ===== TEAM WITH 3D TILT ===== */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .team-card {
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            transform-style: preserve-3d;
+        }
+
+        .team-card:hover {
+            transform: perspective(600px) rotateY(5deg) rotateX(-3deg) translateZ(15px);
+            box-shadow:
+                -10px 15px 40px rgba(0, 0, 0, 0.4),
+                0 0 20px rgba(139, 92, 246, 0.08);
+        }
+
+        .team-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--violet), var(--blue));
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Sora', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: white;
+            box-shadow: 0 5px 15px rgba(139, 92, 246, 0.3);
+        }
+
+        .team-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.25rem;
+        }
+
+        .team-card span {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Highlight founder */
+        .team-card.founder {
+            border-color: rgba(245, 166, 35, 0.2);
+        }
+
+        .team-card.founder .team-avatar {
+            background: linear-gradient(135deg, var(--gold), #d4900f);
+            box-shadow: 0 5px 20px rgba(245, 166, 35, 0.3);
+        }
+
+        /* ===== CLIENTS ===== */
+        .clients-float {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .client-chip {
+            padding: 0.8rem 2rem;
+            background: var(--surface-card);
+            border: 1px solid rgba(139, 92, 246, 0.1);
+            border-radius: 50px;
+            font-family: 'Sora', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, color 0.3s, border-color 0.3s;
+        }
+
+        .client-chip:hover {
+            transform: translateY(-5px) translateZ(10px);
+            color: var(--gold);
+            border-color: rgba(245, 166, 35, 0.2);
+        }
+
+        /* ===== CULTURE ===== */
+        .culture-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .culture-card {
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+
+        .culture-card .culture-icon {
+            font-family: 'Sora', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .culture-card h4 {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 0.7rem;
+        }
+
+        .culture-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* ===== QUOTE SECTION ===== */
+        .quote-section {
+            text-align: center;
+            padding: 5rem 2rem;
+            position: relative;
+        }
+
+        .quote-text {
+            font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+            font-weight: 300;
+            color: var(--text);
+            max-width: 700px;
+            margin: 0 auto;
+            font-style: italic;
+            position: relative;
+        }
+
+        .quote-text::before,
+        .quote-text::after {
+            font-family: 'Sora', sans-serif;
+            font-size: 5rem;
+            color: rgba(139, 92, 246, 0.15);
+            font-style: normal;
+            position: absolute;
+            line-height: 1;
+        }
+
+        .quote-text::before {
+            content: '\201C';
+            top: -2rem;
+            left: -2rem;
+        }
+
+        .quote-text::after {
+            content: '\201D';
+            bottom: -3rem;
+            right: -1rem;
+        }
+
+        .quote-author {
+            margin-top: 2rem;
+            font-family: 'Sora', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--gold);
+            letter-spacing: 2px;
+        }
+
+        /* ===== CONTACT ===== */
+        .contact-section {
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+
+        .contact-row {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-family: 'Sora', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .contact-btn.primary {
+            background: linear-gradient(135deg, var(--violet), var(--blue));
+            color: white;
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
+        }
+
+        .contact-btn.primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(139, 92, 246, 0.4);
+        }
+
+        .contact-btn.outline {
+            border: 1px solid rgba(245, 166, 35, 0.3);
+            color: var(--gold);
+        }
+
+        .contact-btn.outline:hover {
+            transform: translateY(-4px);
+            border-color: var(--gold);
+            box-shadow: 0 8px 25px rgba(245, 166, 35, 0.15);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(139, 92, 246, 0.08);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+            .nav-links {
+                display: none;
+            }
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            .stats-row {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .service-float:nth-child(odd),
+            .service-float:nth-child(even) {
+                transform: translateY(0);
+            }
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .culture-grid {
+                grid-template-columns: 1fr;
+            }
+            .container {
+                padding: 0 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- DEPTH BACKGROUND LAYERS -->
+    <div class="depth-bg">
+        <div class="depth-layer depth-layer-1"></div>
+        <div class="depth-layer depth-layer-2"></div>
+        <div class="depth-layer depth-layer-3"></div>
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="nav-logo">10XSEO</div>
+        <ul class="nav-links">
+            <li><a href="#about">ჩვენზე</a></li>
+            <li><a href="#services">სერვისები</a></li>
+            <li><a href="#team">გუნდი</a></li>
+            <li><a href="#contact">კონტაქტი</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-glow"></div>
+        <div class="hero-badge reveal from-bottom">საქართველოს #1 SEO სააგენტო</div>
+        <h1 class="hero-title reveal from-scale">ჩვენ ვართ <span class="depth-text">10xელები</span></h1>
+        <p class="hero-subtitle reveal from-bottom">იყავი პირველი — AI-ზე დაფუძნებული SEO ზრდის პარტნიორი</p>
+    </section>
+
+    <!-- ANIMATED PYRAMID -->
+    <div class="pyramid-section reveal from-scale">
+        <div class="pyramid-container">
+            <svg class="pyramid-svg" viewBox="0 0 200 230" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Pyramid faces -->
+                <polygon points="100,10 30,200 100,170" fill="url(#grad1)" opacity="0.9"/>
+                <polygon points="100,10 170,200 100,170" fill="url(#grad2)" opacity="0.7"/>
+                <polygon points="30,200 170,200 100,170" fill="url(#grad3)" opacity="0.5"/>
+                <!-- Tier lines -->
+                <line x1="53" y1="90" x2="147" y2="90" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+                <line x1="42" y1="130" x2="158" y2="130" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+                <line x1="35" y1="165" x2="165" y2="165" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+                <!-- Glow at top -->
+                <circle cx="100" cy="10" r="4" fill="var(--gold)" opacity="0.8">
+                    <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+                </circle>
+                <defs>
+                    <linearGradient id="grad1" x1="30" y1="200" x2="100" y2="10">
+                        <stop offset="0%" stop-color="#8B5CF6"/>
+                        <stop offset="100%" stop-color="#F5A623"/>
+                    </linearGradient>
+                    <linearGradient id="grad2" x1="170" y1="200" x2="100" y2="10">
+                        <stop offset="0%" stop-color="#3B82F6"/>
+                        <stop offset="100%" stop-color="#F5A623"/>
+                    </linearGradient>
+                    <linearGradient id="grad3" x1="30" y1="200" x2="170" y2="200">
+                        <stop offset="0%" stop-color="#8B5CF6" stop-opacity="0.5"/>
+                        <stop offset="100%" stop-color="#3B82F6" stop-opacity="0.5"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section class="section-space" id="about">
+        <div class="container">
+            <h2 class="section-title reveal from-bottom">ვინ ვართ ჩვენ</h2>
+            <p class="section-subtitle reveal from-bottom">2024 წელს დაფუძნებული, საქართველოდან მსოფლიოსკენ მიმავალი SEO სააგენტო</p>
+            <div class="about-grid">
+                <div class="float-card reveal from-left">
+                    <h3>ჩვენი ისტორია</h3>
+                    <p>10XSEO დაიბადა 2024 წელს — მცირე, მაგრამ ამბიციური გუნდით, რომელსაც ერთი მიზანი აერთიანებდა: საქართველოში SEO-ს სტანდარტის შეცვლა. დღეს ჩვენ Ahrefs-ის ვერიფიცირებული სააგენტო ვართ, ვმუშაობთ ამერიკული, ევროპული და ქართული კლიენტებისთვის, და მალე დუბაიშიც ვფართოვდებით.</p>
+                </div>
+                <div class="float-card reveal from-right">
+                    <h3>ჩვენი მიდგომა</h3>
+                    <p>ვაერთიანებთ ხელოვნურ ინტელექტს, მონაცემთა ანალიზსა და შემოქმედებით სტრატეგიას. AEO ოპტიმიზაცია, ტექნიკური აუდიტი, კონტენტ სტრატეგია — ყველაფერი ერთ ეკოსისტემაში. ქართულ ბაზარს Alpaca-ს ბრენდით ვემსახურებით (alpaca.ge).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="section-space">
+        <div class="container">
+            <div class="stats-row">
+                <div class="float-card stat-card reveal from-left">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">მომსახურებული კლიენტი</div>
+                </div>
+                <div class="float-card stat-card reveal from-bottom">
+                    <div class="stat-number">+700%</div>
+                    <div class="stat-label">საშუალო ტრაფიკის ზრდა</div>
+                </div>
+                <div class="float-card stat-card reveal from-right">
+                    <div class="stat-number">+540%</div>
+                    <div class="stat-label">ქივორდების ზრდა</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUOTE -->
+    <div class="quote-section reveal from-scale">
+        <p class="quote-text">SEO არ არის მხოლოდ რანკინგი — ეს არის ბიზნესის ტრანსფორმაცია. ჩვენი მიზანია ყველა კლიენტისთვის რეალური ზრდა.</p>
+        <div class="quote-author">დავით წილოსანი — დამფუძნებელი</div>
+    </div>
+
+    <!-- SERVICES -->
+    <section class="section-space" id="services">
+        <div class="container">
+            <h2 class="section-title reveal from-bottom">სერვისები</h2>
+            <p class="section-subtitle reveal from-bottom">სრული SEO ეკოსისტემა თქვენი ბიზნესის ზრდისთვის</p>
+            <div class="services-grid">
+                <div class="float-card service-float reveal from-left">
+                    <div class="service-icon">01</div>
+                    <h4>SEO აუდიტი</h4>
+                    <p>სრული ტექნიკური და კონტენტის ანალიზი თქვენი საიტისთვის</p>
+                </div>
+                <div class="float-card service-float reveal from-bottom">
+                    <div class="service-icon">02</div>
+                    <h4>SEO მენეჯმენტი</h4>
+                    <p>ყოვლისმომცველი SEO მართვა და ოპტიმიზაცია</p>
+                </div>
+                <div class="float-card service-float reveal from-right">
+                    <div class="service-icon">03</div>
+                    <h4>კონტენტ სტრატეგია</h4>
+                    <p>მონაცემებზე დაფუძნებული კონტენტ გეგმა</p>
+                </div>
+                <div class="float-card service-float reveal from-left">
+                    <div class="service-icon">04</div>
+                    <h4>ქივორდ რისერჩი</h4>
+                    <p>სიღრმისეული საკვანძო სიტყვების კვლევა</p>
+                </div>
+                <div class="float-card service-float reveal from-bottom">
+                    <div class="service-icon">05</div>
+                    <h4>AI SEO / AEO</h4>
+                    <p>ხელოვნური ინტელექტის ოპტიმიზაცია</p>
+                </div>
+                <div class="float-card service-float reveal from-right">
+                    <div class="service-icon">06</div>
+                    <h4>CRO</h4>
+                    <p>კონვერსიის მაჩვენებლის ოპტიმიზაცია</p>
+                </div>
+                <div class="float-card service-float reveal from-left">
+                    <div class="service-icon">07</div>
+                    <h4>Google Ads</h4>
+                    <p>რეკლამის მართვა და ოპტიმიზაცია</p>
+                </div>
+                <div class="float-card service-float reveal from-bottom">
+                    <div class="service-icon">08</div>
+                    <h4>ბექლინკ მშენებლობა</h4>
+                    <p>ხარისხიანი ბმულების მოპოვება</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="section-space" id="team">
+        <div class="container">
+            <h2 class="section-title reveal from-bottom">ჩვენი გუნდი</h2>
+            <p class="section-subtitle reveal from-bottom">10+ ახალგაზრდა, შთაგონებული SEO სპეციალისტი</p>
+            <div class="team-grid">
+                <div class="float-card team-card founder reveal from-left">
+                    <div class="team-avatar">დ</div>
+                    <h4>დავით წილოსანი</h4>
+                    <span>CEO & დამფუძნებელი</span>
+                </div>
+                <div class="float-card team-card reveal from-bottom">
+                    <div class="team-avatar">ა</div>
+                    <h4>ანა</h4>
+                    <span>SEO სპეციალისტი</span>
+                </div>
+                <div class="float-card team-card reveal from-right">
+                    <div class="team-avatar">მ</div>
+                    <h4>მარიამ ლაბაძე</h4>
+                    <span>SEO სპეციალისტი</span>
+                </div>
+                <div class="float-card team-card reveal from-left">
+                    <div class="team-avatar">ნ</div>
+                    <h4>ნინო ბუბუნაური</h4>
+                    <span>SEO სპეციალისტი</span>
+                </div>
+                <div class="float-card team-card reveal from-bottom">
+                    <div class="team-avatar">თ</div>
+                    <h4>თეო მაისურაძე</h4>
+                    <span>SEO სპეციალისტი</span>
+                </div>
+                <div class="float-card team-card reveal from-right">
+                    <div class="team-avatar">თ</div>
+                    <h4>თინათინი</h4>
+                    <span>SEO სპეციალისტი</span>
+                </div>
+                <div class="float-card team-card reveal from-left">
+                    <div class="team-avatar">თ</div>
+                    <h4>თამუნა ონიანი</h4>
+                    <span>SEO სპეციალისტი</span>
+                </div>
+                <div class="float-card team-card reveal from-bottom">
+                    <div class="team-avatar">ს</div>
+                    <h4>სოფო გოზალიშვილი</h4>
+                    <span>SEO სპეციალისტი</span>
+                </div>
+                <div class="float-card team-card reveal from-right">
+                    <div class="team-avatar">დ</div>
+                    <h4>დავით გუბანოვი</h4>
+                    <span>SEO სპეციალისტი</span>
+                </div>
+                <div class="float-card team-card reveal from-left">
+                    <div class="team-avatar">ლ</div>
+                    <h4>ლუკა</h4>
+                    <span>SEO სპეციალისტი</span>
+                </div>
+                <div class="float-card team-card reveal from-bottom">
+                    <div class="team-avatar">ნ</div>
+                    <h4>ნინა</h4>
+                    <span>SEO სპეციალისტი</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLIENTS -->
+    <section class="section-space">
+        <div class="container">
+            <h2 class="section-title reveal from-bottom">კლიენტები</h2>
+            <p class="section-subtitle reveal from-bottom">საერთაშორისო და ქართული ბაზრის წამყვანი ბრენდები</p>
+            <div class="clients-float reveal from-scale">
+                <div class="client-chip">Elehear</div>
+                <div class="client-chip">1ClickBlinds</div>
+                <div class="client-chip">ClearMinds</div>
+                <div class="client-chip">IBCCS</div>
+                <div class="client-chip">Alpaca.ge</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CULTURE -->
+    <section class="section-space">
+        <div class="container">
+            <h2 class="section-title reveal from-bottom">კულტურა</h2>
+            <div class="culture-grid" style="margin-top: 2.5rem;">
+                <div class="float-card culture-card reveal from-left">
+                    <span class="culture-icon">&#127760;</span>
+                    <h4>Remote-First</h4>
+                    <p>სრულად დისტანციური მუშაობა — თავისუფლება და მოქნილობა.</p>
+                </div>
+                <div class="float-card culture-card reveal from-bottom">
+                    <span class="culture-icon">&#128218;</span>
+                    <h4>ცოდნის გაზიარება</h4>
+                    <p>ყოველკვირეული შეხვედრები, ტრენდები და გამოცდილების გაცვლა.</p>
+                </div>
+                <div class="float-card culture-card reveal from-right">
+                    <span class="culture-icon">&#129302;</span>
+                    <h4>AI ინოვაცია</h4>
+                    <p>AI-ზე დაფუძნებული მიდგომების პიონერი რეგიონში.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section-space contact-section" id="contact">
+        <h2 class="section-title reveal from-bottom">დაგვიკავშირდით</h2>
+        <p class="section-subtitle reveal from-bottom" style="margin-left:auto;margin-right:auto;">მზად ვართ თქვენი ბიზნესის ზრდისთვის</p>
+        <div class="contact-row reveal from-scale">
+            <a href="tel:+995510101517" class="contact-btn primary">510 10 15 17</a>
+            <a href="https://calendly.com/10xseo-sales" target="_blank" class="contact-btn outline">შეხვედრის დაჯავშნა</a>
+            <a href="https://10xseo.ge" target="_blank" class="contact-btn outline">10xseo.ge</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2024–2026 10XSEO — იყავი პირველი</p>
+    </footer>
+
+    <!-- INTERSECTION OBSERVER -->
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -60px 0px'
+        });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // 3D tilt effect on team cards
+        document.querySelectorAll('.team-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / centerY * -8;
+                const rotateY = (x - centerX) / centerX * 8;
+                card.style.transform = `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(15px)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+        });
+    </script>
+
+</body>
+</html>
