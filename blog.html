@@ -133,10 +133,7 @@
       transition: opacity 0.3s ease, transform 0.3s ease;
     }
     .blog-post-item.hidden-post {
-      opacity: 0;
-      transform: scale(0.95);
-      position: absolute;
-      pointer-events: none;
+      display: none;
       height: 0;
       overflow: hidden;
       margin: 0;
@@ -280,12 +277,12 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
 
       <!-- ========== FEATURED POST ========== -->
-      <section class="mt-8 mb-12 lg:mb-16 blog-post-item" data-category="seo-strategy" data-title="SEO ოპტიმიზაცია 2025 წელს - ცვლილებები და ტრენდები">
+      <section id="featured-post" class="mt-8 mb-12 lg:mb-16" data-category="seo-strategy" data-title="SEO ოპტიმიზაცია 2025 წელს - ცვლილებები და ტრენდები">
         <a href="blog/seo-2025.html" class="group block gradient-border bg-white dark:bg-surface-dark-alt">
           <div class="grid md:grid-cols-2 gap-0">
             <div class="aspect-[16/10] md:aspect-auto bg-gradient-to-br from-primary/20 via-ai-blue/10 to-accent/20 dark:from-primary/20 dark:via-ai-blue/10 dark:to-accent/20 flex items-center justify-center rounded-t-2xl md:rounded-l-2xl md:rounded-tr-none">
               <div class="text-center p-8">
-                <img src="https://10xseo.ge/wp-content/uploads/2025/06/1seoagency12.png" alt="SEO ოპტიმიზაცია 2025" class="w-full h-full object-cover rounded-2xl" onerror="this.style.display='none';this.parentElement.innerHTML='<svg class=\'w-16 h-16 mx-auto text-primary/50\' fill=\'none\' stroke=\'currentColor\' viewBox=\'0 0 24 24\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z\'/></svg><span class=\'text-sm text-body/60 dark:text-body-dark/60 block mt-4\'>Featured Article</span>'">
+                <img src="images/blog/seo-2025.png" alt="SEO ოპტიმიზაცია 2025" class="w-full h-full object-cover rounded-2xl" onerror="this.style.display='none';this.parentElement.innerHTML='<svg class=\'w-16 h-16 mx-auto text-primary/50\' fill=\'none\' stroke=\'currentColor\' viewBox=\'0 0 24 24\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z\'/></svg><span class=\'text-sm text-body/60 dark:text-body-dark/60 block mt-4\'>Featured Article</span>'">
               </div>
             </div>
             <div class="p-6 sm:p-8 md:p-10 flex flex-col justify-center">
@@ -308,7 +305,7 @@
       </section>
 
       <!-- ========== CONTENT GRID + SIDEBAR ========== -->
-      <div class="grid lg:grid-cols-3 gap-8">
+      <div class="grid lg:grid-cols-3 gap-8 mt-8">
         <!-- Main grid — 2 columns -->
         <div class="lg:col-span-2">
           <div id="blog-grid" class="grid sm:grid-cols-2 gap-6">
@@ -317,7 +314,7 @@
             <article class="blog-post-item" data-category="seo-strategy" data-title="ციფრული მარკეტინგი 2025 წელს: რატომ SEO ოპტიმიზაცია?">
               <a href="blog/cifruli-marketingi.html" class="blog-card group block bg-white dark:bg-surface-dark-alt rounded-2xl overflow-hidden border border-gray-100 dark:border-white/5 h-full">
                 <div class="aspect-[16/10] bg-gradient-to-br from-primary/20 to-ai-blue/10 dark:from-primary/20 dark:to-ai-blue/10 flex items-center justify-center overflow-hidden">
-                  <img src="https://10xseo.ge/wp-content/uploads/2025/05/marketingi-2025.webp" alt="ციფრული მარკეტინგი 2025" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                  <img src="images/blog/cifruli-marketingi.png" alt="ციფრული მარკეტინგი 2025" class="w-full h-full object-cover" onerror="this.style.display='none'">
                 </div>
                 <div class="p-5">
                   <span class="text-xs font-medium text-primary">SEO</span>
@@ -336,7 +333,7 @@
             <article class="blog-post-item" data-category="ai-seo" data-title="AEO ოპტიმიზაცია — რა არის Answer Engine Optimization">
               <a href="blog/ra-aris-aeo.html" class="blog-card group block bg-white dark:bg-surface-dark-alt rounded-2xl overflow-hidden border border-gray-100 dark:border-white/5 h-full">
                 <div class="aspect-[16/10] bg-gradient-to-br from-ai-blue/20 to-primary/10 dark:from-ai-blue/20 dark:to-primary/10 flex items-center justify-center overflow-hidden">
-                  <img src="https://10xseo.ge/wp-content/uploads/2025/06/ra-aris-aeo1.webp" alt="AEO ოპტიმიზაცია" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                  <img src="images/blog/ra-aris-aeo.png" alt="AEO ოპტიმიზაცია" class="w-full h-full object-cover" onerror="this.style.display='none'">
                 </div>
                 <div class="p-5">
                   <span class="text-xs font-medium text-ai-blue">AI & SEO</span>
@@ -355,7 +352,7 @@
             <article class="blog-post-item" data-category="content-marketing" data-title="SEO კოპირაითინგი - წარმატებული კონტენტის შესაქმნელად">
               <a href="blog/seo-copywriting.html" class="blog-card group block bg-white dark:bg-surface-dark-alt rounded-2xl overflow-hidden border border-gray-100 dark:border-white/5 h-full">
                 <div class="aspect-[16/10] bg-gradient-to-br from-accent/20 to-ai-blue/10 dark:from-accent/20 dark:to-ai-blue/10 flex items-center justify-center overflow-hidden">
-                  <img src="https://10xseo.ge/wp-content/uploads/2025/06/1seoagency12.png" alt="SEO კოპირაითინგი" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                  <img src="images/blog/seo-copywriting.png" alt="SEO კოპირაითინგი" class="w-full h-full object-cover" onerror="this.style.display='none'">
                 </div>
                 <div class="p-5">
                   <span class="text-xs font-medium text-accent">კონტენტ მარკეტინგი</span>
@@ -374,7 +371,7 @@
             <article class="blog-post-item" data-category="local-seo" data-title="ლოკალური SEO - როგორ მოვიზიდოთ კლიენტები Google Maps-დან">
               <a href="blog/local-seo.html" class="blog-card group block bg-white dark:bg-surface-dark-alt rounded-2xl overflow-hidden border border-gray-100 dark:border-white/5 h-full">
                 <div class="aspect-[16/10] bg-gradient-to-br from-yellow-500/20 to-primary/10 dark:from-yellow-500/20 dark:to-primary/10 flex items-center justify-center overflow-hidden">
-                  <img src="https://10xseo.ge/wp-content/uploads/2026/02/esearch2025-1-1.png" alt="ლოკალური SEO" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                  <img src="images/blog/local-seo.png" alt="ლოკალური SEO" class="w-full h-full object-cover" onerror="this.style.display='none'">
                 </div>
                 <div class="p-5">
                   <span class="text-xs font-medium text-yellow-500">ლოკალური SEO</span>
@@ -392,8 +389,8 @@
             <!-- Card 5: რატომ სჭირდება ბიზნესს SEO -->
             <article class="blog-post-item" data-category="seo-strategy" data-title="რატომ სჭირდება თქვენს ბიზნესს SEO? – 15 მიზეზი">
               <a href="blog/ratom-schirdeba-bizness-seo.html" class="blog-card group block bg-white dark:bg-surface-dark-alt rounded-2xl overflow-hidden border border-gray-100 dark:border-white/5 h-full">
-                <div class="aspect-[16/10] bg-gradient-to-br from-primary/20 to-accent/10 dark:from-primary/20 dark:to-accent/10 flex items-center justify-center">
-                  <svg class="w-10 h-10 text-primary/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/></svg>
+                <div class="aspect-[16/10] bg-gradient-to-br from-primary/20 to-accent/10 dark:from-primary/20 dark:to-accent/10 flex items-center justify-center overflow-hidden">
+                  <img src="images/blog/ratom-schirdeba-bizness-seo.png" alt="SEO ბიზნესისთვის" class="w-full h-full object-cover" onerror="this.style.display='none'">
                 </div>
                 <div class="p-5">
                   <span class="text-xs font-medium text-primary">SEO</span>
@@ -411,8 +408,8 @@
             <!-- Card 6: გეოტეგირების გავლენა -->
             <article class="blog-post-item" data-category="local-seo" data-title="გეოტეგირების გავლენა ბიზნეს პროფილის რეიტინგზე">
               <a href="blog/geotegirebis-gavlena-reitingze.html" class="blog-card group block bg-white dark:bg-surface-dark-alt rounded-2xl overflow-hidden border border-gray-100 dark:border-white/5 h-full">
-                <div class="aspect-[16/10] bg-gradient-to-br from-accent/20 to-primary/10 dark:from-accent/20 dark:to-primary/10 flex items-center justify-center">
-                  <svg class="w-10 h-10 text-accent/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+                <div class="aspect-[16/10] bg-gradient-to-br from-accent/20 to-primary/10 dark:from-accent/20 dark:to-primary/10 flex items-center justify-center overflow-hidden">
+                  <img src="images/blog/geotegirebis-gavlena-reitingze.png" alt="გეოტეგირების გავლენა" class="w-full h-full object-cover" onerror="this.style.display='none'">
                 </div>
                 <div class="p-5">
                   <span class="text-xs font-medium text-accent">ლოკალური SEO</span>
@@ -431,7 +428,7 @@
             <article class="blog-post-item" data-category="seo-strategy" data-title="SEO სააგენტოსთან თანამშრომლობის უპირატესობა">
               <a href="blog/seo-saagento.html" class="blog-card group block bg-white dark:bg-surface-dark-alt rounded-2xl overflow-hidden border border-gray-100 dark:border-white/5 h-full">
                 <div class="aspect-[16/10] bg-gradient-to-br from-ai-blue/20 to-accent/10 dark:from-ai-blue/20 dark:to-accent/10 flex items-center justify-center overflow-hidden">
-                  <img src="https://10xseo.ge/wp-content/uploads/2024/08/seo-agency-upiratesoba.png" alt="SEO სააგენტო" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                  <img src="images/blog/seo-saagento.png" alt="SEO სააგენტო" class="w-full h-full object-cover" onerror="this.style.display='none'">
                 </div>
                 <div class="p-5">
                   <span class="text-xs font-medium text-ai-blue">SEO</span>
@@ -450,7 +447,7 @@
             <article class="blog-post-item" data-category="content-marketing" data-title="ქოფირაითინგი: სტრატეგია ეფექტური კომუნიკაციისთვის">
               <a href="blog/copywriting.html" class="blog-card group block bg-white dark:bg-surface-dark-alt rounded-2xl overflow-hidden border border-gray-100 dark:border-white/5 h-full">
                 <div class="aspect-[16/10] bg-gradient-to-br from-primary/20 to-ai-blue/10 dark:from-primary/20 dark:to-ai-blue/10 flex items-center justify-center overflow-hidden">
-                  <img src="https://10xseo.ge/wp-content/uploads/2026/03/article.png" alt="ქოფირაითინგი" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                  <img src="images/blog/seo-copywriting.png" alt="ქოფირაითინგი" class="w-full h-full object-cover" onerror="this.style.display='none'">
                 </div>
                 <div class="p-5">
                   <span class="text-xs font-medium text-primary">კონტენტ მარკეტინგი</span>
@@ -469,7 +466,7 @@
             <article class="blog-post-item" data-category="seo-strategy" data-title="რა ბედი ეწევა ჩვენს სოციალურ ქსელებს გარდაცვალების შემდეგ?">
               <a href="blog/cifruli-memkvidreoba.html" class="blog-card group block bg-white dark:bg-surface-dark-alt rounded-2xl overflow-hidden border border-gray-100 dark:border-white/5 h-full">
                 <div class="aspect-[16/10] bg-gradient-to-br from-accent/20 to-ai-blue/10 dark:from-accent/20 dark:to-ai-blue/10 flex items-center justify-center overflow-hidden">
-                  <img src="https://10xseo.ge/wp-content/uploads/2026/02/esearch2025-2.png" alt="ციფრული მემკვიდრეობა" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                  <img src="images/blog/cifruli-memkvidreoba.png" alt="ციფრული მემკვიდრეობა" class="w-full h-full object-cover" onerror="this.style.display='none'">
                 </div>
                 <div class="p-5">
                   <span class="text-xs font-medium text-accent">SEO</span>
@@ -488,7 +485,7 @@
             <article class="blog-post-item" data-category="seo-strategy" data-title="რატომ არის 10xSEO საუკეთესო SEO სააგენტო საქართველოში?">
               <a href="blog/best-seo-agency-in-georgia.html" class="blog-card group block bg-white dark:bg-surface-dark-alt rounded-2xl overflow-hidden border border-gray-100 dark:border-white/5 h-full">
                 <div class="aspect-[16/10] bg-gradient-to-br from-yellow-500/20 to-primary/10 dark:from-yellow-500/20 dark:to-primary/10 flex items-center justify-center overflow-hidden">
-                  <img src="https://10xseo.ge/wp-content/uploads/2025/06/1seoagency12.png" alt="საუკეთესო SEO სააგენტო" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                  <img src="images/blog/best-seo-agency-in-georgia.png" alt="საუკეთესო SEO სააგენტო" class="w-full h-full object-cover" onerror="this.style.display='none'">
                 </div>
                 <div class="p-5">
                   <span class="text-xs font-medium text-yellow-500">SEO</span>
@@ -506,8 +503,8 @@
             <!-- Card 11: რა დრო სჭირდება SEO-ს -->
             <article class="blog-post-item" data-category="seo-strategy" data-title="რა დრო სჭირდება SEO-ს შედეგების მისაღებად?">
               <a href="blog/ra-dro-schireba-seos-shedegebis-misagebad.html" class="blog-card group block bg-white dark:bg-surface-dark-alt rounded-2xl overflow-hidden border border-gray-100 dark:border-white/5 h-full">
-                <div class="aspect-[16/10] bg-gradient-to-br from-primary/20 to-accent/10 dark:from-primary/20 dark:to-accent/10 flex items-center justify-center">
-                  <svg class="w-10 h-10 text-primary/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <div class="aspect-[16/10] bg-gradient-to-br from-primary/20 to-accent/10 dark:from-primary/20 dark:to-accent/10 flex items-center justify-center overflow-hidden">
+                  <img src="images/blog/ra-dro-schireba-seos-shedegebis-misagebad.png" alt="SEO შედეგები" class="w-full h-full object-cover" onerror="this.style.display='none'">
                 </div>
                 <div class="p-5">
                   <span class="text-xs font-medium text-primary">SEO</span>
@@ -525,8 +522,8 @@
             <!-- Card 12: 2025 მარტის განახლებები -->
             <article class="blog-post-item" data-category="technical-seo" data-title="2025 წლის მარტის ძირითადი განახლებები დასრულებულია">
               <a href="blog/2025-wlis-martis-ganaxlebebi-dasrulda.html" class="blog-card group block bg-white dark:bg-surface-dark-alt rounded-2xl overflow-hidden border border-gray-100 dark:border-white/5 h-full">
-                <div class="aspect-[16/10] bg-gradient-to-br from-ai-blue/20 to-primary/10 dark:from-ai-blue/20 dark:to-primary/10 flex items-center justify-center">
-                  <svg class="w-10 h-10 text-ai-blue/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182"/></svg>
+                <div class="aspect-[16/10] bg-gradient-to-br from-ai-blue/20 to-primary/10 dark:from-ai-blue/20 dark:to-primary/10 flex items-center justify-center overflow-hidden">
+                  <img src="images/blog/2025-wlis-martis-ganaxlebebi-dasrulda.png" alt="Google Update 2025" class="w-full h-full object-cover" onerror="this.style.display='none'">
                 </div>
                 <div class="p-5">
                   <span class="text-xs font-medium text-ai-blue">ტექნიკური SEO</span>
@@ -544,8 +541,8 @@
             <!-- Card 13: ბექლინკების სტატისტიკა -->
             <article class="blog-post-item" data-category="link-building" data-title="ბექლინკების სტატისტიკა - Link building">
               <a href="blog/link-building-stats.html" class="blog-card group block bg-white dark:bg-surface-dark-alt rounded-2xl overflow-hidden border border-gray-100 dark:border-white/5 h-full">
-                <div class="aspect-[16/10] bg-gradient-to-br from-accent/20 to-primary/10 dark:from-accent/20 dark:to-primary/10 flex items-center justify-center">
-                  <svg class="w-10 h-10 text-accent/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m9.86-1.06l4.5-4.5a4.5 4.5 0 00-6.364-6.364l-1.757 1.757"/></svg>
+                <div class="aspect-[16/10] bg-gradient-to-br from-accent/20 to-primary/10 dark:from-accent/20 dark:to-primary/10 flex items-center justify-center overflow-hidden">
+                  <img src="images/blog/link-building-stats.png" alt="ლინკ ბილდინგი" class="w-full h-full object-cover" onerror="this.style.display='none'">
                 </div>
                 <div class="p-5">
                   <span class="text-xs font-medium text-accent">ბექლინკები</span>
@@ -564,7 +561,7 @@
             <article class="blog-post-item" data-category="seo-strategy" data-title="რა არის Google Sandbox?">
               <a href="blog/google-sandbox.html" class="blog-card group block bg-white dark:bg-surface-dark-alt rounded-2xl overflow-hidden border border-gray-100 dark:border-white/5 h-full">
                 <div class="aspect-[16/10] bg-gradient-to-br from-primary/20 to-ai-blue/10 dark:from-primary/20 dark:to-ai-blue/10 flex items-center justify-center overflow-hidden">
-                  <img src="https://10xseo.ge/wp-content/uploads/2024/01/Write-a-pretitle-here-2.png" alt="Google Sandbox" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                  <img src="images/blog/google-sandbox.png" alt="Google Sandbox" class="w-full h-full object-cover" onerror="this.style.display='none'">
                 </div>
                 <div class="p-5">
                   <span class="text-xs font-medium text-primary">SEO</span>
@@ -583,7 +580,7 @@
             <article class="blog-post-item" data-category="content-marketing" data-title="7 რჩევა SEO კონტენტის შექმნის შესახებ">
               <a href="blog/seo-content.html" class="blog-card group block bg-white dark:bg-surface-dark-alt rounded-2xl overflow-hidden border border-gray-100 dark:border-white/5 h-full">
                 <div class="aspect-[16/10] bg-gradient-to-br from-accent/20 to-ai-blue/10 dark:from-accent/20 dark:to-ai-blue/10 flex items-center justify-center overflow-hidden">
-                  <img src="https://10xseo.ge/wp-content/uploads/2024/01/Write-a-pretitle-here-3.png" alt="SEO კონტენტი" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                  <img src="images/blog/seo-content.png" alt="SEO კონტენტი" class="w-full h-full object-cover" onerror="this.style.display='none'">
                 </div>
                 <div class="p-5">
                   <span class="text-xs font-medium text-accent">კონტენტ მარკეტინგი</span>
@@ -602,7 +599,7 @@
             <article class="blog-post-item" data-category="seo-strategy" data-title="როგორ მოქმედებს სოციალური მედიის აქტივობა SEO რეიტინგზე?">
               <a href="blog/soc-media-da-seo.html" class="blog-card group block bg-white dark:bg-surface-dark-alt rounded-2xl overflow-hidden border border-gray-100 dark:border-white/5 h-full">
                 <div class="aspect-[16/10] bg-gradient-to-br from-ai-blue/20 to-accent/10 dark:from-ai-blue/20 dark:to-accent/10 flex items-center justify-center overflow-hidden">
-                  <img src="https://10xseo.ge/wp-content/uploads/2024/02/Write-a-pretitle-here-8.png" alt="სოც მედია და SEO" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                  <img src="images/blog/soc-media-da-seo.png" alt="სოც მედია და SEO" class="w-full h-full object-cover" onerror="this.style.display='none'">
                 </div>
                 <div class="p-5">
                   <span class="text-xs font-medium text-ai-blue">SEO</span>
@@ -621,7 +618,7 @@
             <article class="blog-post-item" data-category="seo-strategy" data-title="საინტერესო SEO სტატისტიკა ბიზნესისთვის">
               <a href="blog/business-seo-stats.html" class="blog-card group block bg-white dark:bg-surface-dark-alt rounded-2xl overflow-hidden border border-gray-100 dark:border-white/5 h-full">
                 <div class="aspect-[16/10] bg-gradient-to-br from-primary/20 to-accent/10 dark:from-primary/20 dark:to-accent/10 flex items-center justify-center overflow-hidden">
-                  <img src="https://10xseo.ge/wp-content/uploads/2024/01/Write-a-pretitle-here-7.png" alt="SEO სტატისტიკა" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                  <img src="images/blog/business-seo-stats.png" alt="SEO სტატისტიკა" class="w-full h-full object-cover" onerror="this.style.display='none'">
                 </div>
                 <div class="p-5">
                   <span class="text-xs font-medium text-primary">SEO</span>
@@ -640,7 +637,7 @@
             <article class="blog-post-item" data-category="seo-strategy" data-title="2024 წლის მნიშვნელოვანი SEO ტრენდები">
               <a href="blog/2024-seo-trendebi.html" class="blog-card group block bg-white dark:bg-surface-dark-alt rounded-2xl overflow-hidden border border-gray-100 dark:border-white/5 h-full">
                 <div class="aspect-[16/10] bg-gradient-to-br from-yellow-500/20 to-ai-blue/10 dark:from-yellow-500/20 dark:to-ai-blue/10 flex items-center justify-center overflow-hidden">
-                  <img src="https://10xseo.ge/wp-content/uploads/2024/01/unnamed.png" alt="2024 SEO ტრენდები" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                  <img src="images/blog/2024-seo-trendebi.png" alt="2024 SEO ტრენდები" class="w-full h-full object-cover" onerror="this.style.display='none'">
                 </div>
                 <div class="p-5">
                   <span class="text-xs font-medium text-yellow-500">SEO</span>
@@ -659,7 +656,7 @@
             <article class="blog-post-item" data-category="technical-seo" data-title="2024 წლის მარტის Google განახლება">
               <a href="blog/google-2024-core-update.html" class="blog-card group block bg-white dark:bg-surface-dark-alt rounded-2xl overflow-hidden border border-gray-100 dark:border-white/5 h-full">
                 <div class="aspect-[16/10] bg-gradient-to-br from-accent/20 to-primary/10 dark:from-accent/20 dark:to-primary/10 flex items-center justify-center overflow-hidden">
-                  <img src="https://10xseo.ge/wp-content/uploads/2024/03/Write-a-pretitle-here-2.png" alt="Google Core Update 2024" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                  <img src="images/blog/google-2024-core-update.png" alt="Google Core Update 2024" class="w-full h-full object-cover" onerror="this.style.display='none'">
                 </div>
                 <div class="p-5">
                   <span class="text-xs font-medium text-accent">ტექნიკური SEO</span>
@@ -678,7 +675,7 @@
             <article class="blog-post-item" data-category="technical-seo" data-title="Interaction to Next Paint - Google-ის ახალი მეტრიკა">
               <a href="blog/interaction-to-next-paint.html" class="blog-card group block bg-white dark:bg-surface-dark-alt rounded-2xl overflow-hidden border border-gray-100 dark:border-white/5 h-full">
                 <div class="aspect-[16/10] bg-gradient-to-br from-ai-blue/20 to-primary/10 dark:from-ai-blue/20 dark:to-primary/10 flex items-center justify-center overflow-hidden">
-                  <img src="https://10xseo.ge/wp-content/uploads/2024/02/Write-a-pretitle-here.png" alt="Interaction to Next Paint" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                  <img src="images/blog/interaction-to-next-paint.png" alt="Interaction to Next Paint" class="w-full h-full object-cover" onerror="this.style.display='none'">
                 </div>
                 <div class="p-5">
                   <span class="text-xs font-medium text-ai-blue">ტექნიკური SEO</span>
@@ -697,7 +694,7 @@
             <article class="blog-post-item" data-category="seo-strategy" data-title="რატომ არის SEO აუცილებელი ყველა ბიზნესისთვის 2024 წელს?">
               <a href="blog/seo-for-business.html" class="blog-card group block bg-white dark:bg-surface-dark-alt rounded-2xl overflow-hidden border border-gray-100 dark:border-white/5 h-full">
                 <div class="aspect-[16/10] bg-gradient-to-br from-primary/20 to-accent/10 dark:from-primary/20 dark:to-accent/10 flex items-center justify-center overflow-hidden">
-                  <img src="https://10xseo.ge/wp-content/uploads/2022/03/WhatsApp-Image-2024-01-09-at-11.51.32.jpeg" alt="SEO ბიზნესისთვის" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                  <img src="images/blog/seo-for-business.png" alt="SEO ბიზნესისთვის" class="w-full h-full object-cover" onerror="this.style.display='none'">
                 </div>
                 <div class="p-5">
                   <span class="text-xs font-medium text-primary">SEO</span>
@@ -716,7 +713,7 @@
             <article class="blog-post-item" data-category="seo-strategy" data-title="სარეკლამო თაღლითებმა 2023 წელს 84 მილიარდი დოლარი მოიპარეს">
               <a href="blog/seo-vs-ppc.html" class="blog-card group block bg-white dark:bg-surface-dark-alt rounded-2xl overflow-hidden border border-gray-100 dark:border-white/5 h-full">
                 <div class="aspect-[16/10] bg-gradient-to-br from-yellow-500/20 to-primary/10 dark:from-yellow-500/20 dark:to-primary/10 flex items-center justify-center overflow-hidden">
-                  <img src="https://10xseo.ge/wp-content/uploads/2024/01/Write-a-pretitle-here.png" alt="SEO vs PPC" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                  <img src="images/blog/seo-vs-ppc.png" alt="SEO vs PPC" class="w-full h-full object-cover" onerror="this.style.display='none'">
                 </div>
                 <div class="p-5">
                   <span class="text-xs font-medium text-yellow-500">SEO</span>
@@ -735,7 +732,7 @@
             <article class="blog-post-item" data-category="seo-strategy" data-title="2023 წლის SEO სტატისტიკური ფაქტები">
               <a href="blog/2023-seo-stats.html" class="blog-card group block bg-white dark:bg-surface-dark-alt rounded-2xl overflow-hidden border border-gray-100 dark:border-white/5 h-full">
                 <div class="aspect-[16/10] bg-gradient-to-br from-accent/20 to-ai-blue/10 dark:from-accent/20 dark:to-ai-blue/10 flex items-center justify-center overflow-hidden">
-                  <img src="https://10xseo.ge/wp-content/uploads/2024/01/WhatsApp-Image-2024-01-09-at-11.03.22.jpeg" alt="2023 SEO სტატისტიკა" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                  <img src="images/blog/2023-seo-stats.png" alt="2023 SEO სტატისტიკა" class="w-full h-full object-cover" onerror="this.style.display='none'">
                 </div>
                 <div class="p-5">
                   <span class="text-xs font-medium text-accent">SEO</span>
@@ -1001,6 +998,16 @@
     function filterPosts() {
       const searchTerm = searchInput ? searchInput.value.toLowerCase().trim() : '';
       let visibleCount = 0;
+      const featuredPost = document.getElementById('featured-post');
+
+      // Hide featured post when filtering by category or searching
+      if (featuredPost) {
+        if (activeCategory === 'all' && searchTerm === '') {
+          featuredPost.style.display = '';
+        } else {
+          featuredPost.style.display = 'none';
+        }
+      }
 
       blogPosts.forEach(post => {
         const category = post.dataset.category;
