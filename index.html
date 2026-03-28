@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ka" class="scroll-smooth">
+<html lang="ka" class="dark scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -160,7 +160,7 @@
       inset: 0;
       padding: 1.5px;
       border-radius: 16px;
-      background: linear-gradient(135deg, #58E6FF, #FC81FE);
+      background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6);
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
       mask-composite: exclude;
@@ -185,24 +185,30 @@
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-    /* FAQ v29 Gold Glassmorphism */
-    .v29-tab { padding: 8px 18px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.3s; border: 1px solid rgba(245,158,11,0.15); background: rgba(245,158,11,0.03); color: #64748B; }
-    .v29-tab:hover { border-color: rgba(245,158,11,0.35); color: #FBBF24; }
-    .v29-tab.v29-active { background: rgba(245,158,11,0.12); color: #FBBF24; border-color: #D97706; box-shadow: 0 0 12px rgba(245,158,11,0.1); }
-    .v29-card { border-radius: 14px; overflow: hidden; background: rgba(255,255,255,0.025); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(245,158,11,0.08); transition: all 0.35s; }
-    .v29-card:hover { border-color: rgba(245,158,11,0.2); }
-    .v29-card.v29-open { border-color: rgba(245,158,11,0.35); background: rgba(245,158,11,0.04); box-shadow: 0 0 30px rgba(245,158,11,0.06); }
+    /* FAQ v29 Violet Glassmorphism */
+    .v29-tab { padding: 8px 18px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.3s; border: 1px solid rgba(139,92,246,0.15); background: rgba(139,92,246,0.03); color: #64748B; }
+    .v29-tab:hover { border-color: rgba(139,92,246,0.35); color: #A78BFA; }
+    .v29-tab.v29-active { background: linear-gradient(135deg, rgba(139,92,246,0.15), rgba(20,184,166,0.1)); color: #A78BFA; border-color: #7C3AED; box-shadow: 0 0 12px rgba(139,92,246,0.15); }
+    .v29-card { border-radius: 16px; overflow: hidden; background: rgba(255,255,255,0.035); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(139,92,246,0.12); transition: all 0.35s; position: relative; }
+    .v29-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; border-radius: 14px 0 0 14px; background: linear-gradient(180deg, #8B5CF6, #3B82F6, #14B8A6); opacity: 0; transition: opacity 0.3s; }
+    .v29-card:hover { border-color: rgba(139,92,246,0.2); }
+    .v29-card:hover::before { opacity: 0.5; }
+    .v29-card.v29-open { border-color: rgba(139,92,246,0.35); background: rgba(139,92,246,0.04); box-shadow: 0 0 30px rgba(139,92,246,0.06); }
+    .v29-card.v29-open::before { opacity: 1; }
     .v29-card.v29-hidden { display: none; }
-    .v29-cq { display: flex; align-items: center; padding: 14px 18px; cursor: pointer; gap: 14px; }
-    .v29-cq .v29-badge { width: 34px; height: 34px; border-radius: 8px; background: rgba(245,158,11,0.08); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.3s; }
-    .v29-open .v29-badge { background: rgba(245,158,11,0.18); box-shadow: 0 0 10px rgba(245,158,11,0.15); }
-    .v29-cq .v29-badge svg { width: 16px; height: 16px; stroke: #FBBF24; transition: transform 0.3s; }
-    .v29-open .v29-badge svg { transform: rotate(180deg); }
-    .v29-cq .v29-txt { flex: 1; font-weight: 600; color: #E2E8F0; font-size: 15px; }
-    .v29-cq .v29-cat { font-size: 10px; font-weight: 700; color: #D97706; background: rgba(245,158,11,0.1); padding: 3px 8px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; }
-    .v29-ca { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1), padding 0.3s; padding: 0 18px 0 66px; }
-    .v29-open .v29-ca { max-height: 300px; padding: 0 18px 14px 66px; }
-    .v29-ca p { color: #94A3B8; font-size: 14px; line-height: 1.7; }
+    .v29-cq { display: flex; align-items: center; padding: 18px 22px; cursor: pointer; gap: 16px; }
+    .v29-cq .v29-badge { width: 38px; height: 38px; border-radius: 10px; background: rgba(139,92,246,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.3s; }
+    .v29-open .v29-badge { background: linear-gradient(135deg, rgba(139,92,246,0.25), rgba(59,130,246,0.2)); box-shadow: 0 0 12px rgba(139,92,246,0.2); }
+    .v29-cq .v29-badge svg { width: 16px; height: 16px; stroke: #A78BFA; transition: transform 0.3s; }
+    .v29-open .v29-badge svg { transform: rotate(180deg); stroke: #c4b5fd; }
+    .v29-cq .v29-txt { flex: 1; font-weight: 600; color: #F1F5F9; font-size: 17px; line-height: 1.4; }
+    .v29-cat-ზოგადი { font-size: 10px; font-weight: 700; color: #8B5CF6; background: rgba(139,92,246,0.12); padding: 3px 8px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; }
+    .v29-cat-ფასი { font-size: 10px; font-weight: 700; color: #14B8A6; background: rgba(20,184,166,0.12); padding: 3px 8px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; }
+    .v29-cat-შედეგები { font-size: 10px; font-weight: 700; color: #3B82F6; background: rgba(59,130,246,0.12); padding: 3px 8px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; }
+    .v29-cq .v29-cat { font-size: 10px; font-weight: 700; color: #7C3AED; background: rgba(139,92,246,0.1); padding: 3px 8px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; }
+    .v29-ca { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1), padding 0.3s; padding: 0 22px 0 76px; }
+    .v29-open .v29-ca { max-height: 400px; padding: 0 22px 18px 76px; }
+    .v29-ca p { color: #CBD5E1; font-size: 15px; line-height: 1.8; }
 
     /* Mobile menu animation */
     #mobile-menu {
@@ -391,12 +397,12 @@
           </div>
           <!-- Headline -->
           <h1 class="font-heading animate-fade-in-up delay-100 text-[32px] sm:text-[40px] lg:text-[56px] !leading-[1.15] font-extrabold text-heading dark:text-heading-dark mb-6">
-            <span data-ka="გეძებთ" data-en="Looking for">გეძებთ</span><br>
-            <span class="gradient-text" data-ka="10X SEO შედეგს?" data-en="10X SEO Results?">10X SEO შედეგს?</span>
+            <span data-ka="იყავი" data-en="Be">იყავი</span><br>
+            <span class="gradient-text" data-ka="პირველი" data-en="First">პირველი</span>
           </h1>
           <!-- Sub-headline -->
-          <p class="animate-fade-in-up delay-200 text-lg sm:text-xl text-body dark:text-body-dark mb-8 max-w-lg mx-auto lg:mx-0" data-ka="რეალური შედეგები, ყოველკვირეული ანგარიშები, სწრაფი მომსახურება — ვზრდით თქვენი ბიზნესის ორგანულ ტრაფიკს." data-en="Real results, weekly reports, fast service — we grow your business's organic traffic.">
-            რეალური შედეგები, ყოველკვირეული ანგარიშები, სწრაფი მომსახურება — ვზრდით თქვენი ბიზნესის ორგანულ ტრაფიკს.
+          <p class="animate-fade-in-up delay-200 text-lg sm:text-xl text-body dark:text-body-dark mb-8 max-w-lg mx-auto lg:mx-0" data-ka="Google-ში, ChatGPT-ში და ყველა AI პლატფორმაზე — იყავი იქ, სადაც შენს მომხმარებელს ეძებხარ." data-en="On Google, ChatGPT and every AI platform — be where your customer is searching for you.">
+            Google-ში, ChatGPT-ში და ყველა AI პლატფორმაზე — იყავი იქ, სადაც შენს მომხმარებელს ეძებხარ.
           </p>
           <!-- CTAs -->
           <div class="animate-fade-in-up delay-300 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -409,8 +415,12 @@
               დაგვირეკეთ
             </a>
           </div>
+          <!-- Clutch badge -->
+          <div class="animate-fade-in-up delay-300 flex justify-center lg:justify-start mt-6">
+            <div class="clutch-widget" data-url="https://widget.clutch.co" data-widget-type="1" data-height="40" data-nofollow="false" data-expandifr="true" data-clutchcompany-id="2453604"></div>
+          </div>
           <!-- Urgency badge -->
-          <div class="animate-fade-in-up delay-300 flex justify-center lg:justify-start mt-10">
+          <div class="animate-fade-in-up delay-300 flex justify-center lg:justify-start mt-4">
             <div class="flex items-center justify-center gap-2 text-sm text-body dark:text-body-dark">
               <span class="font-dachi text-white" id="current-month-name"></span> <span class="font-dachi text-white" data-ka="დარჩენილია" data-en="remaining">დარჩენილია</span> <span class="font-dachi font-semibold text-yellow-400 text-3xl">2</span> <span class="font-dachi text-white" data-ka="ადგილი" data-en="spots">ადგილი</span>
             </div>
@@ -871,7 +881,7 @@
               <div class="pv22-num pv22-num-1">1</div>
               <div>
                 <span class="font-heading text-base font-bold" style="color: #A78BFA;">აუდიტი & სტრატეგია</span>
-                <p class="text-[12px] mt-1.5 leading-relaxed" style="color: rgba(167,139,250,0.55);">საიტის სრული ტექნიკური აუდიტი, კონკურენტების ანალიზი, და ინდივიდუალური სტრატეგიის შემუშავება.</p>
+                <p class="text-[12px] mt-1.5 leading-relaxed" style="color: rgba(167,139,250,0.55);">სრული ტექნიკური აუდიტი, კონკურენტების ანალიზი და პერსონალიზებული სტრატეგია — შენი ბიზნესის მიზნებზე მორგებული.</p>
               </div>
             </div>
           </div>
@@ -940,7 +950,7 @@
           რატომ <span class="gradient-text">10XSEO</span>?
         </h2>
         <p class="text-lg text-body dark:text-body-dark max-w-2xl mx-auto">
-          რა გამოგვარჩევს სხვა სააგენტოებისგან — 6 მიზეზი, თუ რატომ ირჩევენ კლიენტები ჩვენს გუნდს
+          რა გამოგვარჩევს — 6 მიზეზი, თუ რატომ ირჩევენ ბიზნესები პირველობისკენ მიმავალ გუნდს
         </p>
       </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
@@ -983,7 +993,7 @@
           <div class="bg-white dark:bg-[#0d1117] rounded-2xl p-6 h-full relative overflow-hidden">
             <span class="font-inter text-5xl font-black text-pink-500/10 dark:text-pink-500/20 absolute top-4 right-6">06</span>
             <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark mb-3 mt-8">მონაცემებზე დაფუძნებული</h3>
-            <p class="text-sm text-body dark:text-body-dark leading-relaxed">A/B ტესტინგი, Heatmaps, Keyword Research — ყველაფერი მონაცემებით.</p>
+            <p class="text-sm text-body dark:text-body-dark leading-relaxed">A/B ტესტინგი, Heatmaps, Keyword Research — ყველა გადაწყვეტილება ემყარება მონაცემებს, არა ვარაუდებს.</p>
           </div>
         </div>
       </div>
@@ -1126,10 +1136,6 @@
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
           </div>
           <span class="text-sm font-semibold text-heading dark:text-heading-dark">5.0 Google Reviews</span>
-        </div>
-        <!-- Clutch Reviews Badge -->
-        <div class="flex items-center justify-center mt-4">
-          <div class="clutch-widget" data-url="https://widget.clutch.co" data-widget-type="1" data-height="40" data-nofollow="false" data-expandifr="true" data-clutchcompany-id="2453604"></div>
         </div>
       </div>
       <!-- Clutch Reviews Carousel -->
@@ -1403,7 +1409,7 @@
 
   <!-- ========== FAQ — V29 Gold Glassmorphism ========== -->
   <section id="faq" class="relative py-16 lg:py-24 overflow-hidden bg-white dark:bg-surface-dark">
-    <div class="absolute inset-0 dark:block hidden" style="background: radial-gradient(ellipse at 30% 20%, rgba(245,158,11,0.04) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, rgba(217,119,6,0.03) 0%, transparent 50%);"></div>
+    <div class="absolute inset-0 dark:block hidden" style="background: radial-gradient(ellipse at 30% 20%, rgba(139,92,246,0.04) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, rgba(124,58,237,0.03) 0%, transparent 50%);"></div>
     <div class="max-w-3xl mx-auto px-4 sm:px-6 relative z-10">
       <div class="text-center mb-8">
         <p class="text-sm font-semibold text-primary dark:text-primary-light uppercase tracking-wider mb-3">FAQ</p>
@@ -1434,7 +1440,7 @@
         faqData.forEach(function(faq){
           var d=document.createElement('div');
           d.className='v29-card'; d.setAttribute('data-cat',faq.cat);
-          d.innerHTML='<div class="v29-cq"><div class="v29-badge"><svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></div><span class="v29-txt">'+faq.q+'</span><span class="v29-cat">'+faq.cat+'</span></div><div class="v29-ca"><p>'+faq.a+'</p></div>';
+          d.innerHTML='<div class="v29-cq"><div class="v29-badge"><svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></div><span class="v29-txt">'+faq.q+'</span><span class="v29-cat v29-cat-'+faq.cat+'">'+faq.cat+'</span></div><div class="v29-ca"><p>'+faq.a+'</p></div>';
           d.querySelector('.v29-cq').onclick=function(){ var o=d.classList.contains('v29-open'); list.querySelectorAll('.v29-card').forEach(function(el){el.classList.remove('v29-open');}); if(!o) d.classList.add('v29-open'); };
           list.appendChild(d);
         });
@@ -1568,7 +1574,7 @@
   </section>
 
   <!-- ========== FOOTER ========== -->
-  <footer class="bg-heading dark:bg-surface-dark-alt text-gray-400 py-12 lg:py-16">
+    <footer class="bg-heading dark:bg-surface-dark-alt text-gray-400 py-12 lg:py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
         <!-- Col 1: Info -->
@@ -1600,10 +1606,10 @@
         <div>
           <p class="font-heading text-white font-semibold mb-4">კომპანია</p>
           <ul class="space-y-2.5 text-sm">
-            <li><a href="#results" class="hover:text-white transition-colors">პორტფოლიო</a></li>
-            <li><a href="#results" class="hover:text-white transition-colors">ქეის სტადები</a></li>
-            <li><a href="#blog" class="hover:text-white transition-colors">ბლოგი</a></li>
-            <li><a href="#faq" class="hover:text-white transition-colors">FAQ</a></li>
+            <li><a href="portfolio.html" class="hover:text-white transition-colors">პორტფოლიო</a></li>
+            <li><a href="case-studies.html" class="hover:text-white transition-colors">ქეის სტადები</a></li>
+            <li><a href="blog.html" class="hover:text-white transition-colors">ბლოგი</a></li>
+            <li><a href="faq.html" class="hover:text-white transition-colors">FAQ</a></li>
             <li><a href="ra-aris-seo.html" class="hover:text-white transition-colors">რა არის SEO</a></li>
             <li><a href="vacancies.html" class="hover:text-white transition-colors">ვაკანსიები</a></li>
           </ul>

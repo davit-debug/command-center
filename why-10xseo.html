@@ -131,10 +131,86 @@
     .news-article:hover{opacity:0.85}
     .news-headline{font-family:'Dachi the Lynx',serif;font-weight:700;line-height:1.25;margin-bottom:8px}
     .news-gold{color:#FBBF24}
+  
+    /* Mobile Menu */
+    #mobile-menu {
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+      opacity: 0;
+    }
+    #mobile-menu.menu-open {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    #mobile-menu .menu-link {
+      opacity: 0;
+      transform: translateX(30px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    #mobile-menu.menu-open .menu-link {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .hamburger-line {
+      transition: transform 0.3s ease, opacity 0.2s ease;
+    }
+    .menu-active .hamburger-line:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    .menu-active .hamburger-line:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-active .hamburger-line:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
   </style>
 </head>
 <body>
-<header class="fixed top-0 left-0 right-0 z-50 bg-surface-dark/80 backdrop-blur-xl border-b border-gray-800/50"><div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between"><a href="index.html" class="font-heading text-2xl font-bold text-yellow-300" style="text-shadow:0 0 20px rgba(250,204,21,0.3)">10xSEO</a><span class="text-sm text-body-dark">რატომ 10xSEO — 20 ვარიანტი</span></div></header>
+  <header id="main-header" class="fixed top-0 left-0 right-0 z-50 h-16 lg:h-[72px] bg-white/80 dark:bg-surface-dark/80 header-scrolled border-b border-gray-100 dark:border-gray-800 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-full flex items-center justify-between">
+      <a href="index.html" class="flex items-center shrink-0">
+        <img src="images/logo.png" alt="10XSEO" class="h-12 lg:h-14 w-auto">
+      </a>
+      <nav class="hidden lg:flex items-center gap-1">
+        <a href="about-us.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">ჩვენს შესახებ</a>
+        <div class="relative group">
+          <button class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors flex items-center gap-1">
+            სერვისები
+            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="absolute top-full left-0 mt-1 w-56 bg-white dark:bg-surface-dark-alt rounded-xl shadow-xl border border-gray-100 dark:border-gray-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 p-2">
+            <a href="seo-management.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">SEO მენეჯმენტი</a>
+            <a href="seo-consultation.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">SEO კონსულტაცია</a>
+            <a href="seo-strategy.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">სტრატეგიის მონახაზი</a>
+            <a href="seo-copywriting.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">SEO კოპირაიტინგი</a>
+            <a href="cro.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">კონვერსიის ოპტიმიზაცია</a>
+            <a href="google-ads.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">Google Ads</a>
+            <a href="ai-seo.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">AI SEO / GEO</a>
+            <a href="seo-course.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">SEO კურსი</a>
+          </div>
+        </div>
+        <a href="industries.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">ინდუსტრიები</a>
+        <a href="portfolio.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">პორტფოლიო</a>
+        <a href="case-studies.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">შედეგები</a>
+        <a href="blog.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">ბლოგი</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <button class="hidden sm:flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark transition-colors">
+          <span class="text-primary font-bold">KA</span>
+          <span class="opacity-50">/</span>
+          <span class="opacity-50">EN</span>
+        </button>
+        <a href="seo-audit.html" class="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 ai-cta-animate text-white text-sm font-semibold rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-200">
+          უფასო აუდიტი
+        </a>
+        <button id="mobile-menu-btn" class="lg:hidden w-9 h-9 rounded-lg flex flex-col items-center justify-center gap-[6px] hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-heading dark:text-heading-dark">
+          <span class="hamburger-line block w-5 h-[2px] bg-current rounded-full"></span>
+          <span class="hamburger-line block w-5 h-[2px] bg-current rounded-full"></span>
+          <span class="hamburger-line block w-5 h-[2px] bg-current rounded-full"></span>
+        </button>
+      </div>
+    </div>
+  </header>
 <section class="pt-28 pb-8 text-center px-4"><p class="text-sm font-semibold text-primary-light uppercase tracking-wider mb-3">Section Variants</p><h1 class="font-heading text-[28px] sm:text-[36px] lg:text-[44px] font-bold leading-tight mb-4">რატომ <span class="gradient-text">10XSEO</span>?</h1><p class="text-body-dark max-w-xl mx-auto">20 სხვადასხვა ვარიანტი — აირჩიე მთავარი გვერდისთვის</p></section>
 
 <!-- V1 Bento --><section class="py-16 lg:py-24"><div class="max-w-6xl mx-auto px-4"><div class="text-center mb-10"><span class="opt">ვარიანტი 1</span><p class="text-sm text-body-dark mt-3">Bento Grid — ასიმეტრიული grid დიდი რიცხვებით</p></div><div class="text-center mb-12"><p class="text-sm font-semibold text-primary-light uppercase tracking-wider mb-3">რატომ ჩვენ</p><h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold">რატომ <span class="gradient-text">10XSEO</span>?</h2></div><div class="grid grid-cols-2 lg:grid-cols-4 gap-4"><div class="cd col-span-2 row-span-2 p-7 flex flex-col justify-between"><div><p class="font-inter text-6xl lg:text-7xl font-black bg-gradient-to-r from-primary-light to-ai-blue bg-clip-text text-transparent mb-2">92%</p><h3 class="font-heading text-xl font-bold mb-2">კლიენტების რეტენცია</h3><p class="text-sm text-body-dark">კლიენტები რჩებიან, რადგან შედეგები ლაპარაკობს.</p></div><div class="mt-6 flex items-center gap-3"><div class="flex -space-x-2"><div class="w-8 h-8 rounded-full bg-purple-500/30 border-2 border-surface-dark"></div><div class="w-8 h-8 rounded-full bg-blue-500/30 border-2 border-surface-dark"></div><div class="w-8 h-8 rounded-full bg-teal-500/30 border-2 border-surface-dark"></div></div><span class="text-xs text-body-dark">50+ კლიენტი</span></div></div><div class="cd p-6"><p class="font-inter text-3xl font-extrabold text-accent mb-1">10<span class="text-lg">წთ</span></p><h3 class="font-heading text-sm font-bold mb-1">სწრაფი რეაგირება</h3></div><div class="cd p-6"><p class="font-inter text-3xl font-extrabold text-success mb-1">AI</p><h3 class="font-heading text-sm font-bold mb-1">AI SEO</h3></div><div class="cd p-6"><h3 class="font-heading text-sm font-bold mb-1">გამჭვირვალობა</h3><p class="text-xs text-body-dark">GSC + GA წვდომა</p></div><div class="cd p-6"><h3 class="font-heading text-sm font-bold mb-1">ROI ფოკუსი</h3><p class="text-xs text-body-dark">შემოსავალი > ტრაფიკი</p></div><div class="cd col-span-2 p-6 flex items-center gap-6"><div class="flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center"><svg class="w-7 h-7 text-primary-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg></div><div><h3 class="font-heading text-lg font-bold mb-1">ყოველკვირეული რეპორტები</h3><p class="text-sm text-body-dark">რა გაკეთდა, რა შეიცვალა, რა არის შემდეგი.</p></div></div><div class="cd col-span-2 p-6 flex items-center gap-6"><div class="flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-success/20 to-accent/20 flex items-center justify-center"><svg class="w-7 h-7 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg></div><div><h3 class="font-heading text-lg font-bold mb-1">Data-Driven</h3><p class="text-sm text-body-dark">A/B ტესტინგი, Heatmaps, Keyword Research.</p></div></div></div></div></section><hr class="border-gray-800/50 mx-auto max-w-xs">
@@ -1162,5 +1238,36 @@ function toggleFaq(el){var wasOpen=el.classList.contains('faq-open');document.qu
   if(tm)termObs.observe(tm);
 })();
 </script>
+  <script>
+    // Mobile menu with animation
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (menuBtn && mobileMenu) {
+      let menuOpen = false;
+      menuBtn.addEventListener('click', () => {
+        menuOpen = !menuOpen;
+        if (menuOpen) {
+          mobileMenu.classList.add('menu-open');
+          mobileMenu.style.pointerEvents = 'auto';
+          menuBtn.classList.add('menu-active');
+          document.body.classList.add('overflow-hidden');
+        } else {
+          mobileMenu.classList.remove('menu-open');
+          mobileMenu.style.pointerEvents = 'none';
+          menuBtn.classList.remove('menu-active');
+          document.body.classList.remove('overflow-hidden');
+        }
+      });
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          menuOpen = false;
+          mobileMenu.classList.remove('menu-open');
+          mobileMenu.style.pointerEvents = 'none';
+          menuBtn.classList.remove('menu-active');
+          document.body.classList.remove('overflow-hidden');
+        });
+      });
+    }
+  </script>
 </body>
 </html>

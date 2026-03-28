@@ -1,9 +1,5 @@
-# Only track command center files + design mockups
+# Track design mockup files only
 *
-!command-center.html
-!extract-reports.py
-!reports-data.json
-!usage-data.json
 !robots.txt
 !.gitignore
 !.github/
@@ -26,6 +22,10 @@
 !ra-aris-seo.html
 !industries.html
 !vacancies.html
+!faq.html
+!services.html
+!seo-leqsikoni.html
+!startup-leqsikoni.html
 !about-us.html
 !about-v*.html
 !about-final.html
@@ -42,8 +42,6 @@
 !case-studies-data.json
 !case-study-inner-options.html
 !keyword-research.html
-!keyword-api-server.js
-!keyword-api-server.py
 !font-options.html
 !color-options.html
 !animation-options.html
