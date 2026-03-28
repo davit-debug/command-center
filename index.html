@@ -193,18 +193,25 @@
     .v29-tab[data-cat="general"] { background: rgba(236,72,153,0.15); color: #F472B6; }
     .v29-tab[data-cat="price"] { background: rgba(245,158,11,0.15); color: #FBBF24; }
     .v29-tab[data-cat="results"] { background: rgba(59,130,246,0.15); color: #60A5FA; }
-    .v29-card { border-radius: 16px; overflow: hidden; background: rgba(255,255,255,0.035); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(236,72,153,0.12); transition: all 0.35s; position: relative; }
-    .v29-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; border-radius: 14px 0 0 14px; background: linear-gradient(180deg, #EC4899, #3B82F6, #14B8A6); opacity: 0; transition: opacity 0.3s; }
-    .v29-card:hover { border-color: rgba(236,72,153,0.2); }
+    .v29-card { border-radius: 16px; overflow: hidden; background: rgba(255,255,255,0.035); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.08); transition: all 0.35s; position: relative; }
+    .v29-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; border-radius: 14px 0 0 14px; opacity: 0; transition: opacity 0.3s; }
+    .v29-card[data-cat="ზოგადი"]::before { background: #EC4899; }
+    .v29-card[data-cat="შედეგები"]::before { background: #3B82F6; }
+    .v29-card[data-cat="ფასი"]::before { background: #F59E0B; }
+    .v29-card[data-cat="ზოგადი"]:hover { border-color: rgba(236,72,153,0.25); }
+    .v29-card[data-cat="შედეგები"]:hover { border-color: rgba(59,130,246,0.25); }
+    .v29-card[data-cat="ფასი"]:hover { border-color: rgba(245,158,11,0.25); }
     .v29-card:hover::before { opacity: 0.5; }
-    .v29-card.v29-open { border-color: rgba(236,72,153,0.35); background: rgba(236,72,153,0.04); box-shadow: 0 0 30px rgba(236,72,153,0.06); }
+    .v29-card[data-cat="ზოგადი"].v29-open { border-color: rgba(236,72,153,0.35); background: rgba(236,72,153,0.04); box-shadow: 0 0 30px rgba(236,72,153,0.06); }
+    .v29-card[data-cat="შედეგები"].v29-open { border-color: rgba(59,130,246,0.35); background: rgba(59,130,246,0.04); box-shadow: 0 0 30px rgba(59,130,246,0.06); }
+    .v29-card[data-cat="ფასი"].v29-open { border-color: rgba(245,158,11,0.35); background: rgba(245,158,11,0.04); box-shadow: 0 0 30px rgba(245,158,11,0.06); }
     .v29-card.v29-open::before { opacity: 1; }
     .v29-card.v29-hidden { display: none; }
     .v29-cq { display: flex; align-items: center; padding: 18px 22px; cursor: pointer; gap: 16px; }
-    .v29-cq .v29-badge { width: 38px; height: 38px; border-radius: 10px; background: rgba(236,72,153,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.3s; }
-    .v29-open .v29-badge { background: linear-gradient(135deg, rgba(236,72,153,0.25), rgba(59,130,246,0.2)); box-shadow: 0 0 12px rgba(236,72,153,0.2); }
-    .v29-cq .v29-badge svg { width: 16px; height: 16px; stroke: #F472B6; transition: transform 0.3s; }
-    .v29-open .v29-badge svg { transform: rotate(180deg); stroke: #F9A8D4; }
+    .v29-cq .v29-badge { width: 38px; height: 38px; border-radius: 10px; background: rgba(212,160,23,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.3s; }
+    .v29-open .v29-badge { background: rgba(212,160,23,0.2); box-shadow: 0 0 12px rgba(212,160,23,0.15); }
+    .v29-cq .v29-badge svg { width: 16px; height: 16px; stroke: #D4A017; transition: transform 0.3s; }
+    .v29-open .v29-badge svg { transform: rotate(180deg); stroke: #EAB308; }
     .v29-cq .v29-txt { flex: 1; font-weight: 600; color: #F1F5F9; font-size: 17px; line-height: 1.4; }
     .v29-cat[data-key="general"] { font-size: 10px; font-weight: 700; color: #F472B6; background: rgba(236,72,153,0.15); padding: 3px 8px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; }
     .v29-cat[data-key="price"] { font-size: 10px; font-weight: 700; color: #FBBF24; background: rgba(245,158,11,0.15); padding: 3px 8px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; }
