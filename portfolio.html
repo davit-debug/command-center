@@ -1,175 +1,175 @@
 <!DOCTYPE html>
-<html lang="ka" class="dark scroll-smooth">
+<html lang="ka" class="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>პორტფოლიო — 10XSEO</title>
-  <meta name="robots" content="noindex, nofollow">
-  <meta name="description" content="10XSEO-ს კლიენტების რეალური შედეგები. Before/After მეტრიკები, ქეის სტადიები და წარმატების ისტორიები.">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/firago@1.0.0/FiraGO.css" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            primary: { DEFAULT: '#8B5CF6', light: '#A78BFA', dark: '#7C3AED' },
-            accent: { DEFAULT: '#14B8A6', dark: '#0D9488' },
-            'ai-blue': '#3B82F6',
-            surface: { DEFAULT: '#ffffff', alt: '#f8fafc', dark: '#020710', 'dark-alt': '#0F0F0F' },
-            heading: { DEFAULT: '#0f172a', dark: '#f8fafc' },
-            body: { DEFAULT: '#475569', dark: '#94a3b8' },
-            success: '#21C743',
-          },
-          fontFamily: {
-            'heading': ['"Dachi the Lynx"', 'sans-serif'],
-            'body': ['FiraGO', 'sans-serif'],
-            'inter': ['Inter', 'sans-serif'],
-          },
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>პორტფოლიო — 10XSEO</title>
+    <meta name="description" content="10XSEO-ს კლიენტების რეალური შედეგები. ჩვენი ქსელი და წარმატების ისტორიები.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/firago@1.0.0/FiraGO.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { DEFAULT: '#8B5CF6', light: '#A78BFA', dark: '#7C3AED' },
+                        accent: { DEFAULT: '#14B8A6', dark: '#0D9488' },
+                        'ai-blue': '#3B82F6',
+                        surface: { DEFAULT: '#ffffff', alt: '#f8fafc', dark: '#020710', 'dark-alt': '#0F0F0F' },
+                        heading: { DEFAULT: '#0f172a', dark: '#f8fafc' },
+                        body: { DEFAULT: '#475569', dark: '#94a3b8' },
+                        success: '#21C743',
+                    },
+                    fontFamily: {
+                        'heading': ['"Dachi the Lynx"', 'sans-serif'],
+                        'body': ['FiraGO', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                }
+            }
         }
-      }
-    }
-  </script>
-  <style>
-    @font-face {
-      font-family: 'Dachi the Lynx';
-      src: url('fonts/DachiTheLynx.otf') format('opentype');
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-    }
+    </script>
+    <style>
+        @font-face {
+            font-family: 'Dachi the Lynx';
+            src: url('fonts/DachiTheLynx.otf') format('opentype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        body { font-family: 'FiraGO', 'Inter', sans-serif; background: #050510; color: #e2e8f0; }
+        .font-heading { font-family: 'Dachi the Lynx', sans-serif; }
 
-    /* font-body on <body> handles default via Tailwind */
+        /* AI CTA gradient */
+        @keyframes aiGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .ai-cta-animate {
+            background: linear-gradient(-45deg, #8B5CF6, #3B82F6, #14B8A6, #8B5CF6) !important;
+            background-size: 300% 300% !important;
+            animation: aiGradient 4s ease infinite;
+            box-shadow: 0 4px 25px rgba(139, 92, 246, 0.35);
+        }
 
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .animate-fade-in-up { opacity: 0; animation: fadeInUp 0.5s ease-out forwards; }
-    .delay-100 { animation-delay: 0.1s; }
-    .delay-200 { animation-delay: 0.2s; }
-    .delay-300 { animation-delay: 0.3s; }
+        /* Sticky header */
+        .header-scrolled {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
 
-    .gradient-text {
-      background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .dark .gradient-text {
-      background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
+        /* Mobile menu animation */
+        #mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+            opacity: 0;
+        }
+        #mobile-menu.menu-open {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        #mobile-menu .menu-link {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        #mobile-menu.menu-open .menu-link {
+            opacity: 1;
+            transform: translateX(0);
+        }
 
-    /* AI SEO animated gradient for CTA */
-    @keyframes aiGradient {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    .ai-cta-animate {
-      background: linear-gradient(-45deg, #8B5CF6, #3B82F6, #14B8A6, #8B5CF6) !important;
-      background-size: 300% 300% !important;
-      animation: aiGradient 4s ease infinite;
-      box-shadow: 0 4px 25px rgba(139, 92, 246, 0.35);
-    }
+        /* Hamburger to X */
+        .hamburger-line {
+            transition: transform 0.3s ease, opacity 0.2s ease;
+            transform-origin: center;
+        }
+        .menu-active .hamburger-line:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+        .menu-active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+        .menu-active .hamburger-line:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
 
-    .gradient-border {
-      position: relative;
-      background: white;
-      border-radius: 16px;
-      overflow: hidden;
-    }
-    .gradient-border::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      padding: 1.5px;
-      border-radius: 16px;
-      background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6);
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-    }
-    .dark .gradient-border { background: #0F0F0F; }
+        /* Safe area for mobile */
+        .safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
 
-    .header-scrolled { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        /* Call button yellow hover */
+        .call-btn:hover {
+            border-color: #FACC15 !important;
+            color: #FACC15 !important;
+        }
 
-    .accent-glow { box-shadow: 0 0 40px rgba(139, 92, 246, 0.15); }
-    .dark .accent-glow { box-shadow: 0 0 60px rgba(139, 92, 246, 0.2); }
+        /* Network canvas */
+        .network-canvas { position: relative; width: 100%; height: 100vh; min-height: 700px; overflow: hidden; padding-top: 72px; }
+        .network-canvas .overlay-title { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 5; text-align: center; pointer-events: none; }
+        .network-canvas .overlay-title h1 { font-size: clamp(2rem, 5vw, 4.5rem); font-weight: 700; color: rgba(255,255,255,0.08); letter-spacing: -0.02em; }
 
-    .safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
+        /* SVG lines */
+        .network-svg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+        .network-line { stroke: rgba(139,92,246,0.15); stroke-width: 1; stroke-dasharray: 6 4; transition: stroke 0.4s, stroke-width 0.4s; }
+        .network-line.center-line { stroke: rgba(139,92,246,0.08); stroke-dasharray: 3 6; }
+        .network-line.highlighted { stroke: rgba(139,92,246,0.6); stroke-width: 2; }
+        @keyframes dashMove { to { stroke-dashoffset: -20; } }
+        .network-line { animation: dashMove 3s linear infinite; }
 
-    /* Case study card hover */
-    .case-card { transition: transform 0.2s ease, box-shadow 0.2s ease; }
-    @media (hover: hover) {
-      .case-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
-      .dark .case-card:hover { box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
-    }
+        /* Nodes */
+        .network-node { position: absolute; z-index: 10; display: flex; align-items: center; justify-content: center; width: 120px; height: 120px; border-radius: 50%; background: rgba(255,255,255,0.95); cursor: pointer; transition: transform 0.4s ease, box-shadow 0.4s ease; box-shadow: 0 0 20px rgba(139,92,246,0.1); }
+        .network-node:hover { transform: scale(1.15); box-shadow: 0 0 35px rgba(139,92,246,0.4); }
+        .network-node.glow { box-shadow: 0 0 30px rgba(139,92,246,0.35); }
+        .network-node img { max-width: 80px; max-height: 65px; object-fit: contain; }
+        .network-node.center-node { width: 160px; height: 160px; background: linear-gradient(135deg, #12121E, #1a1a30); border: 2px solid rgba(139,92,246,0.4); }
+        .network-node.center-node img { max-width: 100px; max-height: 70px; filter: brightness(1.2); }
 
-    /* Filter tab active state */
-    .filter-tab.active {
-      background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6);
-      color: white;
-      border-color: transparent;
-    }
+        /* Float animation */
+        @keyframes float1 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(5px,-8px); } }
+        @keyframes float2 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(-6px,7px); } }
+        @keyframes float3 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(8px,5px); } }
+        @keyframes float4 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(-4px,-6px); } }
+        .float-1 { animation: float1 6s ease-in-out infinite; }
+        .float-2 { animation: float2 7s ease-in-out infinite; }
+        .float-3 { animation: float3 5s ease-in-out infinite; }
+        .float-4 { animation: float4 8s ease-in-out infinite; }
 
-    /* Metric bar animation */
-    @keyframes growWidth {
-      from { width: 0; }
-    }
-    .metric-bar { animation: growWidth 1s ease-out forwards; }
+        /* Tooltip */
+        .node-tooltip { position: absolute; bottom: -44px; left: 50%; transform: translateX(-50%); background: #1a1a2e; border: 1px solid rgba(139,92,246,0.5); border-radius: 8px; padding: 6px 12px; white-space: nowrap; font-size: 12px; opacity: 0; pointer-events: none; transition: opacity 0.25s; z-index: 50; text-align: center; }
+        .network-node:hover .node-tooltip { opacity: 1; }
+        .node-tooltip .metric { color: #21C743; font-weight: 600; }
 
-    /* Expanded card content */
-    .card-details { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
-    .card-details.expanded { max-height: 600px; }
-  
-    /* Mobile Menu */
-    #mobile-menu {
-      transform: translateX(100%);
-      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
-      opacity: 0;
-    }
-    #mobile-menu.menu-open {
-      transform: translateX(0);
-      opacity: 1;
-    }
-    #mobile-menu .menu-link {
-      opacity: 0;
-      transform: translateX(30px);
-      transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-    #mobile-menu.menu-open .menu-link {
-      opacity: 1;
-      transform: translateX(0);
-    }
-    .hamburger-line {
-      transition: transform 0.3s ease, opacity 0.2s ease;
-    }
-    .menu-active .hamburger-line:nth-child(1) {
-      transform: translateY(8px) rotate(45deg);
-    }
-    .menu-active .hamburger-line:nth-child(2) {
-      opacity: 0;
-    }
-    .menu-active .hamburger-line:nth-child(3) {
-      transform: translateY(-8px) rotate(-45deg);
-    }
-  </style>
+        /* Cluster cards */
+        .cluster-card { background: #0A0A1A; border: 1px solid #1E1E35; border-radius: 16px; padding: 28px; transition: border-color 0.3s, transform 0.3s; }
+        .cluster-card:hover { border-color: #8B5CF6; transform: translateY(-4px); }
+        .cluster-logos { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
+        .cluster-logo-item { width: 56px; height: 56px; border-radius: 12px; background: rgba(255,255,255,0.95); display: flex; align-items: center; justify-content: center; }
+        .cluster-logo-item img { max-width: 36px; max-height: 28px; object-fit: contain; }
+
+        /* Stat pill */
+        .stat-pill { display: inline-flex; align-items: center; gap: 4px; background: rgba(33,199,67,0.1); border: 1px solid rgba(33,199,67,0.2); border-radius: 20px; padding: 4px 12px; font-size: 13px; color: #21C743; font-weight: 600; }
+
+        /* Mobile: grid fallback */
+        @media (max-width: 768px) {
+            .network-canvas { display: none; }
+            .mobile-grid { display: grid !important; }
+        }
+        @media (min-width: 769px) {
+            .mobile-grid { display: none !important; }
+        }
+    </style>
 </head>
-<body class="font-body bg-surface-dark text-body-dark transition-colors duration-300">
+<body class="font-body bg-surface-dark text-body-dark transition-colors duration-300 pb-20 lg:pb-0">
 
   <!-- ========== HEADER ========== -->
-    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 h-16 lg:h-[72px] bg-white/80 dark:bg-surface-dark/80 header-scrolled border-b border-gray-100 dark:border-gray-800 transition-all duration-300">
+  <header id="main-header" class="fixed top-0 left-0 right-0 z-50 h-16 lg:h-[72px] bg-white/80 dark:bg-surface-dark/80 header-scrolled border-b border-gray-100 dark:border-gray-800 transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 h-full flex items-center justify-between">
       <a href="index.html" class="flex items-center shrink-0">
-        <img src="images/logo.png" alt="10XSEO" class="h-12 lg:h-14 w-auto">
+        <img src="images/logo-glow.png" alt="10XSEO" class="h-14 lg:h-16 w-auto dark:mix-blend-screen">
       </a>
       <nav class="hidden lg:flex items-center gap-1">
         <a href="about-us.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">ჩვენს შესახებ</a>
@@ -195,10 +195,10 @@
         <a href="blog.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">ბლოგი</a>
       </nav>
       <div class="flex items-center gap-2">
-        <button class="hidden sm:flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark transition-colors">
-          <span class="text-primary font-bold">KA</span>
+        <button id="lang-toggle" class="hidden sm:flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark transition-colors">
+          <span id="lang-ka" class="text-primary font-bold">KA</span>
           <span class="opacity-50">/</span>
-          <span class="opacity-50">EN</span>
+          <span id="lang-en" class="opacity-50">EN</span>
         </button>
         <a href="seo-audit.html" class="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 ai-cta-animate text-white text-sm font-semibold rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-200">
           უფასო აუდიტი
@@ -212,7 +212,6 @@
     </div>
   </header>
 
-  
   <!-- Mobile Menu Overlay -->
   <div id="mobile-menu" class="lg:hidden fixed inset-0 top-16 bg-surface-dark z-[60] overflow-y-auto pointer-events-none">
     <nav class="max-w-md mx-auto px-6 py-8 flex flex-col gap-2">
@@ -234,9 +233,7 @@
       <a href="case-studies.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.5s">შედეგები</a>
       <a href="blog.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.53s">ბლოგი</a>
       <hr class="menu-link my-3 border-gray-800" style="transition-delay:0.56s">
-      <a href="seo-audit.html" class="menu-link block text-center px-6 py-4 ai-cta-animate text-white text-lg font-bold rounded-xl mt-2" style="transition-delay:0.59s">
-        უფასო SEO აუდიტი
-      </a>
+      <a href="seo-audit.html" class="menu-link block text-center px-6 py-4 ai-cta-animate text-white text-lg font-bold rounded-xl mt-2" style="transition-delay:0.59s">უფასო SEO აუდიტი</a>
       <a href="tel:+995510101517" class="menu-link call-btn block text-center px-6 py-3 border-2 border-primary-light text-primary-light text-lg font-bold rounded-xl flex items-center justify-center gap-2 transition-all duration-200" style="transition-delay:0.62s">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
         დაგვირეკეთ
@@ -244,239 +241,400 @@
     </nav>
   </div>
 
-  <!-- ========== HERO ========== -->
-  <section class="pt-24 lg:pt-32 pb-16 lg:pb-20 bg-gradient-to-b from-surface-alt to-white dark:from-surface-dark dark:to-surface-dark">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <!-- Breadcrumbs -->
-      <nav class="flex items-center gap-2 text-sm mb-8">
-        <a href="index.html" class="text-body/60 dark:text-body-dark/60 hover:text-primary transition-colors">მთავარი</a>
-        <span class="text-body/30 dark:text-body-dark/30">›</span>
-        <span class="text-heading dark:text-heading-dark font-medium">პორტფოლიო</span>
-      </nav>
-
-      <div class="max-w-3xl">
-        <h1 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-heading dark:text-heading-dark !leading-[1.15] mb-6">
-          რეალური <span class="gradient-text">შედეგები</span>,<br>
-          რეალური ბიზნესები
-        </h1>
-        <p class="text-lg lg:text-xl text-body dark:text-body-dark leading-relaxed mb-8">
-          50+ კომპანიამ გაზარდა ორგანული ტრაფიკი და გაყიდვები ჩვენი გუნდის დახმარებით. აქ ნახავთ კონკრეტულ ციფრებს და წარმატების ისტორიებს.
-        </p>
-      </div>
-
-      <!-- Aggregate Stats -->
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mt-8">
-        <div class="bg-white dark:bg-surface-dark-alt rounded-2xl p-5 lg:p-6 border border-gray-100 dark:border-gray-800">
-          <div class="font-inter text-3xl lg:text-4xl font-extrabold text-heading dark:text-heading-dark mb-1" data-count="50">0+</div>
-          <div class="text-sm text-body dark:text-body-dark">კლიენტი</div>
-        </div>
-        <div class="bg-white dark:bg-surface-dark-alt rounded-2xl p-5 lg:p-6 border border-gray-100 dark:border-gray-800">
-          <div class="font-inter text-3xl lg:text-4xl font-extrabold text-success mb-1" data-count="340">0%</div>
-          <div class="text-sm text-body dark:text-body-dark">საშუალო ტრაფიკის ზრდა</div>
-        </div>
-        <div class="bg-white dark:bg-surface-dark-alt rounded-2xl p-5 lg:p-6 border border-gray-100 dark:border-gray-800">
-          <div class="font-inter text-3xl lg:text-4xl font-extrabold text-primary dark:text-primary-light mb-1" data-count="86">0%</div>
-          <div class="text-sm text-body dark:text-body-dark">Keywords გაუმჯობესება</div>
-        </div>
-        <div class="bg-white dark:bg-surface-dark-alt rounded-2xl p-5 lg:p-6 border border-gray-100 dark:border-gray-800">
-          <div class="font-inter text-3xl lg:text-4xl font-extrabold text-heading dark:text-heading-dark mb-1">7+</div>
-          <div class="text-sm text-body dark:text-body-dark">წელი გამოცდილება</div>
-        </div>
-      </div>
+<!-- Full-viewport Network Canvas (Desktop) -->
+<section class="network-canvas" id="networkCanvas">
+    <!-- Overlay title -->
+    <div class="overlay-title">
+        <h1>ჩვენი ქსელი</h1>
     </div>
-  </section>
 
-  <!-- ========== ALL CLIENTS ========== -->
-  <section class="py-12 lg:py-16 bg-white dark:bg-surface-dark">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-10">
-        <h2 class="font-heading text-2xl sm:text-3xl font-extrabold text-heading dark:text-heading-dark mb-3">ჩვენი კლიენტები</h2>
-        <p class="text-body dark:text-body-dark">50+ კომპანია გვენდობა საქართველოში და მსოფლიოში</p>
-      </div>
-      <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4">
-        <div class="flex items-center justify-center h-16 px-3 rounded-xl bg-surface-alt dark:bg-surface-dark-alt border border-gray-100 dark:border-gray-800 hover:border-primary/30 transition-all">
-          <img src="images/clients/temu.png" alt="TEMU" class="max-h-8 max-w-full object-contain opacity-60 hover:opacity-100 transition-opacity" loading="lazy">
-        </div>
-        <div class="flex items-center justify-center h-16 px-3 rounded-xl bg-surface-alt dark:bg-surface-dark-alt border border-gray-100 dark:border-gray-800 hover:border-primary/30 transition-all">
-          <img src="images/clients/irao.png" alt="IRAO" class="max-h-8 max-w-full object-contain opacity-60 hover:opacity-100 transition-opacity" loading="lazy">
-        </div>
-        <div class="flex items-center justify-center h-16 px-3 rounded-xl bg-surface-alt dark:bg-surface-dark-alt border border-gray-100 dark:border-gray-800 hover:border-primary/30 transition-all">
-          <img src="images/clients/pharmadepot.png" alt="Pharmadepot" class="max-h-8 max-w-full object-contain opacity-60 hover:opacity-100 transition-opacity" loading="lazy">
-        </div>
-        <div class="flex items-center justify-center h-16 px-3 rounded-xl bg-surface-alt dark:bg-surface-dark-alt border border-gray-100 dark:border-gray-800 hover:border-primary/30 transition-all">
-          <img src="images/clients/todua-clinic.png" alt="Todua Clinic" class="max-h-8 max-w-full object-contain opacity-60 hover:opacity-100 transition-opacity" loading="lazy">
-        </div>
-        <div class="flex items-center justify-center h-16 px-3 rounded-xl bg-surface-alt dark:bg-surface-dark-alt border border-gray-100 dark:border-gray-800 hover:border-primary/30 transition-all">
-          <img src="images/clients/elehear.png" alt="ELEHEAR" class="max-h-8 max-w-full object-contain opacity-60 hover:opacity-100 transition-opacity" loading="lazy">
-        </div>
-        <div class="flex items-center justify-center h-16 px-3 rounded-xl bg-surface-alt dark:bg-surface-dark-alt border border-gray-100 dark:border-gray-800 hover:border-primary/30 transition-all">
-          <img src="images/clients/myhome.png" alt="myhome.ge" class="max-h-8 max-w-full object-contain opacity-60 hover:opacity-100 transition-opacity" loading="lazy">
-        </div>
-        <div class="flex items-center justify-center h-16 px-3 rounded-xl bg-surface-alt dark:bg-surface-dark-alt border border-gray-100 dark:border-gray-800 hover:border-primary/30 transition-all">
-          <img src="images/clients/belle-maison.png" alt="Belle Maison" class="max-h-8 max-w-full object-contain opacity-60 hover:opacity-100 transition-opacity" loading="lazy">
-        </div>
-        <div class="flex items-center justify-center h-16 px-3 rounded-xl bg-surface-alt dark:bg-surface-dark-alt border border-gray-100 dark:border-gray-800 hover:border-primary/30 transition-all">
-          <img src="images/clients/kvareli-lake.png" alt="Kvareli Lake Resort" class="max-h-8 max-w-full object-contain opacity-60 hover:opacity-100 transition-opacity" loading="lazy">
-        </div>
-        <div class="flex items-center justify-center h-16 px-3 rounded-xl bg-surface-alt dark:bg-surface-dark-alt border border-gray-100 dark:border-gray-800 hover:border-primary/30 transition-all">
-          <img src="images/clients/horizon.png" alt="Horizon Batumi" class="max-h-8 max-w-full object-contain opacity-60 hover:opacity-100 transition-opacity" loading="lazy">
-        </div>
-        <div class="flex items-center justify-center h-16 px-3 rounded-xl bg-surface-alt dark:bg-surface-dark-alt border border-gray-100 dark:border-gray-800 hover:border-primary/30 transition-all">
-          <img src="images/clients/legi.png" alt="Legi" class="max-h-8 max-w-full object-contain opacity-60 hover:opacity-100 transition-opacity" loading="lazy">
-        </div>
-        <div class="flex items-center justify-center h-16 px-3 rounded-xl bg-surface-alt dark:bg-surface-dark-alt border border-gray-100 dark:border-gray-800 hover:border-primary/30 transition-all">
-          <img src="images/clients/yandy.png" alt="Yandy" class="max-h-8 max-w-full object-contain opacity-60 hover:opacity-100 transition-opacity" loading="lazy">
-        </div>
-        <div class="flex items-center justify-center h-16 px-3 rounded-xl bg-surface-alt dark:bg-surface-dark-alt border border-gray-100 dark:border-gray-800 hover:border-primary/30 transition-all">
-          <img src="images/clients/gpc.png" alt="GPC" class="max-h-8 max-w-full object-contain opacity-60 hover:opacity-100 transition-opacity" loading="lazy">
-        </div>
-        <div class="flex items-center justify-center h-16 px-3 rounded-xl bg-surface-alt dark:bg-surface-dark-alt border border-gray-100 dark:border-gray-800 hover:border-primary/30 transition-all">
-          <img src="images/clients/juba.png" alt="Juba" class="max-h-8 max-w-full object-contain opacity-60 hover:opacity-100 transition-opacity" loading="lazy">
-        </div>
-        <div class="flex items-center justify-center h-16 px-3 rounded-xl bg-surface-alt dark:bg-surface-dark-alt border border-gray-100 dark:border-gray-800 hover:border-primary/30 transition-all">
-          <img src="images/clients/fchain.png" alt="FChain" class="max-h-8 max-w-full object-contain opacity-60 hover:opacity-100 transition-opacity" loading="lazy">
-        </div>
-        <div class="flex items-center justify-center h-16 px-3 rounded-xl bg-surface-alt dark:bg-surface-dark-alt border border-gray-100 dark:border-gray-800 hover:border-primary/30 transition-all">
-          <img src="images/clients/nicolo.png" alt="Nicolo" class="max-h-8 max-w-full object-contain opacity-60 hover:opacity-100 transition-opacity" loading="lazy">
-        </div>
-        <div class="flex items-center justify-center h-16 px-3 rounded-xl bg-surface-alt dark:bg-surface-dark-alt border border-gray-100 dark:border-gray-800 hover:border-primary/30 transition-all">
-          <img src="images/clients/bedstar.png" alt="Bedstar" class="max-h-8 max-w-full object-contain opacity-60 hover:opacity-100 transition-opacity" loading="lazy">
-        </div>
-      </div>
+    <!-- SVG connection lines -->
+    <svg class="network-svg" id="networkSvg"></svg>
+
+    <!-- Center: 10XSEO -->
+    <div class="network-node center-node" id="node-center" style="left:calc(50% - 80px);top:calc(50% - 80px);" data-id="center">
+        <img src="images/logo.png" alt="10XSEO">
     </div>
-  </section>
 
-  <!-- ========== CASE STUDIES ========== -->
-  <section class="py-12 lg:py-16" id="cases-grid">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-10">
-        <h2 class="font-heading text-2xl sm:text-3xl font-extrabold text-heading dark:text-heading-dark mb-3">ქეის სტადიები — რეალური შედეგები</h2>
-      </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-        <!-- Case 1 -->
-        <a href="case-studies/3x-in-28-days.html" class="group bg-white dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 p-6 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all">
-          <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-amber-50 text-amber-600 dark:bg-amber-900/30 dark:text-amber-400 mb-4">ახალი პროექტი</span>
-          <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark mb-2 group-hover:text-primary dark:group-hover:text-primary-light transition-colors">3x ზრდა 28 დღეში</h3>
-          <p class="text-sm text-body dark:text-body-dark mb-4">3x ტრაფიკი · 1,500+ კლიკი/თვე · #1 პოზიცია</p>
-          <div class="flex items-center justify-between">
-            <span class="text-xs text-body/60 dark:text-body-dark/60">28 დღე → 6 თვე</span>
-            <span class="text-sm font-semibold text-primary dark:text-primary-light group-hover:underline">წაიკითხე →</span>
-          </div>
-        </a>
-
-        <!-- Case 2 -->
-        <a href="case-studies/trafikis-gaormageba-3-tveshi.html" class="group bg-white dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 p-6 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all">
-          <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-orange-50 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400 mb-4">სამშენებლო</span>
-          <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark mb-2 group-hover:text-primary dark:group-hover:text-primary-light transition-colors">ტრაფიკი გაორმაგდა 3 თვეში</h3>
-          <p class="text-sm text-body dark:text-body-dark mb-4">+100% ტრაფიკი</p>
-          <div class="flex items-center justify-between">
-            <span class="text-xs text-body/60 dark:text-body-dark/60">3 თვე</span>
-            <span class="text-sm font-semibold text-primary dark:text-primary-light group-hover:underline">წაიკითხე →</span>
-          </div>
-        </a>
-
-        <!-- Case 3 -->
-        <a href="case-studies/250-percent-increase.html" class="group bg-white dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 p-6 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all">
-          <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-orange-50 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400 mb-4">სამშენებლო</span>
-          <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark mb-2 group-hover:text-primary dark:group-hover:text-primary-light transition-colors">250%-იანი ზრდა</h3>
-          <p class="text-sm text-body dark:text-body-dark mb-4">+250% ტრაფიკი · $30K საშუალო გაყიდვა</p>
-          <div class="flex items-center justify-between">
-            <span class="text-xs text-body/60 dark:text-body-dark/60">3 თვე</span>
-            <span class="text-sm font-semibold text-primary dark:text-primary-light group-hover:underline">წაიკითხე →</span>
-          </div>
-        </a>
-
-        <!-- Case 4 -->
-        <a href="case-studies/270-percent-increase.html" class="group bg-white dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 p-6 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all">
-          <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 mb-4">ტექნოლოგია / Shopify</span>
-          <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark mb-2 group-hover:text-primary dark:group-hover:text-primary-light transition-colors">+270% ტრაფიკი, +45% გაყიდვები</h3>
-          <p class="text-sm text-body dark:text-body-dark mb-4">+270% ტრაფიკი · +45% გაყიდვები</p>
-          <div class="flex items-center justify-between">
-            <span class="text-xs text-body/60 dark:text-body-dark/60">3 თვე</span>
-            <span class="text-sm font-semibold text-primary dark:text-primary-light group-hover:underline">წაიკითხე →</span>
-          </div>
-        </a>
-
-        <!-- Case 5 -->
-        <a href="case-studies/local-seo-result.html" class="group bg-white dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 p-6 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all">
-          <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-emerald-50 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400 mb-4">ლოკალური SEO</span>
-          <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark mb-2 group-hover:text-primary dark:group-hover:text-primary-light transition-colors">+60% ზარები — ლოკალური SEO</h3>
-          <p class="text-sm text-body dark:text-body-dark mb-4">+60% ზარები · 1,500 ზარი · +20K იმპრესია</p>
-          <div class="flex items-center justify-between">
-            <span class="text-xs text-body/60 dark:text-body-dark/60">2 თვე</span>
-            <span class="text-sm font-semibold text-primary dark:text-primary-light group-hover:underline">წაიკითხე →</span>
-          </div>
-        </a>
-
-        <!-- Case 6 -->
-        <a href="case-studies/4200-yoveltviuri-vizitori-4-tveshi.html" class="group bg-white dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 p-6 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all">
-          <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-rose-50 text-rose-600 dark:bg-rose-900/30 dark:text-rose-400 mb-4">სამედიცინო</span>
-          <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark mb-2 group-hover:text-primary dark:group-hover:text-primary-light transition-colors">4,200+ ვიზიტორი 4 თვეში</h3>
-          <p class="text-sm text-body dark:text-body-dark mb-4">0 → 4,200+ ვიზიტორი/თვე</p>
-          <div class="flex items-center justify-between">
-            <span class="text-xs text-body/60 dark:text-body-dark/60">4 თვე</span>
-            <span class="text-sm font-semibold text-primary dark:text-primary-light group-hover:underline">წაიკითხე →</span>
-          </div>
-        </a>
-
-        <!-- Case 7 -->
-        <a href="case-studies/seo-krizisidan-top-3mde.html" class="group bg-white dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 p-6 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all">
-          <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-indigo-50 text-indigo-600 dark:bg-indigo-900/30 dark:text-indigo-400 mb-4">B2B</span>
-          <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark mb-2 group-hover:text-primary dark:group-hover:text-primary-light transition-colors">SEO კრიზისიდან Top 3-მდე</h3>
-          <p class="text-sm text-body dark:text-body-dark mb-4">0 → Top 3 პოზიცია</p>
-          <div class="flex items-center justify-between">
-            <span class="text-xs text-body/60 dark:text-body-dark/60">2 თვე</span>
-            <span class="text-sm font-semibold text-primary dark:text-primary-light group-hover:underline">წაიკითხე →</span>
-          </div>
-        </a>
-
-        <!-- Case 8 -->
-        <a href="case-studies/stomatologiuri-klinikis-seo.html" class="group bg-white dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 p-6 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all">
-          <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-pink-50 text-pink-600 dark:bg-pink-900/30 dark:text-pink-400 mb-4">სტომატოლოგია</span>
-          <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark mb-2 group-hover:text-primary dark:group-hover:text-primary-light transition-colors">#1 პოზიცია · 600% ზრდა</h3>
-          <p class="text-sm text-body dark:text-body-dark mb-4">+600% · 1,620 ვიზიტორი · 52% CTR</p>
-          <div class="flex items-center justify-between">
-            <span class="text-xs text-body/60 dark:text-body-dark/60">6 თვე</span>
-            <span class="text-sm font-semibold text-primary dark:text-primary-light group-hover:underline">წაიკითხე →</span>
-          </div>
-        </a>
-
-      </div>
+    <!-- Medical / Pharmacy cluster (upper-left) -->
+    <div class="network-node float-1" id="node-todua-clinic" data-id="todua-clinic" data-cluster="medical" style="left:8%;top:12%;">
+        <img src="images/clients/todua-clinic-canva.png" alt="თოდუას კლინიკა">
+        <div class="node-tooltip">თოდუას კლინიკა — <span class="metric">0→4,200/mo</span></div>
     </div>
-  </section>
+    <div class="network-node float-3" id="node-gepha" data-id="gepha" data-cluster="medical" style="left:22%;top:8%;">
+        <img src="images/clients/gepha.png" alt="GEPHA">
+        <div class="node-tooltip">GEPHA</div>
+    </div>
+    <div class="network-node float-2" id="node-pharmadepot" data-id="pharmadepot" data-cluster="medical" style="left:6%;top:30%;">
+        <img src="images/clients/pharmadepot-canva.png" alt="ფარმადეპო">
+        <div class="node-tooltip">ფარმადეპო — <span class="metric">+340%</span></div>
+    </div>
+    <div class="network-node float-4" id="node-smile-studio" data-id="smile-studio" data-cluster="medical" style="left:20%;top:24%;">
+        <img src="images/clients/smile-studio.png" alt="Smile Studio">
+        <div class="node-tooltip">Smile Studio</div>
+    </div>
 
-  <!-- ========== CTA BANNER ========== -->
-  <section class="py-16 lg:py-20 ai-cta-animate dark:from-primary-dark dark:to-accent-dark relative overflow-hidden">
-    <div class="absolute inset-0 opacity-10">
-      <div class="absolute top-10 left-10 w-40 h-40 border border-white/30 rounded-full"></div>
-      <div class="absolute bottom-10 right-10 w-60 h-60 border border-white/20 rounded-full"></div>
+    <!-- Real Estate cluster (upper-right) -->
+    <div class="network-node float-2" id="node-myhome" data-id="myhome" data-cluster="realestate" style="left:72%;top:10%;">
+        <img src="images/clients/myhome-canva.png" alt="myhome.ge">
+        <div class="node-tooltip">myhome.ge — <span class="metric">+220%</span></div>
     </div>
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center relative z-10">
-      <h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white mb-4">
-        მზად ხართ მსგავსი შედეგისთვის?
-      </h2>
-      <p class="text-lg text-white/80 mb-8">
-        მიიღეთ უფასო SEO აუდიტი და გაიგეთ რა პოტენციალი აქვს თქვენს ვებსაიტს
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="seo-audit.html" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-primary font-bold rounded-2xl hover:shadow-xl transition-all text-lg">
-          უფასო SEO აუდიტი
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-        </a>
-        <a href="tel:+995510101517" class="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-2xl hover:bg-white/10 transition-all text-lg">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-          დაგვირეკეთ
-        </a>
-      </div>
+    <div class="network-node float-4" id="node-belle-maison" data-id="belle-maison" data-cluster="realestate" style="left:84%;top:22%;">
+        <img src="images/clients/belle-maison-canva.png" alt="Belle Maison">
+        <div class="node-tooltip">Belle Maison — <span class="metric">+200%</span></div>
     </div>
-  </section>
+    <div class="network-node float-1" id="node-horizon" data-id="horizon" data-cluster="realestate" style="left:78%;top:40%;">
+        <img src="images/clients/horizon-canva.png" alt="Horizon Batumi">
+        <div class="node-tooltip">Horizon Batumi — <span class="metric">+150%</span></div>
+    </div>
+
+    <!-- Hospitality (connected to horizon) -->
+    <div class="network-node float-3" id="node-kvareli-lake" data-id="kvareli-lake" data-cluster="hospitality" style="left:88%;top:55%;">
+        <img src="images/clients/kvareli-lake-canva.png" alt="Kvareli Lake">
+        <div class="node-tooltip">Kvareli Lake — <span class="metric">+180%</span></div>
+    </div>
+
+    <!-- Financial / Business (center-left) -->
+    <div class="network-node float-4" id="node-irao" data-id="irao" data-cluster="financial" style="left:32%;top:16%;">
+        <img src="images/clients/irao-canva.png" alt="IRAO">
+        <div class="node-tooltip">IRAO — <span class="metric">+180%</span></div>
+    </div>
+
+    <!-- E-Commerce (center-right) -->
+    <div class="network-node float-2" id="node-elehear" data-id="elehear" data-cluster="ecommerce" style="left:62%;top:18%;">
+        <img src="images/clients/elehear-canva.png" alt="ELEHEAR">
+        <div class="node-tooltip">ELEHEAR — <span class="metric">+270%</span></div>
+    </div>
+
+    <!-- Others (lower area, spread out for 17 nodes) -->
+    <div class="network-node float-3" id="node-gpc" data-id="gpc" data-cluster="other" style="left:10%;top:58%;">
+        <img src="images/clients/gpc-canva.png" alt="GPC">
+        <div class="node-tooltip">GPC</div>
+    </div>
+    <div class="network-node float-1" id="node-koordinati" data-id="koordinati" data-cluster="other" style="left:24%;top:52%;">
+        <img src="images/clients/koordinati.png" alt="კოორდინატი">
+        <div class="node-tooltip">კოორდინატი</div>
+    </div>
+    <div class="network-node float-4" id="node-juba" data-id="juba" data-cluster="other" style="left:14%;top:74%;">
+        <img src="images/clients/juba-canva.png" alt="Jubá">
+        <div class="node-tooltip">Jubá</div>
+    </div>
+    <div class="network-node float-2" id="node-nicolo" data-id="nicolo" data-cluster="other" style="left:32%;top:70%;">
+        <img src="images/clients/nicolo-canva.png" alt="Nicolo">
+        <div class="node-tooltip">Nicolo</div>
+    </div>
+    <div class="network-node float-3" id="node-avia" data-id="avia" data-cluster="other" style="left:50%;top:74%;">
+        <img src="images/clients/avia.png" alt="avia.ge">
+        <div class="node-tooltip">avia.ge</div>
+    </div>
+    <div class="network-node float-1" id="node-kotejebi" data-id="kotejebi" data-cluster="other" style="left:68%;top:70%;">
+        <img src="images/clients/kotejebi.png" alt="Kotejebi.ge">
+        <div class="node-tooltip">Kotejebi.ge</div>
+    </div>
+    <div class="network-node float-4" id="node-gergili" data-id="gergili" data-cluster="other" style="left:84%;top:74%;">
+        <img src="images/clients/gergili.png" alt="Gergili">
+        <div class="node-tooltip">Gergili</div>
+    </div>
+</section>
+
+<!-- Mobile Grid Fallback -->
+<section class="mobile-grid grid-cols-3 gap-4 p-6 pt-20">
+    <div class="text-center col-span-3 mb-6">
+        <h1 class="text-4xl font-bold text-white mb-3">ჩვენი ქსელი</h1>
+        <p class="text-gray-400">17+ პარტნიორი კომპანია</p>
+    </div>
+    <div class="flex items-center justify-center bg-white/95 rounded-xl h-20 p-3"><img src="images/clients/todua-clinic-canva.png" alt="თოდუას კლინიკა" class="max-h-10 object-contain"></div>
+    <div class="flex items-center justify-center bg-white/95 rounded-xl h-20 p-3"><img src="images/clients/gepha.png" alt="GEPHA" class="max-h-10 object-contain"></div>
+    <div class="flex items-center justify-center bg-white/95 rounded-xl h-20 p-3"><img src="images/clients/kvareli-lake-canva.png" alt="Kvareli Lake" class="max-h-10 object-contain"></div>
+    <div class="flex items-center justify-center bg-white/95 rounded-xl h-20 p-3"><img src="images/clients/gpc-canva.png" alt="GPC" class="max-h-10 object-contain"></div>
+    <div class="flex items-center justify-center bg-white/95 rounded-xl h-20 p-3"><img src="images/clients/elehear-canva.png" alt="ELEHEAR" class="max-h-10 object-contain"></div>
+    <div class="flex items-center justify-center bg-white/95 rounded-xl h-20 p-3"><img src="images/clients/irao-canva.png" alt="IRAO" class="max-h-10 object-contain"></div>
+    <div class="flex items-center justify-center bg-white/95 rounded-xl h-20 p-3"><img src="images/clients/koordinati.png" alt="კოორდინატი" class="max-h-10 object-contain"></div>
+    <div class="flex items-center justify-center bg-white/95 rounded-xl h-20 p-3"><img src="images/clients/horizon-canva.png" alt="Horizon Batumi" class="max-h-10 object-contain"></div>
+    <div class="flex items-center justify-center bg-white/95 rounded-xl h-20 p-3"><img src="images/clients/juba-canva.png" alt="Jubá" class="max-h-10 object-contain"></div>
+    <div class="flex items-center justify-center bg-white/95 rounded-xl h-20 p-3"><img src="images/clients/belle-maison-canva.png" alt="Belle Maison" class="max-h-10 object-contain"></div>
+    <div class="flex items-center justify-center bg-white/95 rounded-xl h-20 p-3"><img src="images/clients/nicolo-canva.png" alt="Nicolo" class="max-h-10 object-contain"></div>
+    <div class="flex items-center justify-center bg-white/95 rounded-xl h-20 p-3"><img src="images/clients/myhome-canva.png" alt="myhome.ge" class="max-h-10 object-contain"></div>
+    <div class="flex items-center justify-center bg-white/95 rounded-xl h-20 p-3"><img src="images/clients/avia.png" alt="avia.ge" class="max-h-10 object-contain"></div>
+    <div class="flex items-center justify-center bg-white/95 rounded-xl h-20 p-3"><img src="images/clients/smile-studio.png" alt="Smile Studio" class="max-h-10 object-contain"></div>
+    <div class="flex items-center justify-center bg-white/95 rounded-xl h-20 p-3"><img src="images/clients/kotejebi.png" alt="Kotejebi.ge" class="max-h-10 object-contain"></div>
+    <div class="flex items-center justify-center bg-white/95 rounded-xl h-20 p-3"><img src="images/clients/gergili.png" alt="Gergili" class="max-h-10 object-contain"></div>
+    <div class="flex items-center justify-center bg-white/95 rounded-xl h-20 p-3"><img src="images/clients/pharmadepot-canva.png" alt="ფარმადეპო" class="max-h-10 object-contain"></div>
+</section>
+
+<!-- Industry Cluster Breakdown -->
+<section class="py-20 px-4">
+    <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-4">ინდუსტრიების კლასტერები</h2>
+        <p class="text-gray-400 text-center mb-14 max-w-2xl mx-auto">ჩვენი პარტნიორები სხვადასხვა სექტორიდან. თითოეული კლასტერი — გამოცდილების უნიკალური ბაზა.</p>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Medical / Pharmacy -->
+            <div class="cluster-card">
+                <div class="flex items-center justify-between mb-2">
+                    <h3 class="text-xl font-bold text-white">მედიცინა / ფარმაცია</h3>
+                    <span class="stat-pill">4,200/mo</span>
+                </div>
+                <p class="text-gray-400 text-sm mb-4">სამედიცინო და ფარმაცევტული სექტორი — ვიზიტორები, პაციენტები</p>
+                <div class="cluster-logos">
+                    <div class="cluster-logo-item"><img src="images/clients/todua-clinic-canva.png" alt="თოდუას კლინიკა"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/gepha.png" alt="GEPHA"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/pharmadepot-canva.png" alt="ფარმადეპო"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/smile-studio.png" alt="Smile Studio"></div>
+                </div>
+                <div class="mt-4 space-y-1 text-sm">
+                    <div class="flex justify-between"><span class="text-gray-500">თოდუას კლინიკა</span><span class="text-success font-semibold">0→4,200/mo</span></div>
+                    <div class="flex justify-between"><span class="text-gray-500">ფარმადეპო</span><span class="text-success font-semibold">+340% traffic</span></div>
+                </div>
+            </div>
+
+            <!-- Real Estate -->
+            <div class="cluster-card">
+                <div class="flex items-center justify-between mb-2">
+                    <h3 class="text-xl font-bold text-white">უძრავი ქონება</h3>
+                    <span class="stat-pill">+210% avg</span>
+                </div>
+                <p class="text-gray-400 text-sm mb-4">უძრავი ქონების ბაზარი — ლიდები, ტრაფიკი, ჯავშნები</p>
+                <div class="cluster-logos">
+                    <div class="cluster-logo-item"><img src="images/clients/myhome-canva.png" alt="myhome.ge"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/belle-maison-canva.png" alt="Belle Maison"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/horizon-canva.png" alt="Horizon Batumi"></div>
+                </div>
+                <div class="mt-4 space-y-1 text-sm">
+                    <div class="flex justify-between"><span class="text-gray-500">myhome.ge</span><span class="text-success font-semibold">+220% traffic</span></div>
+                    <div class="flex justify-between"><span class="text-gray-500">Belle Maison</span><span class="text-success font-semibold">+200% leads</span></div>
+                    <div class="flex justify-between"><span class="text-gray-500">Horizon Batumi</span><span class="text-success font-semibold">+150% bookings</span></div>
+                </div>
+            </div>
+
+            <!-- Hospitality -->
+            <div class="cluster-card">
+                <div class="flex items-center justify-between mb-2">
+                    <h3 class="text-xl font-bold text-white">ჰოსპიტალობა</h3>
+                    <span class="stat-pill">+165% avg</span>
+                </div>
+                <p class="text-gray-400 text-sm mb-4">სასტუმროები და კურორტები — ჯავშნები, ხილვადობა</p>
+                <div class="cluster-logos">
+                    <div class="cluster-logo-item"><img src="images/clients/horizon-canva.png" alt="Horizon Batumi"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/kvareli-lake-canva.png" alt="Kvareli Lake"></div>
+                </div>
+                <div class="mt-4 space-y-1 text-sm">
+                    <div class="flex justify-between"><span class="text-gray-500">Horizon Batumi</span><span class="text-success font-semibold">+150% bookings</span></div>
+                    <div class="flex justify-between"><span class="text-gray-500">Kvareli Lake</span><span class="text-success font-semibold">+180% bookings</span></div>
+                </div>
+            </div>
+
+            <!-- Financial -->
+            <div class="cluster-card">
+                <div class="flex items-center justify-between mb-2">
+                    <h3 class="text-xl font-bold text-white">ფინანსები</h3>
+                    <span class="stat-pill">+180%</span>
+                </div>
+                <p class="text-gray-400 text-sm mb-4">ფინანსური სექტორი — ხილვადობა, ორგანული ტრაფიკი</p>
+                <div class="cluster-logos">
+                    <div class="cluster-logo-item"><img src="images/clients/irao-canva.png" alt="IRAO"></div>
+                </div>
+                <div class="mt-4 space-y-1 text-sm">
+                    <div class="flex justify-between"><span class="text-gray-500">IRAO</span><span class="text-success font-semibold">+180% visibility</span></div>
+                </div>
+            </div>
+
+            <!-- E-Commerce -->
+            <div class="cluster-card">
+                <div class="flex items-center justify-between mb-2">
+                    <h3 class="text-xl font-bold text-white">E-Commerce</h3>
+                    <span class="stat-pill">+270%</span>
+                </div>
+                <p class="text-gray-400 text-sm mb-4">ონლაინ კომერციის სექტორი — ტრაფიკი, კონვერსია</p>
+                <div class="cluster-logos">
+                    <div class="cluster-logo-item"><img src="images/clients/elehear-canva.png" alt="ELEHEAR"></div>
+                </div>
+                <div class="mt-4 space-y-1 text-sm">
+                    <div class="flex justify-between"><span class="text-gray-500">ELEHEAR</span><span class="text-success font-semibold">+270% traffic</span></div>
+                </div>
+            </div>
+
+            <!-- Others -->
+            <div class="cluster-card">
+                <div class="flex items-center justify-between mb-2">
+                    <h3 class="text-xl font-bold text-white">სხვა ინდუსტრიები</h3>
+                    <span class="stat-pill">7 კლიენტი</span>
+                </div>
+                <p class="text-gray-400 text-sm mb-4">მრავალფეროვანი სექტორები — ზრდის პოტენციალი</p>
+                <div class="cluster-logos">
+                    <div class="cluster-logo-item"><img src="images/clients/gpc-canva.png" alt="GPC"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/koordinati.png" alt="კოორდინატი"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/juba-canva.png" alt="Jubá"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/nicolo-canva.png" alt="Nicolo"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/avia.png" alt="avia.ge"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/kotejebi.png" alt="Kotejebi.ge"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/gergili.png" alt="Gergili"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="py-20 px-4">
+    <div class="max-w-3xl mx-auto text-center">
+        <div class="bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/20 rounded-2xl p-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">შეუერთდი ქსელს</h2>
+            <p class="text-gray-400 mb-8 text-lg">შემდეგი კვანძი შენი ბიზნესია. დაუკავშირდი ჩვენს ეკოსისტემას და იზარდე ციფრულ სივრცეში.</p>
+            <a href="#" class="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-4 rounded-xl transition-all hover:scale-105 text-lg">
+                უფასო კონსულტაცია
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="border-t border-dark-border py-12 px-4">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+            <img src="images/logo.png" alt="10XSEO" class="h-8">
+            <span class="text-gray-500 text-sm">&copy; 2024 10XSEO. ყველა უფლება დაცულია.</span>
+        </div>
+        <div class="flex items-center gap-6">
+            <a href="#" class="text-gray-500 hover:text-primary text-sm transition-colors">სერვისები</a>
+            <a href="#" class="text-gray-500 hover:text-primary text-sm transition-colors">ქეისები</a>
+            <a href="#" class="text-gray-500 hover:text-primary text-sm transition-colors">კონტაქტი</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+(function() {
+    // Connection definitions
+    const connections = {
+        cluster: [
+            // Medical / Pharmacy cluster
+            ['todua-clinic', 'gepha'],
+            ['todua-clinic', 'pharmadepot'],
+            ['todua-clinic', 'smile-studio'],
+            ['gepha', 'pharmadepot'],
+            ['gepha', 'smile-studio'],
+            ['pharmadepot', 'smile-studio'],
+            // Real Estate cluster
+            ['myhome', 'belle-maison'],
+            ['myhome', 'horizon'],
+            ['belle-maison', 'horizon'],
+            // Hospitality (kvareli-lake connected to horizon)
+            ['kvareli-lake', 'horizon'],
+            // Others cluster
+            ['gpc', 'koordinati'],
+            ['juba', 'nicolo'],
+            ['avia', 'kotejebi'],
+            ['kotejebi', 'gergili'],
+            ['avia', 'gergili'],
+        ],
+        center: [
+            'todua-clinic', 'gepha', 'pharmadepot', 'smile-studio',
+            'kvareli-lake', 'gpc', 'elehear', 'irao', 'koordinati',
+            'horizon', 'juba', 'belle-maison', 'nicolo', 'myhome',
+            'avia', 'kotejebi', 'gergili'
+        ]
+    };
+
+    const svg = document.getElementById('networkSvg');
+    const canvas = document.getElementById('networkCanvas');
+
+    function getNodeCenter(id) {
+        const el = document.getElementById('node-' + id);
+        if (!el) return null;
+        const rect = el.getBoundingClientRect();
+        const canvasRect = canvas.getBoundingClientRect();
+        return {
+            x: rect.left - canvasRect.left + rect.width / 2,
+            y: rect.top - canvasRect.top + rect.height / 2
+        };
+    }
+
+    function drawLines() {
+        svg.innerHTML = '';
+        const ns = 'http://www.w3.org/2000/svg';
+
+        // Center lines (faint)
+        connections.center.forEach(id => {
+            const c = getNodeCenter('center');
+            const n = getNodeCenter(id);
+            if (!c || !n) return;
+            const line = document.createElementNS(ns, 'line');
+            line.setAttribute('x1', c.x);
+            line.setAttribute('y1', c.y);
+            line.setAttribute('x2', n.x);
+            line.setAttribute('y2', n.y);
+            line.classList.add('network-line', 'center-line');
+            line.dataset.from = 'center';
+            line.dataset.to = id;
+            svg.appendChild(line);
+        });
+
+        // Cluster lines (brighter)
+        connections.cluster.forEach(([a, b]) => {
+            const na = getNodeCenter(a);
+            const nb = getNodeCenter(b);
+            if (!na || !nb) return;
+            const line = document.createElementNS(ns, 'line');
+            line.setAttribute('x1', na.x);
+            line.setAttribute('y1', na.y);
+            line.setAttribute('x2', nb.x);
+            line.setAttribute('y2', nb.y);
+            line.classList.add('network-line');
+            line.dataset.from = a;
+            line.dataset.to = b;
+            svg.appendChild(line);
+        });
+    }
+
+    drawLines();
+    window.addEventListener('resize', drawLines);
+
+    // Hover interactions
+    const nodes = document.querySelectorAll('.network-node[data-id]');
+    nodes.forEach(node => {
+        const id = node.dataset.id;
+
+        node.addEventListener('mouseenter', () => {
+            // Highlight connected lines
+            svg.querySelectorAll('.network-line').forEach(line => {
+                if (line.dataset.from === id || line.dataset.to === id) {
+                    line.classList.add('highlighted');
+                }
+            });
+            // Glow connected nodes
+            const connectedIds = new Set();
+            connections.cluster.forEach(([a, b]) => {
+                if (a === id) connectedIds.add(b);
+                if (b === id) connectedIds.add(a);
+            });
+            if (id !== 'center') connectedIds.add('center');
+            connections.center.forEach(cid => {
+                if (id === 'center') connectedIds.add(cid);
+            });
+
+            connectedIds.forEach(cid => {
+                const el = document.getElementById('node-' + cid);
+                if (el) el.classList.add('glow');
+            });
+        });
+
+        node.addEventListener('mouseleave', () => {
+            svg.querySelectorAll('.network-line.highlighted').forEach(l => l.classList.remove('highlighted'));
+            document.querySelectorAll('.network-node.glow').forEach(n => n.classList.remove('glow'));
+        });
+    });
+
+    // Redraw lines periodically to sync with float animations
+    setInterval(drawLines, 2000);
+})();
+</script>
 
   <!-- ========== FOOTER ========== -->
-    <footer class="bg-heading dark:bg-surface-dark-alt text-gray-400 py-12 lg:py-16">
+  <footer class="bg-heading dark:bg-surface-dark-alt text-gray-400 py-12 lg:py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
-        <!-- Col 1: Info -->
         <div class="col-span-2 lg:col-span-1">
           <a href="index.html" class="flex items-center gap-2 mb-4">
             <img src="images/logo.png" alt="10XSEO" class="h-12 w-auto">
@@ -494,7 +652,6 @@
             </a>
           </div>
         </div>
-        <!-- Col 2: Services -->
         <div>
           <p class="font-heading text-white font-semibold mb-4">სერვისები</p>
           <ul class="space-y-2.5 text-sm">
@@ -504,7 +661,6 @@
             <li><a href="seo-audit.html" class="hover:text-white transition-colors">უფასო SEO აუდიტი</a></li>
           </ul>
         </div>
-        <!-- Col 3: Company -->
         <div>
           <p class="font-heading text-white font-semibold mb-4">კომპანია</p>
           <ul class="space-y-2.5 text-sm">
@@ -516,7 +672,6 @@
             <li><a href="vacancies.html" class="hover:text-white transition-colors">ვაკანსიები</a></li>
           </ul>
         </div>
-        <!-- Col 4: Contact -->
         <div>
           <p class="font-heading text-white font-semibold mb-4">კონტაქტი</p>
           <ul class="space-y-2.5 text-sm">
@@ -536,131 +691,51 @@
     </div>
   </footer>
 
-  <!-- ========== STICKY BOTTOM CTA (Mobile) ========== -->
-  <div id="sticky-cta" class="fixed bottom-0 left-0 right-0 z-50 lg:hidden bg-white dark:bg-surface-dark-alt border-t border-gray-200 dark:border-gray-800 p-3 safe-bottom transition-transform duration-300">
-    <div class="flex items-center gap-2 max-w-lg mx-auto">
-      <a href="seo-audit.html" class="flex-1 flex items-center justify-center gap-2 py-3 bg-gradient-to-r from-primary to-primary-dark text-white font-semibold rounded-xl text-sm">უფასო SEO აუდიტი</a>
-      <a href="tel:+995510101517" class="w-12 h-12 flex items-center justify-center rounded-xl border border-gray-200 dark:border-gray-700 text-primary dark:text-primary-light">
+  <!-- ========== STICKY BOTTOM CTA (Mobile Only) ========== -->
+  <div id="sticky-cta" class="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-white dark:bg-surface-dark border-t border-gray-200 dark:border-gray-800 px-4 py-3 safe-bottom transition-transform duration-300">
+    <div class="flex gap-3">
+      <a href="seo-audit.html" class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 ai-cta-animate text-white text-sm font-bold rounded-xl">
+        უფასო SEO აუდიტი
+      </a>
+      <a href="tel:+995510101517" class="w-12 h-12 flex items-center justify-center border-2 border-primary dark:border-primary-light rounded-xl text-primary dark:text-primary-light shrink-0">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
       </a>
     </div>
   </div>
 
+  <!-- ========== SCRIPTS ========== -->
   <script>
-    // Theme toggle
-    const themeToggle = document.getElementById('theme-toggle');
-    if (localStorage.getItem('theme') !== 'light') document.documentElement.classList.add('dark');
-    themeToggle.addEventListener('click', () => {
-      document.documentElement.classList.toggle('dark');
-      localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
-    });
+    // Always dark mode
+    document.documentElement.classList.add('dark');
 
-    // Mobile menu
-    
-    document.getElementById('mobile-menu-cta').addEventListener('click', () => { mm.style.transform = 'translateX(100%)'; document.body.style.overflow = ''; });
-
-    // Filter tabs
-    const filterTabs = document.querySelectorAll('.filter-tab');
-    const caseCards = document.querySelectorAll('.case-card');
-    const featuredCase = document.querySelector('[data-category]');
-
-    filterTabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        filterTabs.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        const filter = tab.dataset.filter;
-
-        document.querySelectorAll('#cases-container .case-card').forEach(card => {
-          if (filter === 'all' || card.dataset.category === filter) {
-            card.style.display = '';
-          } else {
-            card.style.display = 'none';
-          }
-        });
-      });
-    });
-
-    // Toggle card details
-    function toggleCard(card) {
-      const details = card.querySelector('.card-details');
-      const icon = card.querySelector('.expand-icon');
-      const text = card.querySelector('.expand-text');
-      const isExpanded = details.classList.contains('expanded');
-
-      details.classList.toggle('expanded');
-      icon.style.transform = isExpanded ? '' : 'rotate(180deg)';
-      text.textContent = isExpanded ? 'დეტალურად' : 'დახურვა';
-    }
-
-    // Sticky CTA hide/show on scroll
-    let lastScroll = 0;
-    const stickyCta = document.getElementById('sticky-cta');
-    window.addEventListener('scroll', () => {
-      const currentScroll = window.pageYOffset;
-      if (currentScroll > lastScroll && currentScroll > 300) {
-        stickyCta.style.transform = 'translateY(100%)';
-      } else {
-        stickyCta.style.transform = 'translateY(0)';
-      }
-      lastScroll = currentScroll;
-    });
-
-    // Animated counters
-    const counters = document.querySelectorAll('[data-count]');
-    const observerOptions = { threshold: 0.5 };
-    const counterObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const el = entry.target;
-          const target = parseInt(el.dataset.count);
-          const suffix = el.textContent.includes('%') ? '%' : '+';
-          let current = 0;
-          const increment = target / 40;
-          const timer = setInterval(() => {
-            current += increment;
-            if (current >= target) {
-              current = target;
-              clearInterval(timer);
-            }
-            el.textContent = Math.round(current) + suffix;
-          }, 30);
-          counterObserver.unobserve(el);
-        }
-      });
-    }, observerOptions);
-    counters.forEach(c => counterObserver.observe(c));
-  </script>
-
-  <script>
     // Mobile menu with animation
     const menuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
-    if (menuBtn && mobileMenu) {
-      let menuOpen = false;
-      menuBtn.addEventListener('click', () => {
-        menuOpen = !menuOpen;
-        if (menuOpen) {
-          mobileMenu.classList.add('menu-open');
-          mobileMenu.style.pointerEvents = 'auto';
-          menuBtn.classList.add('menu-active');
-          document.body.classList.add('overflow-hidden');
-        } else {
-          mobileMenu.classList.remove('menu-open');
-          mobileMenu.style.pointerEvents = 'none';
-          menuBtn.classList.remove('menu-active');
-          document.body.classList.remove('overflow-hidden');
-        }
+    let menuOpen = false;
+    menuBtn.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      if (menuOpen) {
+        mobileMenu.classList.add('menu-open');
+        mobileMenu.style.pointerEvents = 'auto';
+        menuBtn.classList.add('menu-active');
+        document.body.classList.add('overflow-hidden');
+      } else {
+        mobileMenu.classList.remove('menu-open');
+        mobileMenu.style.pointerEvents = 'none';
+        menuBtn.classList.remove('menu-active');
+        document.body.classList.remove('overflow-hidden');
+      }
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuOpen = false;
+        mobileMenu.classList.remove('menu-open');
+        mobileMenu.style.pointerEvents = 'none';
+        menuBtn.classList.remove('menu-active');
+        document.body.classList.remove('overflow-hidden');
       });
-      mobileMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          menuOpen = false;
-          mobileMenu.classList.remove('menu-open');
-          mobileMenu.style.pointerEvents = 'none';
-          menuBtn.classList.remove('menu-active');
-          document.body.classList.remove('overflow-hidden');
-        });
-      });
-    }
+    });
   </script>
+
 </body>
 </html>
