@@ -2,6 +2,9 @@
 <html lang="ka" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ჩვენ შესახებ — 10XSEO გუნდი | 10XSEO</title>
   <meta name="robots" content="noindex, nofollow">
@@ -11,6 +14,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/firago@1.0.0/FiraGO.css" rel="stylesheet">
+  <!-- Lite YouTube Embed -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.3/src/lite-yt-embed.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.3/src/lite-yt-embed.min.js" defer></script>
   <!-- Schema: Organization -->
   <script type="application/ld+json">
   {
@@ -21,18 +27,26 @@
     "logo": "https://10xseo.ge/images/logo.png",
     "description": "საქართველოს წამყვანი SEO სააგენტო — 14+ წლის გამოცდილება, 200+ კმაყოფილი კლიენტი.",
     "foundingDate": "2011",
-    "email": "info@10xseo.ge",
+    "email": "sales@10xseo.ge",
     "telephone": "+995510101517",
     "address": {
       "@type": "PostalAddress",
+      "streetAddress": "ბახტრიონის ქუჩა 8",
       "addressLocality": "Tbilisi",
+      "postalCode": "0194",
       "addressCountry": "GE"
     },
     "sameAs": [
       "https://www.facebook.com/10xseo",
       "https://www.linkedin.com/company/10xseo",
       "https://www.youtube.com/@10xseo"
-    ]
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "10",
+      "bestRating": "5"
+    }
   }
   </script>
   <script>
@@ -147,6 +161,14 @@
       box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
     }
 
+    /* Lite YouTube Embed — brand styling */
+    lite-youtube { border-radius: 16px; overflow: hidden; background-color: #0d1117; max-width: 100%; }
+    lite-youtube::before { display: none; }
+    lite-youtube > .lty-playbtn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 68px; height: 48px; background-color: rgba(139,92,246,0.9); border-radius: 14px; transition: all 0.3s; border: none; filter: none; }
+    lite-youtube:hover > .lty-playbtn { background-color: rgba(139,92,246,1); box-shadow: 0 0 30px rgba(139,92,246,0.5); transform: translate(-50%,-50%) scale(1.08); }
+    lite-youtube > .lty-playbtn::before { border-color: transparent transparent transparent #fff; }
+    lite-youtube > .lty-playbtn::after { display: none; }
+
     /* Team card hover */
     .team-card { transition: all 0.2s ease; }
     .team-card:hover { transform: translateY(-4px); }
@@ -184,8 +206,20 @@
       transform: translateY(-8px) rotate(-45deg);
     }
   </style>
+  <!-- Schema: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "მთავარი", "item": "https://10xseo.ge/"},
+      {"@type": "ListItem", "position": 2, "name": "ჩვენ შესახებ", "item": "https://10xseo.ge/about-us.html"}
+    ]
+  }
+  </script>
 </head>
 <body class="font-body bg-surface-dark text-body-dark transition-colors duration-300">
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-primary focus:text-white focus:px-4 focus:py-2 focus:rounded-lg">გადახტომა მთავარ შინაარსზე</a>
 
   <!-- ========== HEADER ========== -->
     <header id="main-header" class="fixed top-0 left-0 right-0 z-50 h-16 lg:h-[72px] bg-white/80 dark:bg-surface-dark/80 header-scrolled border-b border-gray-100 dark:border-gray-800 transition-all duration-300">
@@ -193,7 +227,7 @@
       <a href="index.html" class="flex items-center shrink-0">
         <img src="images/logo.png" alt="10XSEO" class="h-12 lg:h-14 w-auto">
       </a>
-      <nav class="hidden lg:flex items-center gap-1">
+      <nav class="hidden lg:flex items-center gap-1" aria-label="მთავარი ნავიგაცია">
         <a href="about-us.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">ჩვენს შესახებ</a>
         <div class="relative group">
           <button class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors flex items-center gap-1">
@@ -211,7 +245,20 @@
             <a href="seo-course.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">SEO კურსი</a>
           </div>
         </div>
-        <a href="industries.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">ინდუსტრიები</a>
+        <div class="relative group/ind">
+          <a href="industries.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors flex items-center gap-1">
+            ინდუსტრიები
+            <svg class="w-4 h-4 transition-transform group-hover/ind:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </a>
+          <div class="absolute top-full left-0 mt-1 w-60 bg-white dark:bg-surface-dark-alt rounded-xl shadow-xl border border-gray-100 dark:border-gray-800 opacity-0 invisible group-hover/ind:opacity-100 group-hover/ind:visible transition-all duration-200 p-2">
+            <a href="industries/healthcare.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">კლინიკები &amp; ჯანდაცვა</a>
+            <a href="industries/financial-services.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">ფინანსური სერვისები</a>
+            <a href="industries/construction.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">სამშენებლო &amp; უძრავი ქონება</a>
+            <a href="industries/ecommerce.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">E-commerce</a>
+            <hr class="my-1 border-gray-100 dark:border-gray-800">
+            <a href="industries.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-body dark:text-body-dark">ყველა ინდუსტრია →</a>
+          </div>
+        </div>
         <a href="portfolio.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">პორტფოლიო</a>
         <a href="case-studies.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">შედეგები</a>
         <a href="blog.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">ბლოგი</a>
@@ -222,10 +269,10 @@
           <span class="opacity-50">/</span>
           <span class="opacity-50">EN</span>
         </button>
-        <a href="seo-audit.html" class="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 ai-cta-animate text-white text-sm font-semibold rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-200">
-          უფასო აუდიტი
+        <a href="#" onclick="openCalendly();return false;" class="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 ai-cta-animate text-white text-sm font-semibold rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-200">
+          დაჯავშნე კონსულტაცია
         </a>
-        <button id="mobile-menu-btn" class="lg:hidden w-9 h-9 rounded-lg flex flex-col items-center justify-center gap-[6px] hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-heading dark:text-heading-dark">
+        <button id="mobile-menu-btn" aria-expanded="false" aria-controls="mobile-menu" aria-label="მენიუს გახსნა" class="lg:hidden w-9 h-9 min-w-[44px] min-h-[44px] rounded-lg flex flex-col items-center justify-center gap-[6px] hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-heading dark:text-heading-dark">
           <span class="hamburger-line block w-5 h-[2px] bg-current rounded-full"></span>
           <span class="hamburger-line block w-5 h-[2px] bg-current rounded-full"></span>
           <span class="hamburger-line block w-5 h-[2px] bg-current rounded-full"></span>
@@ -234,6 +281,7 @@
     </div>
   </header>
 
+  <main id="main-content">
   <!-- ========== HERO ========== -->
   <section class="relative pt-24 lg:pt-32 pb-16 lg:pb-24 overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-primary/5 dark:from-surface-dark dark:via-surface-dark dark:to-primary/5"></div>
@@ -585,6 +633,32 @@
     </div>
   </section>
 
+  <!-- ========== OUR STORY VIDEO ========== -->
+  <section class="py-16 lg:py-24 bg-white dark:bg-surface-dark">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="grid lg:grid-cols-[3fr_2fr] gap-10 lg:gap-14 items-center">
+        <!-- Video -->
+        <div class="rounded-2xl overflow-hidden border border-gray-100 dark:border-gray-800">
+          <lite-youtube videoid="bK861HwKMGY" playlabel="როგორ ვქმნით ბიზნესისთვის რეალურ ღირებულებას - 10xSEO შედეგები"></lite-youtube>
+        </div>
+        <!-- Text -->
+        <div class="text-center lg:text-left">
+          <p class="text-sm font-semibold text-red-500 uppercase tracking-wider mb-3">YouTube</p>
+          <h2 class="font-heading text-[24px] sm:text-[28px] lg:text-[32px] font-bold text-heading dark:text-heading-dark leading-[1.3] mb-4">
+            როგორ ვქმნით <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">რეალურ ღირებულებას</span>
+          </h2>
+          <p class="text-body dark:text-body-dark text-base leading-relaxed mb-6">
+            ნახეთ როგორ ვეხმარებით ქართულ ბიზნესებს ორგანული ტრაფიკის გაზრდასა და ონლაინ ხილვადობის გაუმჯობესებაში.
+          </p>
+          <a href="https://www.youtube.com/@10xSEO?sub_confirmation=1" target="_blank" rel="noopener" class="inline-flex items-center gap-3 px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-bold text-sm rounded-xl shadow-lg shadow-red-600/20 hover:shadow-xl hover:shadow-red-600/30 hover:-translate-y-0.5 transition-all duration-200">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0C.488 3.45.029 5.804 0 12c.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0C23.512 20.55 23.971 18.196 24 12c-.029-6.185-.484-8.549-4.385-8.816zM9 16V8l8 4-8 4z"/></svg>
+            გამოიწერეთ არხი
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ========== TOOLS & PARTNERS ========== -->
   <section class="py-16 lg:py-24 bg-surface-alt dark:bg-surface-dark-alt">
     <div class="max-w-5xl mx-auto px-4 sm:px-6">
@@ -665,8 +739,8 @@
             მოდი, ერთად გავზარდოთ<br><span class="gradient-text">შენი ბიზნესი</span>
           </h2>
           <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="seo-audit.html" class="inline-flex items-center justify-center gap-2 px-8 py-4 ai-cta-animate text-white text-lg font-bold rounded-2xl hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 transition-all duration-200">
-              უფასო SEO აუდიტი
+            <a href="#" onclick="openCalendly();return false;" class="inline-flex items-center justify-center gap-2 px-8 py-4 ai-cta-animate text-white text-lg font-bold rounded-2xl hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 transition-all duration-200">
+              დაჯავშნე კონსულტაცია
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
             </a>
             <a href="contact-us.html" class="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-gray-200 dark:border-gray-700 text-heading dark:text-heading-dark text-lg font-bold rounded-2xl hover:border-primary dark:hover:border-primary-light hover:text-primary dark:hover:text-primary-light transition-all duration-200">
@@ -678,6 +752,8 @@
       </div>
     </div>
   </section>
+
+  </main>
 
   <!-- ========== FOOTER ========== -->
     <footer class="bg-heading dark:bg-surface-dark-alt text-gray-400 py-12 lg:py-16">
@@ -728,7 +804,7 @@
           <p class="font-heading text-white font-semibold mb-4">კონტაქტი</p>
           <ul class="space-y-2.5 text-sm">
             <li>+995 510 10 15 17</li>
-            <li>info@10xseo.ge</li>
+            <li>sales@10xseo.ge</li>
             <li>თბილისი, საქართველო</li>
           </ul>
         </div>
@@ -746,8 +822,8 @@
   <!-- ========== STICKY BOTTOM CTA (Mobile Only) ========== -->
   <div id="sticky-cta" class="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-white dark:bg-surface-dark border-t border-gray-200 dark:border-gray-800 px-4 py-3 safe-bottom transition-transform duration-300">
     <div class="flex gap-3">
-      <a href="seo-audit.html" class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 ai-cta-animate text-white text-sm font-bold rounded-xl">
-        უფასო SEO აუდიტი
+      <a href="#" onclick="openCalendly();return false;" class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 ai-cta-animate text-white text-sm font-bold rounded-xl">
+        დაჯავშნე კონსულტაცია
       </a>
       <a href="tel:+995510101517" class="w-12 h-12 flex items-center justify-center border-2 border-primary dark:border-primary-light rounded-xl text-primary dark:text-primary-light shrink-0">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
@@ -834,5 +910,10 @@
     }, { passive: true });
   </script>
 
+
+<!-- Calendly Popup Widget -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+<script>function openCalendly(){Calendly.initPopupWidget({url:'https://calendly.com/10xseo-sales/30-seo-clone?background_color=0f172a&text_color=f8fafc&primary_color=8b5cf6'});return false;}</script>
 </body>
 </html>

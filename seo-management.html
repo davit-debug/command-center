@@ -2,6 +2,9 @@
 <html lang="ka" class="dark scroll-smooth">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SEO მენეჯმენტი — ყოველთვიური SEO მომსახურება | 10XSEO</title>
   <meta name="robots" content="noindex, nofollow">
@@ -11,6 +14,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/firago@1.0.0/FiraGO.css" rel="stylesheet">
+  <!-- Lite YouTube Embed -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.3/src/lite-yt-embed.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.3/src/lite-yt-embed.min.js" defer></script>
   <!-- Schema: Service + FAQPage -->
   <script type="application/ld+json">
   {
@@ -225,7 +231,15 @@
     @media (hover: hover) {
       .testimonial-card:hover { transform: translateY(-2px); }
     }
-  
+
+    /* Lite YouTube Embed — brand styling */
+    lite-youtube { border-radius: 16px; overflow: hidden; background-color: #0d1117; max-width: 100%; }
+    lite-youtube::before { display: none; }
+    lite-youtube > .lty-playbtn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 68px; height: 48px; background-color: rgba(139,92,246,0.9); border-radius: 14px; transition: all 0.3s; border: none; filter: none; }
+    lite-youtube:hover > .lty-playbtn { background-color: rgba(139,92,246,1); box-shadow: 0 0 30px rgba(139,92,246,0.5); transform: translate(-50%,-50%) scale(1.08); }
+    lite-youtube > .lty-playbtn::before { border-color: transparent transparent transparent #fff; }
+    lite-youtube > .lty-playbtn::after { display: none; }
+
     /* Mobile Menu */
     #mobile-menu {
       transform: translateX(100%);
@@ -258,8 +272,12 @@
       transform: translateY(-8px) rotate(-45deg);
     }
   </style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"მთავარი","item":"https://10xseo.ge/"},{"@type":"ListItem","position":2,"name":"სერვისები","item":"https://10xseo.ge/#services"},{"@type":"ListItem","position":3,"name":"SEO მენეჯმენტი","item":"https://10xseo.ge/seo-management.html"}]}
+  </script>
 </head>
 <body class="font-body bg-surface-dark text-body-dark transition-colors duration-300">
+<a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-primary focus:text-white focus:px-4 focus:py-2 focus:rounded-lg">გადახტომა მთავარ შინაარსზე</a>
 
   <!-- ========== HEADER ========== -->
     <header id="main-header" class="fixed top-0 left-0 right-0 z-50 h-16 lg:h-[72px] bg-white/80 dark:bg-surface-dark/80 header-scrolled border-b border-gray-100 dark:border-gray-800 transition-all duration-300">
@@ -267,7 +285,7 @@
       <a href="index.html" class="flex items-center shrink-0">
         <img src="images/logo.png" alt="10XSEO" class="h-12 lg:h-14 w-auto">
       </a>
-      <nav class="hidden lg:flex items-center gap-1">
+      <nav class="hidden lg:flex items-center gap-1" aria-label="მთავარი ნავიგაცია">
         <a href="about-us.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">ჩვენს შესახებ</a>
         <div class="relative group">
           <button class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors flex items-center gap-1">
@@ -278,14 +296,36 @@
             <a href="seo-management.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">SEO მენეჯმენტი</a>
             <a href="seo-consultation.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">SEO კონსულტაცია</a>
             <a href="seo-strategy.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">SEO სტრატეგია</a>
-            <a href="seo-copywriting.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">SEO კოპირაიტინგი</a>
+            <div class="relative group/copy">
+              <button class="w-full flex items-center justify-between px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">
+                კოპირაიტინგი
+                <svg class="w-3.5 h-3.5 opacity-50 -rotate-90 group-hover/copy:rotate-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </button>
+              <div class="overflow-hidden max-h-0 group-hover/copy:max-h-40 transition-all duration-300 pl-3">
+                <a href="seo-copywriting.html" class="block px-3 py-2 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-body dark:text-body-dark">SEO კოპირაიტინგი</a>
+                <a href="copywriting.html" class="block px-3 py-2 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-body dark:text-body-dark">UI/UX Copy <span class="text-[10px] text-primary-light ml-1">Premium</span></a>
+              </div>
+            </div>
             <a href="cro.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">კონვერსიის ოპტიმიზაცია</a>
             <a href="google-ads.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">Google Ads</a>
             <a href="ai-seo.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">AI SEO / GEO</a>
             <a href="seo-course.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">SEO კურსი</a>
           </div>
         </div>
-        <a href="industries.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">ინდუსტრიები</a>
+        <div class="relative group/ind">
+          <a href="industries.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors flex items-center gap-1">
+            ინდუსტრიები
+            <svg class="w-4 h-4 transition-transform group-hover/ind:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </a>
+          <div class="absolute top-full left-0 mt-1 w-60 bg-white dark:bg-surface-dark-alt rounded-xl shadow-xl border border-gray-100 dark:border-gray-800 opacity-0 invisible group-hover/ind:opacity-100 group-hover/ind:visible transition-all duration-200 p-2">
+            <a href="industries/healthcare.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">კლინიკები &amp; ჯანდაცვა</a>
+            <a href="industries/financial-services.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">ფინანსური სერვისები</a>
+            <a href="industries/construction.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">სამშენებლო &amp; უძრავი ქონება</a>
+            <a href="industries/ecommerce.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">E-commerce</a>
+            <hr class="my-1 border-gray-100 dark:border-gray-800">
+            <a href="industries.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-body dark:text-body-dark">ყველა ინდუსტრია →</a>
+          </div>
+        </div>
         <a href="portfolio.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">პორტფოლიო</a>
         <a href="case-studies.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">შედეგები</a>
         <a href="blog.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">ბლოგი</a>
@@ -296,10 +336,10 @@
           <span class="opacity-50">/</span>
           <span class="opacity-50">EN</span>
         </button>
-        <a href="seo-audit.html" class="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 ai-cta-animate text-white text-sm font-semibold rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-200">
-          უფასო აუდიტი
+        <a href="#" onclick="openCalendly();return false;" class="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 ai-cta-animate text-white text-sm font-semibold rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-200">
+          დაჯავშნე კონსულტაცია
         </a>
-        <button id="mobile-menu-btn" class="lg:hidden w-9 h-9 rounded-lg flex flex-col items-center justify-center gap-[6px] hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-heading dark:text-heading-dark">
+        <button id="mobile-menu-btn" class="lg:hidden min-w-[44px] min-h-[44px] w-9 h-9 rounded-lg flex flex-col items-center justify-center gap-[6px] hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-heading dark:text-heading-dark" aria-expanded="false" aria-controls="mobile-menu" aria-label="მენიუს გახსნა">
           <span class="hamburger-line block w-5 h-[2px] bg-current rounded-full"></span>
           <span class="hamburger-line block w-5 h-[2px] bg-current rounded-full"></span>
           <span class="hamburger-line block w-5 h-[2px] bg-current rounded-full"></span>
@@ -311,7 +351,7 @@
   
   <!-- Mobile Menu Overlay -->
   <div id="mobile-menu" class="lg:hidden fixed inset-0 top-16 bg-surface-dark z-[60] overflow-y-auto pointer-events-none">
-    <nav class="max-w-md mx-auto px-6 py-8 flex flex-col gap-2">
+    <nav class="max-w-md mx-auto px-6 py-8 flex flex-col gap-2" aria-label="მობილური ნავიგაცია">
       <a href="index.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.05s">მთავარი</a>
       <a href="about-us.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.08s">ჩვენს შესახებ</a>
       <hr class="menu-link my-3 border-gray-800" style="transition-delay:0.11s">
@@ -319,19 +359,26 @@
       <a href="seo-management.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.17s">SEO მენეჯმენტი</a>
       <a href="seo-consultation.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.2s">SEO კონსულტაცია</a>
       <a href="seo-strategy.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.23s">SEO სტრატეგია</a>
-      <a href="seo-copywriting.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.26s">SEO კოპირაიტინგი</a>
+      <p class="menu-link text-xs font-semibold text-body-dark/40 uppercase tracking-wider mt-2 mb-1 pl-4" style="transition-delay:0.25s">კოპირაიტინგი</p>
+      <a href="seo-copywriting.html" class="menu-link block px-4 py-3 rounded-xl text-base font-medium text-heading-dark hover:bg-gray-800/50 pl-8" style="transition-delay:0.26s">SEO კოპირაიტინგი</a>
+      <a href="copywriting.html" class="menu-link block px-4 py-3 rounded-xl text-base font-medium text-heading-dark hover:bg-gray-800/50 pl-8" style="transition-delay:0.28s">UI/UX Copy <span class="text-xs text-primary-light ml-1">Premium</span></a>
       <a href="cro.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.29s">კონვერსიის ოპტიმიზაცია</a>
       <a href="google-ads.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.32s">Google Ads</a>
       <a href="ai-seo.html" class="menu-link block px-4 py-3 rounded-xl text-base font-medium text-heading-dark hover:bg-gray-800/50 pl-8" style="transition-delay:0.35s">AI SEO / GEO</a>
       <a href="seo-course.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.38s">SEO კურსი</a>
       <hr class="menu-link my-3 border-gray-800" style="transition-delay:0.41s">
-      <a href="industries.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.44s">ინდუსტრიები</a>
+      <p class="menu-link text-xs font-semibold text-body-dark/60 uppercase tracking-wider mt-2 mb-1" style="transition-delay:0.43s">ინდუსტრიები</p>
+      <a href="industries/healthcare.html" class="menu-link block px-4 py-3 rounded-xl text-base font-medium text-heading-dark hover:bg-gray-800/50 pl-8" style="transition-delay:0.44s">კლინიკები &amp; ჯანდაცვა</a>
+      <a href="industries/financial-services.html" class="menu-link block px-4 py-3 rounded-xl text-base font-medium text-heading-dark hover:bg-gray-800/50 pl-8" style="transition-delay:0.45s">ფინანსური სერვისები</a>
+      <a href="industries/construction.html" class="menu-link block px-4 py-3 rounded-xl text-base font-medium text-heading-dark hover:bg-gray-800/50 pl-8" style="transition-delay:0.46s">სამშენებლო &amp; უძრავი ქონება</a>
+      <a href="industries/ecommerce.html" class="menu-link block px-4 py-3 rounded-xl text-base font-medium text-heading-dark hover:bg-gray-800/50 pl-8" style="transition-delay:0.47s">E-commerce</a>
+      <a href="industries.html" class="menu-link block px-4 py-3 rounded-xl text-sm font-medium text-body-dark/60 hover:bg-gray-800/50 pl-8" style="transition-delay:0.48s">ყველა ინდუსტრია →</a>
       <a href="portfolio.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.47s">პორტფოლიო</a>
       <a href="case-studies.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.5s">შედეგები</a>
       <a href="blog.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.53s">ბლოგი</a>
       <hr class="menu-link my-3 border-gray-800" style="transition-delay:0.56s">
-      <a href="seo-audit.html" class="menu-link block text-center px-6 py-4 ai-cta-animate text-white text-lg font-bold rounded-xl mt-2" style="transition-delay:0.59s">
-        უფასო SEO აუდიტი
+      <a href="#" onclick="openCalendly();return false;" class="menu-link block text-center px-6 py-4 ai-cta-animate text-white text-lg font-bold rounded-xl mt-2" style="transition-delay:0.59s">
+        დაჯავშნე კონსულტაცია
       </a>
       <a href="tel:+995510101517" class="menu-link call-btn block text-center px-6 py-3 border-2 border-primary-light text-primary-light text-lg font-bold rounded-xl flex items-center justify-center gap-2 transition-all duration-200" style="transition-delay:0.62s">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
@@ -340,6 +387,7 @@
     </nav>
   </div>
 
+  <main id="main-content">
   <!-- ========== HERO ========== -->
   <section class="pt-24 lg:pt-32 pb-16 lg:pb-20 bg-gradient-to-b from-surface-alt to-white dark:from-surface-dark dark:to-surface-dark relative overflow-hidden">
     <!-- Background decoration -->
@@ -373,8 +421,8 @@
           </p>
 
           <div class="flex flex-col sm:flex-row gap-3 mb-8">
-            <a href="seo-audit.html" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-gradient-to-r from-primary to-primary-dark text-white font-bold rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all text-base">
-              მიიღეთ შემოთავაზება
+            <a href="#" onclick="openCalendly();return false;" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-gradient-to-r from-primary to-primary-dark text-white font-bold rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all text-base">
+              დაჯავშნე კონსულტაცია
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
             </a>
             <a href="tel:+995510101517" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 border border-gray-200 dark:border-gray-700 text-heading dark:text-heading-dark font-semibold rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-all text-base">
@@ -451,114 +499,142 @@
     </div>
   </section>
 
-  <!-- ========== TOP BRANDS LOGO STRIP ========== -->
-  <section class="py-8 lg:py-10 border-b border-gray-100 dark:border-gray-800 bg-white dark:bg-surface-dark overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <p class="text-center text-xs font-semibold text-body/50 dark:text-body-dark/50 uppercase tracking-widest mb-6">ტოპ ბრენდები</p>
-    </div>
-    <div class="relative no-scrollbar">
-      <div class="flex logo-scroll" style="width: max-content;">
-        <!-- First set -->
-        <div class="flex items-center gap-10 px-6">
-          <div class="shrink-0 opacity-70 hover:opacity-100 transition-opacity h-8 flex items-center">
-            <img src="images/clients/temu.png" alt="TEMU" class="h-7 w-auto object-contain">
+  <!-- ========== TOP BRANDS — Logo Grid + Growth Stats ========== -->
+  <section class="py-12 lg:py-16 border-b border-gray-100 dark:border-gray-800 bg-white dark:bg-surface-dark">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <p class="text-center text-xs font-semibold text-body/50 dark:text-body-dark/50 uppercase tracking-widest mb-10">ტოპ ბრენდები რომლებიც გვენდობიან</p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+        <!-- TEMU -->
+        <div class="group relative bg-gray-50 dark:bg-gray-900/50 rounded-2xl p-5 border border-gray-100 dark:border-gray-800 hover:border-primary/30 transition-all">
+          <div class="flex items-center justify-between mb-3">
+            <img src="images/clients/temu.png" alt="TEMU" class="h-6 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity">
+            <span class="text-xs font-mono font-bold text-emerald-400">+520%</span>
           </div>
-          <div class="shrink-0 opacity-70 hover:opacity-100 transition-opacity h-8 flex items-center">
-            <img src="images/clients/irao.png" alt="IRAO" class="h-6 w-auto object-contain">
+          <div class="w-full bg-gray-200 dark:bg-gray-800 rounded-full h-1.5">
+            <div class="bg-emerald-400 h-1.5 rounded-full transition-all duration-700" style="width:92%"></div>
           </div>
-          <div class="shrink-0 opacity-70 hover:opacity-100 transition-opacity h-8 flex items-center">
-            <img src="images/clients/pharmadepot.png" alt="Pharmadepot" class="h-6 w-auto object-contain">
-          </div>
-          <div class="shrink-0 opacity-70 hover:opacity-100 transition-opacity h-8 flex items-center">
-            <img src="images/clients/todua-clinic.png" alt="Todua Clinic" class="h-7 w-auto object-contain">
-          </div>
-          <div class="shrink-0 opacity-70 hover:opacity-100 transition-opacity h-8 flex items-center">
-            <img src="images/clients/elehear.png" alt="ELEHEAR" class="h-6 w-auto object-contain">
-          </div>
-          <div class="shrink-0 opacity-70 hover:opacity-100 transition-opacity h-8 flex items-center">
-            <img src="images/clients/myhome.png" alt="myhome.ge" class="h-6 w-auto object-contain">
-          </div>
-          <div class="shrink-0 opacity-70 hover:opacity-100 transition-opacity h-8 flex items-center">
-            <img src="images/clients/belle-maison.png" alt="Belle Maison" class="h-6 w-auto object-contain">
-          </div>
-          <div class="shrink-0 opacity-70 hover:opacity-100 transition-opacity h-8 flex items-center">
-            <img src="images/clients/kvareli-lake.png" alt="Kvareli Lake Resort" class="h-7 w-auto object-contain">
-          </div>
-          <div class="shrink-0 opacity-70 hover:opacity-100 transition-opacity h-8 flex items-center">
-            <img src="images/clients/horizon.png" alt="Horizon Batumi" class="h-6 w-auto object-contain">
-          </div>
-          <div class="shrink-0 opacity-70 hover:opacity-100 transition-opacity h-8 flex items-center">
-            <img src="images/clients/legi.png" alt="Legi" class="h-6 w-auto object-contain">
-          </div>
-          <div class="shrink-0 opacity-70 hover:opacity-100 transition-opacity h-8 flex items-center">
-            <img src="images/clients/yandy.png" alt="Yandy" class="h-6 w-auto object-contain">
-          </div>
-          <div class="shrink-0 opacity-70 hover:opacity-100 transition-opacity h-8 flex items-center">
-            <img src="images/clients/gpc.png" alt="GPC" class="h-6 w-auto object-contain">
-          </div>
-          <div class="shrink-0 opacity-70 hover:opacity-100 transition-opacity h-8 flex items-center">
-            <img src="images/clients/juba.png" alt="Juba" class="h-7 w-auto object-contain">
-          </div>
-          <div class="shrink-0 opacity-70 hover:opacity-100 transition-opacity h-8 flex items-center">
-            <img src="images/clients/fchain.png" alt="FChain" class="h-6 w-auto object-contain">
-          </div>
-          <div class="shrink-0 opacity-70 hover:opacity-100 transition-opacity h-8 flex items-center">
-            <img src="images/clients/nicolo.png" alt="Nicolo" class="h-7 w-auto object-contain">
-          </div>
-          <div class="shrink-0 opacity-70 hover:opacity-100 transition-opacity h-8 flex items-center">
-            <img src="images/clients/bedstar.png" alt="Bedstar" class="h-6 w-auto object-contain">
-          </div>
+          <p class="text-[10px] text-body/50 dark:text-body-dark/50 mt-2">ორგანული ტრაფიკი</p>
         </div>
-        <!-- Duplicate set for seamless scroll -->
-        <div class="flex items-center gap-10 px-6">
-          <div class="shrink-0 opacity-70 hover:opacity-100 transition-opacity h-8 flex items-center">
-            <img src="images/clients/temu.png" alt="TEMU" class="h-7 w-auto object-contain">
+        <!-- IRAO -->
+        <div class="group relative bg-gray-50 dark:bg-gray-900/50 rounded-2xl p-5 border border-gray-100 dark:border-gray-800 hover:border-primary/30 transition-all">
+          <div class="flex items-center justify-between mb-3">
+            <img src="images/clients/irao.png" alt="IRAO" class="h-5 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity">
+            <span class="text-xs font-mono font-bold text-emerald-400">+420%</span>
           </div>
-          <div class="shrink-0 opacity-70 hover:opacity-100 transition-opacity h-8 flex items-center">
-            <img src="images/clients/irao.png" alt="IRAO" class="h-6 w-auto object-contain">
+          <div class="w-full bg-gray-200 dark:bg-gray-800 rounded-full h-1.5">
+            <div class="bg-emerald-400 h-1.5 rounded-full transition-all duration-700" style="width:84%"></div>
           </div>
-          <div class="shrink-0 opacity-70 hover:opacity-100 transition-opacity h-8 flex items-center">
-            <img src="images/clients/pharmadepot.png" alt="Pharmadepot" class="h-6 w-auto object-contain">
+          <p class="text-[10px] text-body/50 dark:text-body-dark/50 mt-2">ორგანული ტრაფიკი</p>
+        </div>
+        <!-- Pharmadepot -->
+        <div class="group relative bg-gray-50 dark:bg-gray-900/50 rounded-2xl p-5 border border-gray-100 dark:border-gray-800 hover:border-primary/30 transition-all">
+          <div class="flex items-center justify-between mb-3">
+            <img src="images/clients/pharmadepot.png" alt="Pharmadepot" class="h-5 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity">
+            <span class="text-xs font-mono font-bold text-emerald-400">+340%</span>
           </div>
-          <div class="shrink-0 opacity-70 hover:opacity-100 transition-opacity h-8 flex items-center">
-            <img src="images/clients/todua-clinic.png" alt="Todua Clinic" class="h-7 w-auto object-contain">
+          <div class="w-full bg-gray-200 dark:bg-gray-800 rounded-full h-1.5">
+            <div class="bg-emerald-400 h-1.5 rounded-full transition-all duration-700" style="width:72%"></div>
           </div>
-          <div class="shrink-0 opacity-70 hover:opacity-100 transition-opacity h-8 flex items-center">
-            <img src="images/clients/elehear.png" alt="ELEHEAR" class="h-6 w-auto object-contain">
+          <p class="text-[10px] text-body/50 dark:text-body-dark/50 mt-2">ორგანული ტრაფიკი</p>
+        </div>
+        <!-- Todua Clinic -->
+        <div class="group relative bg-gray-50 dark:bg-gray-900/50 rounded-2xl p-5 border border-gray-100 dark:border-gray-800 hover:border-primary/30 transition-all">
+          <div class="flex items-center justify-between mb-3">
+            <img src="images/clients/todua-clinic.png" alt="Todua Clinic" class="h-6 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity">
+            <span class="text-xs font-mono font-bold text-emerald-400">+290%</span>
           </div>
-          <div class="shrink-0 opacity-70 hover:opacity-100 transition-opacity h-8 flex items-center">
-            <img src="images/clients/myhome.png" alt="myhome.ge" class="h-6 w-auto object-contain">
+          <div class="w-full bg-gray-200 dark:bg-gray-800 rounded-full h-1.5">
+            <div class="bg-emerald-400 h-1.5 rounded-full transition-all duration-700" style="width:65%"></div>
           </div>
-          <div class="shrink-0 opacity-70 hover:opacity-100 transition-opacity h-8 flex items-center">
-            <img src="images/clients/belle-maison.png" alt="Belle Maison" class="h-6 w-auto object-contain">
+          <p class="text-[10px] text-body/50 dark:text-body-dark/50 mt-2">0→4,200/თვე</p>
+        </div>
+        <!-- ELEHEAR -->
+        <div class="group relative bg-gray-50 dark:bg-gray-900/50 rounded-2xl p-5 border border-gray-100 dark:border-gray-800 hover:border-primary/30 transition-all">
+          <div class="flex items-center justify-between mb-3">
+            <img src="images/clients/elehear.png" alt="ELEHEAR" class="h-5 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity">
+            <span class="text-xs font-mono font-bold text-emerald-400">+520%</span>
           </div>
-          <div class="shrink-0 opacity-70 hover:opacity-100 transition-opacity h-8 flex items-center">
-            <img src="images/clients/kvareli-lake.png" alt="Kvareli Lake Resort" class="h-7 w-auto object-contain">
+          <div class="w-full bg-gray-200 dark:bg-gray-800 rounded-full h-1.5">
+            <div class="bg-emerald-400 h-1.5 rounded-full transition-all duration-700" style="width:90%"></div>
           </div>
-          <div class="shrink-0 opacity-70 hover:opacity-100 transition-opacity h-8 flex items-center">
-            <img src="images/clients/horizon.png" alt="Horizon Batumi" class="h-6 w-auto object-contain">
+          <p class="text-[10px] text-body/50 dark:text-body-dark/50 mt-2">ორგანული ტრაფიკი</p>
+        </div>
+        <!-- myhome.ge -->
+        <div class="group relative bg-gray-50 dark:bg-gray-900/50 rounded-2xl p-5 border border-gray-100 dark:border-gray-800 hover:border-primary/30 transition-all">
+          <div class="flex items-center justify-between mb-3">
+            <img src="images/clients/myhome.png" alt="myhome.ge" class="h-5 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity">
+            <span class="text-xs font-mono font-bold text-emerald-400">+230%</span>
           </div>
-          <div class="shrink-0 opacity-70 hover:opacity-100 transition-opacity h-8 flex items-center">
-            <img src="images/clients/legi.png" alt="Legi" class="h-6 w-auto object-contain">
+          <div class="w-full bg-gray-200 dark:bg-gray-800 rounded-full h-1.5">
+            <div class="bg-emerald-400 h-1.5 rounded-full transition-all duration-700" style="width:55%"></div>
           </div>
-          <div class="shrink-0 opacity-70 hover:opacity-100 transition-opacity h-8 flex items-center">
-            <img src="images/clients/yandy.png" alt="Yandy" class="h-6 w-auto object-contain">
+          <p class="text-[10px] text-body/50 dark:text-body-dark/50 mt-2">ორგანული ტრაფიკი</p>
+        </div>
+        <!-- Kvareli Lake -->
+        <div class="group relative bg-gray-50 dark:bg-gray-900/50 rounded-2xl p-5 border border-gray-100 dark:border-gray-800 hover:border-primary/30 transition-all">
+          <div class="flex items-center justify-between mb-3">
+            <img src="images/clients/kvareli-lake.png" alt="Kvareli Lake" class="h-6 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity">
+            <span class="text-xs font-mono font-bold text-emerald-400">+175%</span>
           </div>
-          <div class="shrink-0 opacity-70 hover:opacity-100 transition-opacity h-8 flex items-center">
-            <img src="images/clients/gpc.png" alt="GPC" class="h-6 w-auto object-contain">
+          <div class="w-full bg-gray-200 dark:bg-gray-800 rounded-full h-1.5">
+            <div class="bg-emerald-400 h-1.5 rounded-full transition-all duration-700" style="width:45%"></div>
           </div>
-          <div class="shrink-0 opacity-70 hover:opacity-100 transition-opacity h-8 flex items-center">
-            <img src="images/clients/juba.png" alt="Juba" class="h-7 w-auto object-contain">
+          <p class="text-[10px] text-body/50 dark:text-body-dark/50 mt-2">ორგანული ტრაფიკი</p>
+        </div>
+        <!-- GPC -->
+        <div class="group relative bg-gray-50 dark:bg-gray-900/50 rounded-2xl p-5 border border-gray-100 dark:border-gray-800 hover:border-primary/30 transition-all">
+          <div class="flex items-center justify-between mb-3">
+            <img src="images/clients/gpc.png" alt="GPC" class="h-5 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity">
+            <span class="text-xs font-mono font-bold text-emerald-400">+340%</span>
           </div>
-          <div class="shrink-0 opacity-70 hover:opacity-100 transition-opacity h-8 flex items-center">
-            <img src="images/clients/fchain.png" alt="FChain" class="h-6 w-auto object-contain">
+          <div class="w-full bg-gray-200 dark:bg-gray-800 rounded-full h-1.5">
+            <div class="bg-emerald-400 h-1.5 rounded-full transition-all duration-700" style="width:72%"></div>
           </div>
-          <div class="shrink-0 opacity-70 hover:opacity-100 transition-opacity h-8 flex items-center">
-            <img src="images/clients/nicolo.png" alt="Nicolo" class="h-7 w-auto object-contain">
+          <p class="text-[10px] text-body/50 dark:text-body-dark/50 mt-2">ორგანული ტრაფიკი</p>
+        </div>
+        <!-- Belle Maison -->
+        <div class="group relative bg-gray-50 dark:bg-gray-900/50 rounded-2xl p-5 border border-gray-100 dark:border-gray-800 hover:border-primary/30 transition-all">
+          <div class="flex items-center justify-between mb-3">
+            <img src="images/clients/belle-maison.png" alt="Belle Maison" class="h-5 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity">
+            <span class="text-xs font-mono font-bold text-emerald-400">+310%</span>
           </div>
-          <div class="shrink-0 opacity-70 hover:opacity-100 transition-opacity h-8 flex items-center">
-            <img src="images/clients/bedstar.png" alt="Bedstar" class="h-6 w-auto object-contain">
+          <div class="w-full bg-gray-200 dark:bg-gray-800 rounded-full h-1.5">
+            <div class="bg-emerald-400 h-1.5 rounded-full transition-all duration-700" style="width:68%"></div>
           </div>
+          <p class="text-[10px] text-body/50 dark:text-body-dark/50 mt-2">ორგანული ტრაფიკი</p>
+        </div>
+        <!-- Horizon -->
+        <div class="group relative bg-gray-50 dark:bg-gray-900/50 rounded-2xl p-5 border border-gray-100 dark:border-gray-800 hover:border-primary/30 transition-all">
+          <div class="flex items-center justify-between mb-3">
+            <img src="images/clients/horizon.png" alt="Horizon Batumi" class="h-5 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity">
+            <span class="text-xs font-mono font-bold text-emerald-400">+380%</span>
+          </div>
+          <div class="w-full bg-gray-200 dark:bg-gray-800 rounded-full h-1.5">
+            <div class="bg-emerald-400 h-1.5 rounded-full transition-all duration-700" style="width:78%"></div>
+          </div>
+          <p class="text-[10px] text-body/50 dark:text-body-dark/50 mt-2">ორგანული ტრაფიკი</p>
+        </div>
+        <!-- Juba -->
+        <div class="group relative bg-gray-50 dark:bg-gray-900/50 rounded-2xl p-5 border border-gray-100 dark:border-gray-800 hover:border-primary/30 transition-all">
+          <div class="flex items-center justify-between mb-3">
+            <img src="images/clients/juba.png" alt="Juba" class="h-6 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity">
+            <span class="text-xs font-mono font-bold text-emerald-400">+260%</span>
+          </div>
+          <div class="w-full bg-gray-200 dark:bg-gray-800 rounded-full h-1.5">
+            <div class="bg-emerald-400 h-1.5 rounded-full transition-all duration-700" style="width:60%"></div>
+          </div>
+          <p class="text-[10px] text-body/50 dark:text-body-dark/50 mt-2">ორგანული ტრაფიკი</p>
+        </div>
+        <!-- Nicolo -->
+        <div class="group relative bg-gray-50 dark:bg-gray-900/50 rounded-2xl p-5 border border-gray-100 dark:border-gray-800 hover:border-primary/30 transition-all">
+          <div class="flex items-center justify-between mb-3">
+            <img src="images/clients/nicolo.png" alt="Nicolo" class="h-6 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity">
+            <span class="text-xs font-mono font-bold text-emerald-400">+195%</span>
+          </div>
+          <div class="w-full bg-gray-200 dark:bg-gray-800 rounded-full h-1.5">
+            <div class="bg-emerald-400 h-1.5 rounded-full transition-all duration-700" style="width:48%"></div>
+          </div>
+          <p class="text-[10px] text-body/50 dark:text-body-dark/50 mt-2">ორგანული ტრაფიკი</p>
         </div>
       </div>
     </div>
@@ -776,119 +852,153 @@
     </div>
   </section>
 
-  <!-- ========== RESULTS SNIPPET ========== -->
-  <section class="py-16 lg:py-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-heading dark:text-heading-dark mb-4">რეალური შედეგები</h2>
-        <p class="text-body dark:text-body-dark">SEO მენეჯმენტის კლიენტების Before/After მეტრიკები</p>
+  <!-- ========== RESULTS SHOWCASE (Homepage-style Cards) ========== -->
+  <section class="py-16 lg:py-24 bg-surface-dark relative overflow-hidden">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-primary/[0.03] rounded-full blur-[120px] pointer-events-none"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12 lg:mb-16">
+        <p class="text-sm font-semibold text-primary-light uppercase tracking-wider mb-3">რეალური შედეგები</p>
+        <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-heading-dark leading-[1.3] mb-4">
+          SEO მენეჯმენტის კლიენტების წარმატება
+        </h2>
+        <p class="text-body-dark max-w-2xl mx-auto">ყველა მეტრიკა რეალურია — Google Analytics და Search Console-ის მონაცემები.</p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-6">
-        <!-- Result 1: 3x in 28 Days -->
-        <a href="case-studies/3x-in-28-days.html" class="group bg-white dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 p-6 hover:border-primary/30 dark:hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all">
-          <div class="flex items-center gap-3 mb-5">
-            <div class="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center">
-              <svg class="w-5 h-5 text-amber-600 dark:text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
-            </div>
-            <div>
-              <div class="font-heading font-bold text-heading dark:text-heading-dark text-sm group-hover:text-primary dark:group-hover:text-primary-light transition-colors">3x ზრდა 28 დღეში</div>
-              <div class="text-xs text-body dark:text-body-dark">ახალი პროექტი</div>
-            </div>
+      <!-- 6 Case Study Cards — 3x2 Grid -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
+
+        <!-- Card 1: ტრაფიკის გაორმაგება -->
+        <a href="case-studies/trafikis-gaormageba-3-tveshi.html" class="group block rounded-2xl border border-gray-800 bg-[#0d1117] p-6 hover:border-primary/40 hover:-translate-y-1 transition-all duration-300">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-xs font-semibold text-success bg-success/10 px-2.5 py-1 rounded-full">+100%</span>
           </div>
-          <div class="flex items-center gap-3 mb-2">
-            <div class="flex-1 text-center py-2 rounded-lg bg-red-50 dark:bg-red-900/20">
-              <div class="text-xs text-body dark:text-body-dark">Before</div>
-              <div class="font-inter text-lg font-bold text-red-500">0</div>
-            </div>
-            <svg class="w-5 h-5 text-success shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-            <div class="flex-1 text-center py-2 rounded-lg bg-green-50 dark:bg-green-900/20">
-              <div class="text-xs text-body dark:text-body-dark">After</div>
-              <div class="font-inter text-lg font-bold text-success">1,500+</div>
-            </div>
+          <p class="font-inter text-4xl font-extrabold text-white mb-1">2x</p>
+          <p class="font-heading text-lg font-bold text-white mb-1">ტრაფიკის გაორმაგება</p>
+          <p class="text-sm text-body-dark mb-5">სამშენებლო | 3 თვე</p>
+          <div class="flex items-end gap-1.5 h-14">
+            <div class="flex-1 bg-gray-700/40 rounded-t" style="height:15%"></div>
+            <div class="flex-1 bg-gray-700/50 rounded-t" style="height:20%"></div>
+            <div class="flex-1 bg-primary/30 rounded-t" style="height:30%"></div>
+            <div class="flex-1 bg-primary/40 rounded-t" style="height:42%"></div>
+            <div class="flex-1 bg-primary/50 rounded-t" style="height:55%"></div>
+            <div class="flex-1 bg-primary/60 rounded-t" style="height:70%"></div>
+            <div class="flex-1 bg-primary/75 rounded-t" style="height:85%"></div>
+            <div class="flex-1 bg-primary rounded-t" style="height:100%"></div>
           </div>
-          <div class="text-center text-sm font-bold text-success"><span class="font-inter">3x</span> ტრაფიკი · #1 პოზიცია</div>
         </a>
 
-        <!-- Result 2: 270% + 45% Sales -->
-        <a href="case-studies/270-percent-increase.html" class="group bg-white dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 p-6 hover:border-primary/30 dark:hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all">
-          <div class="flex items-center gap-3 mb-5">
-            <div class="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
-              <svg class="w-5 h-5 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z"/></svg>
-            </div>
-            <div>
-              <div class="font-heading font-bold text-heading dark:text-heading-dark text-sm group-hover:text-primary dark:group-hover:text-primary-light transition-colors">Shopify სტარტაპი (აშშ)</div>
-              <div class="text-xs text-body dark:text-body-dark">ტექნოლოგია / E-commerce</div>
-            </div>
+        <!-- Card 2: 3x ზრდა 28 დღეში -->
+        <a href="case-studies/3x-in-28-days.html" class="group block rounded-2xl border border-gray-800 bg-[#0d1117] p-6 hover:border-primary/40 hover:-translate-y-1 transition-all duration-300">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-xs font-semibold text-primary-light bg-primary/15 px-2.5 py-1 rounded-full">TOP</span>
           </div>
-          <div class="flex items-center gap-3 mb-2">
-            <div class="flex-1 text-center py-2 rounded-lg bg-red-50 dark:bg-red-900/20">
-              <div class="text-xs text-body dark:text-body-dark">ტრაფიკი</div>
-              <div class="font-inter text-lg font-bold text-success">+270%</div>
-            </div>
-            <div class="flex-1 text-center py-2 rounded-lg bg-green-50 dark:bg-green-900/20">
-              <div class="text-xs text-body dark:text-body-dark">გაყიდვები</div>
-              <div class="font-inter text-lg font-bold text-success">+45%</div>
-            </div>
+          <p class="font-inter text-4xl font-extrabold text-success mb-1">3x</p>
+          <p class="font-heading text-lg font-bold text-white mb-1">ზრდა 28 დღეში</p>
+          <p class="text-sm text-body-dark mb-5">სამშენებლო | 28 დღე</p>
+          <div class="flex items-end gap-1.5 h-14">
+            <div class="flex-1 bg-gray-700/40 rounded-t" style="height:10%"></div>
+            <div class="flex-1 bg-gray-700/50 rounded-t" style="height:15%"></div>
+            <div class="flex-1 bg-primary/30 rounded-t" style="height:25%"></div>
+            <div class="flex-1 bg-primary/40 rounded-t" style="height:40%"></div>
+            <div class="flex-1 bg-primary/50 rounded-t" style="height:55%"></div>
+            <div class="flex-1 bg-primary/65 rounded-t" style="height:72%"></div>
+            <div class="flex-1 bg-primary/80 rounded-t" style="height:88%"></div>
+            <div class="flex-1 bg-primary rounded-t" style="height:100%"></div>
           </div>
-          <div class="text-center text-sm font-bold text-success">3 თვეში · Apple/Sony კონკურენცია</div>
         </a>
 
-        <!-- Result 3: Dental Clinic 600% -->
-        <a href="case-studies/stomatologiuri-klinikis-seo.html" class="group bg-white dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 p-6 hover:border-primary/30 dark:hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all">
-          <div class="flex items-center gap-3 mb-5">
-            <div class="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center">
-              <svg class="w-5 h-5 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
-            </div>
-            <div>
-              <div class="font-heading font-bold text-heading dark:text-heading-dark text-sm group-hover:text-primary dark:group-hover:text-primary-light transition-colors">სტომატოლოგიური კლინიკა</div>
-              <div class="text-xs text-body dark:text-body-dark">სამედიცინო</div>
-            </div>
+        <!-- Card 3: +250% ტრაფიკის ზრდა -->
+        <a href="case-studies/250-percent-increase.html" class="group block rounded-2xl border border-gray-800 bg-[#0d1117] p-6 hover:border-primary/40 hover:-translate-y-1 transition-all duration-300">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-xs font-semibold text-success bg-success/10 px-2.5 py-1 rounded-full">+250%</span>
           </div>
-          <div class="flex items-center gap-3 mb-2">
-            <div class="flex-1 text-center py-2 rounded-lg bg-red-50 dark:bg-red-900/20">
-              <div class="text-xs text-body dark:text-body-dark">Before</div>
-              <div class="font-inter text-lg font-bold text-red-500">0</div>
-            </div>
-            <svg class="w-5 h-5 text-success shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-            <div class="flex-1 text-center py-2 rounded-lg bg-green-50 dark:bg-green-900/20">
-              <div class="text-xs text-body dark:text-body-dark">After</div>
-              <div class="font-inter text-lg font-bold text-success">1,620</div>
-            </div>
+          <p class="font-inter text-4xl font-extrabold text-success mb-1">+250%</p>
+          <p class="font-heading text-lg font-bold text-white mb-1">ტრაფიკის ზრდა</p>
+          <p class="text-sm text-body-dark mb-5">სამშენებლო | 3 თვე</p>
+          <div class="flex justify-between text-sm text-body-dark mt-auto">
+            <div><span class="text-body-dark/60">გვერდები</span></div>
+            <div><span class="text-white font-bold">8</span></div>
           </div>
-          <div class="text-center text-sm font-bold text-success"><span class="font-inter">+600%</span> · 52% CTR · #1 პოზიცია</div>
+          <div class="flex justify-between text-sm mt-2">
+            <div><span class="text-body-dark/60">გაყიდვა</span></div>
+            <div><span class="text-red-400 font-bold">$30K</span></div>
+          </div>
         </a>
+
+        <!-- Card 4: ლოკალური SEO -->
+        <a href="case-studies/local-seo-result.html" class="group block rounded-2xl border border-gray-800 bg-[#0d1117] p-6 hover:border-accent/40 hover:-translate-y-1 transition-all duration-300">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-xs font-semibold text-accent bg-accent/10 px-2.5 py-1 rounded-full">GMB</span>
+          </div>
+          <p class="font-inter text-4xl font-extrabold text-white mb-1">+60%</p>
+          <p class="font-heading text-lg font-bold text-white mb-1">ლოკალური SEO</p>
+          <p class="text-sm text-body-dark mb-5">ქართული ბრენდი | GMB</p>
+          <div class="grid grid-cols-2 gap-3 mt-auto">
+            <div class="text-center p-3 bg-gray-800/50 rounded-xl">
+              <p class="font-inter text-lg font-bold text-white">+370</p>
+              <p class="text-[11px] text-body-dark">კლიკი</p>
+            </div>
+            <div class="text-center p-3 bg-gray-800/50 rounded-xl">
+              <p class="font-inter text-lg font-bold text-accent">+20K</p>
+              <p class="text-[11px] text-body-dark">იმფრეშენი</p>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 5: 4,200+ ვიზიტორი -->
+        <a href="case-studies/4200-yoveltviuri-vizitori-4-tveshi.html" class="group block rounded-2xl border border-gray-800 bg-[#0d1117] p-6 hover:border-rose-500/40 hover:-translate-y-1 transition-all duration-300">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-xs font-semibold text-rose-400 bg-rose-500/10 px-2.5 py-1 rounded-full">Medical</span>
+          </div>
+          <p class="font-inter text-4xl font-extrabold text-white mb-1">4,200+</p>
+          <p class="font-heading text-lg font-bold text-white mb-1">ვიზიტორი 4 თვეში</p>
+          <p class="text-sm text-body-dark mb-5">მედიცინა | 0-დან</p>
+          <div class="flex items-end gap-1.5 h-14">
+            <div class="flex-1 bg-gray-700/40 rounded-t" style="height:3%"></div>
+            <div class="flex-1 bg-rose-900/30 rounded-t" style="height:12%"></div>
+            <div class="flex-1 bg-rose-800/40 rounded-t" style="height:28%"></div>
+            <div class="flex-1 bg-rose-700/50 rounded-t" style="height:45%"></div>
+            <div class="flex-1 bg-rose-600/55 rounded-t" style="height:60%"></div>
+            <div class="flex-1 bg-rose-500/65 rounded-t" style="height:75%"></div>
+            <div class="flex-1 bg-rose-500/80 rounded-t" style="height:88%"></div>
+            <div class="flex-1 bg-rose-400 rounded-t" style="height:100%"></div>
+          </div>
+        </a>
+
+        <!-- Card 6: სტომატოლოგია +600% -->
+        <a href="case-studies/stomatologiuri-klinikis-seo.html" class="group block rounded-2xl border border-gray-800 bg-[#0d1117] p-6 hover:border-success/40 hover:-translate-y-1 transition-all duration-300">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-xs font-semibold text-white bg-success/20 px-2.5 py-1 rounded-full">#1</span>
+          </div>
+          <p class="font-inter text-4xl font-extrabold text-red-400 mb-1">+600%</p>
+          <p class="font-heading text-lg font-bold text-white mb-1">სტომატოლოგია</p>
+          <p class="text-sm text-body-dark mb-4">მედიცინა | იმპლანტაცია</p>
+          <div class="space-y-2 mt-auto">
+            <div class="flex justify-between text-sm">
+              <span class="text-body-dark/60">ვიზიტორი</span>
+              <span class="text-white font-bold">1,620</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-body-dark/60">CTR</span>
+              <span class="text-success font-bold">52%</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-body-dark/60">იმფრეშენი</span>
+              <span class="text-accent font-bold">63K</span>
+            </div>
+          </div>
+        </a>
+
       </div>
 
-      <!-- Additional results row -->
-      <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4 mt-6">
-        <a href="case-studies/trafikis-gaormageba-3-tveshi.html" class="group bg-white dark:bg-surface-dark-alt rounded-xl border border-gray-100 dark:border-gray-800 p-4 hover:border-primary/30 transition-all text-center">
-          <div class="font-inter text-2xl font-extrabold text-success">+100%</div>
-          <div class="text-xs text-body dark:text-body-dark mt-1">ტრაფიკი გაორმაგდა · 3 თვე</div>
-          <div class="text-xs text-primary dark:text-primary-light mt-2 opacity-0 group-hover:opacity-100 transition-opacity">სამშენებლო →</div>
+      <!-- CTA -->
+      <div class="text-center mt-10 lg:mt-14">
+        <a href="case-studies.html" class="group/btn inline-flex items-center gap-3 px-8 py-4 ai-cta-animate text-white font-bold text-lg rounded-2xl shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 transition-all duration-200">
+          ყველა ქეის სტადი ნახეთ
+          <svg class="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
         </a>
-        <a href="case-studies/250-percent-increase.html" class="group bg-white dark:bg-surface-dark-alt rounded-xl border border-gray-100 dark:border-gray-800 p-4 hover:border-primary/30 transition-all text-center">
-          <div class="font-inter text-2xl font-extrabold text-success">+250%</div>
-          <div class="text-xs text-body dark:text-body-dark mt-1">ორგანული ზრდა · $30K გაყიდვა</div>
-          <div class="text-xs text-primary dark:text-primary-light mt-2 opacity-0 group-hover:opacity-100 transition-opacity">სამშენებლო →</div>
-        </a>
-        <a href="case-studies/local-seo-result.html" class="group bg-white dark:bg-surface-dark-alt rounded-xl border border-gray-100 dark:border-gray-800 p-4 hover:border-primary/30 transition-all text-center">
-          <div class="font-inter text-2xl font-extrabold text-success">+60%</div>
-          <div class="text-xs text-body dark:text-body-dark mt-1">ზარების ზრდა · 2 თვე</div>
-          <div class="text-xs text-primary dark:text-primary-light mt-2 opacity-0 group-hover:opacity-100 transition-opacity">ლოკალური SEO →</div>
-        </a>
-        <a href="case-studies/4200-yoveltviuri-vizitori-4-tveshi.html" class="group bg-white dark:bg-surface-dark-alt rounded-xl border border-gray-100 dark:border-gray-800 p-4 hover:border-primary/30 transition-all text-center">
-          <div class="font-inter text-2xl font-extrabold text-success">4,200+</div>
-          <div class="text-xs text-body dark:text-body-dark mt-1">ვიზიტორი/თვე · 4 თვე</div>
-          <div class="text-xs text-primary dark:text-primary-light mt-2 opacity-0 group-hover:opacity-100 transition-opacity">სამედიცინო →</div>
-        </a>
-      </div>
-
-      <div class="text-center mt-8">
-        <a href="case-studies.html" class="inline-flex items-center gap-2 text-primary dark:text-primary-light font-semibold hover:underline">
-          ყველა ქეის სტადი (8)
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-        </a>
+        <p class="text-sm text-body-dark mt-3">50+ კლიენტი | საშუალო ზრდა +430%</p>
       </div>
     </div>
   </section>
@@ -898,8 +1008,8 @@
     <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
       <p class="text-lg font-semibold text-heading dark:text-heading-dark mb-4">მზად ხართ მსგავსი შედეგებისთვის?</p>
       <div class="flex flex-col sm:flex-row gap-3 justify-center">
-        <a href="seo-audit.html" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-gradient-to-r from-primary to-primary-dark text-white font-bold rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all">
-          უფასო კონსულტაცია
+        <a href="#" onclick="openCalendly();return false;" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-gradient-to-r from-primary to-primary-dark text-white font-bold rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all">
+          დაჯავშნე კონსულტაცია
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
         </a>
         <a href="tel:+995510101517" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 border border-gray-200 dark:border-gray-700 text-heading dark:text-heading-dark font-semibold rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-all">
@@ -1165,6 +1275,25 @@
     </div>
   </section>
 
+  <!-- ========== VIDEO EXPLAINER ========== -->
+  <section class="py-12 lg:py-16 bg-surface-alt dark:bg-surface-dark-alt">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-6">
+        <p class="text-sm font-semibold text-red-500 uppercase tracking-wider mb-2">ვიდეო</p>
+        <h2 class="font-heading text-[22px] sm:text-[26px] font-bold text-heading dark:text-heading-dark leading-[1.3]">როგორ იცვლება SEO 2026-ში</h2>
+      </div>
+      <div class="rounded-2xl overflow-hidden border border-gray-100 dark:border-gray-800">
+        <lite-youtube videoid="sDIPCz_oxIg" playlabel="როგორ იცვლება SEO 2026-ში"></lite-youtube>
+      </div>
+      <p class="text-center mt-4">
+        <a href="https://www.youtube.com/@10xSEO?sub_confirmation=1" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm text-red-500 hover:text-red-400 font-medium transition-colors">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0C.488 3.45.029 5.804 0 12c.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0C23.512 20.55 23.971 18.196 24 12c-.029-6.185-.484-8.549-4.385-8.816zM9 16V8l8 4-8 4z"/></svg>
+          მეტი ვიდეო YouTube არხზე
+        </a>
+      </p>
+    </div>
+  </section>
+
   <!-- ========== PRICING ========== -->
   <section class="py-16 lg:py-20 bg-surface-alt dark:bg-surface-dark-alt" id="pricing">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
@@ -1208,8 +1337,8 @@
               ყოველთვიური რეპორტი
             </li>
           </ul>
-          <a href="seo-audit.html" class="block text-center py-3 border-2 border-gray-200 dark:border-gray-700 text-heading dark:text-heading-dark font-semibold rounded-xl hover:border-primary dark:hover:border-primary-light hover:text-primary transition-all">
-            შემოთავაზების მიღება
+          <a href="#" onclick="openCalendly();return false;" class="block text-center py-3 border-2 border-gray-200 dark:border-gray-700 text-heading dark:text-heading-dark font-semibold rounded-xl hover:border-primary dark:hover:border-primary-light hover:text-primary transition-all">
+            დაჯავშნე კონსულტაცია
           </a>
         </div>
 
@@ -1254,8 +1383,8 @@
               <strong class="text-heading dark:text-heading-dark">10 წუთიანი response time</strong>
             </li>
           </ul>
-          <a href="seo-audit.html" class="block text-center py-3 bg-gradient-to-r from-primary to-primary-dark text-white font-bold rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all">
-            შემოთავაზების მიღება
+          <a href="#" onclick="openCalendly();return false;" class="block text-center py-3 bg-gradient-to-r from-primary to-primary-dark text-white font-bold rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all">
+            დაჯავშნე კონსულტაცია
           </a>
         </div>
 
@@ -1297,13 +1426,13 @@
               ყოველკვირეული სტრატეგიული ზარი
             </li>
           </ul>
-          <a href="seo-audit.html" class="block text-center py-3 border-2 border-gray-200 dark:border-gray-700 text-heading dark:text-heading-dark font-semibold rounded-xl hover:border-primary dark:hover:border-primary-light hover:text-primary transition-all">
-            შემოთავაზების მიღება
+          <a href="#" onclick="openCalendly();return false;" class="block text-center py-3 border-2 border-gray-200 dark:border-gray-700 text-heading dark:text-heading-dark font-semibold rounded-xl hover:border-primary dark:hover:border-primary-light hover:text-primary transition-all">
+            დაჯავშნე კონსულტაცია
           </a>
         </div>
       </div>
 
-      <p class="text-center text-sm text-body dark:text-body-dark mt-8">* ფასები საწყისია და შეიძლება შეიცვალოს ბიზნესის სპეციფიკის მიხედვით. <a href="seo-audit.html" class="text-primary dark:text-primary-light font-medium hover:underline">დაგვიკავშირდით</a> ინდივიდუალური შემოთავაზებისთვის.</p>
+      <p class="text-center text-sm text-body dark:text-body-dark mt-8">* ფასები საწყისია და შეიძლება შეიცვალოს ბიზნესის სპეციფიკის მიხედვით. <a href="#" onclick="openCalendly();return false;" class="text-primary dark:text-primary-light font-medium hover:underline">დაგვიკავშირდით</a> ინდივიდუალური შემოთავაზებისთვის.</p>
     </div>
   </section>
 
@@ -1380,8 +1509,8 @@
         დაგვიკავშირდით, გაიარეთ უფასო კონსულტაცია და ითანამშრომლეთ საქართველოში საუკეთესო გუნდთან
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="seo-audit.html" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-primary font-bold rounded-2xl hover:shadow-xl transition-all text-lg">
-          მიიღეთ შემოთავაზება
+        <a href="#" onclick="openCalendly();return false;" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-primary font-bold rounded-2xl hover:shadow-xl transition-all text-lg">
+          დაჯავშნე კონსულტაცია
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
         </a>
         <a href="tel:+995510101517" class="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-2xl hover:bg-white/10 transition-all text-lg">
@@ -1392,6 +1521,7 @@
     </div>
   </section>
 
+  </main>
   <!-- ========== FOOTER ========== -->
     <footer class="bg-heading dark:bg-surface-dark-alt text-gray-400 py-12 lg:py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
@@ -1441,7 +1571,7 @@
           <p class="font-heading text-white font-semibold mb-4">კონტაქტი</p>
           <ul class="space-y-2.5 text-sm">
             <li>+995 510 10 15 17</li>
-            <li>info@10xseo.ge</li>
+            <li>sales@10xseo.ge</li>
             <li>თბილისი, საქართველო</li>
           </ul>
         </div>
@@ -1459,7 +1589,7 @@
   <!-- ========== STICKY BOTTOM CTA (Mobile) ========== -->
   <div id="sticky-cta" class="fixed bottom-0 left-0 right-0 z-50 lg:hidden bg-white dark:bg-surface-dark-alt border-t border-gray-200 dark:border-gray-800 p-3 safe-bottom transition-transform duration-300">
     <div class="flex items-center gap-2 max-w-lg mx-auto">
-      <a href="seo-audit.html" class="flex-1 flex items-center justify-center gap-2 py-3 bg-gradient-to-r from-primary to-primary-dark text-white font-semibold rounded-xl text-sm">მიიღეთ შემოთავაზება</a>
+      <a href="#" onclick="openCalendly();return false;" class="flex-1 flex items-center justify-center gap-2 py-3 bg-gradient-to-r from-primary to-primary-dark text-white font-semibold rounded-xl text-sm">დაჯავშნე კონსულტაცია</a>
       <a href="tel:+995510101517" class="w-12 h-12 flex items-center justify-center rounded-xl border border-gray-200 dark:border-gray-700 text-primary dark:text-primary-light">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
       </a>
@@ -1535,5 +1665,10 @@
       });
     }
   </script>
+
+<!-- Calendly Popup Widget -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+<script>function openCalendly(){Calendly.initPopupWidget({url:'https://calendly.com/10xseo-sales/30-seo-clone?background_color=0f172a&text_color=f8fafc&primary_color=8b5cf6'});return false;}</script>
 </body>
 </html>

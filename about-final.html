@@ -389,6 +389,136 @@ footer {
   .hero { padding: 6rem 1.5rem 4rem; }
   .opening { padding: 3rem 1.5rem; }
 }
+
+/* === MISSION SECTION === */
+.mission-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+}
+.mission-left h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; line-height: 1.3;
+  margin-bottom: 1.2rem; color: var(--cream);
+}
+.mission-left h2 .accent-gold { color: var(--gold); font-family: 'Caveat', cursive; font-weight: 700; }
+.mission-left p { font-size: 1rem; color: var(--text-dim); line-height: 1.9; margin-bottom: 1rem; }
+.pyramid-tiers { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.tier {
+  padding: 20px 28px; border-radius: 16px; text-align: center;
+  position: relative; overflow: hidden; transition: all 0.4s ease;
+  border: 1px solid rgba(139,92,246,0.08);
+}
+.tier:hover { transform: scale(1.03); }
+.tier:nth-child(1) { width: 50%; background: rgba(245,166,35,0.06); }
+.tier:nth-child(2) { width: 65%; background: rgba(139,92,246,0.05); }
+.tier:nth-child(3) { width: 80%; background: rgba(59,130,246,0.04); }
+.tier:nth-child(4) { width: 95%; background: rgba(20,184,166,0.03); }
+.tier-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 4px; }
+.tier-value { font-weight: 600; font-size: 0.88rem; }
+.tier:nth-child(1) .tier-value { color: var(--gold); }
+.tier:nth-child(2) .tier-value { color: var(--violet-soft); }
+.tier:nth-child(3) .tier-value { color: var(--blue); }
+.tier:nth-child(4) .tier-value { color: var(--teal); }
+
+/* === VISION TIMELINE === */
+.vision-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.vision-card {
+  background: var(--surface); border: 1px solid rgba(139,92,246,0.06);
+  border-radius: 24px; padding: 36px 28px; position: relative;
+  overflow: hidden; transition: all 0.4s ease;
+}
+.vision-card:hover {
+  border-color: rgba(139,92,246,0.15); transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.3);
+}
+.vision-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--violet), var(--blue));
+  opacity: 0; transition: opacity 0.3s;
+}
+.vision-card:hover::before { opacity: 1; }
+.vision-card .year {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.5rem; font-weight: 600; line-height: 1; margin-bottom: 14px;
+}
+.vision-card:nth-child(1) .year { color: var(--gold); }
+.vision-card:nth-child(2) .year { color: var(--violet-soft); }
+.vision-card:nth-child(3) .year { color: var(--blue); }
+.vision-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; color: var(--cream); }
+.vision-card p { font-size: 0.88rem; color: var(--text-dim); line-height: 1.8; }
+.vision-card .location {
+  margin-top: 14px; display: flex; align-items: center; gap: 6px;
+  font-size: 0.78rem; color: var(--text-dim); font-style: italic;
+}
+
+/* === AI BANNER === */
+.ai-banner {
+  background: linear-gradient(135deg, rgba(139,92,246,0.05), rgba(59,130,246,0.04), rgba(20,184,166,0.03));
+  border: 1px solid rgba(139,92,246,0.08); border-radius: 24px;
+  padding: 3.5rem; position: relative; overflow: hidden;
+}
+.ai-banner::before {
+  content: 'AI'; position: absolute; right: -10px; top: -30px;
+  font-family: 'Cormorant Garamond', serif; font-size: 12rem;
+  font-weight: 600; opacity: 0.02; color: var(--violet);
+}
+.ai-banner h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 300;
+  margin-bottom: 1rem; color: var(--cream);
+}
+.ai-banner h3 .gradient-text {
+  background: linear-gradient(135deg, var(--violet), var(--blue), var(--teal));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  font-weight: 400;
+}
+.ai-banner p { font-size: 0.95rem; color: var(--text-dim); line-height: 1.9; max-width: 680px; margin-bottom: 0.8rem; }
+.ai-features { display: flex; gap: 28px; margin-top: 1.5rem; flex-wrap: wrap; }
+.ai-feature { display: flex; align-items: center; gap: 8px; font-size: 0.88rem; font-weight: 500; color: var(--cream); }
+.ai-dot { width: 8px; height: 8px; border-radius: 50%; }
+.ai-dot.violet { background: var(--violet); }
+.ai-dot.blue { background: var(--blue); }
+.ai-dot.teal { background: var(--teal); }
+
+/* === PROPER FOOTER === */
+.site-footer { border-top: 1px solid var(--border); padding: 4rem 2rem 2rem; background: rgba(2,7,16,0.5); }
+.footer-grid {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 2.5rem; margin-bottom: 3rem;
+}
+.footer-brand p { font-size: 0.85rem; color: var(--text-dim); line-height: 1.8; margin: 1rem 0; }
+.footer-social { display: flex; gap: 10px; }
+.footer-social a {
+  width: 36px; height: 36px; border-radius: 10px;
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-dim); transition: all 0.3s;
+}
+.footer-social a:hover { background: rgba(139,92,246,0.1); border-color: rgba(139,92,246,0.2); color: var(--cream); }
+.footer-col h4 { font-size: 0.85rem; font-weight: 700; color: var(--cream); margin-bottom: 1rem; letter-spacing: 0.5px; }
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 0.6rem; }
+.footer-col a { font-size: 0.82rem; color: var(--text-dim); text-decoration: none; transition: color 0.3s; }
+.footer-col a:hover { color: var(--gold); }
+.footer-col .contact-info { font-size: 0.82rem; color: var(--text-dim); line-height: 2; }
+.footer-bottom {
+  max-width: 1100px; margin: 0 auto; padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.75rem; color: var(--text-muted);
+}
+.footer-bottom a { color: var(--text-muted); text-decoration: none; transition: color 0.3s; }
+.footer-bottom a:hover { color: var(--cream); }
+.footer-bottom-links { display: flex; gap: 1.5rem; }
+
+@media (max-width: 768px) {
+  .mission-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .vision-cards { grid-template-columns: 1fr; }
+  .ai-banner { padding: 2rem 1.5rem; }
+  .ai-features { flex-direction: column; gap: 12px; }
+  .tier { width: 100% !important; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+}
 </style>
 </head>
 <body>
@@ -674,6 +804,92 @@ footer {
 
 <div class="divider"></div>
 
+<!-- MISSION — Our Direction -->
+<div class="container page-section" id="mission">
+  <div class="section-header reveal">
+    <div class="section-label">ჩვენი მისია</div>
+    <div class="section-title">იყავი პირველი — ყოველთვის</div>
+    <p class="section-desc">სლოგანი კი არა, ცხოვრების წესი</p>
+  </div>
+
+  <div class="mission-grid">
+    <div class="mission-left reveal">
+      <h2>ჩვენი მიზანი — გავხდეთ რეგიონის <span class="accent-gold">საუკეთესო</span></h2>
+      <p>10xSEO არის საქართველოში პირველი და საუკეთესო SEO სააგენტო. ჩვენი მიზანია მომდევნო 2 წელიწადში იგივე შევძლოთ დუბაიშიც — რადგან ამბიცია ჩვენი იდენტობის განუყოფელი ნაწილია.</p>
+      <p>ჩვენ პირველები ვიყავით საქართველოში, ვინც AI-ზე დაფუძნებული SEO მეთოდოლოგია დანერგა. პირველები ვიყავით AEO ოპტიმიზაციაში. და პირველები ვიქნებით ყოველ ახალ ტექნოლოგიურ გარღვევაში.</p>
+    </div>
+    <div class="mission-right reveal reveal-d2">
+      <div class="pyramid-tiers">
+        <div class="tier">
+          <div class="tier-label">ხედვა</div>
+          <div class="tier-value">AI-ით მართული მომავალი</div>
+        </div>
+        <div class="tier">
+          <div class="tier-label">სტრატეგია</div>
+          <div class="tier-value">დათა-ორიენტირებული გადაწყვეტილებები</div>
+        </div>
+        <div class="tier">
+          <div class="tier-label">ხელშეწყობა</div>
+          <div class="tier-value">ტექნიკური + კონტენტ ოპტიმიზაცია</div>
+        </div>
+        <div class="tier">
+          <div class="tier-label">საფუძველი</div>
+          <div class="tier-value">50+ კლიენტი · +700% ტრაფიკი · +540% ქივორდები</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- VISION TIMELINE -->
+<div class="container page-section">
+  <div class="section-header reveal">
+    <div class="section-label">სტრატეგიული ხედვა</div>
+    <div class="section-title">სამი ეტაპი მომავლისკენ</div>
+  </div>
+
+  <div class="vision-cards">
+    <div class="vision-card reveal">
+      <div class="year">2024</div>
+      <h3>დაარსება & ბაზის შექმნა</h3>
+      <p>საქართველოს ბაზარზე დამკვიდრება, გუნდის ფორმირება, პირველი 50+ კლიენტის მომსახურება და Ahrefs-ის ვერიფიცირებული პარტნიორობა.</p>
+      <div class="location">&#128205; თბილისი, საქართველო</div>
+    </div>
+    <div class="vision-card reveal reveal-d1">
+      <div class="year">2026</div>
+      <h3>AI SEO პიონერობა</h3>
+      <p>ხელოვნურ ინტელექტზე დაფუძნებული SEO მეთოდოლოგიის დანერგვა, AEO ოპტიმიზაციის ლიდერობა მთელ რეგიონში. პირველები — ისევ და ისევ.</p>
+      <div class="location">&#128205; საქართველო + რეგიონი</div>
+    </div>
+    <div class="vision-card reveal reveal-d2">
+      <div class="year">2028</div>
+      <h3>დუბაის ექსპანსია</h3>
+      <p>საერთაშორისო ოფისის გახსნა დუბაიში. ეს მხოლოდ დასაწყისია — ამბიცია საზღვრებს არ ცნობს.</p>
+      <div class="location">&#128205; დუბაი, UAE</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- AI SECTION -->
+<div class="container page-section">
+  <div class="ai-banner reveal">
+    <h3>მომავალი <span class="gradient-text">AI SEO-შია</span></h3>
+    <p>ძიების ლანდშაფტი ფუნდამენტურად იცვლება. ChatGPT, Gemini, Perplexity — ხელოვნური ინტელექტი ხდება ახალი „საძიებო სისტემა". ჩვენ ვმზადებთ კლიენტებს ამ ცვლილებისთვის — რადგან პირველობა ნიშნავს მომავალზე ფიქრს დღეს.</p>
+    <p>AEO (Answer Engine Optimization) არის მომავლის SEO — და 10xSEO ამ სფეროს პიონერია საქართველოში.</p>
+    <div class="ai-features">
+      <div class="ai-feature"><div class="ai-dot violet"></div>AI Overview ოპტიმიზაცია</div>
+      <div class="ai-feature"><div class="ai-dot blue"></div>AEO სტრატეგია</div>
+      <div class="ai-feature"><div class="ai-dot teal"></div>LLM-ებთან ხილვადობა</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
 <!-- SERVICES — compact pills -->
 <div class="container page-section">
   <div class="section-header reveal">
@@ -705,65 +921,57 @@ footer {
   <div class="cta-phone reveal">ტელეფონი: <a href="tel:+995510101517">510 10 15 17</a></div>
 </div>
 
-  <footer class="bg-heading dark:bg-surface-dark-alt text-gray-400 py-12 lg:py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
-        <!-- Col 1: Info -->
-        <div class="col-span-2 lg:col-span-1">
-          <a href="index.html" class="flex items-center gap-2 mb-4">
-            <img src="images/logo.png" alt="10XSEO" class="h-12 w-auto">
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="images/logo.png" alt="10XSEO" style="height:40px;width:auto;margin-bottom:4px;" onerror="this.outerHTML='<span style=\'font-family:Cormorant Garamond,serif;font-size:1.4rem;font-weight:600;color:#F5A623;letter-spacing:2px\'>10XSEO</span>'">
+        <p>საქართველოს #1 SEO სააგენტო. რეალური შედეგები, ყოველკვირეული ანგარიშები, სწრაფი მომსახურება.</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/10xSEO.Ge" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
           </a>
-          <p class="text-sm leading-relaxed mb-4">საქართველოს #1 SEO სააგენტო. რეალური შედეგები, ყოველკვირეული ანგარიშები, სწრაფი მომსახურება.</p>
-          <div class="flex gap-3">
-            <a href="https://www.facebook.com/10xSEO.Ge" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-white/10 border-2 border-transparent flex items-center justify-center hover:bg-white hover:border-[#D4A017] transition-all duration-200" aria-label="Facebook">
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-            </a>
-            <a href="https://www.linkedin.com/company/10xseoge/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-white/10 border-2 border-transparent flex items-center justify-center hover:bg-white hover:border-[#D4A017] transition-all duration-200" aria-label="LinkedIn">
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            </a>
-            <a href="https://www.youtube.com/@10xSEO" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-white/10 border-2 border-transparent flex items-center justify-center hover:bg-white hover:border-[#D4A017] transition-all duration-200" aria-label="YouTube">
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-            </a>
-          </div>
-        </div>
-        <!-- Col 2: Services -->
-        <div>
-          <p class="font-heading text-white font-semibold mb-4">სერვისები</p>
-          <ul class="space-y-2.5 text-sm">
-            <li><a href="seo-management.html" class="hover:text-white transition-colors">SEO მენეჯმენტი</a></li>
-            <li><a href="seo-consultation.html" class="hover:text-white transition-colors">SEO კონსულტაცია</a></li>
-            <li><a href="seo-strategy.html" class="hover:text-white transition-colors">SEO სტრატეგია</a></li>
-            <li><a href="seo-audit.html" class="hover:text-white transition-colors">უფასო SEO აუდიტი</a></li>
-          </ul>
-        </div>
-        <!-- Col 3: Company -->
-        <div>
-          <p class="font-heading text-white font-semibold mb-4">კომპანია</p>
-          <ul class="space-y-2.5 text-sm">
-            <li><a href="portfolio.html" class="hover:text-white transition-colors">პორტფოლიო</a></li>
-            <li><a href="case-studies.html" class="hover:text-white transition-colors">ქეის სტადები</a></li>
-            <li><a href="blog.html" class="hover:text-white transition-colors">ბლოგი</a></li>
-            <li><a href="faq.html" class="hover:text-white transition-colors">FAQ</a></li>
-            <li><a href="ra-aris-seo.html" class="hover:text-white transition-colors">რა არის SEO</a></li>
-            <li><a href="vacancies.html" class="hover:text-white transition-colors">ვაკანსიები</a></li>
-          </ul>
-        </div>
-        <!-- Col 4: Contact -->
-        <div>
-          <p class="font-heading text-white font-semibold mb-4">კონტაქტი</p>
-          <ul class="space-y-2.5 text-sm">
-            <li>+995 510 10 15 17</li>
-            <li>info@10xseo.ge</li>
-            <li>თბილისი, საქართველო</li>
-          </ul>
+          <a href="https://www.linkedin.com/company/10xseoge/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@10xSEO" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
         </div>
       </div>
-      <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
-        <p>&copy; 2026 10XSEO. ყველა უფლება დაცულია.</p>
-        <div class="flex gap-6">
-          <a href="#" class="hover:text-white transition-colors">კონფიდენციალურობა</a>
-          <a href="#" class="hover:text-white transition-colors">პირობები</a>
+      <div class="footer-col">
+        <h4>სერვისები</h4>
+        <ul>
+          <li><a href="seo-management.html">SEO მენეჯმენტი</a></li>
+          <li><a href="seo-consultation.html">SEO კონსულტაცია</a></li>
+          <li><a href="seo-strategy.html">SEO სტრატეგია</a></li>
+          <li><a href="seo-audit.html">უფასო SEO აუდიტი</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>კომპანია</h4>
+        <ul>
+          <li><a href="portfolio.html">პორტფოლიო</a></li>
+          <li><a href="case-studies.html">ქეის სტადები</a></li>
+          <li><a href="blog.html">ბლოგი</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="ra-aris-seo.html">რა არის SEO</a></li>
+          <li><a href="vacancies.html">ვაკანსიები</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>კონტაქტი</h4>
+        <div class="contact-info">
+          +995 510 10 15 17<br>
+          info@10xseo.ge<br>
+          თბილისი, საქართველო
         </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 10XSEO. ყველა უფლება დაცულია.</p>
+      <div class="footer-bottom-links">
+        <a href="#">კონფიდენციალურობა</a>
+        <a href="#">პირობები</a>
       </div>
     </div>
   </footer>

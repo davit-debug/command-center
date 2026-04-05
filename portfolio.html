@@ -2,6 +2,9 @@
 <html lang="ka" class="dark">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>პორტფოლიო — 10XSEO</title>
     <meta name="description" content="10XSEO-ს კლიენტების რეალური შედეგები. ჩვენი ქსელი და წარმატების ისტორიები.">
@@ -121,12 +124,13 @@
         .network-line { animation: dashMove 3s linear infinite; }
 
         /* Nodes */
-        .network-node { position: absolute; z-index: 10; display: flex; align-items: center; justify-content: center; width: 120px; height: 120px; border-radius: 50%; background: rgba(255,255,255,0.95); cursor: pointer; transition: transform 0.4s ease, box-shadow 0.4s ease; box-shadow: 0 0 20px rgba(139,92,246,0.1); }
-        .network-node:hover { transform: scale(1.15); box-shadow: 0 0 35px rgba(139,92,246,0.4); }
+        .network-node { position: absolute; z-index: 10; display: flex; align-items: center; justify-content: center; width: 120px; height: 120px; border-radius: 50%; background: transparent; border: 2px solid rgba(139,92,246,0.25); cursor: pointer; transition: transform 0.4s ease, box-shadow 0.4s ease; box-shadow: 0 0 20px rgba(139,92,246,0.1); overflow: hidden; }
+        .network-node:hover { transform: scale(1.15); box-shadow: 0 0 35px rgba(139,92,246,0.4); border-color: rgba(139,92,246,0.5); }
         .network-node.glow { box-shadow: 0 0 30px rgba(139,92,246,0.35); }
-        .network-node img { max-width: 80px; max-height: 65px; object-fit: contain; }
+        .network-node img { width: 100%; height: 100%; object-fit: contain; padding: 18px; filter: brightness(0) invert(1) opacity(0.85); }
+        .network-node:hover img { filter: brightness(0) invert(1) opacity(1); }
         .network-node.center-node { width: 160px; height: 160px; background: linear-gradient(135deg, #12121E, #1a1a30); border: 2px solid rgba(139,92,246,0.4); }
-        .network-node.center-node img { max-width: 100px; max-height: 70px; filter: brightness(1.2); }
+        .network-node.center-node img { width: auto; height: auto; max-width: 100px; max-height: 70px; filter: brightness(1.2); padding: 0; }
 
         /* Float animation */
         @keyframes float1 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(5px,-8px); } }
@@ -147,8 +151,8 @@
         .cluster-card { background: #0A0A1A; border: 1px solid #1E1E35; border-radius: 16px; padding: 28px; transition: border-color 0.3s, transform 0.3s; }
         .cluster-card:hover { border-color: #8B5CF6; transform: translateY(-4px); }
         .cluster-logos { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
-        .cluster-logo-item { width: 56px; height: 56px; border-radius: 12px; background: rgba(255,255,255,0.95); display: flex; align-items: center; justify-content: center; }
-        .cluster-logo-item img { max-width: 36px; max-height: 28px; object-fit: contain; }
+        .cluster-logo-item { width: 56px; height: 56px; border-radius: 12px; background: rgba(255,255,255,0.06); border: 1px solid rgba(139,92,246,0.2); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .cluster-logo-item img { max-width: 40px; max-height: 32px; object-fit: contain; filter: brightness(0) invert(1) opacity(0.8); }
 
         /* Stat pill */
         .stat-pill { display: inline-flex; align-items: center; gap: 4px; background: rgba(33,199,67,0.1); border: 1px solid rgba(33,199,67,0.2); border-radius: 20px; padding: 4px 12px; font-size: 13px; color: #21C743; font-weight: 600; }
@@ -162,8 +166,15 @@
             .mobile-grid { display: none !important; }
         }
     </style>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"CollectionPage","name":"10XSEO პორტფოლიო","description":"10XSEO-ს კლიენტების პორტფოლიო","url":"https://10xseo.ge/portfolio.html","publisher":{"@type":"Organization","name":"10XSEO","url":"https://10xseo.ge"}}
+    </script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"მთავარი","item":"https://10xseo.ge/"},{"@type":"ListItem","position":2,"name":"პორტფოლიო","item":"https://10xseo.ge/portfolio.html"}]}
+    </script>
 </head>
 <body class="font-body bg-surface-dark text-body-dark transition-colors duration-300 pb-20 lg:pb-0">
+<a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-primary focus:text-white focus:px-4 focus:py-2 focus:rounded-lg">გადახტომა მთავარ შინაარსზე</a>
 
   <!-- ========== HEADER ========== -->
   <header id="main-header" class="fixed top-0 left-0 right-0 z-50 h-16 lg:h-[72px] bg-white/80 dark:bg-surface-dark/80 header-scrolled border-b border-gray-100 dark:border-gray-800 transition-all duration-300">
@@ -171,7 +182,7 @@
       <a href="index.html" class="flex items-center shrink-0">
         <img src="images/logo-glow.png" alt="10XSEO" class="h-14 lg:h-16 w-auto dark:mix-blend-screen">
       </a>
-      <nav class="hidden lg:flex items-center gap-1">
+      <nav class="hidden lg:flex items-center gap-1" aria-label="მთავარი ნავიგაცია">
         <a href="about-us.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">ჩვენს შესახებ</a>
         <div class="relative group">
           <button class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors flex items-center gap-1">
@@ -182,14 +193,36 @@
             <a href="seo-management.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">SEO მენეჯმენტი</a>
             <a href="seo-consultation.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">SEO კონსულტაცია</a>
             <a href="seo-strategy.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">SEO სტრატეგია</a>
-            <a href="seo-copywriting.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">SEO კოპირაიტინგი</a>
+            <div class="relative group/copy">
+              <button class="w-full flex items-center justify-between px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">
+                კოპირაიტინგი
+                <svg class="w-3.5 h-3.5 opacity-50 -rotate-90 group-hover/copy:rotate-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </button>
+              <div class="overflow-hidden max-h-0 group-hover/copy:max-h-40 transition-all duration-300 pl-3">
+                <a href="seo-copywriting.html" class="block px-3 py-2 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-body dark:text-body-dark">SEO კოპირაიტინგი</a>
+                <a href="copywriting.html" class="block px-3 py-2 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-body dark:text-body-dark">UI/UX Copy <span class="text-[10px] text-primary-light ml-1">Premium</span></a>
+              </div>
+            </div>
             <a href="cro.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">კონვერსიის ოპტიმიზაცია</a>
             <a href="google-ads.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">Google Ads</a>
             <a href="ai-seo.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">AI SEO / GEO</a>
             <a href="seo-course.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">SEO კურსი</a>
           </div>
         </div>
-        <a href="industries.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">ინდუსტრიები</a>
+        <div class="relative group/ind">
+          <a href="industries.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors flex items-center gap-1">
+            ინდუსტრიები
+            <svg class="w-4 h-4 transition-transform group-hover/ind:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </a>
+          <div class="absolute top-full left-0 mt-1 w-60 bg-white dark:bg-surface-dark-alt rounded-xl shadow-xl border border-gray-100 dark:border-gray-800 opacity-0 invisible group-hover/ind:opacity-100 group-hover/ind:visible transition-all duration-200 p-2">
+            <a href="industries/healthcare.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">კლინიკები &amp; ჯანდაცვა</a>
+            <a href="industries/financial-services.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">ფინანსური სერვისები</a>
+            <a href="industries/construction.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">სამშენებლო &amp; უძრავი ქონება</a>
+            <a href="industries/ecommerce.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">E-commerce</a>
+            <hr class="my-1 border-gray-100 dark:border-gray-800">
+            <a href="industries.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-body dark:text-body-dark">ყველა ინდუსტრია →</a>
+          </div>
+        </div>
         <a href="portfolio.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">პორტფოლიო</a>
         <a href="case-studies.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">შედეგები</a>
         <a href="blog.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">ბლოგი</a>
@@ -200,10 +233,10 @@
           <span class="opacity-50">/</span>
           <span id="lang-en" class="opacity-50">EN</span>
         </button>
-        <a href="seo-audit.html" class="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 ai-cta-animate text-white text-sm font-semibold rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-200">
-          უფასო აუდიტი
+        <a href="#" onclick="openCalendly();return false;" class="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 ai-cta-animate text-white text-sm font-semibold rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-200">
+          დაჯავშნე კონსულტაცია
         </a>
-        <button id="mobile-menu-btn" class="lg:hidden w-9 h-9 rounded-lg flex flex-col items-center justify-center gap-[6px] hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-heading dark:text-heading-dark">
+        <button id="mobile-menu-btn" class="lg:hidden min-w-[44px] min-h-[44px] w-9 h-9 rounded-lg flex flex-col items-center justify-center gap-[6px] hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-heading dark:text-heading-dark" aria-expanded="false" aria-controls="mobile-menu" aria-label="მენიუს გახსნა">
           <span class="hamburger-line block w-5 h-[2px] bg-current rounded-full"></span>
           <span class="hamburger-line block w-5 h-[2px] bg-current rounded-full"></span>
           <span class="hamburger-line block w-5 h-[2px] bg-current rounded-full"></span>
@@ -214,7 +247,7 @@
 
   <!-- Mobile Menu Overlay -->
   <div id="mobile-menu" class="lg:hidden fixed inset-0 top-16 bg-surface-dark z-[60] overflow-y-auto pointer-events-none">
-    <nav class="max-w-md mx-auto px-6 py-8 flex flex-col gap-2">
+    <nav class="max-w-md mx-auto px-6 py-8 flex flex-col gap-2" aria-label="მობილური ნავიგაცია">
       <a href="index.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.05s">მთავარი</a>
       <a href="about-us.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.08s">ჩვენს შესახებ</a>
       <hr class="menu-link my-3 border-gray-800" style="transition-delay:0.11s">
@@ -222,18 +255,27 @@
       <a href="seo-management.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.17s">SEO მენეჯმენტი</a>
       <a href="seo-consultation.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.2s">SEO კონსულტაცია</a>
       <a href="seo-strategy.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.23s">SEO სტრატეგია</a>
-      <a href="seo-copywriting.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.26s">SEO კოპირაიტინგი</a>
+      <p class="menu-link text-xs font-semibold text-body-dark/40 uppercase tracking-wider mt-2 mb-1 pl-4" style="transition-delay:0.25s">კოპირაიტინგი</p>
+      <a href="seo-copywriting.html" class="menu-link block px-4 py-3 rounded-xl text-base font-medium text-heading-dark hover:bg-gray-800/50 pl-8" style="transition-delay:0.26s">SEO კოპირაიტინგი</a>
+      <a href="copywriting.html" class="menu-link block px-4 py-3 rounded-xl text-base font-medium text-heading-dark hover:bg-gray-800/50 pl-8" style="transition-delay:0.28s">UI/UX Copy <span class="text-xs text-primary-light ml-1">Premium</span></a>
       <a href="cro.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.29s">კონვერსიის ოპტიმიზაცია</a>
       <a href="google-ads.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.32s">Google Ads</a>
       <a href="ai-seo.html" class="menu-link block px-4 py-3 rounded-xl text-base font-medium text-heading-dark hover:bg-gray-800/50 pl-8" style="transition-delay:0.35s">AI SEO / GEO</a>
       <a href="seo-course.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.38s">SEO კურსი</a>
       <hr class="menu-link my-3 border-gray-800" style="transition-delay:0.41s">
-      <a href="industries.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.44s">ინდუსტრიები</a>
+      <p class="menu-link text-xs font-semibold text-body-dark/60 uppercase tracking-wider mt-2 mb-1" style="transition-delay:0.43s">ინდუსტრიები</p>
+      <a href="industries/healthcare.html" class="menu-link block px-4 py-3 rounded-xl text-base font-medium text-heading-dark hover:bg-gray-800/50 pl-8" style="transition-delay:0.44s">კლინიკები &amp; ჯანდაცვა</a>
+      <a href="industries/financial-services.html" class="menu-link block px-4 py-3 rounded-xl text-base font-medium text-heading-dark hover:bg-gray-800/50 pl-8" style="transition-delay:0.45s">ფინანსური სერვისები</a>
+      <a href="industries/construction.html" class="menu-link block px-4 py-3 rounded-xl text-base font-medium text-heading-dark hover:bg-gray-800/50 pl-8" style="transition-delay:0.46s">სამშენებლო &amp; უძრავი ქონება</a>
+      <a href="industries/ecommerce.html" class="menu-link block px-4 py-3 rounded-xl text-base font-medium text-heading-dark hover:bg-gray-800/50 pl-8" style="transition-delay:0.47s">E-commerce</a>
+      <a href="industries.html" class="menu-link block px-4 py-3 rounded-xl text-sm font-medium text-body-dark/60 hover:bg-gray-800/50 pl-8" style="transition-delay:0.48s">ყველა ინდუსტრია →</a>
       <a href="portfolio.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.47s">პორტფოლიო</a>
       <a href="case-studies.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.5s">შედეგები</a>
       <a href="blog.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.53s">ბლოგი</a>
       <hr class="menu-link my-3 border-gray-800" style="transition-delay:0.56s">
-      <a href="seo-audit.html" class="menu-link block text-center px-6 py-4 ai-cta-animate text-white text-lg font-bold rounded-xl mt-2" style="transition-delay:0.59s">უფასო SEO აუდიტი</a>
+      <a href="#" onclick="openCalendly();return false;" class="menu-link block text-center px-6 py-4 ai-cta-animate text-white text-lg font-bold rounded-xl mt-2" style="transition-delay:0.59s">
+        დაჯავშნე კონსულტაცია
+      </a>
       <a href="tel:+995510101517" class="menu-link call-btn block text-center px-6 py-3 border-2 border-primary-light text-primary-light text-lg font-bold rounded-xl flex items-center justify-center gap-2 transition-all duration-200" style="transition-delay:0.62s">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
         დაგვირეკეთ
@@ -241,6 +283,7 @@
     </nav>
   </div>
 
+<main id="main-content">
 <!-- Full-viewport Network Canvas (Desktop) -->
 <section class="network-canvas" id="networkCanvas">
     <!-- Overlay title -->
@@ -258,7 +301,7 @@
 
     <!-- Medical / Pharmacy cluster (upper-left) -->
     <div class="network-node float-1" id="node-todua-clinic" data-id="todua-clinic" data-cluster="medical" style="left:8%;top:12%;">
-        <img src="images/clients/todua-clinic-canva.png" alt="თოდუას კლინიკა">
+        <img src="images/clients/todua-clinic.png" alt="თოდუას კლინიკა">
         <div class="node-tooltip">თოდუას კლინიკა — <span class="metric">0→4,200/mo</span></div>
     </div>
     <div class="network-node float-3" id="node-gepha" data-id="gepha" data-cluster="medical" style="left:22%;top:8%;">
@@ -266,7 +309,7 @@
         <div class="node-tooltip">GEPHA</div>
     </div>
     <div class="network-node float-2" id="node-pharmadepot" data-id="pharmadepot" data-cluster="medical" style="left:6%;top:30%;">
-        <img src="images/clients/pharmadepot-canva.png" alt="ფარმადეპო">
+        <img src="images/clients/pharmadepot.png" alt="ფარმადეპო">
         <div class="node-tooltip">ფარმადეპო — <span class="metric">+340%</span></div>
     </div>
     <div class="network-node float-4" id="node-smile-studio" data-id="smile-studio" data-cluster="medical" style="left:20%;top:24%;">
@@ -276,39 +319,39 @@
 
     <!-- Real Estate cluster (upper-right) -->
     <div class="network-node float-2" id="node-myhome" data-id="myhome" data-cluster="realestate" style="left:72%;top:10%;">
-        <img src="images/clients/myhome-canva.png" alt="myhome.ge">
+        <img src="images/clients/myhome.png" alt="myhome.ge">
         <div class="node-tooltip">myhome.ge — <span class="metric">+220%</span></div>
     </div>
     <div class="network-node float-4" id="node-belle-maison" data-id="belle-maison" data-cluster="realestate" style="left:84%;top:22%;">
-        <img src="images/clients/belle-maison-canva.png" alt="Belle Maison">
+        <img src="images/clients/belle-maison.png" alt="Belle Maison">
         <div class="node-tooltip">Belle Maison — <span class="metric">+200%</span></div>
     </div>
     <div class="network-node float-1" id="node-horizon" data-id="horizon" data-cluster="realestate" style="left:78%;top:40%;">
-        <img src="images/clients/horizon-canva.png" alt="Horizon Batumi">
+        <img src="images/clients/horizon.png" alt="Horizon Batumi">
         <div class="node-tooltip">Horizon Batumi — <span class="metric">+150%</span></div>
     </div>
 
     <!-- Hospitality (connected to horizon) -->
     <div class="network-node float-3" id="node-kvareli-lake" data-id="kvareli-lake" data-cluster="hospitality" style="left:88%;top:55%;">
-        <img src="images/clients/kvareli-lake-canva.png" alt="Kvareli Lake">
+        <img src="images/clients/kvareli-lake.png" alt="Kvareli Lake">
         <div class="node-tooltip">Kvareli Lake — <span class="metric">+180%</span></div>
     </div>
 
     <!-- Financial / Business (center-left) -->
     <div class="network-node float-4" id="node-irao" data-id="irao" data-cluster="financial" style="left:32%;top:16%;">
-        <img src="images/clients/irao-canva.png" alt="IRAO">
+        <img src="images/clients/irao.png" alt="IRAO">
         <div class="node-tooltip">IRAO — <span class="metric">+180%</span></div>
     </div>
 
     <!-- E-Commerce (center-right) -->
     <div class="network-node float-2" id="node-elehear" data-id="elehear" data-cluster="ecommerce" style="left:62%;top:18%;">
-        <img src="images/clients/elehear-canva.png" alt="ELEHEAR">
+        <img src="images/clients/elehear.png" alt="ELEHEAR">
         <div class="node-tooltip">ELEHEAR — <span class="metric">+270%</span></div>
     </div>
 
     <!-- Others (lower area, spread out for 17 nodes) -->
     <div class="network-node float-3" id="node-gpc" data-id="gpc" data-cluster="other" style="left:10%;top:58%;">
-        <img src="images/clients/gpc-canva.png" alt="GPC">
+        <img src="images/clients/gpc.png" alt="GPC">
         <div class="node-tooltip">GPC</div>
     </div>
     <div class="network-node float-1" id="node-koordinati" data-id="koordinati" data-cluster="other" style="left:24%;top:52%;">
@@ -316,11 +359,11 @@
         <div class="node-tooltip">კოორდინატი</div>
     </div>
     <div class="network-node float-4" id="node-juba" data-id="juba" data-cluster="other" style="left:14%;top:74%;">
-        <img src="images/clients/juba-canva.png" alt="Jubá">
+        <img src="images/clients/juba.png" alt="Jubá">
         <div class="node-tooltip">Jubá</div>
     </div>
     <div class="network-node float-2" id="node-nicolo" data-id="nicolo" data-cluster="other" style="left:32%;top:70%;">
-        <img src="images/clients/nicolo-canva.png" alt="Nicolo">
+        <img src="images/clients/nicolo.png" alt="Nicolo">
         <div class="node-tooltip">Nicolo</div>
     </div>
     <div class="network-node float-3" id="node-avia" data-id="avia" data-cluster="other" style="left:50%;top:74%;">
@@ -343,23 +386,23 @@
         <h1 class="text-4xl font-bold text-white mb-3">ჩვენი ქსელი</h1>
         <p class="text-gray-400">17+ პარტნიორი კომპანია</p>
     </div>
-    <div class="flex items-center justify-center bg-white/95 rounded-xl h-20 p-3"><img src="images/clients/todua-clinic-canva.png" alt="თოდუას კლინიკა" class="max-h-10 object-contain"></div>
-    <div class="flex items-center justify-center bg-white/95 rounded-xl h-20 p-3"><img src="images/clients/gepha.png" alt="GEPHA" class="max-h-10 object-contain"></div>
-    <div class="flex items-center justify-center bg-white/95 rounded-xl h-20 p-3"><img src="images/clients/kvareli-lake-canva.png" alt="Kvareli Lake" class="max-h-10 object-contain"></div>
-    <div class="flex items-center justify-center bg-white/95 rounded-xl h-20 p-3"><img src="images/clients/gpc-canva.png" alt="GPC" class="max-h-10 object-contain"></div>
-    <div class="flex items-center justify-center bg-white/95 rounded-xl h-20 p-3"><img src="images/clients/elehear-canva.png" alt="ELEHEAR" class="max-h-10 object-contain"></div>
-    <div class="flex items-center justify-center bg-white/95 rounded-xl h-20 p-3"><img src="images/clients/irao-canva.png" alt="IRAO" class="max-h-10 object-contain"></div>
-    <div class="flex items-center justify-center bg-white/95 rounded-xl h-20 p-3"><img src="images/clients/koordinati.png" alt="კოორდინატი" class="max-h-10 object-contain"></div>
-    <div class="flex items-center justify-center bg-white/95 rounded-xl h-20 p-3"><img src="images/clients/horizon-canva.png" alt="Horizon Batumi" class="max-h-10 object-contain"></div>
-    <div class="flex items-center justify-center bg-white/95 rounded-xl h-20 p-3"><img src="images/clients/juba-canva.png" alt="Jubá" class="max-h-10 object-contain"></div>
-    <div class="flex items-center justify-center bg-white/95 rounded-xl h-20 p-3"><img src="images/clients/belle-maison-canva.png" alt="Belle Maison" class="max-h-10 object-contain"></div>
-    <div class="flex items-center justify-center bg-white/95 rounded-xl h-20 p-3"><img src="images/clients/nicolo-canva.png" alt="Nicolo" class="max-h-10 object-contain"></div>
-    <div class="flex items-center justify-center bg-white/95 rounded-xl h-20 p-3"><img src="images/clients/myhome-canva.png" alt="myhome.ge" class="max-h-10 object-contain"></div>
-    <div class="flex items-center justify-center bg-white/95 rounded-xl h-20 p-3"><img src="images/clients/avia.png" alt="avia.ge" class="max-h-10 object-contain"></div>
-    <div class="flex items-center justify-center bg-white/95 rounded-xl h-20 p-3"><img src="images/clients/smile-studio.png" alt="Smile Studio" class="max-h-10 object-contain"></div>
-    <div class="flex items-center justify-center bg-white/95 rounded-xl h-20 p-3"><img src="images/clients/kotejebi.png" alt="Kotejebi.ge" class="max-h-10 object-contain"></div>
-    <div class="flex items-center justify-center bg-white/95 rounded-xl h-20 p-3"><img src="images/clients/gergili.png" alt="Gergili" class="max-h-10 object-contain"></div>
-    <div class="flex items-center justify-center bg-white/95 rounded-xl h-20 p-3"><img src="images/clients/pharmadepot-canva.png" alt="ფარმადეპო" class="max-h-10 object-contain"></div>
+    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/todua-clinic.png" alt="თოდუას კლინიკა" class="max-h-10 object-contain" style="filter:brightness(0) invert(1) opacity(0.85)"></div>
+    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/gepha.png" alt="GEPHA" class="max-h-10 object-contain" style="filter:brightness(0) invert(1) opacity(0.85)"></div>
+    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/kvareli-lake.png" alt="Kvareli Lake" class="max-h-10 object-contain" style="filter:brightness(0) invert(1) opacity(0.85)"></div>
+    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/gpc.png" alt="GPC" class="max-h-10 object-contain" style="filter:brightness(0) invert(1) opacity(0.85)"></div>
+    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/elehear.png" alt="ELEHEAR" class="max-h-10 object-contain" style="filter:brightness(0) invert(1) opacity(0.85)"></div>
+    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/irao.png" alt="IRAO" class="max-h-10 object-contain" style="filter:brightness(0) invert(1) opacity(0.85)"></div>
+    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/koordinati.png" alt="კოორდინატი" class="max-h-10 object-contain" style="filter:brightness(0) invert(1) opacity(0.85)"></div>
+    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/horizon.png" alt="Horizon Batumi" class="max-h-10 object-contain" style="filter:brightness(0) invert(1) opacity(0.85)"></div>
+    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/juba.png" alt="Juba" class="max-h-10 object-contain" style="filter:brightness(0) invert(1) opacity(0.85)"></div>
+    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/belle-maison.png" alt="Belle Maison" class="max-h-10 object-contain" style="filter:brightness(0) invert(1) opacity(0.85)"></div>
+    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/nicolo.png" alt="Nicolo" class="max-h-10 object-contain" style="filter:brightness(0) invert(1) opacity(0.85)"></div>
+    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/myhome.png" alt="myhome.ge" class="max-h-10 object-contain" style="filter:brightness(0) invert(1) opacity(0.85)"></div>
+    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/avia.png" alt="avia.ge" class="max-h-10 object-contain" style="filter:brightness(0) invert(1) opacity(0.85)"></div>
+    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/smile-studio.png" alt="Smile Studio" class="max-h-10 object-contain" style="filter:brightness(0) invert(1) opacity(0.85)"></div>
+    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/kotejebi.png" alt="Kotejebi.ge" class="max-h-10 object-contain" style="filter:brightness(0) invert(1) opacity(0.85)"></div>
+    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/gergili.png" alt="Gergili" class="max-h-10 object-contain" style="filter:brightness(0) invert(1) opacity(0.85)"></div>
+    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/pharmadepot.png" alt="ფარმადეპო" class="max-h-10 object-contain" style="filter:brightness(0) invert(1) opacity(0.85)"></div>
 </section>
 
 <!-- Industry Cluster Breakdown -->
@@ -377,9 +420,9 @@
                 </div>
                 <p class="text-gray-400 text-sm mb-4">სამედიცინო და ფარმაცევტული სექტორი — ვიზიტორები, პაციენტები</p>
                 <div class="cluster-logos">
-                    <div class="cluster-logo-item"><img src="images/clients/todua-clinic-canva.png" alt="თოდუას კლინიკა"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/todua-clinic.png" alt="თოდუას კლინიკა"></div>
                     <div class="cluster-logo-item"><img src="images/clients/gepha.png" alt="GEPHA"></div>
-                    <div class="cluster-logo-item"><img src="images/clients/pharmadepot-canva.png" alt="ფარმადეპო"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/pharmadepot.png" alt="ფარმადეპო"></div>
                     <div class="cluster-logo-item"><img src="images/clients/smile-studio.png" alt="Smile Studio"></div>
                 </div>
                 <div class="mt-4 space-y-1 text-sm">
@@ -396,9 +439,9 @@
                 </div>
                 <p class="text-gray-400 text-sm mb-4">უძრავი ქონების ბაზარი — ლიდები, ტრაფიკი, ჯავშნები</p>
                 <div class="cluster-logos">
-                    <div class="cluster-logo-item"><img src="images/clients/myhome-canva.png" alt="myhome.ge"></div>
-                    <div class="cluster-logo-item"><img src="images/clients/belle-maison-canva.png" alt="Belle Maison"></div>
-                    <div class="cluster-logo-item"><img src="images/clients/horizon-canva.png" alt="Horizon Batumi"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/myhome.png" alt="myhome.ge"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/belle-maison.png" alt="Belle Maison"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/horizon.png" alt="Horizon Batumi"></div>
                 </div>
                 <div class="mt-4 space-y-1 text-sm">
                     <div class="flex justify-between"><span class="text-gray-500">myhome.ge</span><span class="text-success font-semibold">+220% traffic</span></div>
@@ -415,8 +458,8 @@
                 </div>
                 <p class="text-gray-400 text-sm mb-4">სასტუმროები და კურორტები — ჯავშნები, ხილვადობა</p>
                 <div class="cluster-logos">
-                    <div class="cluster-logo-item"><img src="images/clients/horizon-canva.png" alt="Horizon Batumi"></div>
-                    <div class="cluster-logo-item"><img src="images/clients/kvareli-lake-canva.png" alt="Kvareli Lake"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/horizon.png" alt="Horizon Batumi"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/kvareli-lake.png" alt="Kvareli Lake"></div>
                 </div>
                 <div class="mt-4 space-y-1 text-sm">
                     <div class="flex justify-between"><span class="text-gray-500">Horizon Batumi</span><span class="text-success font-semibold">+150% bookings</span></div>
@@ -432,7 +475,7 @@
                 </div>
                 <p class="text-gray-400 text-sm mb-4">ფინანსური სექტორი — ხილვადობა, ორგანული ტრაფიკი</p>
                 <div class="cluster-logos">
-                    <div class="cluster-logo-item"><img src="images/clients/irao-canva.png" alt="IRAO"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/irao.png" alt="IRAO"></div>
                 </div>
                 <div class="mt-4 space-y-1 text-sm">
                     <div class="flex justify-between"><span class="text-gray-500">IRAO</span><span class="text-success font-semibold">+180% visibility</span></div>
@@ -447,7 +490,7 @@
                 </div>
                 <p class="text-gray-400 text-sm mb-4">ონლაინ კომერციის სექტორი — ტრაფიკი, კონვერსია</p>
                 <div class="cluster-logos">
-                    <div class="cluster-logo-item"><img src="images/clients/elehear-canva.png" alt="ELEHEAR"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/elehear.png" alt="ELEHEAR"></div>
                 </div>
                 <div class="mt-4 space-y-1 text-sm">
                     <div class="flex justify-between"><span class="text-gray-500">ELEHEAR</span><span class="text-success font-semibold">+270% traffic</span></div>
@@ -462,10 +505,10 @@
                 </div>
                 <p class="text-gray-400 text-sm mb-4">მრავალფეროვანი სექტორები — ზრდის პოტენციალი</p>
                 <div class="cluster-logos">
-                    <div class="cluster-logo-item"><img src="images/clients/gpc-canva.png" alt="GPC"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/gpc.png" alt="GPC"></div>
                     <div class="cluster-logo-item"><img src="images/clients/koordinati.png" alt="კოორდინატი"></div>
-                    <div class="cluster-logo-item"><img src="images/clients/juba-canva.png" alt="Jubá"></div>
-                    <div class="cluster-logo-item"><img src="images/clients/nicolo-canva.png" alt="Nicolo"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/juba.png" alt="Jubá"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/nicolo.png" alt="Nicolo"></div>
                     <div class="cluster-logo-item"><img src="images/clients/avia.png" alt="avia.ge"></div>
                     <div class="cluster-logo-item"><img src="images/clients/kotejebi.png" alt="Kotejebi.ge"></div>
                     <div class="cluster-logo-item"><img src="images/clients/gergili.png" alt="Gergili"></div>
@@ -631,6 +674,7 @@
 })();
 </script>
 
+  </main>
   <!-- ========== FOOTER ========== -->
   <footer class="bg-heading dark:bg-surface-dark-alt text-gray-400 py-12 lg:py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
@@ -676,7 +720,7 @@
           <p class="font-heading text-white font-semibold mb-4">კონტაქტი</p>
           <ul class="space-y-2.5 text-sm">
             <li>+995 510 10 15 17</li>
-            <li>info@10xseo.ge</li>
+            <li>sales@10xseo.ge</li>
             <li>თბილისი, საქართველო</li>
           </ul>
         </div>
@@ -694,8 +738,8 @@
   <!-- ========== STICKY BOTTOM CTA (Mobile Only) ========== -->
   <div id="sticky-cta" class="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-white dark:bg-surface-dark border-t border-gray-200 dark:border-gray-800 px-4 py-3 safe-bottom transition-transform duration-300">
     <div class="flex gap-3">
-      <a href="seo-audit.html" class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 ai-cta-animate text-white text-sm font-bold rounded-xl">
-        უფასო SEO აუდიტი
+      <a href="#" onclick="openCalendly();return false;" class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 ai-cta-animate text-white text-sm font-bold rounded-xl">
+        დაჯავშნე კონსულტაცია
       </a>
       <a href="tel:+995510101517" class="w-12 h-12 flex items-center justify-center border-2 border-primary dark:border-primary-light rounded-xl text-primary dark:text-primary-light shrink-0">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
@@ -737,5 +781,10 @@
     });
   </script>
 
+
+<!-- Calendly Popup Widget -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+<script>function openCalendly(){Calendly.initPopupWidget({url:'https://calendly.com/10xseo-sales/30-seo-clone?background_color=0f172a&text_color=f8fafc&primary_color=8b5cf6'});return false;}</script>
 </body>
 </html>

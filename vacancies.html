@@ -147,7 +147,20 @@
             <a href="seo-course.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">SEO კურსი</a>
           </div>
         </div>
-        <a href="industries.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">ინდუსტრიები</a>
+        <div class="relative group/ind">
+          <a href="industries.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors flex items-center gap-1">
+            ინდუსტრიები
+            <svg class="w-4 h-4 transition-transform group-hover/ind:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </a>
+          <div class="absolute top-full left-0 mt-1 w-60 bg-white dark:bg-surface-dark-alt rounded-xl shadow-xl border border-gray-100 dark:border-gray-800 opacity-0 invisible group-hover/ind:opacity-100 group-hover/ind:visible transition-all duration-200 p-2">
+            <a href="industries/healthcare.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">კლინიკები &amp; ჯანდაცვა</a>
+            <a href="industries/financial-services.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">ფინანსური სერვისები</a>
+            <a href="industries/construction.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">სამშენებლო &amp; უძრავი ქონება</a>
+            <a href="industries/ecommerce.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">E-commerce</a>
+            <hr class="my-1 border-gray-100 dark:border-gray-800">
+            <a href="industries.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-body dark:text-body-dark">ყველა ინდუსტრია →</a>
+          </div>
+        </div>
         <a href="portfolio.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">პორტფოლიო</a>
         <a href="case-studies.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">შედეგები</a>
         <a href="blog.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">ბლოგი</a>
@@ -158,8 +171,8 @@
           <span class="opacity-50">/</span>
           <span class="opacity-50">EN</span>
         </button>
-        <a href="seo-audit.html" class="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 ai-cta-animate text-white text-sm font-semibold rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-200">
-          უფასო აუდიტი
+        <a href="#" onclick="openCalendly();return false;" class="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 ai-cta-animate text-white text-sm font-semibold rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-200">
+          დაჯავშნე კონსულტაცია
         </a>
         <button id="mobile-menu-btn" class="lg:hidden w-9 h-9 rounded-lg flex flex-col items-center justify-center gap-[6px] hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-heading dark:text-heading-dark">
           <span class="hamburger-line block w-5 h-[2px] bg-current rounded-full"></span>
@@ -187,13 +200,18 @@
       <a href="ai-seo.html" class="menu-link block px-4 py-3 rounded-xl text-base font-medium text-heading-dark hover:bg-gray-800/50 pl-8" style="transition-delay:0.35s">AI SEO / GEO</a>
       <a href="seo-course.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.38s">SEO კურსი</a>
       <hr class="menu-link my-3 border-gray-800" style="transition-delay:0.41s">
-      <a href="industries.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.44s">ინდუსტრიები</a>
+      <p class="menu-link text-xs font-semibold text-body-dark/60 uppercase tracking-wider mt-2 mb-1" style="transition-delay:0.43s">ინდუსტრიები</p>
+      <a href="industries/healthcare.html" class="menu-link block px-4 py-3 rounded-xl text-base font-medium text-heading-dark hover:bg-gray-800/50 pl-8" style="transition-delay:0.44s">კლინიკები &amp; ჯანდაცვა</a>
+      <a href="industries/financial-services.html" class="menu-link block px-4 py-3 rounded-xl text-base font-medium text-heading-dark hover:bg-gray-800/50 pl-8" style="transition-delay:0.45s">ფინანსური სერვისები</a>
+      <a href="industries/construction.html" class="menu-link block px-4 py-3 rounded-xl text-base font-medium text-heading-dark hover:bg-gray-800/50 pl-8" style="transition-delay:0.46s">სამშენებლო &amp; უძრავი ქონება</a>
+      <a href="industries/ecommerce.html" class="menu-link block px-4 py-3 rounded-xl text-base font-medium text-heading-dark hover:bg-gray-800/50 pl-8" style="transition-delay:0.47s">E-commerce</a>
+      <a href="industries.html" class="menu-link block px-4 py-3 rounded-xl text-sm font-medium text-body-dark/60 hover:bg-gray-800/50 pl-8" style="transition-delay:0.48s">ყველა ინდუსტრია →</a>
       <a href="portfolio.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.47s">პორტფოლიო</a>
       <a href="case-studies.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.5s">შედეგები</a>
       <a href="blog.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.53s">ბლოგი</a>
       <hr class="menu-link my-3 border-gray-800" style="transition-delay:0.56s">
-      <a href="seo-audit.html" class="menu-link block text-center px-6 py-4 ai-cta-animate text-white text-lg font-bold rounded-xl mt-2" style="transition-delay:0.59s">
-        უფასო SEO აუდიტი
+      <a href="#" onclick="openCalendly();return false;" class="menu-link block text-center px-6 py-4 ai-cta-animate text-white text-lg font-bold rounded-xl mt-2" style="transition-delay:0.59s">
+        დაჯავშნე კონსულტაცია
       </a>
       <a href="tel:+995510101517" class="menu-link call-btn block text-center px-6 py-3 border-2 border-primary-light text-primary-light text-lg font-bold rounded-xl flex items-center justify-center gap-2 transition-all duration-200" style="transition-delay:0.62s">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
@@ -519,7 +537,7 @@
           გაგზავნა
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
         </button>
-        <p class="text-center text-xs text-body/50 dark:text-body-dark/50">თქვენი მონაცემები კონფიდენციალურია. CV-ს ასევე შეგიძლიათ გამოგვიგზავნოთ ემაილზე: <a href="mailto:info@10xseo.ge" class="text-primary dark:text-primary-light hover:underline">info@10xseo.ge</a></p>
+        <p class="text-center text-xs text-body/50 dark:text-body-dark/50">თქვენი მონაცემები კონფიდენციალურია. CV-ს ასევე შეგიძლიათ გამოგვიგზავნოთ ემაილზე: <a href="mailto:sales@10xseo.ge" class="text-primary dark:text-primary-light hover:underline">sales@10xseo.ge</a></p>
       </form>
     </div>
   </section>
@@ -575,7 +593,7 @@
           <p class="font-heading text-white font-semibold mb-4">კონტაქტი</p>
           <ul class="space-y-2.5 text-sm">
             <li>+995 510 10 15 17</li>
-            <li>info@10xseo.ge</li>
+            <li>sales@10xseo.ge</li>
             <li>თბილისი, საქართველო</li>
           </ul>
         </div>
@@ -682,5 +700,10 @@
       });
     }
   </script>
+
+<!-- Calendly Popup Widget -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+<script>function openCalendly(){Calendly.initPopupWidget({url:'https://calendly.com/10xseo-sales/30-seo-clone?background_color=0f172a&text_color=f8fafc&primary_color=8b5cf6'});return false;}</script>
 </body>
 </html>
