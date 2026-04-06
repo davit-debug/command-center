@@ -336,10 +336,13 @@
     .hex-cell::before {
       content: '';
       position: absolute;
-      inset: 1px;
+      inset: 3px;
       clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
       background: #ffffff;
       z-index: 0;
+    }
+    .hex-cell img {
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     }
   </style>
 <script type="application/ld+json">
