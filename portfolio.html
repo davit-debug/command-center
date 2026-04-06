@@ -127,8 +127,8 @@
         .network-node { position: absolute; z-index: 10; display: flex; align-items: center; justify-content: center; width: 120px; height: 120px; border-radius: 50%; background: transparent; border: 2px solid rgba(139,92,246,0.25); cursor: pointer; transition: transform 0.4s ease, box-shadow 0.4s ease; box-shadow: 0 0 20px rgba(139,92,246,0.1); overflow: hidden; }
         .network-node:hover { transform: scale(1.15); box-shadow: 0 0 35px rgba(139,92,246,0.4); border-color: rgba(139,92,246,0.5); }
         .network-node.glow { box-shadow: 0 0 30px rgba(139,92,246,0.35); }
-        .network-node img { width: 100%; height: 100%; object-fit: contain; padding: 18px; filter: brightness(0) invert(1) opacity(0.85); }
-        .network-node:hover img { filter: brightness(0) invert(1) opacity(1); }
+        .network-node img { width: 100%; height: 100%; object-fit: contain; padding: 12px; border-radius: 50%; }
+        .network-node:hover img { filter: brightness(1.05); }
         .network-node.center-node { width: 160px; height: 160px; background: linear-gradient(135deg, #12121E, #1a1a30); border: 2px solid rgba(139,92,246,0.4); }
         .network-node.center-node img { width: auto; height: auto; max-width: 100px; max-height: 70px; filter: brightness(1.2); padding: 0; }
 
@@ -152,7 +152,7 @@
         .cluster-card:hover { border-color: #8B5CF6; transform: translateY(-4px); }
         .cluster-logos { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
         .cluster-logo-item { width: 56px; height: 56px; border-radius: 12px; background: rgba(255,255,255,0.06); border: 1px solid rgba(139,92,246,0.2); display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        .cluster-logo-item img { max-width: 40px; max-height: 32px; object-fit: contain; filter: brightness(0) invert(1) opacity(0.8); }
+        .cluster-logo-item img { width: 100%; height: 100%; object-fit: contain; border-radius: 10px; }
 
         /* Stat pill */
         .stat-pill { display: inline-flex; align-items: center; gap: 4px; background: rgba(33,199,67,0.1); border: 1px solid rgba(33,199,67,0.2); border-radius: 20px; padding: 4px 12px; font-size: 13px; color: #21C743; font-weight: 600; }
@@ -370,10 +370,6 @@
         <img src="images/clients/avia.png" alt="avia.ge">
         <div class="node-tooltip">avia.ge</div>
     </div>
-    <div class="network-node float-1" id="node-kotejebi" data-id="kotejebi" data-cluster="other" style="left:68%;top:70%;">
-        <img src="images/clients/kotejebi.png" alt="Kotejebi.ge">
-        <div class="node-tooltip">Kotejebi.ge</div>
-    </div>
     <div class="network-node float-4" id="node-gergili" data-id="gergili" data-cluster="other" style="left:84%;top:74%;">
         <img src="images/clients/gergili.png" alt="Gergili">
         <div class="node-tooltip">Gergili</div>
@@ -384,25 +380,24 @@
 <section class="mobile-grid grid-cols-3 gap-4 p-6 pt-20">
     <div class="text-center col-span-3 mb-6">
         <h1 class="text-4xl font-bold text-white mb-3">ჩვენი ქსელი</h1>
-        <p class="text-gray-400">17+ პარტნიორი კომპანია</p>
+        <p class="text-gray-400">16+ პარტნიორი კომპანია</p>
     </div>
-    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/todua-clinic.png" alt="თოდუას კლინიკა" class="max-h-10 object-contain" style="filter:brightness(0) invert(1) opacity(0.85)"></div>
-    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/gepha.png" alt="GEPHA" class="max-h-10 object-contain" style="filter:brightness(0) invert(1) opacity(0.85)"></div>
-    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/kvareli-lake.png" alt="Kvareli Lake" class="max-h-10 object-contain" style="filter:brightness(0) invert(1) opacity(0.85)"></div>
-    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/gpc.png" alt="GPC" class="max-h-10 object-contain" style="filter:brightness(0) invert(1) opacity(0.85)"></div>
-    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/elehear.png" alt="ELEHEAR" class="max-h-10 object-contain" style="filter:brightness(0) invert(1) opacity(0.85)"></div>
-    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/irao.png" alt="IRAO" class="max-h-10 object-contain" style="filter:brightness(0) invert(1) opacity(0.85)"></div>
-    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/koordinati.png" alt="კოორდინატი" class="max-h-10 object-contain" style="filter:brightness(0) invert(1) opacity(0.85)"></div>
-    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/horizon.png" alt="Horizon Batumi" class="max-h-10 object-contain" style="filter:brightness(0) invert(1) opacity(0.85)"></div>
-    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/juba.png" alt="Juba" class="max-h-10 object-contain" style="filter:brightness(0) invert(1) opacity(0.85)"></div>
-    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/belle-maison.png" alt="Belle Maison" class="max-h-10 object-contain" style="filter:brightness(0) invert(1) opacity(0.85)"></div>
-    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/nicolo.png" alt="Nicolo" class="max-h-10 object-contain" style="filter:brightness(0) invert(1) opacity(0.85)"></div>
-    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/myhome.png" alt="myhome.ge" class="max-h-10 object-contain" style="filter:brightness(0) invert(1) opacity(0.85)"></div>
-    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/avia.png" alt="avia.ge" class="max-h-10 object-contain" style="filter:brightness(0) invert(1) opacity(0.85)"></div>
-    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/smile-studio.png" alt="Smile Studio" class="max-h-10 object-contain" style="filter:brightness(0) invert(1) opacity(0.85)"></div>
-    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/kotejebi.png" alt="Kotejebi.ge" class="max-h-10 object-contain" style="filter:brightness(0) invert(1) opacity(0.85)"></div>
-    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/gergili.png" alt="Gergili" class="max-h-10 object-contain" style="filter:brightness(0) invert(1) opacity(0.85)"></div>
-    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/pharmadepot.png" alt="ფარმადეპო" class="max-h-10 object-contain" style="filter:brightness(0) invert(1) opacity(0.85)"></div>
+    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/todua-clinic.png" alt="თოდუას კლინიკა" class="max-h-16 w-auto object-contain rounded-lg"></div>
+    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/gepha.png" alt="GEPHA" class="max-h-16 w-auto object-contain rounded-lg"></div>
+    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/kvareli-lake.png" alt="Kvareli Lake" class="max-h-16 w-auto object-contain rounded-lg"></div>
+    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/gpc.png" alt="GPC" class="max-h-16 w-auto object-contain rounded-lg"></div>
+    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/elehear.png" alt="ELEHEAR" class="max-h-16 w-auto object-contain rounded-lg"></div>
+    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/irao.png" alt="IRAO" class="max-h-16 w-auto object-contain rounded-lg"></div>
+    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/koordinati.png" alt="კოორდინატი" class="max-h-16 w-auto object-contain rounded-lg"></div>
+    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/horizon.png" alt="Horizon Batumi" class="max-h-16 w-auto object-contain rounded-lg"></div>
+    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/juba.png" alt="Juba" class="max-h-16 w-auto object-contain rounded-lg"></div>
+    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/belle-maison.png" alt="Belle Maison" class="max-h-16 w-auto object-contain rounded-lg"></div>
+    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/nicolo.png" alt="Nicolo" class="max-h-16 w-auto object-contain rounded-lg"></div>
+    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/myhome.png" alt="myhome.ge" class="max-h-16 w-auto object-contain rounded-lg"></div>
+    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/avia.png" alt="avia.ge" class="max-h-16 w-auto object-contain rounded-lg"></div>
+    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/smile-studio.png" alt="Smile Studio" class="max-h-16 w-auto object-contain rounded-lg"></div>
+    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/gergili.png" alt="Gergili" class="max-h-16 w-auto object-contain rounded-lg"></div>
+    <div class="flex items-center justify-center rounded-xl h-20 p-3 border border-gray-800 bg-gray-900/50"><img src="images/clients/pharmadepot.png" alt="ფარმადეპო" class="max-h-16 w-auto object-contain rounded-lg"></div>
 </section>
 
 <!-- Industry Cluster Breakdown -->
@@ -501,7 +496,7 @@
             <div class="cluster-card">
                 <div class="flex items-center justify-between mb-2">
                     <h3 class="text-xl font-bold text-white">სხვა ინდუსტრიები</h3>
-                    <span class="stat-pill">7 კლიენტი</span>
+                    <span class="stat-pill">6 კლიენტი</span>
                 </div>
                 <p class="text-gray-400 text-sm mb-4">მრავალფეროვანი სექტორები — ზრდის პოტენციალი</p>
                 <div class="cluster-logos">
@@ -510,7 +505,6 @@
                     <div class="cluster-logo-item"><img src="images/clients/juba.png" alt="Jubá"></div>
                     <div class="cluster-logo-item"><img src="images/clients/nicolo.png" alt="Nicolo"></div>
                     <div class="cluster-logo-item"><img src="images/clients/avia.png" alt="avia.ge"></div>
-                    <div class="cluster-logo-item"><img src="images/clients/kotejebi.png" alt="Kotejebi.ge"></div>
                     <div class="cluster-logo-item"><img src="images/clients/gergili.png" alt="Gergili"></div>
                 </div>
             </div>
@@ -568,15 +562,13 @@
             // Others cluster
             ['gpc', 'koordinati'],
             ['juba', 'nicolo'],
-            ['avia', 'kotejebi'],
-            ['kotejebi', 'gergili'],
             ['avia', 'gergili'],
         ],
         center: [
             'todua-clinic', 'gepha', 'pharmadepot', 'smile-studio',
             'kvareli-lake', 'gpc', 'elehear', 'irao', 'koordinati',
             'horizon', 'juba', 'belle-maison', 'nicolo', 'myhome',
-            'avia', 'kotejebi', 'gergili'
+            'avia', 'gergili'
         ]
     };
 
