@@ -457,9 +457,10 @@
               <div class="bg-calc-surface rounded-xl p-6 border border-calc-border text-center">
                 <p class="text-calc-text-sec text-sm mb-2">სავარაუდო ყოველთვიური შემოსავალი</p>
                 <p class="text-neon neon-glow text-4xl sm:text-5xl font-bold font-inter calc-number-input" id="hero-revenue">&#8382;0</p>
-                <div class="mt-3 inline-flex items-center gap-2 bg-neon/10 border border-neon/30 rounded-full px-4 py-1.5">
+                <div class="mt-3 inline-flex items-center gap-2 bg-neon/10 border border-neon/30 rounded-full px-4 py-1.5 calc-tooltip">
                   <span class="text-neon font-bold text-lg font-inter" id="roi-badge">0%</span>
                   <span class="text-calc-text-sec text-xs">ROI</span>
+                  <span class="tooltip-text">პროგნოზი კონსერვატიულ სცენარზეა დაფუძნებული. რეალური შედეგები შეიძლება განსხვავდებოდეს.</span>
                 </div>
               </div>
 
@@ -504,6 +505,12 @@
               <!-- Dynamic CTA -->
               <div id="dynamic-cta" class="text-center">
                 <!-- Filled by JS based on lead score -->
+              </div>
+
+              <!-- Methodology Disclaimer -->
+              <div class="mt-4 p-4 rounded-lg border-l-[3px] border-neon text-xs text-calc-text-sec leading-relaxed" style="background:rgba(255,255,255,0.03)">
+                <strong class="text-calc-text">&#x1F4CC; პროგნოზის მეთოდოლოგია:</strong><br>
+                ეს კალკულატორი იყენებს 10xSEO.ge-ის რეალურ კლიენტების მონაცემებს &mdash; 12 თვეში ტრაფიკის საშუალო ზრდა დაახლოებით 4x. კონვერსიის მაჩვენებლები ეფუძნება Unbounce, WordStream და Ruler Analytics-ის 2024 წლის ინდუსტრიულ ბენჩმარკებს. CTR ციფრები კორექტირებულია AI Overviews-ის გავლენის გათვალისწინებით. რეალური შედეგები შეიძლება განსხვავდებოდეს ინდუსტრიის კონკურენციის, ვებგვერდის ხარისხისა და კონტენტ სტრატეგიის მიხედვით.
               </div>
             </div>
 
@@ -776,19 +783,20 @@
 
     // ========== CALCULATOR ENGINE ==========
     const INDUSTRIES = {
-      ecommerce:     { cvr: 0.025, aov: 80,   clv: 200,  cpc: 0.80 },
-      healthcare:    { cvr: 0.031, aov: 150,  clv: 1500, cpc: 1.50 },
-      realEstate:    { cvr: 0.022, aov: 2000, clv: 8000, cpc: 2.00 },
-      b2bServices:   { cvr: 0.020, aov: 500,  clv: 5000, cpc: 1.20 },
-      localServices: { cvr: 0.050, aov: 100,  clv: 500,  cpc: 0.60 },
-      legal:         { cvr: 0.055, aov: 800,  clv: 3000, cpc: 3.00 },
-      education:     { cvr: 0.028, aov: 500,  clv: 5000, cpc: 0.80 },
-      tourism:       { cvr: 0.036, aov: 300,  clv: 800,  cpc: 0.70 },
-      finance:       { cvr: 0.018, aov: 500,  clv: 3000, cpc: 2.50 },
-      saas:          { cvr: 0.015, aov: 200,  clv: 2500, cpc: 1.50 },
+      ecommerce:     { cvr: 0.018, aov: 120,  clv: 180,  cpc: 0.80 },
+      healthcare:    { cvr: 0.025, aov: 200,  clv: 1200, cpc: 1.20 },
+      realEstate:    { cvr: 0.015, aov: 3000, clv: 6000, cpc: 1.80 },
+      b2bServices:   { cvr: 0.015, aov: 800,  clv: 4000, cpc: 1.00 },
+      localServices: { cvr: 0.035, aov: 150,  clv: 400,  cpc: 0.50 },
+      legal:         { cvr: 0.030, aov: 1200, clv: 2500, cpc: 2.50 },
+      education:     { cvr: 0.020, aov: 800,  clv: 3500, cpc: 0.70 },
+      tourism:       { cvr: 0.025, aov: 400,  clv: 700,  cpc: 0.60 },
+      finance:       { cvr: 0.012, aov: 600,  clv: 2500, cpc: 2.00 },
+      saas:          { cvr: 0.010, aov: 300,  clv: 2000, cpc: 1.30 },
     };
 
-    const CTR_BY_POSITION = { 1:0.317, 2:0.173, 3:0.107, 4:0.078, 5:0.057, 6:0.047, 7:0.033, 8:0.027, 9:0.024, 10:0.021 };
+    // Adjusted for AI Overviews, featured snippets, and ad dilution (2025-2026)
+    const CTR_BY_POSITION = { 1:0.220, 2:0.120, 3:0.080, 4:0.055, 5:0.040, 6:0.030, 7:0.023, 8:0.018, 9:0.015, 10:0.013 };
 
     // State
     let state = {
@@ -894,26 +902,27 @@
     }
 
     // ========== MAIN CALCULATION ==========
-    function getGrowthRate(month) {
-      if (month <= 3) return 0.03;
-      if (month <= 6) return 0.08;
-      if (month <= 12) return 0.12;
-      return 0.05;
-    }
+    // Traffic multiplier by month (cumulative, based on 10xSEO.ge real client data: ~4x at month 12)
+    const TRAFFIC_MULTIPLIERS = {
+      1: 1.00, 2: 1.05, 3: 1.12, 4: 1.25, 5: 1.45, 6: 1.70,
+      7: 2.00, 8: 2.35, 9: 2.70, 10: 3.10, 11: 3.50, 12: 4.00,
+    };
 
     function calculate() {
       if (!state.industry) return;
       const ind = INDUSTRIES[state.industry];
-      const ctr = CTR_BY_POSITION[state.position] || 0.021;
+      const ctr = CTR_BY_POSITION[state.position] || 0.013;
       const cvr = state.cvr / 100;
 
       const projections = [];
       let cumRevenue = 0, cumInvestment = 0, breakEven = state.period;
 
       for (let m = 1; m <= state.period; m++) {
-        const growthMult = Math.pow(1 + getGrowthRate(m), m);
-        const traffic = Math.round(state.visitors * growthMult);
-        const conversions = traffic * cvr;
+        const multiplier = TRAFFIC_MULTIPLIERS[m] || 4.00;
+        const traffic = Math.round(state.visitors * multiplier);
+        // Only count INCREMENTAL revenue (what SEO adds above baseline)
+        const incrementalTraffic = Math.round(state.visitors * (multiplier - 1));
+        const conversions = incrementalTraffic * cvr;
         const revenue = conversions * state.aov;
         cumRevenue += revenue;
         cumInvestment += state.investment;
@@ -928,10 +937,21 @@
       const finalMonth = projections[projections.length - 1];
       const projectedRevenue = finalMonth.revenue;
       const totalInvestment = state.investment * state.period;
-      const roi = totalInvestment > 0 ? Math.round(((cumRevenue - totalInvestment) / totalInvestment) * 100) : 0;
+      const rawROI = totalInvestment > 0 ? Math.round(((cumRevenue - totalInvestment) / totalInvestment) * 100) : 0;
+
+      // Sanity caps — real SEO rarely exceeds these in year 1
+      let roi = rawROI;
+      if (state.period === 12 && roi > 500) roi = 500;
+      if (state.period === 6 && roi > 250) roi = 250;
+      if (state.period === 3 && roi > 50) roi = 50;
+
       const trafficValue = Math.round(finalMonth.traffic * ind.cpc);
-      const oppCostMonthly = Math.round(finalMonth.traffic * cvr * state.aov);
+
+      // Opportunity cost: conservative — 50% gap * 30% truly lost
+      const realisticOppTraffic = state.visitors * 1.5;
+      const oppCostMonthly = Math.round(realisticOppTraffic * cvr * state.aov * 0.3);
       const oppCostAnnual = oppCostMonthly * 12;
+
       const leadScore = calcLeadScore();
 
       // Update DOM with animation
