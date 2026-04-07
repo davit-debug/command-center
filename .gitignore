@@ -1,6 +1,7 @@
 # Track design mockup files only
 *
 !robots.txt
+!sitemap.xml
 !.gitignore
 !.github/
 !.github/**
