@@ -336,6 +336,35 @@
       .hex-cell { width: 72px !important; height: 72px !important; }
     }
     }
+
+    /* Flip Cards */
+    .flip-card { perspective: 1000px; cursor: pointer; }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-style: preserve-3d;
+    }
+    .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      border-radius: 1rem;
+      overflow: hidden;
+    }
+    .flip-card-back {
+      transform: rotateY(180deg);
+      background: #0d1117;
+    }
+    .flip-card-back video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 1rem;
+    }
   </style>
 <script type="application/ld+json">
 {
@@ -1106,46 +1135,118 @@
         </p>
       </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-        <div class="relative rounded-2xl p-[1px] bg-gradient-to-br from-primary via-ai-blue to-transparent hover:-translate-y-1 transition-transform">
-          <div class="bg-white dark:bg-[#0d1117] rounded-2xl p-6 h-full relative overflow-hidden">
-            <span class="font-inter text-5xl font-black text-primary/10 dark:text-primary/20 absolute top-4 right-6">01</span>
-            <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark mb-3 mt-8">ყოველკვირეული რეპორტები</h3>
-            <p class="text-sm text-body dark:text-body-dark leading-relaxed">ყოველ კვირა მიიღებთ დეტალურ ანგარიშს — რა გაკეთდა, რა შეიცვალა და რა არის შემდეგი ნაბიჯი.</p>
+        <!-- Card 01 -->
+        <div class="flip-card rounded-2xl" style="height:220px;">
+          <div class="flip-card-inner">
+            <div class="flip-card-front p-[1px] bg-gradient-to-br from-primary via-ai-blue to-transparent rounded-2xl">
+              <div class="bg-white dark:bg-[#0d1117] rounded-2xl p-6 h-full relative overflow-hidden">
+                <span class="font-inter text-5xl font-black text-primary/10 dark:text-primary/20 absolute top-4 right-6">01</span>
+                <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark mb-3 mt-8">ყოველკვირეული რეპორტები</h3>
+                <p class="text-sm text-body dark:text-body-dark leading-relaxed">ყოველ კვირა მიიღებთ დეტალურ ანგარიშს — რა გაკეთდა, რა შეიცვალა და რა არის შემდეგი ნაბიჯი.</p>
+              </div>
+            </div>
+            <div class="flip-card-back rounded-2xl">
+              <div class="w-full h-full bg-gradient-to-br from-primary/90 to-ai-blue/70 flex flex-col items-center justify-center gap-3 rounded-2xl">
+                <svg class="w-12 h-12 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <p class="text-white font-heading text-lg font-bold text-center px-4">ყოველკვირეული რეპორტები</p>
+                <p class="text-white/50 text-xs">ვიდეო მალე</p>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="relative rounded-2xl p-[1px] bg-gradient-to-br from-ai-blue via-indigo-500 to-transparent hover:-translate-y-1 transition-transform">
-          <div class="bg-white dark:bg-[#0d1117] rounded-2xl p-6 h-full relative overflow-hidden">
-            <span class="font-inter text-5xl font-black text-ai-blue/10 dark:text-ai-blue/20 absolute top-4 right-6">02</span>
-            <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark mb-3 mt-8">სრული გამჭვირვალობა</h3>
-            <p class="text-sm text-body dark:text-body-dark leading-relaxed">Google Search Console, Analytics — ყველაფერს ხედავთ რეალურ დროში.</p>
+        <!-- Card 02 -->
+        <div class="flip-card rounded-2xl" style="height:220px;">
+          <div class="flip-card-inner">
+            <div class="flip-card-front p-[1px] bg-gradient-to-br from-ai-blue via-indigo-500 to-transparent rounded-2xl">
+              <div class="bg-white dark:bg-[#0d1117] rounded-2xl p-6 h-full relative overflow-hidden">
+                <span class="font-inter text-5xl font-black text-ai-blue/10 dark:text-ai-blue/20 absolute top-4 right-6">02</span>
+                <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark mb-3 mt-8">სრული გამჭვირვალობა</h3>
+                <p class="text-sm text-body dark:text-body-dark leading-relaxed">Google Search Console, Analytics — ყველაფერს ხედავთ რეალურ დროში.</p>
+              </div>
+            </div>
+            <div class="flip-card-back rounded-2xl">
+              <div class="w-full h-full bg-gradient-to-br from-ai-blue/90 to-indigo-600/70 flex flex-col items-center justify-center gap-3 rounded-2xl">
+                <svg class="w-12 h-12 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <p class="text-white font-heading text-lg font-bold text-center px-4">სრული გამჭვირვალობა</p>
+                <p class="text-white/50 text-xs">ვიდეო მალე</p>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="relative rounded-2xl p-[1px] bg-gradient-to-br from-success via-emerald-500 to-transparent hover:-translate-y-1 transition-transform">
-          <div class="bg-white dark:bg-[#0d1117] rounded-2xl p-6 h-full relative overflow-hidden">
-            <span class="font-inter text-5xl font-black text-success/10 dark:text-success/20 absolute top-4 right-6">03</span>
-            <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark mb-3 mt-8">AI-ით გაძლიერებული SEO</h3>
-            <p class="text-sm text-body dark:text-body-dark leading-relaxed">ChatGPT, Gemini ოპტიმიზაცია ჩვენს სტრატეგიაში — GEO და AEO ინტეგრირებული.</p>
+        <!-- Card 03 -->
+        <div class="flip-card rounded-2xl" style="height:220px;">
+          <div class="flip-card-inner">
+            <div class="flip-card-front p-[1px] bg-gradient-to-br from-success via-emerald-500 to-transparent rounded-2xl">
+              <div class="bg-white dark:bg-[#0d1117] rounded-2xl p-6 h-full relative overflow-hidden">
+                <span class="font-inter text-5xl font-black text-success/10 dark:text-success/20 absolute top-4 right-6">03</span>
+                <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark mb-3 mt-8">AI-ით გაძლიერებული SEO</h3>
+                <p class="text-sm text-body dark:text-body-dark leading-relaxed">ChatGPT, Gemini ოპტიმიზაცია ჩვენს სტრატეგიაში — GEO და AEO ინტეგრირებული.</p>
+              </div>
+            </div>
+            <div class="flip-card-back rounded-2xl">
+              <div class="w-full h-full bg-gradient-to-br from-success/90 to-emerald-600/70 flex flex-col items-center justify-center gap-3 rounded-2xl">
+                <svg class="w-12 h-12 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <p class="text-white font-heading text-lg font-bold text-center px-4">AI-ით გაძლიერებული SEO</p>
+                <p class="text-white/50 text-xs">ვიდეო მალე</p>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="relative rounded-2xl p-[1px] bg-gradient-to-br from-accent via-teal-400 to-transparent hover:-translate-y-1 transition-transform">
-          <div class="bg-white dark:bg-[#0d1117] rounded-2xl p-6 h-full relative overflow-hidden">
-            <span class="font-inter text-5xl font-black text-accent/10 dark:text-accent/20 absolute top-4 right-6">04</span>
-            <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark mb-3 mt-8">ROI-ზე ფოკუსი</h3>
-            <p class="text-sm text-body dark:text-body-dark leading-relaxed">ტრაფიკი კი არა, შემოსავალი. სტრატეგია რეალურ ზრდაზეა ორიენტირებული.</p>
+        <!-- Card 04 -->
+        <div class="flip-card rounded-2xl" style="height:220px;">
+          <div class="flip-card-inner">
+            <div class="flip-card-front p-[1px] bg-gradient-to-br from-accent via-teal-400 to-transparent rounded-2xl">
+              <div class="bg-white dark:bg-[#0d1117] rounded-2xl p-6 h-full relative overflow-hidden">
+                <span class="font-inter text-5xl font-black text-accent/10 dark:text-accent/20 absolute top-4 right-6">04</span>
+                <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark mb-3 mt-8">ROI-ზე ფოკუსი</h3>
+                <p class="text-sm text-body dark:text-body-dark leading-relaxed">ტრაფიკი კი არა, შემოსავალი. სტრატეგია რეალურ ზრდაზეა ორიენტირებული.</p>
+              </div>
+            </div>
+            <div class="flip-card-back rounded-2xl">
+              <div class="w-full h-full bg-gradient-to-br from-accent/90 to-teal-600/70 flex flex-col items-center justify-center gap-3 rounded-2xl">
+                <svg class="w-12 h-12 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <p class="text-white font-heading text-lg font-bold text-center px-4">ROI-ზე ფოკუსი</p>
+                <p class="text-white/50 text-xs">ვიდეო მალე</p>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="relative rounded-2xl p-[1px] bg-gradient-to-br from-orange-500 via-amber-500 to-transparent hover:-translate-y-1 transition-transform">
-          <div class="bg-white dark:bg-[#0d1117] rounded-2xl p-6 h-full relative overflow-hidden">
-            <span class="font-inter text-5xl font-black text-orange-500/10 dark:text-orange-500/20 absolute top-4 right-6">05</span>
-            <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark mb-3 mt-8">სწრაფი რეაგირება</h3>
-            <p class="text-sm text-body dark:text-body-dark leading-relaxed">10 წუთი საშუალო response time სამუშაო საათებში.</p>
+        <!-- Card 05 -->
+        <div class="flip-card rounded-2xl" style="height:220px;">
+          <div class="flip-card-inner">
+            <div class="flip-card-front p-[1px] bg-gradient-to-br from-orange-500 via-amber-500 to-transparent rounded-2xl">
+              <div class="bg-white dark:bg-[#0d1117] rounded-2xl p-6 h-full relative overflow-hidden">
+                <span class="font-inter text-5xl font-black text-orange-500/10 dark:text-orange-500/20 absolute top-4 right-6">05</span>
+                <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark mb-3 mt-8">სწრაფი რეაგირება</h3>
+                <p class="text-sm text-body dark:text-body-dark leading-relaxed">10 წუთი საშუალო response time სამუშაო საათებში.</p>
+              </div>
+            </div>
+            <div class="flip-card-back rounded-2xl">
+              <div class="w-full h-full bg-gradient-to-br from-orange-500/90 to-amber-600/70 flex flex-col items-center justify-center gap-3 rounded-2xl">
+                <svg class="w-12 h-12 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <p class="text-white font-heading text-lg font-bold text-center px-4">სწრაფი რეაგირება</p>
+                <p class="text-white/50 text-xs">ვიდეო მალე</p>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="relative rounded-2xl p-[1px] bg-gradient-to-br from-pink-500 via-rose-500 to-transparent hover:-translate-y-1 transition-transform">
-          <div class="bg-white dark:bg-[#0d1117] rounded-2xl p-6 h-full relative overflow-hidden">
-            <span class="font-inter text-5xl font-black text-pink-500/10 dark:text-pink-500/20 absolute top-4 right-6">06</span>
-            <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark mb-3 mt-8">მონაცემებზე დაფუძნებული</h3>
-            <p class="text-sm text-body dark:text-body-dark leading-relaxed">A/B ტესტინგი, Heatmaps, Keyword Research — ყველა გადაწყვეტილება ემყარება მონაცემებს, არა ვარაუდებს.</p>
+        <!-- Card 06 -->
+        <div class="flip-card rounded-2xl" style="height:220px;">
+          <div class="flip-card-inner">
+            <div class="flip-card-front p-[1px] bg-gradient-to-br from-pink-500 via-rose-500 to-transparent rounded-2xl">
+              <div class="bg-white dark:bg-[#0d1117] rounded-2xl p-6 h-full relative overflow-hidden">
+                <span class="font-inter text-5xl font-black text-pink-500/10 dark:text-pink-500/20 absolute top-4 right-6">06</span>
+                <h3 class="font-heading text-lg font-bold text-heading dark:text-heading-dark mb-3 mt-8">მონაცემებზე დაფუძნებული</h3>
+                <p class="text-sm text-body dark:text-body-dark leading-relaxed">A/B ტესტინგი, Heatmaps, Keyword Research — ყველა გადაწყვეტილება ემყარება მონაცემებს, არა ვარაუდებს.</p>
+              </div>
+            </div>
+            <div class="flip-card-back rounded-2xl">
+              <div class="w-full h-full bg-gradient-to-br from-pink-500/90 to-rose-600/70 flex flex-col items-center justify-center gap-3 rounded-2xl">
+                <svg class="w-12 h-12 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <p class="text-white font-heading text-lg font-bold text-center px-4">მონაცემებზე დაფუძნებული</p>
+                <p class="text-white/50 text-xs">ვიდეო მალე</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
