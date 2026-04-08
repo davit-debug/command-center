@@ -1,0 +1,1731 @@
+<!DOCTYPE html>
+<html lang="ka" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SEO ROI კალკულატორი — გამოთვალე SEO ინვესტიციის ანაზღაურება | 10XSEO</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="გამოთვალეთ SEO ინვესტიციის ანაზღაურება მყისიერად. უფასო ინტერაქტიული კალკულატორი — შემოსავლის პროგნოზი, break-even ვადა და უმოქმედობის ფასი.">
+  <link rel="canonical" href="https://10xseo.ge/roi-calculator-v4/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="უფასო SEO ROI კალკულატორი | 10XSEO">
+  <meta property="og:description" content="გამოთვალეთ SEO ინვესტიციის ანაზღაურება მყისიერად. უფასო ინტერაქტიული ROI კალკულატორი.">
+  <meta property="og:url" content="https://10xseo.ge/roi-calculator-v4/">
+  <meta property="og:image" content="https://10xseo.ge/images/og/roi-calculator.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="ka_GE">
+  <meta property="og:site_name" content="10XSEO">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SEO ROI კალკულატორი | 10XSEO">
+  <meta name="twitter:description" content="გამოთვალეთ SEO ინვესტიციის ანაზღაურება მყისიერად.">
+  <meta name="twitter:image" content="https://10xseo.ge/images/og/roi-calculator.jpg">
+
+  <!-- hreflang -->
+  <link rel="alternate" hreflang="ka" href="https://10xseo.ge/roi-calculator-v4/">
+  <link rel="alternate" hreflang="x-default" href="https://10xseo.ge/roi-calculator-v4/">
+
+  <!-- Schema: @graph -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "SEO ROI კალკულატორი",
+        "description": "გამოთვალეთ SEO ინვესტიციის ანაზღაურება (ROI) — ინტერაქტიული კალკულატორი ტრაფიკის, კონვერსიის და შემოსავლის პროგნოზით.",
+        "url": "https://10xseo.ge/roi-calculator-v4/",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Any",
+        "inLanguage": ["ka", "en"],
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GEL" },
+        "provider": {
+          "@type": "Organization",
+          "name": "10XSEO",
+          "url": "https://10xseo.ge",
+          "address": { "@type": "PostalAddress", "streetAddress": "ბახტრიონის ქუჩა 8", "addressLocality": "თბილისი", "postalCode": "0194", "addressCountry": "GE" }
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "მთავარი", "item": "https://10xseo.ge/" },
+          { "@type": "ListItem", "position": 2, "name": "SEO ROI კალკულატორი", "item": "https://10xseo.ge/roi-calculator-v4/" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "როგორ გამოითვლება SEO ROI?", "acceptedAnswer": { "@type": "Answer", "text": "SEO ROI = (შემოსავალი ორგანული ძიებიდან - SEO ინვესტიცია) / SEO ინვესტიცია x 100. კალკულატორი ითვალისწინებს თქვენი ინდუსტრიის კონვერსიის მაჩვენებელს, კლიენტის სიცოცხლის ღირებულებას და ტრაფიკის ზრდის პროგნოზს." } },
+          { "@type": "Question", "name": "რა არის კარგი ROI SEO-სთვის?", "acceptedAnswer": { "@type": "Answer", "text": "First Page Sage-ის მონაცემებით საშუალო SEO ROI 748%-ია 3 წელიწადში. 200%-ზე მეტი ROI ძლიერ კამპანიაზე მიუთითებს." } },
+          { "@type": "Question", "name": "რამდენ ხანში ჩანს SEO-ს შედეგი?", "acceptedAnswer": { "@type": "Answer", "text": "კამპანიების უმრავლესობა 3-6 თვეში აჩვენებს პირველ შედეგებს, მნიშვნელოვანი ROI 6-12 თვეში." } },
+          { "@type": "Question", "name": "ღირს SEO მცირე ქართული ბიზნესისთვის?", "acceptedAnswer": { "@type": "Answer", "text": "აბსოლუტურად. საქართველოში SEO კონკურენცია დასავლურ ბაზრებზე ნაკლებია — შედეგები უფრო სწრაფად მიიღწევა." } },
+          { "@type": "Question", "name": "რამდენი უნდა დავხარჯო SEO-ზე ყოველთვიურად?", "acceptedAnswer": { "@type": "Answer", "text": "საქართველოში პროფესიონალური SEO მომსახურების ფასი 1,000-5,000+ ლარია თვეში. სწორი ინვესტიცია დამოკიდებულია ინდუსტრიაზე და კონკურენციაზე." } },
+          { "@type": "Question", "name": "SEO vs PPC — რომელს აქვს უკეთესი ROI?", "acceptedAnswer": { "@type": "Answer", "text": "SEO საშუალოდ 8x ანაზღაურებას იძლევა PPC-ის 4x-თან შედარებით. SEO კუმულაციურ ღირებულებას აშენებს." } },
+          { "@type": "Question", "name": "რა ხარჯები შევიტანო SEO ინვესტიციაში?", "acceptedAnswer": { "@type": "Answer", "text": "სააგენტოს/კონსულტანტის საფასური, კონტენტის შექმნა, SEO ინსტრუმენტები, ბმულების შეძენა და გუნდის დრო." } },
+          { "@type": "Question", "name": "შეიძლება SEO ROI უარყოფითი იყოს?", "acceptedAnswer": { "@type": "Answer", "text": "პირველ 3-6 თვეში ROI ჩვეულებრივ უარყოფითია — ეს ნორმალურია გრძელვადიანი ინვესტიციისთვის." } },
+          { "@type": "Question", "name": "როგორ იზრდება SEO ROI დროთა განმავლობაში?", "acceptedAnswer": { "@type": "Answer", "text": "PPC-სგან განსხვავებით, SEO შედეგები გროვდება. დღეს დარანჟირებული კონტენტი 12-36+ თვის განმავლობაში აგენერირებს ტრაფიკს." } },
+          { "@type": "Question", "name": "რა ფაქტორები ახდენს ყველაზე მეტ გავლენას SEO ROI-ზე?", "acceptedAnswer": { "@type": "Answer", "text": "სამი მთავარი ფაქტორია: (1) კონვერსიის მაჩვენებელი, (2) კლიენტის სიცოცხლის ღირებულება, (3) ინდუსტრიული კონკურენცია." } }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/firago@1.0.0/FiraGO.css" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: { DEFAULT: '#8B5CF6', light: '#A78BFA', dark: '#7C3AED' },
+            accent: { DEFAULT: '#14B8A6', dark: '#0D9488' },
+            'ai-blue': '#3B82F6',
+            surface: { DEFAULT: '#ffffff', alt: '#f8fafc', dark: '#020710', 'dark-alt': '#0F0F0F' },
+            heading: { DEFAULT: '#0f172a', dark: '#f8fafc' },
+            body: { DEFAULT: '#475569', dark: '#94a3b8' },
+            success: '#21C743',
+          },
+          fontFamily: {
+            'heading': ['"Dachi the Lynx"', 'sans-serif'],
+            'body': ['FiraGO', 'sans-serif'],
+            'inter': ['Inter', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    @font-face {
+      font-family: 'Dachi the Lynx';
+      src: url('fonts/DachiTheLynx.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    body { font-family: 'FiraGO', 'Inter', sans-serif; }
+    .font-heading { font-family: 'Dachi the Lynx', sans-serif; }
+
+    /* AI CTA gradient */
+    @keyframes aiGradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .ai-cta-animate {
+      background: linear-gradient(-45deg, #8B5CF6, #3B82F6, #14B8A6, #8B5CF6) !important;
+      background-size: 300% 300% !important;
+      animation: aiGradient 4s ease infinite;
+      box-shadow: 0 4px 25px rgba(139, 92, 246, 0.35);
+    }
+
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Header */
+    .header-scrolled { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+
+    /* Mobile menu */
+    #mobile-menu { transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease; opacity: 0; }
+    #mobile-menu.menu-open { transform: translateX(0); opacity: 1; }
+    #mobile-menu .menu-link { opacity: 0; transform: translateX(30px); transition: opacity 0.3s ease, transform 0.3s ease; }
+    #mobile-menu.menu-open .menu-link { opacity: 1; transform: translateX(0); }
+    .hamburger-line { transition: transform 0.3s ease, opacity 0.2s ease; }
+    .menu-active .hamburger-line:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .menu-active .hamburger-line:nth-child(2) { opacity: 0; }
+    .menu-active .hamburger-line:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    .safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
+
+    /* Fade in up animation */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in-up {
+      opacity: 0;
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    /* Scroll-snap container */
+    .calc-snap-container {
+      scroll-snap-type: y mandatory;
+      overflow-y: auto;
+      height: 100vh;
+      scroll-behavior: smooth;
+    }
+    .calc-section {
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* Progress bar */
+    .progress-track {
+      background: rgba(255,255,255,0.06);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      background: linear-gradient(90deg, #8B5CF6, #3B82F6, #14B8A6);
+      height: 100%;
+      border-radius: 999px;
+      transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Industry card */
+    .industry-card {
+      cursor: pointer;
+      border: 2px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 20px 16px;
+      text-align: center;
+      transition: all 0.25s ease;
+      background: rgba(255,255,255,0.02);
+    }
+    .industry-card:hover {
+      border-color: rgba(139,92,246,0.4);
+      background: rgba(139,92,246,0.06);
+      transform: translateY(-2px);
+    }
+    .industry-card.selected {
+      border-color: #8B5CF6;
+      background: rgba(139,92,246,0.12);
+      box-shadow: 0 0 30px rgba(139,92,246,0.15);
+    }
+    .industry-card .card-icon {
+      font-size: 32px;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .industry-card .card-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #f8fafc;
+    }
+    .industry-card.selected .card-label {
+      color: #A78BFA;
+    }
+
+    /* Custom range slider */
+    input[type="range"] {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      outline: none;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #8B5CF6, #3B82F6);
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(139,92,246,0.4);
+      border: 3px solid #020710;
+      transition: transform 0.15s ease;
+    }
+    input[type="range"]::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+    input[type="range"]::-moz-range-thumb {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #8B5CF6, #3B82F6);
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(139,92,246,0.4);
+      border: 3px solid #020710;
+    }
+
+    /* Period toggle */
+    .period-btn {
+      padding: 10px 24px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      color: #94a3b8;
+      background: transparent;
+      border: 2px solid rgba(255,255,255,0.08);
+    }
+    .period-btn:hover { border-color: rgba(139,92,246,0.3); color: #f8fafc; }
+    .period-btn.active {
+      background: linear-gradient(135deg, #8B5CF6, #3B82F6);
+      color: white;
+      border-color: transparent;
+      box-shadow: 0 4px 20px rgba(139,92,246,0.3);
+    }
+
+    /* Continue button */
+    .continue-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 16px;
+      color: white;
+      background: linear-gradient(135deg, #8B5CF6, #3B82F6);
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 25px rgba(139,92,246,0.25);
+    }
+    .continue-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 35px rgba(139,92,246,0.4);
+    }
+    .continue-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    /* Package cards */
+    .package-card {
+      cursor: pointer;
+      border: 2px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 20px 12px 16px;
+      text-align: center;
+      transition: all 0.25s ease;
+      background: rgba(255,255,255,0.02);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .package-card:hover {
+      border-color: rgba(139,92,246,0.4);
+      background: rgba(139,92,246,0.06);
+      transform: translateY(-3px);
+    }
+    .package-card.selected {
+      border-color: #8B5CF6;
+      background: rgba(139,92,246,0.12);
+      box-shadow: 0 0 35px rgba(139,92,246,0.15);
+    }
+    .package-card .pkg-badge {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #14B8A6, #0D9488);
+      color: white;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 12px;
+      border-radius: 999px;
+      white-space: nowrap;
+      letter-spacing: 0.5px;
+    }
+    .package-card .pkg-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: #f8fafc;
+      line-height: 1.3;
+    }
+    .package-card.selected .pkg-name { color: #A78BFA; }
+    .package-card .pkg-price {
+      font-size: 20px;
+      font-weight: 800;
+      color: #f8fafc;
+      font-family: 'Inter', sans-serif;
+    }
+    .package-card .pkg-price span {
+      font-size: 11px;
+      font-weight: 500;
+      color: #94a3b8;
+    }
+    .package-card .pkg-desc {
+      font-size: 11px;
+      color: #94a3b8;
+      line-height: 1.4;
+    }
+    .package-card .pkg-growth {
+      margin-top: auto;
+      padding-top: 8px;
+      width: 100%;
+    }
+    .package-card .pkg-growth-bar {
+      height: 4px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 4px;
+    }
+    .package-card .pkg-growth-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #8B5CF6, #14B8A6);
+    }
+    .package-card .pkg-growth-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: #14B8A6;
+    }
+
+    /* Results dramatic entrance */
+    @keyframes scaleReveal {
+      from { opacity: 0; transform: scale(0.85); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(60px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes countUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .result-hero-reveal {
+      animation: scaleReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .result-card-reveal {
+      opacity: 0;
+      animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .result-metric-reveal {
+      opacity: 0;
+      animation: countUp 0.5s ease-out forwards;
+    }
+
+    /* Pulse ring for hot CTA */
+    @keyframes pulseRing {
+      0% { box-shadow: 0 0 0 0 rgba(139,92,246,0.4); }
+      70% { box-shadow: 0 0 0 12px rgba(139,92,246,0); }
+      100% { box-shadow: 0 0 0 0 rgba(139,92,246,0); }
+    }
+    .pulse-ring { animation: pulseRing 2s infinite; }
+
+    /* Glow orbs for hero section */
+    @keyframes orbFloat1 { 0%,100%{ transform: translate(0,0); } 50%{ transform: translate(40px,-30px); } }
+    @keyframes orbFloat2 { 0%,100%{ transform: translate(0,0); } 50%{ transform: translate(-30px,40px); } }
+    .orb-1 { animation: orbFloat1 8s ease-in-out infinite; }
+    .orb-2 { animation: orbFloat2 10s ease-in-out infinite; }
+
+    /* Number input override */
+    .metric-input {
+      background: rgba(255,255,255,0.04);
+      border: 2px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-size: 18px;
+      font-weight: 600;
+      color: #f8fafc;
+      width: 100%;
+      text-align: center;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+    .metric-input:focus {
+      border-color: #8B5CF6;
+      box-shadow: 0 0 20px rgba(139,92,246,0.15);
+    }
+    .metric-input::-webkit-outer-spin-button,
+    .metric-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+    .metric-input[type=number] { -moz-appearance: textfield; }
+
+    /* Position dropdown */
+    .position-select {
+      background: rgba(255,255,255,0.04);
+      border: 2px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 14px 20px;
+      font-size: 18px;
+      font-weight: 600;
+      color: #f8fafc;
+      width: 100%;
+      outline: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+      transition: border-color 0.2s ease;
+    }
+    .position-select:focus { border-color: #8B5CF6; }
+    .position-select option { background: #0F0F0F; color: #f8fafc; }
+
+    /* Section step number */
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: rgba(139,92,246,0.12);
+      color: #A78BFA;
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+
+    /* FAQ Accordion */
+    .faq-item { border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; overflow: hidden; transition: border-color 0.2s; }
+    .faq-item:hover { border-color: rgba(139,92,246,0.2); }
+    .faq-toggle { cursor: pointer; }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s ease; padding: 0 24px; }
+    .faq-item.open .faq-answer { max-height: 300px; padding: 0 24px 20px; }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-chevron { transition: transform 0.3s ease; }
+
+    /* Results section — no snap so scrollable */
+    .results-section {
+      min-height: auto;
+      scroll-snap-align: start;
+    }
+  </style>
+</head>
+
+<body class="font-body bg-surface-dark text-body-dark transition-colors duration-300">
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-primary focus:text-white focus:px-4 focus:py-2 focus:rounded-lg">გადახტომა მთავარ შინაარსზე</a>
+
+  <!-- ========== HEADER ========== -->
+  <header id="main-header" class="fixed top-0 left-0 right-0 z-50 h-16 lg:h-[72px] bg-white/80 dark:bg-surface-dark/80 header-scrolled border-b border-gray-100 dark:border-gray-800 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-full flex items-center justify-between">
+      <a href="index.html" class="flex items-center shrink-0">
+        <img src="images/logo.png" alt="10XSEO" class="h-12 lg:h-14 w-auto">
+      </a>
+      <nav class="hidden lg:flex items-center gap-1" aria-label="მთავარი ნავიგაცია">
+        <a href="about-us.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">ჩვენს შესახებ</a>
+        <div class="relative group">
+          <button class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors flex items-center gap-1">
+            სერვისები
+            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="absolute top-full left-0 mt-1 w-56 bg-white dark:bg-surface-dark-alt rounded-xl shadow-xl border border-gray-100 dark:border-gray-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 p-2">
+            <a href="seo-management.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">SEO მენეჯმენტი</a>
+            <a href="seo-consultation.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">SEO კონსულტაცია</a>
+            <a href="seo-strategy.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">SEO სტრატეგია</a>
+            <a href="seo-copywriting.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">SEO კოპირაიტინგი</a>
+            <a href="cro.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">კონვერსიის ოპტიმიზაცია</a>
+            <a href="google-ads.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">Google Ads</a>
+            <a href="ai-seo.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">AI SEO / GEO</a>
+            <a href="seo-course.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">SEO კურსი</a>
+          </div>
+        </div>
+        <div class="relative group/ind">
+          <a href="industries.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors flex items-center gap-1">
+            ინდუსტრიები
+            <svg class="w-4 h-4 transition-transform group-hover/ind:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </a>
+          <div class="absolute top-full left-0 mt-1 w-60 bg-white dark:bg-surface-dark-alt rounded-xl shadow-xl border border-gray-100 dark:border-gray-800 opacity-0 invisible group-hover/ind:opacity-100 group-hover/ind:visible transition-all duration-200 p-2">
+            <a href="industries/healthcare.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">კლინიკები &amp; ჯანდაცვა</a>
+            <a href="industries/financial-services.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">ფინანსური სერვისები</a>
+            <a href="industries/construction.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">სამშენებლო &amp; უძრავი ქონება</a>
+            <a href="industries/ecommerce.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">E-commerce</a>
+            <hr class="my-1 border-gray-100 dark:border-gray-800">
+            <a href="industries.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-body dark:text-body-dark">ყველა ინდუსტრია &rarr;</a>
+          </div>
+        </div>
+        <a href="portfolio.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">პორტფოლიო</a>
+        <a href="case-studies.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">შედეგები</a>
+        <a href="blog.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">ბლოგი</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <a href="#" onclick="openCalendly();return false;" class="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 ai-cta-animate text-white text-sm font-semibold rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-200">
+          დაჯავშნე კონსულტაცია
+        </a>
+        <button id="mobile-menu-btn" aria-expanded="false" aria-controls="mobile-menu" aria-label="მენიუს გახსნა" class="lg:hidden w-9 h-9 min-w-[44px] min-h-[44px] rounded-lg flex flex-col items-center justify-center gap-[6px] hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-heading dark:text-heading-dark">
+          <span class="hamburger-line block w-5 h-[2px] bg-current rounded-full"></span>
+          <span class="hamburger-line block w-5 h-[2px] bg-current rounded-full"></span>
+          <span class="hamburger-line block w-5 h-[2px] bg-current rounded-full"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="lg:hidden fixed inset-0 top-16 bg-surface-dark z-[60] overflow-y-auto pointer-events-none">
+    <nav class="max-w-md mx-auto px-6 py-8 flex flex-col gap-2" aria-label="მობილური ნავიგაცია">
+      <a href="index.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.05s">მთავარი</a>
+      <a href="about-us.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.08s">ჩვენს შესახებ</a>
+      <hr class="menu-link my-3 border-gray-800" style="transition-delay:0.11s">
+      <p class="menu-link text-xs font-semibold text-body-dark/60 uppercase tracking-wider mb-2" style="transition-delay:0.14s">სერვისები</p>
+      <a href="seo-management.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.17s">SEO მენეჯმენტი</a>
+      <a href="seo-consultation.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.2s">SEO კონსულტაცია</a>
+      <a href="seo-strategy.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.23s">SEO სტრატეგია</a>
+      <a href="seo-copywriting.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.26s">SEO კოპირაიტინგი</a>
+      <a href="cro.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.29s">კონვერსიის ოპტიმიზაცია</a>
+      <a href="google-ads.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.32s">Google Ads</a>
+      <a href="ai-seo.html" class="menu-link block px-4 py-3 rounded-xl text-base font-medium text-heading-dark hover:bg-gray-800/50 pl-8" style="transition-delay:0.35s">AI SEO / GEO</a>
+      <a href="seo-course.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.38s">SEO კურსი</a>
+      <hr class="menu-link my-3 border-gray-800" style="transition-delay:0.41s">
+      <a href="portfolio.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.44s">პორტფოლიო</a>
+      <a href="case-studies.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.47s">შედეგები</a>
+      <a href="blog.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.5s">ბლოგი</a>
+      <hr class="menu-link my-3 border-gray-800" style="transition-delay:0.53s">
+      <a href="#" onclick="openCalendly();return false;" class="menu-link block text-center px-6 py-4 ai-cta-animate text-white text-lg font-bold rounded-xl mt-2" style="transition-delay:0.56s">დაჯავშნე კონსულტაცია</a>
+      <a href="tel:+995510101517" class="menu-link call-btn block text-center px-6 py-3 border-2 border-primary-light text-primary-light text-lg font-bold rounded-xl flex items-center justify-center gap-2 transition-all duration-200" style="transition-delay:0.59s">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        დაგვირეკეთ
+      </a>
+    </nav>
+  </div>
+
+  <!-- ========== FIXED PROGRESS BAR ========== -->
+  <div id="progress-bar" class="fixed top-16 lg:top-[72px] left-0 right-0 z-40 px-4 py-2 bg-surface-dark/90 backdrop-blur-md border-b border-white/5 opacity-0 transition-opacity duration-300" style="pointer-events:none;">
+    <div class="max-w-2xl mx-auto">
+      <div class="flex items-center gap-3">
+        <span id="progress-label" class="text-xs font-semibold text-body-dark whitespace-nowrap">0%</span>
+        <div class="progress-track flex-1 h-1.5">
+          <div id="progress-fill" class="progress-fill" style="width:0%"></div>
+        </div>
+        <span id="progress-step" class="text-xs font-medium text-body-dark/60 whitespace-nowrap">1/5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main id="main-content">
+    <div id="calc-container" class="calc-snap-container">
+
+      <!-- ===== SECTION 1: HERO INTRO ===== -->
+      <section id="sec-hero" class="calc-section relative overflow-hidden" data-step="0">
+        <!-- Orbs -->
+        <div class="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-primary/8 rounded-full blur-[120px] orb-1"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-[300px] h-[300px] bg-accent/8 rounded-full blur-[100px] orb-2"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-ai-blue/5 rounded-full blur-[150px]"></div>
+
+        <div class="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 text-center">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-xs font-semibold text-primary-light mb-8 animate-fade-in-up">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            რეალურ მონაცემებზე დაფუძნებული
+          </div>
+          <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-white mb-6 animate-fade-in-up" style="animation-delay:0.1s">
+            გამოთვალე SEO<br>ინვესტიციის <span class="gradient-text">ანაზღაურება</span>
+          </h1>
+          <p class="text-lg sm:text-xl text-body-dark max-w-xl mx-auto mb-10 animate-fade-in-up" style="animation-delay:0.2s">
+            5 მარტივ ნაბიჯში გაიგე რამდენი შემოსავალი შეგიძლია მიიღო ორგანული ძიებიდან
+          </p>
+          <button id="start-btn" onclick="startCalculator()" class="continue-btn text-lg animate-fade-in-up" style="animation-delay:0.35s">
+            დაწყება
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+          </button>
+          <p class="text-xs text-body-dark/50 mt-6 animate-fade-in-up" style="animation-delay:0.45s">უფასოა. რეგისტრაცია არ სჭირდება.</p>
+        </div>
+      </section>
+
+      <!-- ===== SECTION 2: INDUSTRY ===== -->
+      <section id="sec-industry" class="calc-section" data-step="1">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center w-full">
+          <div class="step-number">1</div>
+          <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl text-white mb-3">რა ინდუსტრიაში<br>მუშაობ?</h2>
+          <p class="text-body-dark text-base sm:text-lg mb-10">აირჩიე შენი ბიზნესის სფერო</p>
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 mb-10" id="industry-grid">
+            <div class="industry-card" data-industry="ecommerce" onclick="selectIndustry(this)" role="button" tabindex="0" aria-label="ელ. კომერცია">
+              <span class="card-icon">&#128722;</span>
+              <span class="card-label">ელ. კომერცია</span>
+            </div>
+            <div class="industry-card" data-industry="healthcare" onclick="selectIndustry(this)" role="button" tabindex="0" aria-label="ჯანდაცვა">
+              <span class="card-icon">&#127973;</span>
+              <span class="card-label">ჯანდაცვა</span>
+            </div>
+            <div class="industry-card" data-industry="realEstate" onclick="selectIndustry(this)" role="button" tabindex="0" aria-label="უძრავი ქონება">
+              <span class="card-icon">&#127970;</span>
+              <span class="card-label">უძრავი ქონება</span>
+            </div>
+            <div class="industry-card" data-industry="b2bServices" onclick="selectIndustry(this)" role="button" tabindex="0" aria-label="B2B სერვისები">
+              <span class="card-icon">&#128188;</span>
+              <span class="card-label">B2B სერვისები</span>
+            </div>
+            <div class="industry-card" data-industry="localServices" onclick="selectIndustry(this)" role="button" tabindex="0" aria-label="ლოკალური სერვისები">
+              <span class="card-icon">&#128736;</span>
+              <span class="card-label">ლოკალური</span>
+            </div>
+            <div class="industry-card" data-industry="legal" onclick="selectIndustry(this)" role="button" tabindex="0" aria-label="იურიდიული">
+              <span class="card-icon">&#9878;</span>
+              <span class="card-label">იურიდიული</span>
+            </div>
+            <div class="industry-card" data-industry="education" onclick="selectIndustry(this)" role="button" tabindex="0" aria-label="განათლება">
+              <span class="card-icon">&#127891;</span>
+              <span class="card-label">განათლება</span>
+            </div>
+            <div class="industry-card" data-industry="tourism" onclick="selectIndustry(this)" role="button" tabindex="0" aria-label="ტურიზმი">
+              <span class="card-icon">&#9992;</span>
+              <span class="card-label">ტურიზმი</span>
+            </div>
+            <div class="industry-card" data-industry="finance" onclick="selectIndustry(this)" role="button" tabindex="0" aria-label="ფინანსები">
+              <span class="card-icon">&#128176;</span>
+              <span class="card-label">ფინანსები</span>
+            </div>
+            <div class="industry-card" data-industry="saas" onclick="selectIndustry(this)" role="button" tabindex="0" aria-label="SaaS">
+              <span class="card-icon">&#9729;</span>
+              <span class="card-label">SaaS</span>
+            </div>
+          </div>
+
+          <button id="btn-industry" class="continue-btn" disabled onclick="goToSection(2)">
+            გაგრძელება
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- ===== SECTION 3: MONTHLY VISITORS ===== -->
+      <section id="sec-visitors" class="calc-section" data-step="2">
+        <div class="max-w-2xl mx-auto px-4 sm:px-6 text-center w-full">
+          <div class="step-number">2</div>
+          <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl text-white mb-3">ყოველთვიური<br><span class="gradient-text">ვიზიტორები</span></h2>
+          <p class="text-body-dark text-base sm:text-lg mb-12">რამდენ ორგანულ ვიზიტორს იღებ ახლა თვეში?</p>
+
+          <div class="mb-8">
+            <div class="text-6xl sm:text-7xl lg:text-8xl font-extrabold font-inter text-white mb-8 tabular-nums" id="visitors-display">1,000</div>
+            <input type="range" id="visitors-slider" min="100" max="50000" step="100" value="1000" class="w-full" aria-label="ყოველთვიური ვიზიტორები">
+            <div class="flex justify-between text-xs text-body-dark/50 mt-2 px-1">
+              <span>100</span>
+              <span>50,000</span>
+            </div>
+          </div>
+
+          <button class="continue-btn" onclick="goToSection(3)">
+            გაგრძელება
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- ===== SECTION 4: BUSINESS METRICS ===== -->
+      <section id="sec-metrics" class="calc-section" data-step="3">
+        <div class="max-w-2xl mx-auto px-4 sm:px-6 text-center w-full">
+          <div class="step-number">3</div>
+          <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl text-white mb-3">ბიზნეს <span class="gradient-text">მეტრიკები</span></h2>
+          <p class="text-body-dark text-base sm:text-lg mb-10">შეავსე ან დატოვე ინდუსტრიის საშუალო მნიშვნელობა</p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+            <!-- AOV -->
+            <div class="text-left">
+              <label class="block text-sm font-semibold text-body-dark mb-2">საშუალო შეკვეთა (AOV)</label>
+              <div class="relative">
+                <span class="absolute left-4 top-1/2 -translate-y-1/2 text-body-dark/60 font-bold">&#8382;</span>
+                <input type="number" id="input-aov" class="metric-input pl-10" value="120" min="1" max="100000" aria-label="საშუალო შეკვეთის ღირებულება">
+              </div>
+            </div>
+            <!-- CLV -->
+            <div class="text-left">
+              <label class="block text-sm font-semibold text-body-dark mb-2">კლიენტის ღირებულება (CLV)</label>
+              <div class="relative">
+                <span class="absolute left-4 top-1/2 -translate-y-1/2 text-body-dark/60 font-bold">&#8382;</span>
+                <input type="number" id="input-clv" class="metric-input pl-10" value="180" min="1" max="500000" aria-label="კლიენტის სიცოცხლის ღირებულება">
+              </div>
+            </div>
+            <!-- CVR -->
+            <div class="text-left">
+              <label class="block text-sm font-semibold text-body-dark mb-2">კონვერსიის % (CVR)</label>
+              <div class="relative">
+                <input type="number" id="input-cvr" class="metric-input pr-10" value="1.8" min="0.1" max="30" step="0.1" aria-label="კონვერსიის მაჩვენებელი">
+                <span class="absolute right-4 top-1/2 -translate-y-1/2 text-body-dark/60 font-bold">%</span>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-xs text-body-dark/40 mb-8">* მნიშვნელობები ავტომატურად იტვირთება არჩეული ინდუსტრიიდან</p>
+
+          <button class="continue-btn" onclick="goToSection(4)">
+            გაგრძელება
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- ===== SECTION 5: PACKAGE SELECTION ===== -->
+      <section id="sec-package" class="calc-section" data-step="4">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center w-full">
+          <div class="step-number">4</div>
+          <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl text-white mb-3">აირჩიე SEO<br><span class="gradient-text">პაკეტი</span></h2>
+          <p class="text-body-dark text-base sm:text-lg mb-10">სხვადასხვა პაკეტი = სხვადასხვა ზრდის ტემპი</p>
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 mb-10" id="package-grid">
+
+            <div class="package-card" data-package="start" onclick="selectPackage(this)" role="button" tabindex="0" aria-label="SEO სტარტი — 1,450 ლარი">
+              <span class="text-2xl">🌱</span>
+              <span class="pkg-name">SEO სტარტი</span>
+              <span class="pkg-price">₾1,450<span>/თვე</span></span>
+              <span class="pkg-desc">ფუნდამენტის ჩაყრა<br>1,000 საკვანძო სიტყვა</span>
+              <div class="pkg-growth">
+                <div class="pkg-growth-bar"><div class="pkg-growth-fill" style="width:31%"></div></div>
+                <span class="pkg-growth-label">ზრდა ×2.2</span>
+              </div>
+            </div>
+
+            <div class="package-card" data-package="basic" onclick="selectPackage(this)" role="button" tabindex="0" aria-label="SEO ბაზისი — 2,500 ლარი">
+              <span class="text-2xl">📈</span>
+              <span class="pkg-name">SEO ბაზისი</span>
+              <span class="pkg-price">₾2,500<span>/თვე</span></span>
+              <span class="pkg-desc">ავტორიტეტის ზრდა<br>2,000 საკვანძო + ბექლინკები</span>
+              <div class="pkg-growth">
+                <div class="pkg-growth-bar"><div class="pkg-growth-fill" style="width:46%"></div></div>
+                <span class="pkg-growth-label">ზრდა ×3.2</span>
+              </div>
+            </div>
+
+            <div class="package-card" data-package="growth" onclick="selectPackage(this)" role="button" tabindex="0" aria-label="SEO ზრდა — 3,550 ლარი">
+              <span class="pkg-badge">BEST SELLER</span>
+              <span class="text-2xl">🔥</span>
+              <span class="pkg-name">SEO ზრდა</span>
+              <span class="pkg-price">₾3,550<span>/თვე</span></span>
+              <span class="pkg-desc">კომპლექსური მიდგომა<br>4,000 საკვანძო + ლოკალური</span>
+              <div class="pkg-growth">
+                <div class="pkg-growth-bar"><div class="pkg-growth-fill" style="width:57%"></div></div>
+                <span class="pkg-growth-label">ზრდა ×4.0</span>
+              </div>
+            </div>
+
+            <div class="package-card" data-package="premium" onclick="selectPackage(this)" role="button" tabindex="0" aria-label="პრემიუმი — 6,500 ლარი">
+              <span class="text-2xl">⚡</span>
+              <span class="pkg-name">პრემიუმი</span>
+              <span class="pkg-price">₾6,500<span>/თვე</span></span>
+              <span class="pkg-desc">AI SEO + ანალიტიკა<br>7,000 საკვანძო სიტყვა</span>
+              <div class="pkg-growth">
+                <div class="pkg-growth-bar"><div class="pkg-growth-fill" style="width:79%"></div></div>
+                <span class="pkg-growth-label">ზრდა ×5.5</span>
+              </div>
+            </div>
+
+            <div class="package-card" data-package="leader" onclick="selectPackage(this)" role="button" tabindex="0" aria-label="ბაზრის ლიდერი — 12,500 ლარი">
+              <span class="text-2xl">🚀</span>
+              <span class="pkg-name">ბაზრის ლიდერი</span>
+              <span class="pkg-price">₾12,500<span>/თვე</span></span>
+              <span class="pkg-desc">ტოტალური დომინირება<br>10,000 საკვანძო სიტყვა</span>
+              <div class="pkg-growth">
+                <div class="pkg-growth-bar"><div class="pkg-growth-fill" style="width:100%"></div></div>
+                <span class="pkg-growth-label">ზრდა ×7.0</span>
+              </div>
+            </div>
+
+          </div>
+
+          <button id="btn-package" class="continue-btn" disabled onclick="goToSection(5)">
+            გაგრძელება
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- ===== SECTION 6: SEO PARAMS ===== -->
+      <section id="sec-seo" class="calc-section" data-step="5">
+        <div class="max-w-2xl mx-auto px-4 sm:px-6 text-center w-full">
+          <div class="step-number">5</div>
+          <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl text-white mb-3">SEO <span class="gradient-text">პარამეტრები</span></h2>
+          <p class="text-body-dark text-base sm:text-lg mb-10">სამიზნე პოზიცია და პერიოდი</p>
+
+          <div class="space-y-8 mb-10">
+            <!-- Target Position -->
+            <div class="text-left max-w-sm mx-auto">
+              <label class="block text-sm font-semibold text-body-dark mb-2">სამიზნე პოზიცია Google-ში</label>
+              <div class="relative">
+                <select id="select-position" class="position-select" aria-label="სამიზნე პოზიცია">
+                  <option value="1">&#128081; #1 — CTR 22.0%</option>
+                  <option value="2">#2 — CTR 12.0%</option>
+                  <option value="3" selected>#3 — CTR 8.0%</option>
+                  <option value="4">#4 — CTR 5.5%</option>
+                  <option value="5">#5 — CTR 4.0%</option>
+                  <option value="6">#6 — CTR 3.0%</option>
+                  <option value="7">#7 — CTR 2.3%</option>
+                  <option value="8">#8 — CTR 1.8%</option>
+                  <option value="9">#9 — CTR 1.5%</option>
+                  <option value="10">#10 — CTR 1.3%</option>
+                </select>
+                <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+                  <svg class="w-5 h-5 text-body-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Period Toggle -->
+            <div>
+              <label class="block text-sm font-semibold text-body-dark mb-4">პერიოდი</label>
+              <div class="flex gap-3 justify-center" id="period-toggle">
+                <button class="period-btn" data-period="3" onclick="selectPeriod(3)">3 თვე</button>
+                <button class="period-btn" data-period="6" onclick="selectPeriod(6)">6 თვე</button>
+                <button class="period-btn active" data-period="12" onclick="selectPeriod(12)">12 თვე</button>
+              </div>
+            </div>
+          </div>
+
+          <button class="continue-btn text-lg" onclick="calculateAndReveal()">
+            გამოთვალე შედეგი
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- ===== SECTION 6: RESULTS ===== -->
+      <section id="sec-results" class="results-section py-24 lg:py-32 relative overflow-hidden" data-step="5" style="display:none;">
+        <!-- Background orbs -->
+        <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/6 rounded-full blur-[150px]"></div>
+        <div class="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-accent/6 rounded-full blur-[120px]"></div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6">
+
+          <!-- Hero revenue -->
+          <div class="text-center mb-16 result-hero-reveal">
+            <p class="text-sm font-semibold text-primary-light uppercase tracking-wider mb-4">პროგნოზირებული შემოსავალი</p>
+            <div class="text-5xl sm:text-6xl lg:text-8xl font-extrabold font-inter text-white mb-4" id="res-total-revenue">&#8382;0</div>
+            <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-success/15 text-success font-bold text-lg">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+              ROI: <span id="res-roi">0</span>%
+            </div>
+            <p id="res-package-label" class="mt-4 text-sm text-body-dark/80 font-medium"></p>
+          </div>
+
+          <!-- Metrics grid -->
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+            <div class="result-card-reveal bg-white/[0.03] border border-white/[0.06] rounded-2xl p-5 text-center" style="animation-delay:0.2s">
+              <p class="text-xs font-semibold text-body-dark/60 uppercase tracking-wider mb-2">Break-even</p>
+              <p class="text-2xl lg:text-3xl font-extrabold font-inter text-white" id="res-breakeven">-</p>
+            </div>
+            <div class="result-card-reveal bg-white/[0.03] border border-white/[0.06] rounded-2xl p-5 text-center" style="animation-delay:0.3s">
+              <p class="text-xs font-semibold text-body-dark/60 uppercase tracking-wider mb-2">თვიური შემოსავალი</p>
+              <p class="text-2xl lg:text-3xl font-extrabold font-inter text-white" id="res-monthly-rev">-</p>
+            </div>
+            <div class="result-card-reveal bg-white/[0.03] border border-white/[0.06] rounded-2xl p-5 text-center" style="animation-delay:0.4s">
+              <p class="text-xs font-semibold text-body-dark/60 uppercase tracking-wider mb-2">კონვერსიები</p>
+              <p class="text-2xl lg:text-3xl font-extrabold font-inter text-white" id="res-conversions">-</p>
+            </div>
+            <div class="result-card-reveal bg-white/[0.03] border border-white/[0.06] rounded-2xl p-5 text-center" style="animation-delay:0.5s">
+              <p class="text-xs font-semibold text-body-dark/60 uppercase tracking-wider mb-2">ტრაფიკის ღირებულება</p>
+              <p class="text-2xl lg:text-3xl font-extrabold font-inter text-white" id="res-traffic-value">-</p>
+            </div>
+          </div>
+
+          <!-- Opportunity cost banner -->
+          <div class="result-card-reveal bg-gradient-to-r from-red-500/10 via-red-500/5 to-transparent border border-red-500/15 rounded-2xl p-6 sm:p-8 mb-12" style="animation-delay:0.6s">
+            <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-8">
+              <div class="shrink-0">
+                <div class="w-14 h-14 rounded-2xl bg-red-500/15 flex items-center justify-center">
+                  <svg class="w-7 h-7 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.07 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>
+                </div>
+              </div>
+              <div class="text-center sm:text-left">
+                <p class="text-sm font-semibold text-red-300 mb-1">უმოქმედობის ფასი</p>
+                <p class="text-white font-bold text-lg">SEO-ს გარეშე ყოველთვიურად კარგავ: <span id="res-opp-monthly" class="text-red-400">-</span></p>
+                <p class="text-body-dark text-sm mt-1">წელიწადში: <span id="res-opp-annual" class="text-red-400 font-bold">-</span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chart -->
+          <div class="result-card-reveal bg-white/[0.02] border border-white/[0.06] rounded-2xl p-6 sm:p-8 mb-12" style="animation-delay:0.7s">
+            <div class="flex items-center justify-between mb-6">
+              <h3 class="font-heading text-lg text-white">შემოსავლის პროგნოზი</h3>
+              <div class="flex items-center gap-4 text-xs text-body-dark">
+                <span class="flex items-center gap-1.5"><span class="w-3 h-0.5 rounded-full bg-primary"></span>შემოსავალი</span>
+                <span class="flex items-center gap-1.5"><span class="w-3 h-0.5 rounded-full bg-red-500/50 border-dashed"></span>ინვესტიცია</span>
+              </div>
+            </div>
+            <div class="relative h-[280px] sm:h-[320px]">
+              <canvas id="projection-chart"></canvas>
+            </div>
+          </div>
+
+          <!-- Dynamic CTA -->
+          <div class="result-card-reveal text-center" style="animation-delay:0.85s" id="dynamic-cta">
+            <!-- Populated by JS -->
+          </div>
+
+          <!-- Recalculate -->
+          <div class="text-center mt-8 result-card-reveal" style="animation-delay:0.95s">
+            <button onclick="resetCalculator()" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-white/10 text-body-dark hover:text-white hover:border-primary/30 transition-all text-sm font-medium">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+              ხელახლა გამოთვალე
+            </button>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /calc-container -->
+
+    <!-- ========================================= -->
+    <!-- BELOW CALCULATOR: FAQ, Method, Support    -->
+    <!-- ========================================= -->
+
+    <!-- ===== METHODOLOGY ===== -->
+    <section class="py-16 lg:py-24 bg-surface-dark-alt">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+          <p class="text-sm font-semibold text-primary-light uppercase tracking-wider mb-3">მეთოდოლოგია</p>
+          <h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl text-white">როგორ <span class="gradient-text">ვითვლით</span></h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-6">
+            <div class="w-10 h-10 rounded-xl bg-primary/15 flex items-center justify-center mb-4">
+              <svg class="w-5 h-5 text-primary-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+            </div>
+            <h3 class="text-white font-bold mb-2">ინდუსტრიული ბენჩმარკები</h3>
+            <p class="text-body-dark text-sm leading-relaxed">კონვერსიის მაჩვენებლები, საშუალო შეკვეთის ღირებულება და CPC მნიშვნელობები დაფუძნებულია რეალურ ინდუსტრიულ მონაცემებზე.</p>
+          </div>
+          <div class="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-6">
+            <div class="w-10 h-10 rounded-xl bg-accent/15 flex items-center justify-center mb-4">
+              <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+            </div>
+            <h3 class="text-white font-bold mb-2">კუმულაციური ზრდა</h3>
+            <p class="text-body-dark text-sm leading-relaxed">ტრაფიკის ზრდის მულტიპლიკატორები ასახავს SEO-ს კუმულაციურ ეფექტს - თვიდან თვემდე ზრდის ტემპი იზრდება.</p>
+          </div>
+          <div class="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-6">
+            <div class="w-10 h-10 rounded-xl bg-ai-blue/15 flex items-center justify-center mb-4">
+              <svg class="w-5 h-5 text-ai-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            </div>
+            <h3 class="text-white font-bold mb-2">კონსერვატიული შეფასება</h3>
+            <p class="text-body-dark text-sm leading-relaxed">ROI ლიმიტირებულია რეალისტურ დონეზე: მაქს. 500% (12 თვე), 250% (6 თვე), 50% (3 თვე). ზრდა ხდება ინკრემენტალური ტრაფიკით.</p>
+          </div>
+        </div>
+        <div class="mt-8 bg-white/[0.02] border border-white/[0.06] rounded-2xl p-6">
+          <div class="flex gap-3">
+            <svg class="w-5 h-5 text-body-dark shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <div>
+              <p class="text-white font-bold text-sm mb-1">მნიშვნელოვანი დათქმა</p>
+              <p class="text-body-dark text-sm leading-relaxed">ეს კალკულატორი იძლევა სავარაუდო პროგნოზს ინდუსტრიის საშუალო მაჩვენებლებზე დაყრდნობით. რეალური შედეგები დამოკიდებულია კონკურენციაზე, ვებგვერდის ხარისხზე, კონტენტ-სტრატეგიასა და სხვა ფაქტორებზე. პროფესიონალური აუდიტისთვის მოგვმართეთ.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="py-16 lg:py-24 bg-surface-dark">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+          <p class="text-sm font-semibold text-primary-light uppercase tracking-wider mb-3">FAQ</p>
+          <h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl text-white">ხშირად დასმული <span class="gradient-text">კითხვები</span></h2>
+        </div>
+
+        <div class="space-y-3" id="faq-list">
+          <div class="faq-item">
+            <div class="faq-toggle flex items-center justify-between px-6 py-5" onclick="toggleFaq(this)">
+              <span class="text-white font-semibold text-sm sm:text-base pr-4">როგორ გამოითვლება SEO ROI?</span>
+              <svg class="faq-chevron w-5 h-5 text-body-dark shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </div>
+            <div class="faq-answer text-body-dark text-sm leading-relaxed">SEO ROI = (შემოსავალი ორგანული ძიებიდან - SEO ინვესტიცია) / SEO ინვესტიცია x 100. კალკულატორი ითვალისწინებს თქვენი ინდუსტრიის კონვერსიის მაჩვენებელს, კლიენტის სიცოცხლის ღირებულებას და ტრაფიკის ზრდის პროგნოზს.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-toggle flex items-center justify-between px-6 py-5" onclick="toggleFaq(this)">
+              <span class="text-white font-semibold text-sm sm:text-base pr-4">რა არის კარგი ROI SEO-სთვის?</span>
+              <svg class="faq-chevron w-5 h-5 text-body-dark shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </div>
+            <div class="faq-answer text-body-dark text-sm leading-relaxed">First Page Sage-ის მონაცემებით საშუალო SEO ROI 748%-ია 3 წელიწადში. 200%-ზე მეტი ROI ძლიერ კამპანიაზე მიუთითებს. ქართულ ბაზარზე, სადაც კონკურენცია დასავლურთან შედარებით ნაკლებია, კარგი ROI შედარებით მალე მიიღწევა.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-toggle flex items-center justify-between px-6 py-5" onclick="toggleFaq(this)">
+              <span class="text-white font-semibold text-sm sm:text-base pr-4">რამდენ ხანში ჩანს SEO-ს შედეგი?</span>
+              <svg class="faq-chevron w-5 h-5 text-body-dark shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </div>
+            <div class="faq-answer text-body-dark text-sm leading-relaxed">კამპანიების უმრავლესობა 3-6 თვეში აჩვენებს პირველ შედეგებს, მნიშვნელოვანი ROI კი 6-12 თვეში. SEO არის გრძელვადიანი ინვესტიცია - PPC-სგან განსხვავებით, შედეგები დროთა განმავლობაში იზრდება.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-toggle flex items-center justify-between px-6 py-5" onclick="toggleFaq(this)">
+              <span class="text-white font-semibold text-sm sm:text-base pr-4">ღირს SEO მცირე ქართული ბიზნესისთვის?</span>
+              <svg class="faq-chevron w-5 h-5 text-body-dark shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </div>
+            <div class="faq-answer text-body-dark text-sm leading-relaxed">აბსოლუტურად. საქართველოში SEO კონკურენცია დასავლურ ბაზრებზე ნაკლებია - შედეგები უფრო სწრაფად მიიღწევა და ინვესტიცია მალე ანაზღაურდება.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-toggle flex items-center justify-between px-6 py-5" onclick="toggleFaq(this)">
+              <span class="text-white font-semibold text-sm sm:text-base pr-4">რამდენი უნდა დავხარჯო SEO-ზე ყოველთვიურად?</span>
+              <svg class="faq-chevron w-5 h-5 text-body-dark shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </div>
+            <div class="faq-answer text-body-dark text-sm leading-relaxed">საქართველოში პროფესიონალური SEO მომსახურების ფასი 1,450-12,500 ლარია თვეში. სწორი ინვესტიცია დამოკიდებულია ინდუსტრიაზე, კონკურენციასა და თქვენს მიზნებზე.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-toggle flex items-center justify-between px-6 py-5" onclick="toggleFaq(this)">
+              <span class="text-white font-semibold text-sm sm:text-base pr-4">SEO vs PPC - რომელს აქვს უკეთესი ROI?</span>
+              <svg class="faq-chevron w-5 h-5 text-body-dark shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </div>
+            <div class="faq-answer text-body-dark text-sm leading-relaxed">SEO საშუალოდ 8x ანაზღაურებას იძლევა PPC-ის 4x-თან შედარებით. PPC იძლევა სწრაფ შედეგებს, მაგრამ SEO კუმულაციურ ღირებულებას აშენებს - დღეს დარანჟირებული კონტენტი 12-36+ თვის განმავლობაში აგენერირებს ტრაფიკს.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-toggle flex items-center justify-between px-6 py-5" onclick="toggleFaq(this)">
+              <span class="text-white font-semibold text-sm sm:text-base pr-4">რა ფაქტორები ახდენს ყველაზე მეტ გავლენას SEO ROI-ზე?</span>
+              <svg class="faq-chevron w-5 h-5 text-body-dark shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </div>
+            <div class="faq-answer text-body-dark text-sm leading-relaxed">სამი მთავარი ფაქტორია: (1) კონვერსიის მაჩვენებელი - რამდენ ვიზიტორს გადაჰყავს მოქმედებაზე, (2) კლიენტის სიცოცხლის ღირებულება - CLV, (3) ინდუსტრიული კონკურენცია - რაც ნაკლებია, მით სწრაფია შედეგი.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SUPPORTING CONTENT ===== -->
+    <section class="py-16 lg:py-24 bg-surface-dark-alt">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6">
+        <div class="prose prose-invert max-w-none">
+          <h2 class="font-heading text-2xl sm:text-3xl text-white mb-6">რატომ არის მნიშვნელოვანი SEO ROI-ს გამოთვლა?</h2>
+          <div class="grid md:grid-cols-2 gap-8 text-body-dark text-sm leading-relaxed">
+            <div>
+              <p class="mb-4">SEO არ არის ხარჯი - ეს არის ინვესტიცია, რომელიც დროთა განმავლობაში კუმულაციურ ღირებულებას აგროვებს. PPC რეკლამისგან განსხვავებით, სადაც ბიუჯეტის ამოწურვისთანავე ტრაფიკი ჩერდება, SEO-ს მეშვეობით მიღებული შედეგები გრძელვადიანია.</p>
+              <p class="mb-4">საქართველოს ბაზარზე SEO-ს პოტენციალი განსაკუთრებით მაღალია. კონკურენცია დასავლურ ბაზრებთან შედარებით ნაკლებია, ამიტომ ტოპ პოზიციების მიღწევა შედარებით სწრაფად ხდება.</p>
+              <p>პირველ სამ პოზიციაზე მყოფი გვერდები იღებს ორგანული ტრაფიკის 50%-ზე მეტს. #1 პოზიციის CTR საშუალოდ 22%-ია, რაც ნიშნავს რომ ყოველი 100 ძიებიდან 22 ვიზიტორი მოდის თქვენს საიტზე.</p>
+            </div>
+            <div>
+              <p class="mb-4">ჩვენი კალკულატორი იყენებს კონსერვატიულ შეფასებებს: ტრაფიკის ზრდა იწყება 5%-დან პირველ თვეში და მიაღწევს 300%-ს მე-12 თვეში. ROI ლიმიტირებულია რეალისტურ დონეზე ინდუსტრიის ბენჩმარკების მიხედვით.</p>
+              <p class="mb-4">გარდა პირდაპირი შემოსავლისა, ჩვენ ვითვლით უმოქმედობის ფასს - რამდენ პოტენციურ შემოსავალს კარგავთ ყოველდღე SEO-ს გარეშე. ეს ხშირად მოტივაციის ყველაზე ძლიერი ფაქტორია.</p>
+              <p>ზუსტი პროგნოზისთვის რეკომენდებულია პროფესიონალური აუდიტი, რომელიც ითვალისწინებს თქვენს კონკრეტულ სიტუაციას, კონკურენტულ გარემოს და ვებგვერდის ტექნიკურ მდგომარეობას.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FINAL CTA ===== -->
+    <section class="py-16 lg:py-24 bg-surface-dark relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5"></div>
+      <div class="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 text-center">
+        <h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl text-white mb-4">მზად ხარ <span class="gradient-text">ზრდისთვის?</span></h2>
+        <p class="text-body-dark text-lg mb-8 max-w-xl mx-auto">დაჯავშნე უფასო 15-წუთიანი კონსულტაცია და გაიგე როგორ შეუძლია SEO-ს შენი ბიზნესის ტრანსფორმაცია</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="#" onclick="openCalendly();return false;" class="inline-flex items-center justify-center gap-2 px-8 py-4 ai-cta-animate text-white text-lg font-bold rounded-2xl hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 transition-all duration-200">
+            დაჯავშნე კონსულტაცია
+          </a>
+          <a href="tel:+995510101517" class="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white/10 text-white rounded-2xl hover:border-primary/50 transition-all text-lg font-bold">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            +995 510 10 15 17
+          </a>
+        </div>
+        <p class="text-xs text-body-dark/50 mt-4">sales@10xseo.ge | ბახტრიონის ქუჩა 8, თბილისი 0194</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="bg-heading dark:bg-surface-dark-alt text-gray-400 py-12 lg:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
+        <!-- Col 1: Info -->
+        <div class="col-span-2 lg:col-span-1">
+          <a href="index.html" class="flex items-center gap-2 mb-4">
+            <img src="images/logo.png" alt="10XSEO" class="h-12 w-auto">
+          </a>
+          <p class="text-sm leading-relaxed mb-4">საქართველოს #1 SEO სააგენტო. რეალური შედეგები, ყოველკვირეული ანგარიშები, სწრაფი მომსახურება.</p>
+          <div class="flex gap-3">
+            <a href="https://www.facebook.com/10xSEO.Ge" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-white/10 border-2 border-transparent flex items-center justify-center hover:bg-white hover:border-[#D4A017] transition-all duration-200" aria-label="Facebook">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/company/10xseoge/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-white/10 border-2 border-transparent flex items-center justify-center hover:bg-white hover:border-[#D4A017] transition-all duration-200" aria-label="LinkedIn">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="https://www.youtube.com/@10xSEO" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-white/10 border-2 border-transparent flex items-center justify-center hover:bg-white hover:border-[#D4A017] transition-all duration-200" aria-label="YouTube">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+          </div>
+        </div>
+        <!-- Col 2: Services -->
+        <div>
+          <p class="font-heading text-white font-semibold mb-4">სერვისები</p>
+          <ul class="space-y-2.5 text-sm">
+            <li><a href="seo-management.html" class="hover:text-white transition-colors">SEO მენეჯმენტი</a></li>
+            <li><a href="seo-consultation.html" class="hover:text-white transition-colors">SEO კონსულტაცია</a></li>
+            <li><a href="seo-strategy.html" class="hover:text-white transition-colors">SEO სტრატეგია</a></li>
+            <li><a href="seo-audit.html" class="hover:text-white transition-colors">უფასო SEO აუდიტი</a></li>
+          </ul>
+        </div>
+        <!-- Col 3: Company -->
+        <div>
+          <p class="font-heading text-white font-semibold mb-4">კომპანია</p>
+          <ul class="space-y-2.5 text-sm">
+            <li><a href="portfolio.html" class="hover:text-white transition-colors">პორტფოლიო</a></li>
+            <li><a href="case-studies.html" class="hover:text-white transition-colors">ქეის სტადები</a></li>
+            <li><a href="blog.html" class="hover:text-white transition-colors">ბლოგი</a></li>
+            <li><a href="faq.html" class="hover:text-white transition-colors">FAQ</a></li>
+            <li><a href="ra-aris-seo.html" class="hover:text-white transition-colors">რა არის SEO</a></li>
+            <li><a href="vacancies.html" class="hover:text-white transition-colors">ვაკანსიები</a></li>
+          </ul>
+        </div>
+        <!-- Col 4: Contact -->
+        <div>
+          <p class="font-heading text-white font-semibold mb-4">კონტაქტი</p>
+          <ul class="space-y-2.5 text-sm">
+            <li>+995 510 10 15 17</li>
+            <li>sales@10xseo.ge</li>
+            <li>ბახტრიონის ქუჩა 8, თბილისი 0194</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
+        <p>&copy; 2026 10XSEO. ყველა უფლება დაცულია.</p>
+        <div class="flex gap-6">
+          <a href="#" class="hover:text-white transition-colors">კონფიდენციალურობა</a>
+          <a href="#" class="hover:text-white transition-colors">პირობები</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== LEAD MODAL ========== -->
+  <div id="lead-modal" class="hidden fixed inset-0 z-[100] items-center justify-center bg-black/70 backdrop-blur-sm p-4">
+    <div class="relative bg-surface-dark-alt border border-white/10 rounded-2xl max-w-md w-full p-8">
+      <button onclick="closeLeadModal()" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-lg hover:bg-white/10 text-body-dark hover:text-white transition-colors" aria-label="დახურვა">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+      <h3 id="modal-title" class="font-heading text-xl text-white mb-2">მიიღეთ SEO სამოქმედო გეგმა</h3>
+      <p id="modal-subtitle" class="text-body-dark text-sm mb-6">გავაანალიზებთ თქვენს ვებგვერდს და გამოგიგზავნით რეკომენდაციებს.</p>
+      <form id="lead-form" class="space-y-4">
+        <input type="text" id="lead-name" placeholder="თქვენი სახელი" required class="metric-input text-left text-sm" aria-label="სახელი">
+        <input type="email" id="lead-email" placeholder="ელ-ფოსტა" required class="metric-input text-left text-sm" aria-label="ელ-ფოსტა">
+        <input type="tel" id="lead-phone" placeholder="ტელეფონი" class="metric-input text-left text-sm" aria-label="ტელეფონი">
+        <input type="url" id="lead-website" placeholder="ვებგვერდი (არასავალდებულო)" class="metric-input text-left text-sm" aria-label="ვებგვერდი">
+        <button type="submit" class="w-full py-3 ai-cta-animate text-white rounded-xl font-bold">გაგზავნა</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========== SCRIPTS ========== -->
+  <script>
+    // ========== CALCULATION ENGINE ==========
+    const INDUSTRIES = {
+      ecommerce:     { cvr: 0.018, aov: 120,  clv: 180,  cpc: 0.80, label: 'ელ. კომერცია' },
+      healthcare:    { cvr: 0.025, aov: 200,  clv: 1200, cpc: 1.20, label: 'ჯანდაცვა' },
+      realEstate:    { cvr: 0.015, aov: 3000, clv: 6000, cpc: 1.80, label: 'უძრავი ქონება' },
+      b2bServices:   { cvr: 0.015, aov: 800,  clv: 4000, cpc: 1.00, label: 'B2B სერვისები' },
+      localServices: { cvr: 0.035, aov: 150,  clv: 400,  cpc: 0.50, label: 'ლოკალური' },
+      legal:         { cvr: 0.030, aov: 1200, clv: 2500, cpc: 2.50, label: 'იურიდიული' },
+      education:     { cvr: 0.020, aov: 800,  clv: 3500, cpc: 0.70, label: 'განათლება' },
+      tourism:       { cvr: 0.025, aov: 400,  clv: 700,  cpc: 0.60, label: 'ტურიზმი' },
+      finance:       { cvr: 0.012, aov: 600,  clv: 2500, cpc: 2.00, label: 'ფინანსები' },
+      saas:          { cvr: 0.010, aov: 300,  clv: 2000, cpc: 1.30, label: 'SaaS' },
+    };
+
+    const CTR_BY_POSITION = { 1:0.220, 2:0.120, 3:0.080, 4:0.055, 5:0.040, 6:0.030, 7:0.023, 8:0.018, 9:0.015, 10:0.013 };
+
+    const PACKAGES = {
+      start:   { price: 1450,  label: 'SEO სტარტი',    multipliers: { 1:1.00, 2:1.02, 3:1.05, 4:1.10, 5:1.18, 6:1.28, 7:1.40, 8:1.52, 9:1.65, 10:1.78, 11:1.95, 12:2.20 } },
+      basic:   { price: 2500,  label: 'SEO ბაზისი',     multipliers: { 1:1.00, 2:1.04, 3:1.10, 4:1.20, 5:1.35, 6:1.55, 7:1.75, 8:2.00, 9:2.25, 10:2.55, 11:2.85, 12:3.20 } },
+      growth:  { price: 3550,  label: 'SEO ზრდა',       multipliers: { 1:1.00, 2:1.05, 3:1.12, 4:1.25, 5:1.45, 6:1.70, 7:2.00, 8:2.35, 9:2.70, 10:3.10, 11:3.50, 12:4.00 } },
+      premium: { price: 6500,  label: 'პრემიუმი',       multipliers: { 1:1.00, 2:1.08, 3:1.20, 4:1.40, 5:1.70, 6:2.10, 7:2.55, 8:3.10, 9:3.70, 10:4.30, 11:4.90, 12:5.50 } },
+      leader:  { price: 12500, label: 'ბაზრის ლიდერი',  multipliers: { 1:1.00, 2:1.12, 3:1.30, 4:1.58, 5:2.00, 6:2.55, 7:3.20, 8:3.95, 9:4.70, 10:5.50, 11:6.25, 12:7.00 } },
+    };
+
+    let state = {
+      industry: null,
+      package: null,
+      visitors: 1000,
+      aov: 120,
+      clv: 180,
+      cvr: 1.8,
+      position: 3,
+      investment: 2500,
+      period: 12,
+    };
+
+    let projectionChart = null;
+
+    function fmtGEL(n) { return '\u20BE' + Math.round(n).toLocaleString('ka-GE'); }
+    function fmtNum(n) { return Math.round(n).toLocaleString('ka-GE'); }
+
+    // ========== SECTION NAVIGATION ==========
+    const container = document.getElementById('calc-container');
+    const sections = ['sec-hero', 'sec-industry', 'sec-visitors', 'sec-metrics', 'sec-package', 'sec-seo', 'sec-results'];
+    let currentStep = 0;
+
+    function goToSection(index) {
+      const sectionId = sections[index];
+      const el = document.getElementById(sectionId);
+      if (!el) return;
+      currentStep = index;
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      updateProgress();
+    }
+
+    function startCalculator() {
+      goToSection(1);
+      document.getElementById('progress-bar').style.opacity = '1';
+    }
+
+    function updateProgress() {
+      const totalSteps = 6;
+      const pct = Math.round((currentStep / totalSteps) * 100);
+      document.getElementById('progress-fill').style.width = pct + '%';
+      document.getElementById('progress-label').textContent = pct + '%';
+      document.getElementById('progress-step').textContent = Math.min(currentStep, 5) + '/5';
+    }
+
+    // Track scroll position for progress
+    container.addEventListener('scroll', function() {
+      const scrollTop = container.scrollTop;
+      const sectionEls = sections.map(id => document.getElementById(id)).filter(Boolean);
+      for (let i = sectionEls.length - 1; i >= 0; i--) {
+        if (sectionEls[i].style.display === 'none' || sectionEls[i].offsetHeight === 0) continue;
+        if (scrollTop >= sectionEls[i].offsetTop - 200) {
+          if (i !== currentStep) {
+            currentStep = i;
+            updateProgress();
+          }
+          break;
+        }
+      }
+      // Show/hide progress bar
+      const bar = document.getElementById('progress-bar');
+      if (currentStep > 0 && !document.getElementById('sec-results').style.display !== 'none') {
+        bar.style.opacity = '1';
+      }
+    }, { passive: true });
+
+    // ========== INDUSTRY SELECTION ==========
+    function selectIndustry(card) {
+      const key = card.dataset.industry;
+      state.industry = key;
+
+      // Remove previous selection
+      document.querySelectorAll('.industry-card').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+
+      // Enable continue
+      document.getElementById('btn-industry').disabled = false;
+
+      // Prefill metrics from industry
+      const ind = INDUSTRIES[key];
+      state.aov = ind.aov;
+      state.clv = ind.clv;
+      state.cvr = ind.cvr * 100;
+
+      document.getElementById('input-aov').value = ind.aov;
+      document.getElementById('input-clv').value = ind.clv;
+      document.getElementById('input-cvr').value = (ind.cvr * 100).toFixed(1);
+
+      // Auto-advance after brief delay
+      setTimeout(() => goToSection(2), 500);
+    }
+
+    // Keyboard support for industry cards
+    document.querySelectorAll('.industry-card').forEach(card => {
+      card.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          selectIndustry(this);
+        }
+      });
+    });
+
+    // ========== PACKAGE SELECTION ==========
+    function selectPackage(card) {
+      const key = card.dataset.package;
+      const pkg = PACKAGES[key];
+      state.package = key;
+      state.investment = pkg.price;
+
+      document.querySelectorAll('.package-card').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+      document.getElementById('btn-package').disabled = false;
+
+      setTimeout(() => goToSection(5), 500);
+    }
+
+    document.querySelectorAll('.package-card').forEach(card => {
+      card.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          selectPackage(this);
+        }
+      });
+    });
+
+    // ========== VISITORS SLIDER ==========
+    const visitorsSlider = document.getElementById('visitors-slider');
+    const visitorsDisplay = document.getElementById('visitors-display');
+
+    visitorsSlider.addEventListener('input', function() {
+      state.visitors = parseInt(this.value, 10);
+      visitorsDisplay.textContent = fmtNum(state.visitors);
+    });
+
+    // ========== METRIC INPUTS ==========
+    document.getElementById('input-aov').addEventListener('input', function() {
+      const v = parseFloat(this.value);
+      if (!isNaN(v) && v > 0) state.aov = v;
+    });
+    document.getElementById('input-clv').addEventListener('input', function() {
+      const v = parseFloat(this.value);
+      if (!isNaN(v) && v > 0) state.clv = v;
+    });
+    document.getElementById('input-cvr').addEventListener('input', function() {
+      const v = parseFloat(this.value);
+      if (!isNaN(v) && v > 0) state.cvr = v;
+    });
+
+    // ========== POSITION SELECT ==========
+    document.getElementById('select-position').addEventListener('change', function() {
+      state.position = parseInt(this.value, 10);
+    });
+
+    // ========== PERIOD TOGGLE ==========
+    function selectPeriod(p) {
+      state.period = p;
+      document.querySelectorAll('.period-btn').forEach(btn => {
+        btn.classList.toggle('active', parseInt(btn.dataset.period) === p);
+      });
+    }
+
+    // ========== CALCULATE & REVEAL ==========
+    function calculateAndReveal() {
+      if (!state.industry) {
+        goToSection(1);
+        return;
+      }
+      if (!state.package) {
+        goToSection(4);
+        return;
+      }
+
+      const ind = INDUSTRIES[state.industry];
+      const pkg = PACKAGES[state.package];
+      const ctr = CTR_BY_POSITION[state.position] || 0.013;
+      const cvr = state.cvr / 100;
+
+      const projections = [];
+      let cumRevenue = 0, cumInvestment = 0, breakEven = state.period;
+
+      for (let m = 1; m <= state.period; m++) {
+        const multiplier = pkg.multipliers[m] || pkg.multipliers[12] || 4.00;
+        const traffic = Math.round(state.visitors * multiplier);
+        const incrementalTraffic = Math.round(state.visitors * (multiplier - 1));
+        const conversions = incrementalTraffic * cvr;
+        const revenue = conversions * state.aov;
+        cumRevenue += revenue;
+        cumInvestment += state.investment;
+
+        if (cumRevenue >= cumInvestment && breakEven === state.period) {
+          breakEven = m;
+        }
+
+        projections.push({
+          month: m,
+          traffic,
+          conversions: Math.round(conversions),
+          revenue: Math.round(revenue),
+          cumRevenue: Math.round(cumRevenue),
+          cumInvestment
+        });
+      }
+
+      const finalMonth = projections[projections.length - 1];
+      const projectedRevenue = finalMonth.revenue;
+      const totalInvestment = state.investment * state.period;
+      const rawROI = totalInvestment > 0 ? Math.round(((cumRevenue - totalInvestment) / totalInvestment) * 100) : 0;
+
+      let roi = rawROI;
+      if (state.period === 12 && roi > 500) roi = 500;
+      if (state.period === 6 && roi > 250) roi = 250;
+      if (state.period === 3 && roi > 50) roi = 50;
+
+      const trafficValue = Math.round(finalMonth.traffic * ind.cpc);
+
+      const realisticOppTraffic = state.visitors * 1.5;
+      const oppCostMonthly = Math.round(realisticOppTraffic * cvr * state.aov * 0.3);
+      const oppCostAnnual = oppCostMonthly * 12;
+
+      const leadScore = calcLeadScore();
+
+      // Show results section
+      const resultsEl = document.getElementById('sec-results');
+      resultsEl.style.display = '';
+
+      // Hide progress bar
+      document.getElementById('progress-bar').style.opacity = '0';
+
+      // Scroll to results
+      setTimeout(() => {
+        resultsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+
+      // Animate numbers
+      setTimeout(() => {
+        animateValue('res-total-revenue', 0, Math.round(cumRevenue), 1200, fmtGEL);
+        animateValue('res-roi', 0, roi, 1000);
+        document.getElementById('res-breakeven').textContent = breakEven + ' თვე';
+        document.getElementById('res-monthly-rev').textContent = fmtGEL(projectedRevenue);
+        document.getElementById('res-conversions').textContent = fmtNum(finalMonth.conversions);
+        document.getElementById('res-traffic-value').textContent = fmtGEL(trafficValue);
+        document.getElementById('res-opp-monthly').textContent = fmtGEL(oppCostMonthly);
+        document.getElementById('res-opp-annual').textContent = fmtGEL(oppCostAnnual);
+        document.getElementById('res-package-label').innerHTML = 'პაკეტი: <span class="text-primary-light">' + pkg.label + '</span> — ' + fmtGEL(pkg.price) + '/თვე';
+      }, 400);
+
+      // Build chart
+      setTimeout(() => updateChart(projections), 600);
+
+      // Dynamic CTA
+      setTimeout(() => updateCTA(leadScore), 800);
+    }
+
+    // Animate a number value
+    function animateValue(elId, start, end, duration, formatter) {
+      const el = document.getElementById(elId);
+      const startTime = performance.now();
+      function update(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.round(start + (end - start) * eased);
+        el.textContent = formatter ? formatter(current) : current;
+        if (progress < 1) requestAnimationFrame(update);
+      }
+      requestAnimationFrame(update);
+    }
+
+    // ========== LEAD SCORING ==========
+    function calcLeadScore() {
+      let score = 0;
+      const estRevenue = state.visitors * (state.cvr / 100) * state.aov;
+      if (estRevenue > 50000) score += 40;
+      else if (estRevenue > 20000) score += 30;
+      else if (estRevenue > 10000) score += 20;
+      else if (estRevenue > 5000) score += 10;
+
+      if (state.investment >= 5000) score += 30;
+      else if (state.investment >= 3000) score += 25;
+      else if (state.investment >= 1880) score += 15;
+      else score += 5;
+
+      const premium = ['realEstate', 'legal', 'b2bServices', 'finance', 'saas'];
+      const mid = ['healthcare', 'education', 'tourism'];
+      if (premium.includes(state.industry)) score += 15;
+      else if (mid.includes(state.industry)) score += 10;
+      else score += 5;
+
+      if (state.visitors > 5000) score += 15;
+      else if (state.visitors > 1000) score += 10;
+      else if (state.visitors > 500) score += 5;
+
+      return Math.min(score, 100);
+    }
+
+    function updateCTA(score) {
+      const el = document.getElementById('dynamic-cta');
+      if (score >= 70) {
+        el.innerHTML = '<a href="#" onclick="openCalendly();return false;" class="inline-flex items-center justify-center gap-3 w-full max-w-md mx-auto py-5 ai-cta-animate text-white rounded-2xl text-lg font-bold transition-all pulse-ring">დაჯავშნეთ სტრატეგიული სესია &rarr;</a><p class="text-body-dark text-xs mt-3">15-წუთიანი ზარი უფროს სტრატეგთან. არანაირი ვალდებულება.</p>';
+      } else if (score >= 40) {
+        el.innerHTML = '<button onclick="openLeadModal(\'medium\')" class="inline-flex items-center justify-center gap-3 w-full max-w-md mx-auto py-5 rounded-2xl text-lg font-bold border-2 border-primary text-primary-light hover:bg-primary/10 transition-all">მიიღეთ SEO სამოქმედო გეგმა</button><p class="text-body-dark text-xs mt-3">გავაანალიზებთ თქვენს ვებგვერდს და გამოგიგზავნით რეკომენდაციებს</p>';
+      } else {
+        el.innerHTML = '<button onclick="openLeadModal(\'low\')" class="inline-flex items-center justify-center gap-3 w-full max-w-md mx-auto py-4 rounded-2xl text-base font-medium border border-white/10 text-body-dark hover:border-primary/50 hover:text-primary-light transition-all">ჩამოტვირთეთ უფასო SEO გზამკვლევი</button><p class="text-body-dark text-xs mt-3">გაიგეთ როგორ იზრდება ქართული ბიზნესები SEO-თი</p>';
+      }
+    }
+
+    // ========== CHART ==========
+    function updateChart(projections) {
+      const ctx = document.getElementById('projection-chart').getContext('2d');
+      const labels = projections.map(p => p.month + ' თვე');
+      const revenueData = projections.map(p => p.cumRevenue);
+      const investmentData = projections.map(p => p.cumInvestment);
+
+      if (projectionChart) {
+        projectionChart.data.labels = labels;
+        projectionChart.data.datasets[0].data = revenueData;
+        projectionChart.data.datasets[1].data = investmentData;
+        projectionChart.update('none');
+        return;
+      }
+
+      const gradient = ctx.createLinearGradient(0, 0, 0, 280);
+      gradient.addColorStop(0, 'rgba(139, 92, 246, 0.15)');
+      gradient.addColorStop(1, 'rgba(139, 92, 246, 0)');
+
+      projectionChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels,
+          datasets: [
+            {
+              label: 'კუმულაციური შემოსავალი',
+              data: revenueData,
+              borderColor: '#8B5CF6',
+              backgroundColor: gradient,
+              fill: true,
+              tension: 0.35,
+              borderWidth: 2.5,
+              pointRadius: 4,
+              pointBackgroundColor: '#8B5CF6',
+              pointBorderColor: '#020710',
+              pointBorderWidth: 2,
+            },
+            {
+              label: 'კუმულაციური ინვესტიცია',
+              data: investmentData,
+              borderColor: 'rgba(239, 68, 68, 0.5)',
+              borderDash: [6, 4],
+              borderWidth: 1.5,
+              pointRadius: 0,
+              fill: false,
+              tension: 0,
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: { mode: 'index', intersect: false },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: '#0F0F0F',
+              borderColor: 'rgba(255,255,255,0.1)',
+              borderWidth: 1,
+              titleColor: '#f8fafc',
+              bodyColor: '#94a3b8',
+              cornerRadius: 10,
+              padding: 12,
+              callbacks: { label: function(c) { return c.dataset.label + ': ' + fmtGEL(c.parsed.y); } }
+            }
+          },
+          scales: {
+            x: { grid: { color: 'rgba(255,255,255,0.04)', drawBorder: false }, ticks: { color: '#64748b', font: { size: 11 } } },
+            y: { grid: { color: 'rgba(255,255,255,0.04)', drawBorder: false }, ticks: { color: '#64748b', font: { size: 11 }, callback: v => fmtGEL(v) } }
+          }
+        }
+      });
+    }
+
+    // ========== RESET ==========
+    function resetCalculator() {
+      // Hide results
+      document.getElementById('sec-results').style.display = 'none';
+
+      // Destroy chart
+      if (projectionChart) {
+        projectionChart.destroy();
+        projectionChart = null;
+      }
+
+      // Reset state
+      state = {
+        industry: null,
+        package: null,
+        visitors: 1000,
+        aov: 120,
+        clv: 180,
+        cvr: 1.8,
+        position: 3,
+        investment: 2500,
+        period: 12,
+      };
+
+      // Reset UI
+      document.querySelectorAll('.industry-card').forEach(c => c.classList.remove('selected'));
+      document.getElementById('btn-industry').disabled = true;
+      document.querySelectorAll('.package-card').forEach(c => c.classList.remove('selected'));
+      document.getElementById('btn-package').disabled = true;
+      document.getElementById('visitors-slider').value = 1000;
+      document.getElementById('visitors-display').textContent = '1,000';
+      document.getElementById('input-aov').value = 120;
+      document.getElementById('input-clv').value = 180;
+      document.getElementById('input-cvr').value = '1.8';
+      document.getElementById('select-position').value = '3';
+      selectPeriod(12);
+
+      // Go to hero
+      currentStep = 0;
+      document.getElementById('progress-bar').style.opacity = '0';
+      goToSection(0);
+    }
+
+    // ========== LEAD MODAL ==========
+    function openLeadModal(tier) {
+      const modal = document.getElementById('lead-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      if (tier === 'medium') {
+        document.getElementById('modal-title').textContent = 'მიიღეთ SEO სამოქმედო გეგმა';
+        document.getElementById('modal-subtitle').textContent = 'გავაანალიზებთ თქვენს ვებგვერდს და გამოგიგზავნით პერსონალიზებულ რეკომენდაციებს.';
+      } else {
+        document.getElementById('modal-title').textContent = 'ჩამოტვირთეთ უფასო SEO გზამკვლევი';
+        document.getElementById('modal-subtitle').textContent = 'გაიგეთ როგორ იზრდება ქართული ბიზნესები SEO-თი.';
+      }
+    }
+
+    function closeLeadModal() {
+      const modal = document.getElementById('lead-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    document.getElementById('lead-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const data = {
+        name: document.getElementById('lead-name').value,
+        email: document.getElementById('lead-email').value,
+        phone: document.getElementById('lead-phone').value,
+        website: document.getElementById('lead-website').value,
+        industry: state.industry, visitors: state.visitors, aov: state.aov,
+        clv: state.clv, cvr: state.cvr, position: state.position,
+        investment: state.investment, period: state.period,
+        leadScore: calcLeadScore(), timestamp: new Date().toISOString(),
+      };
+      console.log('Lead captured:', data);
+      this.innerHTML = '<div class="text-center py-8"><div class="text-4xl mb-3">&#x2705;</div><p class="text-white text-lg font-bold">მადლობა!</p><p class="text-body-dark text-sm mt-2">ანალიზს მალე მიიღებთ ელ-ფოსტაზე.</p></div>';
+      setTimeout(closeLeadModal, 3000);
+    });
+
+    // ========== FAQ TOGGLE ==========
+    function toggleFaq(toggle) {
+      const item = toggle.closest('.faq-item');
+      const wasOpen = item.classList.contains('open');
+      // Close all
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      // Toggle current
+      if (!wasOpen) item.classList.add('open');
+    }
+
+    // ========== MOBILE MENU ==========
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuBtn.addEventListener('click', function() {
+      const isOpen = mobileMenu.classList.contains('menu-open');
+      if (isOpen) {
+        mobileMenu.classList.remove('menu-open');
+        mobileMenu.style.pointerEvents = 'none';
+        menuBtn.classList.remove('menu-active');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      } else {
+        mobileMenu.classList.add('menu-open');
+        mobileMenu.style.pointerEvents = 'auto';
+        menuBtn.classList.add('menu-active');
+        menuBtn.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('menu-open');
+        mobileMenu.style.pointerEvents = 'none';
+        menuBtn.classList.remove('menu-active');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+  </script>
+
+  <!-- Calendly Popup Widget -->
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <script>function openCalendly(){Calendly.initPopupWidget({url:'https://calendly.com/10xseo-sales/30-seo-clone?background_color=0f172a&text_color=f8fafc&primary_color=8b5cf6'});return false;}</script>
+</body>
+</html>
