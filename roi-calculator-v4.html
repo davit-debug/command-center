@@ -698,7 +698,7 @@
           <p class="text-body-dark text-base sm:text-lg mb-12">რამდენ ორგანულ ვიზიტორს იღებ ახლა თვეში?</p>
 
           <div class="mb-8">
-            <div class="text-6xl sm:text-7xl lg:text-8xl font-extrabold font-inter text-white mb-8 tabular-nums" id="visitors-display">1,000</div>
+            <input type="text" inputmode="numeric" id="visitors-display" value="1,000" class="text-6xl sm:text-7xl lg:text-8xl font-extrabold font-inter text-white mb-8 tabular-nums bg-transparent border-b-2 border-transparent hover:border-white/20 focus:border-primary outline-none text-center w-full transition-colors cursor-text" aria-label="ყოველთვიური ვიზიტორები">
             <input type="range" id="visitors-slider" min="100" max="50000" step="100" value="1000" class="w-full" aria-label="ყოველთვიური ვიზიტორები">
             <div class="flex justify-between text-xs text-body-dark/50 mt-2 px-1">
               <span>100</span>
@@ -731,7 +731,7 @@
             </div>
             <!-- CLV -->
             <div class="text-left">
-              <label class="block text-sm font-semibold text-body-dark mb-2">კლიენტის ღირებულება (CLV)</label>
+              <label class="block text-sm font-semibold text-body-dark mb-2 whitespace-nowrap">კლიენტის CLV</label>
               <div class="relative">
                 <span class="absolute left-4 top-1/2 -translate-y-1/2 text-body-dark/60 font-bold">&#8382;</span>
                 <input type="number" id="input-clv" class="metric-input pl-10" value="180" min="1" max="500000" aria-label="კლიენტის სიცოცხლის ღირებულება">
@@ -1352,7 +1352,26 @@
 
     visitorsSlider.addEventListener('input', function() {
       state.visitors = parseInt(this.value, 10);
-      visitorsDisplay.textContent = fmtNum(state.visitors);
+      visitorsDisplay.value = fmtNum(state.visitors);
+    });
+
+    visitorsDisplay.addEventListener('focus', function() {
+      this.value = state.visitors;
+      this.select();
+    });
+
+    visitorsDisplay.addEventListener('blur', function() {
+      const raw = this.value.replace(/[^\d]/g, '');
+      const num = parseInt(raw, 10);
+      if (!isNaN(num) && num >= 100) {
+        state.visitors = Math.min(num, 100000);
+        visitorsSlider.value = Math.min(state.visitors, 50000);
+      }
+      this.value = fmtNum(state.visitors);
+    });
+
+    visitorsDisplay.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') { this.blur(); }
     });
 
     // ========== METRIC INPUTS ==========
@@ -1631,7 +1650,7 @@
       document.querySelectorAll('.package-card').forEach(c => c.classList.remove('selected'));
       document.getElementById('btn-package').disabled = true;
       document.getElementById('visitors-slider').value = 1000;
-      document.getElementById('visitors-display').textContent = '1,000';
+      document.getElementById('visitors-display').value = '1,000';
       document.getElementById('input-aov').value = 120;
       document.getElementById('input-clv').value = 180;
       document.getElementById('input-cvr').value = '1.8';
