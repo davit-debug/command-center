@@ -220,35 +220,52 @@ body::before {
   font-size: 0.95rem;
 }
 
-/* === VALUES — large feature cards === */
+/* === VALUES — rich visual cards === */
 .values-grid {
   display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
 }
 .value-card {
-  background: var(--surface); border: 1px solid rgba(139,92,246,0.06);
-  border-radius: 24px; padding: 40px 32px; transition: all 0.4s ease;
+  background: linear-gradient(160deg, rgba(15,18,37,0.9), var(--surface));
+  border: 1px solid rgba(139,92,246,0.1);
+  border-radius: 24px; padding: 36px 32px; transition: all 0.4s ease;
   position: relative; overflow: hidden;
 }
 .value-card::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: linear-gradient(90deg, var(--violet), var(--blue));
-  opacity: 0; transition: opacity 0.3s;
+  background: linear-gradient(90deg, var(--violet), var(--blue), var(--teal));
+  opacity: 0.5; transition: opacity 0.3s;
 }
 .value-card:hover::before { opacity: 1; }
+.value-card::after {
+  content: ''; position: absolute; top: -50%; right: -50%; width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(139,92,246,0.06) 0%, transparent 70%);
+  pointer-events: none; transition: opacity 0.4s;
+}
 .value-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(139,92,246,0.12);
-  box-shadow: 0 16px 48px rgba(0,0,0,0.3);
+  transform: translateY(-5px);
+  border-color: rgba(139,92,246,0.2);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.35), 0 0 30px rgba(139,92,246,0.06);
 }
 .value-card.featured {
   grid-column: 1 / -1;
-  background: linear-gradient(135deg, rgba(139,92,246,0.06), rgba(59,130,246,0.04), rgba(20,184,166,0.04));
-  border: 1px solid rgba(139,92,246,0.1);
+  background: linear-gradient(135deg, rgba(139,92,246,0.08), rgba(59,130,246,0.05), rgba(20,184,166,0.05));
+  border: 1px solid rgba(139,92,246,0.15);
   text-align: center;
-  padding: 48px 40px;
+  padding: 44px 40px;
 }
-.value-emoji { font-size: 2.2rem; margin-bottom: 16px; }
-.value-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 10px; color: var(--cream); }
+.value-emoji {
+  font-size: 2.4rem; margin-bottom: 16px;
+  width: 56px; height: 56px; display: flex; align-items: center; justify-content: center;
+  background: rgba(139,92,246,0.08); border-radius: 16px;
+}
+.value-card.featured .value-emoji {
+  margin: 0 auto 16px;
+  background: linear-gradient(135deg, rgba(245,166,35,0.12), rgba(139,92,246,0.08));
+}
+.value-card h3 {
+  font-size: 1.15rem; font-weight: 700; margin-bottom: 10px; color: var(--cream);
+  letter-spacing: 0.3px;
+}
 .value-card p { font-size: 0.9rem; color: var(--text-dim); line-height: 1.8; }
 .value-card .value-tagline {
   font-family: 'Caveat', cursive; font-size: 1.1rem; color: var(--gold); margin-top: 12px;
@@ -286,30 +303,36 @@ body::before {
 
 /* === TEAM === */
 .team-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 16px;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
 }
 .team-card {
-  background: var(--surface); border: 1px solid rgba(139,92,246,0.06);
-  border-radius: 20px; padding: 28px 20px; text-align: center;
-  transition: all 0.3s ease; position: relative; overflow: hidden;
+  background: linear-gradient(160deg, rgba(15,18,37,0.9), var(--surface));
+  border: 1px solid rgba(139,92,246,0.08);
+  border-radius: 24px; padding: 32px 20px; text-align: center;
+  transition: all 0.4s ease; position: relative; overflow: hidden;
 }
 .team-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(139,92,246,0.15);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+  transform: translateY(-6px);
+  border-color: rgba(139,92,246,0.2);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.35), 0 0 20px rgba(139,92,246,0.06);
 }
 .team-card::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: linear-gradient(90deg, var(--violet), var(--blue));
+  background: linear-gradient(90deg, var(--violet), var(--blue), var(--teal));
   opacity: 0; transition: opacity 0.3s;
 }
 .team-card:hover::before { opacity: 1; }
 
 .team-avatar {
-  width: 64px; height: 64px; border-radius: 50%;
-  margin: 0 auto 12px; display: flex; align-items: center; justify-content: center;
-  font-size: 1.5rem; font-weight: 700;
+  width: 88px; height: 88px; border-radius: 50%;
+  margin: 0 auto 16px; display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem; font-weight: 700; letter-spacing: 1px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  overflow: hidden;
+}
+.team-avatar img {
+  width: 100%; height: 100%; object-fit: cover; border-radius: 50%;
 }
 .team-avatar.founder { background: linear-gradient(135deg, var(--gold), #e09400); color: var(--dark); }
 .team-avatar.seo { background: linear-gradient(135deg, var(--violet), #6d28d9); color: white; }
@@ -317,8 +340,8 @@ body::before {
 .team-avatar.pm { background: linear-gradient(135deg, var(--teal), #0d9488); color: white; }
 .team-avatar.ops { background: linear-gradient(135deg, #64748b, #475569); color: white; }
 
-.team-name { font-weight: 600; font-size: 0.95rem; margin-bottom: 3px; }
-.team-role { font-size: 0.75rem; color: var(--text-dim); }
+.team-name { font-weight: 700; font-size: 1rem; margin-bottom: 4px; color: var(--cream); }
+.team-role { font-size: 0.78rem; color: var(--text-dim); letter-spacing: 0.5px; }
 .team-card .fun-fact {
   font-family: 'Caveat', cursive; font-size: 0.9rem; color: var(--gold);
   margin-top: 10px; opacity: 0; transform: translateY(6px); transition: all 0.3s;
@@ -847,67 +870,67 @@ footer {
 
   <div class="team-grid">
     <div class="team-card reveal">
-      <div class="team-avatar founder">დწ</div>
+      <div class="team-avatar founder"><img src="images/team/davit-tsilosani.webp" alt="დავით წილოსანი" onerror="this.style.display='none';this.parentElement.textContent='დწ'"></div>
       <div class="team-name">დავით წილოსანი</div>
       <div class="team-role">დამფუძნებელი & CEO</div>
       <div class="fun-fact">„იყავი პირველი" &#127942;</div>
     </div>
     <div class="team-card reveal reveal-d1">
-      <div class="team-avatar seo">ან</div>
+      <div class="team-avatar seo"><img src="images/team/ana.webp" alt="ანა" onerror="this.style.display='none';this.parentElement.textContent='ან'"></div>
       <div class="team-name">ანა</div>
       <div class="team-role">SEO სპეციალისტი</div>
       <div class="fun-fact">კონტენტის ქალიშვილი &#9997;&#65039;</div>
     </div>
     <div class="team-card reveal reveal-d1">
-      <div class="team-avatar seo">მლ</div>
+      <div class="team-avatar seo"><img src="images/team/mariam-labadze.webp" alt="მარიამ ლაბაძე" onerror="this.style.display='none';this.parentElement.textContent='მლ'"></div>
       <div class="team-name">მარიამ ლაბაძე</div>
       <div class="team-role">SEO სპეციალისტი</div>
       <div class="fun-fact">ბექლინქების დედოფალი &#128081;</div>
     </div>
     <div class="team-card reveal reveal-d2">
-      <div class="team-avatar seo">ნბ</div>
+      <div class="team-avatar seo"><img src="images/team/nino-bubunauri.webp" alt="ნინო ბუბუნაური" onerror="this.style.display='none';this.parentElement.textContent='ნბ'"></div>
       <div class="team-name">ნინო ბუბუნაური</div>
       <div class="team-role">SEO სპეციალისტი</div>
       <div class="fun-fact">აუდიტების ექსპერტი &#128269;</div>
     </div>
     <div class="team-card reveal reveal-d2">
-      <div class="team-avatar seo">თმ</div>
+      <div class="team-avatar seo"><img src="images/team/teo-maisuradze.webp" alt="თეო მაისურაძე" onerror="this.style.display='none';this.parentElement.textContent='თმ'"></div>
       <div class="team-name">თეო მაისურაძე</div>
       <div class="team-role">SEO სპეციალისტი</div>
       <div class="fun-fact">ტექნიკური SEO-ს ნინძა &#129399;</div>
     </div>
     <div class="team-card reveal reveal-d2">
-      <div class="team-avatar content">თი</div>
+      <div class="team-avatar content"><img src="images/team/tinatini.webp" alt="თინათინი" onerror="this.style.display='none';this.parentElement.textContent='თი'"></div>
       <div class="team-name">თინათინი</div>
       <div class="team-role">SEO სპეციალისტი</div>
       <div class="fun-fact">ქივორდების მონადირე &#127993;</div>
     </div>
     <div class="team-card reveal reveal-d3">
-      <div class="team-avatar pm">თო</div>
+      <div class="team-avatar pm"><img src="images/team/tamuna-oniani.webp" alt="თამუნა ონიანი" onerror="this.style.display='none';this.parentElement.textContent='თო'"></div>
       <div class="team-name">თამუნა ონიანი</div>
       <div class="team-role">SEO სპეციალისტი</div>
       <div class="fun-fact">კლიენტის საუკეთესო მეგობარი &#128155;</div>
     </div>
     <div class="team-card reveal reveal-d3">
-      <div class="team-avatar seo">სგ</div>
+      <div class="team-avatar seo"><img src="images/team/sopo-gozalishvili.webp" alt="სოფო გოზალიშვილი" onerror="this.style.display='none';this.parentElement.textContent='სგ'"></div>
       <div class="team-name">სოფო გოზალიშვილი</div>
       <div class="team-role">SEO სპეციალისტი</div>
       <div class="fun-fact">ზრდის არქიტექტორი &#128200;</div>
     </div>
     <div class="team-card reveal reveal-d3">
-      <div class="team-avatar content">დგ</div>
+      <div class="team-avatar content"><img src="images/team/davit-gubanovi.webp" alt="დავით გუბანოვი" onerror="this.style.display='none';this.parentElement.textContent='დგ'"></div>
       <div class="team-name">დავით გუბანოვი</div>
       <div class="team-role">SEO სპეციალისტი</div>
       <div class="fun-fact">კონკურენტების კაბუსი &#128520;</div>
     </div>
     <div class="team-card reveal reveal-d3">
-      <div class="team-avatar seo">ლუ</div>
+      <div class="team-avatar seo"><img src="images/team/luka.webp" alt="ლუკა" onerror="this.style.display='none';this.parentElement.textContent='ლუ'"></div>
       <div class="team-name">ლუკა</div>
       <div class="team-role">SEO სპეციალისტი</div>
       <div class="fun-fact">ახალი თაობის ვარსკვლავი &#11088;</div>
     </div>
     <div class="team-card reveal reveal-d3">
-      <div class="team-avatar pm">ნი</div>
+      <div class="team-avatar pm"><img src="images/team/nina.webp" alt="ნინა" onerror="this.style.display='none';this.parentElement.textContent='ნი'"></div>
       <div class="team-name">ნინა</div>
       <div class="team-role">Senior SEO სპეციალისტი</div>
       <div class="fun-fact">გამოცდილების სკალა &#127891;</div>
