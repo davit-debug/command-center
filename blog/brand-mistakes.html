@@ -545,6 +545,43 @@
   </div>
   </footer>
   <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+    if (localStorage.getItem('theme') !== 'light') { html.classList.add('dark'); }
+    if (themeToggle) { themeToggle.addEventListener('click', () => { html.classList.toggle('dark'); localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light'); }); }
+
+    const progressBar = document.getElementById('reading-progress');
+    window.addEventListener('scroll', () => { const scrollTop = window.scrollY; const docHeight = document.documentElement.scrollHeight - window.innerHeight; progressBar.style.width = (scrollTop / docHeight) * 100 + '%'; }, { passive: true });
+    let lastScrollY = 0;
+    const mobileShare = document.getElementById('mobile-share');
+    window.addEventListener('scroll', () => { const currentY = window.scrollY; if (mobileShare) { mobileShare.style.transform = (currentY > lastScrollY && currentY > 200) ? 'translateY(100%)' : 'translateY(0)'; } lastScrollY = currentY; }, { passive: true });
+    const sections = document.querySelectorAll('h2[id]');
+    const tocLinks = document.querySelectorAll('.toc-link');
+    function updateActiveToc() {
+      let current = '';
+      sections.forEach(section => {
+        const top = section.getBoundingClientRect().top;
+        if (top < 150) current = section.id;
+      });
+      tocLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+      });
+    }
+    window.addEventListener('scroll', updateActiveToc, { passive: true });
+    updateActiveToc();
+
+    // Social share
+    const pageUrl = encodeURIComponent(window.location.href);
+    const pageTitle = encodeURIComponent(document.title);
+    const shareFb = document.getElementById('share-fb');
+    const shareLi = document.getElementById('share-li');
+    const shareCopy = document.getElementById('share-copy');
+    if (shareFb) shareFb.href = 'https://www.facebook.com/sharer/sharer.php?u=' + pageUrl;
+    if (shareLi) shareLi.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + pageUrl;
+    if (shareCopy) shareCopy.addEventListener('click', () => { navigator.clipboard.writeText(window.location.href).then(() => { shareCopy.innerHTML = '<svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>'; setTimeout(() => { shareCopy.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>'; }, 2000); }); });
+  </script>
+
+  <script>
     // Mobile menu with animation
     const menuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
