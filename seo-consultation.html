@@ -206,6 +206,23 @@
     .dark .accent-glow { box-shadow: 0 0 60px rgba(139, 92, 246, 0.2); }
     .safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
 
+    /* Honeycomb */
+    .hex-cell {
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      opacity: 0;
+      transform: scale(0);
+      transition: opacity 0.3s ease, transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      background: #ffffff;
+    }
+    .hex-cell.hex-visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .hex-cell.hex-visible:hover { transform: scale(1.08); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+    @media (max-width: 639px) {
+      .hex-cell { width: 72px !important; height: 72px !important; }
+    }
+
     .feature-card { transition: transform 0.2s ease, box-shadow 0.2s ease; }
     @media (hover: hover) {
       .feature-card:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.06); }
@@ -1892,11 +1909,6 @@
       localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
     });
 
-    // Mobile menu
-    const mobileMenu = document.getElementById('mobile-menu');
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenuClose = 
-
     // Animations
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('animate-fade-in-up'); observer.unobserve(e.target); }});
@@ -1933,6 +1945,32 @@
           document.body.classList.remove('overflow-hidden');
         });
       });
+    }
+  </script>
+
+  <script>
+    // Honeycomb scroll reveal — Pop Elastic, random order
+    const hexCells = [...document.querySelectorAll('.hex-cell')];
+    let hexTriggered = false;
+    const hexSection = hexCells[0]?.closest('section');
+    if (hexSection) {
+      const hexObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !hexTriggered) {
+            hexTriggered = true;
+            const indices = hexCells.map((_, i) => i);
+            for (let i = indices.length - 1; i > 0; i--) {
+              const j = Math.floor(Math.random() * (i + 1));
+              [indices[i], indices[j]] = [indices[j], indices[i]];
+            }
+            indices.forEach((cellIdx, step) => {
+              setTimeout(() => hexCells[cellIdx].classList.add('hex-visible'), step * 100);
+            });
+            hexObserver.disconnect();
+          }
+        });
+      }, { threshold: 0.15 });
+      hexObserver.observe(hexSection);
     }
   </script>
 
