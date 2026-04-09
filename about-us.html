@@ -271,6 +271,28 @@ body::before {
   font-family: 'Caveat', cursive; font-size: 1.1rem; color: var(--gold); margin-top: 12px;
 }
 
+/* === WHY 10xSEO — numbered reasons === */
+.why-list { max-width: 800px; margin: 0 auto; list-style: none; counter-reset: why; }
+.why-item {
+  display: flex; gap: 1.5rem; padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(139,92,246,0.08);
+  align-items: flex-start; transition: all 0.3s;
+}
+.why-item:last-child { border-bottom: none; }
+.why-item:hover { padding-left: 8px; }
+.why-number {
+  counter-increment: why;
+  font-family: 'Dachi the Lynx', sans-serif;
+  font-size: 2rem; font-weight: 600; min-width: 3rem;
+  background: linear-gradient(135deg, var(--violet), var(--blue));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  line-height: 1.2;
+}
+.why-icon { font-size: 1.6rem; min-width: 2rem; }
+.why-content {}
+.why-name { font-size: 1.05rem; color: var(--cream); font-weight: 700; margin-bottom: 4px; }
+.why-desc { font-size: 0.88rem; color: var(--text-dim); line-height: 1.7; }
+
 /* === PRINCIPLES — numbered list === */
 .principles-list { max-width: 720px; margin: 0 auto; list-style: none; }
 .principle-item {
@@ -301,16 +323,17 @@ body::before {
 .culture-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
 .culture-card p { font-size: 0.88rem; color: var(--text-dim); line-height: 1.7; }
 
-/* === TEAM === */
+/* === TEAM — Variant 2: Full Photo Card === */
 .team-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
   gap: 20px;
 }
 .team-card {
   background: linear-gradient(160deg, rgba(15,18,37,0.9), var(--surface));
   border: 1px solid rgba(139,92,246,0.08);
-  border-radius: 24px; padding: 32px 20px; text-align: center;
+  border-radius: 24px; padding: 0; text-align: center;
   transition: all 0.4s ease; position: relative; overflow: hidden;
+  text-decoration: none; color: inherit;
 }
 .team-card:hover {
   transform: translateY(-6px);
@@ -320,19 +343,21 @@ body::before {
 .team-card::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
   background: linear-gradient(90deg, var(--violet), var(--blue), var(--teal));
-  opacity: 0; transition: opacity 0.3s;
+  opacity: 0; transition: opacity 0.3s; z-index: 1;
 }
 .team-card:hover::before { opacity: 1; }
 
-.team-avatar {
-  width: 88px; height: 88px; border-radius: 50%;
-  margin: 0 auto 16px; display: flex; align-items: center; justify-content: center;
-  font-size: 1.3rem; font-weight: 700; letter-spacing: 1px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-  overflow: hidden;
+.team-photo {
+  width: 100%; aspect-ratio: 1; overflow: hidden;
+  background: linear-gradient(135deg, rgba(139,92,246,0.1), rgba(59,130,246,0.08));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.5rem; font-weight: 700; color: rgba(255,255,255,0.5);
 }
-.team-avatar img {
-  width: 100%; height: 100%; object-fit: cover; border-radius: 50%;
+.team-photo img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.team-info {
+  padding: 16px 20px 20px;
 }
 .team-avatar.founder { background: linear-gradient(135deg, var(--gold), #e09400); color: var(--dark); }
 .team-avatar.seo { background: linear-gradient(135deg, var(--violet), #6d28d9); color: white; }
@@ -342,11 +367,6 @@ body::before {
 
 .team-name { font-weight: 700; font-size: 1rem; margin-bottom: 4px; color: var(--cream); }
 .team-role { font-size: 0.78rem; color: var(--text-dim); letter-spacing: 0.5px; }
-.team-card .fun-fact {
-  font-family: 'Caveat', cursive; font-size: 0.9rem; color: var(--gold);
-  margin-top: 10px; opacity: 0; transform: translateY(6px); transition: all 0.3s;
-}
-.team-card:hover .fun-fact { opacity: 1; transform: translateY(0); }
 
 /* === TEAM VIDEO === */
 .team-video-section {
@@ -761,7 +781,7 @@ footer {
 
 <!-- FOUNDER QUOTE — ბრენდბუქის ტონი -->
 <div class="pull-quote reveal">
-  <p class="pull-quote-text">10xSEO-ში არ ვყიდით მოლოდინებს, <em>ჩვენ ვმართავთ შედეგს</em>. ჩვენი დაპირება ეფუძნება <em>რეალურ პროგნოზებს</em> და არა ილუზიებს.</p>
+  <p class="pull-quote-text">სანამ ბაზარი სტანდარტული საკვანძო სიტყვების ოპტიმიზაციაზეა ფოკუსირებული, ჩვენ უკვე <em>AI ძიების და მომავლის ალგორითმების ენაზე</em> ვსაუბრობთ. ჩვენი მიზანია კლიენტი <em>კონკურენტებზე ერთი ნაბიჯით წინ</em> დავაყენოთ.</p>
   <div class="pull-quote-author">დავით წილოსანი — დამფუძნებელი</div>
 </div>
 
@@ -774,33 +794,48 @@ footer {
     <div class="section-title">რატომ 10xSEO</div>
     <p class="section-desc">5 მიზეზი, რომ სწორი არჩევანი გააკეთო</p>
   </div>
-  <div class="values-grid">
-    <div class="value-card featured reveal">
-      <div class="value-emoji">&#129302;</div>
-      <h3>AI-First მიდგომა</h3>
-      <p>სტანდარტული SEO-ს მიღმა, ვიყენებთ AEO და GEO ინსტრუმენტებს. ბრენდი მთავარი რეკომენდაცია ხდება იქ, სადაც მომავლის მომხმარებელი პასუხს ეძებს — ChatGPT, Gemini, Perplexity.</p>
-    </div>
-    <div class="value-card reveal">
-      <div class="value-emoji">&#128200;</div>
-      <h3>სრული გამჭვირვალობა</h3>
-      <p>Live Dashboard და Loom ვიდეო რეპორტები, 40-გვერდიანი PDF-ების ნაცვლად. ხედავ ყველაფერს რეალურ დროში.</p>
-    </div>
-    <div class="value-card reveal reveal-d1">
-      <div class="value-emoji">&#128176;</div>
-      <h3>შედეგზე ორიენტირებული ROI</h3>
-      <p>ტრაფიკის გარდა, ჩვენი მთავარი საზომი რეალური გაყიდვები, შეკვეთები და ზარებია. არა ვანილას მეტრიკები.</p>
-    </div>
-    <div class="value-card reveal reveal-d2">
-      <div class="value-emoji">&#128736;&#65039;</div>
-      <h3>ინფრასტრუქტურა</h3>
-      <p>12+ წლიანი გამოცდილება და საკუთარი SEO LAB — სადაც ახალ ტექნიკებს ვტესტავთ შენს საიტზე გამოყენებამდე.</p>
-    </div>
-    <div class="value-card reveal reveal-d3">
-      <div class="value-emoji">&#127942;</div>
-      <h3>დამტკიცებული ექსპერტიზა</h3>
-      <p>10xSEO-ს სტაბილური #1 პოზიცია Google-ის ორგანულ ძიებაში ყველაზე კონკურენტულ საძიებო სიტყვაზე — „SEO სააგენტო".</p>
-    </div>
-  </div>
+  <ul class="why-list">
+    <li class="why-item reveal">
+      <span class="why-number">01</span>
+      <span class="why-icon">&#129302;</span>
+      <div class="why-content">
+        <div class="why-name">AI-First მიდგომა</div>
+        <div class="why-desc">სტანდარტული SEO-ს მიღმა, ვიყენებთ AEO და GEO ინსტრუმენტებს. ბრენდი მთავარი რეკომენდაცია ხდება ChatGPT-ში, Gemini-ში, Perplexity-ში.</div>
+      </div>
+    </li>
+    <li class="why-item reveal reveal-d1">
+      <span class="why-number">02</span>
+      <span class="why-icon">&#128200;</span>
+      <div class="why-content">
+        <div class="why-name">სრული გამჭვირვალობა</div>
+        <div class="why-desc">Live Dashboard და Loom ვიდეო რეპორტები, 40-გვერდიანი PDF-ების ნაცვლად. ხედავ ყველაფერს რეალურ დროში.</div>
+      </div>
+    </li>
+    <li class="why-item reveal reveal-d1">
+      <span class="why-number">03</span>
+      <span class="why-icon">&#128176;</span>
+      <div class="why-content">
+        <div class="why-name">შედეგზე ორიენტირებული ROI</div>
+        <div class="why-desc">ჩვენი მთავარი საზომი რეალური გაყიდვები, შეკვეთები და ზარებია — არა ვანილას მეტრიკები.</div>
+      </div>
+    </li>
+    <li class="why-item reveal reveal-d2">
+      <span class="why-number">04</span>
+      <span class="why-icon">&#128736;&#65039;</span>
+      <div class="why-content">
+        <div class="why-name">ინფრასტრუქტურა</div>
+        <div class="why-desc">12+ წლიანი გამოცდილება და საკუთარი SEO LAB — სადაც ახალ ტექნიკებს ვტესტავთ შენს საიტზე გამოყენებამდე.</div>
+      </div>
+    </li>
+    <li class="why-item reveal reveal-d2">
+      <span class="why-number">05</span>
+      <span class="why-icon">&#127942;</span>
+      <div class="why-content">
+        <div class="why-name">დამტკიცებული ექსპერტიზა</div>
+        <div class="why-desc">სტაბილური #1 პოზიცია Google-ის ორგანულ ძიებაში ყველაზე კონკურენტულ საძიებო სიტყვაზე — „SEO სააგენტო".</div>
+      </div>
+    </li>
+  </ul>
 </div>
 
 <div class="divider"></div>
@@ -870,80 +905,55 @@ footer {
 
   <div class="team-grid">
     <div class="team-card reveal">
-      <div class="team-avatar founder"><img src="images/team/davit-tsilosani.webp" alt="დავით წილოსანი" onerror="this.style.display='none';this.parentElement.textContent='დწ'"></div>
-      <div class="team-name">დავით წილოსანი</div>
-      <div class="team-role">დამფუძნებელი & CEO</div>
-      <div class="fun-fact">„იყავი პირველი" &#127942;</div>
+      <div class="team-photo"><img src="images/team/davit-tsilosani.webp" alt="დავით წილოსანი" onerror="this.src='https://i.pravatar.cc/400?u=dt'"></div>
+      <div class="team-info"><div class="team-name">დავით წილოსანი</div><div class="team-role">დამფუძნებელი & CEO</div></div>
     </div>
     <div class="team-card reveal reveal-d1">
-      <div class="team-avatar seo"><img src="images/team/ana.webp" alt="ანა" onerror="this.style.display='none';this.parentElement.textContent='ან'"></div>
-      <div class="team-name">ანა</div>
-      <div class="team-role">SEO სპეციალისტი</div>
-      <div class="fun-fact">კონტენტის ქალიშვილი &#9997;&#65039;</div>
+      <div class="team-photo"><img src="images/team/ana.webp" alt="ანა" onerror="this.src='https://i.pravatar.cc/400?u=ana'"></div>
+      <div class="team-info"><div class="team-name">ანა</div><div class="team-role">SEO სპეციალისტი</div></div>
     </div>
     <div class="team-card reveal reveal-d1">
-      <div class="team-avatar seo"><img src="images/team/mariam-labadze.webp" alt="მარიამ ლაბაძე" onerror="this.style.display='none';this.parentElement.textContent='მლ'"></div>
-      <div class="team-name">მარიამ ლაბაძე</div>
-      <div class="team-role">SEO სპეციალისტი</div>
-      <div class="fun-fact">ბექლინქების დედოფალი &#128081;</div>
+      <div class="team-photo"><img src="images/team/mariam-labadze.webp" alt="მარიამ ლაბაძე" onerror="this.src='https://i.pravatar.cc/400?u=ml'"></div>
+      <div class="team-info"><div class="team-name">მარიამ ლაბაძე</div><div class="team-role">SEO სპეციალისტი</div></div>
     </div>
     <div class="team-card reveal reveal-d2">
-      <div class="team-avatar seo"><img src="images/team/nino-bubunauri.webp" alt="ნინო ბუბუნაური" onerror="this.style.display='none';this.parentElement.textContent='ნბ'"></div>
-      <div class="team-name">ნინო ბუბუნაური</div>
-      <div class="team-role">SEO სპეციალისტი</div>
-      <div class="fun-fact">აუდიტების ექსპერტი &#128269;</div>
+      <div class="team-photo"><img src="images/team/nino-bubunauri.webp" alt="ნინო ბუბუნაური" onerror="this.src='https://i.pravatar.cc/400?u=nb'"></div>
+      <div class="team-info"><div class="team-name">ნინო ბუბუნაური</div><div class="team-role">SEO სპეციალისტი</div></div>
     </div>
     <div class="team-card reveal reveal-d2">
-      <div class="team-avatar seo"><img src="images/team/teo-maisuradze.webp" alt="თეო მაისურაძე" onerror="this.style.display='none';this.parentElement.textContent='თმ'"></div>
-      <div class="team-name">თეო მაისურაძე</div>
-      <div class="team-role">SEO სპეციალისტი</div>
-      <div class="fun-fact">ტექნიკური SEO-ს ნინძა &#129399;</div>
+      <div class="team-photo"><img src="images/team/teo-maisuradze.webp" alt="თეო მაისურაძე" onerror="this.src='https://i.pravatar.cc/400?u=tm'"></div>
+      <div class="team-info"><div class="team-name">თეო მაისურაძე</div><div class="team-role">SEO სპეციალისტი</div></div>
     </div>
     <div class="team-card reveal reveal-d2">
-      <div class="team-avatar content"><img src="images/team/tinatini.webp" alt="თინათინი" onerror="this.style.display='none';this.parentElement.textContent='თი'"></div>
-      <div class="team-name">თინათინი</div>
-      <div class="team-role">SEO სპეციალისტი</div>
-      <div class="fun-fact">ქივორდების მონადირე &#127993;</div>
+      <div class="team-photo"><img src="images/team/tinatini.webp" alt="თინათინი" onerror="this.src='https://i.pravatar.cc/400?u=tin'"></div>
+      <div class="team-info"><div class="team-name">თინათინი</div><div class="team-role">SEO სპეციალისტი</div></div>
     </div>
     <div class="team-card reveal reveal-d3">
-      <div class="team-avatar pm"><img src="images/team/tamuna-oniani.webp" alt="თამუნა ონიანი" onerror="this.style.display='none';this.parentElement.textContent='თო'"></div>
-      <div class="team-name">თამუნა ონიანი</div>
-      <div class="team-role">SEO სპეციალისტი</div>
-      <div class="fun-fact">კლიენტის საუკეთესო მეგობარი &#128155;</div>
+      <div class="team-photo"><img src="images/team/tamuna-oniani.webp" alt="თამუნა ონიანი" onerror="this.src='https://i.pravatar.cc/400?u=to'"></div>
+      <div class="team-info"><div class="team-name">თამუნა ონიანი</div><div class="team-role">SEO სპეციალისტი</div></div>
     </div>
     <div class="team-card reveal reveal-d3">
-      <div class="team-avatar seo"><img src="images/team/sopo-gozalishvili.webp" alt="სოფო გოზალიშვილი" onerror="this.style.display='none';this.parentElement.textContent='სგ'"></div>
-      <div class="team-name">სოფო გოზალიშვილი</div>
-      <div class="team-role">SEO სპეციალისტი</div>
-      <div class="fun-fact">ზრდის არქიტექტორი &#128200;</div>
+      <div class="team-photo"><img src="images/team/sopo-gozalishvili.webp" alt="სოფო გოზალიშვილი" onerror="this.src='https://i.pravatar.cc/400?u=sg'"></div>
+      <div class="team-info"><div class="team-name">სოფო გოზალიშვილი</div><div class="team-role">SEO სპეციალისტი</div></div>
     </div>
     <div class="team-card reveal reveal-d3">
-      <div class="team-avatar content"><img src="images/team/davit-gubanovi.webp" alt="დავით გუბანოვი" onerror="this.style.display='none';this.parentElement.textContent='დგ'"></div>
-      <div class="team-name">დავით გუბანოვი</div>
-      <div class="team-role">SEO სპეციალისტი</div>
-      <div class="fun-fact">კონკურენტების კაბუსი &#128520;</div>
+      <div class="team-photo"><img src="images/team/davit-gubanovi.webp" alt="დავით გუბანოვი" onerror="this.src='https://i.pravatar.cc/400?u=dg'"></div>
+      <div class="team-info"><div class="team-name">დავით გუბანოვი</div><div class="team-role">SEO სპეციალისტი</div></div>
     </div>
     <div class="team-card reveal reveal-d3">
-      <div class="team-avatar seo"><img src="images/team/luka.webp" alt="ლუკა" onerror="this.style.display='none';this.parentElement.textContent='ლუ'"></div>
-      <div class="team-name">ლუკა</div>
-      <div class="team-role">SEO სპეციალისტი</div>
-      <div class="fun-fact">ახალი თაობის ვარსკვლავი &#11088;</div>
+      <div class="team-photo"><img src="images/team/luka.webp" alt="ლუკა" onerror="this.src='https://i.pravatar.cc/400?u=luka'"></div>
+      <div class="team-info"><div class="team-name">ლუკა</div><div class="team-role">SEO სპეციალისტი</div></div>
     </div>
     <div class="team-card reveal reveal-d3">
-      <div class="team-avatar pm"><img src="images/team/nina.webp" alt="ნინა" onerror="this.style.display='none';this.parentElement.textContent='ნი'"></div>
-      <div class="team-name">ნინა</div>
-      <div class="team-role">Senior SEO სპეციალისტი</div>
-      <div class="fun-fact">გამოცდილების სკალა &#127891;</div>
+      <div class="team-photo"><img src="images/team/nina.webp" alt="ნინა" onerror="this.src='https://i.pravatar.cc/400?u=nina'"></div>
+      <div class="team-info"><div class="team-name">ნინა</div><div class="team-role">Senior SEO სპეციალისტი</div></div>
     </div>
-    <a href="vacancies.html" class="team-card reveal reveal-d3" style="text-decoration:none; color:inherit;">
-      <div class="team-avatar ops" style="font-size:1.8rem;">+</div>
-      <div class="team-name">შენ?</div>
-      <div class="team-role">შემდეგი 10xელი</div>
-      <div class="fun-fact">ნახე ვაკანსიები &#128640;</div>
+    <a href="vacancies.html" class="team-card reveal reveal-d3">
+      <div class="team-photo" style="font-size:3rem; color:var(--violet-soft);">+</div>
+      <div class="team-info"><div class="team-name">შენ?</div><div class="team-role">შემდეგი 10xელი</div></div>
     </a>
   </div>
-
-  </div>
+</div>
 </div>
 
 <div class="divider"></div>
@@ -1042,26 +1052,6 @@ footer {
       <div class="ai-feature"><div class="ai-dot blue"></div>AEO სტრატეგია</div>
       <div class="ai-feature"><div class="ai-dot teal"></div>LLM-ებთან ხილვადობა</div>
     </div>
-  </div>
-</div>
-
-<div class="divider"></div>
-
-<!-- SERVICES — compact pills -->
-<div class="container page-section">
-  <div class="section-header reveal">
-    <div class="section-label">რას ვაკეთებთ</div>
-    <div class="section-title">სერვისები</div>
-  </div>
-  <div class="services-compact reveal">
-    <div class="service-pill">SEO აუდიტი</div>
-    <div class="service-pill">SEO მენეჯმენტი</div>
-    <div class="service-pill">კონტენტ სტრატეგია</div>
-    <div class="service-pill">ქივორდ რისერჩი</div>
-    <div class="service-pill">AI SEO / AEO</div>
-    <div class="service-pill">CRO ოპტიმიზაცია</div>
-    <div class="service-pill">Google Ads</div>
-    <div class="service-pill">ბექლინქ მშენებლობა</div>
   </div>
 </div>
 
