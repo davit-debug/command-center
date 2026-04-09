@@ -1,23 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
   <defs>
-    <!-- Left face gradient: deep purple to purple -->
-    <linearGradient id="leftFace" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#6D3FD6"/>
-      <stop offset="100%" stop-color="#5B2DC4"/>
-    </linearGradient>
-    <!-- Right face gradient: purple to teal -->
-    <linearGradient id="rightFace" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#8B5CF6"/>
-      <stop offset="100%" stop-color="#14B8A6"/>
-    </linearGradient>
-    <!-- Front/center highlight -->
-    <linearGradient id="frontFace" x1="50%" y1="0%" x2="50%" y2="100%">
-      <stop offset="0%" stop-color="#A78BFA"/>
-      <stop offset="100%" stop-color="#8B5CF6"/>
-    </linearGradient>
-    <!-- Glow -->
     <filter id="glow">
-      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="tipGlow">
+      <feGaussianBlur stdDeviation="18" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
@@ -25,19 +16,25 @@
     </filter>
   </defs>
 
-  <!-- 3D Pyramid with 3 visible faces -->
-  <!-- Left face -->
-  <polygon points="256,48 80,420 256,340" fill="url(#leftFace)"/>
-  <!-- Right face -->
-  <polygon points="256,48 432,420 256,340" fill="url(#rightFace)"/>
-  <!-- Bottom/front face -->
-  <polygon points="80,420 432,420 256,340" fill="url(#frontFace)" opacity="0.6"/>
+  <!-- Dark pyramid body -->
+  <polygon points="256,31 41,461 471,461" fill="#020710" fill-opacity="0.98"/>
 
-  <!-- Edge highlights for 3D depth -->
-  <line x1="256" y1="48" x2="256" y2="340" stroke="#A78BFA" stroke-width="2" opacity="0.7"/>
-  <line x1="256" y1="48" x2="80" y2="420" stroke="#A78BFA" stroke-width="1.5" opacity="0.3"/>
-  <line x1="256" y1="48" x2="432" y2="420" stroke="#14B8A6" stroke-width="1.5" opacity="0.4"/>
+  <!-- Subtle inner amber wash -->
+  <polygon points="256,31 41,461 471,461" fill="#8C6410" fill-opacity="0.08"/>
 
-  <!-- Subtle top glow -->
-  <circle cx="256" cy="80" r="20" fill="#A78BFA" opacity="0.3" filter="url(#glow)"/>
+  <!-- Glowing edges -->
+  <!-- Left edge: Gold -->
+  <line x1="256" y1="31" x2="41" y2="461" stroke="#DCA81E" stroke-width="8" filter="url(#glow)" opacity="0.5"/>
+  <line x1="256" y1="31" x2="41" y2="461" stroke="#DCA81E" stroke-width="4"/>
+
+  <!-- Right edge: Cyan -->
+  <line x1="256" y1="31" x2="471" y2="461" stroke="#58E6FF" stroke-width="8" filter="url(#glow)" opacity="0.5"/>
+  <line x1="256" y1="31" x2="471" y2="461" stroke="#58E6FF" stroke-width="4"/>
+
+  <!-- Bottom edge: Deep purple -->
+  <line x1="41" y1="461" x2="471" y2="461" stroke="#7C3AED" stroke-width="4" opacity="0.7"/>
+
+  <!-- Gold summit glow -->
+  <circle cx="256" cy="31" r="20" fill="#FFC832" opacity="0.6" filter="url(#tipGlow)"/>
+  <circle cx="256" cy="31" r="9" fill="#FFC832"/>
 </svg>
