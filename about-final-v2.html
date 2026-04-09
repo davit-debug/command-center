@@ -499,6 +499,8 @@ footer {
   transition: all 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
 }
 .reveal.visible { opacity: 1; transform: translateY(0); }
+/* Hero always visible — no empty screen on first load */
+.hero .reveal, .hero.reveal { opacity: 1; transform: none; }
 .reveal-d1 { transition-delay: 0.1s; }
 .reveal-d2 { transition-delay: 0.2s; }
 .reveal-d3 { transition-delay: 0.3s; }
@@ -725,23 +727,14 @@ footer {
   <div class="hero-line"></div>
 </section>
 
-<!-- TEAM VIDEO -->
+<!-- TODO: ვიდეო სექცია — ჩაამატე როცა რეალური ვიდეო გექნება:
 <div class="team-video-section reveal">
   <div class="section-label">გაიცანი გუნდი ახლოდან</div>
-  <div class="section-title" style="font-family:'Dachi the Lynx',sans-serif; font-size:clamp(1.5rem,3vw,2.2rem); font-weight:300; color:var(--cream);">ვინ ვართ <span style="color:var(--gold); font-family:'Caveat',cursive; font-weight:700;">10xელები</span></div>
-  <p style="margin-top:0.8rem; color:var(--text-dim); font-size:0.95rem;">გაიცანი ადამიანები, რომლებიც თქვენი ბიზნესის ზრდაზე ზრუნავენ</p>
   <div class="team-video-wrapper">
-    <div class="video-placeholder">
-      <div class="video-play-btn">
-        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-      </div>
-      <div class="video-placeholder-text">About Us ვიდეო მალე</div>
-      <div class="video-placeholder-sub">COMING SOON</div>
-    </div>
-    <!-- TODO: ვიდეოს ჩამატების შემდეგ .video-placeholder წაშალე და ჩასვი: -->
-    <!-- <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe> -->
+    <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
   </div>
 </div>
+-->
 
 <div class="divider"></div>
 
@@ -965,7 +958,7 @@ footer {
     <div class="testimonial-text">
       10xSEO ჩემ თვალწინ დაიბადა. ჩემი ცხოვრების ერთ-ერთი <em>ყველაზე მნიშვნელოვანი</em> ნაწილია, რადგან საშუალება მომეცა ამხელა რამ შემექმნა. ყოველთვის იქნება ერთ-ერთი ჩემი <em>უდიდესი გამოცდილება</em>.
     </div>
-    <div class="testimonial-author">— 10xელი, გუნდის წევრი</div>
+    <div class="testimonial-author">— მარიამ ლაბაძე, SEO სპეციალისტი</div>
   </div>
 </div>
 
