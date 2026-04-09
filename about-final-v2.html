@@ -69,7 +69,7 @@ tailwind.config = {
   --cream: #F5F0E8;
   --text: #e2e8f0;
   --text-dim: #94a3b8;
-  --text-muted: #64748b;
+  --text-muted: #7c8ba0;
   --border: rgba(245,166,35,0.08);
 }
 
@@ -501,6 +501,18 @@ footer {
 .reveal.visible { opacity: 1; transform: translateY(0); }
 /* Hero always visible — no empty screen on first load */
 .hero .reveal, .hero.reveal { opacity: 1; transform: none; }
+
+/* Focus indicators for keyboard navigation — WCAG 2.4.7 */
+:focus-visible { outline: 2px solid var(--violet); outline-offset: 2px; border-radius: 4px; }
+a:focus-visible { outline-offset: 3px; }
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { transition: none; opacity: 1; transform: none; }
+  .blob { animation: none; }
+  .video-play-btn { animation: none; }
+}
 .reveal-d1 { transition-delay: 0.1s; }
 .reveal-d2 { transition-delay: 0.2s; }
 .reveal-d3 { transition-delay: 0.3s; }
@@ -648,6 +660,9 @@ footer {
   .tier { width: 100% !important; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
   .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+  /* Vision/Mission 3-col -> 1-col on mobile */
+  [style*="grid-template-columns: repeat(3"] { grid-template-columns: 1fr !important; }
+  .why-list { padding: 0 0.5rem; }
 }
 </style>
 </head>
@@ -717,6 +732,7 @@ footer {
   </div>
 </header>
 
+<main id="main-content">
 <!-- HERO -->
 <section class="hero">
   <div class="hero-badge reveal">
@@ -749,7 +765,7 @@ footer {
 <div class="container page-section">
   <div class="section-header reveal">
     <div class="section-label">ჩვენი მიმართულება</div>
-    <div class="section-title">ხედვა, მისია, ფილოსოფია</div>
+    <h2 class="section-title">ხედვა, მისია, ფილოსოფია</h2>
   </div>
   <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:20px;" class="reveal">
     <div class="value-card">
@@ -784,7 +800,7 @@ footer {
 <div class="container page-section">
   <div class="section-header reveal">
     <div class="section-label">რა გამოგვარჩევს</div>
-    <div class="section-title">რატომ 10xSEO</div>
+    <h2 class="section-title">რატომ 10xSEO</h2>
     <p class="section-desc">5 მიზეზი, რომ სწორი არჩევანი გააკეთო</p>
   </div>
   <ul class="why-list">
@@ -837,7 +853,7 @@ footer {
 <div class="container page-section" id="values">
   <div class="section-header reveal">
     <div class="section-label">რა გვამოძრავებს</div>
-    <div class="section-title">ჩვენი ღირებულებები</div>
+    <h2 class="section-title">ჩვენი ღირებულებები</h2>
     <p class="section-desc">ყველაფერი, რასაც ვაკეთებთ, ამ პრინციპებზეა აგებული</p>
   </div>
 
@@ -892,7 +908,7 @@ footer {
 <div class="container page-section" id="team">
   <div class="section-header reveal">
     <div class="section-label">გაიცანი გუნდი</div>
-    <div class="section-title">ადამიანები 10xSEO-ს უკან</div>
+    <h2 class="section-title">ადამიანები 10xSEO-ს უკან</h2>
     <p class="section-desc">ყოველი 10xელი უნიკალურ ენერგიას შემოაქვს გუნდში</p>
   </div>
 
@@ -968,7 +984,7 @@ footer {
 <div class="container page-section" id="mission">
   <div class="section-header reveal">
     <div class="section-label">ჩვენი მისია</div>
-    <div class="section-title">იყავი პირველი — ყოველთვის</div>
+    <h2 class="section-title">იყავი პირველი — ყოველთვის</h2>
     <p class="section-desc">სლოგანი კი არა, ცხოვრების წესი</p>
   </div>
 
@@ -1007,7 +1023,7 @@ footer {
 <div class="container page-section">
   <div class="section-header reveal">
     <div class="section-label">სტრატეგიული ხედვა</div>
-    <div class="section-title">სამი ეტაპი მომავლისკენ</div>
+    <h2 class="section-title">სამი ეტაპი მომავლისკენ</h2>
   </div>
 
   <div class="vision-cards">
@@ -1060,6 +1076,7 @@ footer {
   </a>
   <div class="cta-phone reveal">ტელეფონი: <a href="tel:+995510101517">510 10 15 17</a></div>
 </div>
+</main>
 
   <footer class="site-footer">
     <div class="footer-grid">
@@ -1127,15 +1144,27 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// Navbar shrink on scroll
-window.addEventListener('scroll', () => {
-  const nav = document.querySelector('nav');
-  if (window.scrollY > 80) {
-    nav.style.padding = '0.7rem 3rem';
-  } else {
-    nav.style.padding = '1.2rem 3rem';
-  }
-});
+// Mobile menu toggle
+const mobileBtn = document.getElementById('mobile-menu-btn');
+if (mobileBtn) {
+  const nav = document.querySelector('header nav');
+  mobileBtn.addEventListener('click', () => {
+    const expanded = mobileBtn.getAttribute('aria-expanded') === 'true';
+    mobileBtn.setAttribute('aria-expanded', !expanded);
+    if (nav) {
+      nav.classList.toggle('!flex');
+      nav.classList.toggle('!flex-col');
+      nav.classList.toggle('!absolute');
+      nav.classList.toggle('!top-full');
+      nav.classList.toggle('!left-0');
+      nav.classList.toggle('!right-0');
+      nav.classList.toggle('!bg-surface-dark');
+      nav.classList.toggle('!p-4');
+      nav.classList.toggle('!border-b');
+      nav.classList.toggle('!border-gray-800');
+    }
+  });
+}
 </script>
 </body>
 </html>
