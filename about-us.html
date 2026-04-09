@@ -107,49 +107,7 @@ body::before {
   66% { transform: translate(-30px,50px) scale(0.94); }
 }
 
-/* Nav */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  height: 72px;
-  background: rgba(2,7,16,0.80); backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  display: flex; align-items: center;
-  transition: all 0.3s ease;
-}
-.nav-inner {
-  max-width: 1280px; margin: 0 auto; width: 100%;
-  padding: 0 1.5rem;
-  display: flex; justify-content: space-between; align-items: center;
-}
-.nav-logo { display: flex; align-items: center; }
-.nav-logo img { height: 56px; width: auto; mix-blend-mode: screen; }
-.nav-links { display: flex; gap: 0.25rem; list-style: none; align-items: center; }
-.nav-links a {
-  color: #f8fafc; text-decoration: none; font-size: 0.875rem; font-weight: 500;
-  padding: 0.5rem 0.75rem; border-radius: 0.5rem;
-  transition: all 0.2s;
-}
-.nav-links a:hover { color: var(--violet-soft); background: rgba(255,255,255,0.04); }
-.nav-links a.active { color: var(--violet-soft); }
-.nav-right { display: flex; align-items: center; gap: 0.5rem; }
-.nav-cta {
-  padding: 0.625rem 1.25rem; border-radius: 0.75rem; font-size: 0.875rem; font-weight: 600;
-  background: linear-gradient(135deg, var(--violet), var(--blue));
-  color: #fff; text-decoration: none; transition: all 0.2s; border: none; cursor: pointer;
-  font-family: 'FiraGO', sans-serif;
-}
-.nav-cta:hover { box-shadow: 0 8px 24px rgba(139,92,246,0.25); transform: translateY(-1px); }
-/* Hamburger for mobile */
-.nav-hamburger {
-  display: none; width: 44px; height: 44px; border-radius: 0.5rem; border: none;
-  background: transparent; cursor: pointer; flex-direction: column; align-items: center;
-  justify-content: center; gap: 6px;
-}
-.nav-hamburger span { display: block; width: 20px; height: 2px; background: #f8fafc; border-radius: 2px; }
-@media (max-width: 768px) {
-  .nav-links { display: none; }
-  .nav-hamburger { display: flex; }
-}
+/* Nav — handled by Tailwind in header */
 
 .content { position: relative; z-index: 1; }
 .container { max-width: 1100px; margin: 0 auto; padding: 0 3rem; }
@@ -663,7 +621,7 @@ footer {
 <header id="main-header" class="fixed top-0 left-0 right-0 z-50 h-16 lg:h-[72px] bg-surface-dark/80 backdrop-blur-xl border-b border-gray-800 transition-all duration-300">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 h-full flex items-center justify-between">
     <a href="/" class="flex items-center shrink-0">
-      <img src="images/logo-glow.png" alt="10XSEO" class="h-14 lg:h-16 w-auto mix-blend-screen">
+      <img src="images/logo.png" alt="10XSEO" class="h-14 lg:h-16 w-auto">
     </a>
     <nav class="hidden lg:flex items-center gap-1" aria-label="მთავარი ნავიგაცია">
       <a href="about-us.html" class="px-3 py-2 text-sm font-medium text-primary-light hover:text-primary rounded-lg hover:bg-gray-800/50 transition-colors">ჩვენს შესახებ</a>
@@ -744,17 +702,82 @@ footer {
 
 <div class="divider"></div>
 
-<!-- OPENING STORY — culture-focused -->
+<!-- OPENING — ვინ ვართ (ბრენდბუქი) -->
 <div class="opening reveal" id="story">
-  <p class="opening-text">ჩვენი ისტორია 2024 წელს დაიწყო — არა მხოლოდ სააგენტოს, არამედ კულტურის შექმნით. ჩვენ თავიდანვე ვიცოდით, რომ კარგი შედეგები კარგი ადამიანებისგან მოდის. ამიტომ აგება დავიწყეთ არა პროცესებით, არამედ ღირებულებებით. 10xSEO არ არის უბრალოდ SEO სააგენტო — ეს არის გარემო, სადაც ყველა ადამიანი თავისი შესაძლებლობების მაქსიმუმს გამოავლენს. ჩვენ გვჯერა, რომ გუნდის ძალა ინდივიდების ჯამზე მეტია.</p>
+  <p class="opening-text">ბაზარზე 2024 წლის 30 იანვარს გამოვჩნდით. რეკორდულად მოკლე დროში გავხდით პირველები, შევცვალეთ თამაშის წესები და დავამტკიცეთ, რომ ციფრულ სამყაროში სისწრაფე და ინოვაცია გადამწყვეტია. 10xSEO-ში არ ვყიდით მოლოდინებს — ჩვენ ვმართავთ შედეგს. არასდროს გავცემთ ისეთ დაპირებებს, რომლებსაც რიცხვებით ვერ გავამყარებთ.</p>
 </div>
 
 <div class="divider"></div>
 
-<!-- FOUNDER QUOTE — about values -->
+<!-- ხედვა / მისია / ფილოსოფია -->
+<div class="container page-section">
+  <div class="section-header reveal">
+    <div class="section-label">ჩვენი მიმართულება</div>
+    <div class="section-title">ხედვა, მისია, ფილოსოფია</div>
+  </div>
+  <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:20px;" class="reveal">
+    <div class="value-card">
+      <div class="value-emoji">&#128301;</div>
+      <h3>ხედვა</h3>
+      <p>ჩვენ გვჯერა, რომ მალე პასუხების ძიებას ადამიანები სრულად ხელოვნურ ინტელექტს მიანდობენ. 10xSEO არის სააგენტო, რომელიც ბიზნესებს ამ გარდაუვალი მომავლისთვის დღეს ამზადებს.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-emoji">&#127919;</div>
+      <h3>მისია</h3>
+      <p>ბიზნესები იქ იყვნენ, სადაც მომხმარებელი პასუხს ეძებს: Google-იდან დაწყებული, ChatGPT-ის, Gemini-ისა და Perplexity-ის ჩათვლით. ბრენდი გახდეს პირველი და უალტერნატივო წყარო.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-emoji">&#9878;&#65039;</div>
+      <h3>ფილოსოფია</h3>
+      <p>ვიყოთ იქ, სადაც გადაწყვეტილებები მიიღება და წარმატება კონკრეტული გაზომვადი შედეგით დავამტკიცოთ. ჩვენი პრინციპი: We walk the talk.</p>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- FOUNDER QUOTE — ბრენდბუქის ტონი -->
 <div class="pull-quote reveal">
-  <p class="pull-quote-text">სააგენტო არ არის ოფისი ან ლოგო — ეს არის <em>ადამიანები, რომლებიც ერთმანეთს ენდობიან</em>. ჩვენ ვაშენებთ გარემოს, სადაც ყველა ადამიანი <em>თავისი შესაძლებლობების მაქსიმუმს გამოავლენს</em>.</p>
+  <p class="pull-quote-text">10xSEO-ში არ ვყიდით მოლოდინებს, <em>ჩვენ ვმართავთ შედეგს</em>. ჩვენი დაპირება ეფუძნება <em>რეალურ პროგნოზებს</em> და არა ილუზიებს.</p>
   <div class="pull-quote-author">დავით წილოსანი — დამფუძნებელი</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- რატომ 10xSEO — ბრენდბუქი -->
+<div class="container page-section">
+  <div class="section-header reveal">
+    <div class="section-label">რა გამოგვარჩევს</div>
+    <div class="section-title">რატომ 10xSEO</div>
+    <p class="section-desc">5 მიზეზი, რომ სწორი არჩევანი გააკეთო</p>
+  </div>
+  <div class="values-grid">
+    <div class="value-card featured reveal">
+      <div class="value-emoji">&#129302;</div>
+      <h3>AI-First მიდგომა</h3>
+      <p>სტანდარტული SEO-ს მიღმა, ვიყენებთ AEO და GEO ინსტრუმენტებს. ბრენდი მთავარი რეკომენდაცია ხდება იქ, სადაც მომავლის მომხმარებელი პასუხს ეძებს — ChatGPT, Gemini, Perplexity.</p>
+    </div>
+    <div class="value-card reveal">
+      <div class="value-emoji">&#128200;</div>
+      <h3>სრული გამჭვირვალობა</h3>
+      <p>Live Dashboard და Loom ვიდეო რეპორტები, 40-გვერდიანი PDF-ების ნაცვლად. ხედავ ყველაფერს რეალურ დროში.</p>
+    </div>
+    <div class="value-card reveal reveal-d1">
+      <div class="value-emoji">&#128176;</div>
+      <h3>შედეგზე ორიენტირებული ROI</h3>
+      <p>ტრაფიკის გარდა, ჩვენი მთავარი საზომი რეალური გაყიდვები, შეკვეთები და ზარებია. არა ვანილას მეტრიკები.</p>
+    </div>
+    <div class="value-card reveal reveal-d2">
+      <div class="value-emoji">&#128736;&#65039;</div>
+      <h3>ინფრასტრუქტურა</h3>
+      <p>12+ წლიანი გამოცდილება და საკუთარი SEO LAB — სადაც ახალ ტექნიკებს ვტესტავთ შენს საიტზე გამოყენებამდე.</p>
+    </div>
+    <div class="value-card reveal reveal-d3">
+      <div class="value-emoji">&#127942;</div>
+      <h3>დამტკიცებული ექსპერტიზა</h3>
+      <p>10xSEO-ს სტაბილური #1 პოზიცია Google-ის ორგანულ ძიებაში ყველაზე კონკურენტულ საძიებო სიტყვაზე — „SEO სააგენტო".</p>
+    </div>
+  </div>
 </div>
 
 <div class="divider"></div>
@@ -771,33 +794,42 @@ footer {
     <div class="value-card featured reveal">
       <div class="value-emoji">&#127942;</div>
       <h3>იყავი პირველი</h3>
-      <p>ეს ჩვენი სლოგანი კი არა, ცხოვრების წესია. პირველი ნიშნავს საუკეთესოს — არა სხვების წინ, არამედ საკუთარი თავის გუშინდელ ვერსიასთან შედარებით. ყოველ დღე უკეთესი, ვიდრე გუშინ.</p>
-      <div class="value-tagline">ჩვენი მანტრა, ჩვენი იდენტობა</div>
+      <p>ჩვენი სლოგანი ჩვენი მუშაობის შედეგია: საკვანძო სიტყვაზე „SEO სააგენტო" პირველ პოზიციას სტაბილურად ვიკავებთ. კომპანიის მიზანია, კლიენტმაც იგივე შედეგი მიიღოს.</p>
     </div>
     <div class="value-card reveal">
-      <div class="value-emoji">&#129309;</div>
-      <h3>ნდობა და გამჭვირვალობა</h3>
-      <p>მიკრომენეჯმენტი ჩვენთან არ არსებობს. ყველა 10xელს ვენდობით და ვაძლევთ თავისუფლებას. სანაცვლოდ, ვითხოვთ პატიოსნებას — წარმატებებშიც და შეცდომებშიც.</p>
+      <div class="value-emoji">&#9889;</div>
+      <h3>ოპერატიულობა</h3>
+      <p>მაქსიმალური სისწრაფე როგორც კომუნიკაციის პროცესში, ისე შედეგების დაფიქსირებისას. საშუალო რეაგირების დრო — 10 წუთი.</p>
     </div>
     <div class="value-card reveal reveal-d1">
       <div class="value-emoji">&#128218;</div>
-      <h3>მუდმივი სწავლა</h3>
-      <p>SEO ყოველდღე იცვლება და ჩვენც მასთან ერთად. ყველა 10xელი მასწავლებელიცაა და მოსწავლეც. ცოდნის დამალვა ჩვენთან მიუღებელია — გაზიარება ჩვეულებაა.</p>
+      <h3>ექსპერტიზა</h3>
+      <p>ინდუსტრიის უმაღლესი სტანდარტები და 15+ წლიანი გამოცდილება. ჩვენ არ ვიმეორებთ შაბლონებს — ვქმნით ახალ სტანდარტებს.</p>
     </div>
     <div class="value-card reveal reveal-d1">
-      <div class="value-emoji">&#127793;</div>
-      <h3>ზრდის მენტალიტეტი</h3>
-      <p>შეცდომა არ არის წარუმატებლობა — ეს სწავლის საშუალებაა. ჩვენ ვაღიარებთ, რომ არ ვიცით ყველაფერი, და სწორედ ეს გვაძლევს ძალას გავიზარდოთ.</p>
+      <div class="value-emoji">&#9989;</div>
+      <h3>პასუხისმგებლობა</h3>
+      <p>ვაკეთებთ იმას, რასაც ვამბობთ და ამას რიცხვებით ვამტკიცებთ. We walk the talk.</p>
     </div>
     <div class="value-card reveal reveal-d2">
-      <div class="value-emoji">&#9889;</div>
-      <h3>ხარისხი, არა რაოდენობა</h3>
-      <p>ჩვენ არ ვცდილობთ რაც შეიძლება ბევრი კლიენტი ავიყვანოთ. გვჯერა, რომ ყოველი კლიენტი იმსახურებს სრულ ყურადღებას, და ეს მხოლოდ ხარისხზე ფოკუსით მიიღწევა.</p>
+      <div class="value-emoji">&#129309;</div>
+      <h3>პარტნიორობა</h3>
+      <p>გრძელვადიანი თანამშრომლობის კულტურა და ბიზნესის წარმატების საერთო პასუხისმგებლობა.</p>
     </div>
     <div class="value-card reveal reveal-d2">
       <div class="value-emoji">&#128156;</div>
-      <h3>პატივისცემა</h3>
-      <p>ერთმანეთის, კლიენტების, კონკურენტებისა და დროის. პუნქტუალობა, მოსმენა და გულწრფელი უკუკავშირი — ეს პატივისცემის ენაა ჩვენთვის.</p>
+      <h3>გულწრფელობა</h3>
+      <p>გულწრფელი კომუნიკაცია, ღია დიალოგი და ეთიკური მიდგომა ყველანაირი საკითხისადმი. ჩვენთვის ნდობა უფრო მნიშვნელოვანია, ვიდრე შელამაზებული რეპორტები.</p>
+    </div>
+    <div class="value-card reveal reveal-d3">
+      <div class="value-emoji">&#128101;</div>
+      <h3>გუნდურობა</h3>
+      <p>ერთი გუნდი, ერთი მიზანი. გამჭვირვალობა — პროცესების სრული ხელმისაწვდომობა და მუშაობის ყოველი ეტაპის უწყვეტი მონიტორინგი.</p>
+    </div>
+    <div class="value-card reveal reveal-d3">
+      <div class="value-emoji">&#128161;</div>
+      <h3>ინოვაციურობა</h3>
+      <p>მუდმივი განვითარება და უახლესი ტექნოლოგიების ინტეგრირება სამუშაო პროცესში. AI-first მიდგომა ყველაფრისთვის.</p>
     </div>
   </div>
 </div>
@@ -1005,9 +1037,9 @@ footer {
 
   <div class="mission-grid">
     <div class="mission-left reveal">
-      <h2>ჩვენი მიზანი — გავხდეთ რეგიონის <span class="accent-gold">საუკეთესო</span></h2>
-      <p>10xSEO არის საქართველოში პირველი და საუკეთესო SEO სააგენტო. ჩვენი მიზანია მომდევნო 2 წელიწადში იგივე შევძლოთ დუბაიშიც — რადგან ამბიცია ჩვენი იდენტობის განუყოფელი ნაწილია.</p>
-      <p>ჩვენ პირველები ვიყავით საქართველოში, ვინც AI-ზე დაფუძნებული SEO მეთოდოლოგია დანერგა. პირველები ვიყავით AEO ოპტიმიზაციაში. და პირველები ვიქნებით ყოველ ახალ ტექნოლოგიურ გარღვევაში.</p>
+      <h2>ჩვენი მისიაა, ბიზნესები იქ იყვნენ, სადაც მომხმარებელი <span class="accent-gold">პასუხს ეძებს</span></h2>
+      <p>ტრადიციული Google-იდან დაწყებული, ChatGPT-ის, Gemini-ისა და Perplexity-ის ჩათვლით. მუდმივად ვზრუნავთ იმაზე, რომ ბრენდი მომავლის ნებისმიერი AI პლატფორმისთვის პირველი და უალტერნატივო წყარო გახდეს.</p>
+      <p>10xSEO სრულად მართავს ოპტიმიზაციის ციკლს — ტექნიკური გამართვიდან ავტორიტეტული კონტენტის შექმნამდე. Done-For-You SEO, სადაც პროცესები სტრუქტურირებულია და ყოველი ეტაპი ხელმისაწვდომია.</p>
     </div>
     <div class="mission-right reveal reveal-d2">
       <div class="pyramid-tiers">
@@ -1103,10 +1135,10 @@ footer {
 
 <!-- CTA -->
 <div class="cta-section" id="contact">
-  <h2 class="reveal">გინდა გახდე <span style="color:var(--gold)">10xელი</span>?</h2>
-  <div class="cta-hand reveal">ან უბრალოდ ვისაუბროთ — ყავაზე, ვირტუალურად</div>
+  <h2 class="reveal">დაიკავე <span style="color:var(--gold)">პირველი ადგილი</span> შენს ინდუსტრიაში</h2>
+  <div class="cta-hand reveal">დავგეგმოთ შეხვედრა — მოგვიყევი შენს მიზნებზე და დაგანახებთ ზრდის კონკრეტულ გზებს</div>
   <a href="https://calendly.com/10xseo-sales" class="cta-btn reveal">
-    მოდი, ვისაუბროთ
+    ჩაინიშნე სტრატეგიული ზარი
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </a>
   <div class="cta-phone reveal">ტელეფონი: <a href="tel:+995510101517">510 10 15 17</a></div>
