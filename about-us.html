@@ -1,919 +1,1192 @@
 <!DOCTYPE html>
-<html lang="ka" class="scroll-smooth">
+<html lang="ka" class="dark scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ჩვენ შესახებ — 10XSEO გუნდი | 10XSEO</title>
-  <meta name="robots" content="noindex, nofollow">
-  <meta name="description" content="გაიცანით 10XSEO — საქართველოს წამყვანი SEO სააგენტო. 14+ წლის გამოცდილება, 200+ კმაყოფილი კლიენტი, პროფესიონალი გუნდი.">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/firago@1.0.0/FiraGO.css" rel="stylesheet">
-  <!-- Lite YouTube Embed -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.3/src/lite-yt-embed.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.3/src/lite-yt-embed.min.js" defer></script>
-  <!-- Schema: Organization -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "10XSEO",
-    "url": "https://10xseo.ge",
-    "logo": "https://10xseo.ge/images/logo.png",
-    "description": "საქართველოს წამყვანი SEO სააგენტო — 14+ წლის გამოცდილება, 200+ კმაყოფილი კლიენტი.",
-    "foundingDate": "2011",
-    "email": "sales@10xseo.ge",
-    "telephone": "+995510101517",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "ბახტრიონის ქუჩა 8",
-      "addressLocality": "Tbilisi",
-      "postalCode": "0194",
-      "addressCountry": "GE"
-    },
-    "sameAs": [
-      "https://www.facebook.com/10xseo",
-      "https://www.linkedin.com/company/10xseo",
-      "https://www.youtube.com/@10xseo"
-    ],
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5.0",
-      "reviewCount": "10",
-      "bestRating": "5"
+<meta charset="UTF-8">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ჩვენს შესახებ — 10xSEO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/firago@1.0.0/FiraGO.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        primary: { DEFAULT: '#8B5CF6', light: '#A78BFA', dark: '#7C3AED' },
+        accent: { DEFAULT: '#14B8A6', dark: '#0D9488' },
+        'ai-blue': '#3B82F6',
+        surface: { DEFAULT: '#ffffff', alt: '#f8fafc', dark: '#020710', 'dark-alt': '#0F0F0F' },
+        heading: { DEFAULT: '#0f172a', dark: '#f8fafc' },
+        body: { DEFAULT: '#475569', dark: '#94a3b8' },
+      },
+      fontFamily: {
+        'heading': ['"Dachi the Lynx"', 'sans-serif'],
+        'body': ['FiraGO', 'sans-serif'],
+        'inter': ['Inter', 'sans-serif'],
+      },
     }
   }
-  </script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            primary: { DEFAULT: '#8B5CF6', light: '#A78BFA', dark: '#7C3AED' },
-            accent: { DEFAULT: '#14B8A6', dark: '#0D9488' },
-            'ai-blue': '#3B82F6',
-            surface: { DEFAULT: '#ffffff', alt: '#f8fafc', dark: '#020710', 'dark-alt': '#0F0F0F' },
-            heading: { DEFAULT: '#0f172a', dark: '#f8fafc' },
-            body: { DEFAULT: '#475569', dark: '#94a3b8' },
-            success: '#21C743',
-          },
-          fontFamily: {
-            'heading': ['"Dachi the Lynx"', 'sans-serif'],
-            'body': ['FiraGO', 'sans-serif'],
-            'inter': ['Inter', 'sans-serif'],
-          },
-        }
-      }
-    }
-  </script>
-  <style>
-    @font-face {
-      font-family: 'Dachi the Lynx';
-      src: url('fonts/DachiTheLynx.otf') format('opentype');
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-    }
+}
+</script>
+<style>
+@keyframes aiGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.ai-cta-animate {
+  background: linear-gradient(-45deg, #8B5CF6, #3B82F6, #14B8A6, #8B5CF6) !important;
+  background-size: 300% 300% !important;
+  animation: aiGradient 4s ease infinite;
+  box-shadow: 0 4px 25px rgba(139, 92, 246, 0.35);
+}
+</style>
+<style>
+@font-face {
+  font-family: 'Dachi the Lynx';
+  src: url('fonts/DachiTheLynx.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-    body { font-family: 'FiraGO', 'Inter', sans-serif; }
-    h1, h2, h3 { font-family: 'Dachi the Lynx', sans-serif; }
+:root {
+  --violet: #8B5CF6;
+  --violet-soft: #a78bfa;
+  --blue: #3B82F6;
+  --teal: #14B8A6;
+  --gold: #F5A623;
+  --dark: #020710;
+  --surface: #0a0e1a;
+  --surface2: #111827;
+  --cream: #F5F0E8;
+  --text: #e2e8f0;
+  --text-dim: #94a3b8;
+  --text-muted: #64748b;
+  --border: rgba(245,166,35,0.08);
+}
 
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .animate-fade-in-up { opacity: 0; animation: fadeInUp 0.5s ease-out forwards; }
-    .delay-100 { animation-delay: 0.1s; }
-    .delay-200 { animation-delay: 0.2s; }
-    .delay-300 { animation-delay: 0.3s; }
+html { scroll-behavior: smooth; }
 
-    .gradient-text {
-      background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .dark .gradient-text {
-      background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
+body {
+  font-family: 'FiraGO', sans-serif;
+  background: var(--dark);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+  font-weight: 400;
+}
 
-    /* AI SEO animated gradient for CTA */
-    @keyframes aiGradient {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    .ai-cta-animate {
-      background: linear-gradient(-45deg, #8B5CF6, #3B82F6, #14B8A6, #8B5CF6) !important;
-      background-size: 300% 300% !important;
-      animation: aiGradient 4s ease infinite;
-      box-shadow: 0 4px 25px rgba(139, 92, 246, 0.35);
-    }
+.serif { font-family: 'Dachi the Lynx', sans-serif; }
 
-    .gradient-border {
-      position: relative;
-      background: white;
-      border-radius: 16px;
-      overflow: hidden;
-    }
-    .gradient-border::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      padding: 1.5px;
-      border-radius: 16px;
-      background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6);
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-    }
-    .dark .gradient-border { background: #0F0F0F; }
+/* Subtle noise */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  opacity: 0.012;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 0;
+}
 
-    .header-scrolled {
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
+/* Floating gradient blobs */
+.blob-bg { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+.blob { position: absolute; border-radius: 50%; filter: blur(140px); opacity: 0.08; animation: blobFloat 25s ease-in-out infinite; }
+.blob-1 { width: 600px; height: 600px; background: var(--violet); top: -15%; left: -10%; }
+.blob-2 { width: 500px; height: 500px; background: var(--blue); top: 35%; right: -10%; animation-delay: -8s; }
+.blob-3 { width: 400px; height: 400px; background: var(--gold); bottom: -5%; left: 30%; animation-delay: -16s; opacity: 0.05; }
+@keyframes blobFloat {
+  0%,100% { transform: translate(0,0) scale(1); }
+  33% { transform: translate(60px,-40px) scale(1.08); }
+  66% { transform: translate(-30px,50px) scale(0.94); }
+}
 
-    .accent-glow {
-      box-shadow: 0 0 40px rgba(139, 92, 246, 0.15);
-    }
-    .dark .accent-glow {
-      box-shadow: 0 0 60px rgba(139, 92, 246, 0.2);
-    }
+/* Nav */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: 72px;
+  background: rgba(2,7,16,0.80); backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex; align-items: center;
+  transition: all 0.3s ease;
+}
+.nav-inner {
+  max-width: 1280px; margin: 0 auto; width: 100%;
+  padding: 0 1.5rem;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.nav-logo { display: flex; align-items: center; }
+.nav-logo img { height: 56px; width: auto; mix-blend-mode: screen; }
+.nav-links { display: flex; gap: 0.25rem; list-style: none; align-items: center; }
+.nav-links a {
+  color: #f8fafc; text-decoration: none; font-size: 0.875rem; font-weight: 500;
+  padding: 0.5rem 0.75rem; border-radius: 0.5rem;
+  transition: all 0.2s;
+}
+.nav-links a:hover { color: var(--violet-soft); background: rgba(255,255,255,0.04); }
+.nav-links a.active { color: var(--violet-soft); }
+.nav-right { display: flex; align-items: center; gap: 0.5rem; }
+.nav-cta {
+  padding: 0.625rem 1.25rem; border-radius: 0.75rem; font-size: 0.875rem; font-weight: 600;
+  background: linear-gradient(135deg, var(--violet), var(--blue));
+  color: #fff; text-decoration: none; transition: all 0.2s; border: none; cursor: pointer;
+  font-family: 'FiraGO', sans-serif;
+}
+.nav-cta:hover { box-shadow: 0 8px 24px rgba(139,92,246,0.25); transform: translateY(-1px); }
+/* Hamburger for mobile */
+.nav-hamburger {
+  display: none; width: 44px; height: 44px; border-radius: 0.5rem; border: none;
+  background: transparent; cursor: pointer; flex-direction: column; align-items: center;
+  justify-content: center; gap: 6px;
+}
+.nav-hamburger span { display: block; width: 20px; height: 2px; background: #f8fafc; border-radius: 2px; }
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+}
 
-    .safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
+.content { position: relative; z-index: 1; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 3rem; }
 
-    /* Timeline */
-    .timeline-line {
-      background: linear-gradient(180deg, #8B5CF6, #14B8A6);
-    }
-    .timeline-dot {
-      background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6);
-      box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
-    }
+/* === HERO === */
+.hero {
+  min-height: 100vh; display: flex; flex-direction: column;
+  justify-content: center; align-items: center; text-align: center;
+  padding: 8rem 2rem 5rem; position: relative;
+}
+.hero::after {
+  content: ''; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%,-50%); width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(139,92,246,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
 
-    /* Lite YouTube Embed — brand styling */
-    lite-youtube { border-radius: 16px; overflow: hidden; background-color: #0d1117; max-width: 100%; }
-    lite-youtube::before { display: none; }
-    lite-youtube > .lty-playbtn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 68px; height: 48px; background-color: rgba(139,92,246,0.9); border-radius: 14px; transition: all 0.3s; border: none; filter: none; }
-    lite-youtube:hover > .lty-playbtn { background-color: rgba(139,92,246,1); box-shadow: 0 0 30px rgba(139,92,246,0.5); transform: translate(-50%,-50%) scale(1.08); }
-    lite-youtube > .lty-playbtn::before { border-color: transparent transparent transparent #fff; }
-    lite-youtube > .lty-playbtn::after { display: none; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 22px; border-radius: 100px;
+  background: rgba(139,92,246,0.08); border: 1px solid rgba(139,92,246,0.15);
+  font-size: 0.8rem; color: var(--violet-soft); margin-bottom: 2.5rem;
+}
+.hero-badge .heart { color: #ef4444; font-size: 1rem; }
 
-    /* Team card hover */
-    .team-card { transition: all 0.2s ease; }
-    .team-card:hover { transform: translateY(-4px); }
-    @media (hover: none) { .team-card:hover { transform: none; } }
-  
-    /* Mobile Menu */
-    #mobile-menu {
-      transform: translateX(100%);
-      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
-      opacity: 0;
-    }
-    #mobile-menu.menu-open {
-      transform: translateX(0);
-      opacity: 1;
-    }
-    #mobile-menu .menu-link {
-      opacity: 0;
-      transform: translateX(30px);
-      transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-    #mobile-menu.menu-open .menu-link {
-      opacity: 1;
-      transform: translateX(0);
-    }
-    .hamburger-line {
-      transition: transform 0.3s ease, opacity 0.2s ease;
-    }
-    .menu-active .hamburger-line:nth-child(1) {
-      transform: translateY(8px) rotate(45deg);
-    }
-    .menu-active .hamburger-line:nth-child(2) {
-      opacity: 0;
-    }
-    .menu-active .hamburger-line:nth-child(3) {
-      transform: translateY(-8px) rotate(-45deg);
-    }
-  </style>
-  <!-- Schema: BreadcrumbList -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {"@type": "ListItem", "position": 1, "name": "მთავარი", "item": "https://10xseo.ge/"},
-      {"@type": "ListItem", "position": 2, "name": "ჩვენ შესახებ", "item": "https://10xseo.ge/about-us.html"}
-    ]
-  }
-  </script>
+.hero h1 {
+  font-family: 'Dachi the Lynx', sans-serif;
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 300; line-height: 1.15; margin-bottom: 1.5rem;
+  color: var(--cream);
+}
+.hero h1 .accent {
+  font-family: 'Caveat', cursive;
+  font-size: 1.2em; color: var(--gold); font-weight: 700;
+  display: inline-block; transform: rotate(-1.5deg);
+  position: relative;
+}
+.hero h1 .accent::after {
+  content: ''; position: absolute; bottom: 6px; left: 0; right: 0;
+  height: 3px; background: var(--gold); opacity: 0.25; border-radius: 2px;
+}
+
+.hero-subtitle {
+  font-family: 'Dachi the Lynx', sans-serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-weight: 300; font-style: italic;
+  color: var(--text-dim); max-width: 550px; margin: 0 auto;
+}
+
+.hero-line {
+  width: 1px; height: 70px; margin: 3rem auto 0;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+}
+
+/* Divider */
+.divider {
+  width: 100%; height: 1px; max-width: 1100px; margin: 0 auto;
+  background: linear-gradient(to right, transparent, rgba(245,166,35,0.15), transparent);
+}
+
+/* === DROP CAP OPENING === */
+.opening {
+  max-width: 780px; margin: 0 auto; padding: 5rem 3rem;
+}
+.opening-text {
+  font-size: 1.1rem; line-height: 2; color: var(--text-dim);
+}
+.opening-text::first-letter {
+  font-family: 'Dachi the Lynx', sans-serif;
+  font-size: 4.5rem; float: left; line-height: 0.8;
+  padding-right: 0.7rem; padding-top: 0.4rem;
+  color: var(--gold); font-weight: 600;
+}
+
+/* === PULL QUOTE === */
+.pull-quote {
+  padding: 5rem 3rem; text-align: center; position: relative;
+  max-width: 850px; margin: 0 auto;
+}
+.pull-quote::before {
+  content: '\201C'; font-family: 'Dachi the Lynx', sans-serif;
+  font-size: 10rem; color: rgba(245,166,35,0.1);
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%); line-height: 1;
+}
+.pull-quote-text {
+  font-family: 'Dachi the Lynx', sans-serif;
+  font-size: clamp(1.3rem, 2.5vw, 2rem);
+  font-weight: 300; font-style: italic; color: var(--cream);
+  position: relative; z-index: 1; line-height: 1.8;
+}
+.pull-quote-text em { color: var(--gold); font-style: normal; font-weight: 400; }
+.pull-quote-author {
+  margin-top: 1.5rem; font-size: 0.78rem;
+  letter-spacing: 2px; text-transform: uppercase; color: var(--gold);
+}
+
+/* Section headers */
+.section-header {
+  text-align: center; padding-bottom: 3rem;
+}
+.section-label {
+  font-family: 'Caveat', cursive; font-size: 1.2rem; color: var(--gold); margin-bottom: 0.5rem;
+}
+.section-title {
+  font-family: 'Dachi the Lynx', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; color: var(--cream);
+}
+.section-desc {
+  margin-top: 0.8rem; color: var(--text-dim); max-width: 500px; margin-left: auto; margin-right: auto;
+  font-size: 0.95rem;
+}
+
+/* === VALUES — large feature cards === */
+.values-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+}
+.value-card {
+  background: var(--surface); border: 1px solid rgba(139,92,246,0.06);
+  border-radius: 24px; padding: 40px 32px; transition: all 0.4s ease;
+  position: relative; overflow: hidden;
+}
+.value-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--violet), var(--blue));
+  opacity: 0; transition: opacity 0.3s;
+}
+.value-card:hover::before { opacity: 1; }
+.value-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(139,92,246,0.12);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.3);
+}
+.value-card.featured {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, rgba(139,92,246,0.06), rgba(59,130,246,0.04), rgba(20,184,166,0.04));
+  border: 1px solid rgba(139,92,246,0.1);
+  text-align: center;
+  padding: 48px 40px;
+}
+.value-emoji { font-size: 2.2rem; margin-bottom: 16px; }
+.value-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 10px; color: var(--cream); }
+.value-card p { font-size: 0.9rem; color: var(--text-dim); line-height: 1.8; }
+.value-card .value-tagline {
+  font-family: 'Caveat', cursive; font-size: 1.1rem; color: var(--gold); margin-top: 12px;
+}
+
+/* === PRINCIPLES — numbered list === */
+.principles-list { max-width: 720px; margin: 0 auto; list-style: none; }
+.principle-item {
+  display: flex; gap: 1.5rem; padding: 1.4rem 0;
+  border-bottom: 1px solid var(--border);
+  transition: all 0.3s ease; align-items: flex-start;
+}
+.principle-item:hover { padding-left: 12px; }
+.principle-number {
+  font-family: 'Dachi the Lynx', sans-serif;
+  font-size: 1.6rem; font-weight: 300; color: var(--gold); min-width: 2.5rem;
+  line-height: 1.4;
+}
+.principle-content {}
+.principle-name { font-size: 1rem; color: var(--cream); font-weight: 600; margin-bottom: 4px; }
+.principle-desc { font-size: 0.85rem; color: var(--text-dim); line-height: 1.7; }
+
+/* === CULTURE CARDS === */
+.culture-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
+}
+.culture-card {
+  background: var(--surface); border: 1px solid rgba(139,92,246,0.06);
+  border-radius: 20px; padding: 32px; transition: border-color 0.3s;
+}
+.culture-card:hover { border-color: rgba(139,92,246,0.12); }
+.culture-emoji { font-size: 1.8rem; margin-bottom: 12px; }
+.culture-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
+.culture-card p { font-size: 0.88rem; color: var(--text-dim); line-height: 1.7; }
+
+/* === TEAM === */
+.team-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+.team-card {
+  background: var(--surface); border: 1px solid rgba(139,92,246,0.06);
+  border-radius: 20px; padding: 28px 20px; text-align: center;
+  transition: all 0.3s ease; position: relative; overflow: hidden;
+}
+.team-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(139,92,246,0.15);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+}
+.team-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--violet), var(--blue));
+  opacity: 0; transition: opacity 0.3s;
+}
+.team-card:hover::before { opacity: 1; }
+
+.team-avatar {
+  width: 64px; height: 64px; border-radius: 50%;
+  margin: 0 auto 12px; display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; font-weight: 700;
+}
+.team-avatar.founder { background: linear-gradient(135deg, var(--gold), #e09400); color: var(--dark); }
+.team-avatar.seo { background: linear-gradient(135deg, var(--violet), #6d28d9); color: white; }
+.team-avatar.content { background: linear-gradient(135deg, var(--blue), #2563eb); color: white; }
+.team-avatar.pm { background: linear-gradient(135deg, var(--teal), #0d9488); color: white; }
+.team-avatar.ops { background: linear-gradient(135deg, #64748b, #475569); color: white; }
+
+.team-name { font-weight: 600; font-size: 0.95rem; margin-bottom: 3px; }
+.team-role { font-size: 0.75rem; color: var(--text-dim); }
+.team-card .fun-fact {
+  font-family: 'Caveat', cursive; font-size: 0.9rem; color: var(--gold);
+  margin-top: 10px; opacity: 0; transform: translateY(6px); transition: all 0.3s;
+}
+.team-card:hover .fun-fact { opacity: 1; transform: translateY(0); }
+
+/* === TEAM VIDEO === */
+.team-video-section {
+  max-width: 960px; margin: 0 auto; padding: 5rem 2rem;
+  text-align: center;
+}
+.team-video-wrapper {
+  position: relative; border-radius: 24px; overflow: hidden;
+  aspect-ratio: 16/9; margin-top: 2.5rem;
+  background: var(--surface);
+  border: 1px solid rgba(139,92,246,0.12);
+  cursor: pointer; transition: all 0.5s ease;
+}
+.team-video-wrapper::before {
+  content: ''; position: absolute; inset: -2px; border-radius: 26px;
+  background: linear-gradient(135deg, var(--violet), var(--blue), var(--teal), var(--gold));
+  opacity: 0; transition: opacity 0.5s; z-index: -1;
+}
+.team-video-wrapper:hover::before { opacity: 1; }
+.team-video-wrapper:hover {
+  border-color: transparent;
+  box-shadow: 0 20px 60px rgba(139,92,246,0.25), 0 0 80px rgba(139,92,246,0.08);
+  transform: translateY(-4px);
+}
+.team-video-wrapper iframe,
+.team-video-wrapper video {
+  position: absolute; inset: 0; width: 100%; height: 100%; border: none;
+}
+.video-placeholder {
+  position: absolute; inset: 0; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 20px;
+  background:
+    radial-gradient(ellipse at 30% 40%, rgba(139,92,246,0.25) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 60%, rgba(59,130,246,0.20) 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 80%, rgba(245,166,35,0.10) 0%, transparent 50%),
+    linear-gradient(135deg, #0f1225, #101828);
+}
+.video-play-btn {
+  width: 88px; height: 88px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--violet), var(--blue));
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 32px rgba(139,92,246,0.4), 0 0 0 0 rgba(139,92,246,0.3);
+  transition: all 0.4s ease;
+  animation: playPulse 2.5s ease-in-out infinite;
+}
+@keyframes playPulse {
+  0%, 100% { box-shadow: 0 8px 32px rgba(139,92,246,0.4), 0 0 0 0 rgba(139,92,246,0.3); }
+  50% { box-shadow: 0 8px 32px rgba(139,92,246,0.4), 0 0 0 18px rgba(139,92,246,0); }
+}
+.team-video-wrapper:hover .video-play-btn {
+  transform: scale(1.12);
+  box-shadow: 0 12px 44px rgba(139,92,246,0.5);
+  animation: none;
+}
+.video-play-btn svg { width: 34px; height: 34px; fill: white; margin-left: 5px; }
+.video-placeholder-text {
+  font-family: 'Caveat', cursive; font-size: 1.3rem; color: var(--gold);
+}
+.video-placeholder-sub {
+  font-size: 0.82rem; color: var(--text-muted); letter-spacing: 1px;
+}
+
+/* === TESTIMONIAL === */
+.testimonial-section {
+  background: linear-gradient(135deg, rgba(139,92,246,0.04), rgba(245,166,35,0.03));
+  border-radius: 24px; padding: 5rem 3rem; text-align: center;
+  position: relative; border: 1px solid rgba(139,92,246,0.06);
+  max-width: 900px; margin: 0 auto;
+}
+.big-quote {
+  font-family: 'Dachi the Lynx', sans-serif; font-size: 8rem;
+  color: var(--violet); opacity: 0.08;
+  position: absolute; top: 10px; left: 40px; line-height: 1;
+}
+.testimonial-text {
+  font-family: 'Dachi the Lynx', sans-serif;
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  line-height: 1.9; max-width: 680px; margin: 0 auto; font-weight: 300;
+}
+.testimonial-text em { color: var(--gold); font-style: normal; font-weight: 400; }
+.testimonial-author { margin-top: 1.5rem; font-size: 0.8rem; color: var(--text-dim); }
+
+/* === SERVICES — compact === */
+.services-compact {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
+  max-width: 700px; margin: 0 auto;
+}
+.service-pill {
+  padding: 8px 20px; border-radius: 100px; font-size: 0.85rem;
+  background: var(--surface); border: 1px solid rgba(139,92,246,0.08);
+  color: var(--text-dim); transition: all 0.3s;
+}
+.service-pill:hover { border-color: rgba(139,92,246,0.2); color: var(--cream); }
+
+/* === CTA === */
+.cta-section {
+  text-align: center; padding: 6rem 2rem 8rem;
+}
+.cta-section h2 {
+  font-family: 'Dachi the Lynx', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; color: var(--cream); margin-bottom: 0.5rem;
+}
+.cta-hand {
+  font-family: 'Caveat', cursive; font-size: 1.4rem; color: var(--gold); margin-bottom: 2rem;
+}
+.cta-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 34px; border-radius: 100px; font-size: 1rem; font-weight: 600;
+  background: linear-gradient(135deg, var(--violet), var(--blue));
+  color: white; text-decoration: none; transition: all 0.3s;
+  font-family: 'FiraGO', sans-serif;
+}
+.cta-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(139,92,246,0.3); }
+.cta-phone { margin-top: 14px; font-size: 0.82rem; color: var(--text-dim); }
+.cta-phone a { color: var(--violet-soft); text-decoration: none; }
+
+/* Footer */
+footer {
+  text-align: center; padding: 2.5rem 2rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.75rem; color: var(--text-muted); letter-spacing: 1px;
+}
+
+/* Sections spacing */
+.page-section { padding: 5rem 0; }
+
+/* Animations */
+.reveal {
+  opacity: 0; transform: translateY(28px);
+  transition: all 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-d1 { transition-delay: 0.1s; }
+.reveal-d2 { transition-delay: 0.2s; }
+.reveal-d3 { transition-delay: 0.3s; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  nav { padding: 0.8rem 1.2rem; }
+  .nav-links { display: none; }
+  .values-grid { grid-template-columns: 1fr; }
+  .values-grid .value-card.featured { grid-column: auto; }
+  .culture-grid { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .testimonial-section { padding: 3rem 1.5rem; }
+  .container { padding: 0 1.5rem; }
+  .hero { padding: 6rem 1.5rem 4rem; }
+  .opening { padding: 3rem 1.5rem; }
+  .pull-quote { padding: 3rem 1.5rem; }
+}
+
+/* === MISSION SECTION === */
+.mission-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+}
+.mission-left h2 {
+  font-family: 'Dachi the Lynx', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; line-height: 1.3;
+  margin-bottom: 1.2rem; color: var(--cream);
+}
+.mission-left h2 .accent-gold { color: var(--gold); font-family: 'Caveat', cursive; font-weight: 700; }
+.mission-left p { font-size: 1rem; color: var(--text-dim); line-height: 1.9; margin-bottom: 1rem; }
+.pyramid-tiers { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.tier {
+  padding: 20px 28px; border-radius: 16px; text-align: center;
+  position: relative; overflow: hidden; transition: all 0.4s ease;
+  border: 1px solid rgba(139,92,246,0.08);
+}
+.tier:hover { transform: scale(1.03); }
+.tier:nth-child(1) { width: 50%; background: rgba(245,166,35,0.06); }
+.tier:nth-child(2) { width: 65%; background: rgba(139,92,246,0.05); }
+.tier:nth-child(3) { width: 80%; background: rgba(59,130,246,0.04); }
+.tier:nth-child(4) { width: 95%; background: rgba(20,184,166,0.03); }
+.tier-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 4px; }
+.tier-value { font-weight: 600; font-size: 0.88rem; }
+.tier:nth-child(1) .tier-value { color: var(--gold); }
+.tier:nth-child(2) .tier-value { color: var(--violet-soft); }
+.tier:nth-child(3) .tier-value { color: var(--blue); }
+.tier:nth-child(4) .tier-value { color: var(--teal); }
+
+/* === VISION TIMELINE === */
+.vision-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.vision-card {
+  background: var(--surface); border: 1px solid rgba(139,92,246,0.06);
+  border-radius: 24px; padding: 36px 28px; position: relative;
+  overflow: hidden; transition: all 0.4s ease;
+}
+.vision-card:hover {
+  border-color: rgba(139,92,246,0.15); transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.3);
+}
+.vision-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--violet), var(--blue));
+  opacity: 0; transition: opacity 0.3s;
+}
+.vision-card:hover::before { opacity: 1; }
+.vision-card .year {
+  font-family: 'Dachi the Lynx', sans-serif;
+  font-size: 3.5rem; font-weight: 600; line-height: 1; margin-bottom: 14px;
+}
+.vision-card:nth-child(1) .year { color: var(--gold); }
+.vision-card:nth-child(2) .year { color: var(--violet-soft); }
+.vision-card:nth-child(3) .year { color: var(--blue); }
+.vision-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; color: var(--cream); }
+.vision-card p { font-size: 0.88rem; color: var(--text-dim); line-height: 1.8; }
+.vision-card .location {
+  margin-top: 14px; display: flex; align-items: center; gap: 6px;
+  font-size: 0.78rem; color: var(--text-dim); font-style: italic;
+}
+
+/* === AI BANNER === */
+.ai-banner {
+  background: linear-gradient(135deg, rgba(139,92,246,0.05), rgba(59,130,246,0.04), rgba(20,184,166,0.03));
+  border: 1px solid rgba(139,92,246,0.08); border-radius: 24px;
+  padding: 3.5rem; position: relative; overflow: hidden;
+}
+.ai-banner::before {
+  content: 'AI'; position: absolute; right: -10px; top: -30px;
+  font-family: 'Dachi the Lynx', sans-serif; font-size: 12rem;
+  font-weight: 600; opacity: 0.02; color: var(--violet);
+}
+.ai-banner h3 {
+  font-family: 'Dachi the Lynx', sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 300;
+  margin-bottom: 1rem; color: var(--cream);
+}
+.ai-banner h3 .gradient-text {
+  background: linear-gradient(135deg, var(--violet), var(--blue), var(--teal));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  font-weight: 400;
+}
+.ai-banner p { font-size: 0.95rem; color: var(--text-dim); line-height: 1.9; max-width: 680px; margin-bottom: 0.8rem; }
+.ai-features { display: flex; gap: 28px; margin-top: 1.5rem; flex-wrap: wrap; }
+.ai-feature { display: flex; align-items: center; gap: 8px; font-size: 0.88rem; font-weight: 500; color: var(--cream); }
+.ai-dot { width: 8px; height: 8px; border-radius: 50%; }
+.ai-dot.violet { background: var(--violet); }
+.ai-dot.blue { background: var(--blue); }
+.ai-dot.teal { background: var(--teal); }
+
+/* === PROPER FOOTER === */
+.site-footer { border-top: 1px solid var(--border); padding: 4rem 2rem 2rem; background: rgba(2,7,16,0.5); }
+.footer-grid {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 2.5rem; margin-bottom: 3rem;
+}
+.footer-brand p { font-size: 0.85rem; color: var(--text-dim); line-height: 1.8; margin: 1rem 0; }
+.footer-social { display: flex; gap: 10px; }
+.footer-social a {
+  width: 36px; height: 36px; border-radius: 10px;
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-dim); transition: all 0.3s;
+}
+.footer-social a:hover { background: rgba(139,92,246,0.1); border-color: rgba(139,92,246,0.2); color: var(--cream); }
+.footer-col h4 { font-size: 0.85rem; font-weight: 700; color: var(--cream); margin-bottom: 1rem; letter-spacing: 0.5px; }
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 0.6rem; }
+.footer-col a { font-size: 0.82rem; color: var(--text-dim); text-decoration: none; transition: color 0.3s; }
+.footer-col a:hover { color: var(--gold); }
+.footer-col .contact-info { font-size: 0.82rem; color: var(--text-dim); line-height: 2; }
+.footer-bottom {
+  max-width: 1100px; margin: 0 auto; padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.75rem; color: var(--text-muted);
+}
+.footer-bottom a { color: var(--text-muted); text-decoration: none; transition: color 0.3s; }
+.footer-bottom a:hover { color: var(--cream); }
+.footer-bottom-links { display: flex; gap: 1.5rem; }
+
+@media (max-width: 768px) {
+  .mission-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .vision-cards { grid-template-columns: 1fr; }
+  .ai-banner { padding: 2rem 1.5rem; }
+  .ai-features { flex-direction: column; gap: 12px; }
+  .tier { width: 100% !important; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+}
+</style>
 </head>
-<body class="font-body bg-surface-dark text-body-dark transition-colors duration-300">
-  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-primary focus:text-white focus:px-4 focus:py-2 focus:rounded-lg">გადახტომა მთავარ შინაარსზე</a>
+<body>
+<a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-primary focus:text-white focus:px-4 focus:py-2 focus:rounded-lg">გადახტომა მთავარ შინაარსზე</a>
 
-  <!-- ========== HEADER ========== -->
-    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 h-16 lg:h-[72px] bg-white/80 dark:bg-surface-dark/80 header-scrolled border-b border-gray-100 dark:border-gray-800 transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-full flex items-center justify-between">
-      <a href="index.html" class="flex items-center shrink-0">
-        <img src="images/logo.png" alt="10XSEO" class="h-12 lg:h-14 w-auto">
-      </a>
-      <nav class="hidden lg:flex items-center gap-1" aria-label="მთავარი ნავიგაცია">
-        <a href="about-us.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">ჩვენს შესახებ</a>
-        <div class="relative group">
-          <button class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors flex items-center gap-1">
-            სერვისები
-            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="absolute top-full left-0 mt-1 w-56 bg-white dark:bg-surface-dark-alt rounded-xl shadow-xl border border-gray-100 dark:border-gray-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 p-2">
-            <a href="seo-management.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">SEO მენეჯმენტი</a>
-            <a href="seo-consultation.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">SEO კონსულტაცია</a>
-            <a href="seo-strategy.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">SEO სტრატეგია</a>
-            <a href="seo-copywriting.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">SEO კოპირაიტინგი</a>
-            <a href="cro.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">კონვერსიის ოპტიმიზაცია</a>
-            <a href="google-ads.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">Google Ads</a>
-            <a href="ai-seo.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">AI SEO / GEO</a>
-            <a href="seo-course.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">SEO კურსი</a>
-          </div>
-        </div>
-        <div class="relative group/ind">
-          <a href="industries.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors flex items-center gap-1">
-            ინდუსტრიები
-            <svg class="w-4 h-4 transition-transform group-hover/ind:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </a>
-          <div class="absolute top-full left-0 mt-1 w-60 bg-white dark:bg-surface-dark-alt rounded-xl shadow-xl border border-gray-100 dark:border-gray-800 opacity-0 invisible group-hover/ind:opacity-100 group-hover/ind:visible transition-all duration-200 p-2">
-            <a href="industries/healthcare.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">კლინიკები &amp; ჯანდაცვა</a>
-            <a href="industries/financial-services.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">ფინანსური სერვისები</a>
-            <a href="industries/construction.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">სამშენებლო &amp; უძრავი ქონება</a>
-            <a href="industries/ecommerce.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">E-commerce</a>
-            <hr class="my-1 border-gray-100 dark:border-gray-800">
-            <a href="industries.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-body dark:text-body-dark">ყველა ინდუსტრია →</a>
-          </div>
-        </div>
-        <a href="portfolio.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">პორტფოლიო</a>
-        <a href="case-studies.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">შედეგები</a>
-        <a href="blog.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">ბლოგი</a>
-      </nav>
-      <div class="flex items-center gap-2">
-        <button class="hidden sm:flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark transition-colors">
-          <span class="text-primary font-bold">KA</span>
-          <span class="opacity-50">/</span>
-          <span class="opacity-50">EN</span>
+<div class="blob-bg">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+</div>
+
+<div class="content">
+
+<!-- NAV — identical to main site -->
+<header id="main-header" class="fixed top-0 left-0 right-0 z-50 h-16 lg:h-[72px] bg-surface-dark/80 backdrop-blur-xl border-b border-gray-800 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 h-full flex items-center justify-between">
+    <a href="/" class="flex items-center shrink-0">
+      <img src="images/logo-glow.png" alt="10XSEO" class="h-14 lg:h-16 w-auto mix-blend-screen">
+    </a>
+    <nav class="hidden lg:flex items-center gap-1" aria-label="მთავარი ნავიგაცია">
+      <a href="about-us.html" class="px-3 py-2 text-sm font-medium text-primary-light hover:text-primary rounded-lg hover:bg-gray-800/50 transition-colors">ჩვენს შესახებ</a>
+      <div class="relative group">
+        <button class="px-3 py-2 text-sm font-medium text-heading-dark hover:text-primary-light rounded-lg hover:bg-gray-800/50 transition-colors flex items-center gap-1">
+          სერვისები
+          <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </button>
-        <a href="#" onclick="openCalendly();return false;" class="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 ai-cta-animate text-white text-sm font-semibold rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-200">
-          დაჯავშნე კონსულტაცია
+        <div class="absolute top-full left-0 mt-1 w-56 bg-surface-dark-alt rounded-xl shadow-xl border border-gray-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 p-2">
+          <a href="seo-management.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-800/50 text-heading-dark">SEO მენეჯმენტი</a>
+          <a href="seo-consultation.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-800/50 text-heading-dark">SEO კონსულტაცია</a>
+          <a href="seo-strategy.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-800/50 text-heading-dark">SEO სტრატეგია</a>
+          <a href="seo-copywriting.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-800/50 text-heading-dark">SEO კოპირაიტინგი</a>
+          <a href="cro.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-800/50 text-heading-dark">კონვერსიის ოპტიმიზაცია</a>
+          <a href="google-ads.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-800/50 text-heading-dark">Google Ads</a>
+          <a href="ai-seo.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-800/50 text-heading-dark">AI SEO / GEO</a>
+          <a href="seo-course.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-800/50 text-heading-dark">SEO კურსი</a>
+        </div>
+      </div>
+      <div class="relative group/ind">
+        <a href="industries.html" class="px-3 py-2 text-sm font-medium text-heading-dark hover:text-primary-light rounded-lg hover:bg-gray-800/50 transition-colors flex items-center gap-1">
+          ინდუსტრიები
+          <svg class="w-4 h-4 transition-transform group-hover/ind:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </a>
-        <button id="mobile-menu-btn" aria-expanded="false" aria-controls="mobile-menu" aria-label="მენიუს გახსნა" class="lg:hidden w-9 h-9 min-w-[44px] min-h-[44px] rounded-lg flex flex-col items-center justify-center gap-[6px] hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-heading dark:text-heading-dark">
-          <span class="hamburger-line block w-5 h-[2px] bg-current rounded-full"></span>
-          <span class="hamburger-line block w-5 h-[2px] bg-current rounded-full"></span>
-          <span class="hamburger-line block w-5 h-[2px] bg-current rounded-full"></span>
-        </button>
+        <div class="absolute top-full left-0 mt-1 w-60 bg-surface-dark-alt rounded-xl shadow-xl border border-gray-800 opacity-0 invisible group-hover/ind:opacity-100 group-hover/ind:visible transition-all duration-200 p-2">
+          <a href="industries/healthcare.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-800/50 text-heading-dark">კლინიკები &amp; ჯანდაცვა</a>
+          <a href="industries/financial-services.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-800/50 text-heading-dark">ფინანსური სერვისები</a>
+          <a href="industries/construction.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-800/50 text-heading-dark">სამშენებლო &amp; უძრავი ქონება</a>
+          <a href="industries/ecommerce.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-800/50 text-heading-dark">E-commerce</a>
+          <hr class="my-1 border-gray-800">
+          <a href="industries.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-800/50 text-body-dark">ყველა ინდუსტრია →</a>
+        </div>
+      </div>
+      <a href="portfolio.html" class="px-3 py-2 text-sm font-medium text-heading-dark hover:text-primary-light rounded-lg hover:bg-gray-800/50 transition-colors">პორტფოლიო</a>
+      <a href="case-studies.html" class="px-3 py-2 text-sm font-medium text-heading-dark hover:text-primary-light rounded-lg hover:bg-gray-800/50 transition-colors">შედეგები</a>
+      <a href="blog.html" class="px-3 py-2 text-sm font-medium text-heading-dark hover:text-primary-light rounded-lg hover:bg-gray-800/50 transition-colors">ბლოგი</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <a href="#" onclick="if(typeof openCalendly==='function')openCalendly();return false;" class="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 ai-cta-animate text-white text-sm font-semibold rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-200">
+        დაჯავშნე კონსულტაცია
+      </a>
+      <button id="mobile-menu-btn" class="lg:hidden w-9 h-9 min-w-[44px] min-h-[44px] rounded-lg flex flex-col items-center justify-center gap-[6px] hover:bg-gray-800 transition-colors text-heading-dark" aria-expanded="false" aria-label="მენიუს გახსნა">
+        <span class="block w-5 h-[2px] bg-current rounded-full"></span>
+        <span class="block w-5 h-[2px] bg-current rounded-full"></span>
+        <span class="block w-5 h-[2px] bg-current rounded-full"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge reveal">
+    <span class="heart">&#9829;</span> ჩვენს შესახებ
+  </div>
+  <h1 class="reveal">ჩვენ ვართ <span class="accent">10xელები</span></h1>
+  <p class="hero-subtitle reveal">იყავი პირველი — ყოველთვის, ყველგან, ყველაფერში</p>
+  <div class="hero-line"></div>
+</section>
+
+<!-- TEAM VIDEO -->
+<div class="team-video-section reveal">
+  <div class="section-label">გაიცანი გუნდი ახლოდან</div>
+  <div class="section-title" style="font-family:'Dachi the Lynx',sans-serif; font-size:clamp(1.5rem,3vw,2.2rem); font-weight:300; color:var(--cream);">ვინ ვართ <span style="color:var(--gold); font-family:'Caveat',cursive; font-weight:700;">10xელები</span></div>
+  <p style="margin-top:0.8rem; color:var(--text-dim); font-size:0.95rem;">გაიცანი ადამიანები, რომლებიც თქვენი ბიზნესის ზრდაზე ზრუნავენ</p>
+  <div class="team-video-wrapper">
+    <div class="video-placeholder">
+      <div class="video-play-btn">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      </div>
+      <div class="video-placeholder-text">About Us ვიდეო მალე</div>
+      <div class="video-placeholder-sub">COMING SOON</div>
+    </div>
+    <!-- TODO: ვიდეოს ჩამატების შემდეგ .video-placeholder წაშალე და ჩასვი: -->
+    <!-- <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe> -->
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- OPENING STORY — culture-focused -->
+<div class="opening reveal" id="story">
+  <p class="opening-text">ჩვენი ისტორია 2024 წელს დაიწყო — არა მხოლოდ სააგენტოს, არამედ კულტურის შექმნით. ჩვენ თავიდანვე ვიცოდით, რომ კარგი შედეგები კარგი ადამიანებისგან მოდის. ამიტომ აგება დავიწყეთ არა პროცესებით, არამედ ღირებულებებით. 10xSEO არ არის უბრალოდ SEO სააგენტო — ეს არის გარემო, სადაც ყველა ადამიანი თავისი შესაძლებლობების მაქსიმუმს გამოავლენს. ჩვენ გვჯერა, რომ გუნდის ძალა ინდივიდების ჯამზე მეტია.</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- FOUNDER QUOTE — about values -->
+<div class="pull-quote reveal">
+  <p class="pull-quote-text">სააგენტო არ არის ოფისი ან ლოგო — ეს არის <em>ადამიანები, რომლებიც ერთმანეთს ენდობიან</em>. ჩვენ ვაშენებთ გარემოს, სადაც ყველა ადამიანი <em>თავისი შესაძლებლობების მაქსიმუმს გამოავლენს</em>.</p>
+  <div class="pull-quote-author">დავით წილოსანი — დამფუძნებელი</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- CORE VALUES -->
+<div class="container page-section" id="values">
+  <div class="section-header reveal">
+    <div class="section-label">რა გვამოძრავებს</div>
+    <div class="section-title">ჩვენი ღირებულებები</div>
+    <p class="section-desc">ყველაფერი, რასაც ვაკეთებთ, ამ პრინციპებზეა აგებული</p>
+  </div>
+
+  <div class="values-grid">
+    <div class="value-card featured reveal">
+      <div class="value-emoji">&#127942;</div>
+      <h3>იყავი პირველი</h3>
+      <p>ეს ჩვენი სლოგანი კი არა, ცხოვრების წესია. პირველი ნიშნავს საუკეთესოს — არა სხვების წინ, არამედ საკუთარი თავის გუშინდელ ვერსიასთან შედარებით. ყოველ დღე უკეთესი, ვიდრე გუშინ.</p>
+      <div class="value-tagline">ჩვენი მანტრა, ჩვენი იდენტობა</div>
+    </div>
+    <div class="value-card reveal">
+      <div class="value-emoji">&#129309;</div>
+      <h3>ნდობა და გამჭვირვალობა</h3>
+      <p>მიკრომენეჯმენტი ჩვენთან არ არსებობს. ყველა 10xელს ვენდობით და ვაძლევთ თავისუფლებას. სანაცვლოდ, ვითხოვთ პატიოსნებას — წარმატებებშიც და შეცდომებშიც.</p>
+    </div>
+    <div class="value-card reveal reveal-d1">
+      <div class="value-emoji">&#128218;</div>
+      <h3>მუდმივი სწავლა</h3>
+      <p>SEO ყოველდღე იცვლება და ჩვენც მასთან ერთად. ყველა 10xელი მასწავლებელიცაა და მოსწავლეც. ცოდნის დამალვა ჩვენთან მიუღებელია — გაზიარება ჩვეულებაა.</p>
+    </div>
+    <div class="value-card reveal reveal-d1">
+      <div class="value-emoji">&#127793;</div>
+      <h3>ზრდის მენტალიტეტი</h3>
+      <p>შეცდომა არ არის წარუმატებლობა — ეს სწავლის საშუალებაა. ჩვენ ვაღიარებთ, რომ არ ვიცით ყველაფერი, და სწორედ ეს გვაძლევს ძალას გავიზარდოთ.</p>
+    </div>
+    <div class="value-card reveal reveal-d2">
+      <div class="value-emoji">&#9889;</div>
+      <h3>ხარისხი, არა რაოდენობა</h3>
+      <p>ჩვენ არ ვცდილობთ რაც შეიძლება ბევრი კლიენტი ავიყვანოთ. გვჯერა, რომ ყოველი კლიენტი იმსახურებს სრულ ყურადღებას, და ეს მხოლოდ ხარისხზე ფოკუსით მიიღწევა.</p>
+    </div>
+    <div class="value-card reveal reveal-d2">
+      <div class="value-emoji">&#128156;</div>
+      <h3>პატივისცემა</h3>
+      <p>ერთმანეთის, კლიენტების, კონკურენტებისა და დროის. პუნქტუალობა, მოსმენა და გულწრფელი უკუკავშირი — ეს პატივისცემის ენაა ჩვენთვის.</p>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- PRINCIPLES — how we operate -->
+<div class="container page-section">
+  <div class="section-header reveal">
+    <div class="section-label">როგორ ვმუშაობთ</div>
+    <div class="section-title">ჩვენი პრინციპები</div>
+    <p class="section-desc">Agile მეთოდოლოგიით ვმუშაობთ — სპრინტები, რეგულარული რეტროსპექტივები და მუდმივი ადაპტაცია</p>
+  </div>
+
+  <ul class="principles-list">
+    <li class="principle-item reveal">
+      <span class="principle-number">01</span>
+      <div class="principle-content">
+        <div class="principle-name">არავინ არის ზედმეტი</div>
+        <div class="principle-desc">ყოველი გუნდის წევრის აზრი მნიშვნელოვანია. დეკორატიული პოზიციები არ გვაქვს — ყველა რეალურ საქმეს აკეთებს.</div>
+      </div>
+    </li>
+    <li class="principle-item reveal reveal-d1">
+      <span class="principle-number">02</span>
+      <div class="principle-content">
+        <div class="principle-name">პრობლემა = შესაძლებლობა</div>
+        <div class="principle-desc">სირთულეების წინაშე არ ვჩერდებით. ყოველი გამოწვევა ახალი გადაწყვეტის პოვნის შანსია.</div>
+      </div>
+    </li>
+    <li class="principle-item reveal reveal-d1">
+      <span class="principle-number">03</span>
+      <div class="principle-content">
+        <div class="principle-name">კამერა ჩართული</div>
+        <div class="principle-desc">რემოუტ გუნდი ვართ, მაგრამ კავშირი ადამიანურია. ყოველ ქოლზე ერთმანეთს ვხედავთ — ეს ნდობის საფუძველია.</div>
+      </div>
+    </li>
+    <li class="principle-item reveal reveal-d2">
+      <span class="principle-number">04</span>
+      <div class="principle-content">
+        <div class="principle-name">5 წუთით ადრე</div>
+        <div class="principle-desc">პუნქტუალობა პატივისცემის პირველი ნიშანია. ყოველ შეხვედრაზე 5 წუთით ადრე ვერთვებით.</div>
+      </div>
+    </li>
+    <li class="principle-item reveal reveal-d2">
+      <span class="principle-number">05</span>
+      <div class="principle-content">
+        <div class="principle-name">წარმატება = გუნდის წარმატება</div>
+        <div class="principle-desc">ინდივიდუალური ტრიუმფი არ არსებობს. როცა ერთი 10xელი იმარჯვებს, მთელი გუნდი იმარჯვებს.</div>
+      </div>
+    </li>
+    <li class="principle-item reveal reveal-d3">
+      <span class="principle-number">06</span>
+      <div class="principle-content">
+        <div class="principle-name">ისწავლე, გაასწავლე, გაიმეორე</div>
+        <div class="principle-desc">ცოდნა არ არის საკუთრება. რაც ისწავლე, გუნდს უზიარე. SEO ლაბორატორია ამისთვის არსებობს.</div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="divider"></div>
+
+<!-- CULTURE — daily life -->
+<div class="container page-section" id="culture">
+  <div class="section-header reveal">
+    <div class="section-label">ყოველდღიურობა</div>
+    <div class="section-title">10xელების ყოველდღე</div>
+    <p class="section-desc">როგორ გამოიყურება ჩვენთან მუშაობა</p>
+  </div>
+
+  <div class="culture-grid">
+    <div class="culture-card reveal">
+      <div class="culture-emoji">&#127968;</div>
+      <h3>Remote-First</h3>
+      <p>მთლიანად რემოუტზე ვმუშაობთ. თავისუფლება და ნდობა — ჩვენი საფუძველია. თითოეული 10xელი თავად მართავს დროს და პრიორიტეტებს.</p>
+    </div>
+    <div class="culture-card reveal reveal-d1">
+      <div class="culture-emoji">&#128222;</div>
+      <h3>ყოველკვირეული ქოლი</h3>
+      <p>ვიკრიბებით ვირტუალურად — ვიზიარებთ გამარჯვებებს, ვიხილავთ გამოწვევებს, ვგეგმავთ წინსვლას. ეს ჩვენი რიტუალია.</p>
+    </div>
+    <div class="culture-card reveal reveal-d2">
+      <div class="culture-emoji">&#129504;</div>
+      <h3>SEO ლაბორატორია</h3>
+      <p>ჩვენი შიდა ცოდნის ბაზა. ყოველი აღმოჩენა, ტესტი, შეცდომა და გამარჯვება აქ ფიქსირდება — რომ მთელმა გუნდმა ისწავლოს.</p>
+    </div>
+    <div class="culture-card reveal reveal-d3">
+      <div class="culture-emoji">&#127881;</div>
+      <h3>გამარჯვებების ზეიმი</h3>
+      <p>ყოველი წარმატება — პატარაც და დიდიც — აღინიშნება. კლიენტის ზრდა, პირველი რანკინგი, ახალი წევრი — ყველაფერი ღირს ზეიმად.</p>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- TEAM -->
+<div class="container page-section" id="team">
+  <div class="section-header reveal">
+    <div class="section-label">გაიცანი გუნდი</div>
+    <div class="section-title">ადამიანები 10xSEO-ს უკან</div>
+    <p class="section-desc">ყოველი 10xელი უნიკალურ ენერგიას შემოაქვს გუნდში</p>
+  </div>
+
+  <div class="team-grid">
+    <div class="team-card reveal">
+      <div class="team-avatar founder">დწ</div>
+      <div class="team-name">დავით წილოსანი</div>
+      <div class="team-role">დამფუძნებელი & CEO</div>
+      <div class="fun-fact">„იყავი პირველი" &#127942;</div>
+    </div>
+    <div class="team-card reveal reveal-d1">
+      <div class="team-avatar seo">ან</div>
+      <div class="team-name">ანა</div>
+      <div class="team-role">SEO სპეციალისტი</div>
+      <div class="fun-fact">კონტენტის ქალიშვილი &#9997;&#65039;</div>
+    </div>
+    <div class="team-card reveal reveal-d1">
+      <div class="team-avatar seo">მლ</div>
+      <div class="team-name">მარიამ ლაბაძე</div>
+      <div class="team-role">SEO სპეციალისტი</div>
+      <div class="fun-fact">ბექლინქების დედოფალი &#128081;</div>
+    </div>
+    <div class="team-card reveal reveal-d2">
+      <div class="team-avatar seo">ნბ</div>
+      <div class="team-name">ნინო ბუბუნაური</div>
+      <div class="team-role">SEO სპეციალისტი</div>
+      <div class="fun-fact">აუდიტების ექსპერტი &#128269;</div>
+    </div>
+    <div class="team-card reveal reveal-d2">
+      <div class="team-avatar seo">თმ</div>
+      <div class="team-name">თეო მაისურაძე</div>
+      <div class="team-role">SEO სპეციალისტი</div>
+      <div class="fun-fact">ტექნიკური SEO-ს ნინძა &#129399;</div>
+    </div>
+    <div class="team-card reveal reveal-d2">
+      <div class="team-avatar content">თი</div>
+      <div class="team-name">თინათინი</div>
+      <div class="team-role">SEO სპეციალისტი</div>
+      <div class="fun-fact">ქივორდების მონადირე &#127993;</div>
+    </div>
+    <div class="team-card reveal reveal-d3">
+      <div class="team-avatar pm">თო</div>
+      <div class="team-name">თამუნა ონიანი</div>
+      <div class="team-role">SEO სპეციალისტი</div>
+      <div class="fun-fact">კლიენტის საუკეთესო მეგობარი &#128155;</div>
+    </div>
+    <div class="team-card reveal reveal-d3">
+      <div class="team-avatar seo">სგ</div>
+      <div class="team-name">სოფო გოზალიშვილი</div>
+      <div class="team-role">SEO სპეციალისტი</div>
+      <div class="fun-fact">ზრდის არქიტექტორი &#128200;</div>
+    </div>
+    <div class="team-card reveal reveal-d3">
+      <div class="team-avatar content">დგ</div>
+      <div class="team-name">დავით გუბანოვი</div>
+      <div class="team-role">SEO სპეციალისტი</div>
+      <div class="fun-fact">კონკურენტების კაბუსი &#128520;</div>
+    </div>
+    <div class="team-card reveal reveal-d3">
+      <div class="team-avatar seo">ლუ</div>
+      <div class="team-name">ლუკა</div>
+      <div class="team-role">SEO სპეციალისტი</div>
+      <div class="fun-fact">ახალი თაობის ვარსკვლავი &#11088;</div>
+    </div>
+    <div class="team-card reveal reveal-d3">
+      <div class="team-avatar pm">ნი</div>
+      <div class="team-name">ნინა</div>
+      <div class="team-role">Senior SEO სპეციალისტი</div>
+      <div class="fun-fact">გამოცდილების სკალა &#127891;</div>
+    </div>
+    <a href="vacancies.html" class="team-card reveal reveal-d3" style="text-decoration:none; color:inherit;">
+      <div class="team-avatar ops" style="font-size:1.8rem;">+</div>
+      <div class="team-name">შენ?</div>
+      <div class="team-role">შემდეგი 10xელი</div>
+      <div class="fun-fact">ნახე ვაკანსიები &#128640;</div>
+    </a>
+  </div>
+
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- TEAM TESTIMONIAL -->
+<div class="container page-section">
+  <div class="testimonial-section reveal">
+    <div class="big-quote">&#8220;</div>
+    <div class="testimonial-text">
+      10xSEO ჩემ თვალწინ დაიბადა. ჩემი ცხოვრების ერთ-ერთი <em>ყველაზე მნიშვნელოვანი</em> ნაწილია, რადგან საშუალება მომეცა ამხელა რამ შემექმნა. ყოველთვის იქნება ერთ-ერთი ჩემი <em>უდიდესი გამოცდილება</em>.
+    </div>
+    <div class="testimonial-author">— 10xელი, გუნდის წევრი</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- MISSION — Our Direction -->
+<div class="container page-section" id="mission">
+  <div class="section-header reveal">
+    <div class="section-label">ჩვენი მისია</div>
+    <div class="section-title">იყავი პირველი — ყოველთვის</div>
+    <p class="section-desc">სლოგანი კი არა, ცხოვრების წესი</p>
+  </div>
+
+  <div class="mission-grid">
+    <div class="mission-left reveal">
+      <h2>ჩვენი მიზანი — გავხდეთ რეგიონის <span class="accent-gold">საუკეთესო</span></h2>
+      <p>10xSEO არის საქართველოში პირველი და საუკეთესო SEO სააგენტო. ჩვენი მიზანია მომდევნო 2 წელიწადში იგივე შევძლოთ დუბაიშიც — რადგან ამბიცია ჩვენი იდენტობის განუყოფელი ნაწილია.</p>
+      <p>ჩვენ პირველები ვიყავით საქართველოში, ვინც AI-ზე დაფუძნებული SEO მეთოდოლოგია დანერგა. პირველები ვიყავით AEO ოპტიმიზაციაში. და პირველები ვიქნებით ყოველ ახალ ტექნოლოგიურ გარღვევაში.</p>
+    </div>
+    <div class="mission-right reveal reveal-d2">
+      <div class="pyramid-tiers">
+        <div class="tier">
+          <div class="tier-label">ხედვა</div>
+          <div class="tier-value">AI-ით მართული მომავალი</div>
+        </div>
+        <div class="tier">
+          <div class="tier-label">სტრატეგია</div>
+          <div class="tier-value">დათა-ორიენტირებული გადაწყვეტილებები</div>
+        </div>
+        <div class="tier">
+          <div class="tier-label">ხელშეწყობა</div>
+          <div class="tier-value">ტექნიკური + კონტენტ ოპტიმიზაცია</div>
+        </div>
+        <div class="tier">
+          <div class="tier-label">საფუძველი</div>
+          <div class="tier-value">50+ კლიენტი · +700% ტრაფიკი · +540% ქივორდები</div>
+        </div>
       </div>
     </div>
-  </header>
+  </div>
+</div>
 
-  <main id="main-content">
-  <!-- ========== HERO ========== -->
-  <section class="relative pt-24 lg:pt-32 pb-16 lg:pb-24 overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-primary/5 dark:from-surface-dark dark:via-surface-dark dark:to-primary/5"></div>
-    <div class="absolute top-20 right-0 w-[500px] h-[500px] bg-primary/5 dark:bg-primary/10 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-0 left-0 w-[300px] h-[300px] bg-accent/5 dark:bg-accent/10 rounded-full blur-3xl"></div>
-    <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
-      <div class="animate-fade-in-up inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary-light text-sm font-semibold mb-6">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
-        10XSEO სააგენტო
-      </div>
-      <h1 class="animate-fade-in-up delay-100 font-heading text-[28px] sm:text-[36px] lg:text-[52px] font-extrabold text-heading dark:text-heading-dark !leading-[1.15] mb-6">
-        ჩვენ <span class="gradient-text">შესახებ</span>
-      </h1>
-      <p class="animate-fade-in-up delay-200 text-lg lg:text-xl text-body dark:text-body-dark mb-8 max-w-2xl mx-auto">
-        საქართველოს წამყვანი SEO სააგენტო, რომელიც ბიზნესებს ეხმარება ორგანული ზრდის მიღწევაში
-      </p>
+<div class="divider"></div>
+
+<!-- VISION TIMELINE -->
+<div class="container page-section">
+  <div class="section-header reveal">
+    <div class="section-label">სტრატეგიული ხედვა</div>
+    <div class="section-title">სამი ეტაპი მომავლისკენ</div>
+  </div>
+
+  <div class="vision-cards">
+    <div class="vision-card reveal">
+      <div class="year">2024</div>
+      <h3>დაარსება & ბაზის შექმნა</h3>
+      <p>საქართველოს ბაზარზე დამკვიდრება, გუნდის ფორმირება, პირველი 50+ კლიენტის მომსახურება და Ahrefs-ის ვერიფიცირებული პარტნიორობა.</p>
+      <div class="location">&#128205; თბილისი, საქართველო</div>
     </div>
-  </section>
-
-  <!-- ========== MISSION & VISION ========== -->
-  <section class="py-16 lg:py-24 bg-surface-alt dark:bg-surface-dark-alt">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
-        <!-- Mission -->
-        <div class="gradient-border p-8 lg:p-10">
-          <div class="w-14 h-14 rounded-2xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center mb-6">
-            <svg class="w-7 h-7 text-primary dark:text-primary-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-          </div>
-          <h2 class="font-heading text-[22px] lg:text-[26px] font-bold text-heading dark:text-heading-dark mb-4">ჩვენი მისია</h2>
-          <p class="text-body dark:text-body-dark leading-relaxed">
-            ქართული ბიზნესისთვის საერთაშორისო დონის ციფრული მარკეტინგის ხელმისაწვდომობა და მათი ონლაინ ხილვადობის მაქსიმიზაცია
-          </p>
-        </div>
-        <!-- Vision -->
-        <div class="gradient-border p-8 lg:p-10">
-          <div class="w-14 h-14 rounded-2xl bg-accent/10 dark:bg-accent/20 flex items-center justify-center mb-6">
-            <svg class="w-7 h-7 text-accent-dark dark:text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
-          </div>
-          <h2 class="font-heading text-[22px] lg:text-[26px] font-bold text-heading dark:text-heading-dark mb-4">ჩვენი ხედვა</h2>
-          <p class="text-body dark:text-body-dark leading-relaxed">
-            გავხდეთ კავკასიის რეგიონის ყველაზე ინოვაციური და შედეგზე ორიენტირებული SEO სააგენტო
-          </p>
-        </div>
-      </div>
+    <div class="vision-card reveal reveal-d1">
+      <div class="year">2026</div>
+      <h3>AI SEO პიონერობა</h3>
+      <p>ხელოვნურ ინტელექტზე დაფუძნებული SEO მეთოდოლოგიის დანერგვა, AEO ოპტიმიზაციის ლიდერობა მთელ რეგიონში. პირველები — ისევ და ისევ.</p>
+      <div class="location">&#128205; საქართველო + რეგიონი</div>
     </div>
-  </section>
-
-  <!-- ========== STATS COUNTER ========== -->
-  <section id="stats" class="relative bg-gradient-to-r from-primary via-accent to-primary-dark py-10 lg:py-14 overflow-hidden">
-    <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.03%22%3E%3Cpath%20d%3D%22M20%200L40%2020L20%2040L0%2020Z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-50"></div>
-    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 text-center">
-        <div>
-          <p class="font-inter text-[36px] lg:text-[56px] font-extrabold text-white leading-none"><span class="counter" data-target="14">0</span>+</p>
-          <p class="text-white/70 text-sm lg:text-base mt-2">წლის გამოცდილება</p>
-        </div>
-        <div>
-          <p class="font-inter text-[36px] lg:text-[56px] font-extrabold text-white leading-none"><span class="counter" data-target="200">0</span>+</p>
-          <p class="text-white/70 text-sm lg:text-base mt-2">კმაყოფილი კლიენტი</p>
-        </div>
-        <div>
-          <p class="font-inter text-[36px] lg:text-[56px] font-extrabold text-white leading-none"><span class="counter" data-target="500">0</span>+</p>
-          <p class="text-white/70 text-sm lg:text-base mt-2">დასრულებული პროექტი</p>
-        </div>
-        <div>
-          <p class="font-inter text-[36px] lg:text-[56px] font-extrabold text-white leading-none"><span class="counter" data-target="10">0</span>M+</p>
-          <p class="text-white/70 text-sm lg:text-base mt-2">გენერირებული ტრაფიკი</p>
-        </div>
-      </div>
+    <div class="vision-card reveal reveal-d2">
+      <div class="year">2028</div>
+      <h3>დუბაის ექსპანსია</h3>
+      <p>საერთაშორისო ოფისის გახსნა დუბაიში. ეს მხოლოდ დასაწყისია — ამბიცია საზღვრებს არ ცნობს.</p>
+      <div class="location">&#128205; დუბაი, UAE</div>
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- ========== COMPANY TIMELINE ========== -->
-  <section class="py-16 lg:py-24 bg-white dark:bg-surface-dark">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-12 lg:mb-16">
-        <p class="text-sm font-semibold text-primary dark:text-primary-light uppercase tracking-wider mb-3">ისტორია</p>
-        <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-heading dark:text-heading-dark leading-[1.3]">
-          ჩვენი <span class="gradient-text">გზა</span>
-        </h2>
-      </div>
+<div class="divider"></div>
 
-      <div class="relative">
-        <!-- Vertical gradient line -->
-        <div class="absolute left-6 md:left-1/2 md:-translate-x-px top-0 bottom-0 w-0.5 timeline-line"></div>
-
-        <!-- 2011 -->
-        <div class="relative flex items-start mb-12 md:mb-16">
-          <div class="hidden md:block md:w-1/2 md:pr-12 md:text-right">
-            <span class="font-inter font-extrabold text-2xl lg:text-3xl gradient-text">2011</span>
-            <h3 class="font-heading font-bold text-heading dark:text-heading-dark text-lg mt-1">დაარსება</h3>
-            <p class="text-body dark:text-body-dark text-sm mt-2">კომპანიის დაარსება და პირველი SEO პროექტების დაწყება</p>
-          </div>
-          <div class="absolute left-6 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full timeline-dot z-10 mt-1.5"></div>
-          <div class="ml-14 md:hidden">
-            <span class="font-inter font-extrabold text-2xl gradient-text">2011</span>
-            <h3 class="font-heading font-bold text-heading dark:text-heading-dark text-lg mt-1">დაარსება</h3>
-            <p class="text-body dark:text-body-dark text-sm mt-2">კომპანიის დაარსება და პირველი SEO პროექტების დაწყება</p>
-          </div>
-          <div class="hidden md:block md:w-1/2 md:pl-12"></div>
-        </div>
-
-        <!-- 2014 -->
-        <div class="relative flex items-start mb-12 md:mb-16">
-          <div class="hidden md:block md:w-1/2 md:pr-12"></div>
-          <div class="absolute left-6 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full timeline-dot z-10 mt-1.5"></div>
-          <div class="ml-14 md:ml-0 md:w-1/2 md:pl-12">
-            <span class="font-inter font-extrabold text-2xl lg:text-3xl gradient-text">2014</span>
-            <h3 class="font-heading font-bold text-heading dark:text-heading-dark text-lg mt-1">გუნდის ზრდა</h3>
-            <p class="text-body dark:text-body-dark text-sm mt-2">გუნდი 5 წევრამდე გაიზარდა, პირველი კორპორატიული კლიენტები</p>
-          </div>
-        </div>
-
-        <!-- 2017 -->
-        <div class="relative flex items-start mb-12 md:mb-16">
-          <div class="hidden md:block md:w-1/2 md:pr-12 md:text-right">
-            <span class="font-inter font-extrabold text-2xl lg:text-3xl gradient-text">2017</span>
-            <h3 class="font-heading font-bold text-heading dark:text-heading-dark text-lg mt-1">ინოვაცია</h3>
-            <p class="text-body dark:text-body-dark text-sm mt-2">AI და მანქანური სწავლების ინტეგრაცია SEO პროცესებში</p>
-          </div>
-          <div class="absolute left-6 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full timeline-dot z-10 mt-1.5"></div>
-          <div class="ml-14 md:hidden">
-            <span class="font-inter font-extrabold text-2xl gradient-text">2017</span>
-            <h3 class="font-heading font-bold text-heading dark:text-heading-dark text-lg mt-1">ინოვაცია</h3>
-            <p class="text-body dark:text-body-dark text-sm mt-2">AI და მანქანური სწავლების ინტეგრაცია SEO პროცესებში</p>
-          </div>
-          <div class="hidden md:block md:w-1/2 md:pl-12"></div>
-        </div>
-
-        <!-- 2020 -->
-        <div class="relative flex items-start mb-12 md:mb-16">
-          <div class="hidden md:block md:w-1/2 md:pr-12"></div>
-          <div class="absolute left-6 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full timeline-dot z-10 mt-1.5"></div>
-          <div class="ml-14 md:ml-0 md:w-1/2 md:pl-12">
-            <span class="font-inter font-extrabold text-2xl lg:text-3xl gradient-text">2020</span>
-            <h3 class="font-heading font-bold text-heading dark:text-heading-dark text-lg mt-1">პანდემიის პერიოდი</h3>
-            <p class="text-body dark:text-body-dark text-sm mt-2">ონლაინ ბიზნესების SEO ტრანსფორმაცია, კლიენტების 3X ზრდა</p>
-          </div>
-        </div>
-
-        <!-- 2023 -->
-        <div class="relative flex items-start mb-12 md:mb-16">
-          <div class="hidden md:block md:w-1/2 md:pr-12 md:text-right">
-            <span class="font-inter font-extrabold text-2xl lg:text-3xl gradient-text">2023</span>
-            <h3 class="font-heading font-bold text-heading dark:text-heading-dark text-lg mt-1">ლიდერობა</h3>
-            <p class="text-body dark:text-body-dark text-sm mt-2">საქართველოს #1 SEO სააგენტოდ აღიარება</p>
-          </div>
-          <div class="absolute left-6 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full timeline-dot z-10 mt-1.5"></div>
-          <div class="ml-14 md:hidden">
-            <span class="font-inter font-extrabold text-2xl gradient-text">2023</span>
-            <h3 class="font-heading font-bold text-heading dark:text-heading-dark text-lg mt-1">ლიდერობა</h3>
-            <p class="text-body dark:text-body-dark text-sm mt-2">საქართველოს #1 SEO სააგენტოდ აღიარება</p>
-          </div>
-          <div class="hidden md:block md:w-1/2 md:pl-12"></div>
-        </div>
-
-        <!-- 2025 -->
-        <div class="relative flex items-start">
-          <div class="hidden md:block md:w-1/2 md:pr-12"></div>
-          <div class="absolute left-6 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full timeline-dot z-10 mt-1.5"></div>
-          <div class="ml-14 md:ml-0 md:w-1/2 md:pl-12">
-            <span class="font-inter font-extrabold text-2xl lg:text-3xl gradient-text">2025</span>
-            <h3 class="font-heading font-bold text-heading dark:text-heading-dark text-lg mt-1">მომავალი</h3>
-            <p class="text-body dark:text-body-dark text-sm mt-2">AI SEO / GEO სერვისების გაშვება, საერთაშორისო ექსპანსია</p>
-          </div>
-        </div>
-      </div>
+<!-- AI SECTION -->
+<div class="container page-section">
+  <div class="ai-banner reveal">
+    <h3>მომავალი <span class="gradient-text">AI SEO-შია</span></h3>
+    <p>ძიების ლანდშაფტი ფუნდამენტურად იცვლება. ChatGPT, Gemini, Perplexity — ხელოვნური ინტელექტი ხდება ახალი „საძიებო სისტემა". ჩვენ ვმზადებთ კლიენტებს ამ ცვლილებისთვის — რადგან პირველობა ნიშნავს მომავალზე ფიქრს დღეს.</p>
+    <p>AEO (Answer Engine Optimization) არის მომავლის SEO — და 10xSEO ამ სფეროს პიონერია საქართველოში.</p>
+    <div class="ai-features">
+      <div class="ai-feature"><div class="ai-dot violet"></div>AI Overview ოპტიმიზაცია</div>
+      <div class="ai-feature"><div class="ai-dot blue"></div>AEO სტრატეგია</div>
+      <div class="ai-feature"><div class="ai-dot teal"></div>LLM-ებთან ხილვადობა</div>
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- ========== VALUES ========== -->
-  <section class="py-16 lg:py-24 bg-surface-alt dark:bg-surface-dark-alt">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-12">
-        <p class="text-sm font-semibold text-primary dark:text-primary-light uppercase tracking-wider mb-3">ფასეულობები</p>
-        <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-heading dark:text-heading-dark leading-[1.3]">
-          ჩვენი <span class="gradient-text">ღირებულებები</span>
-        </h2>
-      </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- Transparency -->
-        <div class="bg-white dark:bg-surface-dark rounded-2xl p-6 border border-gray-100 dark:border-gray-800 text-center">
-          <div class="w-14 h-14 mx-auto rounded-2xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center mb-4">
-            <svg class="w-7 h-7 text-primary dark:text-primary-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
-          </div>
-          <h3 class="font-heading font-bold text-heading dark:text-heading-dark mb-2">გამჭვირვალობა</h3>
-          <p class="text-sm text-body dark:text-body-dark">ყოველკვირეული ანგარიშები, Loom ვიდეო განხილვები, რეალ-თაიმ დეშბორდი</p>
-        </div>
-        <!-- Innovation -->
-        <div class="bg-white dark:bg-surface-dark rounded-2xl p-6 border border-gray-100 dark:border-gray-800 text-center">
-          <div class="w-14 h-14 mx-auto rounded-2xl bg-accent/10 dark:bg-accent/20 flex items-center justify-center mb-4">
-            <svg class="w-7 h-7 text-accent-dark dark:text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
-          </div>
-          <h3 class="font-heading font-bold text-heading dark:text-heading-dark mb-2">ინოვაცია</h3>
-          <p class="text-sm text-body dark:text-body-dark">AI ტექნოლოგიების ინტეგრაცია, მუდმივი სწავლა და ადაპტაცია</p>
-        </div>
-        <!-- Results -->
-        <div class="bg-white dark:bg-surface-dark rounded-2xl p-6 border border-gray-100 dark:border-gray-800 text-center">
-          <div class="w-14 h-14 mx-auto rounded-2xl bg-success/10 flex items-center justify-center mb-4">
-            <svg class="w-7 h-7 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
-          </div>
-          <h3 class="font-heading font-bold text-heading dark:text-heading-dark mb-2">შედეგზე ორიენტირება</h3>
-          <p class="text-sm text-body dark:text-body-dark">KPI-ებზე დაფუძნებული მიდგომა, ROI-ს მაქსიმიზაცია</p>
-        </div>
-        <!-- Partnership -->
-        <div class="bg-white dark:bg-surface-dark rounded-2xl p-6 border border-gray-100 dark:border-gray-800 text-center">
-          <div class="w-14 h-14 mx-auto rounded-2xl bg-orange-500/10 flex items-center justify-center mb-4">
-            <svg class="w-7 h-7 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
-          </div>
-          <h3 class="font-heading font-bold text-heading dark:text-heading-dark mb-2">პარტნიორობა</h3>
-          <p class="text-sm text-body dark:text-body-dark">კლიენტი = პარტნიორი. ერთად ვიზრდებით და ვვითარდებით</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<div class="divider"></div>
 
-  <!-- ========== TEAM ========== -->
-  <section class="py-16 lg:py-24 bg-white dark:bg-surface-dark">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-12 lg:mb-16">
-        <p class="text-sm font-semibold text-primary dark:text-primary-light uppercase tracking-wider mb-3">გუნდი</p>
-        <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-heading dark:text-heading-dark leading-[1.3]">
-          ჩვენი <span class="gradient-text">გუნდი</span>
-        </h2>
-      </div>
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 lg:gap-6">
+<!-- SERVICES — compact pills -->
+<div class="container page-section">
+  <div class="section-header reveal">
+    <div class="section-label">რას ვაკეთებთ</div>
+    <div class="section-title">სერვისები</div>
+  </div>
+  <div class="services-compact reveal">
+    <div class="service-pill">SEO აუდიტი</div>
+    <div class="service-pill">SEO მენეჯმენტი</div>
+    <div class="service-pill">კონტენტ სტრატეგია</div>
+    <div class="service-pill">ქივორდ რისერჩი</div>
+    <div class="service-pill">AI SEO / AEO</div>
+    <div class="service-pill">CRO ოპტიმიზაცია</div>
+    <div class="service-pill">Google Ads</div>
+    <div class="service-pill">ბექლინქ მშენებლობა</div>
+  </div>
+</div>
 
-        <!-- Team Member 1 -->
-        <div class="team-card bg-white dark:bg-surface-dark-alt rounded-2xl p-5 border border-gray-100 dark:border-gray-800 text-center">
-          <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center mb-4">
-            <span class="text-white font-bold text-xl">გხ</span>
-          </div>
-          <h3 class="font-heading font-bold text-heading dark:text-heading-dark text-sm lg:text-base">გიორგი ხ.</h3>
-          <p class="text-primary dark:text-primary-light text-xs font-semibold mt-1">CEO & Founder</p>
-          <p class="text-body dark:text-body-dark text-xs mt-2 leading-relaxed">14 წელზე მეტი გამოცდილება ციფრულ მარკეტინგში</p>
-        </div>
+<div class="divider"></div>
 
-        <!-- Team Member 2 -->
-        <div class="team-card bg-white dark:bg-surface-dark-alt rounded-2xl p-5 border border-gray-100 dark:border-gray-800 text-center">
-          <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-accent to-primary flex items-center justify-center mb-4">
-            <span class="text-white font-bold text-xl">ნმ</span>
-          </div>
-          <h3 class="font-heading font-bold text-heading dark:text-heading-dark text-sm lg:text-base">ნინო მ.</h3>
-          <p class="text-primary dark:text-primary-light text-xs font-semibold mt-1">SEO Director</p>
-          <p class="text-body dark:text-body-dark text-xs mt-2 leading-relaxed">ტექნიკური SEO-ს ექსპერტი, 8+ წლის გამოცდილება</p>
-        </div>
+<!-- CTA -->
+<div class="cta-section" id="contact">
+  <h2 class="reveal">გინდა გახდე <span style="color:var(--gold)">10xელი</span>?</h2>
+  <div class="cta-hand reveal">ან უბრალოდ ვისაუბროთ — ყავაზე, ვირტუალურად</div>
+  <a href="https://calendly.com/10xseo-sales" class="cta-btn reveal">
+    მოდი, ვისაუბროთ
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+  <div class="cta-phone reveal">ტელეფონი: <a href="tel:+995510101517">510 10 15 17</a></div>
+</div>
 
-        <!-- Team Member 3 -->
-        <div class="team-card bg-white dark:bg-surface-dark-alt rounded-2xl p-5 border border-gray-100 dark:border-gray-800 text-center">
-          <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center mb-4">
-            <span class="text-white font-bold text-xl">დლ</span>
-          </div>
-          <h3 class="font-heading font-bold text-heading dark:text-heading-dark text-sm lg:text-base">დავით ლ.</h3>
-          <p class="text-primary dark:text-primary-light text-xs font-semibold mt-1">Head of Content</p>
-          <p class="text-body dark:text-body-dark text-xs mt-2 leading-relaxed">SEO კოპირაიტინგი და კონტენტ სტრატეგია</p>
-        </div>
-
-        <!-- Team Member 4 -->
-        <div class="team-card bg-white dark:bg-surface-dark-alt rounded-2xl p-5 border border-gray-100 dark:border-gray-800 text-center">
-          <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-accent to-primary flex items-center justify-center mb-4">
-            <span class="text-white font-bold text-xl">მკ</span>
-          </div>
-          <h3 class="font-heading font-bold text-heading dark:text-heading-dark text-sm lg:text-base">მარიამ კ.</h3>
-          <p class="text-primary dark:text-primary-light text-xs font-semibold mt-1">PPC Manager</p>
-          <p class="text-body dark:text-body-dark text-xs mt-2 leading-relaxed">Google Ads სერტიფიცირებული სპეციალისტი</p>
-        </div>
-
-        <!-- Team Member 5 -->
-        <div class="team-card bg-white dark:bg-surface-dark-alt rounded-2xl p-5 border border-gray-100 dark:border-gray-800 text-center">
-          <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center mb-4">
-            <span class="text-white font-bold text-xl">აბ</span>
-          </div>
-          <h3 class="font-heading font-bold text-heading dark:text-heading-dark text-sm lg:text-base">ალექსანდრე ბ.</h3>
-          <p class="text-primary dark:text-primary-light text-xs font-semibold mt-1">Technical SEO Lead</p>
-          <p class="text-body dark:text-body-dark text-xs mt-2 leading-relaxed">ვებ დეველოპმენტი და ტექნიკური ოპტიმიზაცია</p>
-        </div>
-
-        <!-- Team Member 6 -->
-        <div class="team-card bg-white dark:bg-surface-dark-alt rounded-2xl p-5 border border-gray-100 dark:border-gray-800 text-center">
-          <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-accent to-primary flex items-center justify-center mb-4">
-            <span class="text-white font-bold text-xl">თჯ</span>
-          </div>
-          <h3 class="font-heading font-bold text-heading dark:text-heading-dark text-sm lg:text-base">თამარ ჯ.</h3>
-          <p class="text-primary dark:text-primary-light text-xs font-semibold mt-1">Link Building Manager</p>
-          <p class="text-body dark:text-body-dark text-xs mt-2 leading-relaxed">ბექლინკ სტრატეგია და აუთრიჩი</p>
-        </div>
-
-        <!-- Team Member 7 -->
-        <div class="team-card bg-white dark:bg-surface-dark-alt rounded-2xl p-5 border border-gray-100 dark:border-gray-800 text-center">
-          <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center mb-4">
-            <span class="text-white font-bold text-xl">ლწ</span>
-          </div>
-          <h3 class="font-heading font-bold text-heading dark:text-heading-dark text-sm lg:text-base">ლუკა წ.</h3>
-          <p class="text-primary dark:text-primary-light text-xs font-semibold mt-1">Data Analyst</p>
-          <p class="text-body dark:text-body-dark text-xs mt-2 leading-relaxed">Google Analytics, Looker Studio, მონაცემთა ანალიზი</p>
-        </div>
-
-        <!-- Team Member 8 -->
-        <div class="team-card bg-white dark:bg-surface-dark-alt rounded-2xl p-5 border border-gray-100 dark:border-gray-800 text-center">
-          <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-accent to-primary flex items-center justify-center mb-4">
-            <span class="text-white font-bold text-xl">აგ</span>
-          </div>
-          <h3 class="font-heading font-bold text-heading dark:text-heading-dark text-sm lg:text-base">ანა გ.</h3>
-          <p class="text-primary dark:text-primary-light text-xs font-semibold mt-1">UX/UI Designer</p>
-          <p class="text-body dark:text-body-dark text-xs mt-2 leading-relaxed">მომხმარებლის გამოცდილება და CRO</p>
-        </div>
-
-        <!-- Team Member 9 -->
-        <div class="team-card bg-white dark:bg-surface-dark-alt rounded-2xl p-5 border border-gray-100 dark:border-gray-800 text-center">
-          <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center mb-4">
-            <span class="text-white font-bold text-xl">სმ</span>
-          </div>
-          <h3 class="font-heading font-bold text-heading dark:text-heading-dark text-sm lg:text-base">სანდრო მ.</h3>
-          <p class="text-primary dark:text-primary-light text-xs font-semibold mt-1">Web Developer</p>
-          <p class="text-body dark:text-body-dark text-xs mt-2 leading-relaxed">Next.js, React, WordPress, ტექნიკური იმპლემენტაცია</p>
-        </div>
-
-        <!-- Team Member 10 -->
-        <div class="team-card bg-white dark:bg-surface-dark-alt rounded-2xl p-5 border border-gray-100 dark:border-gray-800 text-center">
-          <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-accent to-primary flex items-center justify-center mb-4">
-            <span class="text-white font-bold text-xl">ედ</span>
-          </div>
-          <h3 class="font-heading font-bold text-heading dark:text-heading-dark text-sm lg:text-base">ელენე დ.</h3>
-          <p class="text-primary dark:text-primary-light text-xs font-semibold mt-1">Account Manager</p>
-          <p class="text-body dark:text-body-dark text-xs mt-2 leading-relaxed">კლიენტებთან ურთიერთობა და პროექტის მართვა</p>
-        </div>
-
-        <!-- Team Member 11 -->
-        <div class="team-card bg-white dark:bg-surface-dark-alt rounded-2xl p-5 border border-gray-100 dark:border-gray-800 text-center">
-          <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center mb-4">
-            <span class="text-white font-bold text-xl">გთ</span>
-          </div>
-          <h3 class="font-heading font-bold text-heading dark:text-heading-dark text-sm lg:text-base">გიორგი თ.</h3>
-          <p class="text-primary dark:text-primary-light text-xs font-semibold mt-1">SEO Specialist</p>
-          <p class="text-body dark:text-body-dark text-xs mt-2 leading-relaxed">ონ-პეიჯ და ოფ-პეიჯ ოპტიმიზაცია</p>
-        </div>
-
-        <!-- Team Member 12 -->
-        <div class="team-card bg-white dark:bg-surface-dark-alt rounded-2xl p-5 border border-gray-100 dark:border-gray-800 text-center">
-          <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-accent to-primary flex items-center justify-center mb-4">
-            <span class="text-white font-bold text-xl">ნრ</span>
-          </div>
-          <h3 class="font-heading font-bold text-heading dark:text-heading-dark text-sm lg:text-base">ნათია რ.</h3>
-          <p class="text-primary dark:text-primary-light text-xs font-semibold mt-1">Content Writer</p>
-          <p class="text-body dark:text-body-dark text-xs mt-2 leading-relaxed">SEO ტექსტები, ბლოგები და ლენდინგ გვერდები</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== OUR STORY VIDEO ========== -->
-  <section class="py-16 lg:py-24 bg-white dark:bg-surface-dark">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      <div class="grid lg:grid-cols-[3fr_2fr] gap-10 lg:gap-14 items-center">
-        <!-- Video -->
-        <div class="rounded-2xl overflow-hidden border border-gray-100 dark:border-gray-800">
-          <lite-youtube videoid="bK861HwKMGY" playlabel="როგორ ვქმნით ბიზნესისთვის რეალურ ღირებულებას - 10xSEO შედეგები"></lite-youtube>
-        </div>
-        <!-- Text -->
-        <div class="text-center lg:text-left">
-          <p class="text-sm font-semibold text-red-500 uppercase tracking-wider mb-3">YouTube</p>
-          <h2 class="font-heading text-[24px] sm:text-[28px] lg:text-[32px] font-bold text-heading dark:text-heading-dark leading-[1.3] mb-4">
-            როგორ ვქმნით <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">რეალურ ღირებულებას</span>
-          </h2>
-          <p class="text-body dark:text-body-dark text-base leading-relaxed mb-6">
-            ნახეთ როგორ ვეხმარებით ქართულ ბიზნესებს ორგანული ტრაფიკის გაზრდასა და ონლაინ ხილვადობის გაუმჯობესებაში.
-          </p>
-          <a href="https://www.youtube.com/@10xSEO?sub_confirmation=1" target="_blank" rel="noopener" class="inline-flex items-center gap-3 px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-bold text-sm rounded-xl shadow-lg shadow-red-600/20 hover:shadow-xl hover:shadow-red-600/30 hover:-translate-y-0.5 transition-all duration-200">
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0C.488 3.45.029 5.804 0 12c.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0C23.512 20.55 23.971 18.196 24 12c-.029-6.185-.484-8.549-4.385-8.816zM9 16V8l8 4-8 4z"/></svg>
-            გამოიწერეთ არხი
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="images/logo.png" alt="10XSEO" style="height:40px;width:auto;margin-bottom:4px;" onerror="this.outerHTML='<span style=\'font-family:Dachi the Lynx,sans-serif;font-size:1.4rem;font-weight:600;color:#F5A623;letter-spacing:2px\'>10XSEO</span>'">
+        <p>საქართველოს #1 SEO სააგენტო. რეალური შედეგები, ყოველკვირეული ანგარიშები, სწრაფი მომსახურება.</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/10xSEO.Ge" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/10xseoge/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@10xSEO" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
           </a>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ========== TOOLS & PARTNERS ========== -->
-  <section class="py-16 lg:py-24 bg-surface-alt dark:bg-surface-dark-alt">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-12">
-        <p class="text-sm font-semibold text-primary dark:text-primary-light uppercase tracking-wider mb-3">ინსტრუმენტები</p>
-        <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-heading dark:text-heading-dark leading-[1.3]">
-          ჩვენი <span class="gradient-text">ინსტრუმენტები</span>
-        </h2>
+      <div class="footer-col">
+        <h4>სერვისები</h4>
+        <ul>
+          <li><a href="seo-management.html">SEO მენეჯმენტი</a></li>
+          <li><a href="seo-consultation.html">SEO კონსულტაცია</a></li>
+          <li><a href="seo-strategy.html">SEO სტრატეგია</a></li>
+          <li><a href="seo-audit.html">უფასო SEO აუდიტი</a></li>
+        </ul>
       </div>
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-4 lg:gap-6">
-        <!-- Ahrefs -->
-        <div class="bg-white dark:bg-surface-dark rounded-2xl p-4 lg:p-5 border border-gray-100 dark:border-gray-800 flex flex-col items-center justify-center text-center">
-          <div class="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center mb-2">
-            <span class="text-orange-500 font-bold text-sm">Ah</span>
-          </div>
-          <span class="text-xs font-semibold text-heading dark:text-heading-dark">Ahrefs</span>
-        </div>
-        <!-- Screaming Frog -->
-        <div class="bg-white dark:bg-surface-dark rounded-2xl p-4 lg:p-5 border border-gray-100 dark:border-gray-800 flex flex-col items-center justify-center text-center">
-          <div class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center mb-2">
-            <span class="text-green-500 font-bold text-sm">SF</span>
-          </div>
-          <span class="text-xs font-semibold text-heading dark:text-heading-dark">Screaming Frog</span>
-        </div>
-        <!-- GSC -->
-        <div class="bg-white dark:bg-surface-dark rounded-2xl p-4 lg:p-5 border border-gray-100 dark:border-gray-800 flex flex-col items-center justify-center text-center">
-          <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-2">
-            <span class="text-blue-500 font-bold text-sm">GSC</span>
-          </div>
-          <span class="text-xs font-semibold text-heading dark:text-heading-dark">Search Console</span>
-        </div>
-        <!-- GA -->
-        <div class="bg-white dark:bg-surface-dark rounded-2xl p-4 lg:p-5 border border-gray-100 dark:border-gray-800 flex flex-col items-center justify-center text-center">
-          <div class="w-12 h-12 rounded-xl bg-yellow-500/10 flex items-center justify-center mb-2">
-            <span class="text-yellow-500 font-bold text-sm">GA</span>
-          </div>
-          <span class="text-xs font-semibold text-heading dark:text-heading-dark">Analytics</span>
-        </div>
-        <!-- SEMrush -->
-        <div class="bg-white dark:bg-surface-dark rounded-2xl p-4 lg:p-5 border border-gray-100 dark:border-gray-800 flex flex-col items-center justify-center text-center">
-          <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center mb-2">
-            <span class="text-red-500 font-bold text-sm">SE</span>
-          </div>
-          <span class="text-xs font-semibold text-heading dark:text-heading-dark">SEMrush</span>
-        </div>
-        <!-- Surfer SEO -->
-        <div class="bg-white dark:bg-surface-dark rounded-2xl p-4 lg:p-5 border border-gray-100 dark:border-gray-800 flex flex-col items-center justify-center text-center">
-          <div class="w-12 h-12 rounded-xl bg-teal-500/10 flex items-center justify-center mb-2">
-            <span class="text-teal-500 font-bold text-sm">Su</span>
-          </div>
-          <span class="text-xs font-semibold text-heading dark:text-heading-dark">Surfer SEO</span>
-        </div>
-        <!-- Looker Studio -->
-        <div class="bg-white dark:bg-surface-dark rounded-2xl p-4 lg:p-5 border border-gray-100 dark:border-gray-800 flex flex-col items-center justify-center text-center">
-          <div class="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center mb-2">
-            <span class="text-purple-500 font-bold text-sm">LS</span>
-          </div>
-          <span class="text-xs font-semibold text-heading dark:text-heading-dark">Looker Studio</span>
+      <div class="footer-col">
+        <h4>კომპანია</h4>
+        <ul>
+          <li><a href="portfolio.html">პორტფოლიო</a></li>
+          <li><a href="case-studies.html">ქეის სტადები</a></li>
+          <li><a href="blog.html">ბლოგი</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="ra-aris-seo.html">რა არის SEO</a></li>
+          <li><a href="vacancies.html">ვაკანსიები</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>კონტაქტი</h4>
+        <div class="contact-info">
+          +995 510 10 15 17<br>
+          sales@10xseo.ge<br>
+          თბილისი, საქართველო
         </div>
       </div>
     </div>
-  </section>
-    </div>
-  </section>
-
-  <!-- ========== CTA BANNER ========== -->
-  <section class="py-16 lg:py-24 bg-white dark:bg-surface-dark">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6">
-      <div class="relative rounded-3xl overflow-hidden p-8 sm:p-12 lg:p-16 text-center">
-        <!-- Background -->
-        <div class="absolute inset-0 bg-gradient-to-br from-primary/10 via-accent/10 to-primary/5 dark:from-primary/20 dark:via-accent/15 dark:to-primary/10"></div>
-        <div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 dark:bg-primary/20 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-0 left-0 w-48 h-48 bg-accent/10 dark:bg-accent/20 rounded-full blur-3xl"></div>
-        <div class="absolute inset-0 border border-primary/20 dark:border-primary/30 rounded-3xl"></div>
-        <!-- Content -->
-        <div class="relative z-10">
-          <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[40px] font-bold text-heading dark:text-heading-dark leading-[1.3] mb-6">
-            მოდი, ერთად გავზარდოთ<br><span class="gradient-text">შენი ბიზნესი</span>
-          </h2>
-          <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#" onclick="openCalendly();return false;" class="inline-flex items-center justify-center gap-2 px-8 py-4 ai-cta-animate text-white text-lg font-bold rounded-2xl hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 transition-all duration-200">
-              დაჯავშნე კონსულტაცია
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-            </a>
-            <a href="contact-us.html" class="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-gray-200 dark:border-gray-700 text-heading dark:text-heading-dark text-lg font-bold rounded-2xl hover:border-primary dark:hover:border-primary-light hover:text-primary dark:hover:text-primary-light transition-all duration-200">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-              დაგვიკავშირდით
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  </main>
-
-  <!-- ========== FOOTER ========== -->
-    <footer class="bg-heading dark:bg-surface-dark-alt text-gray-400 py-12 lg:py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
-        <!-- Col 1: Info -->
-        <div class="col-span-2 lg:col-span-1">
-          <a href="index.html" class="flex items-center gap-2 mb-4">
-            <img src="images/logo.png" alt="10XSEO" class="h-12 w-auto">
-          </a>
-          <p class="text-sm leading-relaxed mb-4">საქართველოს #1 SEO სააგენტო. რეალური შედეგები, ყოველკვირეული ანგარიშები, სწრაფი მომსახურება.</p>
-          <div class="flex gap-3">
-            <a href="https://www.facebook.com/10xSEO.Ge" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-white/10 border-2 border-transparent flex items-center justify-center hover:bg-white hover:border-[#D4A017] transition-all duration-200" aria-label="Facebook">
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-            </a>
-            <a href="https://www.linkedin.com/company/10xseoge/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-white/10 border-2 border-transparent flex items-center justify-center hover:bg-white hover:border-[#D4A017] transition-all duration-200" aria-label="LinkedIn">
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            </a>
-            <a href="https://www.youtube.com/@10xSEO" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-white/10 border-2 border-transparent flex items-center justify-center hover:bg-white hover:border-[#D4A017] transition-all duration-200" aria-label="YouTube">
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-            </a>
-          </div>
-        </div>
-        <!-- Col 2: Services -->
-        <div>
-          <p class="font-heading text-white font-semibold mb-4">სერვისები</p>
-          <ul class="space-y-2.5 text-sm">
-            <li><a href="seo-management.html" class="hover:text-white transition-colors">SEO მენეჯმენტი</a></li>
-            <li><a href="seo-consultation.html" class="hover:text-white transition-colors">SEO კონსულტაცია</a></li>
-            <li><a href="seo-strategy.html" class="hover:text-white transition-colors">SEO სტრატეგია</a></li>
-            <li><a href="seo-audit.html" class="hover:text-white transition-colors">უფასო SEO აუდიტი</a></li>
-          </ul>
-        </div>
-        <!-- Col 3: Company -->
-        <div>
-          <p class="font-heading text-white font-semibold mb-4">კომპანია</p>
-          <ul class="space-y-2.5 text-sm">
-            <li><a href="portfolio.html" class="hover:text-white transition-colors">პორტფოლიო</a></li>
-            <li><a href="case-studies.html" class="hover:text-white transition-colors">ქეის სტადები</a></li>
-            <li><a href="blog.html" class="hover:text-white transition-colors">ბლოგი</a></li>
-            <li><a href="faq.html" class="hover:text-white transition-colors">FAQ</a></li>
-            <li><a href="ra-aris-seo.html" class="hover:text-white transition-colors">რა არის SEO</a></li>
-            <li><a href="vacancies.html" class="hover:text-white transition-colors">ვაკანსიები</a></li>
-          </ul>
-        </div>
-        <!-- Col 4: Contact -->
-        <div>
-          <p class="font-heading text-white font-semibold mb-4">კონტაქტი</p>
-          <ul class="space-y-2.5 text-sm">
-            <li>+995 510 10 15 17</li>
-            <li>sales@10xseo.ge</li>
-            <li>თბილისი, საქართველო</li>
-          </ul>
-        </div>
-      </div>
-      <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
-        <p>&copy; 2026 10XSEO. ყველა უფლება დაცულია.</p>
-        <div class="flex gap-6">
-          <a href="#" class="hover:text-white transition-colors">კონფიდენციალურობა</a>
-          <a href="#" class="hover:text-white transition-colors">პირობები</a>
-        </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 10XSEO. ყველა უფლება დაცულია.</p>
+      <div class="footer-bottom-links">
+        <a href="#">კონფიდენციალურობა</a>
+        <a href="#">პირობები</a>
       </div>
     </div>
   </footer>
 
-  <!-- ========== STICKY BOTTOM CTA (Mobile Only) ========== -->
-  <div id="sticky-cta" class="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-white dark:bg-surface-dark border-t border-gray-200 dark:border-gray-800 px-4 py-3 safe-bottom transition-transform duration-300">
-    <div class="flex gap-3">
-      <a href="#" onclick="openCalendly();return false;" class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 ai-cta-animate text-white text-sm font-bold rounded-xl">
-        დაჯავშნე კონსულტაცია
-      </a>
-      <a href="tel:+995510101517" class="w-12 h-12 flex items-center justify-center border-2 border-primary dark:border-primary-light rounded-xl text-primary dark:text-primary-light shrink-0">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-      </a>
-    </div>
-  </div>
+</div>
 
-  <!-- ========== SCRIPTS ========== -->
-  <script>
-    // Theme toggle
-    const themeToggle = document.getElementById('theme-toggle');
-    const html = document.documentElement;
-    if (localStorage.getItem('theme') !== 'light') {
-      html.classList.add('dark');
-    }
-    themeToggle.addEventListener('click', () => {
-      html.classList.toggle('dark');
-      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
-    });
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-    // Mobile menu
-    const menuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const hamburger = document.getElementById('hamburger-icon');
-    const closeIcon = document.getElementById('close-icon');
-    menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-      hamburger.classList.toggle('hidden');
-      closeIcon.classList.toggle('hidden');
-      document.body.classList.toggle('overflow-hidden');
-    });
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-        hamburger.classList.remove('hidden');
-        closeIcon.classList.add('hidden');
-        document.body.classList.remove('overflow-hidden');
-      });
-    });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // Animated counters
-    function animateCounters() {
-      document.querySelectorAll('.counter').forEach(el => {
-        const target = parseFloat(el.dataset.target);
-        const duration = 1800;
-        const start = performance.now();
-        function update(now) {
-          const elapsed = now - start;
-          const progress = Math.min(elapsed / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          const current = target * eased;
-          el.textContent = Math.round(current);
-          if (progress < 1) requestAnimationFrame(update);
-        }
-        requestAnimationFrame(update);
-      });
-    }
-
-    // Trigger counters when stats section is visible
-    const statsObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          animateCounters();
-          statsObserver.disconnect();
-        }
-      });
-    }, { threshold: 0.3 });
-    const statsSection = document.querySelector('.counter')?.closest('section');
-    if (statsSection) statsObserver.observe(statsSection);
-
-    // Sticky bottom CTA — hide on scroll down, show on scroll up
-    let lastScrollY = 0;
-    const stickyCta = document.getElementById('sticky-cta');
-    window.addEventListener('scroll', () => {
-      const currentY = window.scrollY;
-      if (stickyCta) {
-        if (currentY > lastScrollY && currentY > 200) {
-          stickyCta.style.transform = 'translateY(100%)';
-        } else {
-          stickyCta.style.transform = 'translateY(0)';
-        }
-      }
-      lastScrollY = currentY;
-    }, { passive: true });
-  </script>
-
-
-<!-- Calendly Popup Widget -->
-<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-<script>function openCalendly(){Calendly.initPopupWidget({url:'https://calendly.com/10xseo-sales/30-seo-clone?background_color=0f172a&text_color=f8fafc&primary_color=8b5cf6'});return false;}</script>
+// Navbar shrink on scroll
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  if (window.scrollY > 80) {
+    nav.style.padding = '0.7rem 3rem';
+  } else {
+    nav.style.padding = '1.2rem 3rem';
+  }
+});
+</script>
 </body>
 </html>

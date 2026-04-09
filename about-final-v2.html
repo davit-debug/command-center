@@ -8,8 +8,53 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ჩვენს შესახებ — 10xSEO</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Caveat:wght@400;700&family=Noto+Sans+Georgian:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/firago@1.0.0/FiraGO.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        primary: { DEFAULT: '#8B5CF6', light: '#A78BFA', dark: '#7C3AED' },
+        accent: { DEFAULT: '#14B8A6', dark: '#0D9488' },
+        'ai-blue': '#3B82F6',
+        surface: { DEFAULT: '#ffffff', alt: '#f8fafc', dark: '#020710', 'dark-alt': '#0F0F0F' },
+        heading: { DEFAULT: '#0f172a', dark: '#f8fafc' },
+        body: { DEFAULT: '#475569', dark: '#94a3b8' },
+      },
+      fontFamily: {
+        'heading': ['"Dachi the Lynx"', 'sans-serif'],
+        'body': ['FiraGO', 'sans-serif'],
+        'inter': ['Inter', 'sans-serif'],
+      },
+    }
+  }
+}
+</script>
 <style>
+@keyframes aiGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.ai-cta-animate {
+  background: linear-gradient(-45deg, #8B5CF6, #3B82F6, #14B8A6, #8B5CF6) !important;
+  background-size: 300% 300% !important;
+  animation: aiGradient 4s ease infinite;
+  box-shadow: 0 4px 25px rgba(139, 92, 246, 0.35);
+}
+</style>
+<style>
+@font-face {
+  font-family: 'Dachi the Lynx';
+  src: url('fonts/DachiTheLynx.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
@@ -31,7 +76,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Noto Sans Georgian', sans-serif;
+  font-family: 'FiraGO', sans-serif;
   background: var(--dark);
   color: var(--text);
   line-height: 1.7;
@@ -39,7 +84,7 @@ body {
   font-weight: 400;
 }
 
-.serif { font-family: 'Cormorant Garamond', serif; }
+.serif { font-family: 'Dachi the Lynx', sans-serif; }
 
 /* Subtle noise */
 body::before {
@@ -65,32 +110,49 @@ body::before {
 /* Nav */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  padding: 1.2rem 3rem;
-  background: rgba(2,7,16,0.85); backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
+  height: 72px;
+  background: rgba(2,7,16,0.80); backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex; align-items: center;
+  transition: all 0.3s ease;
+}
+.nav-inner {
+  max-width: 1280px; margin: 0 auto; width: 100%;
+  padding: 0 1.5rem;
   display: flex; justify-content: space-between; align-items: center;
-  transition: padding 0.3s ease;
 }
-.nav-logo {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.4rem; font-weight: 600; color: var(--gold); letter-spacing: 2px;
-}
-.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-logo { display: flex; align-items: center; }
+.nav-logo img { height: 56px; width: auto; mix-blend-mode: screen; }
+.nav-links { display: flex; gap: 0.25rem; list-style: none; align-items: center; }
 .nav-links a {
-  color: var(--text-dim); text-decoration: none; font-size: 0.82rem;
-  letter-spacing: 1px; transition: color 0.3s;
+  color: #f8fafc; text-decoration: none; font-size: 0.875rem; font-weight: 500;
+  padding: 0.5rem 0.75rem; border-radius: 0.5rem;
+  transition: all 0.2s;
 }
-.nav-links a:hover { color: var(--gold); }
+.nav-links a:hover { color: var(--violet-soft); background: rgba(255,255,255,0.04); }
+.nav-links a.active { color: var(--violet-soft); }
+.nav-right { display: flex; align-items: center; gap: 0.5rem; }
 .nav-cta {
-  padding: 0.55rem 1.4rem; border-radius: 50px; font-size: 0.82rem; font-weight: 600;
+  padding: 0.625rem 1.25rem; border-radius: 0.75rem; font-size: 0.875rem; font-weight: 600;
   background: linear-gradient(135deg, var(--violet), var(--blue));
-  color: #fff; text-decoration: none; transition: all 0.3s; border: none; cursor: pointer;
-  font-family: 'Noto Sans Georgian', sans-serif;
+  color: #fff; text-decoration: none; transition: all 0.2s; border: none; cursor: pointer;
+  font-family: 'FiraGO', sans-serif;
 }
-.nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(139,92,246,0.3); }
+.nav-cta:hover { box-shadow: 0 8px 24px rgba(139,92,246,0.25); transform: translateY(-1px); }
+/* Hamburger for mobile */
+.nav-hamburger {
+  display: none; width: 44px; height: 44px; border-radius: 0.5rem; border: none;
+  background: transparent; cursor: pointer; flex-direction: column; align-items: center;
+  justify-content: center; gap: 6px;
+}
+.nav-hamburger span { display: block; width: 20px; height: 2px; background: #f8fafc; border-radius: 2px; }
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+}
 
 .content { position: relative; z-index: 1; }
-.container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 3rem; }
 
 /* === HERO === */
 .hero {
@@ -114,7 +176,7 @@ nav {
 .hero-badge .heart { color: #ef4444; font-size: 1rem; }
 
 .hero h1 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Dachi the Lynx', sans-serif;
   font-size: clamp(3rem, 7vw, 5.5rem);
   font-weight: 300; line-height: 1.15; margin-bottom: 1.5rem;
   color: var(--cream);
@@ -131,7 +193,7 @@ nav {
 }
 
 .hero-subtitle {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Dachi the Lynx', sans-serif;
   font-size: clamp(1.1rem, 2.5vw, 1.5rem);
   font-weight: 300; font-style: italic;
   color: var(--text-dim); max-width: 550px; margin: 0 auto;
@@ -150,13 +212,13 @@ nav {
 
 /* === DROP CAP OPENING === */
 .opening {
-  max-width: 780px; margin: 0 auto; padding: 5rem 2rem;
+  max-width: 780px; margin: 0 auto; padding: 5rem 3rem;
 }
 .opening-text {
   font-size: 1.1rem; line-height: 2; color: var(--text-dim);
 }
 .opening-text::first-letter {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Dachi the Lynx', sans-serif;
   font-size: 4.5rem; float: left; line-height: 0.8;
   padding-right: 0.7rem; padding-top: 0.4rem;
   color: var(--gold); font-weight: 600;
@@ -164,16 +226,16 @@ nav {
 
 /* === PULL QUOTE === */
 .pull-quote {
-  padding: 5rem 2rem; text-align: center; position: relative;
+  padding: 5rem 3rem; text-align: center; position: relative;
   max-width: 850px; margin: 0 auto;
 }
 .pull-quote::before {
-  content: '\201C'; font-family: 'Cormorant Garamond', serif;
+  content: '\201C'; font-family: 'Dachi the Lynx', sans-serif;
   font-size: 10rem; color: rgba(245,166,35,0.1);
   position: absolute; top: 0; left: 50%; transform: translateX(-50%); line-height: 1;
 }
 .pull-quote-text {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Dachi the Lynx', sans-serif;
   font-size: clamp(1.3rem, 2.5vw, 2rem);
   font-weight: 300; font-style: italic; color: var(--cream);
   position: relative; z-index: 1; line-height: 1.8;
@@ -192,7 +254,7 @@ nav {
   font-family: 'Caveat', cursive; font-size: 1.2rem; color: var(--gold); margin-bottom: 0.5rem;
 }
 .section-title {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Dachi the Lynx', sans-serif;
   font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; color: var(--cream);
 }
 .section-desc {
@@ -243,7 +305,7 @@ nav {
 }
 .principle-item:hover { padding-left: 12px; }
 .principle-number {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Dachi the Lynx', sans-serif;
   font-size: 1.6rem; font-weight: 300; color: var(--gold); min-width: 2.5rem;
   line-height: 1.4;
 }
@@ -305,6 +367,67 @@ nav {
 }
 .team-card:hover .fun-fact { opacity: 1; transform: translateY(0); }
 
+/* === TEAM VIDEO === */
+.team-video-section {
+  max-width: 960px; margin: 0 auto; padding: 5rem 2rem;
+  text-align: center;
+}
+.team-video-wrapper {
+  position: relative; border-radius: 24px; overflow: hidden;
+  aspect-ratio: 16/9; margin-top: 2.5rem;
+  background: var(--surface);
+  border: 1px solid rgba(139,92,246,0.12);
+  cursor: pointer; transition: all 0.5s ease;
+}
+.team-video-wrapper::before {
+  content: ''; position: absolute; inset: -2px; border-radius: 26px;
+  background: linear-gradient(135deg, var(--violet), var(--blue), var(--teal), var(--gold));
+  opacity: 0; transition: opacity 0.5s; z-index: -1;
+}
+.team-video-wrapper:hover::before { opacity: 1; }
+.team-video-wrapper:hover {
+  border-color: transparent;
+  box-shadow: 0 20px 60px rgba(139,92,246,0.25), 0 0 80px rgba(139,92,246,0.08);
+  transform: translateY(-4px);
+}
+.team-video-wrapper iframe,
+.team-video-wrapper video {
+  position: absolute; inset: 0; width: 100%; height: 100%; border: none;
+}
+.video-placeholder {
+  position: absolute; inset: 0; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 20px;
+  background:
+    radial-gradient(ellipse at 30% 40%, rgba(139,92,246,0.25) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 60%, rgba(59,130,246,0.20) 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 80%, rgba(245,166,35,0.10) 0%, transparent 50%),
+    linear-gradient(135deg, #0f1225, #101828);
+}
+.video-play-btn {
+  width: 88px; height: 88px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--violet), var(--blue));
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 32px rgba(139,92,246,0.4), 0 0 0 0 rgba(139,92,246,0.3);
+  transition: all 0.4s ease;
+  animation: playPulse 2.5s ease-in-out infinite;
+}
+@keyframes playPulse {
+  0%, 100% { box-shadow: 0 8px 32px rgba(139,92,246,0.4), 0 0 0 0 rgba(139,92,246,0.3); }
+  50% { box-shadow: 0 8px 32px rgba(139,92,246,0.4), 0 0 0 18px rgba(139,92,246,0); }
+}
+.team-video-wrapper:hover .video-play-btn {
+  transform: scale(1.12);
+  box-shadow: 0 12px 44px rgba(139,92,246,0.5);
+  animation: none;
+}
+.video-play-btn svg { width: 34px; height: 34px; fill: white; margin-left: 5px; }
+.video-placeholder-text {
+  font-family: 'Caveat', cursive; font-size: 1.3rem; color: var(--gold);
+}
+.video-placeholder-sub {
+  font-size: 0.82rem; color: var(--text-muted); letter-spacing: 1px;
+}
+
 /* === TESTIMONIAL === */
 .testimonial-section {
   background: linear-gradient(135deg, rgba(139,92,246,0.04), rgba(245,166,35,0.03));
@@ -313,12 +436,12 @@ nav {
   max-width: 900px; margin: 0 auto;
 }
 .big-quote {
-  font-family: 'Cormorant Garamond', serif; font-size: 8rem;
+  font-family: 'Dachi the Lynx', sans-serif; font-size: 8rem;
   color: var(--violet); opacity: 0.08;
   position: absolute; top: 10px; left: 40px; line-height: 1;
 }
 .testimonial-text {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Dachi the Lynx', sans-serif;
   font-size: clamp(1.1rem, 2vw, 1.35rem);
   line-height: 1.9; max-width: 680px; margin: 0 auto; font-weight: 300;
 }
@@ -342,7 +465,7 @@ nav {
   text-align: center; padding: 6rem 2rem 8rem;
 }
 .cta-section h2 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Dachi the Lynx', sans-serif;
   font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; color: var(--cream); margin-bottom: 0.5rem;
 }
 .cta-hand {
@@ -353,7 +476,7 @@ nav {
   padding: 14px 34px; border-radius: 100px; font-size: 1rem; font-weight: 600;
   background: linear-gradient(135deg, var(--violet), var(--blue));
   color: white; text-decoration: none; transition: all 0.3s;
-  font-family: 'Noto Sans Georgian', sans-serif;
+  font-family: 'FiraGO', sans-serif;
 }
 .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(139,92,246,0.3); }
 .cta-phone { margin-top: 14px; font-size: 0.82rem; color: var(--text-dim); }
@@ -388,9 +511,10 @@ footer {
   .culture-grid { grid-template-columns: 1fr; }
   .team-grid { grid-template-columns: repeat(2, 1fr); }
   .testimonial-section { padding: 3rem 1.5rem; }
-  .container { padding: 0 1.2rem; }
+  .container { padding: 0 1.5rem; }
   .hero { padding: 6rem 1.5rem 4rem; }
   .opening { padding: 3rem 1.5rem; }
+  .pull-quote { padding: 3rem 1.5rem; }
 }
 
 /* === MISSION SECTION === */
@@ -398,7 +522,7 @@ footer {
   display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
 }
 .mission-left h2 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Dachi the Lynx', sans-serif;
   font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; line-height: 1.3;
   margin-bottom: 1.2rem; color: var(--cream);
 }
@@ -440,7 +564,7 @@ footer {
 }
 .vision-card:hover::before { opacity: 1; }
 .vision-card .year {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Dachi the Lynx', sans-serif;
   font-size: 3.5rem; font-weight: 600; line-height: 1; margin-bottom: 14px;
 }
 .vision-card:nth-child(1) .year { color: var(--gold); }
@@ -461,11 +585,11 @@ footer {
 }
 .ai-banner::before {
   content: 'AI'; position: absolute; right: -10px; top: -30px;
-  font-family: 'Cormorant Garamond', serif; font-size: 12rem;
+  font-family: 'Dachi the Lynx', sans-serif; font-size: 12rem;
   font-weight: 600; opacity: 0.02; color: var(--violet);
 }
 .ai-banner h3 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Dachi the Lynx', sans-serif;
   font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 300;
   margin-bottom: 1rem; color: var(--cream);
 }
@@ -535,18 +659,60 @@ footer {
 
 <div class="content">
 
-<!-- NAV -->
-<nav>
-  <div class="nav-logo">10XSEO</div>
-  <ul class="nav-links">
-    <li><a href="#story">ჩვენს შესახებ</a></li>
-    <li><a href="#values">ღირებულებები</a></li>
-    <li><a href="#culture">კულტურა</a></li>
-    <li><a href="#team">გუნდი</a></li>
-    <li><a href="#contact">კონტაქტი</a></li>
-  </ul>
-  <a href="https://calendly.com/10xseo-sales" class="nav-cta">დაგვიკავშირდი</a>
-</nav>
+<!-- NAV — identical to main site -->
+<header id="main-header" class="fixed top-0 left-0 right-0 z-50 h-16 lg:h-[72px] bg-surface-dark/80 backdrop-blur-xl border-b border-gray-800 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 h-full flex items-center justify-between">
+    <a href="/" class="flex items-center shrink-0">
+      <img src="images/logo-glow.png" alt="10XSEO" class="h-14 lg:h-16 w-auto mix-blend-screen">
+    </a>
+    <nav class="hidden lg:flex items-center gap-1" aria-label="მთავარი ნავიგაცია">
+      <a href="about-us.html" class="px-3 py-2 text-sm font-medium text-primary-light hover:text-primary rounded-lg hover:bg-gray-800/50 transition-colors">ჩვენს შესახებ</a>
+      <div class="relative group">
+        <button class="px-3 py-2 text-sm font-medium text-heading-dark hover:text-primary-light rounded-lg hover:bg-gray-800/50 transition-colors flex items-center gap-1">
+          სერვისები
+          <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="absolute top-full left-0 mt-1 w-56 bg-surface-dark-alt rounded-xl shadow-xl border border-gray-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 p-2">
+          <a href="seo-management.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-800/50 text-heading-dark">SEO მენეჯმენტი</a>
+          <a href="seo-consultation.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-800/50 text-heading-dark">SEO კონსულტაცია</a>
+          <a href="seo-strategy.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-800/50 text-heading-dark">SEO სტრატეგია</a>
+          <a href="seo-copywriting.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-800/50 text-heading-dark">SEO კოპირაიტინგი</a>
+          <a href="cro.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-800/50 text-heading-dark">კონვერსიის ოპტიმიზაცია</a>
+          <a href="google-ads.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-800/50 text-heading-dark">Google Ads</a>
+          <a href="ai-seo.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-800/50 text-heading-dark">AI SEO / GEO</a>
+          <a href="seo-course.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-800/50 text-heading-dark">SEO კურსი</a>
+        </div>
+      </div>
+      <div class="relative group/ind">
+        <a href="industries.html" class="px-3 py-2 text-sm font-medium text-heading-dark hover:text-primary-light rounded-lg hover:bg-gray-800/50 transition-colors flex items-center gap-1">
+          ინდუსტრიები
+          <svg class="w-4 h-4 transition-transform group-hover/ind:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </a>
+        <div class="absolute top-full left-0 mt-1 w-60 bg-surface-dark-alt rounded-xl shadow-xl border border-gray-800 opacity-0 invisible group-hover/ind:opacity-100 group-hover/ind:visible transition-all duration-200 p-2">
+          <a href="industries/healthcare.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-800/50 text-heading-dark">კლინიკები &amp; ჯანდაცვა</a>
+          <a href="industries/financial-services.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-800/50 text-heading-dark">ფინანსური სერვისები</a>
+          <a href="industries/construction.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-800/50 text-heading-dark">სამშენებლო &amp; უძრავი ქონება</a>
+          <a href="industries/ecommerce.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-800/50 text-heading-dark">E-commerce</a>
+          <hr class="my-1 border-gray-800">
+          <a href="industries.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-800/50 text-body-dark">ყველა ინდუსტრია →</a>
+        </div>
+      </div>
+      <a href="portfolio.html" class="px-3 py-2 text-sm font-medium text-heading-dark hover:text-primary-light rounded-lg hover:bg-gray-800/50 transition-colors">პორტფოლიო</a>
+      <a href="case-studies.html" class="px-3 py-2 text-sm font-medium text-heading-dark hover:text-primary-light rounded-lg hover:bg-gray-800/50 transition-colors">შედეგები</a>
+      <a href="blog.html" class="px-3 py-2 text-sm font-medium text-heading-dark hover:text-primary-light rounded-lg hover:bg-gray-800/50 transition-colors">ბლოგი</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <a href="#" onclick="if(typeof openCalendly==='function')openCalendly();return false;" class="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 ai-cta-animate text-white text-sm font-semibold rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-200">
+        დაჯავშნე კონსულტაცია
+      </a>
+      <button id="mobile-menu-btn" class="lg:hidden w-9 h-9 min-w-[44px] min-h-[44px] rounded-lg flex flex-col items-center justify-center gap-[6px] hover:bg-gray-800 transition-colors text-heading-dark" aria-expanded="false" aria-label="მენიუს გახსნა">
+        <span class="block w-5 h-[2px] bg-current rounded-full"></span>
+        <span class="block w-5 h-[2px] bg-current rounded-full"></span>
+        <span class="block w-5 h-[2px] bg-current rounded-full"></span>
+      </button>
+    </div>
+  </div>
+</header>
 
 <!-- HERO -->
 <section class="hero">
@@ -557,6 +723,24 @@ footer {
   <p class="hero-subtitle reveal">იყავი პირველი — ყოველთვის, ყველგან, ყველაფერში</p>
   <div class="hero-line"></div>
 </section>
+
+<!-- TEAM VIDEO -->
+<div class="team-video-section reveal">
+  <div class="section-label">გაიცანი გუნდი ახლოდან</div>
+  <div class="section-title" style="font-family:'Dachi the Lynx',sans-serif; font-size:clamp(1.5rem,3vw,2.2rem); font-weight:300; color:var(--cream);">ვინ ვართ <span style="color:var(--gold); font-family:'Caveat',cursive; font-weight:700;">10xელები</span></div>
+  <p style="margin-top:0.8rem; color:var(--text-dim); font-size:0.95rem;">გაიცანი ადამიანები, რომლებიც თქვენი ბიზნესის ზრდაზე ზრუნავენ</p>
+  <div class="team-video-wrapper">
+    <div class="video-placeholder">
+      <div class="video-play-btn">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      </div>
+      <div class="video-placeholder-text">About Us ვიდეო მალე</div>
+      <div class="video-placeholder-sub">COMING SOON</div>
+    </div>
+    <!-- TODO: ვიდეოს ჩამატების შემდეგ .video-placeholder წაშალე და ჩასვი: -->
+    <!-- <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe> -->
+  </div>
+</div>
 
 <div class="divider"></div>
 
@@ -625,6 +809,7 @@ footer {
   <div class="section-header reveal">
     <div class="section-label">როგორ ვმუშაობთ</div>
     <div class="section-title">ჩვენი პრინციპები</div>
+    <p class="section-desc">Agile მეთოდოლოგიით ვმუშაობთ — სპრინტები, რეგულარული რეტროსპექტივები და მუდმივი ადაპტაცია</p>
   </div>
 
   <ul class="principles-list">
@@ -784,12 +969,14 @@ footer {
       <div class="team-role">Senior SEO სპეციალისტი</div>
       <div class="fun-fact">გამოცდილების სკალა &#127891;</div>
     </div>
-    <div class="team-card reveal reveal-d3">
+    <a href="vacancies.html" class="team-card reveal reveal-d3" style="text-decoration:none; color:inherit;">
       <div class="team-avatar ops" style="font-size:1.8rem;">+</div>
       <div class="team-name">შენ?</div>
       <div class="team-role">შემდეგი 10xელი</div>
-      <div class="fun-fact">შემოგვიერთდი! &#128640;</div>
-    </div>
+      <div class="fun-fact">ნახე ვაკანსიები &#128640;</div>
+    </a>
+  </div>
+
   </div>
 </div>
 
@@ -928,7 +1115,7 @@ footer {
   <footer class="site-footer">
     <div class="footer-grid">
       <div class="footer-brand">
-        <img src="images/logo.png" alt="10XSEO" style="height:40px;width:auto;margin-bottom:4px;" onerror="this.outerHTML='<span style=\'font-family:Cormorant Garamond,serif;font-size:1.4rem;font-weight:600;color:#F5A623;letter-spacing:2px\'>10XSEO</span>'">
+        <img src="images/logo.png" alt="10XSEO" style="height:40px;width:auto;margin-bottom:4px;" onerror="this.outerHTML='<span style=\'font-family:Dachi the Lynx,sans-serif;font-size:1.4rem;font-weight:600;color:#F5A623;letter-spacing:2px\'>10XSEO</span>'">
         <p>საქართველოს #1 SEO სააგენტო. რეალური შედეგები, ყოველკვირეული ანგარიშები, სწრაფი მომსახურება.</p>
         <div class="footer-social">
           <a href="https://www.facebook.com/10xSEO.Ge" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
