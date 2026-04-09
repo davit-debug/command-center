@@ -19,11 +19,22 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.3/src/lite-yt-embed.min.css">
   <script src="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.3/src/lite-yt-embed.min.js" defer></script>
   <script type="text/javascript" src="https://widget.clutch.co/static/js/widget.js" async></script>
-  <link rel="preload" href="https://assets.calendly.com/assets/external/widget.js" as="script">
-  <link rel="preload" href="https://assets.calendly.com/assets/external/widget.css" as="style">
+  <link rel="dns-prefetch" href="https://calendly.com">
+  <link rel="preconnect" href="https://calendly.com" crossorigin>
+  <link rel="dns-prefetch" href="https://assets.calendly.com">
+  <link rel="preconnect" href="https://assets.calendly.com" crossorigin>
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript"></script>
-  <script>function openCalendly(){if(typeof Calendly!=='undefined'){Calendly.initPopupWidget({url:'https://calendly.com/10xseo-sales/30-seo-clone?background_color=0f172a&text_color=f8fafc&primary_color=8b5cf6'});}else{window.open('https://calendly.com/10xseo-sales/30-seo-clone','_blank');}return false;}</script>
+  <script>
+  var _calendlyReady=false;
+  function openCalendly(){
+    if(_calendlyReady&&typeof Calendly!=='undefined'){Calendly.initPopupWidget({url:'https://calendly.com/10xseo-sales/30-seo-clone?background_color=0f172a&text_color=f8fafc&primary_color=8b5cf6'});}
+    else{window.open('https://calendly.com/10xseo-sales/30-seo-clone','_blank');}
+    return false;
+  }
+  // Prefetch Calendly iframe on first user interaction
+  document.addEventListener('mousemove',function _c(){_calendlyReady=true;document.removeEventListener('mousemove',_c);},{ once:true, passive:true });
+  </script>
   <script>
     tailwind.config = {
       darkMode: 'class',
