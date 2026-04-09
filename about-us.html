@@ -253,14 +253,52 @@ body::before {
   text-align: center;
   padding: 44px 40px;
 }
-.value-emoji {
-  font-size: 2.4rem; margin-bottom: 16px;
-  width: 56px; height: 56px; display: flex; align-items: center; justify-content: center;
-  background: rgba(139,92,246,0.08); border-radius: 16px;
+/* Pyramid + Glow Dot icons (Type L) */
+.pyramid-icon {
+  width: 52px; height: 52px; margin-bottom: 14px; position: relative;
 }
-.value-card.featured .value-emoji {
-  margin: 0 auto 16px;
-  background: linear-gradient(135deg, rgba(245,166,35,0.12), rgba(139,92,246,0.08));
+.pyramid-icon svg { width: 100%; height: 100%; }
+.pyramid-icon .glow-dot {
+  position: absolute; width: 8px; height: 8px; border-radius: 50%;
+  left: 50%; transform: translateX(-50%); filter: blur(1px);
+}
+.value-card.featured .pyramid-icon { margin: 0 auto 14px; }
+/* Color variants */
+.pyramid-icon.gold .glow-dot { background: var(--gold); top: 10px; box-shadow: 0 0 10px var(--gold); }
+.pyramid-icon.violet .glow-dot { background: var(--violet); top: 18px; box-shadow: 0 0 10px var(--violet); }
+.pyramid-icon.blue .glow-dot { background: var(--blue); top: 26px; box-shadow: 0 0 10px var(--blue); }
+.pyramid-icon.teal .glow-dot { background: var(--teal); top: 34px; box-shadow: 0 0 10px var(--teal); }
+
+/* Values: Hero card + compact grid (Type C) */
+.values-hero {
+  text-align: center; padding: 40px; margin-bottom: 20px;
+  background: linear-gradient(135deg, rgba(245,166,35,0.06), rgba(139,92,246,0.04));
+  border-radius: 24px; border: 1px solid rgba(245,166,35,0.1);
+}
+.values-hero .pyramid-icon { margin: 0 auto 14px; }
+.values-hero h3 { font-size: 1.25rem; color: var(--cream); margin-bottom: 8px; font-weight: 700; }
+.values-hero p { font-size: 0.95rem; color: var(--text-dim); max-width: 520px; margin: 0 auto; line-height: 1.8; }
+.values-compact {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+}
+.val-item {
+  display: flex; gap: 14px; align-items: flex-start;
+  padding: 18px 20px; background: var(--surface);
+  border: 1px solid rgba(139,92,246,0.06); border-radius: 16px;
+  transition: all 0.3s;
+}
+.val-item:hover { border-color: rgba(139,92,246,0.15); transform: translateY(-2px); }
+.val-dot {
+  width: 10px; height: 10px; border-radius: 50%; margin-top: 5px; flex-shrink: 0;
+}
+.val-dot.c-violet { background: var(--violet); }
+.val-dot.c-blue { background: var(--blue); }
+.val-dot.c-teal { background: var(--teal); }
+.val-dot.c-gold { background: var(--gold); }
+.val-item h3 { font-size: 0.95rem; color: var(--cream); font-weight: 700; margin-bottom: 3px; }
+.val-item p { font-size: 0.84rem; color: var(--text-dim); line-height: 1.6; }
+@media (max-width: 768px) {
+  .values-compact { grid-template-columns: 1fr; }
 }
 .value-card h3 {
   font-size: 1.15rem; font-weight: 700; margin-bottom: 10px; color: var(--cream);
@@ -743,14 +781,21 @@ a:focus-visible { outline-offset: 3px; }
   <div class="hero-line"></div>
 </section>
 
-<!-- TODO: ვიდეო სექცია — ჩაამატე როცა რეალური ვიდეო გექნება:
+<!-- TEAM VIDEO -->
 <div class="team-video-section reveal">
   <div class="section-label">გაიცანი გუნდი ახლოდან</div>
+  <h2 class="section-title" style="font-size:clamp(1.5rem,3vw,2.2rem); font-weight:300;">ვინ ვართ <span style="color:var(--gold); font-family:'Caveat',cursive; font-weight:700;">10xელები</span></h2>
+  <p style="margin-top:0.8rem; color:var(--text-dim); font-size:0.95rem;">გაიცანი ადამიანები, რომლებიც თქვენი ბიზნესის ზრდაზე ზრუნავენ</p>
   <div class="team-video-wrapper">
-    <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+    <div class="video-placeholder">
+      <div class="video-play-btn">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      </div>
+      <div class="video-placeholder-text">About Us ვიდეო</div>
+    </div>
+    <!-- როცა ვიდეო მზად იქნება, .video-placeholder წაშალე და ჩასვი iframe -->
   </div>
 </div>
--->
 
 <div class="divider"></div>
 
@@ -769,17 +814,17 @@ a:focus-visible { outline-offset: 3px; }
   </div>
   <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:20px;" class="reveal">
     <div class="value-card">
-      <div class="value-emoji">&#128301;</div>
+      <div class="pyramid-icon gold"><svg viewBox="0 0 48 48" fill="none"><path d="M24 4L44 44H4L24 4z" stroke="rgba(245,166,35,0.3)" stroke-width="1.5"/><line x1="10" y1="24" x2="38" y2="24" stroke="rgba(245,166,35,0.08)"/><line x1="14" y1="34" x2="34" y2="34" stroke="rgba(245,166,35,0.08)"/></svg><div class="glow-dot"></div></div>
       <h3>ხედვა</h3>
       <p>ჩვენ გვჯერა, რომ მალე პასუხების ძიებას ადამიანები სრულად ხელოვნურ ინტელექტს მიანდობენ. 10xSEO არის სააგენტო, რომელიც ბიზნესებს ამ გარდაუვალი მომავლისთვის დღეს ამზადებს.</p>
     </div>
     <div class="value-card">
-      <div class="value-emoji">&#127919;</div>
+      <div class="pyramid-icon violet"><svg viewBox="0 0 48 48" fill="none"><path d="M24 4L44 44H4L24 4z" stroke="rgba(139,92,246,0.3)" stroke-width="1.5"/><line x1="10" y1="24" x2="38" y2="24" stroke="rgba(139,92,246,0.08)"/><line x1="14" y1="34" x2="34" y2="34" stroke="rgba(139,92,246,0.08)"/></svg><div class="glow-dot"></div></div>
       <h3>მისია</h3>
       <p>ბიზნესები იქ იყვნენ, სადაც მომხმარებელი პასუხს ეძებს: Google-იდან დაწყებული, ChatGPT-ის, Gemini-ისა და Perplexity-ის ჩათვლით. ბრენდი გახდეს პირველი და უალტერნატივო წყარო.</p>
     </div>
     <div class="value-card">
-      <div class="value-emoji">&#9878;&#65039;</div>
+      <div class="pyramid-icon blue"><svg viewBox="0 0 48 48" fill="none"><path d="M24 4L44 44H4L24 4z" stroke="rgba(59,130,246,0.3)" stroke-width="1.5"/><line x1="10" y1="24" x2="38" y2="24" stroke="rgba(59,130,246,0.08)"/><line x1="14" y1="34" x2="34" y2="34" stroke="rgba(59,130,246,0.08)"/></svg><div class="glow-dot"></div></div>
       <h3>ფილოსოფია</h3>
       <p>ვიყოთ იქ, სადაც გადაწყვეტილებები მიიღება და წარმატება კონკრეტული გაზომვადი შედეგით დავამტკიცოთ. ჩვენი პრინციპი: We walk the talk.</p>
     </div>
@@ -857,46 +902,42 @@ a:focus-visible { outline-offset: 3px; }
     <p class="section-desc">ყველაფერი, რასაც ვაკეთებთ, ამ პრინციპებზეა აგებული</p>
   </div>
 
-  <div class="values-grid">
-    <div class="value-card featured reveal">
-      <div class="value-emoji">&#127942;</div>
-      <h3>იყავი პირველი</h3>
-      <p>ჩვენი სლოგანი ჩვენი მუშაობის შედეგია: საკვანძო სიტყვაზე „SEO სააგენტო" პირველ პოზიციას სტაბილურად ვიკავებთ. კომპანიის მიზანია, კლიენტმაც იგივე შედეგი მიიღოს.</p>
+  <!-- Hero Value Card -->
+  <div class="values-hero reveal">
+    <div class="pyramid-icon gold"><svg viewBox="0 0 48 48" fill="none"><path d="M24 4L44 44H4L24 4z" stroke="rgba(245,166,35,0.4)" stroke-width="1.5"/><line x1="10" y1="24" x2="38" y2="24" stroke="rgba(245,166,35,0.1)"/><line x1="14" y1="34" x2="34" y2="34" stroke="rgba(245,166,35,0.1)"/></svg><div class="glow-dot"></div></div>
+    <h3>იყავი პირველი</h3>
+    <p>ჩვენი სლოგანი ჩვენი მუშაობის შედეგია: საკვანძო სიტყვაზე „SEO სააგენტო" პირველ პოზიციას სტაბილურად ვიკავებთ. კომპანიის მიზანია, კლიენტმაც იგივე შედეგი მიიღოს.</p>
+  </div>
+
+  <!-- Compact Grid -->
+  <div class="values-compact">
+    <div class="val-item reveal">
+      <div class="val-dot c-violet"></div>
+      <div><h3>ოპერატიულობა</h3><p>მაქსიმალური სისწრაფე კომუნიკაციაში და შედეგებში. საშუალო რეაგირების დრო — 10 წუთი.</p></div>
     </div>
-    <div class="value-card reveal">
-      <div class="value-emoji">&#9889;</div>
-      <h3>ოპერატიულობა</h3>
-      <p>მაქსიმალური სისწრაფე როგორც კომუნიკაციის პროცესში, ისე შედეგების დაფიქსირებისას. საშუალო რეაგირების დრო — 10 წუთი.</p>
+    <div class="val-item reveal">
+      <div class="val-dot c-blue"></div>
+      <div><h3>ექსპერტიზა</h3><p>ინდუსტრიის უმაღლესი სტანდარტები და 15+ წლიანი გამოცდილება. ვქმნით ახალ სტანდარტებს.</p></div>
     </div>
-    <div class="value-card reveal reveal-d1">
-      <div class="value-emoji">&#128218;</div>
-      <h3>ექსპერტიზა</h3>
-      <p>ინდუსტრიის უმაღლესი სტანდარტები და 15+ წლიანი გამოცდილება. ჩვენ არ ვიმეორებთ შაბლონებს — ვქმნით ახალ სტანდარტებს.</p>
+    <div class="val-item reveal reveal-d1">
+      <div class="val-dot c-teal"></div>
+      <div><h3>პასუხისმგებლობა</h3><p>ვაკეთებთ იმას, რასაც ვამბობთ და ამას რიცხვებით ვამტკიცებთ.</p></div>
     </div>
-    <div class="value-card reveal reveal-d1">
-      <div class="value-emoji">&#9989;</div>
-      <h3>პასუხისმგებლობა</h3>
-      <p>ვაკეთებთ იმას, რასაც ვამბობთ და ამას რიცხვებით ვამტკიცებთ. We walk the talk.</p>
+    <div class="val-item reveal reveal-d1">
+      <div class="val-dot c-gold"></div>
+      <div><h3>პარტნიორობა</h3><p>გრძელვადიანი თანამშრომლობის კულტურა და ბიზნესის წარმატების საერთო პასუხისმგებლობა.</p></div>
     </div>
-    <div class="value-card reveal reveal-d2">
-      <div class="value-emoji">&#129309;</div>
-      <h3>პარტნიორობა</h3>
-      <p>გრძელვადიანი თანამშრომლობის კულტურა და ბიზნესის წარმატების საერთო პასუხისმგებლობა.</p>
+    <div class="val-item reveal reveal-d2">
+      <div class="val-dot c-violet"></div>
+      <div><h3>გულწრფელობა</h3><p>ნდობა უფრო მნიშვნელოვანია, ვიდრე შელამაზებული რეპორტები. ღია დიალოგი და ეთიკა.</p></div>
     </div>
-    <div class="value-card reveal reveal-d2">
-      <div class="value-emoji">&#128156;</div>
-      <h3>გულწრფელობა</h3>
-      <p>გულწრფელი კომუნიკაცია, ღია დიალოგი და ეთიკური მიდგომა ყველანაირი საკითხისადმი. ჩვენთვის ნდობა უფრო მნიშვნელოვანია, ვიდრე შელამაზებული რეპორტები.</p>
+    <div class="val-item reveal reveal-d2">
+      <div class="val-dot c-blue"></div>
+      <div><h3>გუნდურობა</h3><p>ერთი გუნდი, ერთი მიზანი. პროცესების სრული გამჭვირვალობა.</p></div>
     </div>
-    <div class="value-card reveal reveal-d3">
-      <div class="value-emoji">&#128101;</div>
-      <h3>გუნდურობა</h3>
-      <p>ერთი გუნდი, ერთი მიზანი. გამჭვირვალობა — პროცესების სრული ხელმისაწვდომობა და მუშაობის ყოველი ეტაპის უწყვეტი მონიტორინგი.</p>
-    </div>
-    <div class="value-card reveal reveal-d3">
-      <div class="value-emoji">&#128161;</div>
-      <h3>ინოვაციურობა</h3>
-      <p>მუდმივი განვითარება და უახლესი ტექნოლოგიების ინტეგრირება სამუშაო პროცესში. AI-first მიდგომა ყველაფრისთვის.</p>
+    <div class="val-item reveal reveal-d3">
+      <div class="val-dot c-teal"></div>
+      <div><h3>ინოვაციურობა</h3><p>მუდმივი განვითარება და AI-first მიდგომა ყველაფრისთვის.</p></div>
     </div>
   </div>
 </div>
