@@ -512,9 +512,7 @@
   <script>
     const html = document.documentElement;
     if (localStorage.getItem('theme') !== 'light') { html.classList.add('dark'); }
-    
-      document.getElementById('mobile-menu-cta').addEventListener('click', () => { mm.style.transform = 'translateX(100%)'; document.body.style.overflow = ''; });
-    }
+
     const progressBar = document.getElementById('reading-progress');
     window.addEventListener('scroll', () => {
       const scrollTop = window.scrollY;

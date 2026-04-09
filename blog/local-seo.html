@@ -519,9 +519,7 @@
     const html = document.documentElement;
     if (localStorage.getItem('theme') !== 'light') { html.classList.add('dark'); }
     if (themeToggle) { themeToggle.addEventListener('click', () => { html.classList.toggle('dark'); localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light'); }); }
-    
-      document.getElementById('mobile-menu-cta').addEventListener('click', () => { mm.style.transform = 'translateX(100%)'; document.body.style.overflow = ''; });
-    }
+
     const progressBar = document.getElementById('reading-progress');
     window.addEventListener('scroll', () => { const scrollTop = window.scrollY; const docHeight = document.documentElement.scrollHeight - window.innerHeight; progressBar.style.width = (scrollTop / docHeight) * 100 + '%'; }, { passive: true });
     let lastScrollY = 0;

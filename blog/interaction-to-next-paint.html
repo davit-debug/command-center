@@ -472,9 +472,7 @@
   </div>
 
   <script>
-    
-      document.getElementById('mobile-menu-cta').addEventListener('click', () => { mm.style.transform = 'translateX(100%)'; document.body.style.overflow = ''; });
-    }
+
     const progressBar = document.getElementById('reading-progress');
     window.addEventListener('scroll', () => { const s = window.scrollY; const d = document.documentElement.scrollHeight - window.innerHeight; progressBar.style.width = (s/d)*100 + '%'; }, { passive: true });
     let lastScrollY = 0; const stickyCta = document.getElementById('sticky-cta');
