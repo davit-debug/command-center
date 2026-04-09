@@ -10,152 +10,211 @@
   <style>
     body { background: #0f172a; }
     .mock-card { background: #1e293b; border-radius: 12px; }
+    .variant-btn { cursor:pointer; border:2px solid transparent; border-radius:12px; padding:8px; transition:all 0.2s; }
+    .variant-btn:hover { border-color: #8B5CF6; transform:scale(1.05); }
+    .variant-btn.active { border-color: #FFC000; box-shadow: 0 0 20px rgba(255,192,0,0.3); }
   </style>
 </head>
 <body class="text-white min-h-screen p-6">
-  <div class="max-w-4xl mx-auto space-y-10">
+  <div class="max-w-5xl mx-auto space-y-10">
 
-    <h1 class="text-2xl font-bold text-center mb-2">V35 Favicon — ყველგან როგორ ჩანს</h1>
+    <h1 class="text-2xl font-bold text-center mb-2">Favicon Preview — V49-V53</h1>
+    <p class="text-gray-400 text-center text-sm mb-6">აირჩიე ვარიანტი და ნახე როგორ ჩანს ყველგან</p>
 
-    <!-- 1. Chrome Tab (Light) -->
+    <!-- Variant Selector -->
+    <div class="flex justify-center gap-4 flex-wrap" id="selector">
+      <div class="variant-btn active text-center" onclick="pick('v49', this)">
+        <img src="/images/favicon-v49-lg.png" class="w-16 h-16 mx-auto mb-1" alt="">
+        <div class="text-xs text-gray-400">V49 Teal+Gold</div>
+      </div>
+      <div class="variant-btn text-center" onclick="pick('v50', this)">
+        <img src="/images/favicon-v50-lg.png" class="w-16 h-16 mx-auto mb-1" alt="">
+        <div class="text-xs text-gray-400">V50 Purple+Gold</div>
+      </div>
+      <div class="variant-btn text-center" onclick="pick('v51', this)">
+        <img src="/images/favicon-v51-lg.png" class="w-16 h-16 mx-auto mb-1" alt="">
+        <div class="text-xs text-gray-400">V51 PurpleGrad+Gold</div>
+      </div>
+      <div class="variant-btn text-center" onclick="pick('v52', this)">
+        <img src="/images/favicon-v52-lg.png" class="w-16 h-16 mx-auto mb-1" alt="">
+        <div class="text-xs text-gray-400">V52 Teal→Purple</div>
+      </div>
+      <div class="variant-btn text-center" onclick="pick('v53', this)">
+        <img src="/images/favicon-v53-lg.png" class="w-16 h-16 mx-auto mb-1" alt="">
+        <div class="text-xs text-gray-400">V53 Purple→Teal</div>
+      </div>
+    </div>
+
+    <!-- Side by side comparison at different sizes -->
+    <div class="mock-card p-6">
+      <div class="text-xs text-gray-400 mb-4">გვერდიგვერდ — ყველა ზომა</div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-center">
+          <thead>
+            <tr class="text-xs text-gray-500">
+              <th class="py-2">ვარიანტი</th>
+              <th>16px</th>
+              <th>32px</th>
+              <th>64px</th>
+              <th>128px</th>
+              <th>256px</th>
+            </tr>
+          </thead>
+          <tbody id="comparison">
+            <tr class="border-t border-gray-700"><td class="py-3 text-xs text-gray-400">V49</td><td><img src="/images/favicon-v49.png" style="width:16px;height:16px" class="mx-auto"></td><td><img src="/images/favicon-v49.png" style="width:32px;height:32px" class="mx-auto"></td><td><img src="/images/favicon-v49.png" style="width:64px;height:64px" class="mx-auto"></td><td><img src="/images/favicon-v49-lg.png" style="width:128px;height:128px" class="mx-auto"></td><td><img src="/images/favicon-v49-lg.png" style="width:256px;height:256px" class="mx-auto"></td></tr>
+            <tr class="border-t border-gray-700"><td class="py-3 text-xs text-gray-400">V50</td><td><img src="/images/favicon-v50.png" style="width:16px;height:16px" class="mx-auto"></td><td><img src="/images/favicon-v50.png" style="width:32px;height:32px" class="mx-auto"></td><td><img src="/images/favicon-v50.png" style="width:64px;height:64px" class="mx-auto"></td><td><img src="/images/favicon-v50-lg.png" style="width:128px;height:128px" class="mx-auto"></td><td><img src="/images/favicon-v50-lg.png" style="width:256px;height:256px" class="mx-auto"></td></tr>
+            <tr class="border-t border-gray-700"><td class="py-3 text-xs text-gray-400">V51</td><td><img src="/images/favicon-v51.png" style="width:16px;height:16px" class="mx-auto"></td><td><img src="/images/favicon-v51.png" style="width:32px;height:32px" class="mx-auto"></td><td><img src="/images/favicon-v51.png" style="width:64px;height:64px" class="mx-auto"></td><td><img src="/images/favicon-v51-lg.png" style="width:128px;height:128px" class="mx-auto"></td><td><img src="/images/favicon-v51-lg.png" style="width:256px;height:256px" class="mx-auto"></td></tr>
+            <tr class="border-t border-gray-700"><td class="py-3 text-xs text-gray-400">V52</td><td><img src="/images/favicon-v52.png" style="width:16px;height:16px" class="mx-auto"></td><td><img src="/images/favicon-v52.png" style="width:32px;height:32px" class="mx-auto"></td><td><img src="/images/favicon-v52.png" style="width:64px;height:64px" class="mx-auto"></td><td><img src="/images/favicon-v52-lg.png" style="width:128px;height:128px" class="mx-auto"></td><td><img src="/images/favicon-v52-lg.png" style="width:256px;height:256px" class="mx-auto"></td></tr>
+            <tr class="border-t border-gray-700"><td class="py-3 text-xs text-gray-400">V53</td><td><img src="/images/favicon-v53.png" style="width:16px;height:16px" class="mx-auto"></td><td><img src="/images/favicon-v53.png" style="width:32px;height:32px" class="mx-auto"></td><td><img src="/images/favicon-v53.png" style="width:64px;height:64px" class="mx-auto"></td><td><img src="/images/favicon-v53-lg.png" style="width:128px;height:128px" class="mx-auto"></td><td><img src="/images/favicon-v53-lg.png" style="width:256px;height:256px" class="mx-auto"></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Chrome Tab Light -->
     <div class="mock-card p-0 overflow-hidden">
       <div class="text-xs text-gray-400 px-4 pt-3 pb-1">Chrome Tab — Light Mode</div>
       <div style="background:#dee1e6" class="p-3 pb-0">
-        <div class="flex gap-1">
-          <div style="background:#fff;border-radius:8px 8px 0 0;font-size:12px;padding:6px 12px;display:flex;align-items:center;gap:6px;min-width:200px;color:#333">
-            <img src="/favicon-32x32.png" class="w-4 h-4" alt="">
-            <span>10XSEO — SEO სააგენტო #1</span>
-            <span style="color:#999;margin-left:auto">×</span>
+        <div class="flex gap-1" id="tabs-light">
+          <div style="background:#fff;border-radius:8px 8px 0 0;font-size:11px;padding:6px 10px;display:flex;align-items:center;gap:5px;color:#333">
+            <img src="/images/favicon-v49.png" class="w-4 h-4 tab-icon" alt=""><span>V49</span><span style="color:#999">×</span>
           </div>
-          <div style="background:#e8eaed;border-radius:8px 8px 0 0;font-size:12px;padding:6px 12px;color:#666">+</div>
+          <div style="background:#fff;border-radius:8px 8px 0 0;font-size:11px;padding:6px 10px;display:flex;align-items:center;gap:5px;color:#333">
+            <img src="/images/favicon-v50.png" class="w-4 h-4 tab-icon" alt=""><span>V50</span><span style="color:#999">×</span>
+          </div>
+          <div style="background:#fff;border-radius:8px 8px 0 0;font-size:11px;padding:6px 10px;display:flex;align-items:center;gap:5px;color:#333">
+            <img src="/images/favicon-v51.png" class="w-4 h-4 tab-icon" alt=""><span>V51</span><span style="color:#999">×</span>
+          </div>
+          <div style="background:#fff;border-radius:8px 8px 0 0;font-size:11px;padding:6px 10px;display:flex;align-items:center;gap:5px;color:#333">
+            <img src="/images/favicon-v52.png" class="w-4 h-4 tab-icon" alt=""><span>V52</span><span style="color:#999">×</span>
+          </div>
+          <div style="background:#fff;border-radius:8px 8px 0 0;font-size:11px;padding:6px 10px;display:flex;align-items:center;gap:5px;color:#333">
+            <img src="/images/favicon-v53.png" class="w-4 h-4 tab-icon" alt=""><span>V53</span><span style="color:#999">×</span>
+          </div>
         </div>
       </div>
       <div style="background:#fff;height:4px"></div>
     </div>
 
-    <!-- 2. Chrome Tab (Dark) -->
+    <!-- Chrome Tab Dark -->
     <div class="mock-card p-0 overflow-hidden">
       <div class="text-xs text-gray-400 px-4 pt-3 pb-1">Chrome Tab — Dark Mode</div>
       <div style="background:#202124" class="p-3 pb-0">
-        <div class="flex gap-1">
-          <div style="background:#323639;border-radius:8px 8px 0 0;font-size:12px;padding:6px 12px;display:flex;align-items:center;gap:6px;min-width:200px;color:#e8eaed">
-            <img src="/favicon-32x32.png" class="w-4 h-4" alt="">
-            <span>10XSEO — SEO სააგენტო #1</span>
-            <span style="color:#666;margin-left:auto">×</span>
+        <div class="flex gap-1" id="tabs-dark">
+          <div style="background:#323639;border-radius:8px 8px 0 0;font-size:11px;padding:6px 10px;display:flex;align-items:center;gap:5px;color:#e8eaed">
+            <img src="/images/favicon-v49.png" class="w-4 h-4 tab-icon" alt=""><span>V49</span><span style="color:#666">×</span>
           </div>
-          <div style="background:#292b2e;border-radius:8px 8px 0 0;font-size:12px;padding:6px 12px;color:#666">+</div>
+          <div style="background:#323639;border-radius:8px 8px 0 0;font-size:11px;padding:6px 10px;display:flex;align-items:center;gap:5px;color:#e8eaed">
+            <img src="/images/favicon-v50.png" class="w-4 h-4 tab-icon" alt=""><span>V50</span><span style="color:#666">×</span>
+          </div>
+          <div style="background:#323639;border-radius:8px 8px 0 0;font-size:11px;padding:6px 10px;display:flex;align-items:center;gap:5px;color:#e8eaed">
+            <img src="/images/favicon-v51.png" class="w-4 h-4 tab-icon" alt=""><span>V51</span><span style="color:#666">×</span>
+          </div>
+          <div style="background:#323639;border-radius:8px 8px 0 0;font-size:11px;padding:6px 10px;display:flex;align-items:center;gap:5px;color:#e8eaed">
+            <img src="/images/favicon-v52.png" class="w-4 h-4 tab-icon" alt=""><span>V52</span><span style="color:#666">×</span>
+          </div>
+          <div style="background:#323639;border-radius:8px 8px 0 0;font-size:11px;padding:6px 10px;display:flex;align-items:center;gap:5px;color:#e8eaed">
+            <img src="/images/favicon-v53.png" class="w-4 h-4 tab-icon" alt=""><span>V53</span><span style="color:#666">×</span>
+          </div>
         </div>
       </div>
       <div style="background:#323639;height:4px"></div>
     </div>
 
-    <!-- 3. Google Search Results -->
+    <!-- Google Search Results -->
     <div class="mock-card p-0 overflow-hidden">
       <div class="text-xs text-gray-400 px-4 pt-3 pb-1">Google Search Results</div>
       <div style="background:#fff" class="p-6">
-        <!-- Search bar -->
         <div style="background:#fff;border:1px solid #dfe1e5;border-radius:24px;padding:8px 16px;max-width:500px;margin:0 auto 20px;display:flex;align-items:center;gap:8px">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke="#9aa0a6" stroke-width="2"/></svg>
           <span style="color:#333;font-size:14px">seo სააგენტო საქართველო</span>
         </div>
-        <!-- Result 1: 10xSEO -->
-        <div style="max-width:600px;margin:0 auto">
+        <div style="max-width:600px;margin:0 auto" id="google-results">
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
-            <img src="/favicon-32x32.png" style="width:26px;height:26px;border-radius:50%;background:#f1f3f4;padding:3px" alt="">
-            <div>
-              <div style="color:#202124;font-size:12px">10xSEO</div>
-              <div style="color:#4d5156;font-size:11px">https://10xseo.ge</div>
-            </div>
+            <img src="/images/favicon-v49.png" class="serp-icon" style="width:26px;height:26px;border-radius:50%;background:#f1f3f4;padding:3px" alt="">
+            <div><div style="color:#202124;font-size:12px">V49 — Teal+Gold</div><div style="color:#4d5156;font-size:11px">https://10xseo.ge</div></div>
           </div>
-          <div style="color:#1a0dab;font-size:18px;margin-bottom:4px;cursor:pointer">10XSEO — SEO სააგენტო #1 საქართველოში</div>
-          <div style="color:#4d5156;font-size:13px;line-height:1.5">გაზარდეთ ორგანული ტრაფიკი 10X-ით. რეალური შედეგები, ყოველკვირეული ანგარიშები, სწრაფი მომსახურება. AI-First მიდგომა.</div>
+          <div style="color:#1a0dab;font-size:16px;margin-bottom:12px">10XSEO — SEO სააგენტო #1 საქართველოში</div>
 
-          <!-- Result 2: Competitor -->
-          <div style="margin-top:24px;display:flex;align-items:center;gap:8px;margin-bottom:4px">
-            <div style="width:26px;height:26px;border-radius:50%;background:#f1f3f4;display:flex;align-items:center;justify-content:center">
-              <div style="width:14px;height:14px;background:#ccc;border-radius:2px"></div>
-            </div>
-            <div>
-              <div style="color:#202124;font-size:12px">competitor.ge</div>
-              <div style="color:#4d5156;font-size:11px">https://competitor.ge</div>
-            </div>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+            <img src="/images/favicon-v50.png" class="serp-icon" style="width:26px;height:26px;border-radius:50%;background:#f1f3f4;padding:3px" alt="">
+            <div><div style="color:#202124;font-size:12px">V50 — Purple+Gold</div><div style="color:#4d5156;font-size:11px">https://10xseo.ge</div></div>
           </div>
-          <div style="color:#1a0dab;font-size:18px;margin-bottom:4px;opacity:0.5">კონკურენტი SEO სააგენტო</div>
-          <div style="color:#4d5156;font-size:13px;opacity:0.4">ჩვენ გთავაზობთ SEO მომსახურებას...</div>
+          <div style="color:#1a0dab;font-size:16px;margin-bottom:12px">10XSEO — SEO სააგენტო #1 საქართველოში</div>
+
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+            <img src="/images/favicon-v51.png" class="serp-icon" style="width:26px;height:26px;border-radius:50%;background:#f1f3f4;padding:3px" alt="">
+            <div><div style="color:#202124;font-size:12px">V51 — PurpleGrad+Gold</div><div style="color:#4d5156;font-size:11px">https://10xseo.ge</div></div>
+          </div>
+          <div style="color:#1a0dab;font-size:16px;margin-bottom:12px">10XSEO — SEO სააგენტო #1 საქართველოში</div>
+
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+            <img src="/images/favicon-v52.png" class="serp-icon" style="width:26px;height:26px;border-radius:50%;background:#f1f3f4;padding:3px" alt="">
+            <div><div style="color:#202124;font-size:12px">V52 — Teal→Purple</div><div style="color:#4d5156;font-size:11px">https://10xseo.ge</div></div>
+          </div>
+          <div style="color:#1a0dab;font-size:16px;margin-bottom:12px">10XSEO — SEO სააგენტო #1 საქართველოში</div>
+
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+            <img src="/images/favicon-v53.png" class="serp-icon" style="width:26px;height:26px;border-radius:50%;background:#f1f3f4;padding:3px" alt="">
+            <div><div style="color:#202124;font-size:12px">V53 — Purple→Teal</div><div style="color:#4d5156;font-size:11px">https://10xseo.ge</div></div>
+          </div>
+          <div style="color:#1a0dab;font-size:16px;margin-bottom:4px">10XSEO — SEO სააგენტო #1 საქართველოში</div>
         </div>
       </div>
     </div>
 
-    <!-- 4. Bookmarks Bar -->
+    <!-- Bookmarks Bar -->
     <div class="mock-card p-0 overflow-hidden">
       <div class="text-xs text-gray-400 px-4 pt-3 pb-1">Bookmarks Bar</div>
-      <div style="background:#f5f5f5" class="p-2 flex gap-3">
-        <div style="display:flex;align-items:center;gap:4px;font-size:12px;color:#333;background:#fff;padding:4px 8px;border-radius:4px;box-shadow:0 1px 2px rgba(0,0,0,0.1)">
-          <img src="/favicon-16x16.png" class="w-4 h-4" alt=""> 10XSEO
+      <div style="background:#f5f5f5" class="p-2 flex gap-2 flex-wrap">
+        <div style="display:flex;align-items:center;gap:4px;font-size:11px;color:#333;background:#fff;padding:4px 8px;border-radius:4px;box-shadow:0 1px 2px rgba(0,0,0,0.1)">
+          <img src="/images/favicon-v49.png" class="w-4 h-4" alt=""> V49
         </div>
-        <div style="display:flex;align-items:center;gap:4px;font-size:12px;color:#333;background:#fff;padding:4px 8px;border-radius:4px;box-shadow:0 1px 2px rgba(0,0,0,0.1)">
-          <div style="width:16px;height:16px;background:#4285f4;border-radius:2px"></div> Google
+        <div style="display:flex;align-items:center;gap:4px;font-size:11px;color:#333;background:#fff;padding:4px 8px;border-radius:4px;box-shadow:0 1px 2px rgba(0,0,0,0.1)">
+          <img src="/images/favicon-v50.png" class="w-4 h-4" alt=""> V50
         </div>
-        <div style="display:flex;align-items:center;gap:4px;font-size:12px;color:#333;background:#fff;padding:4px 8px;border-radius:4px;box-shadow:0 1px 2px rgba(0,0,0,0.1)">
-          <div style="width:16px;height:16px;background:#333;border-radius:2px"></div> GitHub
+        <div style="display:flex;align-items:center;gap:4px;font-size:11px;color:#333;background:#fff;padding:4px 8px;border-radius:4px;box-shadow:0 1px 2px rgba(0,0,0,0.1)">
+          <img src="/images/favicon-v51.png" class="w-4 h-4" alt=""> V51
+        </div>
+        <div style="display:flex;align-items:center;gap:4px;font-size:11px;color:#333;background:#fff;padding:4px 8px;border-radius:4px;box-shadow:0 1px 2px rgba(0,0,0,0.1)">
+          <img src="/images/favicon-v52.png" class="w-4 h-4" alt=""> V52
+        </div>
+        <div style="display:flex;align-items:center;gap:4px;font-size:11px;color:#333;background:#fff;padding:4px 8px;border-radius:4px;box-shadow:0 1px 2px rgba(0,0,0,0.1)">
+          <img src="/images/favicon-v53.png" class="w-4 h-4" alt=""> V53
         </div>
       </div>
     </div>
 
-    <!-- 5. Mobile Safari -->
-    <div class="mock-card p-0 overflow-hidden max-w-xs mx-auto">
+    <!-- Mobile Home Screen -->
+    <div class="mock-card p-0 overflow-hidden max-w-sm mx-auto">
       <div class="text-xs text-gray-400 px-4 pt-3 pb-1">Mobile Home Screen</div>
-      <div style="background:linear-gradient(135deg,#667eea,#764ba2)" class="p-8">
-        <div class="grid grid-cols-4 gap-4">
-          <div class="text-center">
-            <div style="background:#fff;border-radius:14px;width:56px;height:56px;display:flex;align-items:center;justify-content:center;margin:0 auto 4px;box-shadow:0 2px 8px rgba(0,0,0,0.2)">
-              <img src="/apple-touch-icon.png" style="width:48px;height:48px;border-radius:10px" alt="">
-            </div>
-            <div style="font-size:10px;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.5)">10XSEO</div>
+      <div style="background:linear-gradient(135deg,#667eea,#764ba2)" class="p-6">
+        <div class="grid grid-cols-5 gap-3">
+          <div class="text-center" style="font-size:9px;color:#fff">
+            <div style="background:#fff;border-radius:12px;width:48px;height:48px;display:flex;align-items:center;justify-content:center;margin:0 auto 3px;box-shadow:0 2px 6px rgba(0,0,0,0.2)">
+              <img src="/images/favicon-v49-lg.png" style="width:40px;height:40px;border-radius:8px" alt="">
+            </div>V49
           </div>
-          <div class="text-center">
-            <div style="background:#34a853;border-radius:14px;width:56px;height:56px;margin:0 auto 4px"></div>
-            <div style="font-size:10px;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.5)">Phone</div>
+          <div class="text-center" style="font-size:9px;color:#fff">
+            <div style="background:#fff;border-radius:12px;width:48px;height:48px;display:flex;align-items:center;justify-content:center;margin:0 auto 3px;box-shadow:0 2px 6px rgba(0,0,0,0.2)">
+              <img src="/images/favicon-v50-lg.png" style="width:40px;height:40px;border-radius:8px" alt="">
+            </div>V50
           </div>
-          <div class="text-center">
-            <div style="background:#1da1f2;border-radius:14px;width:56px;height:56px;margin:0 auto 4px"></div>
-            <div style="font-size:10px;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.5)">Safari</div>
+          <div class="text-center" style="font-size:9px;color:#fff">
+            <div style="background:#fff;border-radius:12px;width:48px;height:48px;display:flex;align-items:center;justify-content:center;margin:0 auto 3px;box-shadow:0 2px 6px rgba(0,0,0,0.2)">
+              <img src="/images/favicon-v51-lg.png" style="width:40px;height:40px;border-radius:8px" alt="">
+            </div>V51
           </div>
-          <div class="text-center">
-            <div style="background:#ff6b6b;border-radius:14px;width:56px;height:56px;margin:0 auto 4px"></div>
-            <div style="font-size:10px;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.5)">Mail</div>
+          <div class="text-center" style="font-size:9px;color:#fff">
+            <div style="background:#fff;border-radius:12px;width:48px;height:48px;display:flex;align-items:center;justify-content:center;margin:0 auto 3px;box-shadow:0 2px 6px rgba(0,0,0,0.2)">
+              <img src="/images/favicon-v52-lg.png" style="width:40px;height:40px;border-radius:8px" alt="">
+            </div>V52
           </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 6. All Sizes -->
-    <div class="mock-card p-6">
-      <div class="text-xs text-gray-400 mb-4">ყველა ზომა</div>
-      <div class="flex items-end gap-6 flex-wrap justify-center">
-        <div class="text-center">
-          <img src="/favicon-16x16.png" style="width:16px;height:16px" alt=""><br>
-          <span class="text-xs text-gray-500 mt-1">16</span>
-        </div>
-        <div class="text-center">
-          <img src="/favicon-32x32.png" style="width:32px;height:32px" alt=""><br>
-          <span class="text-xs text-gray-500 mt-1">32</span>
-        </div>
-        <div class="text-center">
-          <img src="/favicon-48x48.png" style="width:48px;height:48px" alt=""><br>
-          <span class="text-xs text-gray-500 mt-1">48</span>
-        </div>
-        <div class="text-center">
-          <img src="/favicon-64x64.png" style="width:64px;height:64px" alt=""><br>
-          <span class="text-xs text-gray-500 mt-1">64</span>
-        </div>
-        <div class="text-center">
-          <img src="/favicon-128x128.png" style="width:128px;height:128px" alt=""><br>
-          <span class="text-xs text-gray-500 mt-1">128</span>
-        </div>
-        <div class="text-center">
-          <img src="/favicon-256x256.png" style="width:256px;height:256px" alt=""><br>
-          <span class="text-xs text-gray-500 mt-1">256</span>
+          <div class="text-center" style="font-size:9px;color:#fff">
+            <div style="background:#fff;border-radius:12px;width:48px;height:48px;display:flex;align-items:center;justify-content:center;margin:0 auto 3px;box-shadow:0 2px 6px rgba(0,0,0,0.2)">
+              <img src="/images/favicon-v53-lg.png" style="width:40px;height:40px;border-radius:8px" alt="">
+            </div>V53
+          </div>
         </div>
       </div>
     </div>
