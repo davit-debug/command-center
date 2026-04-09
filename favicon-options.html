@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ka" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Favicon Options — 10XSEO</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background: #020710; }
+    .card {
+      background: #0f172a;
+      border: 2px solid transparent;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    .card:hover {
+      border-color: #8B5CF6;
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+    }
+    .card.selected {
+      border-color: #14B8A6;
+      box-shadow: 0 0 30px rgba(20, 184, 166, 0.4);
+    }
+    .preview-bar {
+      background: #1e293b;
+      border-radius: 8px 8px 0 0;
+    }
+    .tab-preview {
+      background: #0f172a;
+      border-radius: 6px 6px 0 0;
+      font-size: 11px;
+      padding: 4px 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .dark-check { background: #020710; }
+    .light-check { background: #f8fafc; }
+  </style>
+</head>
+<body class="text-white min-h-screen p-6">
+  <div class="max-w-6xl mx-auto">
+    <h1 class="text-3xl font-bold mb-2 text-center">Favicon ვარიანტები — 10XSEO</h1>
+    <p class="text-gray-400 text-center mb-8">აირჩიე შენთვის ყველაზე მოსაწონი პირამიდა</p>
+
+    <!-- Browser tab preview -->
+    <div id="tab-preview" class="mb-10 flex justify-center">
+      <div class="preview-bar p-3 pb-0 w-full max-w-lg">
+        <div class="flex gap-1">
+          <div class="tab-preview border border-gray-600 text-gray-300">
+            <img id="tab-icon" src="/images/favicon-v1.png" class="w-4 h-4" alt="">
+            <span>10XSEO — SEO #1</span>
+            <span class="text-gray-500 ml-2">×</span>
+          </div>
+          <div class="tab-preview text-gray-600">
+            <span>+</span>
+          </div>
+        </div>
+        <div class="bg-white h-1 mt-1 rounded-t"></div>
+      </div>
+    </div>
+
+    <!-- Grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4" id="grid">
+
+      <!-- V0: Original (3D) -->
+      <div class="card rounded-xl p-4 text-center" onclick="select(this, 0)" data-img="/favicon-512x512.png">
+        <div class="text-xs text-gray-500 mb-2">V0 — ორიგინალი (3D)</div>
+        <div class="flex justify-center gap-2 mb-3">
+          <div class="dark-check rounded-lg p-3"><img src="/favicon-512x512.png" class="w-16 h-16" alt="V0"></div>
+          <div class="light-check rounded-lg p-3"><img src="/favicon-512x512.png" class="w-16 h-16" alt="V0"></div>
+        </div>
+        <img src="/favicon-512x512.png" class="w-6 h-6 mx-auto opacity-60" alt="16px preview">
+      </div>
+
+      <!-- V1: Flat Gradient -->
+      <div class="card rounded-xl p-4 text-center" onclick="select(this, 1)" data-img="/images/favicon-v1.png">
+        <div class="text-xs text-gray-500 mb-2">V1 — Flat გრადიენტი</div>
+        <div class="flex justify-center gap-2 mb-3">
+          <div class="dark-check rounded-lg p-3"><img src="/images/favicon-v1-lg.png" class="w-16 h-16" alt="V1"></div>
+          <div class="light-check rounded-lg p-3"><img src="/images/favicon-v1-lg.png" class="w-16 h-16" alt="V1"></div>
+        </div>
+        <img src="/images/favicon-v1.png" class="w-6 h-6 mx-auto opacity-60" alt="16px">
+      </div>
+
+      <!-- V2: Neon Wireframe -->
+      <div class="card rounded-xl p-4 text-center" onclick="select(this, 2)" data-img="/images/favicon-v2.png">
+        <div class="text-xs text-gray-500 mb-2">V2 — Neon Wireframe</div>
+        <div class="flex justify-center gap-2 mb-3">
+          <div class="dark-check rounded-lg p-3"><img src="/images/favicon-v2-lg.png" class="w-16 h-16" alt="V2"></div>
+          <div class="light-check rounded-lg p-3"><img src="/images/favicon-v2-lg.png" class="w-16 h-16" alt="V2"></div>
+        </div>
+        <img src="/images/favicon-v2.png" class="w-6 h-6 mx-auto opacity-60" alt="16px">
+      </div>
+
+      <!-- V3: Egyptian Stepped -->
+      <div class="card rounded-xl p-4 text-center" onclick="select(this, 3)" data-img="/images/favicon-v3.png">
+        <div class="text-xs text-gray-500 mb-2">V3 — საფეხურებიანი</div>
+        <div class="flex justify-center gap-2 mb-3">
+          <div class="dark-check rounded-lg p-3"><img src="/images/favicon-v3-lg.png" class="w-16 h-16" alt="V3"></div>
+          <div class="light-check rounded-lg p-3"><img src="/images/favicon-v3-lg.png" class="w-16 h-16" alt="V3"></div>
+        </div>
+        <img src="/images/favicon-v3.png" class="w-6 h-6 mx-auto opacity-60" alt="16px">
+      </div>
+
+      <!-- V4: Arrow-up -->
+      <div class="card rounded-xl p-4 text-center" onclick="select(this, 4)" data-img="/images/favicon-v4.png">
+        <div class="text-xs text-gray-500 mb-2">V4 — Arrow-Up</div>
+        <div class="flex justify-center gap-2 mb-3">
+          <div class="dark-check rounded-lg p-3"><img src="/images/favicon-v4-lg.png" class="w-16 h-16" alt="V4"></div>
+          <div class="light-check rounded-lg p-3"><img src="/images/favicon-v4-lg.png" class="w-16 h-16" alt="V4"></div>
+        </div>
+        <img src="/images/favicon-v4.png" class="w-6 h-6 mx-auto opacity-60" alt="16px">
+      </div>
+
+      <!-- V5: Double Nested -->
+      <div class="card rounded-xl p-4 text-center" onclick="select(this, 5)" data-img="/images/favicon-v5.png">
+        <div class="text-xs text-gray-500 mb-2">V5 — ორმაგი კონტური</div>
+        <div class="flex justify-center gap-2 mb-3">
+          <div class="dark-check rounded-lg p-3"><img src="/images/favicon-v5-lg.png" class="w-16 h-16" alt="V5"></div>
+          <div class="light-check rounded-lg p-3"><img src="/images/favicon-v5-lg.png" class="w-16 h-16" alt="V5"></div>
+        </div>
+        <img src="/images/favicon-v5.png" class="w-6 h-6 mx-auto opacity-60" alt="16px">
+      </div>
+
+      <!-- V6: Glow Top -->
+      <div class="card rounded-xl p-4 text-center" onclick="select(this, 6)" data-img="/images/favicon-v6.png">
+        <div class="text-xs text-gray-500 mb-2">V6 — Glow ზემოდან</div>
+        <div class="flex justify-center gap-2 mb-3">
+          <div class="dark-check rounded-lg p-3"><img src="/images/favicon-v6-lg.png" class="w-16 h-16" alt="V6"></div>
+          <div class="light-check rounded-lg p-3"><img src="/images/favicon-v6-lg.png" class="w-16 h-16" alt="V6"></div>
+        </div>
+        <img src="/images/favicon-v6.png" class="w-6 h-6 mx-auto opacity-60" alt="16px">
+      </div>
+
+      <!-- V7: Horizontal Slices -->
+      <div class="card rounded-xl p-4 text-center" onclick="select(this, 7)" data-img="/images/favicon-v7.png">
+        <div class="text-xs text-gray-500 mb-2">V7 — ჰორიზონტალური</div>
+        <div class="flex justify-center gap-2 mb-3">
+          <div class="dark-check rounded-lg p-3"><img src="/images/favicon-v7-lg.png" class="w-16 h-16" alt="V7"></div>
+          <div class="light-check rounded-lg p-3"><img src="/images/favicon-v7-lg.png" class="w-16 h-16" alt="V7"></div>
+        </div>
+        <img src="/images/favicon-v7.png" class="w-6 h-6 mx-auto opacity-60" alt="16px">
+      </div>
+
+      <!-- V8: Eye Pyramid -->
+      <div class="card rounded-xl p-4 text-center" onclick="select(this, 8)" data-img="/images/favicon-v8.png">
+        <div class="text-xs text-gray-500 mb-2">V8 — თვალი (Illuminati)</div>
+        <div class="flex justify-center gap-2 mb-3">
+          <div class="dark-check rounded-lg p-3"><img src="/images/favicon-v8-lg.png" class="w-16 h-16" alt="V8"></div>
+          <div class="light-check rounded-lg p-3"><img src="/images/favicon-v8-lg.png" class="w-16 h-16" alt="V8"></div>
+        </div>
+        <img src="/images/favicon-v8.png" class="w-6 h-6 mx-auto opacity-60" alt="16px">
+      </div>
+
+      <!-- V9: Solid + Teal Bar -->
+      <div class="card rounded-xl p-4 text-center" onclick="select(this, 9)" data-img="/images/favicon-v9.png">
+        <div class="text-xs text-gray-500 mb-2">V9 — Solid + Teal ზოლი</div>
+        <div class="flex justify-center gap-2 mb-3">
+          <div class="dark-check rounded-lg p-3"><img src="/images/favicon-v9-lg.png" class="w-16 h-16" alt="V9"></div>
+          <div class="light-check rounded-lg p-3"><img src="/images/favicon-v9-lg.png" class="w-16 h-16" alt="V9"></div>
+        </div>
+        <img src="/images/favicon-v9.png" class="w-6 h-6 mx-auto opacity-60" alt="16px">
+      </div>
+
+      <!-- V10: Dot Matrix -->
+      <div class="card rounded-xl p-4 text-center" onclick="select(this, 10)" data-img="/images/favicon-v10.png">
+        <div class="text-xs text-gray-500 mb-2">V10 — წერტილები</div>
+        <div class="flex justify-center gap-2 mb-3">
+          <div class="dark-check rounded-lg p-3"><img src="/images/favicon-v10-lg.png" class="w-16 h-16" alt="V10"></div>
+          <div class="light-check rounded-lg p-3"><img src="/images/favicon-v10-lg.png" class="w-16 h-16" alt="V10"></div>
+        </div>
+        <img src="/images/favicon-v10.png" class="w-6 h-6 mx-auto opacity-60" alt="16px">
+      </div>
+
+      <!-- V11: Split -->
+      <div class="card rounded-xl p-4 text-center" onclick="select(this, 11)" data-img="/images/favicon-v11.png">
+        <div class="text-xs text-gray-500 mb-2">V11 — Split (Purple|Teal)</div>
+        <div class="flex justify-center gap-2 mb-3">
+          <div class="dark-check rounded-lg p-3"><img src="/images/favicon-v11-lg.png" class="w-16 h-16" alt="V11"></div>
+          <div class="light-check rounded-lg p-3"><img src="/images/favicon-v11-lg.png" class="w-16 h-16" alt="V11"></div>
+        </div>
+        <img src="/images/favicon-v11.png" class="w-6 h-6 mx-auto opacity-60" alt="16px">
+      </div>
+
+      <!-- V12: Dark Glow Edges -->
+      <div class="card rounded-xl p-4 text-center" onclick="select(this, 12)" data-img="/images/favicon-v12.png">
+        <div class="text-xs text-gray-500 mb-2">V12 — Dark + Glow Edges</div>
+        <div class="flex justify-center gap-2 mb-3">
+          <div class="dark-check rounded-lg p-3"><img src="/images/favicon-v12-lg.png" class="w-16 h-16" alt="V12"></div>
+          <div class="light-check rounded-lg p-3"><img src="/images/favicon-v12-lg.png" class="w-16 h-16" alt="V12"></div>
+        </div>
+        <img src="/images/favicon-v12.png" class="w-6 h-6 mx-auto opacity-60" alt="16px">
+      </div>
+
+      <!-- V13: 10X Text -->
+      <div class="card rounded-xl p-4 text-center" onclick="select(this, 13)" data-img="/images/favicon-v13.png">
+        <div class="text-xs text-gray-500 mb-2">V13 — 10X ტექსტით</div>
+        <div class="flex justify-center gap-2 mb-3">
+          <div class="dark-check rounded-lg p-3"><img src="/images/favicon-v13-lg.png" class="w-16 h-16" alt="V13"></div>
+          <div class="light-check rounded-lg p-3"><img src="/images/favicon-v13-lg.png" class="w-16 h-16" alt="V13"></div>
+        </div>
+        <img src="/images/favicon-v13.png" class="w-6 h-6 mx-auto opacity-60" alt="16px">
+      </div>
+
+    </div>
+
+    <div class="text-center mt-8 text-gray-500 text-sm">
+      დააკლიკე რომელიმე ვარიანტს — ტაბში გამოჩნდება
+    </div>
+  </div>
+
+  <script>
+    function select(el, num) {
+      document.querySelectorAll('.card').forEach(c => c.classList.remove('selected'));
+      el.classList.add('selected');
+      const img = el.dataset.img;
+      document.getElementById('tab-icon').src = img;
+    }
+  </script>
+</body>
+</html>
