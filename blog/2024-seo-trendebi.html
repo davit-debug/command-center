@@ -445,7 +445,20 @@
      document.getElementById('mobile-menu-cta').addEventListener('click', () => { mm.style.transform = 'translateX(100%)'; document.body.style.overflow = ''; }); }
     const progressBar = document.getElementById('reading-progress'); window.addEventListener('scroll', () => { const s = window.scrollY; const d = document.documentElement.scrollHeight - window.innerHeight; progressBar.style.width = (s/d)*100 + '%'; }, { passive: true });
     let lastScrollY = 0; const stickyCta = document.getElementById('sticky-cta'); window.addEventListener('scroll', () => { const c = window.scrollY; if (stickyCta) { stickyCta.style.transform = (c > lastScrollY && c > 200) ? 'translateY(100%)' : 'translateY(0)'; } lastScrollY = c; }, { passive: true });
-    const sections = document.querySelectorAll('h2[id]'); const tocLinks = document.querySelectorAll('.toc-link'); const tocObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { tocLinks.forEach(link => link.classList.remove('active')); const a = document.querySelector(`.toc-link[href="#${entry.target.id}"]`); if (a) a.classList.add('active'); } }); }, { rootMargin: '-80px 0px -60% 0px' }); sections.forEach(s => tocObserver.observe(s));
+    const sections = document.querySelectorAll('h2[id]');
+    const tocLinks = document.querySelectorAll('.toc-link');
+    function updateActiveToc() {
+      let current = '';
+      sections.forEach(section => {
+        const top = section.getBoundingClientRect().top;
+        if (top < 150) current = section.id;
+      });
+      tocLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+      });
+    }
+    window.addEventListener('scroll', updateActiveToc, { passive: true });
+    updateActiveToc();
     const html = document.documentElement; if (localStorage.getItem('theme') !== 'light') { html.classList.add('dark'); }
   </script>
 

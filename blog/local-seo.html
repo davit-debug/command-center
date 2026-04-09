@@ -529,8 +529,18 @@
     window.addEventListener('scroll', () => { const currentY = window.scrollY; if (stickyCta) { stickyCta.style.transform = (currentY > lastScrollY && currentY > 200) ? 'translateY(100%)' : 'translateY(0)'; } lastScrollY = currentY; }, { passive: true });
     const sections = document.querySelectorAll('h2[id]');
     const tocLinks = document.querySelectorAll('.toc-link');
-    const tocObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { tocLinks.forEach(link => link.classList.remove('active')); const activeLink = document.querySelector(`.toc-link[href="#${entry.target.id}"]`); if (activeLink) activeLink.classList.add('active'); } }); }, { rootMargin: '-80px 0px -60% 0px' });
-    sections.forEach(s => tocObserver.observe(s));
+    function updateActiveToc() {
+      let current = '';
+      sections.forEach(section => {
+        const top = section.getBoundingClientRect().top;
+        if (top < 150) current = section.id;
+      });
+      tocLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+      });
+    }
+    window.addEventListener('scroll', updateActiveToc, { passive: true });
+    updateActiveToc();
   </script>
 
     <footer class="bg-heading dark:bg-surface-dark-alt text-gray-400 py-12 lg:py-16">
