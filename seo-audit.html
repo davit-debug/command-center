@@ -71,10 +71,25 @@
   <header id="main-header" class="fixed top-0 left-0 right-0 z-50 h-16 lg:h-[72px] bg-white/80 dark:bg-surface-dark/80 header-scrolled border-b border-gray-100 dark:border-gray-800 transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 h-full flex items-center justify-between">
       <a href="index.html"><img src="images/logo.png" alt="10XSEO" class="h-10 w-auto"></a>
-      <nav class="hidden lg:flex items-center gap-6">
-        <a href="services.html" class="text-sm text-body dark:text-body-dark hover:text-heading dark:hover:text-heading-dark transition-colors">სერვისები</a>
-        <a href="case-studies.html" class="text-sm text-body dark:text-body-dark hover:text-heading dark:hover:text-heading-dark transition-colors">შედეგები</a>
-        <a href="#audit-form" class="px-5 py-2.5 ai-cta-animate text-white rounded-xl text-sm font-semibold">მოითხოვე აუდიტი</a>
+      <nav class="hidden lg:flex items-center gap-1">
+        <div class="relative group">
+          <button class="px-3 py-2 text-sm font-medium text-body dark:text-body-dark hover:text-heading dark:hover:text-heading-dark transition-colors flex items-center gap-1">
+            სერვისები
+            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="absolute top-full left-0 mt-1 w-56 bg-white dark:bg-surface-dark-alt rounded-xl shadow-xl border border-gray-100 dark:border-gray-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 p-2">
+            <a href="seo-management.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">SEO მენეჯმენტი</a>
+            <a href="seo-consultation.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">SEO კონსულტაცია</a>
+            <a href="seo-strategy.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">SEO სტრატეგია</a>
+            <a href="seo-copywriting.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">SEO კოპირაიტინგი</a>
+            <a href="cro.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">კონვერსიის ოპტიმიზაცია</a>
+            <a href="google-ads.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">Google Ads</a>
+            <a href="ai-seo.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">AI SEO / GEO</a>
+            <a href="seo-course.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">SEO კურსი</a>
+          </div>
+        </div>
+        <a href="case-studies.html" class="px-3 py-2 text-sm font-medium text-body dark:text-body-dark hover:text-heading dark:hover:text-heading-dark transition-colors">შედეგები</a>
+        <a href="#audit-form" class="ml-2 px-5 py-2.5 ai-cta-animate text-white rounded-xl text-sm font-semibold">მოითხოვე აუდიტი</a>
       </nav>
       <button id="mobile-menu-btn" class="lg:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5" aria-label="მენიუ">
         <span class="hamburger-line w-6 h-0.5 bg-heading dark:bg-heading-dark block"></span>
@@ -83,8 +98,17 @@
       </button>
     </div>
   </header>
-  <nav id="mobile-menu" class="fixed inset-0 z-40 bg-white/95 dark:bg-surface-dark/95 pt-20 px-6" style="pointer-events:none">
-    <a href="services.html" class="block text-lg text-heading dark:text-heading-dark font-heading mb-4">სერვისები</a>
+  <nav id="mobile-menu" class="fixed inset-0 z-40 bg-white/95 dark:bg-surface-dark/95 pt-20 px-6 overflow-y-auto" style="pointer-events:none">
+    <p class="text-xs font-semibold text-body/50 dark:text-body-dark/50 uppercase tracking-wider mb-3">სერვისები</p>
+    <a href="seo-management.html" class="block text-base text-heading dark:text-heading-dark font-heading mb-3 pl-2">SEO მენეჯმენტი</a>
+    <a href="seo-consultation.html" class="block text-base text-heading dark:text-heading-dark font-heading mb-3 pl-2">SEO კონსულტაცია</a>
+    <a href="seo-strategy.html" class="block text-base text-heading dark:text-heading-dark font-heading mb-3 pl-2">SEO სტრატეგია</a>
+    <a href="seo-copywriting.html" class="block text-base text-heading dark:text-heading-dark font-heading mb-3 pl-2">SEO კოპირაიტინგი</a>
+    <a href="cro.html" class="block text-base text-heading dark:text-heading-dark font-heading mb-3 pl-2">კონვერსიის ოპტიმიზაცია</a>
+    <a href="google-ads.html" class="block text-base text-heading dark:text-heading-dark font-heading mb-3 pl-2">Google Ads</a>
+    <a href="ai-seo.html" class="block text-base text-heading dark:text-heading-dark font-heading mb-3 pl-2">AI SEO / GEO</a>
+    <a href="seo-course.html" class="block text-base text-heading dark:text-heading-dark font-heading mb-3 pl-2">SEO კურსი</a>
+    <hr class="my-4 border-gray-200 dark:border-gray-800">
     <a href="case-studies.html" class="block text-lg text-heading dark:text-heading-dark font-heading mb-4">შედეგები</a>
     <a href="#audit-form" id="mobile-menu-cta" class="block w-full text-center py-4 ai-cta-animate text-white rounded-xl text-lg font-bold mt-6">მოითხოვე აუდიტი</a>
   </nav>
