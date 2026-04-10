@@ -181,22 +181,41 @@
     .menu-active .hamburger-line:nth-child(2) { opacity: 0; }
     .menu-active .hamburger-line:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-    /* FAQ Variant 1 — Gold Glassmorphism */
-    .fq1-card { border-radius: 16px; overflow: hidden; background: rgba(255,255,255,0.03); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.06); transition: all 0.4s cubic-bezier(0.4,0,0.2,1); position: relative; }
-    .fq1-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; border-radius: 14px 0 0 14px; background: linear-gradient(180deg, #D4A017, #EAB308); opacity: 0; transition: opacity 0.3s; }
-    .fq1-card:hover { border-color: rgba(212,160,23,0.2); transform: translateY(-1px); }
-    .fq1-card:hover::before { opacity: 0.5; }
-    .fq1-card.fq1-open { border-color: rgba(212,160,23,0.35); background: rgba(212,160,23,0.04); box-shadow: 0 4px 40px rgba(212,160,23,0.08); }
-    .fq1-card.fq1-open::before { opacity: 1; }
-    .fq1-q { display: flex; align-items: center; padding: 20px 24px; cursor: pointer; gap: 16px; }
-    .fq1-num { width: 40px; height: 40px; border-radius: 12px; background: rgba(212,160,23,0.08); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 15px; font-weight: 800; color: #D4A017; transition: all 0.3s; font-variant-numeric: tabular-nums; }
-    .fq1-open .fq1-num { background: rgba(212,160,23,0.18); box-shadow: 0 0 16px rgba(212,160,23,0.2); color: #EAB308; }
-    .fq1-txt { flex: 1; font-weight: 600; color: #F1F5F9; font-size: 16px; line-height: 1.5; }
-    .fq1-arrow { width: 20px; height: 20px; stroke: #64748B; transition: all 0.35s; flex-shrink: 0; }
-    .fq1-open .fq1-arrow { transform: rotate(180deg); stroke: #D4A017; }
-    .fq1-a { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1), padding 0.35s; padding: 0 24px 0 80px; }
-    .fq1-open .fq1-a { max-height: 500px; padding: 0 24px 20px 80px; }
-    .fq1-a p { color: #94A3B8; font-size: 15px; line-height: 1.85; }
+    /* FAQ v29 Violet Glassmorphism */
+    .v29-tab { padding: 8px 18px; border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; transition: all 0.3s; border: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .v29-tab:hover { opacity: 0.85; }
+    .v29-tab.v29-active { box-shadow: 0 0 16px rgba(0,0,0,0.3); }
+    .v29-tab[data-cat="all"] { background: rgba(20,184,166,0.15); color: #2DD4BF; }
+    .v29-tab[data-cat="general"] { background: rgba(236,72,153,0.15); color: #F472B6; }
+    .v29-tab[data-cat="process"] { background: rgba(245,158,11,0.15); color: #FBBF24; }
+    .v29-tab[data-cat="results"] { background: rgba(59,130,246,0.15); color: #60A5FA; }
+    .v29-card { border-radius: 16px; overflow: hidden; background: rgba(255,255,255,0.035); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.08); transition: all 0.35s; position: relative; }
+    .v29-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; border-radius: 14px 0 0 14px; opacity: 0; transition: opacity 0.3s; }
+    .v29-card[data-cat="ზოგადი"]::before { background: #EC4899; }
+    .v29-card[data-cat="შედეგები"]::before { background: #3B82F6; }
+    .v29-card[data-cat="პროცესი"]::before { background: #F59E0B; }
+    .v29-card[data-cat="ზოგადი"]:hover { border-color: rgba(236,72,153,0.25); }
+    .v29-card[data-cat="შედეგები"]:hover { border-color: rgba(59,130,246,0.25); }
+    .v29-card[data-cat="პროცესი"]:hover { border-color: rgba(245,158,11,0.25); }
+    .v29-card:hover::before { opacity: 0.5; }
+    .v29-card[data-cat="ზოგადი"].v29-open { border-color: rgba(236,72,153,0.35); background: rgba(236,72,153,0.04); box-shadow: 0 0 30px rgba(236,72,153,0.06); }
+    .v29-card[data-cat="შედეგები"].v29-open { border-color: rgba(59,130,246,0.35); background: rgba(59,130,246,0.04); box-shadow: 0 0 30px rgba(59,130,246,0.06); }
+    .v29-card[data-cat="პროცესი"].v29-open { border-color: rgba(245,158,11,0.35); background: rgba(245,158,11,0.04); box-shadow: 0 0 30px rgba(245,158,11,0.06); }
+    .v29-card.v29-open::before { opacity: 1; }
+    .v29-card.v29-hidden { display: none; }
+    .v29-cq { display: flex; align-items: center; padding: 18px 22px; cursor: pointer; gap: 16px; }
+    .v29-cq .v29-badge { width: 38px; height: 38px; border-radius: 10px; background: rgba(212,160,23,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.3s; }
+    .v29-open .v29-badge { background: rgba(212,160,23,0.2); box-shadow: 0 0 12px rgba(212,160,23,0.15); }
+    .v29-cq .v29-badge svg { width: 16px; height: 16px; stroke: #D4A017; transition: transform 0.3s; }
+    .v29-open .v29-badge svg { transform: rotate(180deg); stroke: #EAB308; }
+    .v29-cq .v29-txt { flex: 1; font-weight: 600; color: #F1F5F9; font-size: 17px; line-height: 1.4; }
+    .v29-cat[data-key="general"] { font-size: 10px; font-weight: 700; color: #F472B6; background: rgba(236,72,153,0.15); padding: 3px 8px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; }
+    .v29-cat[data-key="process"] { font-size: 10px; font-weight: 700; color: #FBBF24; background: rgba(245,158,11,0.15); padding: 3px 8px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; }
+    .v29-cat[data-key="results"] { font-size: 10px; font-weight: 700; color: #60A5FA; background: rgba(59,130,246,0.15); padding: 3px 8px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; }
+    .v29-cq .v29-cat { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; }
+    .v29-ca { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1), padding 0.3s; padding: 0 22px 0 76px; }
+    .v29-open .v29-ca { max-height: 400px; padding: 0 22px 18px 76px; }
+    .v29-ca p { color: #CBD5E1; font-size: 15px; line-height: 1.8; }
 
     /* Process pipeline */
     .process-node { transition: all 0.4s ease; }
@@ -676,112 +695,6 @@
   </section>
 
 
-  <!-- ═══════════════════════════════════════════════════════════ -->
-  <!-- ========== 6. STATS BAR ========== -->
-  <!-- ═══════════════════════════════════════════════════════════ -->
-  <section class="py-10 lg:py-14 bg-white dark:bg-surface-dark border-y border-gray-100 dark:border-gray-800">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center" id="stats-bar">
-        <div>
-          <div class="text-3xl md:text-4xl font-bold font-inter text-primary-light stat-num" data-target="120">0</div>
-          <div class="text-sm text-body-dark/50 mt-1">დაწერილი გვერდი</div>
-        </div>
-        <div>
-          <div class="text-3xl md:text-4xl font-bold font-inter text-accent stat-num" data-target="350">0</div>
-          <div class="text-sm text-body-dark/50 mt-1">ოპტიმიზებული ტექსტი</div>
-        </div>
-        <div>
-          <div class="text-3xl md:text-4xl font-bold font-inter text-ai-blue stat-num" data-target="47">0</div>
-          <div class="text-sm text-body-dark/50 mt-1">საშ. კონვერსიის ზრდა %</div>
-        </div>
-        <div>
-          <div class="text-3xl md:text-4xl font-bold font-inter text-success stat-num" data-target="12">0</div>
-          <div class="text-sm text-body-dark/50 mt-1">ინდუსტრია</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ═══════════════════════════════════════════════════════════ -->
-  <!-- ========== 7. CASE STUDIES ========== -->
-  <!-- ═══════════════════════════════════════════════════════════ -->
-  <section class="py-16 lg:py-24 bg-surface-alt dark:bg-surface-dark-alt">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-12">
-        <h2 class="text-[24px] sm:text-[30px] lg:text-[38px] font-extrabold text-heading dark:text-heading-dark mb-4">Case Studies</h2>
-        <p class="text-lg text-body dark:text-body-dark">Challenge → Strategy → Result</p>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-6">
-        <!-- Case 1 -->
-        <div class="service-card bg-white dark:bg-surface-dark rounded-2xl p-6 border border-gray-100 dark:border-gray-800">
-          <div class="text-xs font-bold text-primary-light uppercase tracking-wider mb-4">E-commerce</div>
-          <div class="space-y-4">
-            <div class="border-l-2 border-red-400/50 pl-3">
-              <p class="text-xs text-body-dark/50 uppercase font-semibold mb-1">Challenge</p>
-              <p class="text-sm text-body-dark/70">პროდუქტის გვერდების მაღალი bounce rate — ტექსტი feature-ების ჩამონათვალი იყო</p>
-            </div>
-            <div class="border-l-2 border-yellow-400/50 pl-3">
-              <p class="text-xs text-body-dark/50 uppercase font-semibold mb-1">Strategy</p>
-              <p class="text-sm text-body-dark/70">Feature→Benefit rewrite + UX microcopy + ემოციური hook</p>
-            </div>
-            <div class="border-l-2 border-primary pl-3">
-              <p class="text-xs text-body-dark/50 uppercase font-semibold mb-1">Result</p>
-              <p class="text-lg font-bold text-primary-light font-inter">Bounce -32%, Conv +28%</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Case 2 -->
-        <div class="service-card bg-white dark:bg-surface-dark rounded-2xl p-6 border border-gray-100 dark:border-gray-800">
-          <div class="text-xs font-bold text-accent uppercase tracking-wider mb-4">SaaS</div>
-          <div class="space-y-4">
-            <div class="border-l-2 border-red-400/50 pl-3">
-              <p class="text-xs text-body-dark/50 uppercase font-semibold mb-1">Challenge</p>
-              <p class="text-sm text-body-dark/70">Landing page არ კონვერტირდა — value proposition ბუნდოვანი იყო</p>
-            </div>
-            <div class="border-l-2 border-yellow-400/50 pl-3">
-              <p class="text-xs text-body-dark/50 uppercase font-semibold mb-1">Strategy</p>
-              <p class="text-sm text-body-dark/70">PAS framework + clear value prop + form UX copy</p>
-            </div>
-            <div class="border-l-2 border-primary pl-3">
-              <p class="text-xs text-body-dark/50 uppercase font-semibold mb-1">Result</p>
-              <p class="text-lg font-bold text-primary-light font-inter">Conversion +45%</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Case 3 -->
-        <div class="service-card bg-white dark:bg-surface-dark rounded-2xl p-6 border border-gray-100 dark:border-gray-800">
-          <div class="text-xs font-bold text-ai-blue uppercase tracking-wider mb-4">Services</div>
-          <div class="space-y-4">
-            <div class="border-l-2 border-red-400/50 pl-3">
-              <p class="text-xs text-body-dark/50 uppercase font-semibold mb-1">Challenge</p>
-              <p class="text-sm text-body-dark/70">საიტზე ტექსტი "translated" ჟღერდა — არ იყო ბუნებრივი ქართული</p>
-            </div>
-            <div class="border-l-2 border-yellow-400/50 pl-3">
-              <p class="text-xs text-body-dark/50 uppercase font-semibold mb-1">Strategy</p>
-              <p class="text-sm text-body-dark/70">Native Georgian rewrite + კულტურული ადაპტაცია + ბრენდ ტონი</p>
-            </div>
-            <div class="border-l-2 border-primary pl-3">
-              <p class="text-xs text-body-dark/50 uppercase font-semibold mb-1">Result</p>
-              <p class="text-lg font-bold text-primary-light font-inter">Organic +67%</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA #4 -->
-  <section class="py-10 bg-white dark:bg-surface-dark">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-      <a href="case-studies.html" class="inline-flex items-center gap-2 px-8 py-4 border-2 border-primary dark:border-primary-light text-primary dark:text-primary-light font-bold rounded-xl hover:bg-primary/5 dark:hover:bg-primary/10 transition-colors">
-        ნახე რეალური შედეგები რიცხვებში →
-      </a>
-    </div>
-  </section>
 
 
   <!-- ═══════════════════════════════════════════════════════════ -->
@@ -884,58 +797,61 @@
   </section>
 
 
-  <!-- ═══════════════════════════════════════════════════════════ -->
-  <!-- ========== 9. MULTILINGUAL BLOCK ========== -->
-  <!-- ═══════════════════════════════════════════════════════════ -->
-  <section class="py-16 lg:py-24 bg-white dark:bg-surface-dark">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-12">
-        <h2 class="text-[24px] sm:text-[30px] lg:text-[38px] font-extrabold text-heading dark:text-heading-dark mb-4">3 ენა. 3 კულტურა. 1 ბრენდის ხმა.</h2>
-        <p class="text-lg text-body dark:text-body-dark max-w-2xl mx-auto">ტრანსკრეაცია, არა თარგმანი — ყოველი ენის ვერსია ნულიდან იწერება</p>
-      </div>
 
-      <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-        <!-- Georgian -->
-        <div class="service-card bg-surface-alt dark:bg-surface-dark-alt rounded-2xl p-6 border border-gray-100 dark:border-gray-800 text-center">
-          <div class="text-4xl mb-3">🇬🇪</div>
-          <h3 class="text-lg font-bold text-heading-dark mb-2">ქართული</h3>
-          <p class="text-sm text-body-dark/70 leading-relaxed">Native ქართული — კულტურული ნიუანსებით, ადგილობრივი search behavior-ით</p>
-        </div>
-        <!-- English -->
-        <div class="service-card bg-surface-alt dark:bg-surface-dark-alt rounded-2xl p-6 border border-gray-100 dark:border-gray-800 text-center">
-          <div class="text-4xl mb-3">🇬🇧</div>
-          <h3 class="text-lg font-bold text-heading-dark mb-2">English</h3>
-          <p class="text-sm text-body-dark/70 leading-relaxed">Professional English — საერთაშორისო ბაზრისთვის, SEO-optimized</p>
-        </div>
-        <!-- Arabic -->
-        <div class="service-card bg-surface-alt dark:bg-surface-dark-alt rounded-2xl p-6 border border-gray-100 dark:border-gray-800 text-center">
-          <div class="text-4xl mb-3">🇦🇪</div>
-          <h3 class="text-lg font-bold text-heading-dark mb-2">العربية</h3>
-          <p class="text-sm text-body-dark/70 leading-relaxed mb-3">Arabic UX Copy — RTL interfaces, cultural sensitivity</p>
-          <span class="inline-block px-2 py-1 bg-primary/10 text-primary-light text-xs font-semibold rounded-full">RTL Layout Support</span>
-        </div>
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- ========== FAQ — V29 Violet Glassmorphism ========== -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section id="faq" class="relative py-16 lg:py-24 overflow-hidden bg-white dark:bg-surface-dark">
+    <div class="absolute inset-0 dark:block hidden" style="background: radial-gradient(ellipse at 30% 20%, rgba(139,92,246,0.04) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, rgba(124,58,237,0.03) 0%, transparent 50%);"></div>
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 relative z-10">
+      <div class="text-center mb-8">
+        <p class="text-sm font-semibold uppercase tracking-wider mb-3" style="color:#D4A017">FAQ</p>
+        <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-heading dark:text-heading-dark leading-[1.3]">ხშირად დასმული კითხვები</h2>
       </div>
-
-      <div class="max-w-3xl mx-auto mt-10 border-l-4 border-accent pl-6">
-        <p class="text-body dark:text-body-dark/80 italic leading-relaxed text-sm sm:text-base">
-          ჩვენ არ ვთარგმნით — ვქმნით. ყოველი ენის ვერსია ნულიდან იწერება, ადგილობრივი search behavior-ის, კულტურული კონტექსტისა და მომხმარებლის მოლოდინების გათვალისწინებით.
-        </p>
-      </div>
+      <div class="flex flex-wrap justify-center gap-2 mb-8" id="v29-tabs"></div>
+      <div class="space-y-3" id="v29-items"></div>
     </div>
-  </section>
-
-
-  <!-- ═══════════════════════════════════════════════════════════ -->
-  <!-- ========== 10. FAQ ========== -->
-  <!-- ═══════════════════════════════════════════════════════════ -->
-  <section class="py-16 lg:py-24 bg-surface-alt dark:bg-surface-dark-alt">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-12">
-        <h2 class="text-[24px] sm:text-[30px] lg:text-[38px] font-extrabold text-heading dark:text-heading-dark mb-4">ხშირად დასმული კითხვები</h2>
-        <p class="text-body dark:text-body-dark">15 კითხვა კოპირაიტინგის შესახებ</p>
-      </div>
-      <div id="fq1-list" class="space-y-3"></div>
-    </div>
+    <script>
+      (function(){
+        var faqData = [
+          { q: "რა განსხვავებაა კოპირაიტინგსა და კონტენტ რაითინგს შორის?", a: "კოპირაიტინგი პირდაპირ გაყიდვებზეა ორიენტირებული — სარეკლამო ტექსტები, სლოგანები, CTA-ები, landing page-ები. კონტენტ რაითინგი კი ინფორმაციული კონტენტის შექმნაა — ბლოგ პოსტები, გაიდები, სტატიები. ჩვენ ორივე მიმართულებით ვმუშაობთ.", cat: "ზოგადი" },
+          { q: "რა შედის პრემიუმ კოპირაიტინგის სერვისში?", a: "ბრენდ მესიჯინგი (სლოგანი, tagline, brand voice), სარეკლამო ტექსტები, email მარკეტინგი, სოციალური მედიის კონტენტი, ვიდეო სკრიპტები, UX მიკროტექსტები, ვებ გვერდის ტექსტები და Brand Voice Guide.", cat: "ზოგადი" },
+          { q: "რა ვადებში მზადდება კოპირაიტინგის პროექტი?", a: "სლოგანი/tagline: 3-5 სამუშაო დღე. სარეკლამო ტექსტები: 3-5 სამუშაო დღე. ბრენდ მესიჯინგი: 7-14 სამუშაო დღე. Email კამპანია: 5-7 სამუშაო დღე. ყველა პროექტი მოიცავს 2 revision რაუნდს.", cat: "პროცესი" },
+          { q: "რა განსხვავებაა UX მიკროტექსტებსა და სარეკლამო კოპირაიტინგს შორის?", a: "UX მიკროტექსტები პროდუქტის შიგნით მუშაობს — ღილაკები, ფორმები, error messages, tooltips. სარეკლამო კოპირაიტინგი კი გარე კომუნიკაციისთვისაა — რეკლამები, ბანერები, landing pages. ორივე სხვადასხვა უნარს მოითხოვს.", cat: "ზოგადი" },
+          { q: "როგორ გამოიყურება კოპირაიტინგის პროცესი?", a: "5 ეტაპი: კვლევა (ბრენდი + აუდიტორია + კონკურენტები), სტრატეგია (ტონის განსაზღვრა + მესიჯების არქიტექტურა), წერა (პროფესიონალური კოპირაიტერის მიერ), რევიზია (2 ტური), ოპტიმიზაცია (შედეგების ანალიზი + კორექტირება).", cat: "პროცესი" },
+          { q: "რამდენი ტური რევიზია შედის?", a: "ყველა პროექტში 2 ტური რევიზია შედის. პირველი ტური — სტრუქტურული ცვლილებები, მეორე — დეტალების ფინალიზაცია. საჭიროების შემთხვევაში დამატებითი რევიზიაც ხელმისაწვდომია.", cat: "პროცესი" },
+          { q: "იყენებთ AI-ს ტექსტების საწერად?", a: "AI-ს ვიყენებთ კვლევისა და იდეაციის ეტაპზე, თუმცა საბოლოო ტექსტი ყოველთვის ადამიანის — გამოცდილი კოპირაიტერის მიერ იწერება. ჩვენი ტექსტები გადის რამდენიმე ეტაპიან რედაქტირებას და ხარისხის კონტროლს.", cat: "ზოგადი" },
+          { q: "შეგიძლიათ ჩვენი ბრენდის ტონის გადმოცემა?", a: "ყველა პროექტი ბრიფით იწყება, სადაც თქვენი ბრენდის ტონს, ხმას და სტილს ვსწავლობთ. საჭიროების შემთხვევაში Brand Voice Guide-ს ვქმნით ნულიდან — სრული სახელმძღვანელო თქვენი გუნდისთვის.", cat: "პროცესი" },
+          { q: "შეგიძლიათ ჩვენი არსებული ტექსტის გადაწერა?", a: "დიახ, ტექსტის აუდიტსა და გადაწერას ვთავაზობთ. ჯერ ვაანალიზებთ რა მუშაობს და რა არა, შემდეგ პროფესიონალურად ვწერთ ხელახლა — ბრენდის ტონისა და აუდიტორიის გათვალისწინებით.", cat: "ზოგადი" },
+          { q: "რა ინფორმაცია გჭირდებათ ჩემგან პროექტის დასაწყებად?", a: "გვჭირდება: თქვენი ბიზნესის/პროდუქტის აღწერა, სამიზნე აუდიტორია, კონკურენტები, ბრენდის ტონი (ფორმალური, არაფორმალური და ა.შ.), და კონკრეტული მიზანი (გაყიდვა, ცნობადობა, რეგისტრაცია). ბრიფის შევსებაში დაგეხმარებით.", cat: "პროცესი" },
+          { q: "მუშაობთ მხოლოდ ქართულად თუ ინგლისურადაც?", a: "ვმუშაობთ ქართულ და ინგლისურ ენებზე. ქართული ბაზრისთვის — ქართული ენის ყველა ნიუანსისა და კულტურული კონტექსტის გათვალისწინებით. საერთაშორისო ბაზრებისთვის — native-level ინგლისური კოპირაიტინგი.", cat: "ზოგადი" },
+          { q: "როგორ ზომავთ ტექსტის წარმატებას?", a: "ვთვალთვალებთ: კონვერსიის მაჩვენებელი, click-through rate, ჩართულობა, ბრენდის ცნობადობის ზრდა. ტექსტის ეფექტურობას მონაცემებით ვზომავთ და საჭიროებისამებრ ვაკორექტირებთ.", cat: "შედეგები" },
+          { q: "რა ინდუსტრიებში გაქვთ გამოცდილება?", a: "E-commerce, SaaS, ჯანდაცვა, ფინანსები, უძრავი ქონება, სამშენებლო, HoReCa, განათლება. ყოველ ინდუსტრიაში სპეციფიკურ ტერმინოლოგიას და აუდიტორიის მოლოდინებს ვითვალისწინებთ.", cat: "ზოგადი" },
+          { q: "რატომ არის პრემიუმ კოპირაიტინგი ინვესტიცია და არა ხარჯი?", a: "კარგი ტექსტი პირდაპირ გავლენას ახდენს გაყიდვებზე, ბრენდის აღქმაზე და კლიენტის ნდობაზე. ერთი კარგად დაწერილი landing page ან email სექვენცია შეიძლება ათასობით ლარის შემოსავალი მოიტანოს. ტექსტი არ არის ხარჯი — ეს არის ბიზნესის ინსტრუმენტი.", cat: "შედეგები" }
+        ];
+        var faqCategories = [
+          {name:"ყველა", key:"all"}, {name:"ზოგადი", key:"general"}, {name:"პროცესი", key:"process"}, {name:"შედეგები", key:"results"}
+        ];
+        var tabs=document.getElementById('v29-tabs'), list=document.getElementById('v29-items'), activeCat='ყველა';
+        faqCategories.forEach(function(item){
+          var cat=item.name, t=document.createElement('button');
+          t.className='v29-tab'+(cat==='ყველა'?' v29-active':'');
+          t.setAttribute('data-cat', item.key);
+          t.textContent=cat;
+          t.onclick=function(){ activeCat=cat; tabs.querySelectorAll('.v29-tab').forEach(function(b){b.classList.remove('v29-active');}); t.classList.add('v29-active'); filter(); };
+          tabs.appendChild(t);
+        });
+        var catKeyMap={"ზოგადი":"general","პროცესი":"process","შედეგები":"results"};
+        faqData.forEach(function(faq){
+          var d=document.createElement('div'), ck=catKeyMap[faq.cat]||'';
+          d.className='v29-card'; d.setAttribute('data-cat',faq.cat);
+          d.innerHTML='<div class="v29-cq"><div class="v29-badge"><svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></div><span class="v29-txt">'+faq.q+'</span><span class="v29-cat" data-key="'+ck+'">'+faq.cat+'</span></div><div class="v29-ca"><p>'+faq.a+'</p></div>';
+          d.querySelector('.v29-cq').onclick=function(){ var o=d.classList.contains('v29-open'); list.querySelectorAll('.v29-card').forEach(function(el){el.classList.remove('v29-open');}); if(!o) d.classList.add('v29-open'); };
+          list.appendChild(d);
+        });
+        function filter(){ list.querySelectorAll('.v29-card').forEach(function(el){ el.classList.remove('v29-open'); if(activeCat==='ყველა'||el.getAttribute('data-cat')===activeCat) el.classList.remove('v29-hidden'); else el.classList.add('v29-hidden'); }); }
+      })();
+    </script>
   </section>
 
   <!-- CTA #5 -->
@@ -954,10 +870,6 @@
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
           დაგვირეკეთ
         </a>
-      </div>
-      <div class="flex flex-wrap justify-center gap-4 mt-6 text-sm text-white/60">
-        <span>📞 პასუხი 10 წუთში</span>
-        <span>✍️ ადამიანის დაწერილი</span>
       </div>
     </div>
   </section>
@@ -1073,69 +985,6 @@
           document.body.classList.remove('overflow-hidden');
         });
       });
-    })();
-
-    // FAQ Accordion — Gold Glassmorphism (Variant 1)
-    (function(){
-      var data = [
-        { q: "რა განსხვავებაა კოპირაიტინგსა და კონტენტ რაითინგს შორის?", a: "კოპირაიტინგი პირდაპირ გაყიდვებზეა ორიენტირებული — სარეკლამო ტექსტები, სლოგანები, CTA-ები, landing page-ები. კონტენტ რაითინგი კი ინფორმაციული კონტენტის შექმნაა — ბლოგ პოსტები, გაიდები, სტატიები. ჩვენ ორივე მიმართულებით ვმუშაობთ." },
-        { q: "რა შედის პრემიუმ კოპირაიტინგის სერვისში?", a: "ბრენდ მესიჯინგი (სლოგანი, tagline, brand voice), სარეკლამო ტექსტები, email მარკეტინგი, სოციალური მედიის კონტენტი, ვიდეო სკრიპტები, UX მიკროტექსტები, ვებ გვერდის ტექსტები და Brand Voice Guide." },
-        { q: "რა ვადებში მზადდება კოპირაიტინგის პროექტი?", a: "სლოგანი/tagline: 3-5 სამუშაო დღე. სარეკლამო ტექსტები: 3-5 სამუშაო დღე. ბრენდ მესიჯინგი: 7-14 სამუშაო დღე. Email კამპანია: 5-7 სამუშაო დღე. ყველა პროექტი მოიცავს 2 revision რაუნდს." },
-        { q: "რა განსხვავებაა UX მიკროტექსტებსა და სარეკლამო კოპირაიტინგს შორის?", a: "UX მიკროტექსტები პროდუქტის შიგნით მუშაობს — ღილაკები, ფორმები, error messages, tooltips. სარეკლამო კოპირაიტინგი კი გარე კომუნიკაციისთვისაა — რეკლამები, ბანერები, landing pages. ორივე სხვადასხვა უნარს მოითხოვს." },
-        { q: "როგორ გამოიყურება კოპირაიტინგის პროცესი?", a: "5 ეტაპი: კვლევა (ბრენდი + აუდიტორია + კონკურენტები), სტრატეგია (ტონის განსაზღვრა + მესიჯების არქიტექტურა), წერა (პროფესიონალური კოპირაიტერის მიერ), რევიზია (2 ტური), ოპტიმიზაცია (შედეგების ანალიზი + კორექტირება)." },
-        { q: "რამდენი ტური რევიზია შედის?", a: "ყველა პროექტში 2 ტური რევიზია შედის. პირველი ტური — სტრუქტურული ცვლილებები, მეორე — დეტალების ფინალიზაცია. საჭიროების შემთხვევაში დამატებითი რევიზიაც ხელმისაწვდომია." },
-        { q: "იყენებთ AI-ს ტექსტების საწერად?", a: "AI-ს ვიყენებთ კვლევისა და იდეაციის ეტაპზე, თუმცა საბოლოო ტექსტი ყოველთვის ადამიანის — გამოცდილი კოპირაიტერის მიერ იწერება. ჩვენი ტექსტები გადის რამდენიმე ეტაპიან რედაქტირებას და ხარისხის კონტროლს." },
-        { q: "შეგიძლიათ ჩვენი ბრენდის ტონის გადმოცემა?", a: "ყველა პროექტი ბრიფით იწყება, სადაც თქვენი ბრენდის ტონს, ხმას და სტილს ვსწავლობთ. საჭიროების შემთხვევაში Brand Voice Guide-ს ვქმნით ნულიდან — სრული სახელმძღვანელო თქვენი გუნდისთვის." },
-        { q: "შეგიძლიათ ჩვენი არსებული ტექსტის გადაწერა?", a: "დიახ, ტექსტის აუდიტსა და გადაწერას ვთავაზობთ. ჯერ ვაანალიზებთ რა მუშაობს და რა არა, შემდეგ პროფესიონალურად ვწერთ ხელახლა — ბრენდის ტონისა და აუდიტორიის გათვალისწინებით." },
-        { q: "რა ინფორმაცია გჭირდებათ ჩემგან პროექტის დასაწყებად?", a: "გვჭირდება: თქვენი ბიზნესის/პროდუქტის აღწერა, სამიზნე აუდიტორია, კონკურენტები, ბრენდის ტონი (ფორმალური, არაფორმალური და ა.შ.), და კონკრეტული მიზანი (გაყიდვა, ცნობადობა, რეგისტრაცია). ბრიფის შევსებაში დაგეხმარებით." },
-        { q: "მუშაობთ მხოლოდ ქართულად თუ ინგლისურადაც?", a: "ვმუშაობთ ქართულ და ინგლისურ ენებზე. ქართული ბაზრისთვის — ქართული ენის ყველა ნიუანსისა და კულტურული კონტექსტის გათვალისწინებით. საერთაშორისო ბაზრებისთვის — native-level ინგლისური კოპირაიტინგი." },
-        { q: "წერთ თუ არა არაბულად?", a: "დიახ, გვაქვს არაბული კოპირაიტინგის გამოცდილება: RTL layout-ების გათვალისწინება, 20-25% text expansion, კულტურული ადაპტაცია. არ ვთარგმნით — ნულიდან ვქმნით." },
-        { q: "როგორ ზომავთ ტექსტის წარმატებას?", a: "ვთვალთვალებთ: კონვერსიის მაჩვენებელი, click-through rate, ჩართულობა, ბრენდის ცნობადობის ზრდა. ტექსტის ეფექტურობას მონაცემებით ვზომავთ და საჭიროებისამებრ ვაკორექტირებთ." },
-        { q: "რა ინდუსტრიებში გაქვთ გამოცდილება?", a: "E-commerce, SaaS, ჯანდაცვა, ფინანსები, უძრავი ქონება, სამშენებლო, HoReCa, განათლება. ყოველ ინდუსტრიაში სპეციფიკურ ტერმინოლოგიას და აუდიტორიის მოლოდინებს ვითვალისწინებთ." },
-        { q: "რატომ არის პრემიუმ კოპირაიტინგი ინვესტიცია და არა ხარჯი?", a: "კარგი ტექსტი პირდაპირ გავლენას ახდენს გაყიდვებზე, ბრენდის აღქმაზე და კლიენტის ნდობაზე. ერთი კარგად დაწერილი landing page ან email სექვენცია შეიძლება ათასობით ლარის შემოსავალი მოიტანოს. ტექსტი არ არის ხარჯი — ეს არის ბიზნესის ინსტრუმენტი." }
-      ];
-      var list = document.getElementById('fq1-list');
-      if (!list) return;
-      data.forEach(function(faq, i){
-        var d = document.createElement('div');
-        d.className = 'fq1-card';
-        d.innerHTML = '<div class="fq1-q"><div class="fq1-num">' + String(i+1).padStart(2,'0') + '</div><div class="fq1-txt">' + faq.q + '</div><svg class="fq1-arrow" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div><div class="fq1-a"><p>' + faq.a + '</p></div>';
-        d.querySelector('.fq1-q').addEventListener('click', function(){
-          var isOpen = d.classList.contains('fq1-open');
-          list.querySelectorAll('.fq1-card').forEach(function(c){ c.classList.remove('fq1-open'); });
-          if (!isOpen) d.classList.add('fq1-open');
-        });
-        list.appendChild(d);
-      });
-    })();
-
-    // Stats counter animation
-    (function(){
-      var statsBar = document.getElementById('stats-bar');
-      if (!statsBar) return;
-      var animated = false;
-      var observer = new IntersectionObserver(function(entries){
-        entries.forEach(function(e){
-          if (e.isIntersecting && !animated) {
-            animated = true;
-            statsBar.querySelectorAll('.stat-num').forEach(function(el){
-              var target = parseInt(el.getAttribute('data-target'));
-              var duration = 1500;
-              var start = 0;
-              var startTime = null;
-              function step(ts) {
-                if (!startTime) startTime = ts;
-                var progress = Math.min((ts - startTime) / duration, 1);
-                var eased = 1 - Math.pow(1 - progress, 3);
-                el.textContent = Math.floor(eased * target) + (target > 20 ? '+' : '%');
-                if (progress < 1) requestAnimationFrame(step);
-              }
-              requestAnimationFrame(step);
-            });
-          }
-        });
-      }, { threshold: 0.3 });
-      observer.observe(statsBar);
     })();
 
     // Service card animations
