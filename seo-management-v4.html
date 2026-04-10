@@ -722,44 +722,26 @@
         <p class="text-sm font-semibold uppercase tracking-wider mb-3" style="color:#D4A017">FAQ</p>
         <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-heading dark:text-heading-dark leading-[1.3]">ხშირად დასმული კითხვები</h2>
       </div>
-      <div class="flex flex-wrap justify-center gap-2 mb-8" id="v29-tabs"></div>
       <div class="space-y-3" id="v29-items"></div>
     </div>
     <script>
       (function(){
         var faqData = [
-          { q: "რამდენ ხანში ჩანს ყოველთვიური SEO-ს შედეგები?", a: "პირველი შედეგები 2-3 თვეში ჩანს, მნიშვნელოვანი ზრდა 4-6 თვეში. კონკურენტული ნიშებისთვის 6-12 თვეც შეიძლება დასჭირდეს.", cat: "ზოგადი" },
-          { q: "რა შედის Done-For-You SEO მენეჯმენტში?", a: "Keyword Research, Mapping, ტექნიკური აუდიტი, On-Page ოპტიმიზაცია, კონტენტის შექმნა, Link Building, AEO/GEO, Live Dashboard, ვიდეო რეპორტინგი და 10-წუთიანი SLA.", cat: "ზოგადი" },
-          { q: "როგორ მუშაობს AEO/GEO — AI პლატფორმებისთვის ოპტიმიზაცია?", a: "AEO და GEO უზრუნველყოფს ბრენდის ხილვადობას ChatGPT-ში, Gemini-ში, Perplexity-ში — იქ, სადაც მომავლის მომხმარებელი პასუხს ეძებს.", cat: "ზოგადი" },
-          { q: "რით განსხვავდება 10xSEO სხვა სააგენტოებისგან?", a: "12+ წლის გამოცდილება, 10-წუთიანი SLA, Live Dashboard + Loom ვიდეო რეპორტინგი, AEO/GEO. თქვენი წარმატება ჩვენს ბონუს სისტემაშიცაა ჩართული.", cat: "ზოგადი" },
-          { q: "მოითხოვთ თუ არა გრძელვადიან კონტრაქტს?", a: "არა. თვიდან თვემდე — lock-in არ გვაქვს. შედეგებს ვდებთ, არა ხელშეკრულებებს.", cat: "ფასი" },
-          { q: "როგორ გამოიყურება თანამშრომლობის პროცესი?", a: "5-ნაბიჯიანი Onboarding: სტრატეგიული სტარტი, სამუშაო სივრცის გაცნობა, ტექნიკური წვდომები, სტრატეგიის შეთანხმება, ოპერატიული კავშირი.", cat: "ზოგადი" },
-          { q: "რა ანგარიშგებას ვიღებთ და რა სიხშირით?", a: "Live Dashboard რეალურ დროში, Loom ვიდეო რეპორტი ყოველთვიურად, პოზიციების აფდეითი ორ-კვირაში, პასუხი 10 წუთში.", cat: "შედეგები" },
-          { q: "როგორ ზომავთ SEO-ს ROI-ს?", a: "ტრაფიკის გარდა, ვზომავთ რეალურ გაყიდვებს, შეკვეთებს და ზარებს. ჩვენი მთავარი საზომი ბიზნეს-შედეგია.", cat: "შედეგები" },
-          { q: "რამდენი ჩართულობა მჭირდება ჩემი მხრიდან?", a: "მინიმალური. ჩვენ ვმართავთ ყველა SEO პროცესს — თქვენგან მხოლოდ ბიზნესის სპეციფიკის ცოდნა და კონტენტის დამტკიცება.", cat: "ზოგადი" },
-          { q: "ამზადებთ თუ არა კონტენტს ქართულად და ინგლისურად?", a: "დიახ. ორენოვანი SEO კონტენტი — ქართულად ლოკალური ბაზრისთვის, ინგლისურად საერთაშორისო ექსპანსიისთვის.", cat: "ზოგადი" },
-          { q: "რა ინდუსტრიებში გაქვთ გამოცდილება?", a: "E-commerce, SaaS, ჯანდაცვა, უძრავი ქონება, ფინანსები, ტურიზმი — 15+ ინდუსტრიაში გვაქვს დადასტურებული შედეგები.", cat: "შედეგები" },
-          { q: "რა ღირს SEO მომსახურება?", a: "ფასი დამოკიდებულია ბიზნესის მასშტაბზე, კონკურენციაზე და მიზნებზე. გვაქვს სხვადასხვა პაკეტი. დაგვიკავშირდით კონსულტაციისთვის.", cat: "ფასი" }
+          { q: "რამდენ ხანში ჩანს ყოველთვიური SEO-ს შედეგები?", a: "პირველი შედეგები 2-3 თვეში ჩანს, მნიშვნელოვანი ზრდა 4-6 თვეში. კონკურენტული ნიშებისთვის 6-12 თვეც შეიძლება დასჭირდეს." },
+          { q: "რა შედის Done-For-You SEO მენეჯმენტში?", a: "Keyword Research, Mapping, ტექნიკური აუდიტი, On-Page ოპტიმიზაცია, კონტენტის შექმნა, Link Building, AEO/GEO ოპტიმიზაცია, Live Dashboard, Loom ვიდეო რეპორტინგი და 10-წუთიანი SLA." },
+          { q: "რით განსხვავდება 10xSEO სხვა სააგენტოებისგან?", a: "12+ წლის გამოცდილება, 10-წუთიანი SLA, Live Dashboard + Loom ვიდეო რეპორტინგი, AEO/GEO ოპტიმიზაცია AI პლატფორმებისთვის. თქვენი წარმატება ჩვენს ბონუს სისტემაშიცაა ჩართული." },
+          { q: "მოითხოვთ თუ არა გრძელვადიან კონტრაქტს?", a: "არა. თვიდან თვემდე — lock-in არ გვაქვს. შედეგებს ვდებთ, არა ხელშეკრულებებს. გაწყვეტის შემთხვევაში ყველა გაკეთებული სამუშაო რჩება თქვენ." },
+          { q: "როგორ ზომავთ SEO-ს ROI-ს?", a: "ტრაფიკის გარდა, ვზომავთ რეალურ გაყიდვებს, შეკვეთებს და ზარებს. ჩვენი მთავარი საზომი ბიზნეს-შედეგია, არა მხოლოდ პოზიციები." },
+          { q: "რამდენი ჩართულობა მჭირდება ჩემი მხრიდან?", a: "მინიმალური. ჩვენ სრულად ვმართავთ ყველა SEO პროცესს — თქვენგან მხოლოდ ბიზნესის სპეციფიკის ცოდნა და კონტენტის თემატიკის დამტკიცება." }
         ];
-        var cats = [{name:"ყველა",key:"all"},{name:"ზოგადი",key:"general"},{name:"ფასი",key:"price"},{name:"შედეგები",key:"results"}];
-        var tabs=document.getElementById('v29-tabs'), list=document.getElementById('v29-items'), activeCat='ყველა';
-        var catKeyMap={"ზოგადი":"general","ფასი":"price","შედეგები":"results"};
-        cats.forEach(function(item){
-          var t=document.createElement('button');
-          t.className='v29-tab'+(item.name==='ყველა'?' v29-active':'');
-          t.setAttribute('data-cat',item.key);
-          t.textContent=item.name;
-          t.onclick=function(){ activeCat=item.name; tabs.querySelectorAll('.v29-tab').forEach(function(b){b.classList.remove('v29-active');}); t.classList.add('v29-active'); filter(); };
-          tabs.appendChild(t);
-        });
+        var list=document.getElementById('v29-items');
         faqData.forEach(function(faq){
-          var d=document.createElement('div'), ck=catKeyMap[faq.cat]||'';
-          d.className='v29-card'; d.setAttribute('data-cat',faq.cat);
-          d.innerHTML='<div class="v29-cq"><div class="v29-badge"><svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></div><span class="v29-txt">'+faq.q+'</span><span class="v29-cat" data-key="'+ck+'">'+faq.cat+'</span></div><div class="v29-ca"><p>'+faq.a+'</p></div>';
+          var d=document.createElement('div');
+          d.className='v29-card';
+          d.innerHTML='<div class="v29-cq"><div class="v29-badge"><svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></div><span class="v29-txt">'+faq.q+'</span></div><div class="v29-ca"><p>'+faq.a+'</p></div>';
           d.querySelector('.v29-cq').onclick=function(){ var o=d.classList.contains('v29-open'); list.querySelectorAll('.v29-card').forEach(function(el){el.classList.remove('v29-open');}); if(!o) d.classList.add('v29-open'); };
           list.appendChild(d);
         });
-        function filter(){ list.querySelectorAll('.v29-card').forEach(function(el){ el.classList.remove('v29-open'); if(activeCat==='ყველა'||el.getAttribute('data-cat')===activeCat) el.classList.remove('v29-hidden'); else el.classList.add('v29-hidden'); }); }
       })();
     </script>
   </section>
