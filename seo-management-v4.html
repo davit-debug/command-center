@@ -689,6 +689,7 @@
         <p class="text-sm font-semibold uppercase tracking-wider mb-3" style="color:#D4A017">FAQ</p>
         <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-heading dark:text-heading-dark leading-[1.3]">ხშირად დასმული კითხვები</h2>
       </div>
+      <div class="flex flex-wrap justify-center gap-2 mb-8" id="v29-tabs"></div>
       <div class="space-y-3" id="v29-items"></div>
     </div>
     <script>
@@ -701,8 +702,17 @@
           { q: "როგორ ზომავთ SEO-ს ROI-ს?", a: "ტრაფიკის გარდა, ვზომავთ რეალურ გაყიდვებს, შეკვეთებს და ზარებს. ჩვენი მთავარი საზომი ბიზნეს-შედეგია, არა მხოლოდ პოზიციები.", cat: "შედეგები" },
           { q: "რამდენი ჩართულობა მჭირდება ჩემი მხრიდან?", a: "მინიმალური. ჩვენ სრულად ვმართავთ ყველა SEO პროცესს — თქვენგან მხოლოდ ბიზნესის სპეციფიკის ცოდნა და კონტენტის თემატიკის დამტკიცება.", cat: "ზოგადი" }
         ];
+        var cats=[{name:"ყველა",key:"all"},{name:"ზოგადი",key:"general"},{name:"ფასი",key:"price"},{name:"შედეგები",key:"results"}];
         var catKeyMap={"ზოგადი":"general","ფასი":"price","შედეგები":"results"};
-        var list=document.getElementById('v29-items');
+        var tabs=document.getElementById('v29-tabs'), list=document.getElementById('v29-items'), activeCat='ყველა';
+        cats.forEach(function(item){
+          var t=document.createElement('button');
+          t.className='v29-tab'+(item.name==='ყველა'?' v29-active':'');
+          t.setAttribute('data-cat',item.key);
+          t.textContent=item.name;
+          t.onclick=function(){ activeCat=item.name; tabs.querySelectorAll('.v29-tab').forEach(function(b){b.classList.remove('v29-active');}); t.classList.add('v29-active'); filter(); };
+          tabs.appendChild(t);
+        });
         faqData.forEach(function(faq){
           var d=document.createElement('div'), ck=catKeyMap[faq.cat]||'';
           d.className='v29-card'; d.setAttribute('data-cat',faq.cat);
@@ -710,6 +720,7 @@
           d.querySelector('.v29-cq').onclick=function(){ var o=d.classList.contains('v29-open'); list.querySelectorAll('.v29-card').forEach(function(el){el.classList.remove('v29-open');}); if(!o) d.classList.add('v29-open'); };
           list.appendChild(d);
         });
+        function filter(){ list.querySelectorAll('.v29-card').forEach(function(el){ el.classList.remove('v29-open'); if(activeCat==='ყველა'||el.getAttribute('data-cat')===activeCat) el.classList.remove('v29-hidden'); else el.classList.add('v29-hidden'); }); }
       })();
     </script>
   </section>
