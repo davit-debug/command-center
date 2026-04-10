@@ -539,11 +539,10 @@
         padding: 1.5rem;
       }
       .hex-client-inner img {
-        max-width: 110px;
-        max-height: 44px;
-        width: auto;
-        height: auto;
+        width: 78%;
+        height: 68%;
         object-fit: contain;
+        transform: scale(1.4);
         opacity: 0.85;
         transition: opacity 0.3s ease;
       }
@@ -551,15 +550,12 @@
         opacity: 1;
       }
       @media (max-width: 900px) {
-        .hex-clients-row { flex-wrap: wrap; }
+        .hex-clients-row { flex-wrap: wrap; gap: 0.5rem; }
         .hex-client { width: 130px; height: 150px; }
-        .hex-client-inner img { max-width: 85px; max-height: 36px; }
       }
       @media (max-width: 480px) {
-        .hex-client { width: 105px; height: 121px; }
-        .hex-client-inner { padding: 1rem; }
-        .hex-client-inner img { max-width: 70px; max-height: 28px; }
-        .hex-clients-row { gap: 0.5rem; }
+        .hex-client { width: 100px; height: 115px; }
+        .hex-clients-row { gap: 0.25rem; }
       }
     </style>
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
