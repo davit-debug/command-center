@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 60">
+  <circle cx="28" cy="30" r="14" fill="none" stroke="#4CAF50" stroke-width="2.5"/>
+  <path d="M22 30 Q28 18 34 30 Q28 42 22 30" fill="#4CAF50" opacity="0.3"/>
+  <text x="120" y="37" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="600">
+    <tspan fill="#333">clear</tspan><tspan fill="#4CAF50">minds</tspan>
+  </text>
+</svg>

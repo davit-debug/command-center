@@ -130,6 +130,15 @@
     .gradient-border::before { content: ''; position: absolute; inset: -2px; border-radius: 1.1rem; background: linear-gradient(135deg, #00FF88, #4FC3F7, #00FF88); z-index: -1; }
     .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
+    /* Hex partners */
+    .hex-clients-row { display: flex; justify-content: center; align-items: center; gap: 1rem; flex-wrap: nowrap; }
+    .hex-client { width: 160px; height: 185px; position: relative; transition: transform 0.4s ease; flex-shrink: 0; }
+    .hex-client:hover { transform: translateY(-6px); }
+    .hex-client-inner { width: 100%; height: 100%; background: #ffffff; clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); display: flex; align-items: center; justify-content: center; padding: 1.5rem; }
+    .hex-client-inner img { width: 78%; height: 68%; object-fit: contain; transform: scale(1.7); opacity: 0.85; transition: opacity 0.3s ease; }
+    .hex-client:hover .hex-client-inner img { opacity: 1; }
+    @media (max-width: 900px) { .hex-clients-row { flex-wrap: wrap; gap: 0.5rem; } .hex-client { width: 130px; height: 150px; } }
+    @media (max-width: 480px) { .hex-client { width: 100px; height: 115px; } .hex-clients-row { gap: 0.25rem; } }
   </style>
 </head>
 <body class="font-body bg-[#0A0A0A] text-[#A0A0A0]">
@@ -287,6 +296,21 @@
         <span class="text-white/30 font-semibold text-sm whitespace-nowrap">ენმედიცი</span>
         <span class="text-white/30 font-semibold text-sm whitespace-nowrap">ClearMinds</span>
       </div></div>
+    </div>
+  </section>
+
+  <!-- ===== HEX PARTNERS ===== -->
+  <section class="py-10 lg:py-14 bg-[#1a1f2e]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <p class="text-center text-xs font-semibold text-white/40 uppercase tracking-widest mb-8">ისინი უკვე ჩვენი პარტნიორები არიან</p>
+      <div class="hex-clients-row">
+        <div class="hex-client"><div class="hex-client-inner"><img src="../images/clients/gpc.png" alt="GPC"></div></div>
+        <div class="hex-client"><div class="hex-client-inner"><img src="../images/clients/pharmadepot.png" alt="ფარმადეპო"></div></div>
+        <div class="hex-client"><div class="hex-client-inner"><img src="../images/clients/todua-clinic.png" alt="თოდუას კლინიკა"></div></div>
+        <div class="hex-client"><div class="hex-client-inner"><img src="../images/clients/enmedici.svg" alt="ენმედიცი"></div></div>
+        <div class="hex-client"><div class="hex-client-inner"><img src="../images/clients/smile-studio.png" alt="SmileStudio"></div></div>
+        <div class="hex-client"><div class="hex-client-inner"><img src="../images/clients/clearminds.svg" alt="ClearMinds"></div></div>
+      </div>
     </div>
   </section>
 

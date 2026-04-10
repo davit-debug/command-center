@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60">
+  <text x="100" y="38" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#2B6CB0">en</text>
+  <text x="100" y="38" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#2B6CB0" dx="20">medici</text>
+  <text x="100" y="38" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="bold">
+    <tspan fill="#E53E3E">en</tspan><tspan fill="#2B6CB0">medici</tspan>
+  </text>
+</svg>
