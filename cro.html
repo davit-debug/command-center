@@ -348,6 +348,12 @@
     .engine-step { transition: all 0.3s ease; }
     .engine-step:hover { transform: translateY(-4px); }
     .engine-connector { height: 2px; background: linear-gradient(90deg, #8B5CF6, #3B82F6, #14B8A6); }
+
+    /* Sticky progress dots */
+    .progress-dots { position: fixed; right: 16px; top: 50%; transform: translateY(-50%); z-index: 40; display: flex; flex-direction: column; gap: 8px; }
+    .progress-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.15); transition: all 0.3s; cursor: pointer; }
+    .progress-dot.active { background: #8B5CF6; box-shadow: 0 0 8px rgba(139,92,246,0.5); transform: scale(1.4); }
+    @media (max-width: 768px) { .progress-dots { display: none; } }
   </style>
 <script type="application/ld+json">
 {
@@ -514,14 +520,22 @@
 
           <div class="animate-fade-in-up delay-300 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
             <a href="#" onclick="openCalendly();return false;" class="inline-flex items-center justify-center gap-2 px-8 py-4 ai-cta-animate text-white text-lg font-bold rounded-xl hover:shadow-xl hover:shadow-primary/25 transition-all duration-200">
-              დაჯავშნე კონსულტაცია
+              აღმოაჩინე ზრდის პოტენციალი
             </a>
             <a href="#what-we-optimize" class="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-gray-200 dark:border-gray-700 text-heading dark:text-heading-dark text-lg font-bold rounded-xl hover:border-primary dark:hover:border-primary-light transition-colors">
               რას ოპტიმიზირებთ?
             </a>
           </div>
-          <div class="animate-fade-in-up delay-300 mt-4 flex justify-center lg:justify-start">
-            <a href="#cro-calculator" class="inline-flex items-center justify-center gap-2 px-6 py-3 text-success border border-success/30 rounded-xl hover:bg-success/10 font-semibold transition-colors text-sm">გამოთვალე CRO პოტენციალი ↓</a>
+          <!-- Clutch badge -->
+          <div class="animate-fade-in-up delay-300 mt-5 flex items-center gap-3 justify-center lg:justify-start">
+            <div class="flex text-yellow-400">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+            <span class="text-xs font-semibold text-body/60 dark:text-body-dark/60">5.0/5.0 Clutch Rating</span>
           </div>
         </div>
 
@@ -531,15 +545,15 @@
             <p class="text-sm font-semibold text-body/60 dark:text-body-dark/60 uppercase tracking-wider mb-6">CRO-ს გავლენა რიცხვებში</p>
             <div class="grid grid-cols-2 gap-6">
               <div>
-                <div class="text-3xl lg:text-4xl font-extrabold text-heading dark:text-heading-dark font-inter mb-1">+47%</div>
+                <div class="text-3xl lg:text-4xl font-extrabold text-heading dark:text-heading-dark font-inter mb-1 counter-stat" data-prefix="+" data-target="47" data-suffix="%">+0%</div>
                 <p class="text-xs text-body dark:text-body-dark">კონვერსიის ზრდა<br><span class="text-body/50 dark:text-body-dark/50">საშუალოდ</span></p>
               </div>
               <div>
-                <div class="text-3xl lg:text-4xl font-extrabold text-heading dark:text-heading-dark font-inter mb-1">-32%</div>
+                <div class="text-3xl lg:text-4xl font-extrabold text-heading dark:text-heading-dark font-inter mb-1 counter-stat" data-prefix="-" data-target="32" data-suffix="%">-0%</div>
                 <p class="text-xs text-body dark:text-body-dark">bounce rate-ის<br><span class="text-body/50 dark:text-body-dark/50">შემცირება</span></p>
               </div>
               <div>
-                <div class="text-3xl lg:text-4xl font-extrabold text-heading dark:text-heading-dark font-inter mb-1">2.1x</div>
+                <div class="text-3xl lg:text-4xl font-extrabold text-heading dark:text-heading-dark font-inter mb-1 counter-stat" data-prefix="" data-target="2.1" data-suffix="x" data-decimal="true">0x</div>
                 <p class="text-xs text-body dark:text-body-dark">ROI ზრდა<br><span class="text-body/50 dark:text-body-dark/50">რეკლამიდან</span></p>
               </div>
               <div>
@@ -549,6 +563,10 @@
             </div>
           </div>
         </div>
+      </div>
+      <!-- Scroll hint -->
+      <div class="text-center mt-12 animate-bounce">
+        <svg class="w-6 h-6 mx-auto text-body/30 dark:text-body-dark/30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
       </div>
     </div>
   </section>
@@ -582,6 +600,13 @@
     </div>
   </section>
 
+  <!-- Calculator link after problem -->
+  <div class="py-6 bg-white dark:bg-surface-dark text-center">
+    <a href="#cro-calculator" class="inline-flex items-center gap-2 px-6 py-3 text-success border border-success/30 rounded-xl hover:bg-success/10 font-semibold transition-colors text-sm">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+      გამოთვალე CRO პოტენციალი
+    </a>
+  </div>
 
   <!-- ========== 4. WHAT IS CRO ========== -->
   <section class="py-16 lg:py-24 bg-surface-alt dark:bg-surface-dark-alt">
@@ -790,7 +815,7 @@
   <!-- ========== 7. MID-PAGE CTA #1 ========== -->
   <section class="py-10 lg:py-14 bg-white dark:bg-surface-dark">
     <div class="max-w-2xl mx-auto px-4 sm:px-6 text-center">
-      <p class="text-lg text-body dark:text-body-dark mb-6">გაინტერესებთ რამდენ შემოსავალს კარგავთ ოპტიმიზაციის გარეშე?</p>
+      <p class="text-lg text-body dark:text-body-dark mb-6">გაიგე რამდენით შეგიძლია გაზარდო შემოსავალი ოპტიმიზაციით</p>
       <a href="#cro-calculator" class="inline-flex items-center justify-center gap-2 px-8 py-4 ai-cta-animate text-white text-lg font-bold rounded-xl">
         გამოთვალე CRO პოტენციალი ↓
       </a>
@@ -880,12 +905,12 @@
               </div>
               <hr class="border-gray-200 dark:border-gray-700">
               <div>
-                <p class="text-sm text-body dark:text-body-dark mb-1">თქვენ კარგავთ თვეში</p>
-                <div id="calc-gap" class="text-3xl font-extrabold text-red-500 font-inter">₾8,000</div>
+                <p class="text-sm text-body dark:text-body-dark mb-1">CRO-ს პოტენციური ზრდა თვეში</p>
+                <div id="calc-gap" class="text-3xl font-extrabold text-success font-inter">₾8,000</div>
               </div>
             </div>
             <a href="#" onclick="openCalendly();return false;" class="mt-6 w-full inline-flex items-center justify-center gap-2 px-6 py-3 ai-cta-animate text-white text-sm font-bold rounded-xl">
-              დაჯავშნე კონსულტაცია
+              მიიღე ინდივიდუალური შეთავაზება
             </a>
           </div>
         </div>
@@ -893,16 +918,6 @@
     </div>
   </section>
 
-
-  <!-- ========== 11. MID-PAGE CTA #2 ========== -->
-  <section class="py-10 lg:py-14 bg-surface-alt dark:bg-surface-dark-alt">
-    <div class="max-w-2xl mx-auto px-4 sm:px-6 text-center">
-      <p class="text-lg text-body dark:text-body-dark mb-6">მზადხართ CRO-ს დასაწყებად?</p>
-      <a href="#" onclick="openCalendly();return false;" class="inline-flex items-center justify-center gap-2 px-8 py-4 ai-cta-animate text-white text-lg font-bold rounded-xl">
-        დაჯავშნე კონსულტაცია
-      </a>
-    </div>
-  </section>
 
 
 
@@ -1034,37 +1049,61 @@
       </div>
 
       <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-4">
-        <div class="text-center p-4 rounded-xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-gray-800">
-          <div class="w-10 h-10 mx-auto mb-2 rounded-full bg-blue-500/10 flex items-center justify-center"><span class="text-xs font-extrabold text-blue-500">GA4</span></div>
-          <p class="text-xs font-semibold text-heading dark:text-heading-dark">Google Analytics 4</p>
+        <div class="text-center p-5 rounded-xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-gray-800 hover:border-blue-500/30 transition-colors">
+          <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-blue-500/10 flex items-center justify-center">
+            <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          </div>
+          <p class="text-sm font-semibold text-heading dark:text-heading-dark">Google Analytics 4</p>
+          <p class="text-[10px] text-body/50 dark:text-body-dark/50 mt-1">ტრაფიკი & კონვერსია</p>
         </div>
-        <div class="text-center p-4 rounded-xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-gray-800">
-          <div class="w-10 h-10 mx-auto mb-2 rounded-full bg-orange-500/10 flex items-center justify-center"><span class="text-xs font-extrabold text-orange-500">HJ</span></div>
-          <p class="text-xs font-semibold text-heading dark:text-heading-dark">Hotjar</p>
+        <div class="text-center p-5 rounded-xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-gray-800 hover:border-orange-500/30 transition-colors">
+          <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-orange-500/10 flex items-center justify-center">
+            <svg class="w-6 h-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"/></svg>
+          </div>
+          <p class="text-sm font-semibold text-heading dark:text-heading-dark">Hotjar</p>
+          <p class="text-[10px] text-body/50 dark:text-body-dark/50 mt-1">Heatmaps & Recordings</p>
         </div>
-        <div class="text-center p-4 rounded-xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-gray-800">
-          <div class="w-10 h-10 mx-auto mb-2 rounded-full bg-indigo-500/10 flex items-center justify-center"><span class="text-xs font-extrabold text-indigo-500">VWO</span></div>
-          <p class="text-xs font-semibold text-heading dark:text-heading-dark">VWO / Optimizely</p>
+        <div class="text-center p-5 rounded-xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-gray-800 hover:border-indigo-500/30 transition-colors">
+          <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-indigo-500/10 flex items-center justify-center">
+            <svg class="w-6 h-6 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+          </div>
+          <p class="text-sm font-semibold text-heading dark:text-heading-dark">VWO / Optimizely</p>
+          <p class="text-[10px] text-body/50 dark:text-body-dark/50 mt-1">A/B ტესტინგი</p>
         </div>
-        <div class="text-center p-4 rounded-xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-gray-800">
-          <div class="w-10 h-10 mx-auto mb-2 rounded-full bg-sky-500/10 flex items-center justify-center"><span class="text-xs font-extrabold text-sky-500">MC</span></div>
-          <p class="text-xs font-semibold text-heading dark:text-heading-dark">Microsoft Clarity</p>
+        <div class="text-center p-5 rounded-xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-gray-800 hover:border-sky-500/30 transition-colors">
+          <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-sky-500/10 flex items-center justify-center">
+            <svg class="w-6 h-6 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+          </div>
+          <p class="text-sm font-semibold text-heading dark:text-heading-dark">Microsoft Clarity</p>
+          <p class="text-[10px] text-body/50 dark:text-body-dark/50 mt-1">Session Replay</p>
         </div>
-        <div class="text-center p-4 rounded-xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-gray-800">
-          <div class="w-10 h-10 mx-auto mb-2 rounded-full bg-teal-500/10 flex items-center justify-center"><span class="text-xs font-extrabold text-teal-500">GTM</span></div>
-          <p class="text-xs font-semibold text-heading dark:text-heading-dark">Google Tag Manager</p>
+        <div class="text-center p-5 rounded-xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-gray-800 hover:border-teal-500/30 transition-colors">
+          <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-teal-500/10 flex items-center justify-center">
+            <svg class="w-6 h-6 text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/></svg>
+          </div>
+          <p class="text-sm font-semibold text-heading dark:text-heading-dark">Google Tag Manager</p>
+          <p class="text-[10px] text-body/50 dark:text-body-dark/50 mt-1">Event Tracking</p>
         </div>
-        <div class="text-center p-4 rounded-xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-gray-800">
-          <div class="w-10 h-10 mx-auto mb-2 rounded-full bg-yellow-500/10 flex items-center justify-center"><span class="text-xs font-extrabold text-yellow-500">LS</span></div>
-          <p class="text-xs font-semibold text-heading dark:text-heading-dark">Looker Studio</p>
+        <div class="text-center p-5 rounded-xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-gray-800 hover:border-yellow-500/30 transition-colors">
+          <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-yellow-500/10 flex items-center justify-center">
+            <svg class="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+          </div>
+          <p class="text-sm font-semibold text-heading dark:text-heading-dark">Looker Studio</p>
+          <p class="text-[10px] text-body/50 dark:text-body-dark/50 mt-1">რეპორტინგი</p>
         </div>
-        <div class="text-center p-4 rounded-xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-gray-800">
-          <div class="w-10 h-10 mx-auto mb-2 rounded-full bg-purple-500/10 flex items-center justify-center"><span class="text-xs font-extrabold text-purple-500">FG</span></div>
-          <p class="text-xs font-semibold text-heading dark:text-heading-dark">Figma</p>
+        <div class="text-center p-5 rounded-xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-gray-800 hover:border-purple-500/30 transition-colors">
+          <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-purple-500/10 flex items-center justify-center">
+            <svg class="w-6 h-6 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg>
+          </div>
+          <p class="text-sm font-semibold text-heading dark:text-heading-dark">Figma</p>
+          <p class="text-[10px] text-body/50 dark:text-body-dark/50 mt-1">UX პროტოტიპინგი</p>
         </div>
-        <div class="text-center p-4 rounded-xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-gray-800">
-          <div class="w-10 h-10 mx-auto mb-2 rounded-full bg-green-500/10 flex items-center justify-center"><span class="text-xs font-extrabold text-green-500">PSI</span></div>
-          <p class="text-xs font-semibold text-heading dark:text-heading-dark">PageSpeed Insights</p>
+        <div class="text-center p-5 rounded-xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-gray-800 hover:border-green-500/30 transition-colors">
+          <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-green-500/10 flex items-center justify-center">
+            <svg class="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <p class="text-sm font-semibold text-heading dark:text-heading-dark">PageSpeed Insights</p>
+          <p class="text-[10px] text-body/50 dark:text-body-dark/50 mt-1">სიჩქარის ანალიზი</p>
         </div>
       </div>
     </div>
@@ -1122,11 +1161,11 @@
   <section class="py-16 lg:py-20 bg-gradient-to-r from-primary/10 via-accent/5 to-primary/10 dark:from-primary/20 dark:via-accent/10 dark:to-primary/20">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
       <h2 class="text-[24px] sm:text-[30px] lg:text-[38px] font-extrabold text-heading dark:text-heading-dark mb-4">დაიკავე პირველი ადგილი — <span class="gradient-text">დავიწყოთ დღესვე</span></h2>
-      <p class="text-lg text-body dark:text-body-dark mb-6 max-w-xl mx-auto">დაჯავშნეთ უფასო კონსულტაცია და გაიგეთ რამდენ შემოსავალს კარგავთ.</p>
+      <p class="text-lg text-body dark:text-body-dark mb-6 max-w-xl mx-auto">გაიგე რამდენით შეგიძლია გაზარდო კონვერსია და შემოსავალი.</p>
       <p class="text-sm text-body/60 dark:text-body-dark/60 mb-8">5.0/5.0 Clutch Rating</p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a href="#" onclick="openCalendly();return false;" class="inline-flex items-center justify-center gap-2 px-8 py-4 ai-cta-animate text-white text-lg font-bold rounded-xl">
-          დაჯავშნე კონსულტაცია
+          დავიწყოთ თანამშრომლობა
         </a>
         <a href="tel:+995510101517" class="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-primary dark:border-primary-light text-primary dark:text-primary-light text-lg font-bold rounded-xl hover:bg-primary/5 dark:hover:bg-primary/10 transition-colors">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
@@ -1334,6 +1373,72 @@
       });
     }
   </script>
+
+<!-- Progress Dots -->
+<nav class="progress-dots" aria-label="გვერდის პროგრესი">
+  <div class="progress-dot active" data-section="main-content" title="Hero"></div>
+  <div class="progress-dot" data-section="what-we-optimize" title="სერვისები"></div>
+  <div class="progress-dot" data-section="cro-calculator" title="კალკულატორი"></div>
+  <div class="progress-dot" data-section="faq" title="FAQ"></div>
+</nav>
+
+<script>
+// Counter animation
+(function(){
+  var counters = document.querySelectorAll('.counter-stat');
+  var triggered = false;
+  if (!counters.length) return;
+  var statsObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting && !triggered) {
+        triggered = true;
+        counters.forEach(function(el){
+          var target = parseFloat(el.dataset.target);
+          var prefix = el.dataset.prefix || '';
+          var suffix = el.dataset.suffix || '';
+          var isDecimal = el.dataset.decimal === 'true';
+          var duration = 1200;
+          var start = performance.now();
+          function step(now){
+            var progress = Math.min((now - start) / duration, 1);
+            var eased = 1 - Math.pow(1 - progress, 3);
+            var current = isDecimal ? (target * eased).toFixed(1) : Math.round(target * eased);
+            el.textContent = prefix + current + suffix;
+            if (progress < 1) requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+        });
+        statsObs.disconnect();
+      }
+    });
+  }, {threshold: 0.3});
+  statsObs.observe(counters[0].closest('.grid'));
+})();
+
+// Progress dots
+(function(){
+  var dots = document.querySelectorAll('.progress-dot');
+  var sections = [];
+  dots.forEach(function(dot){
+    var sec = document.getElementById(dot.dataset.section);
+    if (sec) sections.push({dot: dot, el: sec});
+    dot.addEventListener('click', function(){
+      var target = document.getElementById(dot.dataset.section);
+      if (target) target.scrollIntoView({behavior: 'smooth'});
+    });
+  });
+  if (!sections.length) return;
+  window.addEventListener('scroll', function(){
+    var scrollY = window.scrollY + window.innerHeight / 3;
+    var active = sections[0];
+    sections.forEach(function(s){
+      if (s.el.offsetTop <= scrollY) active = s;
+    });
+    dots.forEach(function(d){ d.classList.remove('active'); });
+    active.dot.classList.add('active');
+  }, {passive: true});
+})();
+</script>
 
 <!-- Calendly Popup Widget -->
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
