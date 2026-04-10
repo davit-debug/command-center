@@ -170,10 +170,6 @@
     /* Pipeline node */
     .pipeline-node { width: 48px; height: 48px; border-radius: 50%; background: #0F0F0F; border: 2px solid #8B5CF6; display: flex; align-items: center; justify-content: center; }
 
-    /* Service Tab active */
-    .tab-active-v4 { background: rgba(139,92,246,0.15); color: #A78BFA; border-bottom: 2px solid #8B5CF6; }
-    .tab-inactive-v4 { color: rgba(255,255,255,0.5); }
-    .tab-inactive-v4:hover { color: rgba(255,255,255,0.8); }
 
     /* FAQ v29 Violet Glassmorphism */
     .v29-tab { padding: 8px 18px; border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; transition: all 0.3s; border: none; text-transform: uppercase; letter-spacing: 0.5px; }
@@ -378,108 +374,6 @@
     </div>
   </section>
 
-  <!-- ========== 4. SERVICE TABS ========== -->
-  <section class="py-16 lg:py-24 bg-surface-dark">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      <h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-heading-dark text-center mb-4">რას მოიცავს სერვისი</h2>
-      <p class="text-center text-body-dark mb-10">7 მიმართულება — ერთი გუნდი, სრული პასუხისმგებლობა</p>
-
-      <!-- Tab bar -->
-      <div class="flex overflow-x-auto no-scrollbar gap-1 bg-surface-dark-alt rounded-lg p-1 mb-8" id="service-tabs">
-        <button class="tab-active-v4 px-4 py-2.5 rounded-md text-sm font-medium whitespace-nowrap" data-tab="0"><span class="hidden sm:inline">Keyword </span>კვლევა</button>
-        <button class="tab-inactive-v4 px-4 py-2.5 rounded-md text-sm font-medium whitespace-nowrap" data-tab="1">მეფინგი</button>
-        <button class="tab-inactive-v4 px-4 py-2.5 rounded-md text-sm font-medium whitespace-nowrap" data-tab="2">ტექნიკური SEO</button>
-        <button class="tab-inactive-v4 px-4 py-2.5 rounded-md text-sm font-medium whitespace-nowrap" data-tab="3">On-Page</button>
-        <button class="tab-inactive-v4 px-4 py-2.5 rounded-md text-sm font-medium whitespace-nowrap" data-tab="4">კონტენტი</button>
-        <button class="tab-inactive-v4 px-4 py-2.5 rounded-md text-sm font-medium whitespace-nowrap" data-tab="5">ლინკ ბილდინგი</button>
-        <button class="tab-inactive-v4 px-4 py-2.5 rounded-md text-sm font-medium whitespace-nowrap" data-tab="6">AEO/GEO</button>
-      </div>
-
-      <!-- Tab panels -->
-      <div id="tab-panels">
-        <div class="rounded-2xl border border-gray-800 bg-surface-dark-alt p-8" data-panel="0">
-          <h3 class="text-xl font-bold text-heading-dark mb-4">საძიებო სიტყვების კვლევა</h3>
-          <p class="text-body-dark mb-4">ვიკვლევთ, როგორ ეძებენ მომხმარებლები თქვენს ბიზნესს — რა სიხშირით, რა განზრახვით და რა ტენდენციებით.</p>
-          <div class="grid sm:grid-cols-2 gap-3">
-            <p class="flex items-center gap-2 text-sm text-body-dark"><span class="text-primary-light">✓</span> Search Intent ანალიზი</p>
-            <p class="flex items-center gap-2 text-sm text-body-dark"><span class="text-primary-light">✓</span> Keyword Gap Analysis</p>
-            <p class="flex items-center gap-2 text-sm text-body-dark"><span class="text-primary-light">✓</span> Topic Clustering</p>
-            <p class="flex items-center gap-2 text-sm text-body-dark"><span class="text-primary-light">✓</span> კონკურენტების keyword-ები</p>
-          </div>
-        </div>
-        <div class="rounded-2xl border border-gray-800 bg-surface-dark-alt p-8 hidden" data-panel="1">
-          <h3 class="text-xl font-bold text-heading-dark mb-4">Keyword Mapping — სტრატეგიული განაწილება</h3>
-          <p class="text-body-dark mb-4">ყოველ გვერდს — თავისი მისია. ქივორდებს ვყოფთ კლასტერებად და ვებსაიტის შესაბამის გვერდებს ვუთავსებთ.</p>
-          <div class="grid sm:grid-cols-2 gap-3">
-            <p class="flex items-center gap-2 text-sm text-body-dark"><span class="text-primary-light">✓</span> URL-Keyword Mapping</p>
-            <p class="flex items-center gap-2 text-sm text-body-dark"><span class="text-primary-light">✓</span> Content Gap იდენტიფიკაცია</p>
-            <p class="flex items-center gap-2 text-sm text-body-dark"><span class="text-primary-light">✓</span> საიტის არქიტექტურა</p>
-            <p class="flex items-center gap-2 text-sm text-body-dark"><span class="text-primary-light">✓</span> Pillar-Cluster სტრატეგია</p>
-          </div>
-        </div>
-        <div class="rounded-2xl border border-gray-800 bg-surface-dark-alt p-8 hidden" data-panel="2">
-          <h3 class="text-xl font-bold text-heading-dark mb-4">ტექნიკური SEO აუდიტი</h3>
-          <p class="text-body-dark mb-4">ვამოწმებთ 200+ ტექნიკურ ფაქტორს — საიტის სიჩქარიდან დაწყებული, მობილური ადაპტაციით დამთავრებული.</p>
-          <div class="grid sm:grid-cols-2 gap-3">
-            <p class="flex items-center gap-2 text-sm text-body-dark"><span class="text-primary-light">✓</span> Core Web Vitals</p>
-            <p class="flex items-center gap-2 text-sm text-body-dark"><span class="text-primary-light">✓</span> Crawlability & Indexation</p>
-            <p class="flex items-center gap-2 text-sm text-body-dark"><span class="text-primary-light">✓</span> Schema Markup</p>
-            <p class="flex items-center gap-2 text-sm text-body-dark"><span class="text-primary-light">✓</span> Mobile & Speed</p>
-          </div>
-        </div>
-        <div class="rounded-2xl border border-gray-800 bg-surface-dark-alt p-8 hidden" data-panel="3">
-          <h3 class="text-xl font-bold text-heading-dark mb-4">შიდა ოპტიმიზაცია (On-Page)</h3>
-          <p class="text-body-dark mb-4">ვაქცევთ ყოველ გვერდს Google-ისთვის მაქსიმალურად გასაგებად — სათაურებიდან სტრუქტურამდე.</p>
-          <div class="grid sm:grid-cols-2 gap-3">
-            <p class="flex items-center gap-2 text-sm text-body-dark"><span class="text-primary-light">✓</span> Title & Meta Description</p>
-            <p class="flex items-center gap-2 text-sm text-body-dark"><span class="text-primary-light">✓</span> H-tag სტრუქტურა</p>
-            <p class="flex items-center gap-2 text-sm text-body-dark"><span class="text-primary-light">✓</span> Internal Linking</p>
-            <p class="flex items-center gap-2 text-sm text-body-dark"><span class="text-primary-light">✓</span> Image Optimization</p>
-          </div>
-        </div>
-        <div class="rounded-2xl border border-gray-800 bg-surface-dark-alt p-8 hidden" data-panel="4">
-          <h3 class="text-xl font-bold text-heading-dark mb-4">SEO კონტენტის შექმნა</h3>
-          <p class="text-body-dark mb-4">ექსპერტის დონის კონტენტი, რომელიც შენს ბრენდს ავტორიტეტად აქცევს Google-ისა და AI პლატფორმების თვალში.</p>
-          <div class="grid sm:grid-cols-2 gap-3">
-            <p class="flex items-center gap-2 text-sm text-body-dark"><span class="text-primary-light">✓</span> SEO Blog Posts</p>
-            <p class="flex items-center gap-2 text-sm text-body-dark"><span class="text-primary-light">✓</span> Landing Pages</p>
-            <p class="flex items-center gap-2 text-sm text-body-dark"><span class="text-primary-light">✓</span> Cluster Content</p>
-            <p class="flex items-center gap-2 text-sm text-body-dark"><span class="text-primary-light">✓</span> E-E-A-T Optimization</p>
-          </div>
-        </div>
-        <div class="rounded-2xl border border-gray-800 bg-surface-dark-alt p-8 hidden" data-panel="5">
-          <h3 class="text-xl font-bold text-heading-dark mb-4">ლინკ ბილდინგი — გარე ავტორიტეტი</h3>
-          <p class="text-body-dark mb-4">მაღალი ავტორიტეტის მედია საიტებიდან ბექლინკები, რომლებიც შენს დომეინს აძლიერებს.</p>
-          <div class="grid sm:grid-cols-2 gap-3">
-            <p class="flex items-center gap-2 text-sm text-body-dark"><span class="text-primary-light">✓</span> Editorial Outreach</p>
-            <p class="flex items-center gap-2 text-sm text-body-dark"><span class="text-primary-light">✓</span> Digital PR</p>
-            <p class="flex items-center gap-2 text-sm text-body-dark"><span class="text-primary-light">✓</span> Guest Posting</p>
-            <p class="flex items-center gap-2 text-sm text-body-dark"><span class="text-primary-light">✓</span> Competitor Link Analysis</p>
-          </div>
-        </div>
-        <div class="rounded-2xl border border-gray-800 bg-surface-dark-alt p-8 hidden" data-panel="6">
-          <h3 class="text-xl font-bold text-heading-dark mb-4">AEO/GEO — AI პლატფორმებისთვის</h3>
-          <p class="text-body-dark mb-4">შენი ბრენდი ხდება რეკომენდაცია იქ, სადაც მომავლის მომხმარებელი პასუხს ეძებს.</p>
-          <div class="grid sm:grid-cols-2 gap-3">
-            <p class="flex items-center gap-2 text-sm text-body-dark"><span class="text-primary-light">✓</span> AI Overview Optimization</p>
-            <p class="flex items-center gap-2 text-sm text-body-dark"><span class="text-primary-light">✓</span> ChatGPT / Gemini ხილვადობა</p>
-            <p class="flex items-center gap-2 text-sm text-body-dark"><span class="text-primary-light">✓</span> Entity Optimization</p>
-            <p class="flex items-center gap-2 text-sm text-body-dark"><span class="text-primary-light">✓</span> Perplexity Citations</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== 5. CTA ========== -->
-  <section class="py-12 bg-surface-dark-alt">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
-      <a href="seo-audit.html" class="inline-flex items-center gap-2 px-8 py-4 ai-cta-animate text-white font-bold rounded-xl text-base">
-        გაიგე, რა შესაძლებლობები აქვს შენს ბიზნესს ორგანულ ძიებაში
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-      </a>
-    </div>
-  </section>
 
 
   <!-- ========== 7. METHODOLOGY ========== -->
@@ -993,15 +887,6 @@
   </div>
 
   <script>
-    // Service tabs
-    document.querySelectorAll('#service-tabs button').forEach(btn => {
-      btn.addEventListener('click', function() {
-        document.querySelectorAll('#service-tabs button').forEach(b => { b.className = 'tab-inactive-v4 px-4 py-2.5 rounded-md text-sm font-medium whitespace-nowrap'; });
-        this.className = 'tab-active-v4 px-4 py-2.5 rounded-md text-sm font-medium whitespace-nowrap';
-        document.querySelectorAll('#tab-panels > div').forEach(p => p.classList.add('hidden'));
-        document.querySelector('[data-panel="'+this.dataset.tab+'"]').classList.remove('hidden');
-      });
-    });
 
     // FAQ v29 is inline in section
 
