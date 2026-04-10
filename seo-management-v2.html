@@ -15,8 +15,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/firago@1.0.0/FiraGO.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.3/src/lite-yt-embed.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.3/src/lite-yt-embed.min.js" defer></script>
 
   <!-- Schema: Service -->
   <script type="application/ld+json">
@@ -55,7 +53,7 @@
       {
         "@type": "Question",
         "name": "რამდენი ხანი სჭირდება SEO-ს შედეგების ჩვენებას?",
-        "acceptedAnswer": { "@type": "Answer", "text": "პირველი შედეგები ჩვეულებრივ 2-3 თვეში ჩანს, ხოლო მნიშვნელოვანი ზრდა — 4-6 თვეში. კონკურენტული ნიშებისთვის შეიძლება 6-12 თვეც დასჭირდეს. ჩვენი 90-დღიანი გარანტია სწორედ ამ პერიოდს ფარავს." }
+        "acceptedAnswer": { "@type": "Answer", "text": "პირველი შედეგები ჩვეულებრივ 2-3 თვეში ჩანს, ხოლო მნიშვნელოვანი ზრდა — 4-6 თვეში. კონკურენტული ნიშებისთვის შეიძლება 6-12 თვეც დასჭირდეს." }
       },
       {
         "@type": "Question",
@@ -70,7 +68,7 @@
       {
         "@type": "Question",
         "name": "გარანტიას იძლევით შედეგებზე?",
-        "acceptedAnswer": { "@type": "Answer", "text": "SEO-ში კონკრეტულ პოზიციებზე გარანტიის მიცემა შეუძლებელია — ვინც ამას გპირდებათ, გატყუებთ. თუმცა ჩვენ გთავაზობთ 90-დღიან გარანტიას: თუ 90 დღეში ტრაფიკის ზრდა არ დაფიქსირდება, მე-4 თვე უფასოა." }
+        "acceptedAnswer": { "@type": "Answer", "text": "SEO-ში კონკრეტულ პოზიციებზე გარანტიის მიცემა შეუძლებელია — ვინც ამას გპირდებათ, გატყუებთ. თუმცა ჩვენი ტრეკ-რეკორდი თავისთავად მეტყველებს — 50+ კლიენტთან საშუალოდ 340% ტრაფიკის ზრდა." }
       },
       {
         "@type": "Question",
@@ -85,7 +83,7 @@
       {
         "@type": "Question",
         "name": "რით განსხვავდება 10xSEO სხვა სააგენტოებისგან?",
-        "acceptedAnswer": { "@type": "Answer", "text": "12+ წლის გამოცდილება, 10 წუთიანი response time (ინდუსტრიის საშუალო 24 საათია), ვიდეო რეპორტინგი, AEO/GEO ოპტიმიზაცია AI საძიებო სისტემებისთვის, და 90-დღიანი გარანტია. ასევე, თქვენი წარმატება ჩვენს ბონუს სისტემაშიცაა ჩართული." }
+        "acceptedAnswer": { "@type": "Answer", "text": "12+ წლის გამოცდილება, 10 წუთიანი response time (ინდუსტრიის საშუალო 24 საათია), ვიდეო რეპორტინგი, AEO/GEO ოპტიმიზაცია AI საძიებო სისტემებისთვის. ასევე, თქვენი წარმატება ჩვენს ბონუს სისტემაშიცაა ჩართული." }
       },
       {
         "@type": "Question",
@@ -197,12 +195,7 @@
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-    lite-youtube { border-radius: 16px; overflow: hidden; background-color: #0d1117; max-width: 100%; }
-    lite-youtube::before { display: none; }
-    lite-youtube > .lty-playbtn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 68px; height: 48px; background-color: rgba(139,92,246,0.9); border-radius: 14px; transition: all 0.3s; border: none; filter: none; }
-    lite-youtube:hover > .lty-playbtn { background-color: rgba(139,92,246,1); box-shadow: 0 0 30px rgba(139,92,246,0.5); transform: translate(-50%,-50%) scale(1.08); }
-    lite-youtube > .lty-playbtn::before { border-color: transparent transparent transparent #fff; }
-    lite-youtube > .lty-playbtn::after { display: none; }
+
 
     /* Hex clients */
     .hex-clients-row { display: flex; justify-content: center; align-items: center; gap: 1rem; flex-wrap: nowrap; }
@@ -223,16 +216,6 @@
     .menu-active .hamburger-line:nth-child(1) { transform: translateY(8px) rotate(45deg); }
     .menu-active .hamburger-line:nth-child(2) { opacity: 0; }
     .menu-active .hamburger-line:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-
-    /* Guarantee glow */
-    .guarantee-box {
-      background: linear-gradient(135deg, rgba(33, 199, 67, 0.08), rgba(20, 184, 166, 0.08));
-      border: 2px solid rgba(33, 199, 67, 0.3);
-    }
-    .dark .guarantee-box {
-      background: linear-gradient(135deg, rgba(33, 199, 67, 0.1), rgba(20, 184, 166, 0.1));
-      border-color: rgba(33, 199, 67, 0.4);
-    }
 
   </style>
 </head>
@@ -362,10 +345,6 @@
           </div>
 
           <div class="flex flex-wrap gap-4 text-sm text-body dark:text-body-dark">
-            <div class="flex items-center gap-1.5">
-              <svg class="w-4 h-4 text-success" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-              90-დღიანი გარანტია
-            </div>
             <div class="flex items-center gap-1.5">
               <svg class="w-4 h-4 text-success" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
               10 წუთიანი response time
@@ -573,24 +552,6 @@
   </section>
 
 
-  <!-- ========== 90-DAY GUARANTEE ========== -->
-  <section class="py-14 lg:py-16 bg-white dark:bg-surface-dark">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6">
-      <div class="guarantee-box rounded-2xl p-8 lg:p-10 text-center">
-        <div class="w-16 h-16 mx-auto rounded-full bg-success/20 flex items-center justify-center mb-5">
-          <svg class="w-8 h-8 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-        </div>
-        <h2 class="font-heading text-2xl sm:text-3xl font-extrabold text-heading dark:text-heading-dark mb-4">90-დღიანი გარანტია</h2>
-        <p class="text-lg text-body dark:text-body-dark leading-relaxed mb-4">
-          თუ 90 დღეში ტრაფიკის ზრდა არ დაფიქსირდება — <strong class="text-success">მე-4 თვე უფასოა.</strong>
-        </p>
-        <p class="text-sm text-body dark:text-body-dark max-w-xl mx-auto">
-          SEO-ში კონკრეტულ პოზიციებზე გარანტიის მიცემა შეუძლებელია — ვინც ამას გპირდებათ, გატყუებთ. ჩვენ კი ვდებთ რეალურ შედეგებს: თქვენი წარმატება ჩვენს ბონუს სისტემაშიცაა ჩართული.
-        </p>
-      </div>
-    </div>
-  </section>
-
   <!-- ========== WHY 10xSEO ========== -->
   <section class="py-16 lg:py-20 bg-surface-alt dark:bg-surface-dark-alt">
     <div class="max-w-5xl mx-auto px-4 sm:px-6">
@@ -716,14 +677,23 @@
   </section>
 
   <!-- ========== MID-PAGE CTA ========== -->
-  <section class="py-12 lg:py-14 bg-white dark:bg-surface-dark">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
-      <p class="text-lg font-semibold text-heading dark:text-heading-dark mb-2">მზად ხართ მსგავსი შედეგებისთვის?</p>
-      <p class="text-sm text-body dark:text-body-dark mb-6">ჩაინიშნე 15-წუთიანი სტრატეგიული ზარი და გაიგე, რა შესაძლებლობები აქვს შენს ბიზნესს</p>
-      <a href="#" onclick="openCalendly();return false;" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-gradient-to-r from-primary to-primary-dark text-white font-bold rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all">
-        დაჯავშნე სტრატეგიული ზარი
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-      </a>
+  <section class="py-16 lg:py-24 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 dark:from-primary/10 dark:via-surface-dark dark:to-accent/10 relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-72 h-72 bg-primary/5 dark:bg-primary/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 w-56 h-56 bg-accent/5 dark:bg-accent/10 rounded-full blur-3xl"></div>
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center relative z-10">
+      <h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-heading dark:text-heading-dark mb-4">მზად ხართ მსგავსი შედეგებისთვის?</h2>
+      <p class="text-lg text-body dark:text-body-dark mb-8 max-w-xl mx-auto">ჩაინიშნე 15-წუთიანი სტრატეგიული ზარი და გაიგე, რა პოტენციალი აქვს შენს ბრენდს ორგანულ ძიებაში</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#" onclick="openCalendly();return false;" class="inline-flex items-center justify-center gap-2 px-8 py-4 ai-cta-animate text-white font-bold text-lg rounded-2xl shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 transition-all">
+          დაჯავშნე კონსულტაცია
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+        <a href="tel:+995510101517" class="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-gray-200 dark:border-gray-700 text-heading dark:text-heading-dark font-semibold text-lg rounded-2xl hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-all">
+          <svg class="w-5 h-5 text-primary dark:text-primary-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          დაგვირეკეთ
+        </a>
+      </div>
+      <p class="text-sm text-body/60 dark:text-body-dark/60 mt-4">პასუხი 10 წუთში სამუშაო საათებში</p>
     </div>
   </section>
 
@@ -959,18 +929,6 @@
     </div>
   </section>
 
-  <!-- ========== VIDEO ========== -->
-  <section class="py-12 lg:py-16 bg-surface-alt dark:bg-surface-dark-alt">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-6">
-        <h2 class="font-heading text-[22px] sm:text-[26px] font-bold text-heading dark:text-heading-dark">როგორ იცვლება SEO 2026-ში</h2>
-      </div>
-      <div class="rounded-2xl overflow-hidden border border-gray-100 dark:border-gray-800">
-        <lite-youtube videoid="sDIPCz_oxIg" playlabel="როგორ იცვლება SEO 2026-ში"></lite-youtube>
-      </div>
-    </div>
-  </section>
-
   <!-- ========== FAQ — Numbered Gold Glassmorphism ========== -->
   <style>
     .fq1-card { border-radius: 16px; overflow: hidden; background: rgba(255,255,255,0.03); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.06); transition: all 0.4s cubic-bezier(0.4,0,0.2,1); position: relative; }
@@ -1002,13 +960,13 @@
     <script>
       (function(){
         var data = [
-          { q: "რამდენი ხანი სჭირდება SEO-ს შედეგების ჩვენებას?", a: "პირველი შედეგები ჩვეულებრივ 2-3 თვეში ჩანს, ხოლო მნიშვნელოვანი ზრდა — 4-6 თვეში. კონკურენტული ნიშებისთვის შეიძლება 6-12 თვეც დასჭირდეს. ჩვენი 90-დღიანი გარანტია სწორედ ამ პერიოდს ფარავს." },
+          { q: "რამდენი ხანი სჭირდება SEO-ს შედეგების ჩვენებას?", a: "პირველი შედეგები ჩვეულებრივ 2-3 თვეში ჩანს, ხოლო მნიშვნელოვანი ზრდა — 4-6 თვეში. კონკურენტული ნიშებისთვის შეიძლება 6-12 თვეც დასჭირდეს." },
           { q: "რა ღირს ყოველთვიური SEO მომსახურება?", a: "ფასი დამოკიდებულია ბიზნესის მასშტაბზე, კონკურენციაზე და მიზნებზე. გვაქვს სხვადასხვა პაკეტი ნებისმიერი ეტაპის ბიზნესისთვის. დაგვიკავშირდით უფასო კონსულტაციისთვის და მიიღებთ ინდივიდუალურ შემოთავაზებას." },
           { q: "რა შედის ყოველთვიურ SEO პაკეტში?", a: "ყოველი პაკეტი მოიცავს: საძიებო სიტყვების კვლევა, Keyword Mapping, ტექნიკური აუდიტი და ოპტიმიზაცია, On-Page SEO, კონტენტის შექმნა, ლინკ ბილდინგი, ყოველთვიური ვიდეო რეპორტინგი და 10 წუთიანი response time." },
-          { q: "გარანტიას იძლევით შედეგებზე?", a: "SEO-ში კონკრეტულ პოზიციებზე გარანტიის მიცემა შეუძლებელია — ვინც ამას გპირდებათ, გატყუებთ. თუმცა ჩვენ გთავაზობთ 90-დღიან გარანტიას: თუ 90 დღეში ტრაფიკის ზრდა არ დაფიქსირდება, მე-4 თვე უფასოა." },
+          { q: "გარანტიას იძლევით შედეგებზე?", a: "SEO-ში კონკრეტულ პოზიციებზე გარანტიის მიცემა შეუძლებელია — ვინც ამას გპირდებათ, გატყუებთ. თუმცა ჩვენი ტრეკ-რეკორდი თავისთავად მეტყველებს — 50+ კლიენტთან საშუალოდ 340% ტრაფიკის ზრდა." },
           { q: "რა ხდება კონტრაქტის გაწყვეტის შემთხვევაში?", a: "გაწყვეტის შემთხვევაში ყველა გაკეთებული სამუშაო (კონტენტი, ოპტიმიზაცია, რეპორტები) რჩება თქვენ. არ არსებობს long-term lock-in — შედეგებს ვდებთ, არა ხელშეკრულებებს." },
           { q: "რამდენად ხშირად მივიღებ რეპორტებს?", a: "თვეში ერთხელ ვიდეო რეპორტი, ორ-კვირაში ერთხელ პოზიციების რეპორტი, ნებისმიერ კითხვაზე პასუხი 10 წუთში სამუშაო საათებში. Premium და Market Leader პაკეტებში — ყოველკვირეული სტრატეგიული ზარი." },
-          { q: "რით განსხვავდება 10xSEO სხვა სააგენტოებისგან?", a: "12+ წლის გამოცდილება, 10 წუთიანი response time (ინდუსტრიის საშუალო 24 საათია), ვიდეო რეპორტინგი, AEO/GEO ოპტიმიზაცია AI საძიებო სისტემებისთვის, და 90-დღიანი გარანტია. ასევე, თქვენი წარმატება ჩვენს ბონუს სისტემაშიცაა ჩართული." },
+          { q: "რით განსხვავდება 10xSEO სხვა სააგენტოებისგან?", a: "12+ წლის გამოცდილება, 10 წუთიანი response time (ინდუსტრიის საშუალო 24 საათია), ვიდეო რეპორტინგი, AEO/GEO ოპტიმიზაცია AI საძიებო სისტემებისთვის, ასევე, თქვენი წარმატება ჩვენს ბონუს სისტემაშიცაა ჩართული." },
           { q: "რა ინდუსტრიებში გაქვთ გამოცდილება?", a: "გამოცდილება გვაქვს 15+ ინდუსტრიაში: ჯანდაცვა/კლინიკები, სამშენებლო, E-commerce, ფინანსური სერვისები, ტექნოლოგიები, სამართალი, ტურიზმი, და სხვა." },
           { q: "გჭირდებათ ჩემი ჩართულობა პროცესში?", a: "მინიმალური. ჩვენ ვმართავთ ყველა SEO პროცესს — თქვენგან მხოლოდ ბიზნესის სპეციფიკის ცოდნა და კონტენტის თემატიკის დამტკიცება." },
           { q: "შეგიძლიათ AI ძიებაში (ChatGPT, Gemini) ხილვადობის გაზრდა?", a: "დიახ. ჩვენი AEO (Answer Engine Optimization) და GEO (Generative Engine Optimization) სერვისი უზრუნველყოფს თქვენს ხილვადობას არა მხოლოდ Google-ში, არამედ ChatGPT-ში, Gemini-ში, Perplexity-ში და სხვა AI პლატფორმებზე." },
