@@ -206,6 +206,12 @@
     .v29-open .v29-ca { max-height: 400px; padding: 0 22px 18px 76px; }
     .v29-ca p { color: #CBD5E1; font-size: 15px; line-height: 1.8; }
 
+    /* Sticky progress dots */
+    .progress-dots { position: fixed; right: 16px; top: 50%; transform: translateY(-50%); z-index: 40; display: flex; flex-direction: column; gap: 8px; }
+    .progress-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.15); transition: all 0.3s; cursor: pointer; }
+    .progress-dot.active { background: #8B5CF6; box-shadow: 0 0 8px rgba(139,92,246,0.5); transform: scale(1.4); }
+    @media (max-width: 768px) { .progress-dots { display: none; } }
+
   </style>
 </head>
 <body class="font-body bg-surface-dark text-body-dark transition-colors duration-300">
@@ -345,7 +351,7 @@
   </section>
 
   <!-- ========== 3. WHY MONTHLY SEO ========== -->
-  <section class="py-16 lg:py-20 bg-white dark:bg-surface-dark">
+  <section id="why-monthly" class="py-16 lg:py-20 bg-white dark:bg-surface-dark">
     <div class="max-w-4xl mx-auto px-4 sm:px-6">
       <h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-heading dark:text-heading-dark text-center mb-12">რატომ ყოველთვიური SEO?</h2>
       <div class="grid sm:grid-cols-3 gap-6">
@@ -469,7 +475,7 @@
   </section>
 
   <!-- ========== 10. CASE STUDIES (index.html style) ========== -->
-  <section class="py-16 lg:py-24 bg-surface-dark relative overflow-hidden">
+  <section id="case-studies" class="py-16 lg:py-24 bg-surface-dark relative overflow-hidden">
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-primary/[0.03] rounded-full blur-[120px] pointer-events-none"></div>
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
       <div class="text-center mb-12">
@@ -546,7 +552,7 @@
   </section>
 
   <!-- ========== 15. TESTIMONIALS — Clutch Reviews ========== -->
-  <section class="py-16 lg:py-24 bg-surface-alt dark:bg-surface-dark-alt overflow-hidden">
+  <section id="testimonials" class="py-16 lg:py-24 bg-surface-alt dark:bg-surface-dark-alt overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="text-center mb-12 lg:mb-16">
         <p class="text-sm font-semibold text-primary dark:text-primary-light uppercase tracking-wider mb-3">შეფასებები</p>
@@ -749,6 +755,16 @@
 
   </main>
 
+<!-- Progress Dots -->
+<nav class="progress-dots" aria-label="გვერდის პროგრესი">
+  <div class="progress-dot active" data-section="main-content" title="Hero"></div>
+  <div class="progress-dot" data-section="why-monthly" title="რატომ SEO"></div>
+  <div class="progress-dot" data-section="methodology" title="მეთოდოლოგია"></div>
+  <div class="progress-dot" data-section="case-studies" title="შედეგები"></div>
+  <div class="progress-dot" data-section="testimonials" title="შეფასებები"></div>
+  <div class="progress-dot" data-section="faq" title="FAQ"></div>
+</nav>
+
   <!-- ========== FOOTER ========== -->
   <footer class="bg-heading dark:bg-surface-dark-alt text-gray-400 py-12 lg:py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
@@ -904,6 +920,32 @@
         });
       });
     }
+  </script>
+
+  <!-- Progress dots JS -->
+  <script>
+  (function(){
+    var dots = document.querySelectorAll('.progress-dot');
+    var sections = [];
+    dots.forEach(function(dot){
+      var sec = document.getElementById(dot.dataset.section);
+      if (sec) sections.push({dot: dot, el: sec});
+      dot.addEventListener('click', function(){
+        var target = document.getElementById(dot.dataset.section);
+        if (target) target.scrollIntoView({behavior: 'smooth'});
+      });
+    });
+    if (!sections.length) return;
+    window.addEventListener('scroll', function(){
+      var scrollY = window.scrollY + window.innerHeight / 3;
+      var active = sections[0];
+      sections.forEach(function(s){
+        if (s.el.offsetTop <= scrollY) active = s;
+      });
+      dots.forEach(function(d){ d.classList.remove('active'); });
+      active.dot.classList.add('active');
+    }, {passive: true});
+  })();
   </script>
 
   <!-- Calendly -->
