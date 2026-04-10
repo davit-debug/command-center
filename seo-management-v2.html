@@ -42,13 +42,6 @@
       { "@type": "Country", "name": "United Arab Emirates" }
     ],
     "serviceType": "SEO Management",
-    "offers": {
-      "@type": "AggregateOffer",
-      "lowPrice": "1450",
-      "highPrice": "12500",
-      "priceCurrency": "GEL",
-      "offerCount": "5"
-    },
     "url": "https://10xseo.ge/seo-management/"
   }
   </script>
@@ -67,7 +60,7 @@
       {
         "@type": "Question",
         "name": "რა ღირს ყოველთვიური SEO მომსახურება?",
-        "acceptedAnswer": { "@type": "Answer", "text": "გვაქვს 5 პაკეტი: SEO Start ₾1,450/თვე, SEO Base ₾2,500/თვე, SEO Growth ₾3,550/თვე, Premium ₾6,500/თვე და Market Leader ₾12,500/თვე. თითოეული მორგებულია ბიზნესის სხვადასხვა ეტაპზე." }
+        "acceptedAnswer": { "@type": "Answer", "text": "ფასი დამოკიდებულია ბიზნესის მასშტაბზე, კონკურენციაზე და მიზნებზე. გვაქვს სხვადასხვა პაკეტი ნებისმიერი ეტაპის ბიზნესისთვის. დაგვიკავშირდით უფასო კონსულტაციისთვის და მიიღებთ ინდივიდუალურ შემოთავაზებას." }
       },
       {
         "@type": "Question",
@@ -201,15 +194,6 @@
       .dark .feature-card:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
     }
 
-    .pricing-highlight {
-      background: linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(20, 184, 166, 0.05));
-      border-color: #8B5CF6;
-    }
-    .dark .pricing-highlight {
-      background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(20, 184, 166, 0.1));
-      border-color: #8B5CF6;
-    }
-
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
@@ -250,11 +234,6 @@
       border-color: rgba(33, 199, 67, 0.4);
     }
 
-    /* Pricing horizontal scroll on mobile */
-    @media (max-width: 1024px) {
-      .pricing-grid { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 1rem; padding-bottom: 1rem; }
-      .pricing-grid > div { min-width: 280px; scroll-snap-align: center; flex-shrink: 0; }
-    }
   </style>
 </head>
 <body class="font-body bg-surface-dark text-body-dark transition-colors duration-300">
@@ -376,8 +355,9 @@
               დაჯავშნე კონსულტაცია
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
             </a>
-            <a href="#pricing" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 border border-gray-200 dark:border-gray-700 text-heading dark:text-heading-dark font-semibold rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-all text-base">
-              ნახე ფასები
+            <a href="tel:+995510101517" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 border border-gray-200 dark:border-gray-700 text-heading dark:text-heading-dark font-semibold rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-all text-base">
+              <svg class="w-5 h-5 text-primary dark:text-primary-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              დაგვირეკეთ
             </a>
           </div>
 
@@ -592,133 +572,6 @@
     </div>
   </section>
 
-  <!-- ========== PRICING ========== -->
-  <section class="py-16 lg:py-24 bg-surface-alt dark:bg-surface-dark-alt" id="pricing">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <p class="text-sm font-semibold text-primary dark:text-primary-light uppercase tracking-wider mb-3">ფასები</p>
-        <h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-heading dark:text-heading-dark mb-4">აირჩიე შენი SEO პაკეტი</h2>
-        <p class="text-body dark:text-body-dark">5 პაკეტი ნებისმიერი ბიზნესის მასშტაბისთვის. Long-term lock-in არ გვაქვს.</p>
-      </div>
-
-      <div class="pricing-grid lg:grid lg:grid-cols-5 gap-4 no-scrollbar">
-        <!-- SEO Start -->
-        <div class="bg-white dark:bg-surface-dark rounded-2xl border border-gray-100 dark:border-gray-800 p-6 flex flex-col">
-          <div class="mb-5">
-            <h3 class="font-heading text-base font-bold text-heading dark:text-heading-dark mb-1">SEO Start</h3>
-            <p class="text-xs text-body dark:text-body-dark">სტარტაპებისთვის</p>
-          </div>
-          <div class="mb-5">
-            <span class="text-2xl font-inter font-extrabold text-heading dark:text-heading-dark">₾1,450</span>
-            <span class="text-xs text-body dark:text-body-dark">/თვე</span>
-          </div>
-          <ul class="space-y-2.5 text-xs text-body dark:text-body-dark mb-6 flex-1">
-            <li class="flex items-start gap-2"><svg class="w-3.5 h-3.5 mt-0.5 text-success shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>30 ქივორდი</li>
-            <li class="flex items-start gap-2"><svg class="w-3.5 h-3.5 mt-0.5 text-success shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>2 სტატია/თვეში</li>
-            <li class="flex items-start gap-2"><svg class="w-3.5 h-3.5 mt-0.5 text-success shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>ტექნიკური აუდიტი</li>
-            <li class="flex items-start gap-2"><svg class="w-3.5 h-3.5 mt-0.5 text-success shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>On-Page (10 გვერდი)</li>
-            <li class="flex items-start gap-2"><svg class="w-3.5 h-3.5 mt-0.5 text-success shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>ყოველთვიური რეპორტი</li>
-          </ul>
-          <a href="#" onclick="openCalendly();return false;" class="block text-center py-2.5 text-sm border border-gray-200 dark:border-gray-700 text-heading dark:text-heading-dark font-semibold rounded-xl hover:border-primary transition-all">
-            კონსულტაცია
-          </a>
-        </div>
-
-        <!-- SEO Base -->
-        <div class="bg-white dark:bg-surface-dark rounded-2xl border border-gray-100 dark:border-gray-800 p-6 flex flex-col">
-          <div class="mb-5">
-            <h3 class="font-heading text-base font-bold text-heading dark:text-heading-dark mb-1">SEO Base</h3>
-            <p class="text-xs text-body dark:text-body-dark">მცირე ბიზნესისთვის</p>
-          </div>
-          <div class="mb-5">
-            <span class="text-2xl font-inter font-extrabold text-heading dark:text-heading-dark">₾2,500</span>
-            <span class="text-xs text-body dark:text-body-dark">/თვე</span>
-          </div>
-          <ul class="space-y-2.5 text-xs text-body dark:text-body-dark mb-6 flex-1">
-            <li class="flex items-start gap-2"><svg class="w-3.5 h-3.5 mt-0.5 text-success shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>80 ქივორდი</li>
-            <li class="flex items-start gap-2"><svg class="w-3.5 h-3.5 mt-0.5 text-success shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>3 სტატია + 3 ბექლინკი</li>
-            <li class="flex items-start gap-2"><svg class="w-3.5 h-3.5 mt-0.5 text-success shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>On-Page (20 გვერდი)</li>
-            <li class="flex items-start gap-2"><svg class="w-3.5 h-3.5 mt-0.5 text-success shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Core Web Vitals</li>
-            <li class="flex items-start gap-2"><svg class="w-3.5 h-3.5 mt-0.5 text-success shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>ვიდეო რეპორტი</li>
-          </ul>
-          <a href="#" onclick="openCalendly();return false;" class="block text-center py-2.5 text-sm border border-gray-200 dark:border-gray-700 text-heading dark:text-heading-dark font-semibold rounded-xl hover:border-primary transition-all">
-            კონსულტაცია
-          </a>
-        </div>
-
-        <!-- SEO Growth (Highlighted) -->
-        <div class="bg-white dark:bg-surface-dark rounded-2xl pricing-highlight border-2 p-6 flex flex-col relative">
-          <div class="absolute -top-3 left-1/2 -translate-x-1/2">
-            <span class="px-4 py-1 text-xs font-bold rounded-full ai-cta-animate text-white whitespace-nowrap">პოპულარული</span>
-          </div>
-          <div class="mb-5">
-            <h3 class="font-heading text-base font-bold text-heading dark:text-heading-dark mb-1">SEO Growth</h3>
-            <p class="text-xs text-body dark:text-body-dark">მზარდი ბიზნესისთვის</p>
-          </div>
-          <div class="mb-5">
-            <span class="text-2xl font-inter font-extrabold gradient-text">₾3,550</span>
-            <span class="text-xs text-body dark:text-body-dark">/თვე</span>
-          </div>
-          <ul class="space-y-2.5 text-xs text-body dark:text-body-dark mb-6 flex-1">
-            <li class="flex items-start gap-2"><svg class="w-3.5 h-3.5 mt-0.5 text-success shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>150+ ქივორდი</li>
-            <li class="flex items-start gap-2"><svg class="w-3.5 h-3.5 mt-0.5 text-success shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>5 სტატია + 8 ბექლინკი</li>
-            <li class="flex items-start gap-2"><svg class="w-3.5 h-3.5 mt-0.5 text-success shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>AEO/GEO ოპტიმიზაცია</li>
-            <li class="flex items-start gap-2"><svg class="w-3.5 h-3.5 mt-0.5 text-success shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>ორ-კვირეული აფდეითი</li>
-            <li class="flex items-start gap-2"><svg class="w-3.5 h-3.5 mt-0.5 text-accent shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><strong class="text-heading dark:text-heading-dark">10 წუთიანი response</strong></li>
-            <li class="flex items-start gap-2"><svg class="w-3.5 h-3.5 mt-0.5 text-accent shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><strong class="text-heading dark:text-heading-dark">90-დღიანი გარანტია</strong></li>
-          </ul>
-          <a href="#" onclick="openCalendly();return false;" class="block text-center py-2.5 text-sm bg-gradient-to-r from-primary to-primary-dark text-white font-bold rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all">
-            კონსულტაცია
-          </a>
-        </div>
-
-        <!-- Premium -->
-        <div class="bg-white dark:bg-surface-dark rounded-2xl border border-gray-100 dark:border-gray-800 p-6 flex flex-col">
-          <div class="mb-5">
-            <h3 class="font-heading text-base font-bold text-heading dark:text-heading-dark mb-1">Premium</h3>
-            <p class="text-xs text-body dark:text-body-dark">დიდი კომპანიებისთვის</p>
-          </div>
-          <div class="mb-5">
-            <span class="text-2xl font-inter font-extrabold text-heading dark:text-heading-dark">₾6,500</span>
-            <span class="text-xs text-body dark:text-body-dark">/თვე</span>
-          </div>
-          <ul class="space-y-2.5 text-xs text-body dark:text-body-dark mb-6 flex-1">
-            <li class="flex items-start gap-2"><svg class="w-3.5 h-3.5 mt-0.5 text-success shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>300+ ქივორდი</li>
-            <li class="flex items-start gap-2"><svg class="w-3.5 h-3.5 mt-0.5 text-success shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>8 სტატია + 15 ბექლინკი</li>
-            <li class="flex items-start gap-2"><svg class="w-3.5 h-3.5 mt-0.5 text-success shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>პერსონალური სტრატეგისტი</li>
-            <li class="flex items-start gap-2"><svg class="w-3.5 h-3.5 mt-0.5 text-success shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>CRO ოპტიმიზაცია</li>
-            <li class="flex items-start gap-2"><svg class="w-3.5 h-3.5 mt-0.5 text-success shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>ყოველკვირეული ზარი</li>
-          </ul>
-          <a href="#" onclick="openCalendly();return false;" class="block text-center py-2.5 text-sm border border-gray-200 dark:border-gray-700 text-heading dark:text-heading-dark font-semibold rounded-xl hover:border-primary transition-all">
-            კონსულტაცია
-          </a>
-        </div>
-
-        <!-- Market Leader -->
-        <div class="bg-white dark:bg-surface-dark rounded-2xl border border-gray-100 dark:border-gray-800 p-6 flex flex-col">
-          <div class="mb-5">
-            <h3 class="font-heading text-base font-bold text-heading dark:text-heading-dark mb-1">Market Leader</h3>
-            <p class="text-xs text-body dark:text-body-dark">ბაზრის ლიდერებისთვის</p>
-          </div>
-          <div class="mb-5">
-            <span class="text-2xl font-inter font-extrabold text-heading dark:text-heading-dark">₾12,500</span>
-            <span class="text-xs text-body dark:text-body-dark">/თვე</span>
-          </div>
-          <ul class="space-y-2.5 text-xs text-body dark:text-body-dark mb-6 flex-1">
-            <li class="flex items-start gap-2"><svg class="w-3.5 h-3.5 mt-0.5 text-success shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>500+ ქივორდი, მულტი-ენოვანი</li>
-            <li class="flex items-start gap-2"><svg class="w-3.5 h-3.5 mt-0.5 text-success shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>12+ სტატია + 25 ბექლინკი</li>
-            <li class="flex items-start gap-2"><svg class="w-3.5 h-3.5 mt-0.5 text-success shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>გუნდი + გუნდის ლიდერი</li>
-            <li class="flex items-start gap-2"><svg class="w-3.5 h-3.5 mt-0.5 text-success shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Digital PR + AEO/GEO</li>
-            <li class="flex items-start gap-2"><svg class="w-3.5 h-3.5 mt-0.5 text-success shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>ყოველდღიური dashboard</li>
-          </ul>
-          <a href="#" onclick="openCalendly();return false;" class="block text-center py-2.5 text-sm border border-gray-200 dark:border-gray-700 text-heading dark:text-heading-dark font-semibold rounded-xl hover:border-primary transition-all">
-            კონსულტაცია
-          </a>
-        </div>
-      </div>
-      <p class="text-center text-sm text-body dark:text-body-dark mt-8">* ფასები საწყისია. <a href="#" onclick="openCalendly();return false;" class="text-primary dark:text-primary-light font-medium hover:underline">დაგვიკავშირდით</a> ინდივიდუალური შეფასებისთვის.</p>
-    </div>
-  </section>
 
   <!-- ========== 90-DAY GUARANTEE ========== -->
   <section class="py-14 lg:py-16 bg-white dark:bg-surface-dark">
@@ -956,91 +809,64 @@
     </div>
   </section>
 
-  <!-- ========== FAQ ========== -->
-  <section class="py-16 lg:py-20 bg-white dark:bg-surface-dark">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6">
-      <h2 class="font-heading text-2xl sm:text-3xl font-extrabold text-heading dark:text-heading-dark text-center mb-10">ხშირად დასმული კითხვები</h2>
-
-      <div class="space-y-3" id="faq-list">
-        <div class="bg-surface-alt dark:bg-surface-dark-alt rounded-xl border border-gray-100 dark:border-gray-800">
-          <button class="w-full flex items-center justify-between p-5 text-left" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
-            <span class="font-heading font-semibold text-heading dark:text-heading-dark pr-4">რამდენი ხანი სჭირდება SEO-ს შედეგების ჩვენებას?</span>
-            <svg class="w-5 h-5 shrink-0 text-body dark:text-body-dark transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="hidden px-5 pb-5"><p class="text-sm text-body dark:text-body-dark leading-relaxed">პირველი შედეგები ჩვეულებრივ 2-3 თვეში ჩანს, ხოლო მნიშვნელოვანი ზრდა — 4-6 თვეში. კონკურენტული ნიშებისთვის შეიძლება 6-12 თვეც დასჭირდეს. ჩვენი 90-დღიანი გარანტია სწორედ ამ პერიოდს ფარავს.</p></div>
-        </div>
-        <div class="bg-surface-alt dark:bg-surface-dark-alt rounded-xl border border-gray-100 dark:border-gray-800">
-          <button class="w-full flex items-center justify-between p-5 text-left" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
-            <span class="font-heading font-semibold text-heading dark:text-heading-dark pr-4">რა ღირს ყოველთვიური SEO მომსახურება?</span>
-            <svg class="w-5 h-5 shrink-0 text-body dark:text-body-dark transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="hidden px-5 pb-5"><p class="text-sm text-body dark:text-body-dark leading-relaxed">გვაქვს 5 პაკეტი: SEO Start ₾1,450/თვე, SEO Base ₾2,500/თვე, SEO Growth ₾3,550/თვე, Premium ₾6,500/თვე და Market Leader ₾12,500/თვე. თითოეული მორგებულია ბიზნესის სხვადასხვა ეტაპზე.</p></div>
-        </div>
-        <div class="bg-surface-alt dark:bg-surface-dark-alt rounded-xl border border-gray-100 dark:border-gray-800">
-          <button class="w-full flex items-center justify-between p-5 text-left" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
-            <span class="font-heading font-semibold text-heading dark:text-heading-dark pr-4">რა შედის ყოველთვიურ SEO პაკეტში?</span>
-            <svg class="w-5 h-5 shrink-0 text-body dark:text-body-dark transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="hidden px-5 pb-5"><p class="text-sm text-body dark:text-body-dark leading-relaxed">ყოველი პაკეტი მოიცავს: საძიებო სიტყვების კვლევა, Keyword Mapping, ტექნიკური აუდიტი და ოპტიმიზაცია, On-Page SEO, კონტენტის შექმნა, ლინკ ბილდინგი, ყოველთვიური ვიდეო რეპორტინგი და 10 წუთიანი response time.</p></div>
-        </div>
-        <div class="bg-surface-alt dark:bg-surface-dark-alt rounded-xl border border-gray-100 dark:border-gray-800">
-          <button class="w-full flex items-center justify-between p-5 text-left" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
-            <span class="font-heading font-semibold text-heading dark:text-heading-dark pr-4">გარანტიას იძლევით შედეგებზე?</span>
-            <svg class="w-5 h-5 shrink-0 text-body dark:text-body-dark transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="hidden px-5 pb-5"><p class="text-sm text-body dark:text-body-dark leading-relaxed">SEO-ში კონკრეტულ პოზიციებზე გარანტიის მიცემა შეუძლებელია — ვინც ამას გპირდებათ, გატყუებთ. თუმცა ჩვენ გთავაზობთ 90-დღიან გარანტიას: თუ 90 დღეში ტრაფიკის ზრდა არ დაფიქსირდება, მე-4 თვე უფასოა.</p></div>
-        </div>
-        <div class="bg-surface-alt dark:bg-surface-dark-alt rounded-xl border border-gray-100 dark:border-gray-800">
-          <button class="w-full flex items-center justify-between p-5 text-left" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
-            <span class="font-heading font-semibold text-heading dark:text-heading-dark pr-4">რა ხდება კონტრაქტის გაწყვეტის შემთხვევაში?</span>
-            <svg class="w-5 h-5 shrink-0 text-body dark:text-body-dark transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="hidden px-5 pb-5"><p class="text-sm text-body dark:text-body-dark leading-relaxed">გაწყვეტის შემთხვევაში ყველა გაკეთებული სამუშაო (კონტენტი, ოპტიმიზაცია, რეპორტები) რჩება თქვენ. არ არსებობს long-term lock-in — შედეგებს ვდებთ, არა ხელშეკრულებებს.</p></div>
-        </div>
-        <div class="bg-surface-alt dark:bg-surface-dark-alt rounded-xl border border-gray-100 dark:border-gray-800">
-          <button class="w-full flex items-center justify-between p-5 text-left" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
-            <span class="font-heading font-semibold text-heading dark:text-heading-dark pr-4">რამდენად ხშირად მივიღებ რეპორტებს?</span>
-            <svg class="w-5 h-5 shrink-0 text-body dark:text-body-dark transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="hidden px-5 pb-5"><p class="text-sm text-body dark:text-body-dark leading-relaxed">თვეში ერთხელ ვიდეო რეპორტი, ორ-კვირაში ერთხელ პოზიციების რეპორტი, ნებისმიერ კითხვაზე პასუხი 10 წუთში სამუშაო საათებში. Premium და Market Leader პაკეტებში — ყოველკვირეული სტრატეგიული ზარი.</p></div>
-        </div>
-        <div class="bg-surface-alt dark:bg-surface-dark-alt rounded-xl border border-gray-100 dark:border-gray-800">
-          <button class="w-full flex items-center justify-between p-5 text-left" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
-            <span class="font-heading font-semibold text-heading dark:text-heading-dark pr-4">რით განსხვავდება 10xSEO სხვა სააგენტოებისგან?</span>
-            <svg class="w-5 h-5 shrink-0 text-body dark:text-body-dark transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="hidden px-5 pb-5"><p class="text-sm text-body dark:text-body-dark leading-relaxed">12+ წლის გამოცდილება, 10 წუთიანი response time (ინდუსტრიის საშუალო 24 საათია), ვიდეო რეპორტინგი, AEO/GEO ოპტიმიზაცია AI საძიებო სისტემებისთვის, და 90-დღიანი გარანტია. ასევე, თქვენი წარმატება ჩვენს ბონუს სისტემაშიცაა ჩართული.</p></div>
-        </div>
-        <div class="bg-surface-alt dark:bg-surface-dark-alt rounded-xl border border-gray-100 dark:border-gray-800">
-          <button class="w-full flex items-center justify-between p-5 text-left" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
-            <span class="font-heading font-semibold text-heading dark:text-heading-dark pr-4">რა ინდუსტრიებში გაქვთ გამოცდილება?</span>
-            <svg class="w-5 h-5 shrink-0 text-body dark:text-body-dark transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="hidden px-5 pb-5"><p class="text-sm text-body dark:text-body-dark leading-relaxed">გამოცდილება გვაქვს 15+ ინდუსტრიაში: ჯანდაცვა/კლინიკები, სამშენებლო, E-commerce, ფინანსური სერვისები, ტექნოლოგიები, სამართალი, ტურიზმი, და სხვა.</p></div>
-        </div>
-        <div class="bg-surface-alt dark:bg-surface-dark-alt rounded-xl border border-gray-100 dark:border-gray-800">
-          <button class="w-full flex items-center justify-between p-5 text-left" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
-            <span class="font-heading font-semibold text-heading dark:text-heading-dark pr-4">გჭირდებათ ჩემი ჩართულობა?</span>
-            <svg class="w-5 h-5 shrink-0 text-body dark:text-body-dark transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="hidden px-5 pb-5"><p class="text-sm text-body dark:text-body-dark leading-relaxed">მინიმალური. ჩვენ ვმართავთ ყველა SEO პროცესს — თქვენგან მხოლოდ ბიზნესის სპეციფიკის ცოდნა და კონტენტის თემატიკის დამტკიცება.</p></div>
-        </div>
-        <div class="bg-surface-alt dark:bg-surface-dark-alt rounded-xl border border-gray-100 dark:border-gray-800">
-          <button class="w-full flex items-center justify-between p-5 text-left" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
-            <span class="font-heading font-semibold text-heading dark:text-heading-dark pr-4">შეგიძლიათ AI ძიებაში (ChatGPT, Gemini) ხილვადობის გაზრდა?</span>
-            <svg class="w-5 h-5 shrink-0 text-body dark:text-body-dark transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="hidden px-5 pb-5"><p class="text-sm text-body dark:text-body-dark leading-relaxed">დიახ. ჩვენი AEO (Answer Engine Optimization) და GEO (Generative Engine Optimization) სერვისი უზრუნველყოფს თქვენს ხილვადობას არა მხოლოდ Google-ში, არამედ ChatGPT-ში, Gemini-ში, Perplexity-ში და სხვა AI პლატფორმებზე.</p></div>
-        </div>
-        <div class="bg-surface-alt dark:bg-surface-dark-alt rounded-xl border border-gray-100 dark:border-gray-800">
-          <button class="w-full flex items-center justify-between p-5 text-left" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
-            <span class="font-heading font-semibold text-heading dark:text-heading-dark pr-4">რატომ არის ყოველთვიური SEO უკეთესი ვიდრე ერთჯერადი?</span>
-            <svg class="w-5 h-5 shrink-0 text-body dark:text-body-dark transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="hidden px-5 pb-5"><p class="text-sm text-body dark:text-body-dark leading-relaxed">Google-ის ალგორითმი მუდმივად იცვლება, კონკურენტები მუშაობენ და ახალი კონტენტი ყოველდღიურად იქმნება. ერთჯერადი ოპტიმიზაცია 3-6 თვეში კარგავს ეფექტს. ყოველთვიური SEO უზრუნველყოფს სტაბილურ ზრდას.</p></div>
-        </div>
+  <!-- ========== FAQ — Numbered Gold Glassmorphism ========== -->
+  <style>
+    .fq1-card { border-radius: 16px; overflow: hidden; background: rgba(255,255,255,0.03); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.06); transition: all 0.4s cubic-bezier(0.4,0,0.2,1); position: relative; }
+    .fq1-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; border-radius: 14px 0 0 14px; background: linear-gradient(180deg, #D4A017, #EAB308); opacity: 0; transition: opacity 0.3s; }
+    .fq1-card:hover { border-color: rgba(212,160,23,0.2); transform: translateY(-1px); }
+    .fq1-card:hover::before { opacity: 0.5; }
+    .fq1-card.fq1-open { border-color: rgba(212,160,23,0.35); background: rgba(212,160,23,0.04); box-shadow: 0 4px 40px rgba(212,160,23,0.08); }
+    .fq1-card.fq1-open::before { opacity: 1; }
+    .fq1-q { display: flex; align-items: center; padding: 20px 24px; cursor: pointer; gap: 16px; }
+    .fq1-num { width: 40px; height: 40px; border-radius: 12px; background: rgba(212,160,23,0.08); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 15px; font-weight: 800; color: #D4A017; transition: all 0.3s; font-variant-numeric: tabular-nums; }
+    .fq1-open .fq1-num { background: rgba(212,160,23,0.18); box-shadow: 0 0 16px rgba(212,160,23,0.2); color: #EAB308; }
+    .fq1-txt { flex: 1; font-weight: 600; color: #F1F5F9; font-size: 16px; line-height: 1.5; }
+    .fq1-arrow { width: 20px; height: 20px; stroke: #64748B; transition: all 0.35s; flex-shrink: 0; }
+    .fq1-open .fq1-arrow { transform: rotate(180deg); stroke: #D4A017; }
+    .fq1-a { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1), padding 0.35s; padding: 0 24px 0 80px; }
+    .fq1-open .fq1-a { max-height: 500px; padding: 0 24px 20px 80px; }
+    .fq1-a p { color: #94A3B8; font-size: 15px; line-height: 1.85; }
+  </style>
+  <section class="relative py-16 lg:py-24 overflow-hidden bg-surface-dark">
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse at 30% 20%, rgba(139,92,246,0.04) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, rgba(124,58,237,0.03) 0%, transparent 50%);"></div>
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 relative z-10">
+      <div class="text-center mb-10">
+        <p class="text-sm font-semibold uppercase tracking-wider mb-3" style="color:#D4A017">FAQ</p>
+        <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-heading-dark leading-[1.3]">ხშირად დასმული კითხვები</h2>
+        <p class="mt-3 text-body-dark text-sm max-w-md mx-auto">გაქვთ შეკითხვა? აქ ნახავთ პასუხებს ყველაზე ხშირად დასმულ კითხვებზე</p>
       </div>
+      <div class="space-y-3" id="fq1-list"></div>
     </div>
+    <script>
+      (function(){
+        var data = [
+          { q: "რამდენი ხანი სჭირდება SEO-ს შედეგების ჩვენებას?", a: "პირველი შედეგები ჩვეულებრივ 2-3 თვეში ჩანს, ხოლო მნიშვნელოვანი ზრდა — 4-6 თვეში. კონკურენტული ნიშებისთვის შეიძლება 6-12 თვეც დასჭირდეს. ჩვენი 90-დღიანი გარანტია სწორედ ამ პერიოდს ფარავს." },
+          { q: "რა ღირს ყოველთვიური SEO მომსახურება?", a: "ფასი დამოკიდებულია ბიზნესის მასშტაბზე, კონკურენციაზე და მიზნებზე. გვაქვს სხვადასხვა პაკეტი ნებისმიერი ეტაპის ბიზნესისთვის. დაგვიკავშირდით უფასო კონსულტაციისთვის და მიიღებთ ინდივიდუალურ შემოთავაზებას." },
+          { q: "რა შედის ყოველთვიურ SEO პაკეტში?", a: "ყოველი პაკეტი მოიცავს: საძიებო სიტყვების კვლევა, Keyword Mapping, ტექნიკური აუდიტი და ოპტიმიზაცია, On-Page SEO, კონტენტის შექმნა, ლინკ ბილდინგი, ყოველთვიური ვიდეო რეპორტინგი და 10 წუთიანი response time." },
+          { q: "გარანტიას იძლევით შედეგებზე?", a: "SEO-ში კონკრეტულ პოზიციებზე გარანტიის მიცემა შეუძლებელია — ვინც ამას გპირდებათ, გატყუებთ. თუმცა ჩვენ გთავაზობთ 90-დღიან გარანტიას: თუ 90 დღეში ტრაფიკის ზრდა არ დაფიქსირდება, მე-4 თვე უფასოა." },
+          { q: "რა ხდება კონტრაქტის გაწყვეტის შემთხვევაში?", a: "გაწყვეტის შემთხვევაში ყველა გაკეთებული სამუშაო (კონტენტი, ოპტიმიზაცია, რეპორტები) რჩება თქვენ. არ არსებობს long-term lock-in — შედეგებს ვდებთ, არა ხელშეკრულებებს." },
+          { q: "რამდენად ხშირად მივიღებ რეპორტებს?", a: "თვეში ერთხელ ვიდეო რეპორტი, ორ-კვირაში ერთხელ პოზიციების რეპორტი, ნებისმიერ კითხვაზე პასუხი 10 წუთში სამუშაო საათებში. Premium და Market Leader პაკეტებში — ყოველკვირეული სტრატეგიული ზარი." },
+          { q: "რით განსხვავდება 10xSEO სხვა სააგენტოებისგან?", a: "12+ წლის გამოცდილება, 10 წუთიანი response time (ინდუსტრიის საშუალო 24 საათია), ვიდეო რეპორტინგი, AEO/GEO ოპტიმიზაცია AI საძიებო სისტემებისთვის, და 90-დღიანი გარანტია. ასევე, თქვენი წარმატება ჩვენს ბონუს სისტემაშიცაა ჩართული." },
+          { q: "რა ინდუსტრიებში გაქვთ გამოცდილება?", a: "გამოცდილება გვაქვს 15+ ინდუსტრიაში: ჯანდაცვა/კლინიკები, სამშენებლო, E-commerce, ფინანსური სერვისები, ტექნოლოგიები, სამართალი, ტურიზმი, და სხვა." },
+          { q: "გჭირდებათ ჩემი ჩართულობა პროცესში?", a: "მინიმალური. ჩვენ ვმართავთ ყველა SEO პროცესს — თქვენგან მხოლოდ ბიზნესის სპეციფიკის ცოდნა და კონტენტის თემატიკის დამტკიცება." },
+          { q: "შეგიძლიათ AI ძიებაში (ChatGPT, Gemini) ხილვადობის გაზრდა?", a: "დიახ. ჩვენი AEO (Answer Engine Optimization) და GEO (Generative Engine Optimization) სერვისი უზრუნველყოფს თქვენს ხილვადობას არა მხოლოდ Google-ში, არამედ ChatGPT-ში, Gemini-ში, Perplexity-ში და სხვა AI პლატფორმებზე." },
+          { q: "რატომ არის ყოველთვიური SEO უკეთესი ვიდრე ერთჯერადი?", a: "Google-ის ალგორითმი მუდმივად იცვლება, კონკურენტები მუშაობენ და ახალი კონტენტი ყოველდღიურად იქმნება. ერთჯერადი ოპტიმიზაცია 3-6 თვეში კარგავს ეფექტს. ყოველთვიური SEO უზრუნველყოფს სტაბილურ ზრდას." }
+        ];
+        var list = document.getElementById('fq1-list');
+        data.forEach(function(faq, i){
+          var num = (i+1) < 10 ? '0'+(i+1) : ''+(i+1);
+          var d = document.createElement('div');
+          d.className = 'fq1-card';
+          d.innerHTML = '<div class="fq1-q"><div class="fq1-num">'+num+'</div><span class="fq1-txt">'+faq.q+'</span><svg class="fq1-arrow" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></div><div class="fq1-a"><p>'+faq.a+'</p></div>';
+          d.querySelector('.fq1-q').onclick = function(){
+            var o = d.classList.contains('fq1-open');
+            list.querySelectorAll('.fq1-card').forEach(function(el){ el.classList.remove('fq1-open'); });
+            if (!o) d.classList.add('fq1-open');
+          };
+          list.appendChild(d);
+        });
+      })();
+    </script>
   </section>
 
   <!-- ========== FINAL CTA ========== -->
