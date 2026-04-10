@@ -175,22 +175,40 @@
     .tab-inactive-v4 { color: rgba(255,255,255,0.5); }
     .tab-inactive-v4:hover { color: rgba(255,255,255,0.8); }
 
-    /* FAQ Gold Glassmorphism */
-    .fq1-card { border-radius: 16px; overflow: hidden; background: rgba(255,255,255,0.03); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.06); transition: all 0.4s cubic-bezier(0.4,0,0.2,1); position: relative; }
-    .fq1-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; border-radius: 14px 0 0 14px; background: linear-gradient(180deg, #D4A017, #EAB308); opacity: 0; transition: opacity 0.3s; }
-    .fq1-card:hover { border-color: rgba(212,160,23,0.2); transform: translateY(-1px); }
-    .fq1-card:hover::before { opacity: 0.5; }
-    .fq1-card.fq1-open { border-color: rgba(212,160,23,0.35); background: rgba(212,160,23,0.04); box-shadow: 0 4px 40px rgba(212,160,23,0.08); }
-    .fq1-card.fq1-open::before { opacity: 1; }
-    .fq1-q { display: flex; align-items: center; padding: 20px 24px; cursor: pointer; gap: 16px; }
-    .fq1-num { width: 40px; height: 40px; border-radius: 12px; background: rgba(212,160,23,0.08); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 15px; font-weight: 800; color: #D4A017; transition: all 0.3s; font-variant-numeric: tabular-nums; }
-    .fq1-open .fq1-num { background: rgba(212,160,23,0.18); box-shadow: 0 0 16px rgba(212,160,23,0.2); color: #EAB308; }
-    .fq1-txt { flex: 1; font-weight: 600; color: #F1F5F9; font-size: 16px; line-height: 1.5; }
-    .fq1-arrow { width: 20px; height: 20px; stroke: #64748B; transition: all 0.35s; flex-shrink: 0; }
-    .fq1-open .fq1-arrow { transform: rotate(180deg); stroke: #D4A017; }
-    .fq1-a { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1), padding 0.35s; padding: 0 24px 0 80px; }
-    .fq1-open .fq1-a { max-height: 500px; padding: 0 24px 20px 80px; }
-    .fq1-a p { color: #94A3B8; font-size: 15px; line-height: 1.85; }
+    /* FAQ v29 Violet Glassmorphism */
+    .v29-tab { padding: 8px 18px; border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; transition: all 0.3s; border: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .v29-tab:hover { opacity: 0.85; }
+    .v29-tab.v29-active { box-shadow: 0 0 16px rgba(0,0,0,0.3); }
+    .v29-tab[data-cat="all"] { background: rgba(20,184,166,0.15); color: #2DD4BF; }
+    .v29-tab[data-cat="general"] { background: rgba(236,72,153,0.15); color: #F472B6; }
+    .v29-tab[data-cat="price"] { background: rgba(245,158,11,0.15); color: #FBBF24; }
+    .v29-tab[data-cat="results"] { background: rgba(59,130,246,0.15); color: #60A5FA; }
+    .v29-card { border-radius: 16px; overflow: hidden; background: rgba(255,255,255,0.035); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.08); transition: all 0.35s; position: relative; }
+    .v29-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; border-radius: 14px 0 0 14px; opacity: 0; transition: opacity 0.3s; }
+    .v29-card[data-cat="ზოგადი"]::before { background: #EC4899; }
+    .v29-card[data-cat="შედეგები"]::before { background: #3B82F6; }
+    .v29-card[data-cat="ფასი"]::before { background: #F59E0B; }
+    .v29-card[data-cat="ზოგადი"]:hover { border-color: rgba(236,72,153,0.25); }
+    .v29-card[data-cat="შედეგები"]:hover { border-color: rgba(59,130,246,0.25); }
+    .v29-card[data-cat="ფასი"]:hover { border-color: rgba(245,158,11,0.25); }
+    .v29-card:hover::before { opacity: 0.5; }
+    .v29-card[data-cat="ზოგადი"].v29-open { border-color: rgba(236,72,153,0.35); background: rgba(236,72,153,0.04); box-shadow: 0 0 30px rgba(236,72,153,0.06); }
+    .v29-card[data-cat="შედეგები"].v29-open { border-color: rgba(59,130,246,0.35); background: rgba(59,130,246,0.04); box-shadow: 0 0 30px rgba(59,130,246,0.06); }
+    .v29-card[data-cat="ფასი"].v29-open { border-color: rgba(245,158,11,0.35); background: rgba(245,158,11,0.04); box-shadow: 0 0 30px rgba(245,158,11,0.06); }
+    .v29-card.v29-open::before { opacity: 1; }
+    .v29-card.v29-hidden { display: none; }
+    .v29-cq { display: flex; align-items: center; padding: 18px 22px; cursor: pointer; gap: 16px; }
+    .v29-cq .v29-badge { width: 38px; height: 38px; border-radius: 10px; background: rgba(212,160,23,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.3s; }
+    .v29-open .v29-badge { background: rgba(212,160,23,0.2); box-shadow: 0 0 12px rgba(212,160,23,0.15); }
+    .v29-cq .v29-badge svg { width: 16px; height: 16px; stroke: #D4A017; transition: transform 0.3s; }
+    .v29-open .v29-badge svg { transform: rotate(180deg); stroke: #EAB308; }
+    .v29-cq .v29-txt { flex: 1; font-weight: 600; color: #F1F5F9; font-size: 17px; line-height: 1.4; }
+    .v29-cat[data-key="general"] { font-size: 10px; font-weight: 700; color: #F472B6; background: rgba(236,72,153,0.15); padding: 3px 8px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; }
+    .v29-cat[data-key="price"] { font-size: 10px; font-weight: 700; color: #FBBF24; background: rgba(245,158,11,0.15); padding: 3px 8px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; }
+    .v29-cat[data-key="results"] { font-size: 10px; font-weight: 700; color: #60A5FA; background: rgba(59,130,246,0.15); padding: 3px 8px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; }
+    .v29-ca { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1), padding 0.3s; padding: 0 22px 0 76px; }
+    .v29-open .v29-ca { max-height: 400px; padding: 0 22px 18px 76px; }
+    .v29-ca p { color: #CBD5E1; font-size: 15px; line-height: 1.8; }
 
   </style>
 </head>
@@ -319,7 +337,7 @@
   <!-- ========== 2. CLIENT LOGOS — Hex ========== -->
   <section class="py-10 lg:py-14 bg-[#1a1f2e]">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <p class="text-center text-xs font-semibold text-white/40 uppercase tracking-widest mb-8">ტოპ ბრენდები რომლებიც გვენდობიან</p>
+      <p class="text-center text-xs font-semibold text-white/40 uppercase tracking-widest mb-8">ისინი უკვე ჩვენი პარტნიორები არიან</p>
       <div class="hex-clients-row">
         <div class="hex-client"><div class="hex-client-inner"><img src="images/clients/gpc.png" alt="GPC"></div></div>
         <div class="hex-client"><div class="hex-client-inner"><img src="images/clients/koordinati.png" alt="კოორდინატი"></div></div>
@@ -463,47 +481,6 @@
     </div>
   </section>
 
-  <!-- ========== 6. WHAT YOU GET ========== -->
-  <section class="py-16 lg:py-24 bg-white dark:bg-surface-dark">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      <h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-heading dark:text-heading-dark text-center mb-4">რას მოიცავს Done-For-You SEO მენეჯმენტი</h2>
-      <p class="text-center text-body dark:text-body-dark mb-12">ყველაფერი ერთ ადგილას — არაფერი დამატებითი არ გჭირდება</p>
-
-      <div class="rounded-2xl border border-gray-100 dark:border-gray-800 bg-white dark:bg-surface-dark-alt p-8">
-        <div class="grid md:grid-cols-2 gap-8">
-          <div>
-            <h3 class="font-heading font-bold text-sm uppercase tracking-wider text-body/40 dark:text-body-dark/40 mb-4">ტექნიკური ოპტიმიზაცია</h3>
-            <div class="space-y-3">
-              <p class="flex items-start gap-3 text-sm text-body dark:text-body-dark"><span class="text-success mt-0.5">✓</span> ტექნიკური SEO აუდიტი და მონიტორინგი</p>
-              <p class="flex items-start gap-3 text-sm text-body dark:text-body-dark"><span class="text-success mt-0.5">✓</span> Core Web Vitals ოპტიმიზაცია</p>
-              <p class="flex items-start gap-3 text-sm text-body dark:text-body-dark"><span class="text-success mt-0.5">✓</span> Schema Markup და Structured Data</p>
-              <p class="flex items-start gap-3 text-sm text-body dark:text-body-dark"><span class="text-success mt-0.5">✓</span> Mobile და Page Speed ოპტიმიზაცია</p>
-              <p class="flex items-start gap-3 text-sm text-body dark:text-body-dark"><span class="text-success mt-0.5">✓</span> Crawl Error-ების გამოსწორება</p>
-              <p class="flex items-start gap-3 text-sm text-body dark:text-body-dark"><span class="text-success mt-0.5">✓</span> საიტის არქიტექტურის ოპტიმიზაცია</p>
-            </div>
-          </div>
-          <div>
-            <h3 class="font-heading font-bold text-sm uppercase tracking-wider text-body/40 dark:text-body-dark/40 mb-4">კონტენტი, ბმულები და რეპორტინგი</h3>
-            <div class="space-y-3">
-              <p class="flex items-start gap-3 text-sm text-body dark:text-body-dark"><span class="text-success mt-0.5">✓</span> Keyword Research და Mapping</p>
-              <p class="flex items-start gap-3 text-sm text-body dark:text-body-dark"><span class="text-success mt-0.5">✓</span> SEO კონტენტის შექმნა და ოპტიმიზაცია</p>
-              <p class="flex items-start gap-3 text-sm text-body dark:text-body-dark"><span class="text-success mt-0.5">✓</span> Link Building კამპანიები</p>
-              <p class="flex items-start gap-3 text-sm text-body dark:text-body-dark"><span class="text-success mt-0.5">✓</span> AEO/GEO — AI პლატფორმებისთვის ოპტიმიზაცია</p>
-              <p class="flex items-start gap-3 text-sm text-body dark:text-body-dark"><span class="text-success mt-0.5">✓</span> Live Dashboard + Loom ვიდეო რეპორტები</p>
-              <p class="flex items-start gap-3 text-sm text-body dark:text-body-dark"><span class="text-success mt-0.5">✓</span> კონკურენტების მონიტორინგი</p>
-            </div>
-          </div>
-        </div>
-        <!-- Footer strip -->
-        <div class="border-t border-gray-100 dark:border-gray-800 pt-5 mt-8 flex flex-wrap gap-6 text-sm text-body/50 dark:text-body-dark/50">
-          <span class="flex items-center gap-1.5">📋 სტრატეგიული სამოქმედო გეგმა</span>
-          <span class="flex items-center gap-1.5">📊 Live Dashboard</span>
-          <span class="flex items-center gap-1.5">🎥 ვიდეო რეპორტი</span>
-          <span class="flex items-center gap-1.5">⚡ 10-წუთიანი SLA</span>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- ========== 7. METHODOLOGY ========== -->
   <section class="py-16 lg:py-24 bg-surface-dark-alt" id="methodology">
@@ -597,7 +574,7 @@
     </div>
   </section>
 
-  <!-- ========== 10. CASE STUDIES ========== -->
+  <!-- ========== 10. CASE STUDIES (index.html style) ========== -->
   <section class="py-16 lg:py-24 bg-surface-dark relative overflow-hidden">
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-primary/[0.03] rounded-full blur-[120px] pointer-events-none"></div>
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
@@ -608,40 +585,60 @@
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
         <a href="case-studies/trafikis-gaormageba-3-tveshi.html" class="group block rounded-2xl border border-gray-800 bg-[#0d1117] p-6 hover:border-primary/40 hover:-translate-y-1 transition-all duration-300">
-          <span class="text-xs font-semibold text-success bg-success/10 px-2.5 py-1 rounded-full">+100%</span>
-          <p class="font-inter text-4xl font-extrabold text-white mt-4 mb-1">2x</p>
+          <div class="flex items-center gap-2 mb-4"><span class="text-xs font-semibold text-success bg-success/10 px-2.5 py-1 rounded-full">↑ +100%</span></div>
+          <p class="font-inter text-4xl font-extrabold text-white mb-1">2x</p>
           <p class="font-heading text-lg font-bold text-white mb-1">ტრაფიკის გაორმაგება</p>
-          <p class="text-sm text-body-dark">სამშენებლო | 3 თვე</p>
+          <p class="text-sm text-body-dark mb-5">სამშენებლო | 3 თვე</p>
+          <div class="flex items-end gap-1.5 h-14">
+            <div class="flex-1 bg-gray-700/40 rounded-t" style="height:15%"></div><div class="flex-1 bg-gray-700/50 rounded-t" style="height:20%"></div><div class="flex-1 bg-primary/30 rounded-t" style="height:30%"></div><div class="flex-1 bg-primary/40 rounded-t" style="height:42%"></div><div class="flex-1 bg-primary/50 rounded-t" style="height:55%"></div><div class="flex-1 bg-primary/60 rounded-t" style="height:70%"></div><div class="flex-1 bg-primary/75 rounded-t" style="height:85%"></div><div class="flex-1 bg-primary rounded-t" style="height:100%"></div>
+          </div>
         </a>
         <a href="case-studies/3x-in-28-days.html" class="group block rounded-2xl border border-gray-800 bg-[#0d1117] p-6 hover:border-primary/40 hover:-translate-y-1 transition-all duration-300">
-          <span class="text-xs font-semibold text-primary-light bg-primary/15 px-2.5 py-1 rounded-full">TOP</span>
-          <p class="font-inter text-4xl font-extrabold text-success mt-4 mb-1">3x</p>
+          <div class="flex items-center gap-2 mb-4"><span class="text-xs font-semibold text-primary-light bg-primary/15 px-2.5 py-1 rounded-full">TOP</span></div>
+          <p class="font-inter text-4xl font-extrabold text-success mb-1">3x</p>
           <p class="font-heading text-lg font-bold text-white mb-1">ზრდა 28 დღეში</p>
-          <p class="text-sm text-body-dark">სამშენებლო | 28 დღე</p>
+          <p class="text-sm text-body-dark mb-5">სამშენებლო | 28 დღე</p>
+          <div class="flex items-end gap-1.5 h-14">
+            <div class="flex-1 bg-gray-700/40 rounded-t" style="height:10%"></div><div class="flex-1 bg-gray-700/50 rounded-t" style="height:15%"></div><div class="flex-1 bg-primary/30 rounded-t" style="height:25%"></div><div class="flex-1 bg-primary/40 rounded-t" style="height:40%"></div><div class="flex-1 bg-primary/50 rounded-t" style="height:55%"></div><div class="flex-1 bg-primary/65 rounded-t" style="height:72%"></div><div class="flex-1 bg-primary/80 rounded-t" style="height:88%"></div><div class="flex-1 bg-primary rounded-t" style="height:100%"></div>
+          </div>
         </a>
         <a href="case-studies/250-percent-increase.html" class="group block rounded-2xl border border-gray-800 bg-[#0d1117] p-6 hover:border-primary/40 hover:-translate-y-1 transition-all duration-300">
-          <span class="text-xs font-semibold text-success bg-success/10 px-2.5 py-1 rounded-full">+250%</span>
-          <p class="font-inter text-4xl font-extrabold text-success mt-4 mb-1">+250%</p>
+          <div class="flex items-center gap-2 mb-4"><span class="text-xs font-semibold text-success bg-success/10 px-2.5 py-1 rounded-full">↑ +250%</span></div>
+          <p class="font-inter text-4xl font-extrabold text-success mb-1">+250%</p>
           <p class="font-heading text-lg font-bold text-white mb-1">ტრაფიკის ზრდა</p>
-          <p class="text-sm text-body-dark">სამშენებლო | 3 თვე</p>
+          <p class="text-sm text-body-dark mb-5">სამშენებლო | 3 თვე</p>
+          <div class="flex justify-between text-sm text-body-dark mt-auto"><div><span class="text-body-dark/60">გვერდები</span></div><div><span class="text-white font-bold">8</span></div></div>
+          <div class="flex justify-between text-sm mt-2"><div><span class="text-body-dark/60">გაყიდვა</span></div><div><span class="text-red-400 font-bold">$30K</span></div></div>
         </a>
         <a href="case-studies/local-seo-result.html" class="group block rounded-2xl border border-gray-800 bg-[#0d1117] p-6 hover:border-accent/40 hover:-translate-y-1 transition-all duration-300">
-          <span class="text-xs font-semibold text-accent bg-accent/10 px-2.5 py-1 rounded-full">GMB</span>
-          <p class="font-inter text-4xl font-extrabold text-white mt-4 mb-1">+60%</p>
+          <div class="flex items-center gap-2 mb-4"><span class="text-xs font-semibold text-accent bg-accent/10 px-2.5 py-1 rounded-full">◆ GMB</span></div>
+          <p class="font-inter text-4xl font-extrabold text-white mb-1">+60%</p>
           <p class="font-heading text-lg font-bold text-white mb-1">ლოკალური SEO</p>
-          <p class="text-sm text-body-dark">ქართული ბრენდი | GMB</p>
+          <p class="text-sm text-body-dark mb-5">ქართული ბრენდი | GMB</p>
+          <div class="grid grid-cols-2 gap-3 mt-auto">
+            <div class="text-center p-3 bg-gray-800/50 rounded-xl"><p class="font-inter text-lg font-bold text-white">+370</p><p class="text-[11px] text-body-dark">კლიკი</p></div>
+            <div class="text-center p-3 bg-gray-800/50 rounded-xl"><p class="font-inter text-lg font-bold text-accent">+20K</p><p class="text-[11px] text-body-dark">იმფრეშენი</p></div>
+          </div>
         </a>
         <a href="case-studies/4200-yoveltviuri-vizitori-4-tveshi.html" class="group block rounded-2xl border border-gray-800 bg-[#0d1117] p-6 hover:border-rose-500/40 hover:-translate-y-1 transition-all duration-300">
-          <span class="text-xs font-semibold text-rose-400 bg-rose-500/10 px-2.5 py-1 rounded-full">Medical</span>
-          <p class="font-inter text-4xl font-extrabold text-white mt-4 mb-1">4,200+</p>
+          <div class="flex items-center gap-2 mb-4"><span class="text-xs font-semibold text-rose-400 bg-rose-500/10 px-2.5 py-1 rounded-full">❤ Medical</span></div>
+          <p class="font-inter text-4xl font-extrabold text-white mb-1">4,200+</p>
           <p class="font-heading text-lg font-bold text-white mb-1">ვიზიტორი 4 თვეში</p>
-          <p class="text-sm text-body-dark">მედიცინა | 0-დან</p>
+          <p class="text-sm text-body-dark mb-5">მედიცინა | 0-დან</p>
+          <div class="flex items-end gap-1.5 h-14">
+            <div class="flex-1 bg-gray-700/40 rounded-t" style="height:3%"></div><div class="flex-1 bg-rose-900/30 rounded-t" style="height:12%"></div><div class="flex-1 bg-rose-800/40 rounded-t" style="height:28%"></div><div class="flex-1 bg-rose-700/50 rounded-t" style="height:45%"></div><div class="flex-1 bg-rose-600/55 rounded-t" style="height:60%"></div><div class="flex-1 bg-rose-500/65 rounded-t" style="height:75%"></div><div class="flex-1 bg-rose-500/80 rounded-t" style="height:88%"></div><div class="flex-1 bg-rose-400 rounded-t" style="height:100%"></div>
+          </div>
         </a>
         <a href="case-studies/stomatologiuri-klinikis-seo.html" class="group block rounded-2xl border border-gray-800 bg-[#0d1117] p-6 hover:border-success/40 hover:-translate-y-1 transition-all duration-300">
-          <span class="text-xs font-semibold text-white bg-success/20 px-2.5 py-1 rounded-full">#1</span>
-          <p class="font-inter text-4xl font-extrabold text-red-400 mt-4 mb-1">+600%</p>
+          <div class="flex items-center gap-2 mb-4"><span class="text-xs font-semibold text-white bg-success/20 px-2.5 py-1 rounded-full">#1</span></div>
+          <p class="font-inter text-4xl font-extrabold text-red-400 mb-1">+600%</p>
           <p class="font-heading text-lg font-bold text-white mb-1">სტომატოლოგია</p>
-          <p class="text-sm text-body-dark">მედიცინა | იმპლანტაცია</p>
+          <p class="text-sm text-body-dark mb-4">მედიცინა | იმპლანტაცია</p>
+          <div class="space-y-2 mt-auto">
+            <div class="flex justify-between text-sm"><span class="text-body-dark/60">ვიზიტორი</span><span class="text-white font-bold">1,620</span></div>
+            <div class="flex justify-between text-sm"><span class="text-body-dark/60">CTR</span><span class="text-success font-bold">52%</span></div>
+            <div class="flex justify-between text-sm"><span class="text-body-dark/60">იმფრეშენი</span><span class="text-accent font-bold">63K</span></div>
+          </div>
         </a>
       </div>
 
@@ -823,61 +820,54 @@
     </div>
   </section>
 
-  <!-- ========== 16. INDUSTRIES ========== -->
-  <section class="py-16 lg:py-20 bg-white dark:bg-surface-dark">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-10">
-        <h2 class="font-heading text-2xl sm:text-3xl font-extrabold text-heading dark:text-heading-dark mb-4">ინდუსტრიები რომლებშიც ვმუშაობთ</h2>
-        <p class="text-body dark:text-body-dark">15+ ინდუსტრიაში გამოცდილება — თითოეულის სპეციფიკა კარგად ვიცით</p>
-      </div>
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-        <a href="industries/healthcare.html" class="flex items-center gap-3 p-4 rounded-xl bg-surface-alt dark:bg-surface-dark-alt border border-gray-100 dark:border-gray-800 hover:border-primary/30 transition-colors">
-          <span class="text-2xl">🏥</span>
-          <span class="text-sm font-medium text-heading dark:text-heading-dark">კლინიკები</span>
-        </a>
-        <a href="industries/construction.html" class="flex items-center gap-3 p-4 rounded-xl bg-surface-alt dark:bg-surface-dark-alt border border-gray-100 dark:border-gray-800 hover:border-primary/30 transition-colors">
-          <span class="text-2xl">🏗️</span>
-          <span class="text-sm font-medium text-heading dark:text-heading-dark">სამშენებლო</span>
-        </a>
-        <a href="industries/ecommerce.html" class="flex items-center gap-3 p-4 rounded-xl bg-surface-alt dark:bg-surface-dark-alt border border-gray-100 dark:border-gray-800 hover:border-primary/30 transition-colors">
-          <span class="text-2xl">🛒</span>
-          <span class="text-sm font-medium text-heading dark:text-heading-dark">E-commerce</span>
-        </a>
-        <a href="industries/financial-services.html" class="flex items-center gap-3 p-4 rounded-xl bg-surface-alt dark:bg-surface-dark-alt border border-gray-100 dark:border-gray-800 hover:border-primary/30 transition-colors">
-          <span class="text-2xl">🏦</span>
-          <span class="text-sm font-medium text-heading dark:text-heading-dark">ფინანსები</span>
-        </a>
-        <div class="flex items-center gap-3 p-4 rounded-xl bg-surface-alt dark:bg-surface-dark-alt border border-gray-100 dark:border-gray-800">
-          <span class="text-2xl">💻</span>
-          <span class="text-sm font-medium text-heading dark:text-heading-dark">ტექნოლოგიები</span>
-        </div>
-        <div class="flex items-center gap-3 p-4 rounded-xl bg-surface-alt dark:bg-surface-dark-alt border border-gray-100 dark:border-gray-800">
-          <span class="text-2xl">⚖️</span>
-          <span class="text-sm font-medium text-heading dark:text-heading-dark">იურიდიული</span>
-        </div>
-        <div class="flex items-center gap-3 p-4 rounded-xl bg-surface-alt dark:bg-surface-dark-alt border border-gray-100 dark:border-gray-800">
-          <span class="text-2xl">✈️</span>
-          <span class="text-sm font-medium text-heading dark:text-heading-dark">ტურიზმი</span>
-        </div>
-        <div class="flex items-center gap-3 p-4 rounded-xl bg-surface-alt dark:bg-surface-dark-alt border border-gray-100 dark:border-gray-800">
-          <span class="text-2xl">🎓</span>
-          <span class="text-sm font-medium text-heading dark:text-heading-dark">განათლება</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== 17. FAQ — Gold Glassmorphism ========== -->
-  <section class="relative py-16 lg:py-24 overflow-hidden bg-surface-dark">
-    <div class="absolute inset-0" style="background: radial-gradient(ellipse at 30% 20%, rgba(139,92,246,0.04) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, rgba(124,58,237,0.03) 0%, transparent 50%);"></div>
+  <!-- ========== 17. FAQ — V29 Gold Glassmorphism (index.html style) ========== -->
+  <section id="faq" class="relative py-16 lg:py-24 overflow-hidden bg-white dark:bg-surface-dark">
+    <div class="absolute inset-0 dark:block hidden" style="background: radial-gradient(ellipse at 30% 20%, rgba(139,92,246,0.04) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, rgba(124,58,237,0.03) 0%, transparent 50%);"></div>
     <div class="max-w-3xl mx-auto px-4 sm:px-6 relative z-10">
-      <div class="text-center mb-10">
+      <div class="text-center mb-8">
         <p class="text-sm font-semibold uppercase tracking-wider mb-3" style="color:#D4A017">FAQ</p>
-        <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-heading-dark leading-[1.3]">ხშირად დასმული კითხვები</h2>
-        <p class="mt-3 text-body-dark text-sm max-w-md mx-auto">გაქვთ შეკითხვა? აქ ნახავთ პასუხებს ყველაზე ხშირად დასმულ კითხვებზე</p>
+        <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-heading dark:text-heading-dark leading-[1.3]">ხშირად დასმული კითხვები</h2>
       </div>
-      <div class="space-y-3" id="fq1-list"></div>
+      <div class="flex flex-wrap justify-center gap-2 mb-8" id="v29-tabs"></div>
+      <div class="space-y-3" id="v29-items"></div>
     </div>
+    <script>
+      (function(){
+        var faqData = [
+          { q: "რამდენ ხანში ჩანს ყოველთვიური SEO-ს შედეგები?", a: "პირველი შედეგები 2-3 თვეში ჩანს, მნიშვნელოვანი ზრდა 4-6 თვეში. კონკურენტული ნიშებისთვის 6-12 თვეც შეიძლება დასჭირდეს.", cat: "ზოგადი" },
+          { q: "რა შედის Done-For-You SEO მენეჯმენტში?", a: "Keyword Research, Mapping, ტექნიკური აუდიტი, On-Page ოპტიმიზაცია, კონტენტის შექმნა, Link Building, AEO/GEO, Live Dashboard, ვიდეო რეპორტინგი და 10-წუთიანი SLA.", cat: "ზოგადი" },
+          { q: "როგორ მუშაობს AEO/GEO — AI პლატფორმებისთვის ოპტიმიზაცია?", a: "AEO და GEO უზრუნველყოფს ბრენდის ხილვადობას ChatGPT-ში, Gemini-ში, Perplexity-ში — იქ, სადაც მომავლის მომხმარებელი პასუხს ეძებს.", cat: "ზოგადი" },
+          { q: "რით განსხვავდება 10xSEO სხვა სააგენტოებისგან?", a: "12+ წლის გამოცდილება, 10-წუთიანი SLA, Live Dashboard + Loom ვიდეო რეპორტინგი, AEO/GEO. თქვენი წარმატება ჩვენს ბონუს სისტემაშიცაა ჩართული.", cat: "ზოგადი" },
+          { q: "მოითხოვთ თუ არა გრძელვადიან კონტრაქტს?", a: "არა. თვიდან თვემდე — lock-in არ გვაქვს. შედეგებს ვდებთ, არა ხელშეკრულებებს.", cat: "ფასი" },
+          { q: "როგორ გამოიყურება თანამშრომლობის პროცესი?", a: "5-ნაბიჯიანი Onboarding: სტრატეგიული სტარტი, სამუშაო სივრცის გაცნობა, ტექნიკური წვდომები, სტრატეგიის შეთანხმება, ოპერატიული კავშირი.", cat: "ზოგადი" },
+          { q: "რა ანგარიშგებას ვიღებთ და რა სიხშირით?", a: "Live Dashboard რეალურ დროში, Loom ვიდეო რეპორტი ყოველთვიურად, პოზიციების აფდეითი ორ-კვირაში, პასუხი 10 წუთში.", cat: "შედეგები" },
+          { q: "როგორ ზომავთ SEO-ს ROI-ს?", a: "ტრაფიკის გარდა, ვზომავთ რეალურ გაყიდვებს, შეკვეთებს და ზარებს. ჩვენი მთავარი საზომი ბიზნეს-შედეგია.", cat: "შედეგები" },
+          { q: "რამდენი ჩართულობა მჭირდება ჩემი მხრიდან?", a: "მინიმალური. ჩვენ ვმართავთ ყველა SEO პროცესს — თქვენგან მხოლოდ ბიზნესის სპეციფიკის ცოდნა და კონტენტის დამტკიცება.", cat: "ზოგადი" },
+          { q: "ამზადებთ თუ არა კონტენტს ქართულად და ინგლისურად?", a: "დიახ. ორენოვანი SEO კონტენტი — ქართულად ლოკალური ბაზრისთვის, ინგლისურად საერთაშორისო ექსპანსიისთვის.", cat: "ზოგადი" },
+          { q: "რა ინდუსტრიებში გაქვთ გამოცდილება?", a: "E-commerce, SaaS, ჯანდაცვა, უძრავი ქონება, ფინანსები, ტურიზმი — 15+ ინდუსტრიაში გვაქვს დადასტურებული შედეგები.", cat: "შედეგები" },
+          { q: "რა ღირს SEO მომსახურება?", a: "ფასი დამოკიდებულია ბიზნესის მასშტაბზე, კონკურენციაზე და მიზნებზე. გვაქვს სხვადასხვა პაკეტი. დაგვიკავშირდით კონსულტაციისთვის.", cat: "ფასი" }
+        ];
+        var cats = [{name:"ყველა",key:"all"},{name:"ზოგადი",key:"general"},{name:"ფასი",key:"price"},{name:"შედეგები",key:"results"}];
+        var tabs=document.getElementById('v29-tabs'), list=document.getElementById('v29-items'), activeCat='ყველა';
+        var catKeyMap={"ზოგადი":"general","ფასი":"price","შედეგები":"results"};
+        cats.forEach(function(item){
+          var t=document.createElement('button');
+          t.className='v29-tab'+(item.name==='ყველა'?' v29-active':'');
+          t.setAttribute('data-cat',item.key);
+          t.textContent=item.name;
+          t.onclick=function(){ activeCat=item.name; tabs.querySelectorAll('.v29-tab').forEach(function(b){b.classList.remove('v29-active');}); t.classList.add('v29-active'); filter(); };
+          tabs.appendChild(t);
+        });
+        faqData.forEach(function(faq){
+          var d=document.createElement('div'), ck=catKeyMap[faq.cat]||'';
+          d.className='v29-card'; d.setAttribute('data-cat',faq.cat);
+          d.innerHTML='<div class="v29-cq"><div class="v29-badge"><svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></div><span class="v29-txt">'+faq.q+'</span><span class="v29-cat" data-key="'+ck+'">'+faq.cat+'</span></div><div class="v29-ca"><p>'+faq.a+'</p></div>';
+          d.querySelector('.v29-cq').onclick=function(){ var o=d.classList.contains('v29-open'); list.querySelectorAll('.v29-card').forEach(function(el){el.classList.remove('v29-open');}); if(!o) d.classList.add('v29-open'); };
+          list.appendChild(d);
+        });
+        function filter(){ list.querySelectorAll('.v29-card').forEach(function(el){ el.classList.remove('v29-open'); if(activeCat==='ყველა'||el.getAttribute('data-cat')===activeCat) el.classList.remove('v29-hidden'); else el.classList.add('v29-hidden'); }); }
+      })();
+    </script>
   </section>
 
   <!-- ========== 18. FINAL CTA ========== -->
@@ -1013,36 +1003,7 @@
       });
     });
 
-    // FAQ Gold Glassmorphism
-    (function(){
-      var data = [
-        {q:"რამდენ ხანში ჩანს ყოველთვიური SEO-ს შედეგები?", a:"პირველი შედეგები 2-3 თვეში ჩანს, მნიშვნელოვანი ზრდა 4-6 თვეში. კონკურენტული ნიშებისთვის 6-12 თვეც შეიძლება დასჭირდეს."},
-        {q:"რა შედის Done-For-You SEO მენეჯმენტში?", a:"Keyword Research, Mapping, ტექნიკური აუდიტი, On-Page ოპტიმიზაცია, კონტენტის შექმნა, Link Building, AEO/GEO, Live Dashboard, ვიდეო რეპორტინგი და 10-წუთიანი SLA."},
-        {q:"როგორ მუშაობს AEO/GEO — AI პლატფორმებისთვის ოპტიმიზაცია?", a:"AEO და GEO უზრუნველყოფს ბრენდის ხილვადობას ChatGPT-ში, Gemini-ში, Perplexity-ში — იქ, სადაც მომავლის მომხმარებელი პასუხს ეძებს."},
-        {q:"რით განსხვავდება 10xSEO სხვა სააგენტოებისგან?", a:"12+ წლის გამოცდილება, 10-წუთიანი SLA, Live Dashboard + Loom ვიდეო რეპორტინგი, AEO/GEO. თქვენი წარმატება ჩვენს ბონუს სისტემაშიცაა ჩართული."},
-        {q:"რატომ სააგენტო და არა ფრილანსერი ან in-house გუნდი?", a:"სააგენტო გთავაზობთ 4-6 სპეციალისტის გუნდს, სტრუქტურირებულ onboarding-ს, Live Dashboard-ს და 10-წუთიან SLA-ს."},
-        {q:"მოითხოვთ თუ არა გრძელვადიან კონტრაქტს?", a:"არა. თვიდან თვემდე — lock-in არ გვაქვს. შედეგებს ვდებთ, არა ხელშეკრულებებს."},
-        {q:"როგორ გამოიყურება თანამშრომლობის პროცესი?", a:"5-ნაბიჯიანი Onboarding: სტრატეგიული სტარტი, სამუშაო სივრცის გაცნობა, ტექნიკური წვდომები, სტრატეგიის შეთანხმება, ოპერატიული კავშირი."},
-        {q:"რა ანგარიშგებას ვიღებთ და რა სიხშირით?", a:"Live Dashboard რეალურ დროში, Loom ვიდეო რეპორტი ყოველთვიურად, პოზიციების აფდეითი ორ-კვირაში, პასუხი 10 წუთში."},
-        {q:"ამზადებთ თუ არა კონტენტს ქართულად და ინგლისურად?", a:"დიახ. ორენოვანი SEO კონტენტი — ქართულად ლოკალური ბაზრისთვის, ინგლისურად საერთაშორისო ექსპანსიისთვის."},
-        {q:"როგორ ზომავთ SEO-ს ROI-ს?", a:"ტრაფიკის გარდა, ვზომავთ რეალურ გაყიდვებს, შეკვეთებს და ზარებს. ჩვენი მთავარი საზომი ბიზნეს-შედეგია."},
-        {q:"რა ინდუსტრიებში გაქვთ გამოცდილება?", a:"E-commerce, SaaS, ჯანდაცვა, უძრავი ქონება, ფინანსები, ტურიზმი — 15+ ინდუსტრიაში გვაქვს დადასტურებული შედეგები."},
-        {q:"რამდენი ჩართულობა მჭირდება ჩემი მხრიდან?", a:"მინიმალური. ჩვენ ვმართავთ ყველა SEO პროცესს — თქვენგან მხოლოდ ბიზნესის სპეციფიკის ცოდნა და კონტენტის დამტკიცება."}
-      ];
-      var list = document.getElementById('fq1-list');
-      data.forEach(function(faq, i){
-        var num = (i+1) < 10 ? '0'+(i+1) : ''+(i+1);
-        var d = document.createElement('div');
-        d.className = 'fq1-card';
-        d.innerHTML = '<div class="fq1-q"><div class="fq1-num">'+num+'</div><span class="fq1-txt">'+faq.q+'</span><svg class="fq1-arrow" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></div><div class="fq1-a"><p>'+faq.a+'</p></div>';
-        d.querySelector('.fq1-q').onclick = function(){
-          var o = d.classList.contains('fq1-open');
-          list.querySelectorAll('.fq1-card').forEach(function(el){ el.classList.remove('fq1-open'); });
-          if (!o) d.classList.add('fq1-open');
-        };
-        list.appendChild(d);
-      });
-    })();
+    // FAQ v29 is inline in section
 
     // Sticky CTA hide/show
     let lastScroll = 0;
