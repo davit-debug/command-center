@@ -130,6 +130,45 @@
     .gradient-border::before { content: ''; position: absolute; inset: -2px; border-radius: 1.1rem; background: linear-gradient(135deg, #00FF88, #4FC3F7, #00FF88); z-index: -1; }
     .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
+    /* v29 FAQ */
+    .v29-tab { padding: 8px 18px; border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; transition: all 0.3s; border: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .v29-tab:hover { opacity: 0.85; }
+    .v29-tab.v29-active { box-shadow: 0 0 16px rgba(0,0,0,0.3); }
+    .v29-tab[data-cat="all"] { background: rgba(20,184,166,0.15); color: #2DD4BF; }
+    .v29-tab[data-cat="general"] { background: rgba(236,72,153,0.15); color: #F472B6; }
+    .v29-tab[data-cat="price"] { background: rgba(245,158,11,0.15); color: #FBBF24; }
+    .v29-tab[data-cat="results"] { background: rgba(59,130,246,0.15); color: #60A5FA; }
+    .v29-tab[data-cat="technical"] { background: rgba(0,255,136,0.12); color: #00FF88; }
+    .v29-card { border-radius: 16px; overflow: hidden; background: rgba(255,255,255,0.035); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.08); transition: all 0.35s; position: relative; }
+    .v29-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; border-radius: 14px 0 0 14px; opacity: 0; transition: opacity 0.3s; }
+    .v29-card[data-cat="ზოგადი"]::before { background: #EC4899; }
+    .v29-card[data-cat="შედეგები"]::before { background: #3B82F6; }
+    .v29-card[data-cat="ფასი"]::before { background: #F59E0B; }
+    .v29-card[data-cat="ტექნიკური"]::before { background: #00FF88; }
+    .v29-card[data-cat="ზოგადი"]:hover { border-color: rgba(236,72,153,0.25); }
+    .v29-card[data-cat="შედეგები"]:hover { border-color: rgba(59,130,246,0.25); }
+    .v29-card[data-cat="ფასი"]:hover { border-color: rgba(245,158,11,0.25); }
+    .v29-card[data-cat="ტექნიკური"]:hover { border-color: rgba(0,255,136,0.25); }
+    .v29-card:hover::before { opacity: 0.5; }
+    .v29-card[data-cat="ზოგადი"].v29-open { border-color: rgba(236,72,153,0.35); background: rgba(236,72,153,0.04); box-shadow: 0 0 30px rgba(236,72,153,0.06); }
+    .v29-card[data-cat="შედეგები"].v29-open { border-color: rgba(59,130,246,0.35); background: rgba(59,130,246,0.04); box-shadow: 0 0 30px rgba(59,130,246,0.06); }
+    .v29-card[data-cat="ფასი"].v29-open { border-color: rgba(245,158,11,0.35); background: rgba(245,158,11,0.04); box-shadow: 0 0 30px rgba(245,158,11,0.06); }
+    .v29-card[data-cat="ტექნიკური"].v29-open { border-color: rgba(0,255,136,0.35); background: rgba(0,255,136,0.04); box-shadow: 0 0 30px rgba(0,255,136,0.06); }
+    .v29-card.v29-open::before { opacity: 1; }
+    .v29-card.v29-hidden { display: none; }
+    .v29-cq { display: flex; align-items: center; padding: 18px 22px; cursor: pointer; gap: 16px; }
+    .v29-cq .v29-badge { width: 38px; height: 38px; border-radius: 10px; background: rgba(212,160,23,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.3s; }
+    .v29-open .v29-badge { background: rgba(212,160,23,0.2); box-shadow: 0 0 12px rgba(212,160,23,0.15); }
+    .v29-cq .v29-badge svg { width: 16px; height: 16px; stroke: #D4A017; transition: transform 0.3s; }
+    .v29-open .v29-badge svg { transform: rotate(180deg); stroke: #EAB308; }
+    .v29-cq .v29-txt { flex: 1; font-weight: 600; color: #F1F5F9; font-size: 17px; line-height: 1.4; }
+    .v29-cat[data-key="general"] { font-size: 10px; font-weight: 700; color: #F472B6; background: rgba(236,72,153,0.15); padding: 3px 8px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; }
+    .v29-cat[data-key="price"] { font-size: 10px; font-weight: 700; color: #FBBF24; background: rgba(245,158,11,0.15); padding: 3px 8px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; }
+    .v29-cat[data-key="results"] { font-size: 10px; font-weight: 700; color: #60A5FA; background: rgba(59,130,246,0.15); padding: 3px 8px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; }
+    .v29-cat[data-key="technical"] { font-size: 10px; font-weight: 700; color: #00FF88; background: rgba(0,255,136,0.12); padding: 3px 8px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; }
+    .v29-ca { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1), padding 0.3s; padding: 0 22px 0 76px; }
+    .v29-open .v29-ca { max-height: 400px; padding: 0 22px 18px 76px; }
+    .v29-ca p { color: #CBD5E1; font-size: 15px; line-height: 1.8; }
     /* Hex partners */
     .hex-clients-row { display: flex; justify-content: center; align-items: center; gap: 1rem; flex-wrap: nowrap; }
     .hex-client { width: 160px; height: 185px; position: relative; transition: transform 0.4s ease; flex-shrink: 0; }
@@ -366,29 +405,6 @@
     </div>
   </section>
 
-  <!-- ===== S5: SUB-CATEGORY TABS ===== -->
-  <section class="py-16 border-y border-white/5">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-10 reveal"><h2 class="font-heading text-2xl sm:text-3xl font-bold text-white">სპეციალობების მიხედვით</h2></div>
-      <div class="flex flex-wrap justify-center gap-2 mb-8">
-        <button class="tab-btn active px-5 py-2.5 rounded-full text-sm font-semibold border border-white/10" data-tab="tab-dental">სტომატოლოგია</button>
-        <button class="tab-btn px-5 py-2.5 rounded-full text-sm font-semibold text-white/60 border border-white/10 hover:text-white" data-tab="tab-plastic">პლასტიკური ქირურგია</button>
-        <button class="tab-btn px-5 py-2.5 rounded-full text-sm font-semibold text-white/60 border border-white/10 hover:text-white" data-tab="tab-derma">დერმატოლოგია</button>
-        <button class="tab-btn px-5 py-2.5 rounded-full text-sm font-semibold text-white/60 border border-white/10 hover:text-white" data-tab="tab-fertility">ფერტილობა</button>
-        <button class="tab-btn px-5 py-2.5 rounded-full text-sm font-semibold text-white/60 border border-white/10 hover:text-white" data-tab="tab-hospital">საავადმყოფო</button>
-        <button class="tab-btn px-5 py-2.5 rounded-full text-sm font-semibold text-white/60 border border-white/10 hover:text-white" data-tab="tab-psycho">ფსიქოთერაპია</button>
-      </div>
-      <div class="max-w-3xl mx-auto">
-        <div id="tab-dental" class="tab-content"><div class="neon-card rounded-2xl p-8"><p class="text-white/70 leading-relaxed">სტომატოლოგიური კლინიკებისთვის ვოპტიმიზებთ თითოეულ პროცედურას (იმპლანტაცია, ვინირები, ბრეკეტები, გათეთრება) ცალკე ლენდინგ გვერდით. ლოკალური SEO, Google Maps-ში პირველობა და პაციენტის რევიუების სისტემა — Smile Studio-ს მაგალითზე Top 3 კეთილსინდისიერ სამედიცინო keyword-ებზე.</p></div></div>
-        <div id="tab-plastic" class="tab-content hidden"><div class="neon-card rounded-2xl p-8"><p class="text-white/70 leading-relaxed">პლასტიკური ქირურგიის SEO მოიცავს before/after გალერეების ოპტიმიზაციას, ექიმის პროფილის E-E-A-T გაძლიერებას, პროცედურების დეტალურ გვერდებს და ვიდეო SEO-ს. სამედიცინო ტურიზმის keyword-ებზე ორიენტაცია საერთაშორისო პაციენტებისთვის.</p></div></div>
-        <div id="tab-derma" class="tab-content hidden"><div class="neon-card rounded-2xl p-8"><p class="text-white/70 leading-relaxed">დერმატოლოგიის SEO ფოკუსირებულია კანის მოვლის, ესთეტიკური პროცედურებისა და სამედიცინო დერმატოლოგიის keyword-ებზე. კონტენტ სტრატეგია მოიცავს დაავადებების ინფორმაციულ გვერდებს, მკურნალობის ვარიანტებს და სეზონურ კონტენტს.</p></div></div>
-        <div id="tab-fertility" class="tab-content hidden"><div class="neon-card rounded-2xl p-8"><p class="text-white/70 leading-relaxed">ფერტილობის კლინიკებისთვის ვქმნით IVF, IUI და სხვა რეპროდუქციული მკურნალობის გვერდებს. ემოციურად სწორი, ინფორმაციული კონტენტი, წარმატების სტატისტიკა და პაციენტის მოგზაურობის ფუნელი.</p></div></div>
-        <div id="tab-hospital" class="tab-content hidden"><div class="neon-card rounded-2xl p-8"><p class="text-white/70 leading-relaxed">საავადმყოფოებისა და კლინიკური ცენტრების SEO მოიცავს მრავალ-განყოფილებიანი ნავიგაციის ოპტიმიზაციას, ექიმების პროფილებს, სამედიცინო სქემა მარკაპს, გადაუდებელი დახმარების გვერდებს და საავადმყოფოს რეიტინგების მართვას.</p></div></div>
-        <div id="tab-psycho" class="tab-content hidden"><div class="neon-card rounded-2xl p-8"><p class="text-white/70 leading-relaxed">ფსიქოთერაპიის SEO მოითხოვს განსაკუთრებულ მგრძნობელობას. ვქმნით ანონიმურობის გარანტიის, თერაპიის ტიპების და ონლაინ კონსულტაციის გვერდებს — სტიგმის გარეშე, პროფესიონალურ ტონში.</p></div></div>
-      </div>
-    </div>
-  </section>
-
   <!-- ===== S6: CASE STUDY RESULTS ===== -->
   <section id="results" class="py-20 lg:py-28 relative">
     <div class="absolute top-0 right-0 w-96 h-96 bg-neon/5 rounded-full blur-[120px]"></div>
@@ -516,128 +532,64 @@
     </div>
   </section>
 
-  <!-- ===== S10: FAQ ===== -->
+  <!-- ===== S10: FAQ (v29 style) ===== -->
   <section class="py-20 lg:py-28">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-16 reveal">
-        <h2 class="font-heading text-3xl sm:text-4xl font-bold text-white mb-4">ხშირად დასმული <span class="text-neon">კითხვები</span></h2>
-        <p class="text-lg text-white/50">ყველაფერი, რაც სამედიცინო SEO-ზე უნდა იცოდეთ</p>
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-8">
+        <p class="text-sm font-semibold uppercase tracking-wider mb-3" style="color:#D4A017">FAQ</p>
+        <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-white leading-[1.3]">ხშირად დასმული კითხვები</h2>
       </div>
-      <div class="flex flex-wrap justify-center gap-2 mb-8">
-        <button class="faq-cat-btn px-5 py-2.5 rounded-full text-sm font-semibold bg-neon text-black" data-cat="all">ყველა</button>
-        <button class="faq-cat-btn px-5 py-2.5 rounded-full text-sm font-semibold text-white/60 border border-white/10 hover:text-white" data-cat="general">ზოგადი</button>
-        <button class="faq-cat-btn px-5 py-2.5 rounded-full text-sm font-semibold text-white/60 border border-white/10 hover:text-white" data-cat="price">ფასი & შედეგები</button>
-        <button class="faq-cat-btn px-5 py-2.5 rounded-full text-sm font-semibold text-white/60 border border-white/10 hover:text-white" data-cat="technical">ტექნიკური</button>
-      </div>
-      <div class="neon-card rounded-2xl overflow-hidden reveal" id="faq-list">
-
-        <div class="faq-item border-b border-white/5 last:border-b-0" data-faq-cat="general">
-          <button class="faq-toggle w-full flex items-center justify-between p-5 text-left" aria-expanded="false">
-            <span class="text-white font-semibold pr-4">რა არის სამედიცინო SEO?</span>
-            <svg class="faq-chevron w-5 h-5 text-neon shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="faq-answer px-5"><p class="pb-5 text-white/50 leading-relaxed text-sm">სამედიცინო SEO არის საძიებო სისტემების ოპტიმიზაციის სპეციალიზებული მიმართულება ჯანდაცვის სექტორისთვის. ის მოიცავს YMYL (Your Money Your Life) კონტენტის ოპტიმიზაციას, E-E-A-T სტანდარტების დაცვას, სამედიცინო სქემა მარკაპს, Google Business Profile ოპტიმიზაციას, პაციენტების მოზიდვაზე ორიენტირებულ კონტენტ სტრატეგიასა და ლოკალურ SEO-ს.</p></div>
-        </div>
-        <div class="faq-item border-b border-white/5 last:border-b-0" data-faq-cat="general">
-          <button class="faq-toggle w-full flex items-center justify-between p-5 text-left" aria-expanded="false">
-            <span class="text-white font-semibold pr-4">რით განსხვავდება სამედიცინო SEO ჩვეულებრივისგან?</span>
-            <svg class="faq-chevron w-5 h-5 text-neon shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="faq-answer px-5"><p class="pb-5 text-white/50 leading-relaxed text-sm">სამედიცინო SEO მოითხოვს YMYL/E-E-A-T შესაბამისობას, ექიმის მიერ დამტკიცებულ კონტენტს, სამედიცინო ტერმინოლოგიის ცოდნას და სპეციალიზებულ სქემა მარკაპს (MedicalWebPage, Physician, MedicalCondition). Google ჯანდაცვის კონტენტს მკაცრად აფასებს — არასწორ ინფორმაციას სჯის.</p></div>
-        </div>
-        <div class="faq-item border-b border-white/5 last:border-b-0" data-faq-cat="price">
-          <button class="faq-toggle w-full flex items-center justify-between p-5 text-left" aria-expanded="false">
-            <span class="text-white font-semibold pr-4">რამდენ ხანში ჩანს შედეგი?</span>
-            <svg class="faq-chevron w-5 h-5 text-neon shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="faq-answer px-5"><p class="pb-5 text-white/50 leading-relaxed text-sm">GBP ოპტიმიზაციის შედეგები 2-4 კვირაში ჩანს (ზარები, მიმართულებები). ლოკალური SEO-ს შედეგები 2-3 თვეში მოდის. ორგანული ტრაფიკის მნიშვნელოვანი ზრდა 4-6 თვე სჭირდება. YMYL სფეროში ავტორიტეტის სრული აშენება 6-12 თვემდე გრძელდება.</p></div>
-        </div>
-        <div class="faq-item border-b border-white/5 last:border-b-0" data-faq-cat="price">
-          <button class="faq-toggle w-full flex items-center justify-between p-5 text-left" aria-expanded="false">
-            <span class="text-white font-semibold pr-4">რამდენი ღირს სამედიცინო SEO?</span>
-            <svg class="faq-chevron w-5 h-5 text-neon shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="faq-answer px-5"><p class="pb-5 text-white/50 leading-relaxed text-sm">სამედიცინო SEO პაკეტები <strong class="text-neon">1880 ლარიდან</strong> იწყება. ფასი დამოკიდებულია კლინიკის მასშტაბზე, ფილიალების რაოდენობაზე, სერვისების სპექტრზე და კონკურენციის დონეზე. გვაქვს სხვადასხვა პაკეტი სტარტაპ კლინიკებიდან მრავალფილიალიან ქსელებამდე. დაგვიკავშირდით უფასო კონსულტაციისთვის — <strong class="text-white/70">გრძელვადიანი კონტრაქტი არ მოითხოვება.</strong></p></div>
-        </div>
-        <div class="faq-item border-b border-white/5 last:border-b-0" data-faq-cat="general">
-          <button class="faq-toggle w-full flex items-center justify-between p-5 text-left" aria-expanded="false">
-            <span class="text-white font-semibold pr-4">შეესაბამება თქვენი სერვისი რეგულაციებს?</span>
-            <svg class="faq-chevron w-5 h-5 text-neon shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="faq-answer px-5"><p class="pb-5 text-white/50 leading-relaxed text-sm">დიახ, ჩვენი კონტენტი და სტრატეგიები სრულად შეესაბამება სამედიცინო რეგულაციებს. ყველა სამედიცინო კონტენტი გადის ექიმის რევიუს, ვიცავთ E-E-A-T სტანდარტებს და არ ვაწარმოებთ არალეგიტიმურ სამედიცინო კლემებს.</p></div>
-        </div>
-        <div class="faq-item border-b border-white/5 last:border-b-0" data-faq-cat="general">
-          <button class="faq-toggle w-full flex items-center justify-between p-5 text-left" aria-expanded="false">
-            <span class="text-white font-semibold pr-4">რომელ სამედიცინო სპეციალობებს ემსახურებით?</span>
-            <svg class="faq-chevron w-5 h-5 text-neon shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="faq-answer px-5"><p class="pb-5 text-white/50 leading-relaxed text-sm">ვემსახურებით სტომატოლოგიას, პლასტიკურ ქირურგიას, დერმატოლოგიას, ფერტილობის კლინიკებს, საავადმყოფოებს, ფსიქოთერაპიას, ოფთალმოლოგიას, კარდიოლოგიას, ორთოპედიას და სხვა სპეციალობებს. თითოეულისთვის გვაქვს ინდუსტრია-სპეციფიკური სტრატეგიები.</p></div>
-        </div>
-        <div class="faq-item border-b border-white/5 last:border-b-0" data-faq-cat="general">
-          <button class="faq-toggle w-full flex items-center justify-between p-5 text-left" aria-expanded="false">
-            <span class="text-white font-semibold pr-4">მუშაობთ თუ არა ქართულ და UAE ბაზრებზე?</span>
-            <svg class="faq-chevron w-5 h-5 text-neon shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="faq-answer px-5"><p class="pb-5 text-white/50 leading-relaxed text-sm">დიახ, აქტიურად ვმუშაობთ ორივე ბაზარზე. საქართველოში ვმუშაობთ ქართულ და ინგლისურ ენებზე, UAE-ში — ინგლისურ და არაბულ ენებზე. გვაქვს მრავალენოვანი SEO-ს სრული გამოცდილება hreflang-ის ჩათვლით.</p></div>
-        </div>
-        <div class="faq-item border-b border-white/5 last:border-b-0" data-faq-cat="technical">
-          <button class="faq-toggle w-full flex items-center justify-between p-5 text-left" aria-expanded="false">
-            <span class="text-white font-semibold pr-4">რა არის GEO?</span>
-            <svg class="faq-chevron w-5 h-5 text-neon shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="faq-answer px-5"><p class="pb-5 text-white/50 leading-relaxed text-sm">GEO (Generative Engine Optimization) არის AI ძიების ოპტიმიზაცია. 2025-ში AI Overviews სამედიცინო ძიებების 52%-ში ჩნდება. GEO უზრუნველყოფს თქვენი კლინიკის ხილვადობას ChatGPT, Gemini, Perplexity და სხვა AI პლატფორმებში.</p></div>
-        </div>
-        <div class="faq-item border-b border-white/5 last:border-b-0" data-faq-cat="technical">
-          <button class="faq-toggle w-full flex items-center justify-between p-5 text-left" aria-expanded="false">
-            <span class="text-white font-semibold pr-4">რამდენად მნიშვნელოვანია პაციენტის შეფასებები?</span>
-            <svg class="faq-chevron w-5 h-5 text-neon shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="faq-answer px-5"><p class="pb-5 text-white/50 leading-relaxed text-sm">კრიტიკულად მნიშვნელოვანია. პაციენტების 77% ეძებს შეფასებებს ვიზიტამდე. Google-ის ალგორითმი აქტიურად ითვალისწინებს რეიტინგებს ლოკალურ რანჟირებაში. რევიუ მენეჯმენტი — მოთხოვნა, მონიტორინგი, პასუხები — ჩვენი სერვისის ნაწილია.</p></div>
-        </div>
-        <div class="faq-item border-b border-white/5 last:border-b-0" data-faq-cat="general">
-          <button class="faq-toggle w-full flex items-center justify-between p-5 text-left" aria-expanded="false">
-            <span class="text-white font-semibold pr-4">მრავალფილიალიანი კლინიკებისთვის მუშაობთ?</span>
-            <svg class="faq-chevron w-5 h-5 text-neon shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="faq-answer px-5"><p class="pb-5 text-white/50 leading-relaxed text-sm">დიახ, გვაქვს სპეციალიზებული გამოცდილება მრავალფილიალიან ჯანდაცვის ქსელებთან. თითოეული ფილიალისთვის ვქმნით ცალკე GBP პროფილს, ლოკალურ ლენდინგ გვერდებს, მდებარეობაზე მორგებულ კონტენტსა და ლოკალური ციტირების სტრატეგიას.</p></div>
-        </div>
-        <div class="faq-item border-b border-white/5 last:border-b-0" data-faq-cat="price">
-          <button class="faq-toggle w-full flex items-center justify-between p-5 text-left" aria-expanded="false">
-            <span class="text-white font-semibold pr-4">როგორ აკეთებთ რეპორტინგს?</span>
-            <svg class="faq-chevron w-5 h-5 text-neon shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="faq-answer px-5"><p class="pb-5 text-white/50 leading-relaxed text-sm">გთავაზობთ ყოველთვიურ დეტალურ ანგარიშს, რომელიც მოიცავს: ორგანული ტრაფიკის დინამიკა, keyword პოზიციები, GBP მეტრიკები (ზარები, მიმართულებები, ნახვები), კონვერსიები, AI ხილვადობა და ROI ანალიზი. ასევე გაქვთ წვდომა ლაივ დეშბორდზე.</p></div>
-        </div>
-        <div class="faq-item border-b border-white/5 last:border-b-0" data-faq-cat="technical">
-          <button class="faq-toggle w-full flex items-center justify-between p-5 text-left" aria-expanded="false">
-            <span class="text-white font-semibold pr-4">ტელემედიცინისთვის მუშაობთ?</span>
-            <svg class="faq-chevron w-5 h-5 text-neon shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="faq-answer px-5"><p class="pb-5 text-white/50 leading-relaxed text-sm">დიახ, ტელემედიცინის SEO ჩვენი ერთ-ერთი მზარდი მიმართულებაა. ვოპტიმიზებთ ონლაინ კონსულტაციების გვერდებს, ვირტუალური ვიზიტის ლენდინგებს, ტელემედიცინის პლატფორმებსა და ონლაინ ჯავშნის სისტემებს.</p></div>
-        </div>
-        <div class="faq-item border-b border-white/5 last:border-b-0" data-faq-cat="price">
-          <button class="faq-toggle w-full flex items-center justify-between p-5 text-left" aria-expanded="false">
-            <span class="text-white font-semibold pr-4">SEO vs PPC — რომელია უკეთესი?</span>
-            <svg class="faq-chevron w-5 h-5 text-neon shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="faq-answer px-5"><p class="pb-5 text-white/50 leading-relaxed text-sm">ორივე მნიშვნელოვანია, მაგრამ სხვადასხვა მიზანს ემსახურება. PPC სწრაფ შედეგებს იძლევა, მაგრამ ძვირია და შეწყვეტისთანავე ტრაფიკი ქრება. SEO გრძელვადიან, მდგრად ტრაფიკს უზრუნველყოფს. სამედიცინო სფეროში SEO-ს ROI საშუალოდ 3-5x მეტია PPC-ზე 12 თვის პერსპექტივაში.</p></div>
-        </div>
-        <div class="faq-item border-b border-white/5 last:border-b-0" data-faq-cat="technical">
-          <button class="faq-toggle w-full flex items-center justify-between p-5 text-left" aria-expanded="false">
-            <span class="text-white font-semibold pr-4">რატომ არის ლოკალური SEO კრიტიკული?</span>
-            <svg class="faq-chevron w-5 h-5 text-neon shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="faq-answer px-5"><p class="pb-5 text-white/50 leading-relaxed text-sm">პაციენტების 46% ძიებებს ლოკალური ინტენტით აკეთებს — 'კლინიკა ჩემთან ახლოს', 'სტომატოლოგი თბილისი'. ეს ტიპის ძიებები 150%-ით გაიზარდა ბოლო 2 წელში. GBP ოპტიმიზაციის გარეშე კლინიკა უხილავია Google Maps-ში და ლოკალურ ძიებაში.</p></div>
-        </div>
-        <div class="faq-item border-b border-white/5 last:border-b-0" data-faq-cat="technical">
-          <button class="faq-toggle w-full flex items-center justify-between p-5 text-left" aria-expanded="false">
-            <span class="text-white font-semibold pr-4">საერთაშორისო SEO-ს აკეთებთ?</span>
-            <svg class="faq-chevron w-5 h-5 text-neon shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="faq-answer px-5"><p class="pb-5 text-white/50 leading-relaxed text-sm">დიახ, განსაკუთრებით სამედიცინო ტურიზმისთვის. ვოპტიმიზებთ საერთაშორისო პაციენტების მოზიდვაზე ორიენტირებულ კონტენტს, hreflang იმპლემენტაციას, მულტი-რეგიონალურ SEO სტრატეგიებსა და საერთაშორისო ციტირებებს.</p></div>
-        </div>
-      </div>
+      <div class="flex flex-wrap justify-center gap-2 mb-8" id="v29-tabs"></div>
+      <div class="space-y-3" id="v29-items"></div>
     </div>
+    <script>
+      (function(){
+        var faqData = [
+          { q: "რა არის სამედიცინო SEO?", a: "სამედიცინო SEO არის საძიებო სისტემების ოპტიმიზაციის სპეციალიზებული მიმართულება ჯანდაცვის სექტორისთვის. ის მოიცავს YMYL (Your Money Your Life) კონტენტის ოპტიმიზაციას, E-E-A-T სტანდარტების დაცვას, სამედიცინო სქემა მარკაპს, Google Business Profile ოპტიმიზაციას, პაციენტების მოზიდვაზე ორიენტირებულ კონტენტ სტრატეგიასა და ლოკალურ SEO-ს.", cat: "ზოგადი" },
+          { q: "რით განსხვავდება სამედიცინო SEO ჩვეულებრივისგან?", a: "სამედიცინო SEO მოითხოვს YMYL/E-E-A-T შესაბამისობას, ექიმის მიერ დამტკიცებულ კონტენტს, სამედიცინო ტერმინოლოგიის ცოდნას და სპეციალიზებულ სქემა მარკაპს (MedicalWebPage, Physician, MedicalCondition). Google ჯანდაცვის კონტენტს მკაცრად აფასებს — არასწორ ინფორმაციას სჯის.", cat: "ზოგადი" },
+          { q: "რამდენ ხანში ჩანს შედეგი?", a: "GBP ოპტიმიზაციის შედეგები 2-4 კვირაში ჩანს (ზარები, მიმართულებები). ლოკალური SEO-ს შედეგები 2-3 თვეში მოდის. ორგანული ტრაფიკის მნიშვნელოვანი ზრდა 4-6 თვე სჭირდება. YMYL სფეროში ავტორიტეტის სრული აშენება 6-12 თვემდე გრძელდება.", cat: "შედეგები" },
+          { q: "რამდენი ღირს სამედიცინო SEO?", a: "სამედიცინო SEO პაკეტები <strong style=\"color:#00FF88\">1880 ლარიდან</strong> იწყება. ფასი დამოკიდებულია კლინიკის მასშტაბზე, ფილიალების რაოდენობაზე და კონკურენციის დონეზე. გვაქვს სხვადასხვა პაკეტი სტარტაპ კლინიკებიდან მრავალფილიალიან ქსელებამდე. <strong style=\"color:rgba(255,255,255,0.7)\">გრძელვადიანი კონტრაქტი არ მოითხოვება.</strong>", cat: "ფასი" },
+          { q: "შეესაბამება თქვენი სერვისი რეგულაციებს?", a: "დიახ, ჩვენი კონტენტი და სტრატეგიები სრულად შეესაბამება სამედიცინო რეგულაციებს. ყველა სამედიცინო კონტენტი გადის ექიმის რევიუს, ვიცავთ E-E-A-T სტანდარტებს და არ ვაწარმოებთ არალეგიტიმურ სამედიცინო კლემებს.", cat: "ზოგადი" },
+          { q: "რომელ სამედიცინო სპეციალობებს ემსახურებით?", a: "ვემსახურებით სტომატოლოგიას, პლასტიკურ ქირურგიას, დერმატოლოგიას, ფერტილობის კლინიკებს, საავადმყოფოებს, ფსიქოთერაპიას, ოფთალმოლოგიას, კარდიოლოგიას, ორთოპედიას და სხვა სპეციალობებს. თითოეულისთვის გვაქვს ინდუსტრია-სპეციფიკური სტრატეგიები.", cat: "ზოგადი" },
+          { q: "რა არის GEO?", a: "GEO (Generative Engine Optimization) არის AI ძიების ოპტიმიზაცია. 2025-ში AI Overviews სამედიცინო ძიებების 52%-ში ჩნდება. GEO უზრუნველყოფს თქვენი კლინიკის ხილვადობას ChatGPT, Gemini, Perplexity და სხვა AI პლატფორმებში.", cat: "ტექნიკური" },
+          { q: "რამდენად მნიშვნელოვანია პაციენტის შეფასებები?", a: "კრიტიკულად მნიშვნელოვანია. პაციენტების 77% ეძებს შეფასებებს ვიზიტამდე. Google-ის ალგორითმი აქტიურად ითვალისწინებს რეიტინგებს ლოკალურ რანჟირებაში. რევიუ მენეჯმენტი — მოთხოვნა, მონიტორინგი, პასუხები — ჩვენი სერვისის ნაწილია.", cat: "ტექნიკური" },
+          { q: "როგორ აკეთებთ რეპორტინგს?", a: "გთავაზობთ ყოველთვიურ დეტალურ ანგარიშს: ორგანული ტრაფიკის დინამიკა, keyword პოზიციები, GBP მეტრიკები (ზარები, მიმართულებები, ნახვები), კონვერსიები, AI ხილვადობა და ROI ანალიზი. ასევე გაქვთ წვდომა ლაივ დეშბორდზე.", cat: "შედეგები" },
+          { q: "SEO vs PPC — რომელია უკეთესი?", a: "ორივე მნიშვნელოვანია, მაგრამ სხვადასხვა მიზანს ემსახურება. PPC სწრაფ შედეგებს იძლევა, მაგრამ ძვირია და შეწყვეტისთანავე ტრაფიკი ქრება. SEO გრძელვადიან, მდგრად ტრაფიკს უზრუნველყოფს. სამედიცინო სფეროში SEO-ს ROI საშუალოდ 3-5x მეტია PPC-ზე 12 თვის პერსპექტივაში.", cat: "ფასი" },
+          { q: "რატომ არის ლოკალური SEO კრიტიკული?", a: "პაციენტების 46% ძიებებს ლოკალური ინტენტით აკეთებს — 'კლინიკა ჩემთან ახლოს', 'სტომატოლოგი თბილისი'. ეს ტიპის ძიებები 150%-ით გაიზარდა ბოლო 2 წელში. GBP ოპტიმიზაციის გარეშე კლინიკა უხილავია Google Maps-ში და ლოკალურ ძიებაში.", cat: "ტექნიკური" },
+          { q: "საერთაშორისო SEO-ს აკეთებთ?", a: "დიახ, განსაკუთრებით სამედიცინო ტურიზმისთვის. ვოპტიმიზებთ საერთაშორისო პაციენტების მოზიდვაზე ორიენტირებულ კონტენტს, hreflang იმპლემენტაციას, მულტი-რეგიონალურ SEO სტრატეგიებსა და საერთაშორისო ციტირებებს.", cat: "ტექნიკური" }
+        ];
+        var faqCategories = [
+          {name:"ყველა", key:"all"}, {name:"ზოგადი", key:"general"}, {name:"ფასი", key:"price"}, {name:"შედეგები", key:"results"}, {name:"ტექნიკური", key:"technical"}
+        ];
+        var tabs=document.getElementById('v29-tabs'), list=document.getElementById('v29-items'), activeCat='ყველა';
+        faqCategories.forEach(function(item){
+          var cat=item.name, t=document.createElement('button');
+          t.className='v29-tab'+(cat==='ყველა'?' v29-active':'');
+          t.setAttribute('data-cat', item.key);
+          t.textContent=cat;
+          t.onclick=function(){ activeCat=cat; tabs.querySelectorAll('.v29-tab').forEach(function(b){b.classList.remove('v29-active');}); t.classList.add('v29-active'); filter(); };
+          tabs.appendChild(t);
+        });
+        var catKeyMap={"ზოგადი":"general","ფასი":"price","შედეგები":"results","ტექნიკური":"technical"};
+        faqData.forEach(function(faq){
+          var d=document.createElement('div'), ck=catKeyMap[faq.cat]||'';
+          d.className='v29-card'; d.setAttribute('data-cat',faq.cat);
+          d.innerHTML='<div class="v29-cq"><div class="v29-badge"><svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></div><span class="v29-txt">'+faq.q+'</span><span class="v29-cat" data-key="'+ck+'">'+faq.cat+'</span></div><div class="v29-ca"><p>'+faq.a+'</p></div>';
+          d.querySelector('.v29-cq').onclick=function(){ var o=d.classList.contains('v29-open'); list.querySelectorAll('.v29-card').forEach(function(el){el.classList.remove('v29-open');}); if(!o) d.classList.add('v29-open'); };
+          list.appendChild(d);
+        });
+        function filter(){
+          var shown=0;
+          list.querySelectorAll('.v29-card').forEach(function(el){
+            el.classList.remove('v29-open');
+            var match = activeCat==='ყველა' || el.getAttribute('data-cat')===activeCat;
+            if(match && (activeCat!=='ყველა' || shown<8)){ el.classList.remove('v29-hidden'); shown++; }
+            else { el.classList.add('v29-hidden'); }
+          });
+        }
+        filter();
+      })();
+    </script>
   </section>
 
   <!-- ===== S11: LEAD MAGNET ===== -->
@@ -783,41 +735,6 @@
         menuOpen=false; mobileMenu.classList.remove('menu-open'); mobileMenu.style.pointerEvents='none'; menuBtn.classList.remove('menu-active'); document.body.classList.remove('overflow-hidden');
       }));
     }
-
-    // FAQ accordion
-    document.querySelectorAll('.faq-toggle').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const item = btn.closest('.faq-item');
-        const isOpen = item.classList.contains('faq-open');
-        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('faq-open'));
-        if (!isOpen) item.classList.add('faq-open');
-        btn.setAttribute('aria-expanded', !isOpen);
-      });
-    });
-
-    // FAQ category filtering
-    document.querySelectorAll('.faq-cat-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.faq-cat-btn').forEach(b => { b.classList.remove('bg-neon','text-black'); b.classList.add('text-white/60','border','border-white/10'); });
-        btn.classList.add('bg-neon','text-black'); btn.classList.remove('text-white/60','border','border-white/10');
-        const cat = btn.dataset.cat;
-        document.querySelectorAll('.faq-item').forEach(item => {
-          item.classList.remove('faq-open');
-          if (cat === 'all' || item.dataset.faqCat === cat) { item.style.display = ''; } else { item.style.display = 'none'; }
-        });
-      });
-    });
-
-    // Tab switching
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
-        const target = document.getElementById(btn.dataset.tab);
-        if (target) target.classList.remove('hidden');
-      });
-    });
 
     // Scroll reveal
     const revealObserver = new IntersectionObserver((entries) => {
