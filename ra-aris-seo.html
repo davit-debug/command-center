@@ -155,7 +155,10 @@
     .dark .prose blockquote { border-left-color: #00ff88; background: rgba(0,255,136,0.05); }
     .prose img { border-radius: 12px; margin: 1.5rem 0; }
     .prose a { color: #8B5CF6; text-decoration: underline; }
-    .dark .prose a { color: #00ff88; }
+    .dark .prose a { color: #00ff88; text-decoration-color: rgba(0,255,136,0.3); }
+    .dark .prose .not-prose a { color: inherit; text-decoration: none; }
+    .dark .prose .not-prose a.text-white { color: #fff; }
+    .dark .prose .not-prose a.text-primary { color: #8B5CF6; }
     /* TOC active state */
     .toc-link.active { color: #8B5CF6; font-weight: 600; border-left-color: #8B5CF6; }
     .dark .toc-link.active { color: #A78BFA; border-left-color: #A78BFA; }
@@ -563,9 +566,9 @@
             <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
               <div class="flex-1">
                 <p class="font-heading font-bold text-heading dark:text-heading-dark text-lg mb-1">გაინტერესებთ თქვენი საიტის SEO?</p>
-                <p class="text-sm text-body dark:text-body-dark">მიიღეთ უფასო SEO აუდიტი 24 საათში — გაიგეთ რა პოტენციალი აქვს თქვენს ვებგვერდს.</p>
+                <p class="text-sm text-body dark:text-body-dark">მიიღეთ უფასო SEO აუდიტი 72 საათში — გაიგეთ რა პოტენციალი აქვს თქვენს ვებგვერდს.</p>
               </div>
-              <a href="seo-audit.html" class="shrink-0 inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-primary-dark text-white text-sm font-bold rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all">
+              <a href="seo-audit.html" class="shrink-0 inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-primary-dark !text-white text-sm font-bold rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all !no-underline">
                 უფასო აუდიტი
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
               </a>
@@ -853,7 +856,7 @@
           <div class="not-prose mt-12 mb-8 bg-gradient-to-br from-primary via-primary-dark to-accent rounded-2xl p-8 lg:p-10 text-center">
             <h3 class="font-heading text-xl lg:text-2xl font-bold text-white mb-3">მზად ხართ SEO-ს სწორად დასაწყებად?</h3>
             <p class="text-white/80 text-sm lg:text-base mb-6 max-w-lg mx-auto">მიიღეთ უფასო SEO აუდიტი და გაიგეთ, რა პოტენციალი აქვს თქვენს ვებგვერდს Google-ში.</p>
-            <a href="seo-audit.html" class="inline-flex items-center gap-2 px-8 py-3.5 bg-white text-primary font-bold rounded-xl hover:shadow-xl transition-all">
+            <a href="seo-audit.html" class="inline-flex items-center gap-2 px-8 py-3.5 bg-white !text-primary font-bold rounded-xl hover:shadow-xl transition-all !no-underline">
               უფასო აუდიტის მიღება
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
             </a>
@@ -874,18 +877,18 @@
           </div>
 
           <!-- Related Articles -->
-          <div class="not-prose mt-16">
+          <div class="not-prose mt-16" style="font-size:1rem;">
             <h3 class="font-heading text-xl font-bold text-heading dark:text-heading-dark mb-6">მსგავსი სტატიები</h3>
             <div class="grid sm:grid-cols-3 gap-4">
-              <a href="ai-seo.html" class="group bg-surface-alt dark:bg-surface-dark-alt rounded-xl p-4 border border-gray-100 dark:border-gray-800 hover:shadow-md transition-shadow">
+              <a href="ai-seo.html" class="group block bg-surface-alt dark:bg-surface-dark-alt rounded-xl p-4 border border-gray-100 dark:border-gray-800 hover:shadow-md hover:border-primary/30 transition-all no-underline">
                 <p class="text-xs text-body/60 dark:text-body-dark/60 mb-2">AI SEO</p>
                 <p class="font-heading font-semibold text-heading dark:text-heading-dark text-sm group-hover:text-primary dark:group-hover:text-primary-light transition-colors leading-snug">AI SEO / GEO — როგორ მოვემზადოთ ხელოვნური ინტელექტის ეპოქისთვის</p>
               </a>
-              <a href="seo-management.html" class="group bg-surface-alt dark:bg-surface-dark-alt rounded-xl p-4 border border-gray-100 dark:border-gray-800 hover:shadow-md transition-shadow">
+              <a href="seo-management.html" class="group block bg-surface-alt dark:bg-surface-dark-alt rounded-xl p-4 border border-gray-100 dark:border-gray-800 hover:shadow-md hover:border-primary/30 transition-all no-underline">
                 <p class="text-xs text-body/60 dark:text-body-dark/60 mb-2">სერვისი</p>
                 <p class="font-heading font-semibold text-heading dark:text-heading-dark text-sm group-hover:text-primary dark:group-hover:text-primary-light transition-colors leading-snug">SEO მენეჯმენტი — სრული ციკლის ოპტიმიზაცია</p>
               </a>
-              <a href="seo-audit.html" class="group bg-surface-alt dark:bg-surface-dark-alt rounded-xl p-4 border border-gray-100 dark:border-gray-800 hover:shadow-md transition-shadow">
+              <a href="seo-audit.html" class="group block bg-surface-alt dark:bg-surface-dark-alt rounded-xl p-4 border border-gray-100 dark:border-gray-800 hover:shadow-md hover:border-primary/30 transition-all no-underline">
                 <p class="text-xs text-body/60 dark:text-body-dark/60 mb-2">აუდიტი</p>
                 <p class="font-heading font-semibold text-heading dark:text-heading-dark text-sm group-hover:text-primary dark:group-hover:text-primary-light transition-colors leading-snug">უფასო SEO აუდიტი — გაიგეთ რა პოტენციალი გაქვთ</p>
               </a>
@@ -909,7 +912,7 @@
             <!-- Sidebar CTA -->
             <div class="bg-gradient-to-br from-primary/5 to-accent/5 dark:from-primary/10 dark:to-accent/10 rounded-2xl p-5 border border-primary/10 dark:border-primary/20">
               <p class="font-heading font-bold text-heading dark:text-heading-dark text-sm mb-2">უფასო SEO აუდიტი</p>
-              <p class="text-xs text-body dark:text-body-dark mb-4">გაიგეთ რა აკლია თქვენს საიტს 24 საათში.</p>
+              <p class="text-xs text-body dark:text-body-dark mb-4">გაიგეთ რა აკლია თქვენს საიტს 72 საათში.</p>
               <a href="seo-audit.html" class="block text-center px-4 py-2.5 bg-primary text-white text-sm font-bold rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all">
                 აუდიტის მიღება
               </a>
