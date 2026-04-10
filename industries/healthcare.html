@@ -405,6 +405,27 @@
     </div>
   </section>
 
+  <!-- ===== S5: SUB-CATEGORY TABS ===== -->
+  <section class="py-16 border-y border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-10 reveal"><h2 class="font-heading text-2xl sm:text-3xl font-bold text-white">სპეციალობების მიხედვით</h2></div>
+      <div class="flex flex-wrap justify-center gap-2 mb-8">
+        <button class="tab-btn active px-5 py-2.5 rounded-full text-sm font-semibold border border-white/10" data-tab="tab-dental">სტომატოლოგია</button>
+        <button class="tab-btn px-5 py-2.5 rounded-full text-sm font-semibold text-white/60 border border-white/10 hover:text-white" data-tab="tab-plastic">პლასტიკური ქირურგია</button>
+        <button class="tab-btn px-5 py-2.5 rounded-full text-sm font-semibold text-white/60 border border-white/10 hover:text-white" data-tab="tab-derma">დერმატოლოგია</button>
+        <button class="tab-btn px-5 py-2.5 rounded-full text-sm font-semibold text-white/60 border border-white/10 hover:text-white" data-tab="tab-hospital">საავადმყოფო</button>
+        <button class="tab-btn px-5 py-2.5 rounded-full text-sm font-semibold text-white/60 border border-white/10 hover:text-white" data-tab="tab-psycho">ფსიქოთერაპია</button>
+      </div>
+      <div class="max-w-3xl mx-auto">
+        <div id="tab-dental" class="tab-content"><div class="neon-card rounded-2xl p-8"><p class="text-white/70 leading-relaxed">სტომატოლოგიური კლინიკებისთვის ვოპტიმიზებთ თითოეულ პროცედურას (იმპლანტაცია, ვინირები, ბრეკეტები, გათეთრება) ცალკე ლენდინგ გვერდით. ლოკალური SEO, Google Maps-ში პირველობა და პაციენტის რევიუების სისტემა — Smile Studio-ს მაგალითზე Top 3 კეთილსინდისიერ სამედიცინო keyword-ებზე.</p></div></div>
+        <div id="tab-plastic" class="tab-content hidden"><div class="neon-card rounded-2xl p-8"><p class="text-white/70 leading-relaxed">პლასტიკური ქირურგიის SEO მოიცავს before/after გალერეების ოპტიმიზაციას, ექიმის პროფილის E-E-A-T გაძლიერებას, პროცედურების დეტალურ გვერდებს და ვიდეო SEO-ს. სამედიცინო ტურიზმის keyword-ებზე ორიენტაცია საერთაშორისო პაციენტებისთვის.</p></div></div>
+        <div id="tab-derma" class="tab-content hidden"><div class="neon-card rounded-2xl p-8"><p class="text-white/70 leading-relaxed">დერმატოლოგიის SEO ფოკუსირებულია კანის მოვლის, ესთეტიკური პროცედურებისა და სამედიცინო დერმატოლოგიის keyword-ებზე. კონტენტ სტრატეგია მოიცავს დაავადებების ინფორმაციულ გვერდებს, მკურნალობის ვარიანტებს და სეზონურ კონტენტს.</p></div></div>
+        <div id="tab-hospital" class="tab-content hidden"><div class="neon-card rounded-2xl p-8"><p class="text-white/70 leading-relaxed">საავადმყოფოებისა და კლინიკური ცენტრების SEO მოიცავს მრავალ-განყოფილებიანი ნავიგაციის ოპტიმიზაციას, ექიმების პროფილებს, სამედიცინო სქემა მარკაპს, გადაუდებელი დახმარების გვერდებს და საავადმყოფოს რეიტინგების მართვას.</p></div></div>
+        <div id="tab-psycho" class="tab-content hidden"><div class="neon-card rounded-2xl p-8"><p class="text-white/70 leading-relaxed">ფსიქოთერაპიის SEO მოითხოვს განსაკუთრებულ მგრძნობელობას. ვქმნით ანონიმურობის გარანტიის, თერაპიის ტიპების და ონლაინ კონსულტაციის გვერდებს — სტიგმის გარეშე, პროფესიონალურ ტონში.</p></div></div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== S6: CASE STUDY RESULTS ===== -->
   <section id="results" class="py-20 lg:py-28 relative">
     <div class="absolute top-0 right-0 w-96 h-96 bg-neon/5 rounded-full blur-[120px]"></div>
@@ -735,6 +756,17 @@
         menuOpen=false; mobileMenu.classList.remove('menu-open'); mobileMenu.style.pointerEvents='none'; menuBtn.classList.remove('menu-active'); document.body.classList.remove('overflow-hidden');
       }));
     }
+
+    // Tab switching
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
+        const target = document.getElementById(btn.dataset.tab);
+        if (target) target.classList.remove('hidden');
+      });
+    });
 
     // Scroll reveal
     const revealObserver = new IntersectionObserver((entries) => {
