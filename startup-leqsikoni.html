@@ -662,11 +662,6 @@
       localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
     });
 
-    // ===== MOBILE MENU =====
-    
-      document.getElementById('mobile-menu-cta').addEventListener('click', () => { mm.style.transform = 'translateX(100%)'; document.body.style.overflow = ''; });
-    }
-
     // ===== STICKY CTA =====
     let lastScrollY = 0;
     const stickyCta = document.getElementById('sticky-cta');
