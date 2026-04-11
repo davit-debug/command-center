@@ -124,6 +124,16 @@
     .pain-card:hover { border-left-color: #FF6B6B; background: rgba(255,255,255,0.055); }
     .step-line { background: linear-gradient(to bottom, #8B5CF6, transparent); }
 
+    /* Hex clients */
+    .hex-clients-row { display: flex; justify-content: center; align-items: center; gap: 1rem; flex-wrap: nowrap; }
+    .hex-client { width: 160px; height: 185px; position: relative; transition: transform 0.4s ease; flex-shrink: 0; }
+    .hex-client:hover { transform: translateY(-6px); }
+    .hex-client-inner { width: 100%; height: 100%; background: #ffffff; clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); display: flex; align-items: center; justify-content: center; padding: 1.5rem; }
+    .hex-client-inner img { width: 78%; height: 68%; object-fit: contain; transform: scale(1.7); opacity: 0.85; transition: opacity 0.3s ease; }
+    .hex-client:hover .hex-client-inner img { opacity: 1; }
+    @media (max-width: 900px) { .hex-clients-row { flex-wrap: wrap; gap: 0.5rem; } .hex-client { width: 130px; height: 150px; } }
+    @media (max-width: 480px) { .hex-client { width: 100px; height: 115px; } .hex-clients-row { gap: 0.25rem; } }
+
     /* ===== V29 FAQ ===== */
     .v29-tabs{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-bottom:28px}
     .v29-tab{padding:7px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;transition:.25s;border:none;background:rgba(255,255,255,.06);color:rgba(255,255,255,.5)}
@@ -307,34 +317,17 @@
     </div>
   </section>
 
-  <!-- ===== S2: TRUST BAR ===== -->
-  <section class="py-8 border-y border-white/5 bg-white/[0.02]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="flex items-center justify-center gap-3 mb-4">
-        <span class="text-white/40 text-sm">9+ E-commerce ბრენდი ენდობა</span>
-        <span class="px-2 py-0.5 bg-primary/10 text-primary text-xs rounded-full font-semibold">Clutch 5.0</span>
-      </div>
-      <div class="overflow-hidden relative">
-        <div class="flex items-center gap-12 logo-scroll" style="width: max-content;">
-          <span class="text-white/30 font-semibold text-sm whitespace-nowrap">Topline</span>
-          <span class="text-white/30 font-semibold text-sm whitespace-nowrap">ELEHEAR</span>
-          <span class="text-white/30 font-semibold text-sm whitespace-nowrap">Bedstar</span>
-          <span class="text-white/30 font-semibold text-sm whitespace-nowrap">Yandy</span>
-          <span class="text-white/30 font-semibold text-sm whitespace-nowrap">1ClickBlinds</span>
-          <span class="text-white/30 font-semibold text-sm whitespace-nowrap">Belle Maison</span>
-          <span class="text-white/30 font-semibold text-sm whitespace-nowrap">British Bed Co.</span>
-          <span class="text-white/30 font-semibold text-sm whitespace-nowrap">Legi</span>
-          <span class="text-white/30 font-semibold text-sm whitespace-nowrap">Nicolo</span>
-          <span class="text-white/30 font-semibold text-sm whitespace-nowrap">Topline</span>
-          <span class="text-white/30 font-semibold text-sm whitespace-nowrap">ELEHEAR</span>
-          <span class="text-white/30 font-semibold text-sm whitespace-nowrap">Bedstar</span>
-          <span class="text-white/30 font-semibold text-sm whitespace-nowrap">Yandy</span>
-          <span class="text-white/30 font-semibold text-sm whitespace-nowrap">1ClickBlinds</span>
-          <span class="text-white/30 font-semibold text-sm whitespace-nowrap">Belle Maison</span>
-          <span class="text-white/30 font-semibold text-sm whitespace-nowrap">British Bed Co.</span>
-          <span class="text-white/30 font-semibold text-sm whitespace-nowrap">Legi</span>
-          <span class="text-white/30 font-semibold text-sm whitespace-nowrap">Nicolo</span>
-        </div>
+  <!-- ===== S2: HEX CLIENTS ===== -->
+  <section class="py-10 lg:py-14 bg-[#0a0f1e]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <p class="text-center text-xs font-semibold text-white/40 uppercase tracking-widest mb-8">ჩვენი E-Commerce კლიენტები</p>
+      <div class="hex-clients-row">
+        <div class="hex-client"><div class="hex-client-inner"><img src="../images/clients/elehear.png" alt="ELEHEAR"></div></div>
+        <div class="hex-client"><div class="hex-client-inner"><img src="../images/clients/bedstar.png" alt="Bedstar"></div></div>
+        <div class="hex-client"><div class="hex-client-inner"><img src="../images/clients/yandy.png" alt="Yandy"></div></div>
+        <div class="hex-client"><div class="hex-client-inner"><img src="../images/clients/belle-maison.png" alt="Belle Maison"></div></div>
+        <div class="hex-client"><div class="hex-client-inner"><img src="../images/clients/legi.png" alt="Legi"></div></div>
+        <div class="hex-client"><div class="hex-client-inner"><img src="../images/clients/nicolo.png" alt="Nicolo"></div></div>
       </div>
     </div>
   </section>
