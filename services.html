@@ -124,9 +124,50 @@
     .header-scrolled { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
     .safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
 
-    .service-card { transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; }
+    .service-card {
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      will-change: transform;
+    }
     @media (hover: hover) {
-      .service-card:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,0.3); border-color: #8B5CF6; }
+      .service-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.4), 0 0 20px rgba(139,92,246,0.15), 0 0 60px rgba(139,92,246,0.08);
+        border-color: #8B5CF6;
+      }
+    }
+    .service-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(105deg, transparent 40%, rgba(139,92,246,0.03) 45%, rgba(139,92,246,0.06) 50%, rgba(139,92,246,0.03) 55%, transparent 60%);
+      background-size: 200% 100%;
+      background-position: 200% 0;
+      transition: background-position 0.6s ease;
+      pointer-events: none;
+      z-index: 1;
+    }
+    @media (hover: hover) {
+      .service-card:hover::after { background-position: -200% 0; }
+    }
+    .gradient-border { transition: transform 0.3s ease, box-shadow 0.3s ease; will-change: transform; }
+    @media (hover: hover) {
+      .gradient-border:hover { transform: translateY(-6px); box-shadow: 0 25px 60px rgba(0,0,0,0.4), 0 0 30px rgba(139,92,246,0.2), 0 0 80px rgba(59,130,246,0.1); }
+    }
+
+    /* Quick Nav */
+    #quick-nav { opacity: 0; transform: translateY(-100%); pointer-events: none; transition: opacity 0.3s ease, transform 0.3s ease; }
+    #quick-nav.nav-visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .quick-nav-pill.active { background: rgba(139,92,246,0.1); border-color: #8B5CF6; color: #A78BFA; }
+    .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    .scrollbar-hide::-webkit-scrollbar { display: none; }
+
+    /* Decision card */
+    .decision-card { transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
+    @media (hover: hover) {
+      .decision-card:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,0.3), 0 0 30px rgba(139,92,246,0.15); border-color: #8B5CF6; }
     }
 
     #mobile-menu { transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease; opacity: 0; }
@@ -268,8 +309,20 @@
   </section>
 
 
+  <!-- ========== QUICK NAV ========== -->
+  <nav id="quick-nav" class="sticky top-16 lg:top-[72px] z-40 bg-white/80 dark:bg-surface-dark/80 backdrop-blur-xl border-b border-gray-100 dark:border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex items-center gap-2 py-3 overflow-x-auto scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0 sm:justify-center">
+        <a href="#tier-core" class="quick-nav-pill shrink-0 px-4 py-2 text-sm font-semibold rounded-full border border-gray-200 dark:border-gray-700 text-body dark:text-body-dark hover:text-primary-light hover:border-primary/50 transition-all duration-200 whitespace-nowrap">ძირითადი სერვისები</a>
+        <a href="#tier-specialized" class="quick-nav-pill shrink-0 px-4 py-2 text-sm font-semibold rounded-full border border-gray-200 dark:border-gray-700 text-body dark:text-body-dark hover:text-primary-light hover:border-primary/50 transition-all duration-200 whitespace-nowrap">სპეციალიზებული</a>
+        <a href="#tier-tools" class="quick-nav-pill shrink-0 px-4 py-2 text-sm font-semibold rounded-full border border-gray-200 dark:border-gray-700 text-body dark:text-body-dark hover:text-primary-light hover:border-primary/50 transition-all duration-200 whitespace-nowrap">ინსტრუმენტები</a>
+        <a href="#free-audit" class="quick-nav-pill shrink-0 px-4 py-2 text-sm font-semibold rounded-full border border-gray-200 dark:border-gray-700 text-body dark:text-body-dark hover:text-primary-light hover:border-primary/50 transition-all duration-200 whitespace-nowrap">უფასო აუდიტი</a>
+      </div>
+    </div>
+  </nav>
+
   <!-- ========== TIER 1: ძირითადი სერვისები ========== -->
-  <section class="py-16 lg:py-24 bg-white dark:bg-surface-dark">
+  <section id="tier-core" class="py-16 lg:py-24 bg-white dark:bg-surface-dark">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="mb-10">
         <p class="text-sm font-semibold text-primary-light uppercase tracking-wider mb-3">ძირითადი სერვისები</p>
@@ -361,7 +414,7 @@
 
 
   <!-- ========== TIER 2: სპეციალიზებული სერვისები ========== -->
-  <section class="py-16 lg:py-24 bg-surface-alt dark:bg-surface-dark-alt">
+  <section id="tier-specialized" class="py-16 lg:py-24 bg-surface-alt dark:bg-surface-dark-alt">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="mb-10">
         <p class="text-sm font-semibold text-primary-light uppercase tracking-wider mb-3">სპეციალიზებული სერვისები</p>
@@ -452,7 +505,7 @@
 
 
   <!-- ========== TIER 3: განათლება & ინსტრუმენტები ========== -->
-  <section class="py-16 lg:py-24 bg-white dark:bg-surface-dark">
+  <section id="tier-tools" class="py-16 lg:py-24 bg-white dark:bg-surface-dark">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="mb-10">
         <p class="text-sm font-semibold text-primary-light uppercase tracking-wider mb-3">განათლება & ინსტრუმენტები</p>
@@ -509,7 +562,7 @@
 
 
   <!-- ========== FREE AUDIT CTA ========== -->
-  <section class="py-16 lg:py-24 relative overflow-hidden">
+  <section id="free-audit" class="py-16 lg:py-24 relative overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-r from-primary/5 via-accent/5 to-primary/5"></div>
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px]"></div>
 
@@ -562,6 +615,83 @@
     </div>
   </section>
 
+
+  <!-- ========== DECISION HELPER ========== -->
+  <section class="py-16 lg:py-24 bg-white dark:bg-surface-dark">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <p class="text-sm font-semibold text-primary-light uppercase tracking-wider mb-3">როგორ ავირჩიოთ სერვისი</p>
+        <h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-heading dark:text-heading-dark mb-4">რომელი სცენარი ემთხვევა თქვენს სიტუაციას?</h2>
+        <p class="text-body dark:text-body-dark max-w-2xl mx-auto">აირჩიეთ თქვენთვის ყველაზე ახლო სცენარი და ჩვენ გირჩევთ ოპტიმალურ სერვისს.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-6">
+        <!-- Scenario 1: Full Management -->
+        <a href="seo-management.html" class="decision-card group relative block rounded-2xl border border-gray-100 dark:border-gray-800 bg-white dark:bg-surface-dark-alt p-6 lg:p-8 overflow-hidden">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl"></div>
+          <div class="relative z-10">
+            <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
+              <svg class="w-6 h-6 text-primary-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.58-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/></svg>
+            </div>
+            <h3 class="font-heading text-xl font-bold text-heading dark:text-heading-dark mb-2">„გსურთ SEO სრულად ჩვენ გავაკეთოთ?"</h3>
+            <p class="text-sm text-body dark:text-body-dark leading-relaxed mb-4">არ გაქვთ დრო ან გუნდი SEO-სთვის. გსურთ ექსპერტებმა აიღონ ყველაფერი — სტრატეგიიდან აღსრულებამდე.</p>
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold text-primary-light bg-primary/10 px-3 py-1.5 rounded-full">SEO მენეჯმენტი</span>
+              <span class="inline-flex items-center gap-1 text-sm font-semibold text-primary group-hover:gap-2 transition-all">გაიგე მეტი <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Scenario 2: Learn SEO -->
+        <a href="seo-course.html" class="decision-card group relative block rounded-2xl border border-gray-100 dark:border-gray-800 bg-white dark:bg-surface-dark-alt p-6 lg:p-8 overflow-hidden">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-amber-500/5 rounded-full blur-2xl"></div>
+          <div class="relative z-10">
+            <div class="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center mb-5">
+              <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
+            </div>
+            <h3 class="font-heading text-xl font-bold text-heading dark:text-heading-dark mb-2">„გსურთ თავად ისწავლოთ SEO?"</h3>
+            <p class="text-sm text-body dark:text-body-dark leading-relaxed mb-4">გინდათ თქვენი გუნდი ან საკუთარი თავი აღჭურვოთ SEO ცოდნით. პრაქტიკული კურსი მენტორინგით.</p>
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold text-amber-400 bg-amber-500/10 px-3 py-1.5 rounded-full">SEO კურსი</span>
+              <span class="inline-flex items-center gap-1 text-sm font-semibold text-primary group-hover:gap-2 transition-all">გაიგე მეტი <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Scenario 3: Have a team -->
+        <a href="seo-strategy.html" class="decision-card group relative block rounded-2xl border border-gray-100 dark:border-gray-800 bg-white dark:bg-surface-dark-alt p-6 lg:p-8 overflow-hidden">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-accent/5 rounded-full blur-2xl"></div>
+          <div class="relative z-10">
+            <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-5">
+              <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+            </div>
+            <h3 class="font-heading text-xl font-bold text-heading dark:text-heading-dark mb-2">„უკვე გაქვთ გუნდი და გჭირდებათ მიმართულება?"</h3>
+            <p class="text-sm text-body dark:text-body-dark leading-relaxed mb-4">გაქვთ In-house მარკეტინგის გუნდი, მაგრამ გჭირდებათ SEO სტრატეგია ან ექსპერტის კონსულტაცია.</p>
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold text-accent bg-accent/10 px-3 py-1.5 rounded-full">სტრატეგია / კონსულტაცია</span>
+              <span class="inline-flex items-center gap-1 text-sm font-semibold text-primary group-hover:gap-2 transition-all">გაიგე მეტი <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Scenario 4: Content & Ads -->
+        <a href="seo-copywriting.html" class="decision-card group relative block rounded-2xl border border-gray-100 dark:border-gray-800 bg-white dark:bg-surface-dark-alt p-6 lg:p-8 overflow-hidden">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-pink-500/5 rounded-full blur-2xl"></div>
+          <div class="relative z-10">
+            <div class="w-12 h-12 rounded-xl bg-pink-500/10 flex items-center justify-center mb-5">
+              <svg class="w-6 h-6 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
+            </div>
+            <h3 class="font-heading text-xl font-bold text-heading dark:text-heading-dark mb-2">„გჭირდებათ კონტენტი ან სწრაფი შედეგი?"</h3>
+            <p class="text-sm text-body dark:text-body-dark leading-relaxed mb-4">გჭირდებათ ხარისხიანი SEO ტექსტები, ან სწრაფი ტრაფიკი Google Ads-ით — სპეციალიზებული სერვისები.</p>
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold text-pink-400 bg-pink-500/10 px-3 py-1.5 rounded-full">კოპირაიტინგი / Google Ads</span>
+              <span class="inline-flex items-center gap-1 text-sm font-semibold text-primary group-hover:gap-2 transition-all">გაიგე მეტი <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
 
   <!-- ========== FINAL CTA ========== -->
   <section class="py-16 lg:py-20 bg-surface-alt dark:bg-surface-dark-alt">
@@ -708,6 +838,42 @@
       });
     }, { threshold: 0.1 });
     document.querySelectorAll('.service-card').forEach(el => observer.observe(el));
+
+    // Quick Nav: show/hide + active section
+    (function() {
+      const quickNav = document.getElementById('quick-nav');
+      const pills = document.querySelectorAll('.quick-nav-pill');
+      const sectionIds = ['tier-core', 'tier-specialized', 'tier-tools', 'free-audit'];
+      const sectionEls = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+      const headerH = 124;
+
+      const heroSection = document.querySelector('#main-content > section:first-child');
+      const navObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          quickNav.classList.toggle('nav-visible', !e.isIntersecting);
+        });
+      }, { threshold: 0, rootMargin: '-72px 0px 0px 0px' });
+      if (heroSection) navObs.observe(heroSection);
+
+      const secObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            pills.forEach(p => p.classList.toggle('active', p.getAttribute('href') === '#' + e.target.id));
+          }
+        });
+      }, { threshold: 0, rootMargin: '-' + headerH + 'px 0px -60% 0px' });
+      sectionEls.forEach(el => secObs.observe(el));
+
+      pills.forEach(pill => {
+        pill.addEventListener('click', function(e) {
+          e.preventDefault();
+          const target = document.getElementById(this.getAttribute('href').substring(1));
+          if (target) {
+            window.scrollTo({ top: target.getBoundingClientRect().top + window.pageYOffset - headerH, behavior: 'smooth' });
+          }
+        });
+      });
+    })();
 
     // Mobile menu
     const menuBtn = document.getElementById('mobile-menu-btn');
