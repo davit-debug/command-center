@@ -70,12 +70,10 @@
             primary: { DEFAULT: '#8B5CF6', light: '#A78BFA', dark: '#7C3AED' },
             accent: { DEFAULT: '#14B8A6', dark: '#0D9488' },
             'ai-blue': '#3B82F6',
-            neon: '#00FF88',
-            'neon-dark': '#00CC6A',
-            'med-blue': '#4FC3F7',
-            surface: { DEFAULT: '#ffffff', alt: '#f8fafc', dark: '#0A0A0A', 'dark-alt': '#111111' },
+            gold: '#F5A623',
+            surface: { DEFAULT: '#ffffff', alt: '#f8fafc', dark: '#020710', 'dark-alt': '#0F0F0F' },
             heading: { DEFAULT: '#0f172a', dark: '#f8fafc' },
-            body: { DEFAULT: '#475569', dark: '#A0A0A0' },
+            body: { DEFAULT: '#475569', dark: '#94A3B8' },
             danger: '#FF4444',
           },
           fontFamily: {
@@ -89,26 +87,23 @@
   </script>
   <style>
     @font-face { font-family: 'Dachi the Lynx'; src: url('../fonts/DachiTheLynx.otf') format('opentype'); font-weight: 400; font-style: normal; font-display: swap; }
-    body { font-family: 'FiraGO', 'Inter', sans-serif; background: #0A0A0A; color: #A0A0A0; }
+    body { font-family: 'FiraGO', 'Inter', sans-serif; background: #020710; color: #94A3B8; }
     h1, h2, h3 { font-family: 'Dachi the Lynx', sans-serif; }
     @keyframes fadeInUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
     .animate-fade-in-up { opacity: 0; animation: fadeInUp 0.6s ease-out forwards; }
     .delay-100 { animation-delay: 0.1s; } .delay-200 { animation-delay: 0.2s; } .delay-300 { animation-delay: 0.3s; } .delay-400 { animation-delay: 0.4s; }
-    .neon-glow { box-shadow: 0 0 20px rgba(0,255,136,0.3); }
-    .neon-glow-sm { box-shadow: 0 0 10px rgba(0,255,136,0.2); }
-    @keyframes neonPulse { 0%,100% { box-shadow: 0 0 20px rgba(0,255,136,0.4), 0 0 40px rgba(0,255,136,0.1); } 50% { box-shadow: 0 0 30px rgba(0,255,136,0.6), 0 0 60px rgba(0,255,136,0.2); } }
-    .neon-pulse { animation: neonPulse 2s ease-in-out infinite; }
-    .neon-card { background: #111111; border: 1px solid rgba(255,255,255,0.06); transition: all 0.3s ease; }
-    .neon-card:hover { border-color: rgba(0,255,136,0.3); box-shadow: 0 0 30px rgba(0,255,136,0.15); transform: translateY(-2px); }
+    .glass-card { background: rgba(255,255,255,0.035); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; transition: all 0.35s ease; }
+    .glass-card:hover { border-color: rgba(139,92,246,0.3); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(139,92,246,0.1); }
+    .gradient-text { background: linear-gradient(135deg, #8B5CF6, #14B8A6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .gradient-card { background: linear-gradient(135deg, rgba(139,92,246,0.1), rgba(20,184,166,0.1)); }
+    @keyframes aiCtaPulse { 0%,100% { box-shadow: 0 0 20px rgba(139,92,246,0.4), 0 0 40px rgba(139,92,246,0.1); } 50% { box-shadow: 0 0 30px rgba(139,92,246,0.6), 0 0 60px rgba(139,92,246,0.2); } }
+    .ai-cta-animate { animation: aiCtaPulse 2s ease-in-out infinite; background: linear-gradient(135deg, #8B5CF6, #7C3AED); }
+    .ai-cta-animate:hover { background: linear-gradient(135deg, #7C3AED, #6D28D9); }
     .tab-btn { transition: all 0.3s ease; }
-    .tab-btn.active { color: #0A0A0A; background: #00FF88; box-shadow: 0 0 15px rgba(0,255,136,0.3); }
+    .tab-btn.active { color: white; background: #8B5CF6; box-shadow: 0 0 15px rgba(139,92,246,0.3); }
     .dash-stat { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
     .header-scrolled { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
     .safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
-    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; }
-    .faq-open .faq-answer { max-height: 600px; }
-    .faq-open .faq-chevron { transform: rotate(180deg); }
-    .faq-chevron { transition: transform 0.3s ease; }
     #mobile-menu { transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s ease; opacity: 0; }
     #mobile-menu.menu-open { transform: translateX(0); opacity: 1; }
     #mobile-menu .menu-link { opacity: 0; transform: translateX(30px); transition: opacity 0.3s ease, transform 0.3s ease; }
@@ -120,53 +115,92 @@
     .logo-scroll { animation: logoScroll 20s linear infinite; }
     .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
+    /* v29 FAQ styles */
+    .v29-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:28px}
+    .v29-tab{padding:7px 16px;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;transition:all .25s ease;border:none;background:rgba(255,255,255,.06);color:rgba(255,255,255,.5)}
+    .v29-tab:hover{background:rgba(255,255,255,.1);color:#fff}
+    .v29-tab.v29-active{color:#fff}
+    .v29-tab[data-cat="all"].v29-active{background:linear-gradient(135deg,#8B5CF6,#14B8A6);color:#fff}
+    .v29-tab[data-cat="general"].v29-active{background:rgba(139,92,246,.2);color:#A78BFA}
+    .v29-tab[data-cat="price"].v29-active{background:rgba(245,162,35,.18);color:#F5A623}
+    .v29-tab[data-cat="technical"].v29-active{background:rgba(59,130,246,.18);color:#3B82F6}
+    .v29-tab[data-cat="market"].v29-active{background:rgba(20,184,166,.15);color:#14B8A6}
+    .v29-card{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:14px;margin-bottom:8px;overflow:hidden;transition:all .3s ease;position:relative;padding-left:4px}
+    .v29-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:3px 0 0 3px;background:#8B5CF6;opacity:.4;transition:opacity .3s ease}
+    .v29-card:hover{border-color:rgba(139,92,246,.2);background:rgba(255,255,255,.035)}
+    .v29-card:hover::before{opacity:.8}
+    .v29-card[data-cat="ზოგადი"]::before{background:#8B5CF6}
+    .v29-card[data-cat="ფასი"]::before{background:#F5A623}
+    .v29-card[data-cat="ტექნიკური"]::before{background:#3B82F6}
+    .v29-card[data-cat="ბაზარი"]::before{background:#14B8A6}
+    .v29-card[data-cat="ბაზარი"]:hover{border-color:rgba(20,184,166,0.25)}
+    .v29-card[data-cat="ბაზარი"].v29-open{border-color:rgba(20,184,166,0.35);background:rgba(20,184,166,0.04)}
+    .v29-card[data-cat="ფასი"]:hover{border-color:rgba(245,162,35,.2)}
+    .v29-card[data-cat="ტექნიკური"]:hover{border-color:rgba(59,130,246,.2)}
+    .v29-card[data-cat="ზოგადი"]:hover{border-color:rgba(139,92,246,.2)}
+    .v29-card.v29-open{border-color:rgba(139,92,246,.25);background:rgba(139,92,246,.03)}
+    .v29-card[data-cat="ფასი"].v29-open{border-color:rgba(245,162,35,.3);background:rgba(245,162,35,.03)}
+    .v29-card[data-cat="ტექნიკური"].v29-open{border-color:rgba(59,130,246,.3);background:rgba(59,130,246,.03)}
+    .v29-card.v29-open::before{opacity:1}
+    .v29-toggle{width:100%;display:flex;align-items:center;gap:12px;padding:16px 18px 16px 16px;text-align:left;cursor:pointer;border:none;background:none}
+    .v29-q{flex:1;font-size:15px;font-weight:600;color:rgba(255,255,255,.9);line-height:1.5}
+    .v29-cat[data-key="general"]{font-size:10px;font-weight:700;color:#A78BFA;background:rgba(139,92,246,.15);padding:3px 8px;border-radius:6px;text-transform:uppercase;letter-spacing:.5px;flex-shrink:0}
+    .v29-cat[data-key="price"]{font-size:10px;font-weight:700;color:#F5A623;background:rgba(245,162,35,.15);padding:3px 8px;border-radius:6px;text-transform:uppercase;letter-spacing:.5px;flex-shrink:0}
+    .v29-cat[data-key="technical"]{font-size:10px;font-weight:700;color:#3B82F6;background:rgba(59,130,246,.15);padding:3px 8px;border-radius:6px;text-transform:uppercase;letter-spacing:.5px;flex-shrink:0}
+    .v29-cat[data-key="market"]{font-size:10px;font-weight:700;color:#14B8A6;background:rgba(20,184,166,0.15);padding:3px 8px;border-radius:6px;text-transform:uppercase;letter-spacing:.5px;flex-shrink:0}
+    .v29-chevron{width:20px;height:20px;color:rgba(255,255,255,.3);transition:transform .3s ease,color .3s ease;flex-shrink:0}
+    .v29-open .v29-chevron{transform:rotate(180deg);color:#8B5CF6}
+    .v29-ans{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s ease}
+    .v29-open .v29-ans{max-height:600px}
+    .v29-ans-inner{padding:0 18px 18px 16px;font-size:14px;line-height:1.75;color:rgba(255,255,255,.55)}
+    .v29-hidden{display:none}
   </style>
 </head>
-<body class="font-body bg-[#0A0A0A] text-[#A0A0A0]">
-  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-neon focus:text-black focus:px-4 focus:py-2 focus:rounded-lg">გადახტომა მთავარ შინაარსზე</a>
-  <header id="main-header" class="fixed top-0 left-0 right-0 z-50 h-16 lg:h-[72px] bg-[#0A0A0A]/90 header-scrolled border-b border-white/5 transition-all duration-300">
+<body class="font-body bg-[#020710] text-[#94A3B8]">
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-primary focus:text-white focus:px-4 focus:py-2 focus:rounded-lg">გადახტომა მთავარ შინაარსზე</a>
+  <header id="main-header" class="fixed top-0 left-0 right-0 z-50 h-16 lg:h-[72px] bg-[#020710]/90 header-scrolled border-b border-white/5 transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 h-full flex items-center justify-between">
       <a href="../index.html" class="flex items-center shrink-0"><img src="../images/logo.png" alt="10XSEO" class="h-12 lg:h-14 w-auto"></a>
       <nav class="hidden lg:flex items-center gap-1" aria-label="მთავარი ნავიგაცია">
-        <a href="../about-us.html" class="px-3 py-2 text-sm font-medium text-white/80 hover:text-neon rounded-lg hover:bg-white/5 transition-colors">ჩვენს შესახებ</a>
+        <a href="../about-us.html" class="px-3 py-2 text-sm font-medium text-white/80 hover:text-primary rounded-lg hover:bg-white/5 transition-colors">ჩვენს შესახებ</a>
         <div class="relative group">
-          <button class="px-3 py-2 text-sm font-medium text-white/80 hover:text-neon rounded-lg hover:bg-white/5 transition-colors flex items-center gap-1">სერვისები <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
-          <div class="absolute top-full left-0 mt-1 w-56 bg-[#111] rounded-xl shadow-xl border border-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 p-2">
-            <a href="../seo-management.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-white/5 text-white/80 hover:text-neon">SEO მენეჯმენტი</a>
-            <a href="../seo-consultation.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-white/5 text-white/80 hover:text-neon">SEO კონსულტაცია</a>
-            <a href="../seo-strategy.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-white/5 text-white/80 hover:text-neon">SEO სტრატეგია</a>
-            <a href="../seo-copywriting.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-white/5 text-white/80 hover:text-neon">SEO კოპირაიტინგი</a>
-            <a href="../cro.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-white/5 text-white/80 hover:text-neon">კონვერსიის ოპტიმიზაცია</a>
-            <a href="../google-ads.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-white/5 text-white/80 hover:text-neon">Google Ads</a>
-            <a href="../ai-seo.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-white/5 text-white/80 hover:text-neon">AI SEO / GEO</a>
-            <a href="../seo-course.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-white/5 text-white/80 hover:text-neon">SEO კურსი</a>
+          <button class="px-3 py-2 text-sm font-medium text-white/80 hover:text-primary rounded-lg hover:bg-white/5 transition-colors flex items-center gap-1">სერვისები <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
+          <div class="absolute top-full left-0 mt-1 w-56 bg-[#0F0F0F] rounded-xl shadow-xl border border-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 p-2">
+            <a href="../seo-management.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-white/5 text-white/80 hover:text-primary">SEO მენეჯმენტი</a>
+            <a href="../seo-consultation.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-white/5 text-white/80 hover:text-primary">SEO კონსულტაცია</a>
+            <a href="../seo-strategy.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-white/5 text-white/80 hover:text-primary">SEO სტრატეგია</a>
+            <a href="../seo-copywriting.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-white/5 text-white/80 hover:text-primary">SEO კოპირაიტინგი</a>
+            <a href="../cro.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-white/5 text-white/80 hover:text-primary">კონვერსიის ოპტიმიზაცია</a>
+            <a href="../google-ads.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-white/5 text-white/80 hover:text-primary">Google Ads</a>
+            <a href="../ai-seo.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-white/5 text-white/80 hover:text-primary">AI SEO / GEO</a>
+            <a href="../seo-course.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-white/5 text-white/80 hover:text-primary">SEO კურსი</a>
           </div>
         </div>
         <div class="relative group">
-          <button class="px-3 py-2 text-sm font-medium text-neon bg-neon/10 rounded-lg flex items-center gap-1">ინდუსტრიები <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
-          <div class="absolute top-full left-0 mt-1 w-56 bg-[#111] rounded-xl shadow-xl border border-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 p-2">
-            <a href="healthcare.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-white/5 text-white/80 hover:text-neon">კლინიკები &amp; ჯანდაცვა</a>
-            <a href="financial-services.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-white/5 text-white/80 hover:text-neon">ფინანსური სერვისები</a>
-            <a href="construction.html" class="block px-3 py-2.5 text-sm rounded-lg bg-neon/10 text-neon font-medium">სამშენებლო &amp; უძრავი ქონება</a>
-            <a href="ecommerce.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-white/5 text-white/80 hover:text-neon">E-commerce</a>
+          <button class="px-3 py-2 text-sm font-medium text-primary bg-primary/10 rounded-lg flex items-center gap-1">ინდუსტრიები <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
+          <div class="absolute top-full left-0 mt-1 w-56 bg-[#0F0F0F] rounded-xl shadow-xl border border-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 p-2">
+            <a href="healthcare.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-white/5 text-white/80 hover:text-primary">კლინიკები &amp; ჯანდაცვა</a>
+            <a href="financial-services.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-white/5 text-white/80 hover:text-primary">ფინანსური სერვისები</a>
+            <a href="construction.html" class="block px-3 py-2.5 text-sm rounded-lg bg-primary/10 text-primary font-medium">სამშენებლო &amp; უძრავი ქონება</a>
+            <a href="ecommerce.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-white/5 text-white/80 hover:text-primary">E-commerce</a>
             <hr class="my-1 border-white/10">
             <a href="../industries.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-white/5 text-white/50">ყველა ინდუსტრია &#8594;</a>
           </div>
         </div>
-        <a href="../portfolio.html" class="px-3 py-2 text-sm font-medium text-white/80 hover:text-neon rounded-lg hover:bg-white/5 transition-colors">პორტფოლიო</a>
-        <a href="../case-studies.html" class="px-3 py-2 text-sm font-medium text-white/80 hover:text-neon rounded-lg hover:bg-white/5 transition-colors">შედეგები</a>
-        <a href="../blog.html" class="px-3 py-2 text-sm font-medium text-white/80 hover:text-neon rounded-lg hover:bg-white/5 transition-colors">ბლოგი</a>
+        <a href="../portfolio.html" class="px-3 py-2 text-sm font-medium text-white/80 hover:text-primary rounded-lg hover:bg-white/5 transition-colors">პორტფოლიო</a>
+        <a href="../case-studies.html" class="px-3 py-2 text-sm font-medium text-white/80 hover:text-primary rounded-lg hover:bg-white/5 transition-colors">შედეგები</a>
+        <a href="../blog.html" class="px-3 py-2 text-sm font-medium text-white/80 hover:text-primary rounded-lg hover:bg-white/5 transition-colors">ბლოგი</a>
       </nav>
       <div class="flex items-center gap-2">
-        <button class="hidden sm:flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold rounded-lg border border-white/10 hover:bg-white/5 text-white/80 transition-colors"><span class="text-neon font-bold">KA</span><span class="opacity-50">/</span><span class="opacity-50">EN</span></button>
-        <a href="#" onclick="openCalendly();return false;" class="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 bg-neon text-black text-sm font-bold rounded-xl neon-pulse hover:bg-neon-dark transition-all">დაჯავშნე კონსულტაცია</a>
+        <button class="hidden sm:flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold rounded-lg border border-white/10 hover:bg-white/5 text-white/80 transition-colors"><span class="text-primary font-bold">KA</span><span class="opacity-50">/</span><span class="opacity-50">EN</span></button>
+        <a href="#" onclick="openCalendly();return false;" class="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 ai-cta-animate text-white text-sm font-bold rounded-xl hover:brightness-110 transition-all">დაჯავშნე კონსულტაცია</a>
         <button id="mobile-menu-btn" aria-expanded="false" aria-controls="mobile-menu" aria-label="მენიუს გახსნა" class="lg:hidden w-9 h-9 min-w-[44px] min-h-[44px] rounded-lg flex flex-col items-center justify-center gap-[6px] hover:bg-white/5 transition-colors text-white">
           <span class="hamburger-line block w-5 h-[2px] bg-current rounded-full"></span><span class="hamburger-line block w-5 h-[2px] bg-current rounded-full"></span><span class="hamburger-line block w-5 h-[2px] bg-current rounded-full"></span>
         </button>
       </div>
     </div>
   </header>
-  <div id="mobile-menu" class="lg:hidden fixed inset-0 top-16 bg-[#0A0A0A] z-[60] overflow-y-auto pointer-events-none">
+  <div id="mobile-menu" class="lg:hidden fixed inset-0 top-16 bg-[#020710] z-[60] overflow-y-auto pointer-events-none">
     <nav class="max-w-md mx-auto px-6 py-8 flex flex-col gap-2" aria-label="მობილური ნავიგაცია">
       <a href="../index.html" class="menu-link block px-4 py-3 text-lg font-medium text-white rounded-xl hover:bg-white/5" style="transition-delay:0.05s">მთავარი</a>
       <a href="../about-us.html" class="menu-link block px-4 py-3 text-lg font-medium text-white rounded-xl hover:bg-white/5" style="transition-delay:0.08s">ჩვენს შესახებ</a>
@@ -182,59 +216,62 @@
       <p class="menu-link text-xs font-semibold text-white/40 uppercase tracking-wider mb-2" style="transition-delay:0.37s">ინდუსტრიები</p>
       <a href="healthcare.html" class="menu-link block px-4 py-3 text-base text-white/80 rounded-xl hover:bg-white/5 pl-8" style="transition-delay:0.39s">კლინიკები &amp; ჯანდაცვა</a>
       <a href="financial-services.html" class="menu-link block px-4 py-3 text-base text-white/80 rounded-xl hover:bg-white/5 pl-8" style="transition-delay:0.41s">ფინანსური სერვისები</a>
-      <a href="construction.html" class="menu-link block px-4 py-3 text-base text-neon bg-neon/10 rounded-xl font-medium pl-8" style="transition-delay:0.43s">სამშენებლო &amp; უძრავი ქონება</a>
+      <a href="construction.html" class="menu-link block px-4 py-3 text-base text-primary bg-primary/10 rounded-xl font-medium pl-8" style="transition-delay:0.43s">სამშენებლო &amp; უძრავი ქონება</a>
       <a href="ecommerce.html" class="menu-link block px-4 py-3 text-base text-white/80 rounded-xl hover:bg-white/5 pl-8" style="transition-delay:0.44s">E-commerce</a>
       <hr class="menu-link my-3 border-white/10" style="transition-delay:0.46s">
       <a href="../portfolio.html" class="menu-link block px-4 py-3 text-lg font-medium text-white rounded-xl hover:bg-white/5" style="transition-delay:0.48s">პორტფოლიო</a>
       <a href="../case-studies.html" class="menu-link block px-4 py-3 text-lg font-medium text-white rounded-xl hover:bg-white/5" style="transition-delay:0.5s">შედეგები</a>
       <a href="../blog.html" class="menu-link block px-4 py-3 text-lg font-medium text-white rounded-xl hover:bg-white/5" style="transition-delay:0.52s">ბლოგი</a>
       <hr class="menu-link my-3 border-white/10" style="transition-delay:0.54s">
-      <a href="#" onclick="openCalendly();return false;" class="menu-link block w-full text-center py-4 bg-neon text-black font-bold rounded-xl text-lg neon-pulse" style="transition-delay:0.56s">დაჯავშნე კონსულტაცია</a>
+      <a href="#" onclick="openCalendly();return false;" class="menu-link block w-full text-center py-4 ai-cta-animate text-white font-bold rounded-xl text-lg" style="transition-delay:0.56s">დაჯავშნე კონსულტაცია</a>
     </nav>
   </div>
   <!-- Breadcrumb -->
   <nav class="pt-20 lg:pt-24 pb-2 max-w-7xl mx-auto px-4 sm:px-6" aria-label="Breadcrumb">
     <ol class="flex items-center gap-2 text-xs text-white/40">
-      <li><a href="../index.html" class="hover:text-neon transition-colors">მთავარი</a></li><li>/</li>
-      <li><a href="../industries.html" class="hover:text-neon transition-colors">ინდუსტრიები</a></li><li>/</li>
-      <li class="text-neon">უძრავი ქონება &amp; მშენებლობა</li>
+      <li><a href="../index.html" class="hover:text-primary transition-colors">მთავარი</a></li><li>/</li>
+      <li><a href="../industries.html" class="hover:text-primary transition-colors">ინდუსტრიები</a></li><li>/</li>
+      <li class="text-primary">უძრავი ქონება &amp; მშენებლობა</li>
     </ol>
   </nav>
   <main id="main-content">
   <!-- ===== S1: HERO ===== -->
-  <section class="pt-8 pb-20 lg:pb-28">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+  <section class="pt-8 pb-20 lg:pb-28 relative overflow-hidden">
+    <!-- Hero blobs -->
+    <div class="absolute top-20 -left-32 w-96 h-96 bg-primary/10 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="absolute bottom-0 -right-32 w-80 h-80 bg-accent/10 rounded-full blur-[100px] pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
       <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <div class="animate-fade-in-up">
-          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-neon/10 border border-neon/20 text-neon text-xs font-semibold mb-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-semibold mb-6">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
             უძრავი ქონების SEO სპეციალისტები
           </div>
-          <h1 class="font-heading text-3xl sm:text-4xl lg:text-5xl xl:text-[3.4rem] font-bold text-white leading-tight mb-6">უძრავი ქონების SEO — მეტი <span class="text-neon">გარიგება ორგანული ძებნიდან</span></h1>
+          <h1 class="font-heading text-3xl sm:text-4xl lg:text-5xl xl:text-[3.4rem] font-bold text-white leading-tight mb-6">უძრავი ქონების SEO — მეტი <span class="gradient-text">გარიგება ორგანული ძებნიდან</span></h1>
           <p class="text-lg lg:text-xl text-white/60 leading-relaxed mb-8">ss.ge-ს ლიდები გაზიარებულია 5 სხვა აგენტთან. ორგანული ლიდები — ექსკლუზიურად თქვენია. ვაშენებთ SEO მანქანას, რომელიც მყიდველებს პირდაპირ თქვენთან მოიყვანს.</p>
           <div class="flex flex-col sm:flex-row gap-3 mb-8">
-            <a href="#" onclick="openCalendly();return false;" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-neon text-black font-bold rounded-xl text-base neon-pulse hover:bg-neon-dark transition-all">
+            <a href="#" onclick="openCalendly();return false;" class="inline-flex items-center justify-center gap-2 px-8 py-4 ai-cta-animate text-white font-bold rounded-xl text-base hover:brightness-110 transition-all">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
               მიიღეთ უფასო SEO აუდიტი</a>
-            <a href="#results" class="inline-flex items-center justify-center gap-2 px-8 py-4 border border-white/20 text-white font-semibold rounded-xl text-base hover:border-neon hover:text-neon transition-all">ნახეთ ჩვენი შედეგები</a>
+            <a href="#results" class="inline-flex items-center justify-center gap-2 px-8 py-4 border border-white/20 text-white font-semibold rounded-xl text-base hover:border-primary hover:text-primary transition-all">ნახეთ ჩვენი შედეგები</a>
           </div>
           <div class="flex flex-wrap items-center gap-6 text-sm text-white/40">
-            <span><span class="text-neon font-bold">6+</span> კლიენტი სექტორში</span>
-            <span><span class="text-neon font-bold">+68%</span> ორგანული ტრაფიკი</span>
-            <span><svg class="w-4 h-4 text-neon inline" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/></svg> საქართველო &amp; დუბაი</span>
+            <span><span class="text-primary font-bold">6+</span> კლიენტი სექტორში</span>
+            <span><span class="text-primary font-bold">+68%</span> ორგანული ტრაფიკი</span>
+            <span><svg class="w-4 h-4 text-primary inline" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/></svg> საქართველო &amp; დუბაი</span>
           </div>
         </div>
         <div class="animate-fade-in-up delay-200">
-          <div class="neon-card rounded-2xl p-6 lg:p-8">
-            <div class="flex items-center gap-2 mb-6"><div class="w-3 h-3 rounded-full bg-neon animate-pulse"></div><span class="text-xs text-white/40 font-medium">Real Estate SEO Dashboard</span></div>
+          <div class="glass-card rounded-2xl p-6 lg:p-8">
+            <div class="flex items-center gap-2 mb-6"><div class="w-3 h-3 rounded-full bg-primary animate-pulse"></div><span class="text-xs text-white/40 font-medium">Real Estate SEO Dashboard</span></div>
             <div class="grid grid-cols-2 gap-4">
-              <div class="dash-stat rounded-xl p-4 text-center"><p class="text-2xl lg:text-3xl font-bold text-neon mb-1">+68%</p><p class="text-xs text-white/40">ორგანული ტრაფიკი</p></div>
-              <div class="dash-stat rounded-xl p-4 text-center"><p class="text-2xl lg:text-3xl font-bold text-neon mb-1">+120%</p><p class="text-xs text-white/40">ლიდების ზრდა</p></div>
-              <div class="dash-stat rounded-xl p-4 text-center"><p class="text-2xl lg:text-3xl font-bold text-med-blue mb-1">Top 5</p><p class="text-xs text-white/40">ლოკაციური Keywords</p></div>
-              <div class="dash-stat rounded-xl p-4 text-center"><p class="text-2xl lg:text-3xl font-bold text-[#FFD700] mb-1">-45%</p><p class="text-xs text-white/40">პორტალ დამოკიდებულება</p></div>
+              <div class="dash-stat rounded-xl p-4 text-center"><p class="text-2xl lg:text-3xl font-bold text-primary mb-1">+68%</p><p class="text-xs text-white/40">ორგანული ტრაფიკი</p></div>
+              <div class="dash-stat rounded-xl p-4 text-center"><p class="text-2xl lg:text-3xl font-bold text-accent mb-1">+120%</p><p class="text-xs text-white/40">ლიდების ზრდა</p></div>
+              <div class="dash-stat rounded-xl p-4 text-center"><p class="text-2xl lg:text-3xl font-bold text-ai-blue mb-1">Top 5</p><p class="text-xs text-white/40">ლოკაციური Keywords</p></div>
+              <div class="dash-stat rounded-xl p-4 text-center"><p class="text-2xl lg:text-3xl font-bold text-gold mb-1">-45%</p><p class="text-xs text-white/40">პორტალ დამოკიდებულება</p></div>
             </div>
             <div class="mt-6 h-20 rounded-lg bg-white/[0.02] border border-white/5 flex items-end justify-around px-4 pb-2">
-              <div class="w-3 bg-neon/30 rounded-t" style="height:30%"></div><div class="w-3 bg-neon/40 rounded-t" style="height:45%"></div><div class="w-3 bg-neon/50 rounded-t" style="height:55%"></div><div class="w-3 bg-neon/60 rounded-t" style="height:50%"></div><div class="w-3 bg-neon/70 rounded-t" style="height:65%"></div><div class="w-3 bg-neon/80 rounded-t" style="height:75%"></div><div class="w-3 bg-neon rounded-t" style="height:90%"></div>
+              <div class="w-3 rounded-t" style="height:30%;background:rgba(139,92,246,0.3)"></div><div class="w-3 rounded-t" style="height:45%;background:rgba(139,92,246,0.4)"></div><div class="w-3 rounded-t" style="height:55%;background:rgba(139,92,246,0.5)"></div><div class="w-3 rounded-t" style="height:50%;background:rgba(20,184,166,0.5)"></div><div class="w-3 rounded-t" style="height:65%;background:rgba(20,184,166,0.6)"></div><div class="w-3 rounded-t" style="height:75%;background:rgba(20,184,166,0.7)"></div><div class="w-3 rounded-t" style="height:90%;background:rgba(20,184,166,0.9)"></div>
             </div>
             <p class="text-xs text-white/30 text-center mt-2">ორგანული ტრაფიკის ზრდა 6 თვეში</p>
           </div>
@@ -247,7 +284,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="text-center mb-16 reveal"><h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">ss.ge-ს პრობლემა: <span class="text-danger">რატომ ჯდება პორტალი ძვირად</span></h2><p class="text-lg text-white/50">პორტალი ყიდის ქონებას. SEO იმარჯვებს კლიენტს.</p></div>
       <div class="grid lg:grid-cols-2 gap-8 reveal">
-        <div class="neon-card rounded-2xl p-8" style="border-color: rgba(255,68,68,0.15);">
+        <div class="glass-card rounded-2xl p-8" style="border-color: rgba(255,68,68,0.15);">
           <div class="flex items-center gap-3 mb-6"><div class="w-12 h-12 rounded-xl bg-danger/10 flex items-center justify-center"><svg class="w-6 h-6 text-danger" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg></div><h3 class="text-xl font-bold text-danger">პორტალის ლიდები</h3></div>
           <ul class="space-y-4">
             <li class="flex items-start gap-3"><span class="text-danger mt-1">&#10007;</span><span class="text-white/60"><strong class="text-white">გაზიარებული</strong> — 5 კონკურენტი იგივე ლიდზე</span></li>
@@ -258,14 +295,14 @@
           </ul>
           <p class="mt-6 text-xs text-white/30">ss.ge, myhome.ge | Bayut, Property Finder, Dubizzle</p>
         </div>
-        <div class="neon-card rounded-2xl p-8">
-          <div class="flex items-center gap-3 mb-6"><div class="w-12 h-12 rounded-xl bg-neon/10 flex items-center justify-center"><svg class="w-6 h-6 text-neon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div><h3 class="text-xl font-bold text-neon">ორგანული ლიდები</h3></div>
+        <div class="glass-card rounded-2xl p-8">
+          <div class="flex items-center gap-3 mb-6"><div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center"><svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div><h3 class="text-xl font-bold text-primary">ორგანული ლიდები</h3></div>
           <ul class="space-y-4">
-            <li class="flex items-start gap-3"><span class="text-neon mt-1">&#10003;</span><span class="text-white/60"><strong class="text-white">ექსკლუზიური</strong> — მხოლოდ თქვენთან მოდის</span></li>
-            <li class="flex items-start gap-3"><span class="text-neon mt-1">&#10003;</span><span class="text-white/60"><strong class="text-white">უფასო</strong> — ტრაფიკი არ ღირს per-click</span></li>
-            <li class="flex items-start gap-3"><span class="text-neon mt-1">&#10003;</span><span class="text-white/60"><strong class="text-white">14.6% კონვერსია</strong> — მაღალი ინტენტი</span></li>
-            <li class="flex items-start gap-3"><span class="text-neon mt-1">&#10003;</span><span class="text-white/60"><strong class="text-white">პირდაპირი კონტაქტი</strong> — brand trust</span></li>
-            <li class="flex items-start gap-3"><span class="text-neon mt-1">&#10003;</span><span class="text-white/60"><strong class="text-white">კუმულატიური</strong> — დრო რომ გადის, შედეგი იზრდება</span></li>
+            <li class="flex items-start gap-3"><span class="text-primary mt-1">&#10003;</span><span class="text-white/60"><strong class="text-white">ექსკლუზიური</strong> — მხოლოდ თქვენთან მოდის</span></li>
+            <li class="flex items-start gap-3"><span class="text-primary mt-1">&#10003;</span><span class="text-white/60"><strong class="text-white">უფასო</strong> — ტრაფიკი არ ღირს per-click</span></li>
+            <li class="flex items-start gap-3"><span class="text-primary mt-1">&#10003;</span><span class="text-white/60"><strong class="text-white">14.6% კონვერსია</strong> — მაღალი ინტენტი</span></li>
+            <li class="flex items-start gap-3"><span class="text-primary mt-1">&#10003;</span><span class="text-white/60"><strong class="text-white">პირდაპირი კონტაქტი</strong> — brand trust</span></li>
+            <li class="flex items-start gap-3"><span class="text-primary mt-1">&#10003;</span><span class="text-white/60"><strong class="text-white">კუმულატიური</strong> — დრო რომ გადის, შედეგი იზრდება</span></li>
           </ul>
         </div>
       </div>
@@ -279,9 +316,9 @@
         <span class="text-white/40 font-semibold">Horizon Development</span><span class="text-white/40 font-semibold">myhome.ge</span><span class="text-white/40 font-semibold">Kotejebi.ge</span><span class="text-white/40 font-semibold">Fanjrebi.ge</span><span class="text-white/40 font-semibold">Gergili</span><span class="text-white/40 font-semibold">10xHome</span>
       </div>
       <div class="flex flex-wrap items-center justify-center gap-6 lg:gap-10 text-sm text-white/50 reveal">
-        <span><span class="text-neon font-bold text-lg">97%</span> მყიდველი ინტერნეტით ეძებს</span>
-        <span><span class="text-neon font-bold text-lg">72%</span> მობილური ძიება</span>
-        <span><span class="text-neon font-bold text-lg">6+</span> კლიენტი სექტორში</span>
+        <span><span class="text-primary font-bold text-lg">97%</span> მყიდველი ინტერნეტით ეძებს</span>
+        <span><span class="text-primary font-bold text-lg">72%</span> მობილური ძიება</span>
+        <span><span class="text-primary font-bold text-lg">6+</span> კლიენტი სექტორში</span>
         <span><svg class="w-5 h-5 text-yellow-400 inline" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Clutch 5.0</span>
       </div>
     </div>
@@ -289,52 +326,52 @@
   <!-- ===== S4: SERVICES (8 Cards) ===== -->
   <section class="py-20 lg:py-28 border-y border-white/5">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-16 reveal"><h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">უძრავი ქონების <span class="text-neon">SEO სერვისები</span></h2><p class="text-lg text-white/50">ყველაფერი, რაც უძრავი ქონების ონლაინ წარმატებისთვის გჭირდებათ</p></div>
+      <div class="text-center mb-16 reveal"><h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">უძრავი ქონების <span class="gradient-text">SEO სერვისები</span></h2><p class="text-lg text-white/50">ყველაფერი, რაც უძრავი ქონების ონლაინ წარმატებისთვის გჭირდებათ</p></div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="neon-card rounded-2xl p-6 reveal"><div class="w-12 h-12 rounded-xl bg-neon/10 flex items-center justify-center mb-4"><svg class="w-6 h-6 text-neon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><h3 class="text-white font-bold mb-2">ლოკალური SEO &amp; GBP</h3><p class="text-sm text-white/40">უბნის დონეზე ოპტიმიზაცია, Google Maps ხილვადობა, ლოკალური ციტირებები.</p></div>
-        <div class="neon-card rounded-2xl p-6 reveal"><div class="w-12 h-12 rounded-xl bg-neon/10 flex items-center justify-center mb-4"><svg class="w-6 h-6 text-neon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div><h3 class="text-white font-bold mb-2">ქონების ლისტინგის SEO</h3><p class="text-sm text-white/40">RealEstateListing Schema markup, სტრუქტურირებული მონაცემები, rich results.</p></div>
-        <div class="neon-card rounded-2xl p-6 reveal"><div class="w-12 h-12 rounded-xl bg-neon/10 flex items-center justify-center mb-4"><svg class="w-6 h-6 text-neon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg></div><h3 class="text-white font-bold mb-2">უბნის/არეალის გვერდები</h3><p class="text-sm text-white/40">პროგრამული და მანუალური უბნის გვერდები ლოკაციური keyword-ებით.</p></div>
-        <div class="neon-card rounded-2xl p-6 reveal"><div class="w-12 h-12 rounded-xl bg-neon/10 flex items-center justify-center mb-4"><svg class="w-6 h-6 text-neon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg></div><h3 class="text-white font-bold mb-2">დეველოპერის &amp; Off-Plan SEO</h3><p class="text-sm text-white/40">პროექტამდე keyword targeting, Off-plan ლენდინგები, brand authority.</p></div>
-        <div class="neon-card rounded-2xl p-6 reveal"><div class="w-12 h-12 rounded-xl bg-neon/10 flex items-center justify-center mb-4"><svg class="w-6 h-6 text-neon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg></div><h3 class="text-white font-bold mb-2">კონტენტ მარკეტინგი</h3><p class="text-sm text-white/40">ბაზრის ანგარიშები, არეალის გიდები, ინვესტორის ბლოგები, PR სტატიები.</p></div>
-        <div class="neon-card rounded-2xl p-6 reveal"><div class="w-12 h-12 rounded-xl bg-neon/10 flex items-center justify-center mb-4"><svg class="w-6 h-6 text-neon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg></div><h3 class="text-white font-bold mb-2">AI/GEO ოპტიმიზაცია</h3><p class="text-sm text-white/40">ChatGPT, Google AI Overviews, Perplexity-ში ხილვადობის უზრუნველყოფა.</p></div>
-        <div class="neon-card rounded-2xl p-6 reveal"><div class="w-12 h-12 rounded-xl bg-neon/10 flex items-center justify-center mb-4"><svg class="w-6 h-6 text-neon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg></div><h3 class="text-white font-bold mb-2">ტექნიკური SEO</h3><p class="text-sm text-white/40">IDX ინტეგრაცია, ლისტინგის ფიდები, Core Web Vitals, სიჩქარის ოპტიმიზაცია.</p></div>
-        <div class="neon-card rounded-2xl p-6 reveal"><div class="w-12 h-12 rounded-xl bg-neon/10 flex items-center justify-center mb-4"><svg class="w-6 h-6 text-neon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg></div><h3 class="text-white font-bold mb-2">ლინკ ბილდინგი &amp; Digital PR</h3><p class="text-sm text-white/40">უძრავი ქონების მედია, ინდუსტრიის პუბლიკაციები, ავტორიტეტული ბექლინკები.</p></div>
+        <div class="glass-card rounded-2xl p-6 reveal"><div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4"><svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><h3 class="text-white font-bold mb-2">ლოკალური SEO &amp; GBP</h3><p class="text-sm text-white/40">უბნის დონეზე ოპტიმიზაცია, Google Maps ხილვადობა, ლოკალური ციტირებები.</p></div>
+        <div class="glass-card rounded-2xl p-6 reveal"><div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4"><svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div><h3 class="text-white font-bold mb-2">ქონების ლისტინგის SEO</h3><p class="text-sm text-white/40">RealEstateListing Schema markup, სტრუქტურირებული მონაცემები, rich results.</p></div>
+        <div class="glass-card rounded-2xl p-6 reveal"><div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4"><svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg></div><h3 class="text-white font-bold mb-2">უბნის/არეალის გვერდები</h3><p class="text-sm text-white/40">პროგრამული და მანუალური უბნის გვერდები ლოკაციური keyword-ებით.</p></div>
+        <div class="glass-card rounded-2xl p-6 reveal"><div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4"><svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg></div><h3 class="text-white font-bold mb-2">დეველოპერის &amp; Off-Plan SEO</h3><p class="text-sm text-white/40">პროექტამდე keyword targeting, Off-plan ლენდინგები, brand authority.</p></div>
+        <div class="glass-card rounded-2xl p-6 reveal"><div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4"><svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg></div><h3 class="text-white font-bold mb-2">კონტენტ მარკეტინგი</h3><p class="text-sm text-white/40">ბაზრის ანგარიშები, არეალის გიდები, ინვესტორის ბლოგები, PR სტატიები.</p></div>
+        <div class="glass-card rounded-2xl p-6 reveal"><div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4"><svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg></div><h3 class="text-white font-bold mb-2">AI/GEO ოპტიმიზაცია</h3><p class="text-sm text-white/40">ChatGPT, Google AI Overviews, Perplexity-ში ხილვადობის უზრუნველყოფა.</p></div>
+        <div class="glass-card rounded-2xl p-6 reveal"><div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4"><svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg></div><h3 class="text-white font-bold mb-2">ტექნიკური SEO</h3><p class="text-sm text-white/40">IDX ინტეგრაცია, ლისტინგის ფიდები, Core Web Vitals, სიჩქარის ოპტიმიზაცია.</p></div>
+        <div class="glass-card rounded-2xl p-6 reveal"><div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4"><svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg></div><h3 class="text-white font-bold mb-2">ლინკ ბილდინგი &amp; Digital PR</h3><p class="text-sm text-white/40">უძრავი ქონების მედია, ინდუსტრიის პუბლიკაციები, ავტორიტეტული ბექლინკები.</p></div>
       </div>
     </div>
   </section>
   <!-- ===== S5: SUB-NICHE TABS ===== -->
   <section class="py-20 lg:py-28">
     <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-12 reveal"><h2 class="font-heading text-3xl sm:text-4xl font-bold text-white mb-4">ყველა <span class="text-neon">სეგმენტი</span> ვფარავთ</h2><p class="text-lg text-white/50">თქვენი ნიშა — ჩვენი ექსპერტიზა</p></div>
+      <div class="text-center mb-12 reveal"><h2 class="font-heading text-3xl sm:text-4xl font-bold text-white mb-4">ყველა <span class="gradient-text">სეგმენტი</span> ვფარავთ</h2><p class="text-lg text-white/50">თქვენი ნიშა — ჩვენი ექსპერტიზა</p></div>
       <div class="flex flex-wrap justify-center gap-2 mb-10 reveal">
         <button class="tab-btn active px-4 py-2.5 rounded-xl text-sm font-semibold border border-white/10" data-tab="tab-residential">საცხოვრებელი</button>
-        <button class="tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold text-white/60 border border-white/10 hover:border-neon/30" data-tab="tab-commercial">კომერციული</button>
-        <button class="tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold text-white/60 border border-white/10 hover:border-neon/30" data-tab="tab-luxury">ლუქსი</button>
-        <button class="tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold text-white/60 border border-white/10 hover:border-neon/30" data-tab="tab-offplan">Off-Plan</button>
-        <button class="tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold text-white/60 border border-white/10 hover:border-neon/30" data-tab="tab-developer">დეველოპერი</button>
-        <button class="tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold text-white/60 border border-white/10 hover:border-neon/30" data-tab="tab-management">ქონების მართვა</button>
-        <button class="tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold text-white/60 border border-white/10 hover:border-neon/30" data-tab="tab-resort">საკურორტო</button>
+        <button class="tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold text-white/60 border border-white/10 hover:border-primary/30" data-tab="tab-commercial">კომერციული</button>
+        <button class="tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold text-white/60 border border-white/10 hover:border-primary/30" data-tab="tab-luxury">ლუქსი</button>
+        <button class="tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold text-white/60 border border-white/10 hover:border-primary/30" data-tab="tab-offplan">Off-Plan</button>
+        <button class="tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold text-white/60 border border-white/10 hover:border-primary/30" data-tab="tab-developer">დეველოპერი</button>
+        <button class="tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold text-white/60 border border-white/10 hover:border-primary/30" data-tab="tab-management">ქონების მართვა</button>
+        <button class="tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold text-white/60 border border-white/10 hover:border-primary/30" data-tab="tab-resort">საკურორტო</button>
       </div>
-      <div class="neon-card rounded-2xl p-8 reveal">
-        <div id="tab-residential" class="tab-content"><h3 class="text-white font-bold text-lg mb-3">საცხოვრებელი უძრავი ქონება</h3><p class="text-white/50 leading-relaxed mb-4">ბინების, სახლების და საცხოვრებელი კომპლექსების SEO. ლოკალური keyword-ები უბნების მიხედვით, RealEstateListing Schema, ვირტუალური ტურის ოპტიმიზაცია.</p><p class="text-sm text-neon/60">Keywords: ბინა ვაკეში, სახლი თბილისში, ახალაშენებული ბინა, apartment for sale Tbilisi</p></div>
-        <div id="tab-commercial" class="tab-content hidden"><h3 class="text-white font-bold text-lg mb-3">კომერციული ქონება</h3><p class="text-white/50 leading-relaxed mb-4">ოფისების, სავაჭრო ფართების და საწყობების SEO. B2B keyword სტრატეგია, ლიდ ჯენერაცია, კორპორატიულ მყიდველებზე მორგებული კონტენტი.</p><p class="text-sm text-neon/60">Keywords: ოფისი ქირავდება, კომერციული ფართი, office space Tbilisi</p></div>
-        <div id="tab-luxury" class="tab-content hidden"><h3 class="text-white font-bold text-lg mb-3">ლუქს უძრავი ქონება</h3><p class="text-white/50 leading-relaxed mb-4">პრემიუმ სეგმენტის SEO სტრატეგია. საერთაშორისო ინვესტორებზე ორიენტირებული კონტენტი, მრავალენოვანი SEO, მაღალი ღირებულების keyword-ები.</p><p class="text-sm text-neon/60">Keywords: luxury apartment Tbilisi, premium penthouse Batumi, exclusive villa Georgia</p></div>
-        <div id="tab-offplan" class="tab-content hidden"><h3 class="text-white font-bold text-lg mb-3">Off-Plan პროექტები</h3><p class="text-white/50 leading-relaxed mb-4">მშენებარე პროექტების SEO — keyword targeting პროექტის დაანონსებამდე, პროექტის ლენდინგ გვერდები, ინვესტორის კონტენტი.</p><p class="text-sm text-neon/60">Keywords: ახალი პროექტი ბათუმი, off-plan Tbilisi, new development Batumi</p></div>
-        <div id="tab-developer" class="tab-content hidden"><h3 class="text-white font-bold text-lg mb-3">სამშენებლო კომპანიები / დეველოპერები</h3><p class="text-white/50 leading-relaxed mb-4">კორპორატიული SEO სტრატეგია. კომპანიის brand authority, პროექტების პორტფოლიო ოპტიმიზაცია, ინვესტორთან ურთიერთობის კონტენტი.</p><p class="text-sm text-neon/60">Keywords: სამშენებლო კომპანია თბილისი, real estate developer Georgia</p></div>
-        <div id="tab-management" class="tab-content hidden"><h3 class="text-white font-bold text-lg mb-3">ქონების მართვის კომპანიები</h3><p class="text-white/50 leading-relaxed mb-4">Property management SEO. მოიჯარეების მოზიდვა, მფლობელების ნდობის მოპოვება, ლოკალური სერვისის ოპტიმიზაცია.</p><p class="text-sm text-neon/60">Keywords: ქონების მართვა, property management Tbilisi, rental management Georgia</p></div>
-        <div id="tab-resort" class="tab-content hidden"><h3 class="text-white font-bold text-lg mb-3">საკურორტო უძრავი ქონება</h3><p class="text-white/50 leading-relaxed mb-4">ბათუმი, გუდაური, ბაკურიანი — საკურორტო ქონების SEO. ტურისტულ ძიებებზე მორგება, Airbnb ინვესტორების მოზიდვა.</p><p class="text-sm text-neon/60">Keywords: ბინა ბათუმში ზღვასთან, apartment Gudauri ski resort, vacation property Batumi</p></div>
+      <div class="glass-card rounded-2xl p-8 reveal">
+        <div id="tab-residential" class="tab-content"><h3 class="text-white font-bold text-lg mb-3">საცხოვრებელი უძრავი ქონება</h3><p class="text-white/50 leading-relaxed mb-4">ბინების, სახლების და საცხოვრებელი კომპლექსების SEO. ლოკალური keyword-ები უბნების მიხედვით, RealEstateListing Schema, ვირტუალური ტურის ოპტიმიზაცია.</p><p class="text-sm text-primary/60">Keywords: ბინა ვაკეში, სახლი თბილისში, ახალაშენებული ბინა, apartment for sale Tbilisi</p></div>
+        <div id="tab-commercial" class="tab-content hidden"><h3 class="text-white font-bold text-lg mb-3">კომერციული ქონება</h3><p class="text-white/50 leading-relaxed mb-4">ოფისების, სავაჭრო ფართების და საწყობების SEO. B2B keyword სტრატეგია, ლიდ ჯენერაცია, კორპორატიულ მყიდველებზე მორგებული კონტენტი.</p><p class="text-sm text-primary/60">Keywords: ოფისი ქირავდება, კომერციული ფართი, office space Tbilisi</p></div>
+        <div id="tab-luxury" class="tab-content hidden"><h3 class="text-white font-bold text-lg mb-3">ლუქს უძრავი ქონება</h3><p class="text-white/50 leading-relaxed mb-4">პრემიუმ სეგმენტის SEO სტრატეგია. საერთაშორისო ინვესტორებზე ორიენტირებული კონტენტი, მრავალენოვანი SEO, მაღალი ღირებულების keyword-ები.</p><p class="text-sm text-primary/60">Keywords: luxury apartment Tbilisi, premium penthouse Batumi, exclusive villa Georgia</p></div>
+        <div id="tab-offplan" class="tab-content hidden"><h3 class="text-white font-bold text-lg mb-3">Off-Plan პროექტები</h3><p class="text-white/50 leading-relaxed mb-4">მშენებარე პროექტების SEO — keyword targeting პროექტის დაანონსებამდე, პროექტის ლენდინგ გვერდები, ინვესტორის კონტენტი.</p><p class="text-sm text-primary/60">Keywords: ახალი პროექტი ბათუმი, off-plan Tbilisi, new development Batumi</p></div>
+        <div id="tab-developer" class="tab-content hidden"><h3 class="text-white font-bold text-lg mb-3">სამშენებლო კომპანიები / დეველოპერები</h3><p class="text-white/50 leading-relaxed mb-4">კორპორატიული SEO სტრატეგია. კომპანიის brand authority, პროექტების პორტფოლიო ოპტიმიზაცია, ინვესტორთან ურთიერთობის კონტენტი.</p><p class="text-sm text-primary/60">Keywords: სამშენებლო კომპანია თბილისი, real estate developer Georgia</p></div>
+        <div id="tab-management" class="tab-content hidden"><h3 class="text-white font-bold text-lg mb-3">ქონების მართვის კომპანიები</h3><p class="text-white/50 leading-relaxed mb-4">Property management SEO. მოიჯარეების მოზიდვა, მფლობელების ნდობის მოპოვება, ლოკალური სერვისის ოპტიმიზაცია.</p><p class="text-sm text-primary/60">Keywords: ქონების მართვა, property management Tbilisi, rental management Georgia</p></div>
+        <div id="tab-resort" class="tab-content hidden"><h3 class="text-white font-bold text-lg mb-3">საკურორტო უძრავი ქონება</h3><p class="text-white/50 leading-relaxed mb-4">ბათუმი, გუდაური, ბაკურიანი — საკურორტო ქონების SEO. ტურისტულ ძიებებზე მორგება, Airbnb ინვესტორების მოზიდვა.</p><p class="text-sm text-primary/60">Keywords: ბინა ბათუმში ზღვასთან, apartment Gudauri ski resort, vacation property Batumi</p></div>
       </div>
     </div>
   </section>
   <!-- ===== S6: RESULTS ===== -->
   <section id="results" class="py-20 lg:py-28 border-y border-white/5">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-16 reveal"><h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">რეალური <span class="text-neon">შედეგები</span> უძრავი ქონების სექტორში</h2></div>
+      <div class="text-center mb-16 reveal"><h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">რეალური <span class="gradient-text">შედეგები</span> უძრავი ქონების სექტორში</h2></div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="neon-card rounded-2xl p-8 text-center reveal"><p class="text-4xl lg:text-5xl font-bold text-neon mb-2">+68%</p><p class="text-white font-semibold mb-1">ორგანული ტრაფიკი</p><p class="text-sm text-white/40">Horizon Development (Batumi)</p></div>
-        <div class="neon-card rounded-2xl p-8 text-center reveal"><p class="text-4xl lg:text-5xl font-bold text-neon mb-2">+120%</p><p class="text-white font-semibold mb-1">ლიდების ზრდა</p><p class="text-sm text-white/40">myhome.ge</p></div>
-        <div class="neon-card rounded-2xl p-8 text-center reveal"><p class="text-4xl lg:text-5xl font-bold text-neon mb-2">Top 5</p><p class="text-white font-semibold mb-1">ლოკაციური Keywords</p><p class="text-sm text-white/40">Kotejebi.ge</p></div>
-        <div class="neon-card rounded-2xl p-8 text-center reveal"><p class="text-4xl lg:text-5xl font-bold text-med-blue mb-2">6+</p><p class="text-white font-semibold mb-1">კლიენტი სექტორში</p><p class="text-sm text-white/40">საქართველოში</p></div>
+        <div class="glass-card rounded-2xl p-8 text-center reveal"><p class="text-4xl lg:text-5xl font-bold text-primary mb-2">+68%</p><p class="text-white font-semibold mb-1">ორგანული ტრაფიკი</p><p class="text-sm text-white/40">Horizon Development (Batumi)</p></div>
+        <div class="glass-card rounded-2xl p-8 text-center reveal"><p class="text-4xl lg:text-5xl font-bold text-accent mb-2">+120%</p><p class="text-white font-semibold mb-1">ლიდების ზრდა</p><p class="text-sm text-white/40">myhome.ge</p></div>
+        <div class="glass-card rounded-2xl p-8 text-center reveal"><p class="text-4xl lg:text-5xl font-bold text-primary mb-2">Top 5</p><p class="text-white font-semibold mb-1">ლოკაციური Keywords</p><p class="text-sm text-white/40">Kotejebi.ge</p></div>
+        <div class="glass-card rounded-2xl p-8 text-center reveal"><p class="text-4xl lg:text-5xl font-bold text-ai-blue mb-2">6+</p><p class="text-white font-semibold mb-1">კლიენტი სექტორში</p><p class="text-sm text-white/40">საქართველოში</p></div>
       </div>
     </div>
   </section>
@@ -342,18 +379,18 @@
   <section class="py-20 lg:py-28">
     <div class="max-w-4xl mx-auto px-4 sm:px-6">
       <div class="text-center mb-16 reveal"><h2 class="font-heading text-3xl sm:text-4xl font-bold text-white mb-4">10xSEO vs. <span class="text-white/40">გენერიკული სააგენტოები</span></h2></div>
-      <div class="neon-card rounded-2xl overflow-hidden reveal">
+      <div class="glass-card rounded-2xl overflow-hidden reveal">
         <table class="w-full text-sm">
-          <thead><tr class="border-b border-white/10"><th class="text-left p-4 text-white/50 font-medium">კრიტერიუმი</th><th class="p-4 text-center text-neon font-bold">10xSEO</th><th class="p-4 text-center text-white/40 font-medium">გენერიკული</th></tr></thead>
+          <thead><tr class="border-b border-white/10"><th class="text-left p-4 text-white/50 font-medium">კრიტერიუმი</th><th class="p-4 text-center text-primary font-bold">10xSEO</th><th class="p-4 text-center text-white/40 font-medium">გენერიკული</th></tr></thead>
           <tbody>
-            <tr class="border-b border-white/5 hover:bg-white/[0.02]"><td class="p-4 text-white/70">უძრავი ქონების ექსპერტიზა</td><td class="p-4 text-center text-neon text-lg">&#10003;</td><td class="p-4 text-center text-danger text-lg">&#10007;</td></tr>
-            <tr class="border-b border-white/5 hover:bg-white/[0.02]"><td class="p-4 text-white/70">პორტალ-ბალანსის სტრატეგია</td><td class="p-4 text-center text-neon text-lg">&#10003;</td><td class="p-4 text-center text-danger text-lg">&#10007;</td></tr>
-            <tr class="border-b border-white/5 hover:bg-white/[0.02]"><td class="p-4 text-white/70">Off-Plan SEO</td><td class="p-4 text-center text-neon text-lg">&#10003;</td><td class="p-4 text-center text-danger text-lg">&#10007;</td></tr>
-            <tr class="border-b border-white/5 hover:bg-white/[0.02]"><td class="p-4 text-white/70">უბნის/არეალის გვერდები</td><td class="p-4 text-center text-neon text-lg">&#10003;</td><td class="p-4 text-center text-white/20 text-lg">~</td></tr>
-            <tr class="border-b border-white/5 hover:bg-white/[0.02]"><td class="p-4 text-white/70">IDX/ლისტინგ ინტეგრაცია</td><td class="p-4 text-center text-neon text-lg">&#10003;</td><td class="p-4 text-center text-danger text-lg">&#10007;</td></tr>
-            <tr class="border-b border-white/5 hover:bg-white/[0.02]"><td class="p-4 text-white/70">AI ძიების ოპტიმიზაცია (GEO)</td><td class="p-4 text-center text-neon text-lg">&#10003;</td><td class="p-4 text-center text-danger text-lg">&#10007;</td></tr>
-            <tr class="border-b border-white/5 hover:bg-white/[0.02]"><td class="p-4 text-white/70">მრავალენოვანი SEO</td><td class="p-4 text-center text-neon text-lg">&#10003;</td><td class="p-4 text-center text-white/20 text-lg">~</td></tr>
-            <tr class="hover:bg-white/[0.02]"><td class="p-4 text-white/70">გამჭვირვალე ფასები</td><td class="p-4 text-center text-neon text-lg">&#10003;</td><td class="p-4 text-center text-danger text-lg">&#10007;</td></tr>
+            <tr class="border-b border-white/5 hover:bg-white/[0.02]"><td class="p-4 text-white/70">უძრავი ქონების ექსპერტიზა</td><td class="p-4 text-center text-primary text-lg">&#10003;</td><td class="p-4 text-center text-red-400 text-lg">&#10007;</td></tr>
+            <tr class="border-b border-white/5 hover:bg-white/[0.02]"><td class="p-4 text-white/70">პორტალ-ბალანსის სტრატეგია</td><td class="p-4 text-center text-primary text-lg">&#10003;</td><td class="p-4 text-center text-red-400 text-lg">&#10007;</td></tr>
+            <tr class="border-b border-white/5 hover:bg-white/[0.02]"><td class="p-4 text-white/70">Off-Plan SEO</td><td class="p-4 text-center text-primary text-lg">&#10003;</td><td class="p-4 text-center text-red-400 text-lg">&#10007;</td></tr>
+            <tr class="border-b border-white/5 hover:bg-white/[0.02]"><td class="p-4 text-white/70">უბნის/არეალის გვერდები</td><td class="p-4 text-center text-primary text-lg">&#10003;</td><td class="p-4 text-center text-white/20 text-lg">~</td></tr>
+            <tr class="border-b border-white/5 hover:bg-white/[0.02]"><td class="p-4 text-white/70">IDX/ლისტინგ ინტეგრაცია</td><td class="p-4 text-center text-primary text-lg">&#10003;</td><td class="p-4 text-center text-red-400 text-lg">&#10007;</td></tr>
+            <tr class="border-b border-white/5 hover:bg-white/[0.02]"><td class="p-4 text-white/70">AI ძიების ოპტიმიზაცია (GEO)</td><td class="p-4 text-center text-primary text-lg">&#10003;</td><td class="p-4 text-center text-red-400 text-lg">&#10007;</td></tr>
+            <tr class="border-b border-white/5 hover:bg-white/[0.02]"><td class="p-4 text-white/70">მრავალენოვანი SEO</td><td class="p-4 text-center text-primary text-lg">&#10003;</td><td class="p-4 text-center text-white/20 text-lg">~</td></tr>
+            <tr class="hover:bg-white/[0.02]"><td class="p-4 text-white/70">გამჭვირვალე ფასები</td><td class="p-4 text-center text-primary text-lg">&#10003;</td><td class="p-4 text-center text-red-400 text-lg">&#10007;</td></tr>
           </tbody>
         </table>
       </div>
@@ -362,20 +399,20 @@
   <!-- ===== S8: PROCESS TIMELINE ===== -->
   <section class="py-20 lg:py-28 border-y border-white/5">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-16 reveal"><h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">ჩვენი <span class="text-neon">პროცესი</span></h2><p class="text-lg text-white/50">4 ფაზა თქვენი უძრავი ქონების ბიზნესის ონლაინ ზრდისთვის</p></div>
-      <div class="hidden lg:block relative mb-8"><div class="absolute top-8 left-0 right-0 h-0.5 bg-white/10"><div class="h-full bg-gradient-to-r from-neon to-med-blue" style="width:100%"></div></div>
+      <div class="text-center mb-16 reveal"><h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">ჩვენი <span class="gradient-text">პროცესი</span></h2><p class="text-lg text-white/50">4 ფაზა თქვენი უძრავი ქონების ბიზნესის ონლაინ ზრდისთვის</p></div>
+      <div class="hidden lg:block relative mb-8"><div class="absolute top-8 left-0 right-0 h-0.5 bg-white/10"><div class="h-full bg-gradient-to-r from-primary to-accent" style="width:100%"></div></div>
         <div class="grid grid-cols-4 gap-6 relative">
-          <div class="text-center reveal"><div class="w-16 h-16 rounded-full bg-neon text-black font-bold text-xl flex items-center justify-center mx-auto mb-4 relative z-10 neon-glow-sm">1</div><h3 class="text-white font-bold mb-1">აუდიტი &amp; სტრატეგია</h3><p class="text-xs text-neon mb-1">თვე 1</p><p class="text-sm text-white/40">ტექნიკური აუდიტი, keyword კვლევა, კონკურენტების ანალიზი, პორტალ-ბალანსის შეფასება.</p></div>
-          <div class="text-center reveal"><div class="w-16 h-16 rounded-full bg-neon text-black font-bold text-xl flex items-center justify-center mx-auto mb-4 relative z-10 neon-glow-sm">2</div><h3 class="text-white font-bold mb-1">ფუნდამენტის აშენება</h3><p class="text-xs text-neon mb-1">თვე 2-3</p><p class="text-sm text-white/40">ტექნიკური ფიქსები, GBP ოპტიმიზაცია, Schema markup, უბნის გვერდები.</p></div>
-          <div class="text-center reveal"><div class="w-16 h-16 rounded-full bg-med-blue text-black font-bold text-xl flex items-center justify-center mx-auto mb-4 relative z-10" style="box-shadow:0 0 10px rgba(79,195,247,0.3)">3</div><h3 class="text-white font-bold mb-1">ზრდის აჩქარება</h3><p class="text-xs text-med-blue mb-1">თვე 4-6</p><p class="text-sm text-white/40">კონტენტ მარკეტინგი, ლინკ ბილდინგი, ლოკალური ციტირებები, Off-plan SEO.</p></div>
-          <div class="text-center reveal"><div class="w-16 h-16 rounded-full bg-neon text-black font-bold text-xl flex items-center justify-center mx-auto mb-4 relative z-10 neon-glow-sm">4</div><h3 class="text-white font-bold mb-1">ავტორიტეტი &amp; მასშტაბი</h3><p class="text-xs text-neon mb-1">თვე 7-12+</p><p class="text-sm text-white/40">GEO ოპტიმიზაცია, Digital PR, მულტი-ლოკაცია, საერთაშორისო გაფართოება.</p></div>
+          <div class="text-center reveal"><div class="w-16 h-16 rounded-full bg-primary text-white font-bold text-xl flex items-center justify-center mx-auto mb-4 relative z-10" style="box-shadow:0 0 10px rgba(139,92,246,0.3)">1</div><h3 class="text-white font-bold mb-1">აუდიტი &amp; სტრატეგია</h3><p class="text-xs text-primary mb-1">თვე 1</p><p class="text-sm text-white/40">ტექნიკური აუდიტი, keyword კვლევა, კონკურენტების ანალიზი, პორტალ-ბალანსის შეფასება.</p></div>
+          <div class="text-center reveal"><div class="w-16 h-16 rounded-full bg-primary text-white font-bold text-xl flex items-center justify-center mx-auto mb-4 relative z-10" style="box-shadow:0 0 10px rgba(139,92,246,0.3)">2</div><h3 class="text-white font-bold mb-1">ფუნდამენტის აშენება</h3><p class="text-xs text-primary mb-1">თვე 2-3</p><p class="text-sm text-white/40">ტექნიკური ფიქსები, GBP ოპტიმიზაცია, Schema markup, უბნის გვერდები.</p></div>
+          <div class="text-center reveal"><div class="w-16 h-16 rounded-full bg-ai-blue text-white font-bold text-xl flex items-center justify-center mx-auto mb-4 relative z-10" style="box-shadow:0 0 10px rgba(59,130,246,0.3)">3</div><h3 class="text-white font-bold mb-1">ზრდის აჩქარება</h3><p class="text-xs text-ai-blue mb-1">თვე 4-6</p><p class="text-sm text-white/40">კონტენტ მარკეტინგი, ლინკ ბილდინგი, ლოკალური ციტირებები, Off-plan SEO.</p></div>
+          <div class="text-center reveal"><div class="w-16 h-16 rounded-full bg-accent text-white font-bold text-xl flex items-center justify-center mx-auto mb-4 relative z-10" style="box-shadow:0 0 10px rgba(20,184,166,0.3)">4</div><h3 class="text-white font-bold mb-1">ავტორიტეტი &amp; მასშტაბი</h3><p class="text-xs text-accent mb-1">თვე 7-12+</p><p class="text-sm text-white/40">GEO ოპტიმიზაცია, Digital PR, მულტი-ლოკაცია, საერთაშორისო გაფართოება.</p></div>
         </div>
       </div>
       <div class="lg:hidden space-y-6">
-        <div class="neon-card rounded-2xl p-6 flex items-start gap-4 reveal"><div class="w-12 h-12 rounded-full bg-neon text-black font-bold text-lg flex items-center justify-center shrink-0">1</div><div><h3 class="text-white font-bold mb-1">აუდიტი &amp; სტრატეგია <span class="text-neon text-xs">(თვე 1)</span></h3><p class="text-sm text-white/40">ტექნიკური აუდიტი, keyword კვლევა, კონკურენტების ანალიზი.</p></div></div>
-        <div class="neon-card rounded-2xl p-6 flex items-start gap-4 reveal"><div class="w-12 h-12 rounded-full bg-neon text-black font-bold text-lg flex items-center justify-center shrink-0">2</div><div><h3 class="text-white font-bold mb-1">ფუნდამენტის აშენება <span class="text-neon text-xs">(თვე 2-3)</span></h3><p class="text-sm text-white/40">ტექნიკური ფიქსები, GBP, Schema, უბნის გვერდები.</p></div></div>
-        <div class="neon-card rounded-2xl p-6 flex items-start gap-4 reveal"><div class="w-12 h-12 rounded-full bg-med-blue text-black font-bold text-lg flex items-center justify-center shrink-0">3</div><div><h3 class="text-white font-bold mb-1">ზრდის აჩქარება <span class="text-med-blue text-xs">(თვე 4-6)</span></h3><p class="text-sm text-white/40">კონტენტი, ლინკ ბილდინგი, ლოკალური ციტირებები.</p></div></div>
-        <div class="neon-card rounded-2xl p-6 flex items-start gap-4 reveal"><div class="w-12 h-12 rounded-full bg-neon text-black font-bold text-lg flex items-center justify-center shrink-0">4</div><div><h3 class="text-white font-bold mb-1">ავტორიტეტი &amp; მასშტაბი <span class="text-neon text-xs">(თვე 7-12+)</span></h3><p class="text-sm text-white/40">GEO, Digital PR, მულტი-ლოკაცია.</p></div></div>
+        <div class="glass-card rounded-2xl p-6 flex items-start gap-4 reveal"><div class="w-12 h-12 rounded-full bg-primary text-white font-bold text-lg flex items-center justify-center shrink-0">1</div><div><h3 class="text-white font-bold mb-1">აუდიტი &amp; სტრატეგია <span class="text-primary text-xs">(თვე 1)</span></h3><p class="text-sm text-white/40">ტექნიკური აუდიტი, keyword კვლევა, კონკურენტების ანალიზი.</p></div></div>
+        <div class="glass-card rounded-2xl p-6 flex items-start gap-4 reveal"><div class="w-12 h-12 rounded-full bg-primary text-white font-bold text-lg flex items-center justify-center shrink-0">2</div><div><h3 class="text-white font-bold mb-1">ფუნდამენტის აშენება <span class="text-primary text-xs">(თვე 2-3)</span></h3><p class="text-sm text-white/40">ტექნიკური ფიქსები, GBP, Schema, უბნის გვერდები.</p></div></div>
+        <div class="glass-card rounded-2xl p-6 flex items-start gap-4 reveal"><div class="w-12 h-12 rounded-full bg-ai-blue text-white font-bold text-lg flex items-center justify-center shrink-0">3</div><div><h3 class="text-white font-bold mb-1">ზრდის აჩქარება <span class="text-ai-blue text-xs">(თვე 4-6)</span></h3><p class="text-sm text-white/40">კონტენტი, ლინკ ბილდინგი, ლოკალური ციტირებები.</p></div></div>
+        <div class="glass-card rounded-2xl p-6 flex items-start gap-4 reveal"><div class="w-12 h-12 rounded-full bg-accent text-white font-bold text-lg flex items-center justify-center shrink-0">4</div><div><h3 class="text-white font-bold mb-1">ავტორიტეტი &amp; მასშტაბი <span class="text-accent text-xs">(თვე 7-12+)</span></h3><p class="text-sm text-white/40">GEO, Digital PR, მულტი-ლოკაცია.</p></div></div>
       </div>
     </div>
   </section>
@@ -388,17 +425,17 @@
         <p class="text-lg text-white/50 max-w-3xl mx-auto">ChatGPT უკვე რეკომენდაციას უწევს აგენტებს და პროექტებს. Google AI Overviews უძრავი ქონების ძიებებში ჩნდება. მზად ხართ?</p>
       </div>
       <div class="grid md:grid-cols-3 gap-6 reveal">
-        <div class="neon-card rounded-2xl p-6 text-center"><p class="text-3xl font-bold text-[#8B5CF6] mb-2">70%</p><p class="text-sm text-white/50">zero-click ძიებები</p></div>
-        <div class="neon-card rounded-2xl p-6 text-center"><p class="text-3xl font-bold text-neon mb-2">45%+</p><p class="text-sm text-white/50">უძრავი ქონების ძიებებში AI Overviews</p></div>
-        <div class="neon-card rounded-2xl p-6 text-center"><p class="text-3xl font-bold text-med-blue mb-2">3x</p><p class="text-sm text-white/50">AI რეკომენდაცია მეტ ნდობას იწვევს</p></div>
+        <div class="glass-card rounded-2xl p-6 text-center"><p class="text-3xl font-bold text-[#8B5CF6] mb-2">70%</p><p class="text-sm text-white/50">zero-click ძიებები</p></div>
+        <div class="glass-card rounded-2xl p-6 text-center"><p class="text-3xl font-bold text-primary mb-2">45%+</p><p class="text-sm text-white/50">უძრავი ქონების ძიებებში AI Overviews</p></div>
+        <div class="glass-card rounded-2xl p-6 text-center"><p class="text-3xl font-bold text-ai-blue mb-2">3x</p><p class="text-sm text-white/50">AI რეკომენდაცია მეტ ნდობას იწვევს</p></div>
       </div>
-      <div class="neon-card rounded-2xl p-8 mt-8 reveal">
+      <div class="glass-card rounded-2xl p-8 mt-8 reveal">
         <h3 class="text-white font-bold text-lg mb-4">როგორ უზრუნველყოფს 10xSEO AI ხილვადობას?</h3>
         <ul class="space-y-3 text-white/50">
-          <li class="flex items-start gap-3"><span class="text-neon mt-1">&#10003;</span><span>კონტენტის სტრუქტურირება AI-ის მიერ წაკითხვადი ფორმატით</span></li>
-          <li class="flex items-start gap-3"><span class="text-neon mt-1">&#10003;</span><span>ავტორიტეტული წყაროებად პოზიციონირება (CitationSource სტრატეგია)</span></li>
-          <li class="flex items-start gap-3"><span class="text-neon mt-1">&#10003;</span><span>FAQ Schema და Q&amp;A კონტენტი AI Overviews-ისთვის</span></li>
-          <li class="flex items-start gap-3"><span class="text-neon mt-1">&#10003;</span><span>ChatGPT, Perplexity, Gemini მონიტორინგი და ოპტიმიზაცია</span></li>
+          <li class="flex items-start gap-3"><span class="text-primary mt-1">&#10003;</span><span>კონტენტის სტრუქტურირება AI-ის მიერ წაკითხვადი ფორმატით</span></li>
+          <li class="flex items-start gap-3"><span class="text-primary mt-1">&#10003;</span><span>ავტორიტეტული წყაროებად პოზიციონირება (CitationSource სტრატეგია)</span></li>
+          <li class="flex items-start gap-3"><span class="text-primary mt-1">&#10003;</span><span>FAQ Schema და Q&amp;A კონტენტი AI Overviews-ისთვის</span></li>
+          <li class="flex items-start gap-3"><span class="text-primary mt-1">&#10003;</span><span>ChatGPT, Perplexity, Gemini მონიტორინგი და ოპტიმიზაცია</span></li>
         </ul>
       </div>
     </div>
@@ -406,8 +443,8 @@
   <!-- ===== S10: TESTIMONIAL ===== -->
   <section class="py-20 lg:py-28 border-y border-white/5">
     <div class="max-w-4xl mx-auto px-4 sm:px-6">
-      <div class="neon-card rounded-2xl p-8 lg:p-12 text-center reveal">
-        <div class="text-neon mb-6"><svg class="w-12 h-12 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151C7.546 6.068 5.983 8.789 5.983 11h4v10H0z"/></svg></div>
+      <div class="glass-card rounded-2xl p-8 lg:p-12 text-center reveal">
+        <div class="text-gold mb-6"><svg class="w-12 h-12 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151C7.546 6.068 5.983 8.789 5.983 11h4v10H0z"/></svg></div>
         <p class="text-xl lg:text-2xl text-white/80 leading-relaxed mb-8 italic">10xSEO-მ ჩვენი დეველოპერული კომპანიის ონლაინ ხილვადობა სრულად შეცვალა. ორგანული ტრაფიკი 68%-ით გაიზარდა, ხოლო ss.ge-ზე დამოკიდებულება თითქმის ნახევრით შემცირდა. პროფესიონალიზმი და უძრავი ქონების სფეროს ღრმა ცოდნა განსაკუთრებულია.</p>
         <div class="flex items-center justify-center gap-1 mb-4"><svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
         <p class="text-white font-bold">გიორგი ხარაიშვილი</p>
@@ -415,41 +452,50 @@
       </div>
     </div>
   </section>
-  <!-- ===== S11: FAQ (15 Questions) ===== -->
+  <!-- ===== S11: FAQ (15 Questions — v29 style) ===== -->
   <section class="py-20 lg:py-28">
     <div class="max-w-4xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-16 reveal"><h2 class="font-heading text-3xl sm:text-4xl font-bold text-white mb-4">ხშირად დასმული <span class="text-neon">კითხვები</span></h2><p class="text-lg text-white/50">ყველაფერი, რაც უძრავი ქონების SEO-ზე უნდა იცოდეთ</p></div>
-      <div class="neon-card rounded-2xl overflow-hidden reveal">
-        <div class="faq-item border-b border-white/5"><button class="faq-toggle w-full flex items-center justify-between p-5 text-left" aria-expanded="false"><span class="text-white font-semibold pr-4">რამდენ ხანში ჩანს უძრავი ქონების SEO-ს შედეგი?</span><svg class="faq-chevron w-5 h-5 text-neon shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="faq-answer px-5"><p class="pb-5 text-white/50 leading-relaxed text-sm">GBP ოპტიმიზაციის შედეგები 2-4 კვირაში ჩანს. ლოკალური SEO 2-3 თვეში. ორგანული ტრაფიკის მნიშვნელოვანი ზრდა 4-6 თვე სჭირდება. Off-plan პროექტებისთვის keyword-ების მოცვა 3-4 თვეში იწყება.</p></div></div>
-        <div class="faq-item border-b border-white/5"><button class="faq-toggle w-full flex items-center justify-between p-5 text-left" aria-expanded="false"><span class="text-white font-semibold pr-4">შეიძლება SEO-თი ss.ge/Bayut-თან კონკურენცია?</span><svg class="faq-chevron w-5 h-5 text-neon shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="faq-answer px-5"><p class="pb-5 text-white/50 leading-relaxed text-sm">ყველა keyword-ზე პირდაპირი კონკურენცია არა, მაგრამ long-tail, ლოკაციის და პროექტის სპეციფიკურ ძიებებში — აბსოლუტურად. SEO-ს მთავარი უპირატესობა ექსკლუზიური ლიდებია.</p></div></div>
-        <div class="faq-item border-b border-white/5"><button class="faq-toggle w-full flex items-center justify-between p-5 text-left" aria-expanded="false"><span class="text-white font-semibold pr-4">რით განსხვავდება უძრავი ქონების SEO ჩვეულებრივისგან?</span><svg class="faq-chevron w-5 h-5 text-neon shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="faq-answer px-5"><p class="pb-5 text-white/50 leading-relaxed text-sm">მოითხოვს RealEstateListing Schema-ს, IDX ინტეგრაციას, უბნის გვერდებს, ლოკაციაზე მორგებულ კონტენტს და პორტალ-ბალანსის სტრატეგიას.</p></div></div>
-        <div class="faq-item border-b border-white/5"><button class="faq-toggle w-full flex items-center justify-between p-5 text-left" aria-expanded="false"><span class="text-white font-semibold pr-4">რამდენი ღირს უძრავი ქონების SEO?</span><svg class="faq-chevron w-5 h-5 text-neon shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="faq-answer px-5"><p class="pb-5 text-white/50 leading-relaxed text-sm">ფასი დამოკიდებულია კომპანიის მასშტაბზე, პროექტების რაოდენობაზე და კონკურენციის დონეზე. დაგვიკავშირდით უფასო კონსულტაციისთვის.</p></div></div>
-        <div class="faq-item border-b border-white/5"><button class="faq-toggle w-full flex items-center justify-between p-5 text-left" aria-expanded="false"><span class="text-white font-semibold pr-4">Off-plan პროექტებისთვის აკეთებთ SEO-ს?</span><svg class="faq-chevron w-5 h-5 text-neon shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="faq-answer px-5"><p class="pb-5 text-white/50 leading-relaxed text-sm">დიახ, Off-plan SEO ჩვენი ერთ-ერთი ძლიერი მხარეა. ვიწყებთ keyword targeting-ს პროექტის დაანონსებამდე, ვქმნით პროექტის ლენდინგ გვერდებს.</p></div></div>
-        <div class="faq-item border-b border-white/5"><button class="faq-toggle w-full flex items-center justify-between p-5 text-left" aria-expanded="false"><span class="text-white font-semibold pr-4">როგორ მუშაობს მრავალენოვანი SEO დუბაის ბაზრისთვის?</span><svg class="faq-chevron w-5 h-5 text-neon shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="faq-answer px-5"><p class="pb-5 text-white/50 leading-relaxed text-sm">hreflang იმპლემენტაცია ინგლისური, არაბული და რუსული ვერსიებისთვის. თითოეული ენისთვის ცალკე keyword კვლევა და კულტურულად მორგებული კონტენტი.</p></div></div>
-        <div class="faq-item border-b border-white/5"><button class="faq-toggle w-full flex items-center justify-between p-5 text-left" aria-expanded="false"><span class="text-white font-semibold pr-4">რა არის GEO/AI ძიების ოპტიმიზაცია?</span><svg class="faq-chevron w-5 h-5 text-neon shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="faq-answer px-5"><p class="pb-5 text-white/50 leading-relaxed text-sm">GEO (Generative Engine Optimization) უზრუნველყოფს ხილვადობას AI პლატფორმებში — ChatGPT, Google AI Overviews, Perplexity. AI სულ უფრო ხშირად რეკომენდაციას უწევს აგენტებს.</p></div></div>
-        <div class="faq-item border-b border-white/5"><button class="faq-toggle w-full flex items-center justify-between p-5 text-left" aria-expanded="false"><span class="text-white font-semibold pr-4">RERA-სთან თავსებადი კონტენტს ქმნით?</span><svg class="faq-chevron w-5 h-5 text-neon shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="faq-answer px-5"><p class="pb-5 text-white/50 leading-relaxed text-sm">დიახ, დუბაის ბაზრისთვის ყველა კონტენტი RERA რეგულაციებს შეესაბამება. ვიყენებთ სწორ დისკლეიმერებს და ფასების წარმოჩენის წესებს.</p></div></div>
-        <div class="faq-item border-b border-white/5"><button class="faq-toggle w-full flex items-center justify-between p-5 text-left" aria-expanded="false"><span class="text-white font-semibold pr-4">რა შედეგებს ველოდო?</span><svg class="faq-chevron w-5 h-5 text-neon shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="faq-answer px-5"><p class="pb-5 text-white/50 leading-relaxed text-sm">ტიპიური შედეგები 6 თვეში: ორგანული ტრაფიკის 50-100% ზრდა, ლოკალურ ძიებაში Top 5, პორტალზე დამოკიდებულობის 30-50% შემცირება.</p></div></div>
-        <div class="faq-item border-b border-white/5"><button class="faq-toggle w-full flex items-center justify-between p-5 text-left" aria-expanded="false"><span class="text-white font-semibold pr-4">დეველოპერებისთვის თუ აგენტებისთვის მუშაობთ?</span><svg class="faq-chevron w-5 h-5 text-neon shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="faq-answer px-5"><p class="pb-5 text-white/50 leading-relaxed text-sm">ორივესთვის. დეველოპერებისთვის — პროექტის SEO, Off-plan ლენდინგები, brand authority. აგენტებისთვის — ლოკალური SEO, GBP, უბნის გვერდები.</p></div></div>
-        <div class="faq-item border-b border-white/5"><button class="faq-toggle w-full flex items-center justify-between p-5 text-left" aria-expanded="false"><span class="text-white font-semibold pr-4">როგორ მუშაობს ლოკალური SEO უბნების დონეზე?</span><svg class="faq-chevron w-5 h-5 text-neon shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="faq-answer px-5"><p class="pb-5 text-white/50 leading-relaxed text-sm">ვქმნით უბნის სპეციფიკურ გვერდებს: ვაკე, საბურთალო, დიდუბე, ბათუმი. თითოეული ოპტიმიზირებულია ლოკაციის keyword-ებზე და მოიცავს ბაზრის მონაცემებს.</p></div></div>
-        <div class="faq-item border-b border-white/5"><button class="faq-toggle w-full flex items-center justify-between p-5 text-left" aria-expanded="false"><span class="text-white font-semibold pr-4">რა არის ქონების Schema markup?</span><svg class="faq-chevron w-5 h-5 text-neon shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="faq-answer px-5"><p class="pb-5 text-white/50 leading-relaxed text-sm">RealEstateListing Schema აძლევს Google-ს ქონების სტრუქტურირებულ მონაცემებს — ფასი, ფართობი, ოთახები, მდებარეობა. ეს rich results-ში გამოჩენას უზრუნველყოფს.</p></div></div>
-        <div class="faq-item border-b border-white/5"><button class="faq-toggle w-full flex items-center justify-between p-5 text-left" aria-expanded="false"><span class="text-white font-semibold pr-4">როგორ ზომავთ წარმატებას?</span><svg class="faq-chevron w-5 h-5 text-neon shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="faq-answer px-5"><p class="pb-5 text-white/50 leading-relaxed text-sm">ყოველთვიური ანგარიში: ორგანული ტრაფიკი, keyword პოზიციები, ლიდების რაოდენობა, პორტალზე დამოკიდებულობის ინდექსი, AI ხილვადობა და ROI.</p></div></div>
-        <div class="faq-item border-b border-white/5"><button class="faq-toggle w-full flex items-center justify-between p-5 text-left" aria-expanded="false"><span class="text-white font-semibold pr-4">რატომ აგვირჩიოთ დუბაის სააგენტოს ნაცვლად?</span><svg class="faq-chevron w-5 h-5 text-neon shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="faq-answer px-5"><p class="pb-5 text-white/50 leading-relaxed text-sm">ორმაგი ბაზრის ცოდნა — საქართველო და UAE. კონკურენტუნარიანი ფასები, პორტალ-ბალანსის უნიკალური სტრატეგია და მრავალენოვანი გამოცდილება.</p></div></div>
-        <div class="faq-item"><button class="faq-toggle w-full flex items-center justify-between p-5 text-left" aria-expanded="false"><span class="text-white font-semibold pr-4">უბნის/არეალის გვერდებს ქმნით?</span><svg class="faq-chevron w-5 h-5 text-neon shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="faq-answer px-5"><p class="pb-5 text-white/50 leading-relaxed text-sm">დიახ, ვქმნით მანუალურ მაღალხარისხიან უბნის გვერდებს და პროგრამულ გვერდებს მასშტაბით — თითოეული ოპტიმიზირებულია ლოკაციის SEO-სთვის.</p></div></div>
+      <div class="text-center mb-16 reveal"><h2 class="font-heading text-3xl sm:text-4xl font-bold text-white mb-4">ხშირად დასმული <span class="gradient-text">კითხვები</span></h2><p class="text-lg text-white/50">ყველაფერი, რაც უძრავი ქონების SEO-ზე უნდა იცოდეთ</p></div>
+      <div class="reveal">
+        <div class="v29-tabs" id="v29-tabs">
+          <button class="v29-tab v29-active" data-cat="all">ყველა</button>
+          <button class="v29-tab" data-cat="general">ზოგადი</button>
+          <button class="v29-tab" data-cat="price">ფასი</button>
+          <button class="v29-tab" data-cat="technical">ტექნიკური</button>
+          <button class="v29-tab" data-cat="market">ბაზარი</button>
+        </div>
+        <div id="v29-list">
+          <div class="v29-card" data-cat="ფასი"><button class="v29-toggle" aria-expanded="false"><span class="v29-q">რამდენ ხანში ჩანს უძრავი ქონების SEO-ს შედეგი?</span><span class="v29-cat" data-key="price">ფასი</span><svg class="v29-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="v29-ans"><div class="v29-ans-inner">GBP ოპტიმიზაციის შედეგები 2-4 კვირაში ჩანს. ლოკალური SEO 2-3 თვეში. ორგანული ტრაფიკის მნიშვნელოვანი ზრდა 4-6 თვე სჭირდება. Off-plan პროექტებისთვის keyword-ების მოცვა 3-4 თვეში იწყება.</div></div></div>
+          <div class="v29-card" data-cat="ზოგადი"><button class="v29-toggle" aria-expanded="false"><span class="v29-q">შეიძლება SEO-თი ss.ge/Bayut-თან კონკურენცია?</span><span class="v29-cat" data-key="general">ზოგადი</span><svg class="v29-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="v29-ans"><div class="v29-ans-inner">ყველა keyword-ზე პირდაპირი კონკურენცია არა, მაგრამ long-tail, ლოკაციის და პროექტის სპეციფიკურ ძიებებში — აბსოლუტურად. SEO-ს მთავარი უპირატესობა ექსკლუზიური ლიდებია.</div></div></div>
+          <div class="v29-card" data-cat="ზოგადი"><button class="v29-toggle" aria-expanded="false"><span class="v29-q">რით განსხვავდება უძრავი ქონების SEO ჩვეულებრივისგან?</span><span class="v29-cat" data-key="general">ზოგადი</span><svg class="v29-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="v29-ans"><div class="v29-ans-inner">მოითხოვს RealEstateListing Schema-ს, IDX ინტეგრაციას, უბნის გვერდებს, ლოკაციაზე მორგებულ კონტენტს და პორტალ-ბალანსის სტრატეგიას.</div></div></div>
+          <div class="v29-card" data-cat="ფასი"><button class="v29-toggle" aria-expanded="false"><span class="v29-q">რამდენი ღირს უძრავი ქონების SEO?</span><span class="v29-cat" data-key="price">ფასი</span><svg class="v29-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="v29-ans"><div class="v29-ans-inner">ფასი დამოკიდებულია კომპანიის მასშტაბზე, პროექტების რაოდენობაზე და კონკურენციის დონეზე. დაგვიკავშირდით უფასო კონსულტაციისთვის.</div></div></div>
+          <div class="v29-card" data-cat="ტექნიკური"><button class="v29-toggle" aria-expanded="false"><span class="v29-q">Off-plan პროექტებისთვის აკეთებთ SEO-ს?</span><span class="v29-cat" data-key="technical">ტექნიკური</span><svg class="v29-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="v29-ans"><div class="v29-ans-inner">დიახ, Off-plan SEO ჩვენი ერთ-ერთი ძლიერი მხარეა. ვიწყებთ keyword targeting-ს პროექტის დაანონსებამდე, ვქმნით პროექტის ლენდინგ გვერდებს.</div></div></div>
+          <div class="v29-card" data-cat="ბაზარი"><button class="v29-toggle" aria-expanded="false"><span class="v29-q">როგორ მუშაობს მრავალენოვანი SEO დუბაის ბაზრისთვის?</span><span class="v29-cat" data-key="market">ბაზარი</span><svg class="v29-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="v29-ans"><div class="v29-ans-inner">hreflang იმპლემენტაცია ინგლისური, არაბული და რუსული ვერსიებისთვის. თითოეული ენისთვის ცალკე keyword კვლევა და კულტურულად მორგებული კონტენტი.</div></div></div>
+          <div class="v29-card" data-cat="ტექნიკური"><button class="v29-toggle" aria-expanded="false"><span class="v29-q">რა არის GEO/AI ძიების ოპტიმიზაცია?</span><span class="v29-cat" data-key="technical">ტექნიკური</span><svg class="v29-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="v29-ans"><div class="v29-ans-inner">GEO (Generative Engine Optimization) უზრუნველყოფს ხილვადობას AI პლატფორმებში — ChatGPT, Google AI Overviews, Perplexity. AI სულ უფრო ხშირად რეკომენდაციას უწევს აგენტებს.</div></div></div>
+          <div class="v29-card" data-cat="ბაზარი"><button class="v29-toggle" aria-expanded="false"><span class="v29-q">RERA-სთან თავსებადი კონტენტს ქმნით?</span><span class="v29-cat" data-key="market">ბაზარი</span><svg class="v29-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="v29-ans"><div class="v29-ans-inner">დიახ, დუბაის ბაზრისთვის ყველა კონტენტი RERA რეგულაციებს შეესაბამება. ვიყენებთ სწორ დისკლეიმერებს და ფასების წარმოჩენის წესებს.</div></div></div>
+          <div class="v29-card" data-cat="ფასი"><button class="v29-toggle" aria-expanded="false"><span class="v29-q">რა შედეგებს ველოდო?</span><span class="v29-cat" data-key="price">ფასი</span><svg class="v29-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="v29-ans"><div class="v29-ans-inner">ტიპიური შედეგები 6 თვეში: ორგანული ტრაფიკის 50-100% ზრდა, ლოკალურ ძიებაში Top 5, პორტალზე დამოკიდებულობის 30-50% შემცირება.</div></div></div>
+          <div class="v29-card" data-cat="ზოგადი"><button class="v29-toggle" aria-expanded="false"><span class="v29-q">დეველოპერებისთვის თუ აგენტებისთვის მუშაობთ?</span><span class="v29-cat" data-key="general">ზოგადი</span><svg class="v29-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="v29-ans"><div class="v29-ans-inner">ორივესთვის. დეველოპერებისთვის — პროექტის SEO, Off-plan ლენდინგები, brand authority. აგენტებისთვის — ლოკალური SEO, GBP, უბნის გვერდები.</div></div></div>
+          <div class="v29-card" data-cat="ტექნიკური"><button class="v29-toggle" aria-expanded="false"><span class="v29-q">როგორ მუშაობს ლოკალური SEO უბნების დონეზე?</span><span class="v29-cat" data-key="technical">ტექნიკური</span><svg class="v29-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="v29-ans"><div class="v29-ans-inner">ვქმნით უბნის სპეციფიკურ გვერდებს: ვაკე, საბურთალო, დიდუბე, ბათუმი. თითოეული ოპტიმიზირებულია ლოკაციის keyword-ებზე და მოიცავს ბაზრის მონაცემებს.</div></div></div>
+          <div class="v29-card" data-cat="ტექნიკური"><button class="v29-toggle" aria-expanded="false"><span class="v29-q">რა არის ქონების Schema markup?</span><span class="v29-cat" data-key="technical">ტექნიკური</span><svg class="v29-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="v29-ans"><div class="v29-ans-inner">RealEstateListing Schema აძლევს Google-ს ქონების სტრუქტურირებულ მონაცემებს — ფასი, ფართობი, ოთახები, მდებარეობა. ეს rich results-ში გამოჩენას უზრუნველყოფს.</div></div></div>
+          <div class="v29-card" data-cat="ფასი"><button class="v29-toggle" aria-expanded="false"><span class="v29-q">როგორ ზომავთ წარმატებას?</span><span class="v29-cat" data-key="price">ფასი</span><svg class="v29-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="v29-ans"><div class="v29-ans-inner">ყოველთვიური ანგარიში: ორგანული ტრაფიკი, keyword პოზიციები, ლიდების რაოდენობა, პორტალზე დამოკიდებულობის ინდექსი, AI ხილვადობა და ROI.</div></div></div>
+          <div class="v29-card" data-cat="ზოგადი"><button class="v29-toggle" aria-expanded="false"><span class="v29-q">რატომ აგვირჩიოთ დუბაის სააგენტოს ნაცვლად?</span><span class="v29-cat" data-key="general">ზოგადი</span><svg class="v29-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="v29-ans"><div class="v29-ans-inner">ორმაგი ბაზრის ცოდნა — საქართველო და UAE. კონკურენტუნარიანი ფასები, პორტალ-ბალანსის უნიკალური სტრატეგია და მრავალენოვანი გამოცდილება.</div></div></div>
+          <div class="v29-card" data-cat="ტექნიკური"><button class="v29-toggle" aria-expanded="false"><span class="v29-q">უბნის/არეალის გვერდებს ქმნით?</span><span class="v29-cat" data-key="technical">ტექნიკური</span><svg class="v29-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="v29-ans"><div class="v29-ans-inner">დიახ, ვქმნით მანუალურ მაღალხარისხიან უბნის გვერდებს და პროგრამულ გვერდებს მასშტაბით — თითოეული ოპტიმიზირებულია ლოკაციის SEO-სთვის.</div></div></div>
+        </div>
       </div>
     </div>
   </section>
   <!-- ===== S12: LEAD MAGNET ===== -->
   <section class="py-20 lg:py-28 border-y border-white/5">
     <div class="max-w-4xl mx-auto px-4 sm:px-6">
-      <div class="relative rounded-2xl p-8 lg:p-12 bg-[#111] border border-neon/20 overflow-hidden reveal" style="box-shadow:0 0 40px rgba(0,255,136,0.1)">
-        <div class="absolute top-0 right-0 w-64 h-64 bg-neon/5 rounded-full blur-[80px]"></div>
+      <div class="relative rounded-2xl p-8 lg:p-12 glass-card border-primary/20 overflow-hidden reveal" style="box-shadow:0 0 40px rgba(139,92,246,0.1)">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-[80px]"></div>
         <div class="relative z-10 text-center">
-          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-neon/10 border border-neon/20 text-neon text-xs font-semibold mb-6"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg> უფასო PDF ჩეკლისტი</div>
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-semibold mb-6"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg> უფასო PDF ჩეკლისტი</div>
           <h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4">უძრავი ქონების SEO ჩეკლისტი 2026 — 47 პუნქტი</h2>
           <p class="text-white/50 mb-8 max-w-lg mx-auto">ტექნიკური SEO, GBP, Schema markup, უბნის გვერდები, კონტენტ სტრატეგია, Off-plan SEO და GEO. უფასოდ.</p>
           <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="return false;">
-            <input type="email" placeholder="თქვენი ელფოსტა" class="flex-1 px-5 py-3.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus:outline-none focus:border-neon focus:ring-1 focus:ring-neon text-sm">
-            <button type="submit" class="px-8 py-3.5 bg-neon text-black font-bold rounded-xl neon-pulse hover:bg-neon-dark transition-all text-sm whitespace-nowrap">ჩამოტვირთე</button>
+            <input type="email" placeholder="თქვენი ელფოსტა" class="flex-1 px-5 py-3.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-sm">
+            <button type="submit" class="px-8 py-3.5 ai-cta-animate text-white font-bold rounded-xl hover:brightness-110 transition-all text-sm whitespace-nowrap">ჩამოტვირთე</button>
           </form>
           <p class="text-xs text-white/30 mt-4">სპამს არ ვაგზავნით. მხოლოდ SEO რჩევები.</p>
         </div>
@@ -460,14 +506,14 @@
   <section class="py-20 lg:py-28">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
       <div class="reveal">
-        <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">მზად ხართ <span class="text-neon">ორგანული ლიდების გენერაციისთვის?</span></h2>
+        <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">მზად ხართ <span class="gradient-text">ორგანული ლიდების გენერაციისთვის?</span></h2>
         <p class="text-lg text-white/50 max-w-2xl mx-auto mb-10">დაჯავშნეთ უფასო 30-წუთიანი კონსულტაცია და გაიგეთ, როგორ შეგვიძლია თქვენი უძრავი ქონების ბიზნესის ონლაინ ხილვადობის გაზრდა.</p>
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
-          <a href="#" onclick="openCalendly();return false;" class="inline-flex items-center justify-center gap-2 px-10 py-5 bg-neon text-black font-bold rounded-xl text-lg neon-pulse hover:bg-neon-dark transition-all"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg> დაჯავშნეთ უფასო კონსულტაცია</a>
-          <a href="tel:+995510101517" class="inline-flex items-center justify-center gap-2 px-8 py-5 border border-white/20 text-white font-semibold rounded-xl text-lg hover:border-neon hover:text-neon transition-all"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg> +995 510 10 15 17</a>
+          <a href="#" onclick="openCalendly();return false;" class="inline-flex items-center justify-center gap-2 px-10 py-5 ai-cta-animate text-white font-bold rounded-xl text-lg hover:brightness-110 transition-all"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg> დაჯავშნეთ უფასო კონსულტაცია</a>
+          <a href="tel:+995510101517" class="inline-flex items-center justify-center gap-2 px-8 py-5 border border-white/20 text-white font-semibold rounded-xl text-lg hover:border-primary hover:text-primary transition-all"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg> +995 510 10 15 17</a>
         </div>
         <div class="flex items-center justify-center gap-6 text-sm text-white/40">
-          <a href="https://wa.me/995510101517" target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-neon transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp</a>
+          <a href="https://wa.me/995510101517" target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-primary transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp</a>
           <span>|</span><span>sales@10xseo.ge</span>
         </div>
         <div id="calendly-embed" class="mt-12"></div>
@@ -476,24 +522,24 @@
   </section>
   </main>
   <!-- ===== FOOTER ===== -->
-  <footer class="bg-[#050505] text-gray-400 py-12 lg:py-16 border-t border-white/5">
+  <footer class="bg-[#010409] text-gray-400 py-12 lg:py-16 border-t border-white/5">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
         <div class="col-span-2 lg:col-span-1"><a href="../index.html" class="flex items-center gap-2 mb-4"><img src="../images/logo.png" alt="10XSEO" class="h-12 w-auto"></a><p class="text-sm leading-relaxed mb-4">საქართველოს #1 SEO სააგენტო. რეალური შედეგები, ყოველკვირეული ანგარიშები, სწრაფი მომსახურება.</p>
-          <div class="flex gap-3"><a href="https://www.facebook.com/10xSEO.Ge" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-neon hover:text-black transition-all" aria-label="Facebook"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a><a href="https://www.linkedin.com/company/10xseoge/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-neon hover:text-black transition-all" aria-label="LinkedIn"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a href="https://www.youtube.com/@10xSEO" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-neon hover:text-black transition-all" aria-label="YouTube"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a></div>
+          <div class="flex gap-3"><a href="https://www.facebook.com/10xSEO.Ge" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-primary hover:text-white transition-all" aria-label="Facebook"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a><a href="https://www.linkedin.com/company/10xseoge/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-primary hover:text-white transition-all" aria-label="LinkedIn"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a href="https://www.youtube.com/@10xSEO" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-primary hover:text-white transition-all" aria-label="YouTube"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a></div>
         </div>
-        <div><p class="font-heading text-white font-semibold mb-4">სერვისები</p><ul class="space-y-2.5 text-sm"><li><a href="../seo-management.html" class="hover:text-neon transition-colors">SEO მენეჯმენტი</a></li><li><a href="../seo-consultation.html" class="hover:text-neon transition-colors">SEO კონსულტაცია</a></li><li><a href="../seo-strategy.html" class="hover:text-neon transition-colors">SEO სტრატეგია</a></li><li><a href="../seo-audit.html" class="hover:text-neon transition-colors">უფასო SEO აუდიტი</a></li></ul></div>
-        <div><p class="font-heading text-white font-semibold mb-4">კომპანია</p><ul class="space-y-2.5 text-sm"><li><a href="../portfolio.html" class="hover:text-neon transition-colors">პორტფოლიო</a></li><li><a href="../case-studies.html" class="hover:text-neon transition-colors">ქეის სტადები</a></li><li><a href="../blog.html" class="hover:text-neon transition-colors">ბლოგი</a></li><li><a href="../faq.html" class="hover:text-neon transition-colors">FAQ</a></li><li><a href="../ra-aris-seo.html" class="hover:text-neon transition-colors">რა არის SEO</a></li><li><a href="../vacancies.html" class="hover:text-neon transition-colors">ვაკანსიები</a></li></ul></div>
+        <div><p class="font-heading text-white font-semibold mb-4">სერვისები</p><ul class="space-y-2.5 text-sm"><li><a href="../seo-management.html" class="hover:text-primary transition-colors">SEO მენეჯმენტი</a></li><li><a href="../seo-consultation.html" class="hover:text-primary transition-colors">SEO კონსულტაცია</a></li><li><a href="../seo-strategy.html" class="hover:text-primary transition-colors">SEO სტრატეგია</a></li><li><a href="../seo-audit.html" class="hover:text-primary transition-colors">უფასო SEO აუდიტი</a></li></ul></div>
+        <div><p class="font-heading text-white font-semibold mb-4">კომპანია</p><ul class="space-y-2.5 text-sm"><li><a href="../portfolio.html" class="hover:text-primary transition-colors">პორტფოლიო</a></li><li><a href="../case-studies.html" class="hover:text-primary transition-colors">ქეის სტადები</a></li><li><a href="../blog.html" class="hover:text-primary transition-colors">ბლოგი</a></li><li><a href="../faq.html" class="hover:text-primary transition-colors">FAQ</a></li><li><a href="../ra-aris-seo.html" class="hover:text-primary transition-colors">რა არის SEO</a></li><li><a href="../vacancies.html" class="hover:text-primary transition-colors">ვაკანსიები</a></li></ul></div>
         <div><p class="font-heading text-white font-semibold mb-4">კონტაქტი</p><ul class="space-y-2.5 text-sm"><li>+995 510 10 15 17</li><li>sales@10xseo.ge</li><li>თბილისი, საქართველო</li></ul></div>
       </div>
-      <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm"><p>&copy; 2026 10XSEO. ყველა უფლება დაცულია.</p><div class="flex gap-6"><a href="#" class="hover:text-neon transition-colors">კონფიდენციალურობა</a><a href="#" class="hover:text-neon transition-colors">პირობები</a></div></div>
+      <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm"><p>&copy; 2026 10XSEO. ყველა უფლება დაცულია.</p><div class="flex gap-6"><a href="#" class="hover:text-primary transition-colors">კონფიდენციალურობა</a><a href="#" class="hover:text-primary transition-colors">პირობები</a></div></div>
     </div>
   </footer>
   <!-- ===== STICKY BOTTOM CTA ===== -->
-  <div id="sticky-cta" class="fixed bottom-0 left-0 right-0 z-50 lg:hidden bg-[#0A0A0A] border-t border-white/10 p-3 safe-bottom transition-transform duration-300">
+  <div id="sticky-cta" class="fixed bottom-0 left-0 right-0 z-50 lg:hidden bg-[#020710] border-t border-white/10 p-3 safe-bottom transition-transform duration-300">
     <div class="flex items-center gap-2 max-w-lg mx-auto">
-      <a href="#" onclick="openCalendly();return false;" class="flex-1 flex items-center justify-center gap-2 py-3 bg-neon text-black font-bold rounded-xl text-sm">უფასო SEO აუდიტი</a>
-      <a href="tel:+995510101517" class="w-12 h-12 flex items-center justify-center rounded-xl border border-white/10 text-neon"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg></a>
+      <a href="#" onclick="openCalendly();return false;" class="flex-1 flex items-center justify-center gap-2 py-3 ai-cta-animate text-white font-bold rounded-xl text-sm">უფასო SEO აუდიტი</a>
+      <a href="tel:+995510101517" class="w-12 h-12 flex items-center justify-center rounded-xl border border-white/10 text-primary"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg></a>
     </div>
   </div>
   <!-- ===== SCRIPTS ===== -->
@@ -503,12 +549,13 @@
     window.addEventListener('scroll',()=>{const cs=window.pageYOffset;if(cs>lastScroll&&cs>300)stickyCta.style.transform='translateY(100%)';else stickyCta.style.transform='translateY(0)';lastScroll=cs;});
     const menuBtn=document.getElementById('mobile-menu-btn'),mobileMenu=document.getElementById('mobile-menu');
     if(menuBtn&&mobileMenu){let menuOpen=false;menuBtn.addEventListener('click',()=>{menuOpen=!menuOpen;if(menuOpen){mobileMenu.classList.add('menu-open');mobileMenu.style.pointerEvents='auto';menuBtn.classList.add('menu-active');document.body.classList.add('overflow-hidden');}else{mobileMenu.classList.remove('menu-open');mobileMenu.style.pointerEvents='none';menuBtn.classList.remove('menu-active');document.body.classList.remove('overflow-hidden');}});mobileMenu.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>{menuOpen=false;mobileMenu.classList.remove('menu-open');mobileMenu.style.pointerEvents='none';menuBtn.classList.remove('menu-active');document.body.classList.remove('overflow-hidden');}));}
-    document.querySelectorAll('.faq-toggle').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.closest('.faq-item');const isOpen=item.classList.contains('faq-open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('faq-open'));if(!isOpen)item.classList.add('faq-open');btn.setAttribute('aria-expanded',!isOpen);});});
+    /* v29 FAQ logic */
+    (function(){const tabs=document.querySelectorAll('#v29-tabs .v29-tab');const cards=document.querySelectorAll('#v29-list .v29-card');const catMap={'all':'ყველა','general':'ზოგადი','price':'ფასი','technical':'ტექნიკური','market':'ბაზარი'};tabs.forEach(t=>{t.addEventListener('click',()=>{tabs.forEach(b=>b.classList.remove('v29-active'));t.classList.add('v29-active');const cat=t.dataset.cat;cards.forEach(c=>{if(cat==='all'){c.classList.remove('v29-hidden');}else{const cCat=c.dataset.cat;c.classList.toggle('v29-hidden',cCat!==catMap[cat]);}});});});cards.forEach(c=>{const toggle=c.querySelector('.v29-toggle');toggle.addEventListener('click',()=>{const isOpen=c.classList.contains('v29-open');cards.forEach(x=>x.classList.remove('v29-open'));if(!isOpen)c.classList.add('v29-open');toggle.setAttribute('aria-expanded',!isOpen);});});})();
     document.querySelectorAll('.tab-btn').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.tab-content').forEach(c=>c.classList.add('hidden'));const target=document.getElementById(btn.dataset.tab);if(target)target.classList.remove('hidden');});});
     const revealObserver=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');revealObserver.unobserve(entry.target);}});},{threshold:0.1});document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
   </script>
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-  <script>function openCalendly(){Calendly.initPopupWidget({url:'https://calendly.com/10xseo-sales/30-seo-clone?background_color=0a0a0a&text_color=f8fafc&primary_color=00FF88'});return false;}</script>
+  <script>function openCalendly(){Calendly.initPopupWidget({url:'https://calendly.com/10xseo-sales/30-seo-clone?background_color=020710&text_color=f8fafc&primary_color=8B5CF6'});return false;}</script>
 </body>
 </html>
