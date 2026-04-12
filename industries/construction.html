@@ -284,7 +284,7 @@
             <div class="mt-6 h-20 rounded-lg bg-white/[0.02] border border-white/5 flex items-end justify-around px-4 pb-2">
               <div class="w-3 rounded-t" style="height:30%;background:rgba(139,92,246,0.3)"></div><div class="w-3 rounded-t" style="height:45%;background:rgba(139,92,246,0.4)"></div><div class="w-3 rounded-t" style="height:55%;background:rgba(139,92,246,0.5)"></div><div class="w-3 rounded-t" style="height:50%;background:rgba(20,184,166,0.5)"></div><div class="w-3 rounded-t" style="height:65%;background:rgba(20,184,166,0.6)"></div><div class="w-3 rounded-t" style="height:75%;background:rgba(20,184,166,0.7)"></div><div class="w-3 rounded-t" style="height:90%;background:rgba(20,184,166,0.9)"></div>
             </div>
-            <p class="text-xs text-white/30 text-center mt-2">ორგანული ტრაფიკის ზრდა 6 თვეში</p>
+            <p class="text-xs text-white/50 text-center mt-2">ორგანული ტრაფიკის ზრდა 6 თვეში</p>
           </div>
         </div>
       </div>
@@ -324,10 +324,10 @@
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <p class="text-center text-xs font-semibold text-white/40 uppercase tracking-widest mb-8 reveal">ნდობით გვირჩევენ</p>
       <div class="hex-clients-row mb-10 reveal">
-        <div class="hex-client"><div class="hex-client-inner"><img src="../images/clients/myhome.png" alt="myhome.ge"></div></div>
-        <div class="hex-client"><div class="hex-client-inner"><img src="../images/clients/horizon.png" alt="Horizon Batumi"></div></div>
-        <div class="hex-client"><div class="hex-client-inner"><img src="../images/clients/coordinate.png" alt="Coordinate"></div></div>
-        <div class="hex-client hex-client-dark"><div class="hex-client-inner"><img src="../images/clients/chronometri.svg" alt="ქრონომეტრი"></div></div>
+        <div class="hex-client"><div class="hex-client-inner"><img src="../images/clients/myhome.png" alt="myhome.ge" loading="lazy" width="125" height="85"></div></div>
+        <div class="hex-client"><div class="hex-client-inner"><img src="../images/clients/horizon.png" alt="Horizon Batumi" loading="lazy" width="125" height="85"></div></div>
+        <div class="hex-client"><div class="hex-client-inner"><img src="../images/clients/coordinate.png" alt="Coordinate" loading="lazy" width="125" height="85"></div></div>
+        <div class="hex-client hex-client-dark"><div class="hex-client-inner"><img src="../images/clients/chronometri.svg" alt="ქრონომეტრი" loading="lazy" width="125" height="85"></div></div>
       </div>
       <!-- Kotejebi.ge — Clutch Review -->
       <div class="flex justify-center mb-10 reveal">
@@ -380,23 +380,23 @@
   <section class="py-20 lg:py-28">
     <div class="max-w-5xl mx-auto px-4 sm:px-6">
       <div class="text-center mb-12 reveal"><h2 class="font-heading text-3xl sm:text-4xl font-bold text-white mb-4">ყველა <span class="gradient-text">სეგმენტი</span> ვფარავთ</h2><p class="text-lg text-white/50">თქვენი ნიშა — ჩვენი ექსპერტიზა</p></div>
-      <div class="flex flex-wrap justify-center gap-2 mb-10 reveal">
-        <button class="tab-btn active px-4 py-2.5 rounded-xl text-sm font-semibold border border-white/10" data-tab="tab-residential">საცხოვრებელი</button>
-        <button class="tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold text-white/60 border border-white/10 hover:border-primary/30" data-tab="tab-commercial">კომერციული</button>
-        <button class="tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold text-white/60 border border-white/10 hover:border-primary/30" data-tab="tab-luxury">ლუქსი</button>
-        <button class="tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold text-white/60 border border-white/10 hover:border-primary/30" data-tab="tab-offplan">Off-Plan</button>
-        <button class="tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold text-white/60 border border-white/10 hover:border-primary/30" data-tab="tab-developer">დეველოპერი</button>
-        <button class="tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold text-white/60 border border-white/10 hover:border-primary/30" data-tab="tab-management">ქონების მართვა</button>
-        <button class="tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold text-white/60 border border-white/10 hover:border-primary/30" data-tab="tab-resort">საკურორტო</button>
+      <div class="flex flex-wrap justify-center gap-2 mb-10 reveal" role="tablist" aria-label="სეგმენტები">
+        <button class="tab-btn active px-4 py-2.5 rounded-xl text-sm font-semibold border border-white/10" role="tab" aria-selected="true" aria-controls="tab-residential" id="tab-btn-residential" data-tab="tab-residential">საცხოვრებელი</button>
+        <button class="tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold text-white/60 border border-white/10 hover:border-primary/30" role="tab" aria-selected="false" aria-controls="tab-commercial" id="tab-btn-commercial" data-tab="tab-commercial">კომერციული</button>
+        <button class="tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold text-white/60 border border-white/10 hover:border-primary/30" role="tab" aria-selected="false" aria-controls="tab-luxury" id="tab-btn-luxury" data-tab="tab-luxury">ლუქსი</button>
+        <button class="tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold text-white/60 border border-white/10 hover:border-primary/30" role="tab" aria-selected="false" aria-controls="tab-offplan" id="tab-btn-offplan" data-tab="tab-offplan">Off-Plan</button>
+        <button class="tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold text-white/60 border border-white/10 hover:border-primary/30" role="tab" aria-selected="false" aria-controls="tab-developer" id="tab-btn-developer" data-tab="tab-developer">დეველოპერი</button>
+        <button class="tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold text-white/60 border border-white/10 hover:border-primary/30" role="tab" aria-selected="false" aria-controls="tab-management" id="tab-btn-management" data-tab="tab-management">ქონების მართვა</button>
+        <button class="tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold text-white/60 border border-white/10 hover:border-primary/30" role="tab" aria-selected="false" aria-controls="tab-resort" id="tab-btn-resort" data-tab="tab-resort">საკურორტო</button>
       </div>
       <div class="glass-card rounded-2xl p-8 reveal">
-        <div id="tab-residential" class="tab-content"><h3 class="text-white font-bold text-lg mb-3">საცხოვრებელი უძრავი ქონება</h3><p class="text-white/50 leading-relaxed mb-4">ბინების, სახლების და საცხოვრებელი კომპლექსების SEO. ლოკალური keyword-ები უბნების მიხედვით, RealEstateListing Schema, ვირტუალური ტურის ოპტიმიზაცია.</p><p class="text-sm text-primary/60">Keywords: ბინა ვაკეში, სახლი თბილისში, ახალაშენებული ბინა, apartment for sale Tbilisi</p></div>
-        <div id="tab-commercial" class="tab-content hidden"><h3 class="text-white font-bold text-lg mb-3">კომერციული ქონება</h3><p class="text-white/50 leading-relaxed mb-4">ოფისების, სავაჭრო ფართების და საწყობების SEO. B2B keyword სტრატეგია, ლიდ ჯენერაცია, კორპორატიულ მყიდველებზე მორგებული კონტენტი.</p><p class="text-sm text-primary/60">Keywords: ოფისი ქირავდება, კომერციული ფართი, office space Tbilisi</p></div>
-        <div id="tab-luxury" class="tab-content hidden"><h3 class="text-white font-bold text-lg mb-3">ლუქს უძრავი ქონება</h3><p class="text-white/50 leading-relaxed mb-4">პრემიუმ სეგმენტის SEO სტრატეგია. საერთაშორისო ინვესტორებზე ორიენტირებული კონტენტი, მრავალენოვანი SEO, მაღალი ღირებულების keyword-ები.</p><p class="text-sm text-primary/60">Keywords: luxury apartment Tbilisi, premium penthouse Batumi, exclusive villa Georgia</p></div>
-        <div id="tab-offplan" class="tab-content hidden"><h3 class="text-white font-bold text-lg mb-3">Off-Plan პროექტები</h3><p class="text-white/50 leading-relaxed mb-4">მშენებარე პროექტების SEO — keyword targeting პროექტის დაანონსებამდე, პროექტის ლენდინგ გვერდები, ინვესტორის კონტენტი.</p><p class="text-sm text-primary/60">Keywords: ახალი პროექტი ბათუმი, off-plan Tbilisi, new development Batumi</p></div>
-        <div id="tab-developer" class="tab-content hidden"><h3 class="text-white font-bold text-lg mb-3">სამშენებლო კომპანიები / დეველოპერები</h3><p class="text-white/50 leading-relaxed mb-4">კორპორატიული SEO სტრატეგია. კომპანიის brand authority, პროექტების პორტფოლიო ოპტიმიზაცია, ინვესტორთან ურთიერთობის კონტენტი.</p><p class="text-sm text-primary/60">Keywords: სამშენებლო კომპანია თბილისი, real estate developer Georgia</p></div>
-        <div id="tab-management" class="tab-content hidden"><h3 class="text-white font-bold text-lg mb-3">ქონების მართვის კომპანიები</h3><p class="text-white/50 leading-relaxed mb-4">Property management SEO. მოიჯარეების მოზიდვა, მფლობელების ნდობის მოპოვება, ლოკალური სერვისის ოპტიმიზაცია.</p><p class="text-sm text-primary/60">Keywords: ქონების მართვა, property management Tbilisi, rental management Georgia</p></div>
-        <div id="tab-resort" class="tab-content hidden"><h3 class="text-white font-bold text-lg mb-3">საკურორტო უძრავი ქონება</h3><p class="text-white/50 leading-relaxed mb-4">ბათუმი, გუდაური, ბაკურიანი — საკურორტო ქონების SEO. ტურისტულ ძიებებზე მორგება, Airbnb ინვესტორების მოზიდვა.</p><p class="text-sm text-primary/60">Keywords: ბინა ბათუმში ზღვასთან, apartment Gudauri ski resort, vacation property Batumi</p></div>
+        <div id="tab-residential" class="tab-content" role="tabpanel" aria-labelledby="tab-btn-residential"><h3 class="text-white font-bold text-lg mb-3">საცხოვრებელი უძრავი ქონება</h3><p class="text-white/50 leading-relaxed mb-4">ბინების, სახლების და საცხოვრებელი კომპლექსების SEO. ლოკალური keyword-ები უბნების მიხედვით, RealEstateListing Schema, ვირტუალური ტურის ოპტიმიზაცია.</p><p class="text-sm text-primary/60">Keywords: ბინა ვაკეში, სახლი თბილისში, ახალაშენებული ბინა, apartment for sale Tbilisi</p></div>
+        <div id="tab-commercial" class="tab-content hidden" role="tabpanel" aria-labelledby="tab-btn-commercial"><h3 class="text-white font-bold text-lg mb-3">კომერციული ქონება</h3><p class="text-white/50 leading-relaxed mb-4">ოფისების, სავაჭრო ფართების და საწყობების SEO. B2B keyword სტრატეგია, ლიდ ჯენერაცია, კორპორატიულ მყიდველებზე მორგებული კონტენტი.</p><p class="text-sm text-primary/60">Keywords: ოფისი ქირავდება, კომერციული ფართი, office space Tbilisi</p></div>
+        <div id="tab-luxury" class="tab-content hidden" role="tabpanel" aria-labelledby="tab-btn-luxury"><h3 class="text-white font-bold text-lg mb-3">ლუქს უძრავი ქონება</h3><p class="text-white/50 leading-relaxed mb-4">პრემიუმ სეგმენტის SEO სტრატეგია. საერთაშორისო ინვესტორებზე ორიენტირებული კონტენტი, მრავალენოვანი SEO, მაღალი ღირებულების keyword-ები.</p><p class="text-sm text-primary/60">Keywords: luxury apartment Tbilisi, premium penthouse Batumi, exclusive villa Georgia</p></div>
+        <div id="tab-offplan" class="tab-content hidden" role="tabpanel" aria-labelledby="tab-btn-offplan"><h3 class="text-white font-bold text-lg mb-3">Off-Plan პროექტები</h3><p class="text-white/50 leading-relaxed mb-4">მშენებარე პროექტების SEO — keyword targeting პროექტის დაანონსებამდე, პროექტის ლენდინგ გვერდები, ინვესტორის კონტენტი.</p><p class="text-sm text-primary/60">Keywords: ახალი პროექტი ბათუმი, off-plan Tbilisi, new development Batumi</p></div>
+        <div id="tab-developer" class="tab-content hidden" role="tabpanel" aria-labelledby="tab-btn-developer"><h3 class="text-white font-bold text-lg mb-3">სამშენებლო კომპანიები / დეველოპერები</h3><p class="text-white/50 leading-relaxed mb-4">კორპორატიული SEO სტრატეგია. კომპანიის brand authority, პროექტების პორტფოლიო ოპტიმიზაცია, ინვესტორთან ურთიერთობის კონტენტი.</p><p class="text-sm text-primary/60">Keywords: სამშენებლო კომპანია თბილისი, real estate developer Georgia</p></div>
+        <div id="tab-management" class="tab-content hidden" role="tabpanel" aria-labelledby="tab-btn-management"><h3 class="text-white font-bold text-lg mb-3">ქონების მართვის კომპანიები</h3><p class="text-white/50 leading-relaxed mb-4">Property management SEO. მოიჯარეების მოზიდვა, მფლობელების ნდობის მოპოვება, ლოკალური სერვისის ოპტიმიზაცია.</p><p class="text-sm text-primary/60">Keywords: ქონების მართვა, property management Tbilisi, rental management Georgia</p></div>
+        <div id="tab-resort" class="tab-content hidden" role="tabpanel" aria-labelledby="tab-btn-resort"><h3 class="text-white font-bold text-lg mb-3">საკურორტო უძრავი ქონება</h3><p class="text-white/50 leading-relaxed mb-4">ბათუმი, გუდაური, ბაკურიანი — საკურორტო ქონების SEO. ტურისტულ ძიებებზე მორგება, Airbnb ინვესტორების მოზიდვა.</p><p class="text-sm text-primary/60">Keywords: ბინა ბათუმში ზღვასთან, apartment Gudauri ski resort, vacation property Batumi</p></div>
       </div>
     </div>
   </section>
@@ -417,8 +417,8 @@
     <div class="max-w-4xl mx-auto px-4 sm:px-6">
       <div class="text-center mb-16 reveal"><h2 class="font-heading text-3xl sm:text-4xl font-bold text-white mb-4">10xSEO vs. <span class="text-white/40">გენერიკული სააგენტოები</span></h2></div>
       <div class="glass-card rounded-2xl overflow-hidden reveal">
-        <table class="w-full text-sm">
-          <thead><tr class="border-b border-white/10"><th class="text-left p-4 text-white/50 font-medium">კრიტერიუმი</th><th class="p-4 text-center text-primary font-bold">10xSEO</th><th class="p-4 text-center text-white/40 font-medium">გენერიკული</th></tr></thead>
+        <table class="w-full text-sm" aria-label="10xSEO vs. გენერიკული სააგენტოები შედარება">
+          <thead><tr class="border-b border-white/10"><th class="text-left p-4 text-white/50 font-medium" scope="col">კრიტერიუმი</th><th class="p-4 text-center text-primary font-bold" scope="col">10xSEO</th><th class="p-4 text-center text-white/40 font-medium" scope="col">გენერიკული</th></tr></thead>
           <tbody>
             <tr class="border-b border-white/5 hover:bg-white/[0.02]"><td class="p-4 text-white/70">უძრავი ქონების ექსპერტიზა</td><td class="p-4 text-center text-primary text-lg">&#10003;</td><td class="p-4 text-center text-red-400 text-lg">&#10007;</td></tr>
             <tr class="border-b border-white/5 hover:bg-white/[0.02]"><td class="p-4 text-white/70">პორტალ-ბალანსის სტრატეგია</td><td class="p-4 text-center text-primary text-lg">&#10003;</td><td class="p-4 text-center text-red-400 text-lg">&#10007;</td></tr>
@@ -559,8 +559,9 @@
           <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-semibold mb-6"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg> უფასო PDF ჩეკლისტი</div>
           <h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4">უძრავი ქონების SEO ჩეკლისტი 2026 — 47 პუნქტი</h2>
           <p class="text-white/50 mb-8 max-w-lg mx-auto">ტექნიკური SEO, GBP, Schema markup, უბნის გვერდები, კონტენტ სტრატეგია, Off-plan SEO და GEO. უფასოდ.</p>
-          <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="return false;">
-            <input type="email" placeholder="თქვენი ელფოსტა" class="flex-1 px-5 py-3.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-sm">
+          <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="handleLeadMagnet(event);">
+            <label for="lead-email" class="sr-only">ელფოსტა</label>
+            <input type="email" id="lead-email" name="email" autocomplete="email" placeholder="თქვენი ელფოსტა" required class="flex-1 px-5 py-3.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/40 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-sm">
             <button type="submit" class="px-8 py-3.5 ai-cta-animate text-white font-bold rounded-xl hover:brightness-110 transition-all text-sm whitespace-nowrap">ჩამოტვირთე</button>
           </form>
           <p class="text-xs text-white/30 mt-4">სპამს არ ვაგზავნით. მხოლოდ SEO რჩევები.</p>
@@ -600,6 +601,8 @@
       <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm"><p>&copy; 2026 10XSEO. ყველა უფლება დაცულია.</p><div class="flex gap-6"><a href="#" class="hover:text-primary transition-colors">კონფიდენციალურობა</a><a href="#" class="hover:text-primary transition-colors">პირობები</a></div></div>
     </div>
   </footer>
+  <!-- ===== BACK TO TOP ===== -->
+  <button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="გვერდის თავში დაბრუნება" class="hidden lg:flex fixed bottom-8 right-6 z-40 w-11 h-11 items-center justify-center rounded-full bg-primary/20 border border-primary/30 text-primary hover:bg-primary hover:text-white transition-all opacity-0 translate-y-2" style="transition:opacity .3s,transform .3s,background .2s"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/></svg></button>
   <!-- ===== STICKY BOTTOM CTA ===== -->
   <div id="sticky-cta" class="fixed bottom-0 left-0 right-0 z-50 lg:hidden bg-[#020710] border-t border-white/10 p-3 safe-bottom transition-transform duration-300">
     <div class="flex items-center gap-2 max-w-lg mx-auto">
@@ -610,17 +613,20 @@
   <!-- ===== SCRIPTS ===== -->
   <script>
     if(localStorage.getItem('theme')!=='light')document.documentElement.classList.add('dark');
-    let lastScroll=0;const stickyCta=document.getElementById('sticky-cta');
-    window.addEventListener('scroll',()=>{const cs=window.pageYOffset;if(cs>lastScroll&&cs>300)stickyCta.style.transform='translateY(100%)';else stickyCta.style.transform='translateY(0)';lastScroll=cs;});
+    let lastScroll=0;const stickyCta=document.getElementById('sticky-cta');const backToTop=document.getElementById('back-to-top');
+    window.addEventListener('scroll',()=>{const cs=window.pageYOffset;if(cs>lastScroll&&cs>300)stickyCta.style.transform='translateY(100%)';else stickyCta.style.transform='translateY(0)';lastScroll=cs;if(backToTop){if(cs>600){backToTop.style.opacity='1';backToTop.style.transform='translateY(0)';}else{backToTop.style.opacity='0';backToTop.style.transform='translateY(8px)';}}});
     const menuBtn=document.getElementById('mobile-menu-btn'),mobileMenu=document.getElementById('mobile-menu');
-    if(menuBtn&&mobileMenu){let menuOpen=false;menuBtn.addEventListener('click',()=>{menuOpen=!menuOpen;if(menuOpen){mobileMenu.classList.add('menu-open');mobileMenu.style.pointerEvents='auto';menuBtn.classList.add('menu-active');document.body.classList.add('overflow-hidden');}else{mobileMenu.classList.remove('menu-open');mobileMenu.style.pointerEvents='none';menuBtn.classList.remove('menu-active');document.body.classList.remove('overflow-hidden');}});mobileMenu.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>{menuOpen=false;mobileMenu.classList.remove('menu-open');mobileMenu.style.pointerEvents='none';menuBtn.classList.remove('menu-active');document.body.classList.remove('overflow-hidden');}));}
+    if(menuBtn&&mobileMenu){let menuOpen=false;menuBtn.addEventListener('click',()=>{menuOpen=!menuOpen;if(menuOpen){mobileMenu.classList.add('menu-open');mobileMenu.style.pointerEvents='auto';menuBtn.classList.add('menu-active');menuBtn.setAttribute('aria-expanded','true');document.body.classList.add('overflow-hidden');}else{mobileMenu.classList.remove('menu-open');mobileMenu.style.pointerEvents='none';menuBtn.classList.remove('menu-active');menuBtn.setAttribute('aria-expanded','false');document.body.classList.remove('overflow-hidden');}});mobileMenu.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>{menuOpen=false;mobileMenu.classList.remove('menu-open');mobileMenu.style.pointerEvents='none';menuBtn.classList.remove('menu-active');menuBtn.setAttribute('aria-expanded','false');document.body.classList.remove('overflow-hidden');}));}
     /* v29 FAQ logic */
-    (function(){const tabs=document.querySelectorAll('#v29-tabs .v29-tab');const cards=document.querySelectorAll('#v29-list .v29-card');const catMap={'all':'ყველა','general':'ზოგადი','price':'ფასი','technical':'ტექნიკური','market':'ბაზარი'};tabs.forEach(t=>{t.addEventListener('click',()=>{tabs.forEach(b=>b.classList.remove('v29-active'));t.classList.add('v29-active');const cat=t.dataset.cat;cards.forEach(c=>{if(cat==='all'){c.classList.remove('v29-hidden');}else{const cCat=c.dataset.cat;c.classList.toggle('v29-hidden',cCat!==catMap[cat]);}});});});cards.forEach(c=>{const toggle=c.querySelector('.v29-toggle');toggle.addEventListener('click',()=>{const isOpen=c.classList.contains('v29-open');cards.forEach(x=>x.classList.remove('v29-open'));if(!isOpen)c.classList.add('v29-open');toggle.setAttribute('aria-expanded',!isOpen);});});})();
-    document.querySelectorAll('.tab-btn').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.tab-content').forEach(c=>c.classList.add('hidden'));const target=document.getElementById(btn.dataset.tab);if(target)target.classList.remove('hidden');});});
+    (function(){const tabs=document.querySelectorAll('#v29-tabs .v29-tab');const cards=document.querySelectorAll('#v29-list .v29-card');const catMap={'all':'ყველა','general':'ზოგადი','price':'ფასი','technical':'ტექნიკური','market':'ბაზარი'};tabs.forEach(t=>{t.addEventListener('click',()=>{tabs.forEach(b=>b.classList.remove('v29-active'));t.classList.add('v29-active');const cat=t.dataset.cat;cards.forEach(c=>{if(cat==='all'){c.classList.remove('v29-hidden');}else{const cCat=c.dataset.cat;c.classList.toggle('v29-hidden',cCat!==catMap[cat]);}});});});cards.forEach(c=>{const toggle=c.querySelector('.v29-toggle');toggle.addEventListener('click',()=>{const isOpen=c.classList.contains('v29-open');cards.forEach(x=>{x.classList.remove('v29-open');x.querySelector('.v29-toggle').setAttribute('aria-expanded','false');});if(!isOpen){c.classList.add('v29-open');toggle.setAttribute('aria-expanded','true');}else{toggle.setAttribute('aria-expanded','false');}});});})();
+    document.querySelectorAll('.tab-btn').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.tab-btn').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false');});btn.classList.add('active');btn.setAttribute('aria-selected','true');document.querySelectorAll('.tab-content').forEach(c=>c.classList.add('hidden'));const target=document.getElementById(btn.dataset.tab);if(target)target.classList.remove('hidden');});});
     const revealObserver=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');revealObserver.unobserve(entry.target);}});},{threshold:0.1});document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
   </script>
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-  <script>function openCalendly(){Calendly.initPopupWidget({url:'https://calendly.com/10xseo-sales/30-seo-clone?background_color=020710&text_color=f8fafc&primary_color=8B5CF6'});return false;}</script>
+  <script>
+    function openCalendly(){Calendly.initPopupWidget({url:'https://calendly.com/10xseo-sales/30-seo-clone?background_color=020710&text_color=f8fafc&primary_color=8B5CF6'});return false;}
+    function handleLeadMagnet(e){e.preventDefault();const email=document.getElementById('lead-email').value;if(!email)return;const btn=e.submitter;if(btn){btn.textContent='გამოგზავნილია ✓';btn.disabled=true;}window.open('https://calendly.com/10xseo-sales/30-seo-clone','_blank');}
+  </script>
 </body>
 </html>
