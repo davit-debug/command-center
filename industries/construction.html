@@ -154,6 +154,16 @@
     .v29-open .v29-ans{max-height:600px}
     .v29-ans-inner{padding:0 18px 18px 16px;font-size:14px;line-height:1.75;color:rgba(255,255,255,.55)}
     .v29-hidden{display:none}
+    /* Hex partners */
+    .hex-clients-row{display:flex;justify-content:center;align-items:center;gap:1rem;flex-wrap:wrap}
+    .hex-client{width:160px;height:185px;position:relative;transition:transform .4s ease;flex-shrink:0}
+    .hex-client:hover{transform:translateY(-6px)}
+    .hex-client-inner{width:100%;height:100%;background:#fff;clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);display:flex;align-items:center;justify-content:center;padding:1.5rem}
+    .hex-client-inner img{width:78%;height:68%;object-fit:contain;opacity:.85;transition:opacity .3s ease}
+    .hex-client:hover .hex-client-inner img{opacity:1}
+    .hex-client-dark .hex-client-inner{background:#0d1117}
+    @media(max-width:900px){.hex-clients-row{gap:.5rem}.hex-client{width:130px;height:150px}}
+    @media(max-width:480px){.hex-client{width:100px;height:115px}.hex-clients-row{gap:.25rem}}
   </style>
 </head>
 <body class="font-body bg-[#020710] text-[#94A3B8]">
@@ -310,11 +320,35 @@
     </div>
   </section>
   <!-- ===== S3: TRUST BAR ===== -->
-  <section class="py-12 lg:py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="flex flex-wrap items-center justify-center gap-8 lg:gap-12 mb-8 reveal">
-        <span class="text-white/20 text-sm font-medium uppercase tracking-wider">ნდობით გვირჩევენ:</span>
-        <span class="text-white/40 font-semibold">Horizon Development</span><span class="text-white/40 font-semibold">myhome.ge</span><span class="text-white/40 font-semibold">Kotejebi.ge</span><span class="text-white/40 font-semibold">Fanjrebi.ge</span><span class="text-white/40 font-semibold">Gergili</span><span class="text-white/40 font-semibold">10xHome</span>
+  <section class="py-12 lg:py-16 bg-[#0a0f1e]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <p class="text-center text-xs font-semibold text-white/40 uppercase tracking-widest mb-8 reveal">ნდობით გვირჩევენ</p>
+      <div class="hex-clients-row mb-10 reveal">
+        <div class="hex-client"><div class="hex-client-inner"><img src="../images/clients/myhome.png" alt="myhome.ge"></div></div>
+        <div class="hex-client"><div class="hex-client-inner"><img src="../images/clients/horizon.png" alt="Horizon Batumi"></div></div>
+        <div class="hex-client"><div class="hex-client-inner"><img src="../images/clients/coordinate.png" alt="Coordinate"></div></div>
+        <div class="hex-client hex-client-dark"><div class="hex-client-inner"><img src="../images/clients/chronometri.svg" alt="ქრონომეტრი"></div></div>
+      </div>
+      <!-- Kotejebi.ge — Clutch Review -->
+      <div class="flex justify-center mb-10 reveal">
+        <div class="glass-card rounded-2xl p-5 max-w-sm w-full border border-yellow-400/20">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="flex gap-0.5">
+              <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <span class="text-xs font-semibold text-white/40 bg-white/5 px-2 py-0.5 rounded">Clutch.co</span>
+            <span class="ml-auto text-yellow-400 font-bold text-sm">5.0</span>
+          </div>
+          <p class="text-sm text-white/70 italic mb-3 leading-relaxed">"I highly recommend them to every business."</p>
+          <div>
+            <p class="text-xs font-bold text-white/90">Kotejebi.ge Communication</p>
+            <p class="text-xs text-white/40">უძრავი ქონება · 5+ წელი · $5M+ შემოსავალი</p>
+          </div>
+        </div>
       </div>
       <div class="flex flex-wrap items-center justify-center gap-6 lg:gap-10 text-sm text-white/50 reveal">
         <span><span class="text-primary font-bold text-lg">#1</span> SEO სააგენტო საქართველოში</span>
