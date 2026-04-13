@@ -76,3 +76,8 @@
 !new-sections.html
 !favicon-options.html
 !favicon-preview.html
+
+# Offer pages
+!offer/
+!offer/**
+!offer-v*.html
