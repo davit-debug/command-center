@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="ka" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SEO დიაგნოსტიკა | 10xSEO</title>
+  <meta name="robots" content="noindex, nofollow">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/firago@1.0.0/FiraGO.css" rel="stylesheet">
+  <link rel="stylesheet" href="offer/shared.css">
+  <link rel="preload" href="https://assets.calendly.com/assets/external/widget.css" as="style">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: { DEFAULT: '#8B5CF6', light: '#A78BFA', dark: '#7C3AED' },
+            accent: { DEFAULT: '#14B8A6', dark: '#0D9488' },
+            'ai-blue': '#3B82F6',
+            surface: { DEFAULT: '#ffffff', alt: '#f8fafc', dark: '#020710', 'dark-alt': '#0F0F0F' },
+            heading: { DEFAULT: '#0f172a', dark: '#f8fafc' },
+            body: { DEFAULT: '#475569', dark: '#94a3b8' },
+            success: '#21C743',
+            gold: '#D4A017',
+          },
+          fontFamily: {
+            'heading': ['"Dachi the Lynx"', 'sans-serif'],
+            'body': ['FiraGO', 'sans-serif'],
+            'inter': ['Inter', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    /* --- Diagnostic-specific styles --- */
+    .metric-card { border-radius: 16px; background: rgba(255,255,255,.03); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,.06); transition: all .4s; position: relative; overflow: hidden; }
+    .metric-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; border-radius: 0 0 16px 16px; }
+    .metric-card.red::after { background: linear-gradient(90deg, #EF4444, #F87171); }
+    .metric-card.yellow::after { background: linear-gradient(90deg, #F59E0B, #FBBF24); }
+    .metric-card.green::after { background: linear-gradient(90deg, #21C743, #34D058); }
+
+    .bar-fill { height: 8px; border-radius: 4px; transition: width 1.2s cubic-bezier(.4,0,.2,1); }
+    .bar-track { height: 8px; border-radius: 4px; background: rgba(255,255,255,.06); width: 100%; }
+
+    .issue-card { border-left: 3px solid #EF4444; background: rgba(239,68,68,.04); border-radius: 0 12px 12px 0; padding: 16px 20px; transition: all .3s; }
+    .issue-card:hover { background: rgba(239,68,68,.08); transform: translateX(4px); }
+
+    .vs-bar { position: relative; height: 28px; border-radius: 6px; overflow: hidden; background: rgba(255,255,255,.04); }
+    .vs-fill-client { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 6px 0 0 6px; background: linear-gradient(90deg, #8B5CF6, #A78BFA); transition: width 1.2s cubic-bezier(.4,0,.2,1); }
+    .vs-fill-comp { position: absolute; right: 0; top: 0; bottom: 0; border-radius: 0 6px 6px 0; background: linear-gradient(90deg, #14B8A6, #2DD4BF); transition: width 1.2s cubic-bezier(.4,0,.2,1); }
+
+    .opp-number { font-family: 'Inter', sans-serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; background: linear-gradient(135deg, #21C743, #14B8A6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  </style>
+</head>
+<body class="font-body bg-surface-dark text-body-dark">
+<a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-primary focus:text-white focus:px-4 focus:py-2 focus:rounded-lg">გადახტომა მთავარ შინაარსზე</a>
+
+<!-- HEADER -->
+<header class="no-print fixed top-0 left-0 right-0 z-50 h-16 lg:h-[72px] bg-surface-dark/80 header-scrolled border-b border-gray-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 h-full flex items-center justify-between">
+    <a href="index.html" aria-label="10xSEO"><img src="images/logo.png" alt="10XSEO" class="h-auto w-36 lg:w-40"></a>
+    <div class="flex items-center gap-3">
+      <a href="tel:+995510101517" class="flex items-center gap-2 text-sm text-heading-dark hover:text-primary-light transition-colors">
+        <svg class="w-4 h-4 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        <span class="hidden sm:inline">+995 510 10 15 17</span>
+      </a>
+      <a href="#" onclick="openCalendly();return false;" class="inline-flex items-center gap-2 px-5 py-2.5 ai-cta-animate text-white text-sm font-semibold rounded-xl">დანიშნე ზარი</a>
+    </div>
+  </div>
+</header>
+
+<main id="main-content" class="pt-16 lg:pt-[72px]">
+
+<!-- ===== 1. HERO ===== -->
+<section id="s-hero" class="relative py-20 lg:py-28 overflow-hidden">
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+    <div class="absolute top-20 left-1/4 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px]"></div>
+    <div class="absolute bottom-10 right-1/4 w-[400px] h-[400px] bg-accent/5 rounded-full blur-[100px]"></div>
+  </div>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10">
+    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
+      <svg class="w-4 h-4 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+      <span class="text-sm text-body-dark">SEO დიაგნოსტიკის ანგარიში</span>
+    </div>
+    <h1 class="font-heading text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-heading-dark mb-6 leading-tight">
+      <span id="hero-domain" class="gradient-text">example.ge</span>-ის SEO რეალური მდგომარეობა
+    </h1>
+    <p class="text-2xl font-bold text-heading-dark mb-3" id="hero-client-name">[კომპანიის სახელი]</p>
+    <p class="text-sm text-gray-500" id="hero-date">2026 წლის __ აპრილი</p>
+  </div>
+</section>
+
+<!-- ===== 2. SITE SNAPSHOT ===== -->
+<section id="s-snapshot" class="py-16 lg:py-20 reveal">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6">
+    <h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-heading-dark text-center mb-4">საიტის მიმდინარე მდგომარეობა</h2>
+    <p class="text-body-dark text-center mb-12">Ahrefs &amp; Google Search Console მონაცემები</p>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4" id="snapshot-grid">
+      <!-- DR -->
+      <div class="metric-card p-6 text-center" id="mc-dr">
+        <div class="w-12 h-12 rounded-full bg-primary/15 flex items-center justify-center mx-auto mb-3">
+          <svg class="w-6 h-6 text-primary-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <p class="text-xs text-body-dark uppercase tracking-wider mb-2">Domain Rating</p>
+        <p class="text-4xl font-extrabold font-inter text-heading-dark" id="snap-dr">15</p>
+        <div class="bar-track mt-3"><div class="bar-fill" id="bar-dr" style="width:0%"></div></div>
+      </div>
+      <!-- Keywords -->
+      <div class="metric-card p-6 text-center" id="mc-kw">
+        <div class="w-12 h-12 rounded-full bg-accent/15 flex items-center justify-center mx-auto mb-3">
+          <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"/></svg>
+        </div>
+        <p class="text-xs text-body-dark uppercase tracking-wider mb-2">Organic Keywords</p>
+        <p class="text-4xl font-extrabold font-inter text-heading-dark" id="snap-kw">120</p>
+        <div class="bar-track mt-3"><div class="bar-fill" id="bar-kw" style="width:0%"></div></div>
+      </div>
+      <!-- Traffic -->
+      <div class="metric-card p-6 text-center" id="mc-traffic">
+        <div class="w-12 h-12 rounded-full bg-ai-blue/15 flex items-center justify-center mx-auto mb-3">
+          <svg class="w-6 h-6 text-ai-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+        </div>
+        <p class="text-xs text-body-dark uppercase tracking-wider mb-2">Monthly Traffic</p>
+        <p class="text-4xl font-extrabold font-inter text-heading-dark" id="snap-traffic">800</p>
+        <div class="bar-track mt-3"><div class="bar-fill" id="bar-traffic" style="width:0%"></div></div>
+      </div>
+      <!-- Health -->
+      <div class="metric-card p-6 text-center" id="mc-health">
+        <div class="w-12 h-12 rounded-full bg-gold/15 flex items-center justify-center mx-auto mb-3">
+          <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <p class="text-xs text-body-dark uppercase tracking-wider mb-2">Technical Health</p>
+        <p class="text-4xl font-extrabold font-inter text-heading-dark"><span id="snap-health">45</span>%</p>
+        <div class="bar-track mt-3"><div class="bar-fill" id="bar-health" style="width:0%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 3. YOU vs COMPETITOR ===== -->
+<section id="s-versus" class="py-16 lg:py-20 reveal">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6">
+    <h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-heading-dark text-center mb-4">შენ vs კონკურენტი</h2>
+    <p class="text-body-dark text-center mb-12">რეალური სხვაობა ციფრებში</p>
+
+    <!-- Labels -->
+    <div class="flex justify-between items-center mb-6 px-2">
+      <div class="flex items-center gap-2">
+        <span class="w-3 h-3 rounded-full bg-primary"></span>
+        <span class="text-sm text-heading-dark font-semibold" id="vs-client-label">თქვენი საიტი</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="text-sm text-heading-dark font-semibold" id="vs-comp-label">[კონკურენტი]</span>
+        <span class="w-3 h-3 rounded-full bg-accent"></span>
+      </div>
+    </div>
+
+    <div class="glass p-6 lg:p-8 space-y-6">
+      <!-- DR comparison -->
+      <div>
+        <div class="flex justify-between items-center mb-2">
+          <span class="text-sm text-body-dark">Domain Rating</span>
+          <div class="flex items-center gap-4 font-inter font-bold text-sm">
+            <span class="text-primary-light" id="vs-dr-client">15</span>
+            <span class="text-body-dark">vs</span>
+            <span class="text-accent" id="vs-dr-comp">35</span>
+          </div>
+        </div>
+        <div class="vs-bar"><div class="vs-fill-client" id="vs-bar-dr-c" style="width:0%"></div><div class="vs-fill-comp" id="vs-bar-dr-co" style="width:0%"></div></div>
+      </div>
+      <!-- Keywords comparison -->
+      <div>
+        <div class="flex justify-between items-center mb-2">
+          <span class="text-sm text-body-dark">Organic Keywords</span>
+          <div class="flex items-center gap-4 font-inter font-bold text-sm">
+            <span class="text-primary-light" id="vs-kw-client">120</span>
+            <span class="text-body-dark">vs</span>
+            <span class="text-accent" id="vs-kw-comp">850</span>
+          </div>
+        </div>
+        <div class="vs-bar"><div class="vs-fill-client" id="vs-bar-kw-c" style="width:0%"></div><div class="vs-fill-comp" id="vs-bar-kw-co" style="width:0%"></div></div>
+      </div>
+      <!-- Traffic comparison -->
+      <div>
+        <div class="flex justify-between items-center mb-2">
+          <span class="text-sm text-body-dark">Monthly Traffic</span>
+          <div class="flex items-center gap-4 font-inter font-bold text-sm">
+            <span class="text-primary-light" id="vs-tr-client">800</span>
+            <span class="text-body-dark">vs</span>
+            <span class="text-accent" id="vs-tr-comp">5,200</span>
+          </div>
+        </div>
+        <div class="vs-bar"><div class="vs-fill-client" id="vs-bar-tr-c" style="width:0%"></div><div class="vs-fill-comp" id="vs-bar-tr-co" style="width:0%"></div></div>
+      </div>
+      <!-- Estimated Value -->
+      <div>
+        <div class="flex justify-between items-center mb-2">
+          <span class="text-sm text-body-dark">სავარაუდო ტრაფიკის ღირებულება ($/თვე)</span>
+          <div class="flex items-center gap-4 font-inter font-bold text-sm">
+            <span class="text-primary-light" id="vs-val-client">$160</span>
+            <span class="text-body-dark">vs</span>
+            <span class="text-accent" id="vs-val-comp">$1,040</span>
+          </div>
+        </div>
+        <div class="vs-bar"><div class="vs-fill-client" id="vs-bar-val-c" style="width:0%"></div><div class="vs-fill-comp" id="vs-bar-val-co" style="width:0%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 4. 5 CRITICAL ISSUES ===== -->
+<section id="s-issues" class="py-16 lg:py-20 reveal">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6">
+    <h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-heading-dark text-center mb-4">5 კრიტიკული პრობლემა</h2>
+    <p class="text-body-dark text-center mb-12">სასწრაფოდ გამოსასწორებელი</p>
+    <div class="space-y-3" id="issues-list">
+      <div class="issue-card flex items-start gap-4">
+        <div class="w-8 h-8 rounded-lg bg-red-500/15 flex items-center justify-center shrink-0 mt-0.5">
+          <span class="font-inter font-extrabold text-red-400 text-sm">1</span>
+        </div>
+        <p class="text-heading-dark text-sm leading-relaxed" id="issue-1">Core Web Vitals — LCP 4.2 წამი (ნორმა: &lt;2.5 წამი)</p>
+      </div>
+      <div class="issue-card flex items-start gap-4">
+        <div class="w-8 h-8 rounded-lg bg-red-500/15 flex items-center justify-center shrink-0 mt-0.5">
+          <span class="font-inter font-extrabold text-red-400 text-sm">2</span>
+        </div>
+        <p class="text-heading-dark text-sm leading-relaxed" id="issue-2">50+ გვერდი არ არის ინდექსირებული Search Console-ში</p>
+      </div>
+      <div class="issue-card flex items-start gap-4">
+        <div class="w-8 h-8 rounded-lg bg-red-500/15 flex items-center justify-center shrink-0 mt-0.5">
+          <span class="font-inter font-extrabold text-red-400 text-sm">3</span>
+        </div>
+        <p class="text-heading-dark text-sm leading-relaxed" id="issue-3">Meta Description არ აქვს 35 გვერდს</p>
+      </div>
+      <div class="issue-card flex items-start gap-4">
+        <div class="w-8 h-8 rounded-lg bg-red-500/15 flex items-center justify-center shrink-0 mt-0.5">
+          <span class="font-inter font-extrabold text-red-400 text-sm">4</span>
+        </div>
+        <p class="text-heading-dark text-sm leading-relaxed" id="issue-4">Mobile Usability — 12 ხარვეზი</p>
+      </div>
+      <div class="issue-card flex items-start gap-4">
+        <div class="w-8 h-8 rounded-lg bg-red-500/15 flex items-center justify-center shrink-0 mt-0.5">
+          <span class="font-inter font-extrabold text-red-400 text-sm">5</span>
+        </div>
+        <p class="text-heading-dark text-sm leading-relaxed" id="issue-5">Schema Markup სრულად აკლია</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 5. OPPORTUNITY CALCULATION ===== -->
+<section id="s-opportunity" class="py-16 lg:py-20 reveal">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6">
+    <div class="gold-card p-8 lg:p-12 text-center">
+      <div class="w-16 h-16 rounded-full bg-success/15 flex items-center justify-center mx-auto mb-6">
+        <svg class="w-8 h-8 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+      </div>
+      <h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-heading-dark mb-6">ზრდის შესაძლებლობა</h2>
+      <p class="text-body-dark text-lg mb-8">თუ კონკურენტის დონეზე მივალთ, თქვენ მიიღებთ:</p>
+      <div class="grid sm:grid-cols-2 gap-6 mb-8">
+        <div class="bg-white/5 rounded-2xl p-6">
+          <p class="opp-number" id="opp-visitors">+4,400</p>
+          <p class="text-sm text-body-dark mt-2">დამატებითი ვიზიტორი / თვეში</p>
+        </div>
+        <div class="bg-white/5 rounded-2xl p-6">
+          <p class="opp-number" id="opp-value">+$880</p>
+          <p class="text-sm text-body-dark mt-2">სავარაუდო ტრაფიკის ღირებულება / თვეში</p>
+        </div>
+      </div>
+      <p class="text-sm text-body-dark">გამოთვლილია <span id="opp-comp-name">[კონკურენტი]</span>-ის მეტრიკებთან შედარებით</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 6. WHAT WE DO TO FIX THIS ===== -->
+<section id="s-services" class="py-16 lg:py-20 reveal">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-heading-dark text-center mb-4">რას გავაკეთებთ</h2>
+    <p class="text-body-dark text-center mb-12">Done-For-You SEO — სრული სერვისი</p>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <!-- Analytics -->
+      <div class="glass p-6">
+        <div class="w-10 h-10 rounded-xl bg-primary/15 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-primary-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+        </div>
+        <h3 class="text-heading-dark font-bold text-base mb-2">ანალიტიკა და სტრატეგია</h3>
+        <p class="text-sm text-body-dark leading-relaxed">ბაზრის კვლევა, საკვანძო სიტყვების ანალიზი, Keyword Mapping, კონკურენტების ანალიზი, კომპლექსური SEO აუდიტი.</p>
+      </div>
+      <!-- Technical -->
+      <div class="glass p-6">
+        <div class="w-10 h-10 rounded-xl bg-accent/15 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+        </div>
+        <h3 class="text-heading-dark font-bold text-base mb-2">ტექნიკური SEO</h3>
+        <p class="text-sm text-body-dark leading-relaxed">Crawlability, Core Web Vitals, ინდექსაციის მართვა, Schema Markup, უწყვეტი მონიტორინგი.</p>
+      </div>
+      <!-- On-Page -->
+      <div class="glass p-6">
+        <div class="w-10 h-10 rounded-xl bg-ai-blue/15 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-ai-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+        </div>
+        <h3 class="text-heading-dark font-bold text-base mb-2">On-Page ოპტიმიზაცია</h3>
+        <p class="text-sm text-body-dark leading-relaxed">გვერდების ოპტიმიზაცია, META მონაცემები, H1-H6 სტრუქტურა, Keywords იმპლემენტაცია.</p>
+      </div>
+      <!-- Off-Page -->
+      <div class="glass p-6">
+        <div class="w-10 h-10 rounded-xl bg-gold/15 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+        </div>
+        <h3 class="text-heading-dark font-bold text-base mb-2">Off-Page SEO</h3>
+        <p class="text-sm text-body-dark leading-relaxed">Backlinks, მედია პუბლიკაციები, მედიაპარტნიორობა, საერთაშორისო პრაქტიკა.</p>
+      </div>
+      <!-- Content -->
+      <div class="glass p-6">
+        <div class="w-10 h-10 rounded-xl bg-success/15 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        </div>
+        <h3 class="text-heading-dark font-bold text-base mb-2">კონტენტი</h3>
+        <p class="text-sm text-body-dark leading-relaxed">ბიზნესზე მორგებული ტექსტები, SEO კონტენტის სტრატეგია, უნიკალურობა, E-E-A-T.</p>
+      </div>
+      <!-- AEO/GEO -->
+      <div class="glass p-6">
+        <div class="w-10 h-10 rounded-xl bg-purple-500/15 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+        </div>
+        <h3 class="text-heading-dark font-bold text-base mb-2">AI SEO (AEO / GEO)</h3>
+        <p class="text-sm text-body-dark leading-relaxed">AI Overviews ოპტიმიზაცია, Generative Engine Optimization, ChatGPT/Perplexity ხილვადობა.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 7. PROCESS + TEAM ===== -->
+<section id="s-process" class="py-16 lg:py-20 reveal">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6">
+    <h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-heading-dark text-center mb-12">პროცესი და გუნდი</h2>
+
+    <!-- 5-Step Process -->
+    <div class="grid sm:grid-cols-5 gap-3 mb-12">
+      <div class="glass p-4 text-center">
+        <div class="w-10 h-10 rounded-full bg-primary/15 flex items-center justify-center mx-auto mb-3">
+          <span class="font-inter font-extrabold text-primary-light text-xs">01</span>
+        </div>
+        <h4 class="text-heading-dark font-bold text-xs mb-1">დიაგნოსტიკა</h4>
+        <p class="text-[11px] text-body-dark">აუდიტი + სტრატეგია</p>
+      </div>
+      <div class="glass p-4 text-center">
+        <div class="w-10 h-10 rounded-full bg-accent/15 flex items-center justify-center mx-auto mb-3">
+          <span class="font-inter font-extrabold text-accent text-xs">02</span>
+        </div>
+        <h4 class="text-heading-dark font-bold text-xs mb-1">Onboarding</h4>
+        <p class="text-[11px] text-body-dark">წვდომები + გეგმა</p>
+      </div>
+      <div class="glass p-4 text-center">
+        <div class="w-10 h-10 rounded-full bg-ai-blue/15 flex items-center justify-center mx-auto mb-3">
+          <span class="font-inter font-extrabold text-ai-blue text-xs">03</span>
+        </div>
+        <h4 class="text-heading-dark font-bold text-xs mb-1">ტექნიკური Fix</h4>
+        <p class="text-[11px] text-body-dark">კრიტიკული ხარვეზები</p>
+      </div>
+      <div class="glass p-4 text-center">
+        <div class="w-10 h-10 rounded-full bg-gold/15 flex items-center justify-center mx-auto mb-3">
+          <span class="font-inter font-extrabold text-gold text-xs">04</span>
+        </div>
+        <h4 class="text-heading-dark font-bold text-xs mb-1">კონტენტი + Links</h4>
+        <p class="text-[11px] text-body-dark">ზრდის ფაზა</p>
+      </div>
+      <div class="glass p-4 text-center">
+        <div class="w-10 h-10 rounded-full bg-success/15 flex items-center justify-center mx-auto mb-3">
+          <span class="font-inter font-extrabold text-success text-xs">05</span>
+        </div>
+        <h4 class="text-heading-dark font-bold text-xs mb-1">რეპორტინგი</h4>
+        <p class="text-[11px] text-body-dark">გაზომვა + იტერაცია</p>
+      </div>
+    </div>
+
+    <!-- Team -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="glass p-5 text-center">
+        <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-3">
+          <span class="text-primary-light font-bold font-inter text-sm">SL</span>
+        </div>
+        <h4 class="text-heading-dark font-bold text-sm">Senior SEO Lead</h4>
+        <p class="text-xs text-body-dark mt-1">სტრატეგია & მენეჯმენტი</p>
+      </div>
+      <div class="glass p-5 text-center">
+        <div class="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center mx-auto mb-3">
+          <span class="text-accent font-bold font-inter text-sm">TS</span>
+        </div>
+        <h4 class="text-heading-dark font-bold text-sm">Technical SEO</h4>
+        <p class="text-xs text-body-dark mt-1">აუდიტი & ოპტიმიზაცია</p>
+      </div>
+      <div class="glass p-5 text-center">
+        <div class="w-12 h-12 rounded-full bg-ai-blue/20 flex items-center justify-center mx-auto mb-3">
+          <span class="text-ai-blue font-bold font-inter text-sm">JS</span>
+        </div>
+        <h4 class="text-heading-dark font-bold text-sm">Junior SEO</h4>
+        <p class="text-xs text-body-dark mt-1">On-Page & მონიტორინგი</p>
+      </div>
+      <div class="glass p-5 text-center">
+        <div class="w-12 h-12 rounded-full bg-gold/20 flex items-center justify-center mx-auto mb-3">
+          <span class="text-gold font-bold font-inter text-sm">CW</span>
+        </div>
+        <h4 class="text-heading-dark font-bold text-sm">კონტენტის მწერალი</h4>
+        <p class="text-xs text-body-dark mt-1">SEO კონტენტი & PR</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 8. PRICING ===== -->
+<section id="s-pricing" class="py-16 lg:py-20 reveal">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-heading-dark text-center mb-4">ფასები</h2>
+    <p class="text-body-dark text-center mb-10" id="pricing-rec-msg">თქვენი საიტის მონაცემებზე დაყრდნობით რეკომენდებული პაკეტი მონიშნულია</p>
+
+    <!-- Desktop table -->
+    <div class="hidden lg:block glass p-2 mb-6 overflow-x-auto">
+      <table class="price-table" id="pricing-table">
+        <thead>
+          <tr>
+            <th class="text-left w-[220px]"></th>
+            <th id="pt-h-start">SEO სტარტი</th>
+            <th id="pt-h-basis">SEO ბაზისი</th>
+            <th class="best best-top" id="pt-h-growth">SEO ზრდა &#11088;</th>
+            <th id="pt-h-premium">პრემიუმი</th>
+            <th id="pt-h-leader">ბაზრის ლიდერი</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ფასი (GEL)</td>
+            <td class="font-inter font-bold text-heading-dark" id="pt-p-start">1,450</td>
+            <td class="font-inter font-bold text-heading-dark" id="pt-p-basis">2,500</td>
+            <td class="best font-inter font-extrabold text-heading-dark text-lg" id="pt-p-growth">3,550</td>
+            <td class="font-inter font-bold text-heading-dark" id="pt-p-premium">6,500</td>
+            <td class="font-inter font-bold text-heading-dark" id="pt-p-leader">12,500</td>
+          </tr>
+          <tr><td>სიტყვები (კონტენტი)</td><td>1,000</td><td>2,000</td><td class="best">4,000</td><td>7,000</td><td>10,000</td></tr>
+          <tr><td>ბექლინკების ბიუჯეტი</td><td>უფასო</td><td>200 &#8382;</td><td class="best">500 &#8382;</td><td>1,000 &#8382;</td><td>2,500 &#8382;</td></tr>
+          <tr><td>Live რეპორტინგი</td><td>&mdash;</td><td>&mdash;</td><td class="best">&mdash;</td><td class="text-success">&#10003;</td><td class="text-success">&#10003;</td></tr>
+          <tr><td>WhatsApp ჯგუფი</td><td>&mdash;</td><td class="text-success">&#10003;</td><td class="best text-success">&#10003;</td><td class="text-success">&#10003;</td><td class="text-success">&#10003;</td></tr>
+          <tr><td>ტექნიკური SEO</td><td class="text-success">&#10003;</td><td class="text-success">&#10003;</td><td class="best text-success">&#10003;</td><td class="text-success">&#10003;</td><td class="text-success">&#10003;</td></tr>
+          <tr><td>კონკურენტების კვლევა</td><td>&mdash;</td><td>&mdash;</td><td class="best text-success">&#10003;</td><td class="text-success">&#10003;</td><td class="text-success">&#10003;</td></tr>
+          <tr><td>ლოკალური SEO (GMB)</td><td>&mdash;</td><td class="text-success">&#10003;</td><td class="best text-success">&#10003;</td><td class="text-success">&#10003;</td><td class="text-success">&#10003;</td></tr>
+          <tr><td>ყოველთვიური სარეპორტო ზარი</td><td class="text-success">&#10003;</td><td class="text-success">&#10003;</td><td class="best text-success">&#10003;</td><td class="text-success">&#10003;</td><td class="text-success">&#10003;</td></tr>
+          <tr><td>AI SEO</td><td>&mdash;</td><td>&mdash;</td><td class="best text-success">&#10003;</td><td class="text-success">&#10003;</td><td class="text-success">&#10003;</td></tr>
+          <tr><td>Analytics &amp; HotJar</td><td>&mdash;</td><td class="text-success">&#10003;</td><td class="best text-success">&#10003;</td><td class="text-success">&#10003;</td><td class="text-success">&#10003;</td></tr>
+          <tr><td>ენები</td><td>1</td><td>1</td><td class="best">2</td><td>3</td><td>3</td></tr>
+          <tr>
+            <td>ადგილების რაოდენობა</td>
+            <td>4</td><td>2</td>
+            <td class="best best-bottom">2</td>
+            <td>1</td><td>1</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Mobile cards -->
+    <div class="lg:hidden space-y-4" id="pricing-mobile">
+      <div class="glass p-5" data-tier="seo-start"><h4 class="text-heading-dark font-bold mb-1">SEO სტარტი</h4><p class="text-2xl font-extrabold font-inter text-heading-dark">&#8382;1,450<span class="text-sm font-normal text-body-dark">/თვე</span></p><p class="text-xs text-body-dark mt-2">1,000 სიტყვა &middot; ტექნიკური SEO &middot; 1 ენა &middot; 4 ადგილი</p></div>
+      <div class="glass p-5" data-tier="seo-basis"><h4 class="text-heading-dark font-bold mb-1">SEO ბაზისი</h4><p class="text-2xl font-extrabold font-inter text-heading-dark">&#8382;2,500<span class="text-sm font-normal text-body-dark">/თვე</span></p><p class="text-xs text-body-dark mt-2">2,000 სიტყვა &middot; GMB &middot; WhatsApp &middot; Analytics &middot; 1 ენა</p></div>
+      <div class="gradient-border glow-pulse p-5 relative" data-tier="seo-growth"><div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 bg-primary text-white text-[10px] font-bold rounded-full uppercase" id="mob-best-label">რეკომენდებული</div><h4 class="text-heading-dark font-bold mb-1 mt-1">SEO ზრდა</h4><p class="text-2xl font-extrabold font-inter text-heading-dark">&#8382;3,550<span class="text-sm font-normal text-body-dark">/თვე</span></p><p class="text-xs text-body-dark mt-2">4,000 სიტყვა &middot; 500&#8382; ბექლინკი &middot; AI SEO &middot; კონკურენტები &middot; 2 ენა</p></div>
+      <div class="glass p-5" data-tier="seo-premium"><h4 class="text-heading-dark font-bold mb-1">პრემიუმი</h4><p class="text-2xl font-extrabold font-inter text-heading-dark">&#8382;6,500<span class="text-sm font-normal text-body-dark">/თვე</span></p><p class="text-xs text-body-dark mt-2">7,000 სიტყვა &middot; Live Dashboard &middot; 1,000&#8382; ბექლინკი &middot; 3 ენა</p></div>
+      <div class="glass p-5" data-tier="seo-leader"><h4 class="text-heading-dark font-bold mb-1">ბაზრის ლიდერი</h4><p class="text-2xl font-extrabold font-inter text-heading-dark">&#8382;12,500<span class="text-sm font-normal text-body-dark">/თვე</span></p><p class="text-xs text-body-dark mt-2">10,000 სიტყვა &middot; 2,500&#8382; ბექლინკი &middot; სრული სერვისი &middot; 3 ენა</p></div>
+    </div>
+    <p class="text-xs text-body-dark text-center mt-4">* ფასებში არ არის გათვალისწინებული დღგ</p>
+  </div>
+</section>
+
+<!-- ===== 9. CTA ===== -->
+<section class="py-16 lg:py-20 bg-gradient-to-r from-primary to-blue-600 dark:from-primary-dark dark:to-blue-800 relative overflow-hidden">
+  <div class="absolute inset-0 opacity-10" aria-hidden="true"><div class="absolute top-10 left-10 w-40 h-40 border border-white/30 rounded-full"></div><div class="absolute bottom-10 right-10 w-60 h-60 border border-white/20 rounded-full"></div></div>
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center relative z-10">
+    <p class="text-white/70 text-sm uppercase tracking-wider mb-3">ვიღებთ თვეში მხოლოდ 2 ახალ კლიენტს</p>
+    <h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white mb-4">დანიშნე უფასო deep-dive ზარი</h2>
+    <p class="text-lg text-white/80 mb-8">განვიხილავთ თქვენი საიტის დიაგნოსტიკას დეტალურად და დაგეგმავთ ზრდის კონკრეტულ ნაბიჯებს</p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="#" onclick="openCalendly();return false;" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-primary font-bold rounded-2xl hover:shadow-xl transition-all text-lg">
+        დანიშნე ზარი
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+      <a href="tel:+995510101517" class="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-2xl hover:bg-white/10 transition-all text-lg">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        +995 510 10 15 17
+      </a>
+    </div>
+    <div class="flex flex-wrap justify-center gap-4 mt-8 text-white/60 text-sm">
+      <a href="mailto:sales@10xseo.ge" class="hover:text-white transition-colors">sales@10xseo.ge</a>
+      <a href="https://www.facebook.com/10xSEO.Ge" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Facebook</a>
+      <a href="https://www.linkedin.com/company/10xseoge/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">LinkedIn</a>
+      <a href="https://10xseo.ge" target="_blank" class="hover:text-white transition-colors">10xseo.ge</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 10. FAQ ===== -->
+<section id="s-faq" class="py-16 lg:py-20 reveal">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6">
+    <h2 class="font-heading text-2xl sm:text-3xl font-extrabold text-heading-dark text-center mb-10">ხშირად დასმული კითხვები</h2>
+    <div class="space-y-3">
+      <div class="fq-card"><div class="fq-q" onclick="toggleFaq(this)"><div class="fq-num">01</div><span class="fq-txt">რამდენ ხანში ვნახავ პირველ შედეგებს?</span><svg class="fq-arrow" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></div><div class="fq-a"><p>პირველი შედეგები 2-3 თვეში ჩანს, მნიშვნელოვანი ზრდა 4-6 თვეში. კონკურენტული ნიშებისთვის 6-12 თვე. ყოველკვირეული რეპორტინგით მუდმივად ხედავთ პროგრესს.</p></div></div>
+      <div class="fq-card"><div class="fq-q" onclick="toggleFaq(this)"><div class="fq-num">02</div><span class="fq-txt">რამდენად ზუსტია ეს დიაგნოსტიკა?</span><svg class="fq-arrow" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></div><div class="fq-a"><p>მონაცემები აღებულია Ahrefs-იდან და Google Search Console-იდან — ინდუსტრიის სტანდარტული ინსტრუმენტებიდან. Deep-dive ზარზე უფრო დეტალურ ანალიზს წარმოვადგენთ.</p></div></div>
+      <div class="fq-card"><div class="fq-q" onclick="toggleFaq(this)"><div class="fq-num">03</div><span class="fq-txt">რა მოხდება თუ შედეგი არ იქნება?</span><svg class="fq-arrow" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></div><div class="fq-a"><p>60-დღიანი გარანტია — თუ Search Console-ში measurable progress-ს ვერ ვაჩვენებთ, შემდეგი თვე უფასოა. გამჭვირვალე პროცესით თითოეულ ნაბიჯზე ვხედავთ რა მუშაობს და რა არა.</p></div></div>
+      <div class="fq-card"><div class="fq-q" onclick="toggleFaq(this)"><div class="fq-num">04</div><span class="fq-txt">როგორ მექნება პროცესზე ხილვადობა?</span><svg class="fq-arrow" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></div><div class="fq-a"><p>Live Dashboard რეალურ დროში, Loom ვიდეო რეპორტი ყოველთვიურად, WhatsApp ჯგუფი ოპერატიული კომუნიკაციისთვის, ყოველთვიური სარეპორტო ზარი.</p></div></div>
+      <div class="fq-card"><div class="fq-q" onclick="toggleFaq(this)"><div class="fq-num">05</div><span class="fq-txt">რა მონაწილეობა მოეთხოვება ჩემს გუნდს?</span><svg class="fq-arrow" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></div><div class="fq-a"><p>მინიმალური. ჩვენ ვმართავთ ყველა SEO პროცესს — თქვენგან მხოლოდ ბიზნესის სპეციფიკის ცოდნა და კონტენტის თემატიკის დამტკიცება.</p></div></div>
+      <div class="fq-card"><div class="fq-q" onclick="toggleFaq(this)"><div class="fq-num">06</div><span class="fq-txt">შემიძლია პაკეტის შეცვლა მოგვიანებით?</span><svg class="fq-arrow" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></div><div class="fq-a"><p>დიახ. თვიდან თვემდე მუშაობა — ნებისმიერ დროს შეგიძლიათ პაკეტის გაზრდა, შემცირება ან შეჩერება. Lock-in არ გვაქვს.</p></div></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="no-print bg-surface-dark-alt text-gray-400 py-8">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+    <a href="index.html"><img src="images/logo.png" alt="10XSEO" class="h-8 w-auto mx-auto mb-3"></a>
+    <div class="flex justify-center gap-4 mb-3">
+      <a href="https://www.facebook.com/10xSEO.Ge" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-primary-light transition-colors">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/company/10xseoge/" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-primary-light transition-colors">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+    </div>
+    <p class="text-xs text-gray-500">+995 510 10 15 17 &middot; sales@10xseo.ge &middot; ბახტრიონის 8, თბილისი 0194</p>
+    <p class="text-xs text-gray-600 mt-2">&copy; 2026 10xSEO. ყველა უფლება დაცულია.</p>
+  </div>
+</footer>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/995510101517" target="_blank" rel="noopener noreferrer" class="wa-float no-print" aria-label="WhatsApp">
+  <svg class="w-7 h-7" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- Sticky Mobile CTA -->
+<div id="sticky-cta" class="no-print lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-surface-dark border-t border-gray-800 px-4 py-3 safe-bottom transition-transform duration-300">
+  <div class="flex gap-3">
+    <a href="#" onclick="openCalendly();return false;" class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 ai-cta-animate text-white text-sm font-bold rounded-xl">დანიშნე ზარი</a>
+    <a href="tel:+995510101517" class="w-12 h-12 flex items-center justify-center border-2 border-primary rounded-xl text-primary-light shrink-0">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+    </a>
+  </div>
+</div>
+
+<!-- Shared JS -->
+<script src="offer/shared.js"></script>
+
+<!-- Diagnostic personalization -->
+<script>
+(function(){
+  const slug = new URLSearchParams(window.location.search).get('client') || window.location.hash.replace('#','');
+
+  // Color class helper: red <40, yellow 40-60, green >60
+  function colorClass(val, max) {
+    const pct = (val / max) * 100;
+    if (pct < 40) return 'red';
+    if (pct <= 60) return 'yellow';
+    return 'green';
+  }
+  function barColor(val, max) {
+    const pct = (val / max) * 100;
+    if (pct < 40) return 'linear-gradient(90deg, #EF4444, #F87171)';
+    if (pct <= 60) return 'linear-gradient(90deg, #F59E0B, #FBBF24)';
+    return 'linear-gradient(90deg, #21C743, #34D058)';
+  }
+
+  // Tier map for highlighting
+  const tierMap = {
+    'seo-start': 1,
+    'seo-basis': 2,
+    'seo-growth': 3,
+    'seo-premium': 4,
+    'seo-leader': 5
+  };
+  const tierColIndex = { 'seo-start': 1, 'seo-basis': 2, 'seo-growth': 3, 'seo-premium': 4, 'seo-leader': 5 };
+
+  function populatePage(c) {
+    const a = c.audit;
+    const comp = a.competitor;
+
+    // Hero
+    document.getElementById('hero-domain').textContent = c.domain;
+    document.getElementById('hero-client-name').textContent = c.name;
+    document.getElementById('hero-date').textContent = c.date || '';
+    document.title = 'SEO დიაგნოსტიკა — ' + c.name + ' | 10xSEO';
+
+    // Snapshot metrics
+    document.getElementById('snap-dr').textContent = a.dr;
+    document.getElementById('snap-kw').textContent = fmtNum(a.organicKeywords);
+    document.getElementById('snap-traffic').textContent = fmtNum(a.monthlyTraffic);
+    document.getElementById('snap-health').textContent = a.healthScore;
+
+    // Metric card colors
+    document.getElementById('mc-dr').className = 'metric-card p-6 text-center ' + colorClass(a.dr, 100);
+    document.getElementById('mc-kw').className = 'metric-card p-6 text-center ' + colorClass(a.organicKeywords, 2000);
+    document.getElementById('mc-traffic').className = 'metric-card p-6 text-center ' + colorClass(a.monthlyTraffic, 10000);
+    document.getElementById('mc-health').className = 'metric-card p-6 text-center ' + colorClass(a.healthScore, 100);
+
+    // Animate bars
+    setTimeout(function(){
+      var drBar = document.getElementById('bar-dr');
+      drBar.style.width = Math.min(a.dr, 100) + '%';
+      drBar.style.background = barColor(a.dr, 100);
+
+      var kwBar = document.getElementById('bar-kw');
+      kwBar.style.width = Math.min((a.organicKeywords / 2000) * 100, 100) + '%';
+      kwBar.style.background = barColor(a.organicKeywords, 2000);
+
+      var trBar = document.getElementById('bar-traffic');
+      trBar.style.width = Math.min((a.monthlyTraffic / 10000) * 100, 100) + '%';
+      trBar.style.background = barColor(a.monthlyTraffic, 10000);
+
+      var hBar = document.getElementById('bar-health');
+      hBar.style.width = a.healthScore + '%';
+      hBar.style.background = barColor(a.healthScore, 100);
+    }, 400);
+
+    // VS section
+    document.getElementById('vs-client-label').textContent = c.domain;
+    document.getElementById('vs-comp-label').textContent = comp.name;
+
+    document.getElementById('vs-dr-client').textContent = a.dr;
+    document.getElementById('vs-dr-comp').textContent = comp.dr;
+    document.getElementById('vs-kw-client').textContent = fmtNum(a.organicKeywords);
+    document.getElementById('vs-kw-comp').textContent = fmtNum(comp.organicKeywords);
+    document.getElementById('vs-tr-client').textContent = fmtNum(a.monthlyTraffic);
+    document.getElementById('vs-tr-comp').textContent = fmtNum(comp.monthlyTraffic);
+
+    var clientVal = Math.round(a.monthlyTraffic * 0.2);
+    var compVal = Math.round(comp.monthlyTraffic * 0.2);
+    document.getElementById('vs-val-client').textContent = '$' + fmtNum(clientVal);
+    document.getElementById('vs-val-comp').textContent = '$' + fmtNum(compVal);
+
+    // VS bars
+    setTimeout(function(){
+      var drMax = Math.max(a.dr, comp.dr);
+      document.getElementById('vs-bar-dr-c').style.width = ((a.dr / drMax) * 48) + '%';
+      document.getElementById('vs-bar-dr-co').style.width = ((comp.dr / drMax) * 48) + '%';
+
+      var kwMax = Math.max(a.organicKeywords, comp.organicKeywords);
+      document.getElementById('vs-bar-kw-c').style.width = ((a.organicKeywords / kwMax) * 48) + '%';
+      document.getElementById('vs-bar-kw-co').style.width = ((comp.organicKeywords / kwMax) * 48) + '%';
+
+      var trMax = Math.max(a.monthlyTraffic, comp.monthlyTraffic);
+      document.getElementById('vs-bar-tr-c').style.width = ((a.monthlyTraffic / trMax) * 48) + '%';
+      document.getElementById('vs-bar-tr-co').style.width = ((comp.monthlyTraffic / trMax) * 48) + '%';
+
+      var valMax = Math.max(clientVal, compVal);
+      document.getElementById('vs-bar-val-c').style.width = ((clientVal / valMax) * 48) + '%';
+      document.getElementById('vs-bar-val-co').style.width = ((compVal / valMax) * 48) + '%';
+    }, 600);
+
+    // Issues
+    if (a.issues && a.issues.length) {
+      for (var i = 0; i < Math.min(a.issues.length, 5); i++) {
+        var el = document.getElementById('issue-' + (i + 1));
+        if (el) el.textContent = a.issues[i];
+      }
+    }
+
+    // Opportunity
+    var oppVisitors = comp.monthlyTraffic - a.monthlyTraffic;
+    var oppValue = Math.round(oppVisitors * 0.2);
+    document.getElementById('opp-visitors').textContent = '+' + fmtNum(oppVisitors);
+    document.getElementById('opp-value').textContent = '+$' + fmtNum(oppValue);
+    document.getElementById('opp-comp-name').textContent = comp.name;
+
+    // Pricing highlight
+    if (c.recommendedTier) {
+      highlightTier(c.recommendedTier);
+    }
+  }
+
+  function highlightTier(tier) {
+    // Desktop table: move .best classes
+    var table = document.getElementById('pricing-table');
+    if (!table) return;
+    var colIdx = tierColIndex[tier];
+    if (!colIdx) return;
+
+    // Clear existing best classes
+    table.querySelectorAll('.best, .best-top, .best-bottom').forEach(function(cell){
+      cell.classList.remove('best', 'best-top', 'best-bottom');
+    });
+
+    // Apply to correct column
+    var rows = table.querySelectorAll('tr');
+    rows.forEach(function(row, ri){
+      var cells = row.querySelectorAll('th, td');
+      if (cells[colIdx]) {
+        cells[colIdx].classList.add('best');
+        if (ri === 0) cells[colIdx].classList.add('best-top');
+        if (ri === rows.length - 1) cells[colIdx].classList.add('best-bottom');
+      }
+    });
+
+    // Add star to header
+    var headers = table.querySelectorAll('th');
+    headers.forEach(function(th, i){
+      th.innerHTML = th.innerHTML.replace(/ &#11088;/g, '').replace(/ \u2B50/g, '');
+      if (i === colIdx) th.innerHTML += ' &#11088;';
+    });
+
+    // Mobile cards: move gradient-border
+    var mobileCards = document.querySelectorAll('#pricing-mobile > div');
+    mobileCards.forEach(function(card){
+      var cardTier = card.getAttribute('data-tier');
+      if (cardTier === tier) {
+        card.className = 'gradient-border glow-pulse p-5 relative';
+        var label = card.querySelector('[id="mob-best-label"]') || document.createElement('div');
+        label.id = 'mob-best-label';
+        label.className = 'absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 bg-primary text-white text-[10px] font-bold rounded-full uppercase';
+        label.textContent = 'რეკომენდებული';
+        if (!card.querySelector('[id="mob-best-label"]')) card.prepend(label);
+      } else {
+        card.className = 'glass p-5';
+        card.setAttribute('data-tier', cardTier);
+        var existingLabel = card.querySelector('[id="mob-best-label"]');
+        if (existingLabel) existingLabel.remove();
+      }
+    });
+  }
+
+  // Load data
+  if (slug) {
+    fetch('offer/clients.json').then(function(r){ return r.json(); }).then(function(data){
+      var c = data[slug];
+      if (c) populatePage(c);
+    }).catch(function(){});
+  }
+})();
+</script>
+
+<!-- Calendly -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+<script>function openCalendly(){Calendly.initPopupWidget({url:'https://calendly.com/10xseo-sales/30-seo-clone?background_color=0f172a&text_color=f8fafc&primary_color=8b5cf6'});return false;}</script>
+</body>
+</html>

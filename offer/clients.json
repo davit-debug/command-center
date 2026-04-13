@@ -1,0 +1,167 @@
+{
+  "demo": {
+    "clientName": "[კომპანიის სახელი]",
+    "clientDomain": "example.ge",
+    "industry": "general",
+    "industryContext": "თქვენი ინდუსტრია აქტიურად ვითარდება ციფრულ სივრცეში — ხილვადობა Google-სა და AI პლატფორმებზე გადამწყვეტია",
+    "contact": "[საკონტაქტო პირი]",
+    "position": "[პოზიცია]",
+    "date": "2026 წლის __ აპრილი",
+
+    "domainRating": 15,
+    "industryAverageDR": 35,
+    "organicKeywords": { "total": 120, "top3": 3, "top10": 12, "top100": 85 },
+    "monthlyTraffic": 800,
+    "trafficTrend": [
+      { "month": "ნოე", "value": 650 },
+      { "month": "დეკ", "value": 700 },
+      { "month": "იან", "value": 720 },
+      { "month": "თებ", "value": 750 },
+      { "month": "მარ", "value": 780 },
+      { "month": "აპრ", "value": 800 }
+    ],
+    "technicalHealthScore": 45,
+    "criticalIssues": [
+      "Core Web Vitals — LCP 4.2 წამი (ნორმა: <2.5 წამი)",
+      "50+ გვერდი არ არის ინდექსირებული Search Console-ში",
+      "Schema Markup სრულად აკლია"
+    ],
+
+    "competitors": [
+      {
+        "name": "[კონკურენტი 1]",
+        "domain": "competitor1.ge",
+        "dr": 38,
+        "organicKeywords": 920,
+        "top10": 85,
+        "monthlyTraffic": 5400,
+        "backlinks": 1200,
+        "referringDomains": 180
+      },
+      {
+        "name": "[კონკურენტი 2]",
+        "domain": "competitor2.ge",
+        "dr": 32,
+        "organicKeywords": 650,
+        "top10": 52,
+        "monthlyTraffic": 3200,
+        "backlinks": 800,
+        "referringDomains": 120
+      },
+      {
+        "name": "[კონკურენტი 3]",
+        "domain": "competitor3.ge",
+        "dr": 28,
+        "organicKeywords": 480,
+        "top10": 35,
+        "monthlyTraffic": 2100,
+        "backlinks": 550,
+        "referringDomains": 85
+      }
+    ],
+    "clientBacklinks": 150,
+    "clientReferringDomains": 25,
+    "clientTop10": 12,
+    "gapStatement": "კონკურენტს დაეწევი — დამატებითი +4,600 visitors/month, +73 top-10 keywords",
+
+    "page2Keywords": [
+      { "keyword": "[keyword 1]", "position": 12, "volume": 1200, "projectedGain": 180 },
+      { "keyword": "[keyword 2]", "position": 15, "volume": 800, "projectedGain": 95 },
+      { "keyword": "[keyword 3]", "position": 18, "volume": 600, "projectedGain": 60 }
+    ],
+    "technicalQuickWins": [
+      { "issue": "23 სერვის გვერდზე Schema Markup არ არის", "solution": "LocalBusiness + Service schema-ს დამატება", "impact": "CTR +8-15% rich results-ით" },
+      { "issue": "Meta Description აკლია 35 გვერდს", "solution": "უნიკალური description-ების დაწერა", "impact": "CTR +5-10% SERP-ში" }
+    ],
+
+    "currentVisitors": 800,
+    "conversionRate": 2.5,
+    "avgValue": 500,
+
+    "recommendedPackage": "seo-growth",
+    "recommendationReasoning": "კონკურენტული ინდუსტრია, 2 ენაზე საჭიროება, AI SEO ჩართულია"
+  },
+
+  "todua-clinic": {
+    "clientName": "Todua Clinic",
+    "clientDomain": "todua.ge",
+    "industry": "healthcare",
+    "industryContext": "სამედიცინო სექტორი საქართველოში მაღალკონკურენტულია — პაციენტები Google-ში ეძებენ კლინიკებს, სერვისებსა და ფასებს",
+    "contact": "ნატალია დარჩიაშვილი",
+    "position": "Head of Marketing",
+    "date": "2026 წლის 13 აპრილი",
+
+    "domainRating": 22,
+    "industryAverageDR": 40,
+    "organicKeywords": { "total": 340, "top3": 8, "top10": 35, "top100": 210 },
+    "monthlyTraffic": 2100,
+    "trafficTrend": [
+      { "month": "ნოე", "value": 1600 },
+      { "month": "დეკ", "value": 1750 },
+      { "month": "იან", "value": 1800 },
+      { "month": "თებ", "value": 1900 },
+      { "month": "მარ", "value": 2000 },
+      { "month": "აპრ", "value": 2100 }
+    ],
+    "technicalHealthScore": 58,
+    "criticalIssues": [
+      "Core Web Vitals — LCP 3.8 წამი (ნორმა: <2.5 წამი)",
+      "MedicalOrganization Schema არ არის იმპლემენტირებული",
+      "Mobile page speed — 42/100"
+    ],
+
+    "competitors": [
+      {
+        "name": "Evex Hospitals",
+        "domain": "evex.ge",
+        "dr": 45,
+        "organicKeywords": 1200,
+        "top10": 120,
+        "monthlyTraffic": 8500,
+        "backlinks": 2800,
+        "referringDomains": 350
+      },
+      {
+        "name": "MediClub Georgia",
+        "domain": "mediclub.ge",
+        "dr": 38,
+        "organicKeywords": 780,
+        "top10": 68,
+        "monthlyTraffic": 4200,
+        "backlinks": 1500,
+        "referringDomains": 200
+      },
+      {
+        "name": "National Center of Surgery",
+        "domain": "surgery.ge",
+        "dr": 35,
+        "organicKeywords": 620,
+        "top10": 55,
+        "monthlyTraffic": 3800,
+        "backlinks": 1200,
+        "referringDomains": 160
+      }
+    ],
+    "clientBacklinks": 380,
+    "clientReferringDomains": 55,
+    "clientTop10": 35,
+    "gapStatement": "Evex-ს დაეწევი — დამატებითი +6,400 visitors/month, +85 top-10 keywords",
+
+    "page2Keywords": [
+      { "keyword": "კლინიკა თბილისში", "position": 12, "volume": 1800, "projectedGain": 270 },
+      { "keyword": "MRI გამოკვლევა ფასი", "position": 14, "volume": 900, "projectedGain": 110 },
+      { "keyword": "ულტრაბგერა თბილისი", "position": 16, "volume": 1200, "projectedGain": 130 }
+    ],
+    "technicalQuickWins": [
+      { "issue": "30+ სერვის გვერდზე MedicalOrganization Schema არ არის", "solution": "Schema.org MedicalClinic + MedicalProcedure markup", "impact": "Rich results CTR +12-20%" },
+      { "issue": "GMB პროფილი არასრულია — services, Q&A, posts", "solution": "სრული GMB ოპტიმიზაცია + კვირეული posts", "impact": "Local pack visibility +30-40%" }
+    ],
+
+    "currentVisitors": 2100,
+    "conversionRate": 3.2,
+    "avgValue": 150,
+
+    "recommendedPackage": "seo-growth",
+    "recommendationReasoning": "კონკურენტული სამედიცინო ბაზარი, GMB ოპტიმიზაცია საჭიროა, 2 ენაზე (ქართული + ინგლისური ტურისტებისთვის)"
+  }
+}
