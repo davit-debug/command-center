@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="ka" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SERP Preview — Google ძიების შედეგების პრევიუ | 10XSEO</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="ნახეთ როგორ გამოჩნდება თქვენი გვერდი Google-ის ძიების შედეგებში — Desktop და Mobile ვერსიით.">
+  <link rel="canonical" href="https://10xseo.ge/tools/serp-preview/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="SERP Preview — Google ძიების შედეგების პრევიუ | 10XSEO">
+  <meta property="og:description" content="ნახეთ როგორ გამოჩნდება თქვენი გვერდი Google-ის ძიების შედეგებში — Desktop და Mobile ვერსიით.">
+  <meta property="og:url" content="https://10xseo.ge/tools/serp-preview/">
+  <meta property="og:locale" content="ka_GE">
+  <meta property="og:site_name" content="10XSEO">
+
+  <!-- Schema: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "SERP Preview",
+    "description": "ნახეთ როგორ გამოჩნდება თქვენი გვერდი Google-ის ძიების შედეგებში — Desktop და Mobile ვერსიით.",
+    "url": "https://10xseo.ge/tools/serp-preview/",
+    "applicationCategory": "SEO Tool",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "GEL"
+    },
+    "provider": {
+      "@type": "Organization",
+      "name": "10XSEO",
+      "url": "https://10xseo.ge"
+    }
+  }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/firago@1.0.0/FiraGO.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: { DEFAULT: '#8B5CF6', light: '#A78BFA', dark: '#7C3AED' },
+            accent: { DEFAULT: '#14B8A6', dark: '#0D9488' },
+            'ai-blue': '#3B82F6',
+            surface: { DEFAULT: '#ffffff', alt: '#f8fafc', dark: '#020710', 'dark-alt': '#0F0F0F' },
+            heading: { DEFAULT: '#0f172a', dark: '#f8fafc' },
+            body: { DEFAULT: '#475569', dark: '#94a3b8' },
+            success: '#21C743',
+          },
+          fontFamily: {
+            'heading': ['"Dachi the Lynx"', 'sans-serif'],
+            'body': ['FiraGO', 'sans-serif'],
+            'inter': ['Inter', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    @font-face {
+      font-family: 'Dachi the Lynx';
+      src: url('../fonts/DachiTheLynx.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    body { font-family: 'FiraGO', 'Inter', sans-serif; }
+    h1, h2, h3 { font-family: 'Dachi the Lynx', sans-serif; }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .dark .gradient-text {
+      background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    @keyframes aiGradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .ai-cta-animate {
+      background: linear-gradient(-45deg, #8B5CF6, #3B82F6, #14B8A6, #8B5CF6) !important;
+      background-size: 300% 300% !important;
+      animation: aiGradient 4s ease infinite;
+      box-shadow: 0 4px 25px rgba(139, 92, 246, 0.35);
+    }
+
+    .header-scrolled { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    .safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
+    .accent-glow { box-shadow: 0 0 40px rgba(139, 92, 246, 0.15); }
+    .dark .accent-glow { box-shadow: 0 0 60px rgba(139, 92, 246, 0.2); }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in-up { opacity: 0; animation: fadeInUp 0.5s ease-out forwards; }
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+
+    /* SERP Preview Styles */
+    .serp-title { color: #1a0dab; font-size: 20px; line-height: 1.3; font-family: Arial, sans-serif; text-decoration: none; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 600px; }
+    .serp-title:hover { text-decoration: underline; }
+    .serp-url { color: #006621; font-size: 14px; font-family: Arial, sans-serif; line-height: 1.5; }
+    .serp-desc { color: #545454; font-size: 14px; font-family: Arial, sans-serif; line-height: 1.58; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; max-width: 600px; }
+    .serp-mobile .serp-title { font-size: 16px; max-width: 360px; }
+    .serp-mobile .serp-desc { max-width: 360px; font-size: 13px; }
+
+    /* Toast notification */
+    .toast {
+      position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%) translateY(100px);
+      background: #21C743; color: white; padding: 12px 24px; border-radius: 12px;
+      font-weight: 600; font-size: 14px; z-index: 100; transition: transform 0.3s ease;
+      box-shadow: 0 8px 30px rgba(33, 199, 67, 0.3);
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+
+    /* Mobile Menu */
+    #mobile-menu {
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+      opacity: 0;
+    }
+    #mobile-menu.menu-open {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    #mobile-menu .menu-link {
+      opacity: 0;
+      transform: translateX(30px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    #mobile-menu.menu-open .menu-link {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .hamburger-line {
+      transition: transform 0.3s ease, opacity 0.2s ease;
+    }
+    .menu-active .hamburger-line:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    .menu-active .hamburger-line:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-active .hamburger-line:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+  </style>
+</head>
+<body class="font-body bg-surface-dark text-body-dark transition-colors duration-300">
+
+  <!-- ========== HEADER ========== -->
+  <header id="main-header" class="fixed top-0 left-0 right-0 z-50 h-16 lg:h-[72px] bg-white/80 dark:bg-surface-dark/80 header-scrolled border-b border-gray-100 dark:border-gray-800 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-full flex items-center justify-between">
+      <a href="../index.html" class="flex items-center shrink-0">
+        <img src="../images/logo.png" alt="10XSEO" class="h-12 lg:h-14 w-auto">
+      </a>
+      <nav class="hidden lg:flex items-center gap-1">
+        <a href="../about-us.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">ჩვენს შესახებ</a>
+        <div class="relative group">
+          <button class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors flex items-center gap-1">
+            სერვისები
+            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="absolute top-full left-0 mt-1 w-56 bg-white dark:bg-surface-dark-alt rounded-xl shadow-xl border border-gray-100 dark:border-gray-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 p-2">
+            <a href="../seo-management.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">SEO მენეჯმენტი</a>
+            <a href="../seo-consultation.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">SEO კონსულტაცია</a>
+            <a href="../seo-strategy.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">SEO სტრატეგია</a>
+            <a href="../seo-copywriting.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">SEO კოპირაიტინგი</a>
+            <a href="../cro.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">კონვერსიის ოპტიმიზაცია</a>
+            <a href="../google-ads.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">Google Ads</a>
+            <a href="../ai-seo.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">AI SEO / GEO</a>
+            <a href="../seo-course.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">SEO კურსი</a>
+          </div>
+        </div>
+        <div class="relative group/ind">
+          <a href="../industries.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors flex items-center gap-1">
+            ინდუსტრიები
+            <svg class="w-4 h-4 transition-transform group-hover/ind:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </a>
+          <div class="absolute top-full left-0 mt-1 w-60 bg-white dark:bg-surface-dark-alt rounded-xl shadow-xl border border-gray-100 dark:border-gray-800 opacity-0 invisible group-hover/ind:opacity-100 group-hover/ind:visible transition-all duration-200 p-2">
+            <a href="../industries/healthcare.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">კლინიკები &amp; ჯანდაცვა</a>
+            <a href="../industries/financial-services.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">ფინანსური სერვისები</a>
+            <a href="../industries/construction.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">სამშენებლო &amp; უძრავი ქონება</a>
+            <a href="../industries/ecommerce.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">E-commerce</a>
+            <hr class="my-1 border-gray-100 dark:border-gray-800">
+            <a href="../industries.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-body dark:text-body-dark">ყველა ინდუსტრია →</a>
+          </div>
+        </div>
+        <a href="../portfolio.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">პორტფოლიო</a>
+        <a href="../case-studies.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">შედეგები</a>
+        <a href="../blog.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">ბლოგი</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <button class="hidden sm:flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark transition-colors">
+          <span class="text-primary font-bold">KA</span>
+          <span class="opacity-50">/</span>
+          <span class="opacity-50">EN</span>
+        </button>
+        <a href="#" onclick="openCalendly();return false;" class="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 ai-cta-animate text-white text-sm font-semibold rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-200">
+          დაჯავშნე კონსულტაცია
+        </a>
+        <button id="mobile-menu-btn" class="lg:hidden w-9 h-9 rounded-lg flex flex-col items-center justify-center gap-[6px] hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-heading dark:text-heading-dark">
+          <span class="hamburger-line block w-5 h-[2px] bg-current rounded-full"></span>
+          <span class="hamburger-line block w-5 h-[2px] bg-current rounded-full"></span>
+          <span class="hamburger-line block w-5 h-[2px] bg-current rounded-full"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Overlay -->
+  <div id="mobile-menu" class="lg:hidden fixed inset-0 top-16 bg-surface-dark z-[60] overflow-y-auto pointer-events-none">
+    <nav class="max-w-md mx-auto px-6 py-8 flex flex-col gap-2">
+      <a href="../index.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.05s">მთავარი</a>
+      <a href="../about-us.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.08s">ჩვენს შესახებ</a>
+      <hr class="menu-link my-3 border-gray-800" style="transition-delay:0.11s">
+      <p class="menu-link text-xs font-semibold text-body-dark/60 uppercase tracking-wider mb-2" style="transition-delay:0.14s">სერვისები</p>
+      <a href="../seo-management.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.17s">SEO მენეჯმენტი</a>
+      <a href="../seo-consultation.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.2s">SEO კონსულტაცია</a>
+      <a href="../seo-strategy.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.23s">SEO სტრატეგია</a>
+      <a href="../seo-copywriting.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.26s">SEO კოპირაიტინგი</a>
+      <a href="../cro.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.29s">კონვერსიის ოპტიმიზაცია</a>
+      <a href="../google-ads.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.32s">Google Ads</a>
+      <a href="../ai-seo.html" class="menu-link block px-4 py-3 rounded-xl text-base font-medium text-heading-dark hover:bg-gray-800/50 pl-8" style="transition-delay:0.35s">AI SEO / GEO</a>
+      <a href="../seo-course.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.38s">SEO კურსი</a>
+      <hr class="menu-link my-3 border-gray-800" style="transition-delay:0.41s">
+      <p class="menu-link text-xs font-semibold text-body-dark/60 uppercase tracking-wider mt-2 mb-1" style="transition-delay:0.43s">ინდუსტრიები</p>
+      <a href="../industries/healthcare.html" class="menu-link block px-4 py-3 rounded-xl text-base font-medium text-heading-dark hover:bg-gray-800/50 pl-8" style="transition-delay:0.44s">კლინიკები &amp; ჯანდაცვა</a>
+      <a href="../industries/financial-services.html" class="menu-link block px-4 py-3 rounded-xl text-base font-medium text-heading-dark hover:bg-gray-800/50 pl-8" style="transition-delay:0.45s">ფინანსური სერვისები</a>
+      <a href="../industries/construction.html" class="menu-link block px-4 py-3 rounded-xl text-base font-medium text-heading-dark hover:bg-gray-800/50 pl-8" style="transition-delay:0.46s">სამშენებლო &amp; უძრავი ქონება</a>
+      <a href="../industries/ecommerce.html" class="menu-link block px-4 py-3 rounded-xl text-base font-medium text-heading-dark hover:bg-gray-800/50 pl-8" style="transition-delay:0.47s">E-commerce</a>
+      <a href="../industries.html" class="menu-link block px-4 py-3 rounded-xl text-sm font-medium text-body-dark/60 hover:bg-gray-800/50 pl-8" style="transition-delay:0.48s">ყველა ინდუსტრია →</a>
+      <a href="../portfolio.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.47s">პორტფოლიო</a>
+      <a href="../case-studies.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.5s">შედეგები</a>
+      <a href="../blog.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.53s">ბლოგი</a>
+      <hr class="menu-link my-3 border-gray-800" style="transition-delay:0.56s">
+      <a href="#" onclick="openCalendly();return false;" class="menu-link block text-center px-6 py-4 ai-cta-animate text-white text-lg font-bold rounded-xl mt-2" style="transition-delay:0.59s">
+        დაჯავშნე კონსულტაცია
+      </a>
+      <a href="tel:+995510101517" class="menu-link call-btn block text-center px-6 py-3 border-2 border-primary-light text-primary-light text-lg font-bold rounded-xl flex items-center justify-center gap-2 transition-all duration-200" style="transition-delay:0.62s">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        დაგვირეკეთ
+      </a>
+    </nav>
+  </div>
+
+  <!-- ========== HERO ========== -->
+  <section class="pt-24 lg:pt-28 pb-8 bg-surface dark:bg-surface-dark">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <h1 class="font-heading text-[28px] sm:text-[36px] lg:text-[44px] font-bold text-heading dark:text-heading-dark leading-[1.2] mb-4">
+        Google <span class="gradient-text">SERP Preview</span>
+      </h1>
+      <p class="text-body dark:text-body-dark max-w-2xl mx-auto mb-2">ნახეთ როგორ გამოჩნდება თქვენი გვერდი Google-ის ძიების შედეგებში — Desktop და Mobile ვერსიით.</p>
+      <a href="../seo-tools.html" class="text-sm text-primary dark:text-primary-light hover:underline">&larr; ყველა ინსტრუმენტი</a>
+    </div>
+  </section>
+
+  <!-- ========== TOOL SECTION ========== -->
+  <section class="pb-16 lg:pb-20 bg-surface dark:bg-surface-dark">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="bg-surface-alt dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 p-6 sm:p-8">
+
+        <!-- URL -->
+        <div class="mb-5">
+          <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2">URL</label>
+          <input type="text" id="serp-url" placeholder="https://example.com/page" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark placeholder-gray-400 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all">
+        </div>
+
+        <!-- Title -->
+        <div class="mb-5">
+          <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2">სათაური</label>
+          <input type="text" id="serp-title" placeholder="გვერდის სათაური" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark placeholder-gray-400 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all">
+          <div class="flex items-center justify-between mt-2">
+            <span id="serp-title-count" class="text-xs font-inter font-medium text-body dark:text-body-dark">0 სიმბოლო</span>
+            <span id="serp-title-px" class="text-xs font-inter font-medium text-body dark:text-body-dark">~0px</span>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="mb-5">
+          <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2">აღწერა</label>
+          <textarea id="serp-desc" rows="3" placeholder="მეტა აღწერა..." class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark placeholder-gray-400 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all resize-none"></textarea>
+          <div class="flex items-center justify-between mt-2">
+            <span id="serp-desc-count" class="text-xs font-inter font-medium text-body dark:text-body-dark">0 სიმბოლო</span>
+            <span id="serp-desc-px" class="text-xs font-inter font-medium text-body dark:text-body-dark">~0px</span>
+          </div>
+        </div>
+
+        <!-- Date toggle -->
+        <div class="mb-6 flex items-center gap-3">
+          <label class="relative inline-flex items-center cursor-pointer">
+            <input type="checkbox" id="serp-date-toggle" class="sr-only peer">
+            <div class="w-11 h-6 bg-gray-200 dark:bg-gray-700 peer-focus:ring-2 peer-focus:ring-primary/50 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+          </label>
+          <span class="text-sm font-medium text-heading dark:text-heading-dark">თარიღის ჩვენება</span>
+        </div>
+
+        <!-- Device Toggle -->
+        <div class="flex items-center gap-2 mb-6">
+          <button id="serp-desktop-btn" class="px-4 py-2 text-sm font-semibold rounded-lg bg-primary/10 text-primary dark:text-primary-light transition-colors">Desktop</button>
+          <button id="serp-mobile-btn" class="px-4 py-2 text-sm font-semibold rounded-lg text-body dark:text-body-dark hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Mobile</button>
+        </div>
+
+        <!-- Preview Output -->
+        <div class="bg-white rounded-xl p-6 border border-gray-200" id="serp-preview-box">
+          <div id="serp-preview-inner">
+            <div class="serp-title" id="serp-preview-title">გვერდის სათაური</div>
+            <div class="serp-url" id="serp-preview-url">https://example.com</div>
+            <div class="serp-desc"><span id="serp-preview-date"></span><span id="serp-preview-desc">მეტა აღწერა გამოჩნდება აქ...</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== OTHER TOOLS ========== -->
+  <section class="py-12 bg-surface-alt dark:bg-surface-dark-alt">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <h2 class="font-heading text-xl font-bold text-heading dark:text-heading-dark mb-6 text-center">სხვა ინსტრუმენტები</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+        <a href="pixel-width-checker.html" class="flex items-center gap-3 p-4 rounded-xl border border-gray-100 dark:border-gray-800 bg-white dark:bg-surface-dark hover:border-primary/30 hover:shadow-md transition-all duration-200 group">
+          <svg class="w-5 h-5 text-primary dark:text-primary-light shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+          <span class="text-sm font-medium text-heading dark:text-heading-dark group-hover:text-primary dark:group-hover:text-primary-light transition-colors">Pixel Width Checker</span>
+        </a>
+        <a href="keyword-density.html" class="flex items-center gap-3 p-4 rounded-xl border border-gray-100 dark:border-gray-800 bg-white dark:bg-surface-dark hover:border-primary/30 hover:shadow-md transition-all duration-200 group">
+          <svg class="w-5 h-5 text-primary dark:text-primary-light shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          <span class="text-sm font-medium text-heading dark:text-heading-dark group-hover:text-primary dark:group-hover:text-primary-light transition-colors">Keyword Density</span>
+        </a>
+        <a href="og-preview.html" class="flex items-center gap-3 p-4 rounded-xl border border-gray-100 dark:border-gray-800 bg-white dark:bg-surface-dark hover:border-primary/30 hover:shadow-md transition-all duration-200 group">
+          <svg class="w-5 h-5 text-primary dark:text-primary-light shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+          <span class="text-sm font-medium text-heading dark:text-heading-dark group-hover:text-primary dark:group-hover:text-primary-light transition-colors">OG Preview</span>
+        </a>
+        <a href="readability-score.html" class="flex items-center gap-3 p-4 rounded-xl border border-gray-100 dark:border-gray-800 bg-white dark:bg-surface-dark hover:border-primary/30 hover:shadow-md transition-all duration-200 group">
+          <svg class="w-5 h-5 text-primary dark:text-primary-light shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          <span class="text-sm font-medium text-heading dark:text-heading-dark group-hover:text-primary dark:group-hover:text-primary-light transition-colors">Readability Score</span>
+        </a>
+        <a href="seo-content-editor.html" class="flex items-center gap-3 p-4 rounded-xl border border-gray-100 dark:border-gray-800 bg-white dark:bg-surface-dark hover:border-primary/30 hover:shadow-md transition-all duration-200 group">
+          <svg class="w-5 h-5 text-primary dark:text-primary-light shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+          <span class="text-sm font-medium text-heading dark:text-heading-dark group-hover:text-primary dark:group-hover:text-primary-light transition-colors">SEO Content Editor</span>
+        </a>
+        <a href="content-brief-builder.html" class="flex items-center gap-3 p-4 rounded-xl border border-gray-100 dark:border-gray-800 bg-white dark:bg-surface-dark hover:border-primary/30 hover:shadow-md transition-all duration-200 group">
+          <svg class="w-5 h-5 text-primary dark:text-primary-light shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>
+          <span class="text-sm font-medium text-heading dark:text-heading-dark group-hover:text-primary dark:group-hover:text-primary-light transition-colors">Content Brief Builder</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA BANNER ========== -->
+  <section class="py-16 lg:py-20 bg-surface-alt dark:bg-surface-dark-alt">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+      <div class="bg-gradient-to-br from-primary/10 via-accent/5 to-primary/10 dark:from-primary/20 dark:via-accent/10 dark:to-primary/20 rounded-3xl p-8 sm:p-12 border border-primary/20 dark:border-primary/30">
+        <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-heading dark:text-heading-dark leading-[1.3] mb-4">
+          გჭირდებათ პროფესიონალური SEO?
+        </h2>
+        <p class="text-body dark:text-body-dark mb-8 max-w-lg mx-auto">
+          ჩვენი ექსპერტები უფასოდ გაგიანალიზებენ საიტს და მოგცემენ კონკრეტულ რეკომენდაციებს.
+        </p>
+        <a href="#" onclick="openCalendly();return false;" class="inline-flex items-center gap-2 px-8 py-4 ai-cta-animate text-white text-lg font-bold rounded-2xl hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 transition-all duration-200">
+          დაჯავშნე კონსულტაცია
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="bg-heading dark:bg-surface-dark-alt text-gray-400 py-12 lg:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
+        <!-- Col 1: Info -->
+        <div class="col-span-2 lg:col-span-1">
+          <a href="../index.html" class="flex items-center gap-2 mb-4">
+            <img src="../images/logo.png" alt="10XSEO" class="h-12 w-auto">
+          </a>
+          <p class="text-sm leading-relaxed mb-4">საქართველოს #1 SEO სააგენტო. რეალური შედეგები, ყოველკვირეული ანგარიშები, სწრაფი მომსახურება.</p>
+          <div class="flex gap-3">
+            <a href="https://www.facebook.com/10xSEO.Ge" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-white/10 border-2 border-transparent flex items-center justify-center hover:bg-white hover:border-[#D4A017] transition-all duration-200" aria-label="Facebook">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/company/10xseoge/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-white/10 border-2 border-transparent flex items-center justify-center hover:bg-white hover:border-[#D4A017] transition-all duration-200" aria-label="LinkedIn">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="https://www.youtube.com/@10xSEO" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-white/10 border-2 border-transparent flex items-center justify-center hover:bg-white hover:border-[#D4A017] transition-all duration-200" aria-label="YouTube">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+          </div>
+        </div>
+        <!-- Col 2: Services -->
+        <div>
+          <p class="font-heading text-white font-semibold mb-4">სერვისები</p>
+          <ul class="space-y-2.5 text-sm">
+            <li><a href="../seo-management.html" class="hover:text-white transition-colors">SEO მენეჯმენტი</a></li>
+            <li><a href="../seo-consultation.html" class="hover:text-white transition-colors">SEO კონსულტაცია</a></li>
+            <li><a href="../seo-strategy.html" class="hover:text-white transition-colors">SEO სტრატეგია</a></li>
+            <li><a href="../seo-audit.html" class="hover:text-white transition-colors">უფასო SEO აუდიტი</a></li>
+          </ul>
+        </div>
+        <!-- Col 3: Company -->
+        <div>
+          <p class="font-heading text-white font-semibold mb-4">კომპანია</p>
+          <ul class="space-y-2.5 text-sm">
+            <li><a href="../portfolio.html" class="hover:text-white transition-colors">პორტფოლიო</a></li>
+            <li><a href="../blog.html" class="hover:text-white transition-colors">ბლოგი</a></li>
+            <li><a href="https://www.youtube.com/@10xSEO" class="hover:text-white transition-colors flex items-center gap-1.5" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 shrink-0 inline-block mr-1" viewBox="0 0 24 24" fill="#D4A017"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>YouTube არხი</a></li>
+            <li><a href="../ra-aris-seo.html" class="hover:text-white transition-colors">რა არის SEO</a></li>
+            <li><a href="../vacancies.html" class="hover:text-white transition-colors">ვაკანსიები</a></li>
+          </ul>
+        </div>
+        <!-- Col 4: Contact -->
+        <div>
+          <p class="font-heading text-white font-semibold mb-4">კონტაქტი</p>
+          <ul class="space-y-2.5 text-sm">
+            <li>+995 510 10 15 17</li>
+            <li>sales@10xseo.ge</li>
+            <li>თბილისი, საქართველო</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
+        <p>&copy; 2026 10XSEO. ყველა უფლება დაცულია.</p>
+        <div class="flex gap-6">
+          <a href="#" class="hover:text-white transition-colors">კონფიდენციალურობა</a>
+          <a href="#" class="hover:text-white transition-colors">პირობები</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast">დაკოპირდა!</div>
+
+  <!-- ========== JAVASCRIPT ========== -->
+  <script>
+    // ===== THEME =====
+    const html = document.documentElement;
+    if (localStorage.getItem('theme') !== 'light') { html.classList.add('dark'); }
+
+    // ===== TOAST =====
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg || 'დაკოპირდა!';
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2000);
+    }
+
+    // ========================================
+    // SHARED: Canvas-based pixel width measurement
+    // ========================================
+    const _pxCanvas = document.createElement('canvas');
+    const _pxCtx = _pxCanvas.getContext('2d');
+
+    function measurePixelWidth(text, font) {
+      _pxCtx.font = font;
+      return _pxCtx.measureText(text).width;
+    }
+
+    function getTruncatedText(text, font, maxPx) {
+      const fullWidth = measurePixelWidth(text, font);
+      if (fullWidth <= maxPx) return { text: text, truncated: false, width: fullWidth };
+      const ellipsis = '...';
+      const ellipsisW = measurePixelWidth(ellipsis, font);
+      let truncated = text;
+      while (truncated.length > 0 && measurePixelWidth(truncated, font) + ellipsisW > maxPx) {
+        truncated = truncated.slice(0, -1);
+      }
+      return { text: truncated + ellipsis, truncated: true, width: measurePixelWidth(truncated + ellipsis, font) };
+    }
+
+    // ========================================
+    // TOOL 2: SERP PREVIEW
+    // ========================================
+    const serpUrl = document.getElementById('serp-url');
+    const serpTitle = document.getElementById('serp-title');
+    const serpDesc = document.getElementById('serp-desc');
+    const serpDateToggle = document.getElementById('serp-date-toggle');
+    let serpIsMobile = false;
+
+    function estimatePixelWidth(text, fontSize) {
+      return measurePixelWidth(text, fontSize + 'px Arial, sans-serif');
+    }
+
+    function formatUrlBreadcrumb(url) {
+      if (!url) return 'https://example.com';
+      try {
+        let u = url.replace(/^https?:\/\//, '').replace(/\/$/, '');
+        let parts = u.split('/');
+        if (parts.length > 3) parts = [parts[0], parts[1], '...', parts[parts.length - 1]];
+        return parts.join(' > ');
+      } catch(e) { return url; }
+    }
+
+    function updateSerpPreview() {
+      const previewTitle = document.getElementById('serp-preview-title');
+      const previewUrl = document.getElementById('serp-preview-url');
+      const previewDesc = document.getElementById('serp-preview-desc');
+      const previewDate = document.getElementById('serp-preview-date');
+
+      previewTitle.textContent = serpTitle.value || 'გვერდის სათაური';
+      previewUrl.textContent = formatUrlBreadcrumb(serpUrl.value);
+      previewDesc.textContent = serpDesc.value || 'მეტა აღწერა გამოჩნდება აქ...';
+
+      if (serpDateToggle.checked) {
+        const now = new Date();
+        const months = ['იან', 'თებ', 'მარ', 'აპრ', 'მაი', 'ივნ', 'ივლ', 'აგვ', 'სექ', 'ოქტ', 'ნოე', 'დეკ'];
+        previewDate.textContent = now.getDate() + ' ' + months[now.getMonth()] + '. ' + now.getFullYear() + ' — ';
+        previewDate.style.color = '#70757a';
+      } else {
+        previewDate.textContent = '';
+      }
+
+      // Counts
+      document.getElementById('serp-title-count').textContent = serpTitle.value.length + ' სიმბოლო';
+      document.getElementById('serp-desc-count').textContent = serpDesc.value.length + ' სიმბოლო';
+      const tPx = Math.round(estimatePixelWidth(serpTitle.value, serpIsMobile ? 16 : 20));
+      const dPx = Math.round(estimatePixelWidth(serpDesc.value, serpIsMobile ? 13 : 14));
+      document.getElementById('serp-title-px').textContent = '~' + tPx + 'px';
+      document.getElementById('serp-desc-px').textContent = '~' + dPx + 'px';
+
+      // Mobile / Desktop
+      const inner = document.getElementById('serp-preview-inner');
+      if (serpIsMobile) { inner.classList.add('serp-mobile'); }
+      else { inner.classList.remove('serp-mobile'); }
+    }
+
+    serpUrl.addEventListener('input', updateSerpPreview);
+    serpTitle.addEventListener('input', updateSerpPreview);
+    serpDesc.addEventListener('input', updateSerpPreview);
+    serpDateToggle.addEventListener('change', updateSerpPreview);
+
+    document.getElementById('serp-desktop-btn').addEventListener('click', function() {
+      serpIsMobile = false;
+      this.classList.add('bg-primary/10', 'text-primary', 'dark:text-primary-light');
+      this.classList.remove('text-body', 'dark:text-body-dark');
+      const mob = document.getElementById('serp-mobile-btn');
+      mob.classList.remove('bg-primary/10', 'text-primary', 'dark:text-primary-light');
+      mob.classList.add('text-body', 'dark:text-body-dark');
+      updateSerpPreview();
+    });
+    document.getElementById('serp-mobile-btn').addEventListener('click', function() {
+      serpIsMobile = true;
+      this.classList.add('bg-primary/10', 'text-primary', 'dark:text-primary-light');
+      this.classList.remove('text-body', 'dark:text-body-dark');
+      const desk = document.getElementById('serp-desktop-btn');
+      desk.classList.remove('bg-primary/10', 'text-primary', 'dark:text-primary-light');
+      desk.classList.add('text-body', 'dark:text-body-dark');
+      updateSerpPreview();
+    });
+  </script>
+  <script>
+    // Mobile menu with animation
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (menuBtn && mobileMenu) {
+      let menuOpen = false;
+      menuBtn.addEventListener('click', () => {
+        menuOpen = !menuOpen;
+        if (menuOpen) {
+          mobileMenu.classList.add('menu-open');
+          mobileMenu.style.pointerEvents = 'auto';
+          menuBtn.classList.add('menu-active');
+          document.body.classList.add('overflow-hidden');
+        } else {
+          mobileMenu.classList.remove('menu-open');
+          mobileMenu.style.pointerEvents = 'none';
+          menuBtn.classList.remove('menu-active');
+          document.body.classList.remove('overflow-hidden');
+        }
+      });
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          menuOpen = false;
+          mobileMenu.classList.remove('menu-open');
+          mobileMenu.style.pointerEvents = 'none';
+          menuBtn.classList.remove('menu-active');
+          document.body.classList.remove('overflow-hidden');
+        });
+      });
+    }
+  </script>
+
+<!-- Calendly Popup Widget -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+<script>function openCalendly(){Calendly.initPopupWidget({url:'https://calendly.com/10xseo-sales/30-seo-clone?background_color=0f172a&text_color=f8fafc&primary_color=8b5cf6'});return false;}</script>
+</body>
+</html>
