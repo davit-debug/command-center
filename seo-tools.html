@@ -314,10 +314,10 @@
 
       <!-- Tab Navigation -->
       <div class="flex overflow-x-auto no-scrollbar gap-2 mb-8 pb-1 border-b border-gray-200 dark:border-gray-800" id="tab-nav">
-        <button data-tab="meta-generator" class="tab-btn flex-shrink-0 px-4 py-3 text-sm font-semibold rounded-t-lg border-b-2 transition-all duration-200 whitespace-nowrap border-primary text-primary dark:text-primary-light">
+        <button data-tab="pixel-checker" class="tab-btn flex-shrink-0 px-4 py-3 text-sm font-semibold rounded-t-lg border-b-2 transition-all duration-200 whitespace-nowrap border-primary text-primary dark:text-primary-light">
           <span class="flex items-center gap-2">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
-            Meta Tag გენერატორი
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+            Pixel Width Checker
           </span>
         </button>
         <button data-tab="serp-preview" class="tab-btn flex-shrink-0 px-4 py-3 text-sm font-semibold rounded-t-lg border-b-2 transition-all duration-200 whitespace-nowrap border-transparent text-body dark:text-body-dark hover:text-heading dark:hover:text-heading-dark">
@@ -332,88 +332,91 @@
             Keyword Density
           </span>
         </button>
-        <button data-tab="schema-generator" class="tab-btn flex-shrink-0 px-4 py-3 text-sm font-semibold rounded-t-lg border-b-2 transition-all duration-200 whitespace-nowrap border-transparent text-body dark:text-body-dark hover:text-heading dark:hover:text-heading-dark">
-          <span class="flex items-center gap-2">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"/></svg>
-            Schema Markup
-          </span>
-        </button>
       </div>
 
-      <!-- ==================== TOOL 1: META TAG GENERATOR ==================== -->
-      <div id="tab-meta-generator" class="tab-content">
+      <!-- ==================== TOOL 1: PIXEL WIDTH CHECKER ==================== -->
+      <div id="tab-pixel-checker" class="tab-content">
         <div class="bg-surface-alt dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 p-6 sm:p-8">
-          <h2 class="font-heading text-xl sm:text-2xl font-bold text-heading dark:text-heading-dark mb-6">Meta Tag გენერატორი</h2>
+          <h2 class="font-heading text-xl sm:text-2xl font-bold text-heading dark:text-heading-dark mb-2">Meta Title & Description — Pixel Width Checker</h2>
+          <p class="text-sm text-body dark:text-body-dark mb-6">Google სათაურს პიქსელების მიხედვით ჭრის, არა სიმბოლოების. შეამოწმეთ ზუსტი პიქსელის სიგანე — ქართული ტექსტისთვისაც.</p>
+
+          <!-- Device Toggle -->
+          <div class="flex items-center gap-2 mb-6">
+            <button id="px-desktop-btn" class="px-4 py-2 text-sm font-semibold rounded-lg bg-primary/10 text-primary dark:text-primary-light transition-colors">Desktop</button>
+            <button id="px-mobile-btn" class="px-4 py-2 text-sm font-semibold rounded-lg text-body dark:text-body-dark hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Mobile</button>
+            <span class="ml-3 text-xs text-body dark:text-body-dark font-inter" id="px-limits-label">Title: 580px / Description: 920px</span>
+          </div>
 
           <!-- Title Input -->
           <div class="mb-5">
-            <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2">გვერდის სათაური</label>
-            <input type="text" id="meta-title" maxlength="70" placeholder="მაგ: SEO სერვისები საქართველოში | 10XSEO" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark placeholder-gray-400 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all">
+            <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2">Meta Title</label>
+            <input type="text" id="px-title" placeholder="მაგ: SEO სერვისები საქართველოში | 10XSEO" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark placeholder-gray-400 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all">
             <div class="flex items-center justify-between mt-2">
-              <div class="flex items-center gap-2">
-                <div class="w-full max-w-[200px] h-2 rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden">
-                  <div id="meta-title-bar" class="h-full rounded-full bg-gray-300 transition-all duration-300" style="width:0%"></div>
+              <div class="flex items-center gap-2 flex-1 mr-4">
+                <div class="w-full max-w-[280px] h-2.5 rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden">
+                  <div id="px-title-bar" class="h-full rounded-full bg-gray-300 transition-all duration-300" style="width:0%"></div>
                 </div>
-                <span id="meta-title-count" class="text-xs font-inter font-medium text-body dark:text-body-dark">0/70</span>
               </div>
-              <span id="meta-title-status" class="text-xs font-medium"></span>
+              <div class="flex items-center gap-3 shrink-0">
+                <span id="px-title-px" class="text-xs font-inter font-bold text-heading dark:text-heading-dark">0px</span>
+                <span class="text-xs text-body dark:text-body-dark">/</span>
+                <span id="px-title-limit" class="text-xs font-inter text-body dark:text-body-dark">580px</span>
+                <span id="px-title-chars" class="text-xs font-inter text-body dark:text-body-dark ml-2">(0 სიმბოლო)</span>
+              </div>
             </div>
+            <div id="px-title-status" class="mt-1 text-xs font-medium"></div>
           </div>
 
           <!-- Description Input -->
           <div class="mb-5">
-            <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2">მეტა აღწერა</label>
-            <textarea id="meta-desc" maxlength="160" rows="3" placeholder="მაგ: გაზარდეთ ორგანული ტრაფიკი 10X-ით. რეალური შედეგები, ყოველკვირეული ანგარიშები." class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark placeholder-gray-400 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all resize-none"></textarea>
+            <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2">Meta Description</label>
+            <textarea id="px-desc" rows="3" placeholder="მაგ: გაზარდეთ ორგანული ტრაფიკი 10X-ით. რეალური შედეგები, ყოველკვირეული ანგარიშები." class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark placeholder-gray-400 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all resize-none"></textarea>
             <div class="flex items-center justify-between mt-2">
-              <div class="flex items-center gap-2">
-                <div class="w-full max-w-[200px] h-2 rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden">
-                  <div id="meta-desc-bar" class="h-full rounded-full bg-gray-300 transition-all duration-300" style="width:0%"></div>
+              <div class="flex items-center gap-2 flex-1 mr-4">
+                <div class="w-full max-w-[280px] h-2.5 rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden">
+                  <div id="px-desc-bar" class="h-full rounded-full bg-gray-300 transition-all duration-300" style="width:0%"></div>
                 </div>
-                <span id="meta-desc-count" class="text-xs font-inter font-medium text-body dark:text-body-dark">0/160</span>
               </div>
-              <span id="meta-desc-status" class="text-xs font-medium"></span>
+              <div class="flex items-center gap-3 shrink-0">
+                <span id="px-desc-px" class="text-xs font-inter font-bold text-heading dark:text-heading-dark">0px</span>
+                <span class="text-xs text-body dark:text-body-dark">/</span>
+                <span id="px-desc-limit" class="text-xs font-inter text-body dark:text-body-dark">920px</span>
+                <span id="px-desc-chars" class="text-xs font-inter text-body dark:text-body-dark ml-2">(0 სიმბოლო)</span>
+              </div>
             </div>
+            <div id="px-desc-status" class="mt-1 text-xs font-medium"></div>
           </div>
 
-          <!-- Keywords Input -->
+          <!-- URL Input -->
           <div class="mb-6">
-            <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2">საკვანძო სიტყვები <span class="font-normal text-body dark:text-body-dark">(მძიმით გამოყოფილი)</span></label>
-            <input type="text" id="meta-keywords" placeholder="მაგ: seo, seo სერვისი, საძიებო ოპტიმიზაცია" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark placeholder-gray-400 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all">
+            <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2">URL <span class="font-normal text-body dark:text-body-dark">(SERP preview-სთვის)</span></label>
+            <input type="text" id="px-url" placeholder="https://example.com/page" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark placeholder-gray-400 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all">
           </div>
 
-          <!-- Live SERP Preview Mini -->
+          <!-- SERP Preview with truncation -->
           <div class="mb-6">
-            <h3 class="text-sm font-semibold text-heading dark:text-heading-dark mb-3">Google-ში გამოჩენის Preview</h3>
-            <div class="bg-white rounded-xl p-4 border border-gray-200" id="meta-serp-mini">
-              <div class="serp-title" id="meta-serp-title">გვერდის სათაური</div>
-              <div class="serp-url" id="meta-serp-url">https://example.com</div>
-              <div class="serp-desc" id="meta-serp-desc">მეტა აღწერა გამოჩნდება აქ...</div>
+            <h3 class="text-sm font-semibold text-heading dark:text-heading-dark mb-3">Google SERP Preview</h3>
+            <div class="bg-white rounded-xl p-5 border border-gray-200" id="px-serp-box">
+              <div id="px-serp-inner">
+                <div class="serp-title" id="px-serp-title">გვერდის სათაური</div>
+                <div class="serp-url" id="px-serp-url">https://example.com</div>
+                <div class="serp-desc" id="px-serp-desc">მეტა აღწერა გამოჩნდება აქ...</div>
+              </div>
             </div>
-          </div>
-
-          <!-- Quality Score -->
-          <div class="mb-6 p-4 rounded-xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-gray-800">
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-sm font-semibold text-heading dark:text-heading-dark">ხარისხის ქულა</span>
-              <span id="meta-score" class="text-lg font-inter font-bold text-body dark:text-body-dark">0/100</span>
-            </div>
-            <div class="w-full h-3 rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden">
-              <div id="meta-score-bar" class="h-full rounded-full bg-gray-300 transition-all duration-500" style="width:0%"></div>
-            </div>
+            <p class="text-xs text-body dark:text-body-dark mt-2" id="px-truncation-note"></p>
           </div>
 
           <!-- Generated Code -->
-          <div class="mb-4">
+          <div>
             <div class="flex items-center justify-between mb-3">
-              <h3 class="text-sm font-semibold text-heading dark:text-heading-dark">გენერირებული HTML კოდი</h3>
-              <button onclick="copyCode('meta-output')" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-primary/10 text-primary dark:text-primary-light hover:bg-primary/20 transition-colors">
+              <h3 class="text-sm font-semibold text-heading dark:text-heading-dark">HTML კოდი</h3>
+              <button onclick="copyCode('px-output')" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-primary/10 text-primary dark:text-primary-light hover:bg-primary/20 transition-colors">
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
                 დაკოპირება
               </button>
             </div>
-            <div class="code-block" id="meta-output"><span class="punct">&lt;</span><span class="tag">title</span><span class="punct">&gt;&lt;/</span><span class="tag">title</span><span class="punct">&gt;</span>
-<span class="punct">&lt;</span><span class="tag">meta</span> <span class="attr">name</span><span class="punct">=</span><span class="str">"description"</span> <span class="attr">content</span><span class="punct">=</span><span class="str">""</span><span class="punct">&gt;</span>
-<span class="punct">&lt;</span><span class="tag">meta</span> <span class="attr">name</span><span class="punct">=</span><span class="str">"keywords"</span> <span class="attr">content</span><span class="punct">=</span><span class="str">""</span><span class="punct">&gt;</span></div>
+            <div class="code-block" id="px-output"><span class="punct">&lt;</span><span class="tag">title</span><span class="punct">&gt;&lt;/</span><span class="tag">title</span><span class="punct">&gt;</span>
+<span class="punct">&lt;</span><span class="tag">meta</span> <span class="attr">name</span><span class="punct">=</span><span class="str">"description"</span> <span class="attr">content</span><span class="punct">=</span><span class="str">""</span><span class="punct">&gt;</span></div>
           </div>
         </div>
       </div>
@@ -552,61 +555,6 @@
         </div>
       </div>
 
-      <!-- ==================== TOOL 4: SCHEMA MARKUP GENERATOR ==================== -->
-      <div id="tab-schema-generator" class="tab-content hidden">
-        <div class="bg-surface-alt dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 p-6 sm:p-8">
-          <h2 class="font-heading text-xl sm:text-2xl font-bold text-heading dark:text-heading-dark mb-6">Schema Markup გენერატორი</h2>
-
-          <!-- Schema Type Selector -->
-          <div class="mb-6">
-            <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2">Schema ტიპი</label>
-            <div class="grid grid-cols-2 sm:grid-cols-5 gap-2" id="schema-type-btns">
-              <button data-schema="Organization" class="schema-type-btn px-3 py-2.5 text-xs font-semibold rounded-xl border-2 border-primary bg-primary/10 text-primary dark:text-primary-light transition-all">Organization</button>
-              <button data-schema="LocalBusiness" class="schema-type-btn px-3 py-2.5 text-xs font-semibold rounded-xl border-2 border-gray-200 dark:border-gray-700 text-heading dark:text-heading-dark hover:border-primary/50 transition-all">LocalBusiness</button>
-              <button data-schema="Article" class="schema-type-btn px-3 py-2.5 text-xs font-semibold rounded-xl border-2 border-gray-200 dark:border-gray-700 text-heading dark:text-heading-dark hover:border-primary/50 transition-all">Article</button>
-              <button data-schema="FAQPage" class="schema-type-btn px-3 py-2.5 text-xs font-semibold rounded-xl border-2 border-gray-200 dark:border-gray-700 text-heading dark:text-heading-dark hover:border-primary/50 transition-all">FAQPage</button>
-              <button data-schema="Product" class="schema-type-btn px-3 py-2.5 text-xs font-semibold rounded-xl border-2 border-gray-200 dark:border-gray-700 text-heading dark:text-heading-dark hover:border-primary/50 transition-all">Product</button>
-            </div>
-          </div>
-
-          <!-- Dynamic Form Fields -->
-          <div id="schema-fields" class="space-y-4 mb-6">
-            <!-- Populated by JS -->
-          </div>
-
-          <!-- Generate / Validate Buttons -->
-          <div class="flex flex-wrap gap-3 mb-6">
-            <button onclick="generateSchema()" class="inline-flex items-center gap-2 px-6 py-3 ai-cta-animate text-white font-bold rounded-xl hover:shadow-lg hover:shadow-primary/30 transition-all text-sm">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
-              გენერირება
-            </button>
-            <button onclick="validateSchema()" class="inline-flex items-center gap-2 px-6 py-3 border-2 border-primary dark:border-primary-light text-primary dark:text-primary-light font-bold rounded-xl hover:bg-primary/5 transition-all text-sm">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-              ვალიდაცია
-            </button>
-          </div>
-
-          <!-- Validation Messages -->
-          <div id="schema-validation" class="hidden mb-4"></div>
-
-          <!-- Generated JSON-LD Output -->
-          <div>
-            <div class="flex items-center justify-between mb-3">
-              <h3 class="text-sm font-semibold text-heading dark:text-heading-dark">JSON-LD კოდი</h3>
-              <button onclick="copyCode('schema-output')" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-primary/10 text-primary dark:text-primary-light hover:bg-primary/20 transition-colors">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
-                დაკოპირება
-              </button>
-            </div>
-            <div class="code-block" id="schema-output"><span class="punct">{</span>
-  <span class="key">"@context"</span><span class="punct">:</span> <span class="str">"https://schema.org"</span><span class="punct">,</span>
-  <span class="key">"@type"</span><span class="punct">:</span> <span class="str">"Organization"</span>
-<span class="punct">}</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
     </div>
   </section>
 
@@ -709,26 +657,8 @@
   <!-- ========== JAVASCRIPT ========== -->
   <script>
     // ===== THEME =====
-    const themeToggle = document.getElementById('theme-toggle');
     const html = document.documentElement;
     if (localStorage.getItem('theme') !== 'light') { html.classList.add('dark'); }
-    themeToggle.addEventListener('click', () => {
-      html.classList.toggle('dark');
-      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
-    });
-
-    // ===== MOBILE MENU =====
-    
-    document.getElementById('mobile-menu-cta').addEventListener('click', () => { mm.style.transform = 'translateX(100%)'; document.body.style.overflow = ''; });
-
-    // ===== STICKY CTA =====
-    let lastScrollY = window.scrollY;
-    const stickyCta = document.getElementById('sticky-cta');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > lastScrollY && window.scrollY > 300) { stickyCta.style.transform = 'translateY(100%)'; }
-      else { stickyCta.style.transform = 'translateY(0)'; }
-      lastScrollY = window.scrollY;
-    }, { passive: true });
 
     // ===== TOAST =====
     function showToast(msg) {
@@ -778,94 +708,144 @@
     if (initHash && document.getElementById('tab-' + initHash)) { switchTab(initHash); }
 
     // ========================================
-    // TOOL 1: META TAG GENERATOR
+    // SHARED: Canvas-based pixel width measurement
     // ========================================
-    const metaTitle = document.getElementById('meta-title');
-    const metaDesc = document.getElementById('meta-desc');
-    const metaKeywords = document.getElementById('meta-keywords');
+    const _pxCanvas = document.createElement('canvas');
+    const _pxCtx = _pxCanvas.getContext('2d');
 
-    function getBarColor(len, optimal, max) {
-      if (len === 0) return '#d1d5db';
-      if (len >= optimal[0] && len <= optimal[1]) return '#21C743';
-      if (len > max) return '#ef4444';
-      if (len > optimal[1]) return '#f59e0b';
-      if (len < optimal[0] && len >= optimal[0] * 0.7) return '#f59e0b';
-      return '#8B5CF6';
+    function measurePixelWidth(text, font) {
+      _pxCtx.font = font;
+      return _pxCtx.measureText(text).width;
     }
 
-    function getStatusText(len, optimal, max, label) {
-      if (len === 0) return '';
-      if (len >= optimal[0] && len <= optimal[1]) return '<span class="text-success">&#10003; ოპტიმალური</span>';
-      if (len > max) return '<span class="text-red-500">&#10007; ძალიან გრძელია</span>';
-      if (len > optimal[1]) return '<span class="text-yellow-500">&#9888; ცოტა გრძელია</span>';
-      if (len < optimal[0]) return '<span class="text-primary">&#8593; კიდევ დაამატეთ</span>';
-      return '';
-    }
-
-    function updateMetaGenerator() {
-      const tLen = metaTitle.value.length;
-      const dLen = metaDesc.value.length;
-
-      // Title bar
-      const tBar = document.getElementById('meta-title-bar');
-      const tPct = Math.min(tLen / 70 * 100, 100);
-      tBar.style.width = tPct + '%';
-      tBar.style.backgroundColor = getBarColor(tLen, [50, 60], 70);
-      document.getElementById('meta-title-count').textContent = tLen + '/70';
-      document.getElementById('meta-title-status').innerHTML = getStatusText(tLen, [50, 60], 70);
-
-      // Desc bar
-      const dBar = document.getElementById('meta-desc-bar');
-      const dPct = Math.min(dLen / 160 * 100, 100);
-      dBar.style.width = dPct + '%';
-      dBar.style.backgroundColor = getBarColor(dLen, [120, 160], 160);
-      document.getElementById('meta-desc-count').textContent = dLen + '/160';
-      document.getElementById('meta-desc-status').innerHTML = getStatusText(dLen, [120, 160], 160);
-
-      // SERP mini preview
-      document.getElementById('meta-serp-title').textContent = metaTitle.value || 'გვერდის სათაური';
-      document.getElementById('meta-serp-desc').textContent = metaDesc.value || 'მეტა აღწერა გამოჩნდება აქ...';
-
-      // Quality score
-      let score = 0;
-      if (tLen >= 50 && tLen <= 60) score += 40;
-      else if (tLen >= 30 && tLen <= 70) score += 20;
-      else if (tLen > 0) score += 5;
-
-      if (dLen >= 120 && dLen <= 160) score += 40;
-      else if (dLen >= 70 && dLen <= 160) score += 20;
-      else if (dLen > 0) score += 5;
-
-      if (metaKeywords.value.trim().length > 0) score += 20;
-      else score += 0;
-
-      const scoreBar = document.getElementById('meta-score-bar');
-      scoreBar.style.width = score + '%';
-      if (score >= 80) scoreBar.style.backgroundColor = '#21C743';
-      else if (score >= 50) scoreBar.style.backgroundColor = '#f59e0b';
-      else scoreBar.style.backgroundColor = '#ef4444';
-      document.getElementById('meta-score').textContent = score + '/100';
-
-      // Generated code
-      updateMetaOutput();
+    function getTruncatedText(text, font, maxPx) {
+      const fullWidth = measurePixelWidth(text, font);
+      if (fullWidth <= maxPx) return { text: text, truncated: false, width: fullWidth };
+      const ellipsis = '...';
+      const ellipsisW = measurePixelWidth(ellipsis, font);
+      let truncated = text;
+      while (truncated.length > 0 && measurePixelWidth(truncated, font) + ellipsisW > maxPx) {
+        truncated = truncated.slice(0, -1);
+      }
+      return { text: truncated + ellipsis, truncated: true, width: measurePixelWidth(truncated + ellipsis, font) };
     }
 
     function escHtml(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
-    function updateMetaOutput() {
-      const t = metaTitle.value;
-      const d = metaDesc.value;
-      const k = metaKeywords.value;
-      const el = document.getElementById('meta-output');
-      el.innerHTML =
-        '<span class="punct">&lt;</span><span class="tag">title</span><span class="punct">&gt;</span>' + escHtml(t) + '<span class="punct">&lt;/</span><span class="tag">title</span><span class="punct">&gt;</span>\n' +
-        '<span class="punct">&lt;</span><span class="tag">meta</span> <span class="attr">name</span><span class="punct">=</span><span class="str">"description"</span> <span class="attr">content</span><span class="punct">=</span><span class="str">"' + escHtml(d) + '"</span><span class="punct">&gt;</span>\n' +
-        '<span class="punct">&lt;</span><span class="tag">meta</span> <span class="attr">name</span><span class="punct">=</span><span class="str">"keywords"</span> <span class="attr">content</span><span class="punct">=</span><span class="str">"' + escHtml(k) + '"</span><span class="punct">&gt;</span>';
+    // ========================================
+    // TOOL 1: PIXEL WIDTH CHECKER
+    // ========================================
+    const pxTitle = document.getElementById('px-title');
+    const pxDesc = document.getElementById('px-desc');
+    const pxUrl = document.getElementById('px-url');
+    let pxIsMobile = false;
+
+    const PX_LIMITS = {
+      desktop: { title: 580, desc: 920, titleFont: '20px Arial, sans-serif', descFont: '14px Arial, sans-serif' },
+      mobile:  { title: 420, desc: 680, titleFont: '16px Arial, sans-serif', descFont: '13px Arial, sans-serif' }
+    };
+
+    function getPxLimits() { return pxIsMobile ? PX_LIMITS.mobile : PX_LIMITS.desktop; }
+
+    function pxBarColor(ratio) {
+      if (ratio === 0) return '#d1d5db';
+      if (ratio <= 0.85) return '#21C743';
+      if (ratio <= 1.0) return '#f59e0b';
+      return '#ef4444';
     }
 
-    metaTitle.addEventListener('input', updateMetaGenerator);
-    metaDesc.addEventListener('input', updateMetaGenerator);
-    metaKeywords.addEventListener('input', updateMetaGenerator);
+    function pxStatusHtml(ratio) {
+      if (ratio === 0) return '';
+      if (ratio <= 0.85) return '<span class="text-success">&#10003; ოპტიმალური სიგანე</span>';
+      if (ratio <= 1.0) return '<span class="text-yellow-500">&#9888; ლიმიტთან ახლოს</span>';
+      return '<span class="text-red-500">&#10007; Google შეჭრის — ' + Math.round((ratio - 1) * 100) + '% ჭარბი</span>';
+    }
+
+    function updatePixelChecker() {
+      const limits = getPxLimits();
+
+      // Title measurement
+      const titleText = pxTitle.value;
+      const titlePx = titleText ? Math.round(measurePixelWidth(titleText, limits.titleFont)) : 0;
+      const titleRatio = titlePx / limits.title;
+      const titleBar = document.getElementById('px-title-bar');
+      titleBar.style.width = Math.min(titleRatio * 100, 100) + '%';
+      titleBar.style.backgroundColor = pxBarColor(titleRatio);
+      document.getElementById('px-title-px').textContent = titlePx + 'px';
+      document.getElementById('px-title-limit').textContent = limits.title + 'px';
+      document.getElementById('px-title-chars').textContent = '(' + titleText.length + ' სიმბოლო)';
+      document.getElementById('px-title-status').innerHTML = pxStatusHtml(titleRatio);
+
+      // Description measurement
+      const descText = pxDesc.value;
+      const descPx = descText ? Math.round(measurePixelWidth(descText, limits.descFont)) : 0;
+      const descRatio = descPx / limits.desc;
+      const descBar = document.getElementById('px-desc-bar');
+      descBar.style.width = Math.min(descRatio * 100, 100) + '%';
+      descBar.style.backgroundColor = pxBarColor(descRatio);
+      document.getElementById('px-desc-px').textContent = descPx + 'px';
+      document.getElementById('px-desc-limit').textContent = limits.desc + 'px';
+      document.getElementById('px-desc-chars').textContent = '(' + descText.length + ' სიმბოლო)';
+      document.getElementById('px-desc-status').innerHTML = pxStatusHtml(descRatio);
+
+      // Limits label
+      document.getElementById('px-limits-label').textContent = 'Title: ' + limits.title + 'px / Description: ' + limits.desc + 'px';
+
+      // SERP Preview with truncation
+      const titleResult = getTruncatedText(titleText || 'გვერდის სათაური', limits.titleFont, limits.title);
+      document.getElementById('px-serp-title').textContent = titleResult.text;
+
+      const urlText = pxUrl.value || 'https://example.com';
+      document.getElementById('px-serp-url').textContent = urlText.replace(/^https?:\/\//, '').replace(/\/$/, '');
+
+      const descResult = getTruncatedText(descText || 'მეტა აღწერა გამოჩნდება აქ...', limits.descFont, limits.desc);
+      document.getElementById('px-serp-desc').textContent = descResult.text;
+
+      // Mobile class
+      const inner = document.getElementById('px-serp-inner');
+      if (pxIsMobile) inner.classList.add('serp-mobile');
+      else inner.classList.remove('serp-mobile');
+
+      // Truncation note
+      const note = document.getElementById('px-truncation-note');
+      if (titleResult.truncated || descResult.truncated) {
+        let parts = [];
+        if (titleResult.truncated) parts.push('სათაური');
+        if (descResult.truncated) parts.push('აღწერა');
+        note.innerHTML = '<span class="text-red-500">&#9888; ' + parts.join(' და ') + ' შეიჭრება Google-ში. წითელი ზონის მიღმა ტექსტი არ გამოჩნდება.</span>';
+      } else {
+        note.textContent = '';
+      }
+
+      // Generated HTML code
+      const el = document.getElementById('px-output');
+      el.innerHTML =
+        '<span class="punct">&lt;</span><span class="tag">title</span><span class="punct">&gt;</span>' + escHtml(titleText) + '<span class="punct">&lt;/</span><span class="tag">title</span><span class="punct">&gt;</span>\n' +
+        '<span class="punct">&lt;</span><span class="tag">meta</span> <span class="attr">name</span><span class="punct">=</span><span class="str">"description"</span> <span class="attr">content</span><span class="punct">=</span><span class="str">"' + escHtml(descText) + '"</span><span class="punct">&gt;</span>';
+    }
+
+    pxTitle.addEventListener('input', updatePixelChecker);
+    pxDesc.addEventListener('input', updatePixelChecker);
+    pxUrl.addEventListener('input', updatePixelChecker);
+
+    document.getElementById('px-desktop-btn').addEventListener('click', function() {
+      pxIsMobile = false;
+      this.classList.add('bg-primary/10', 'text-primary', 'dark:text-primary-light');
+      this.classList.remove('text-body', 'dark:text-body-dark');
+      const mob = document.getElementById('px-mobile-btn');
+      mob.classList.remove('bg-primary/10', 'text-primary', 'dark:text-primary-light');
+      mob.classList.add('text-body', 'dark:text-body-dark');
+      updatePixelChecker();
+    });
+    document.getElementById('px-mobile-btn').addEventListener('click', function() {
+      pxIsMobile = true;
+      this.classList.add('bg-primary/10', 'text-primary', 'dark:text-primary-light');
+      this.classList.remove('text-body', 'dark:text-body-dark');
+      const desk = document.getElementById('px-desktop-btn');
+      desk.classList.remove('bg-primary/10', 'text-primary', 'dark:text-primary-light');
+      desk.classList.add('text-body', 'dark:text-body-dark');
+      updatePixelChecker();
+    });
 
     // ========================================
     // TOOL 2: SERP PREVIEW
@@ -877,8 +857,7 @@
     let serpIsMobile = false;
 
     function estimatePixelWidth(text, fontSize) {
-      // Rough estimation: avg char width ~60% of font size for Arial
-      return text.length * fontSize * 0.6;
+      return measurePixelWidth(text, fontSize + 'px Arial, sans-serif');
     }
 
     function formatUrlBreadcrumb(url) {
@@ -1042,231 +1021,6 @@
     kdText.addEventListener('input', analyzeText);
     kdKeyword.addEventListener('input', analyzeText);
 
-    // ========================================
-    // TOOL 4: SCHEMA MARKUP GENERATOR
-    // ========================================
-    let currentSchemaType = 'Organization';
-    let faqItems = [{ q: '', a: '' }];
-
-    const schemaFields = {
-      Organization: [
-        { id: 'org-name', label: 'სახელი', placeholder: 'მაგ: 10XSEO', required: true },
-        { id: 'org-url', label: 'URL', placeholder: 'https://10xseo.ge', required: true },
-        { id: 'org-logo', label: 'ლოგოს URL', placeholder: 'https://10xseo.ge/logo.png', required: false },
-        { id: 'org-phone', label: 'ტელეფონი', placeholder: '+995510101517', required: false },
-        { id: 'org-email', label: 'ემაილი', placeholder: 'sales@10xseo.ge', required: false },
-      ],
-      LocalBusiness: [
-        { id: 'lb-name', label: 'სახელი', placeholder: 'მაგ: 10XSEO', required: true },
-        { id: 'lb-address', label: 'მისამართი', placeholder: 'თბილისი, საქართველო', required: true },
-        { id: 'lb-phone', label: 'ტელეფონი', placeholder: '+995510101517', required: false },
-        { id: 'lb-email', label: 'ემაილი', placeholder: 'info@example.com', required: false },
-        { id: 'lb-hours', label: 'სამუშაო საათები', placeholder: 'Mo-Fr 09:00-18:00', required: false },
-        { id: 'lb-lat', label: 'გეო: Latitude', placeholder: '41.7151', required: false },
-        { id: 'lb-lng', label: 'გეო: Longitude', placeholder: '44.8271', required: false },
-      ],
-      Article: [
-        { id: 'art-headline', label: 'სათაური', placeholder: 'სტატიის სათაური', required: true },
-        { id: 'art-author', label: 'ავტორი', placeholder: 'ავტორის სახელი', required: true },
-        { id: 'art-date', label: 'გამოქვეყნების თარიღი', placeholder: '2025-01-15', type: 'date', required: true },
-        { id: 'art-image', label: 'სურათის URL', placeholder: 'https://example.com/image.jpg', required: false },
-        { id: 'art-publisher', label: 'Publisher სახელი', placeholder: '10XSEO', required: false },
-      ],
-      Product: [
-        { id: 'prod-name', label: 'სახელი', placeholder: 'პროდუქტის სახელი', required: true },
-        { id: 'prod-desc', label: 'აღწერა', placeholder: 'პროდუქტის აღწერა', required: false, type: 'textarea' },
-        { id: 'prod-image', label: 'სურათის URL', placeholder: 'https://example.com/product.jpg', required: false },
-        { id: 'prod-price', label: 'ფასი', placeholder: '99.99', required: false },
-        { id: 'prod-currency', label: 'ვალუტა', placeholder: 'GEL', required: false },
-        { id: 'prod-avail', label: 'ხელმისაწვდომობა', placeholder: 'InStock', required: false },
-      ],
-    };
-
-    function renderSchemaFields() {
-      const container = document.getElementById('schema-fields');
-      document.getElementById('schema-validation').classList.add('hidden');
-
-      if (currentSchemaType === 'FAQPage') {
-        let html = '';
-        faqItems.forEach((item, i) => {
-          html += '<div class="p-4 rounded-xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-gray-800">' +
-            '<div class="flex items-center justify-between mb-3">' +
-            '<span class="text-sm font-semibold text-heading dark:text-heading-dark">კითხვა #' + (i + 1) + '</span>' +
-            (faqItems.length > 1 ? '<button onclick="removeFaqItem(' + i + ')" class="text-red-400 hover:text-red-500 text-xs font-medium">წაშლა</button>' : '') +
-            '</div>' +
-            '<input type="text" id="faq-q-' + i + '" value="' + escHtml(item.q) + '" placeholder="კითხვა" class="w-full px-4 py-2.5 mb-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-surface-alt dark:bg-surface-dark-alt text-heading dark:text-heading-dark placeholder-gray-400 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all text-sm" oninput="updateFaqItem(' + i + ')">' +
-            '<textarea id="faq-a-' + i + '" rows="2" placeholder="პასუხი" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-surface-alt dark:bg-surface-dark-alt text-heading dark:text-heading-dark placeholder-gray-400 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all text-sm resize-none" oninput="updateFaqItem(' + i + ')">' + escHtml(item.a) + '</textarea>' +
-            '</div>';
-        });
-        html += '<button onclick="addFaqItem()" class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 text-heading dark:text-heading-dark hover:border-primary hover:text-primary transition-all">' +
-          '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>' +
-          'დაამატე კითხვა</button>';
-        container.innerHTML = html;
-        return;
-      }
-
-      const fields = schemaFields[currentSchemaType] || [];
-      container.innerHTML = fields.map(f => {
-        const inputType = f.type || 'text';
-        if (inputType === 'textarea') {
-          return '<div><label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2">' + f.label + (f.required ? ' <span class="text-red-400">*</span>' : '') + '</label>' +
-            '<textarea id="' + f.id + '" rows="2" placeholder="' + f.placeholder + '" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark placeholder-gray-400 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all resize-none text-sm"></textarea></div>';
-        }
-        return '<div><label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2">' + f.label + (f.required ? ' <span class="text-red-400">*</span>' : '') + '</label>' +
-          '<input type="' + inputType + '" id="' + f.id + '" placeholder="' + f.placeholder + '" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark placeholder-gray-400 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all text-sm"></div>';
-      }).join('');
-    }
-
-    function addFaqItem() {
-      faqItems.push({ q: '', a: '' });
-      renderSchemaFields();
-    }
-
-    function removeFaqItem(i) {
-      faqItems.splice(i, 1);
-      renderSchemaFields();
-    }
-
-    function updateFaqItem(i) {
-      faqItems[i].q = document.getElementById('faq-q-' + i).value;
-      faqItems[i].a = document.getElementById('faq-a-' + i).value;
-    }
-
-    // Schema type selection
-    document.querySelectorAll('.schema-type-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        currentSchemaType = btn.dataset.schema;
-        document.querySelectorAll('.schema-type-btn').forEach(b => {
-          b.classList.remove('border-primary', 'bg-primary/10', 'text-primary', 'dark:text-primary-light');
-          b.classList.add('border-gray-200', 'dark:border-gray-700', 'text-heading', 'dark:text-heading-dark');
-        });
-        btn.classList.add('border-primary', 'bg-primary/10', 'text-primary', 'dark:text-primary-light');
-        btn.classList.remove('border-gray-200', 'dark:border-gray-700', 'text-heading', 'dark:text-heading-dark');
-        renderSchemaFields();
-        // Reset output
-        document.getElementById('schema-output').innerHTML = '<span class="punct">{</span>\n  <span class="key">"@context"</span><span class="punct">:</span> <span class="str">"https://schema.org"</span><span class="punct">,</span>\n  <span class="key">"@type"</span><span class="punct">:</span> <span class="str">"' + currentSchemaType + '"</span>\n<span class="punct">}</span>';
-      });
-    });
-
-    function getVal(id) {
-      const el = document.getElementById(id);
-      return el ? el.value.trim() : '';
-    }
-
-    function highlightJson(json) {
-      return json
-        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-        .replace(/"([^"]+)"(\s*:)/g, '<span class="key">"$1"</span>$2')
-        .replace(/:\s*"([^"]*)"/g, ': <span class="str">"$1"</span>')
-        .replace(/:\s*(\d+\.?\d*)/g, ': <span class="num">$1</span>')
-        .replace(/:\s*(true|false)/g, ': <span class="bool">$1</span>')
-        .replace(/[{}[\],]/g, '<span class="punct">$&</span>');
-    }
-
-    function generateSchema() {
-      let obj = { "@context": "https://schema.org", "@type": currentSchemaType };
-
-      if (currentSchemaType === 'Organization') {
-        if (getVal('org-name')) obj.name = getVal('org-name');
-        if (getVal('org-url')) obj.url = getVal('org-url');
-        if (getVal('org-logo')) obj.logo = getVal('org-logo');
-        if (getVal('org-phone')) obj.telephone = getVal('org-phone');
-        if (getVal('org-email')) obj.email = getVal('org-email');
-      }
-      else if (currentSchemaType === 'LocalBusiness') {
-        if (getVal('lb-name')) obj.name = getVal('lb-name');
-        if (getVal('lb-address')) obj.address = { "@type": "PostalAddress", "streetAddress": getVal('lb-address') };
-        if (getVal('lb-phone')) obj.telephone = getVal('lb-phone');
-        if (getVal('lb-email')) obj.email = getVal('lb-email');
-        if (getVal('lb-hours')) obj.openingHours = getVal('lb-hours');
-        if (getVal('lb-lat') && getVal('lb-lng')) {
-          obj.geo = { "@type": "GeoCoordinates", "latitude": parseFloat(getVal('lb-lat')), "longitude": parseFloat(getVal('lb-lng')) };
-        }
-      }
-      else if (currentSchemaType === 'Article') {
-        if (getVal('art-headline')) obj.headline = getVal('art-headline');
-        if (getVal('art-author')) obj.author = { "@type": "Person", "name": getVal('art-author') };
-        if (getVal('art-date')) obj.datePublished = getVal('art-date');
-        if (getVal('art-image')) obj.image = getVal('art-image');
-        if (getVal('art-publisher')) obj.publisher = { "@type": "Organization", "name": getVal('art-publisher') };
-      }
-      else if (currentSchemaType === 'FAQPage') {
-        // Sync FAQ items
-        faqItems.forEach((item, i) => {
-          const qEl = document.getElementById('faq-q-' + i);
-          const aEl = document.getElementById('faq-a-' + i);
-          if (qEl) item.q = qEl.value;
-          if (aEl) item.a = aEl.value;
-        });
-        obj.mainEntity = faqItems.filter(f => f.q || f.a).map(f => ({
-          "@type": "Question",
-          "name": f.q,
-          "acceptedAnswer": { "@type": "Answer", "text": f.a }
-        }));
-      }
-      else if (currentSchemaType === 'Product') {
-        if (getVal('prod-name')) obj.name = getVal('prod-name');
-        if (getVal('prod-desc')) obj.description = getVal('prod-desc');
-        if (getVal('prod-image')) obj.image = getVal('prod-image');
-        if (getVal('prod-price') || getVal('prod-currency') || getVal('prod-avail')) {
-          obj.offers = { "@type": "Offer" };
-          if (getVal('prod-price')) obj.offers.price = getVal('prod-price');
-          if (getVal('prod-currency')) obj.offers.priceCurrency = getVal('prod-currency');
-          if (getVal('prod-avail')) obj.offers.availability = 'https://schema.org/' + getVal('prod-avail');
-        }
-      }
-
-      const json = JSON.stringify(obj, null, 2);
-      document.getElementById('schema-output').innerHTML = highlightJson(json);
-    }
-
-    function validateSchema() {
-      const validationEl = document.getElementById('schema-validation');
-      let errors = [];
-
-      if (currentSchemaType === 'Organization') {
-        if (!getVal('org-name')) errors.push('სახელი სავალდებულოა');
-        if (!getVal('org-url')) errors.push('URL სავალდებულოა');
-      }
-      else if (currentSchemaType === 'LocalBusiness') {
-        if (!getVal('lb-name')) errors.push('სახელი სავალდებულოა');
-        if (!getVal('lb-address')) errors.push('მისამართი სავალდებულოა');
-      }
-      else if (currentSchemaType === 'Article') {
-        if (!getVal('art-headline')) errors.push('სათაური სავალდებულოა');
-        if (!getVal('art-author')) errors.push('ავტორი სავალდებულოა');
-        if (!getVal('art-date')) errors.push('გამოქვეყნების თარიღი სავალდებულოა');
-      }
-      else if (currentSchemaType === 'FAQPage') {
-        faqItems.forEach((item, i) => {
-          const qEl = document.getElementById('faq-q-' + i);
-          const aEl = document.getElementById('faq-a-' + i);
-          if (qEl) item.q = qEl.value;
-          if (aEl) item.a = aEl.value;
-        });
-        const filled = faqItems.filter(f => f.q && f.a);
-        if (filled.length === 0) errors.push('მინიმუმ ერთი კითხვა-პასუხი სავალდებულოა');
-        faqItems.forEach((f, i) => {
-          if (f.q && !f.a) errors.push('კითხვა #' + (i + 1) + '-ს პასუხი არ აქვს');
-          if (!f.q && f.a) errors.push('პასუხს #' + (i + 1) + '-ს კითხვა არ აქვს');
-        });
-      }
-      else if (currentSchemaType === 'Product') {
-        if (!getVal('prod-name')) errors.push('პროდუქტის სახელი სავალდებულოა');
-      }
-
-      validationEl.classList.remove('hidden');
-      if (errors.length === 0) {
-        validationEl.innerHTML = '<div class="p-4 rounded-xl bg-success/10 border border-success/20 text-success text-sm font-semibold flex items-center gap-2"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> ვალიდაცია წარმატებით გაიარა!</div>';
-      } else {
-        validationEl.innerHTML = '<div class="p-4 rounded-xl bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-900/30 text-sm">' +
-          '<div class="font-semibold text-red-600 dark:text-red-400 mb-2 flex items-center gap-2"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> ნაპოვნია შეცდომები:</div>' +
-          '<ul class="list-disc list-inside space-y-1 text-red-600 dark:text-red-400">' + errors.map(e => '<li>' + e + '</li>').join('') + '</ul></div>';
-      }
-    }
-
-    // Initial render
-    renderSchemaFields();
   </script>
   <script>
     // Mobile menu with animation
