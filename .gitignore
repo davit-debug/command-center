@@ -81,3 +81,7 @@
 !offer/
 !offer/**
 !offer-v*.html
+!offer-deal-room.html
+!offer-video.html
+!offer-vertical.html
+!README-offer-system.md

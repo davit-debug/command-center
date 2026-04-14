@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dubai Healthcare SEO Proposal | 10xSEO</title>
+  <meta name="robots" content="noindex, nofollow">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="offer/premium-shared.css">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            accent: '#00ff88',
+            'accent-dim': 'rgba(0,255,136,0.1)',
+            bg: '#0a0a0a',
+            'bg-card': '#0d1117',
+            border: '#30363d'
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'SF Mono', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    /* --- Page-specific styles --- */
+    .lang-bar { height: 8px; border-radius: 4px; overflow: hidden; background: var(--border); }
+    .lang-bar-fill { height: 100%; border-radius: 4px; transition: width 0.8s ease; }
+    .lang-bar-en { background: linear-gradient(90deg, #00ff88, #00cc6a); }
+    .lang-bar-ar { background: linear-gradient(90deg, #3b82f6, #6366f1); }
+
+    .intent-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; }
+    .intent-cell { padding: 12px 16px; font-size: 13px; }
+    .intent-header { font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); }
+
+    .step-num {
+      width: 36px; height: 36px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--accent-dim); color: var(--accent);
+      font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .methodology-step {
+      display: flex; gap: 16px; align-items: flex-start;
+      padding: 16px; border-radius: 10px;
+      background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04);
+      transition: all 0.3s;
+    }
+    .methodology-step:hover { border-color: rgba(0,255,136,0.15); }
+
+    .trust-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; flex-shrink: 0;
+    }
+
+    .addon-card {
+      background: rgba(255,255,255,0.02); border: 1px solid var(--border);
+      border-radius: 10px; padding: 16px; display: flex; align-items: center; gap: 14px;
+      transition: all 0.3s;
+    }
+    .addon-card:hover { border-color: rgba(0,255,136,0.2); }
+
+    /* --- Vertical section color coding --- */
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin: 0;
+    }
+  </style>
+</head>
+<body class="bg-bg text-white/60 dot-grid">
+
+  <!-- Skip nav -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[200] focus:bg-accent focus:text-black focus:px-4 focus:py-2 focus:rounded-lg focus:font-bold">
+    Skip to main content
+  </a>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 1: Header + Industry Context Badge                    -->
+  <!-- ============================================================ -->
+  <header class="premium-header no-print" role="banner">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <span class="font-bold text-white text-sm tracking-tight" id="header-title">10xSEO <span class="accent">&times;</span> <span id="h-company">Gulf Medical Centre</span></span>
+        <span class="confidential-pill hidden" id="nda-pill" aria-label="NDA signed">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          NDA
+        </span>
+      </div>
+      <div class="flex items-center gap-4">
+        <span class="text-xs text-white/40 font-mono hidden sm:inline" id="h-date">April 14, 2026</span>
+        <button onclick="exportPDF()" class="btn-ghost text-xs no-print" aria-label="Export PDF">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
+          PDF
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" class="pt-20 pb-16" role="main">
+
+    <!-- Industry Context Badge -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 pt-6 pb-2">
+      <div class="flex flex-wrap items-center gap-3 reveal-p">
+        <span class="vertical-badge vertical-healthcare" id="vertical-badge">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2a10 10 0 110 20 10 10 0 010-20z"/><path d="M12 8v8m-4-4h8"/></svg>
+          Healthcare &mdash; DHA Regulated
+        </span>
+        <span class="text-xs text-white/30 font-mono" id="client-domain">gulfmedical.ae</span>
+        <span class="text-xs text-white/20">|</span>
+        <span class="text-xs text-white/30" id="client-geo">Dubai, Abu Dhabi</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mt-6 mb-3 reveal-p d100">
+        Dubai Healthcare SEO<br class="hidden sm:block"> Strategy Proposal
+      </h1>
+      <p class="text-base sm:text-lg text-white/50 max-w-2xl reveal-p d200" id="intro-narrative">
+        A compliance-aware, bilingual SEO strategy built for <span class="text-white font-semibold" id="intro-company">Gulf Medical Centre</span> to capture Dubai's 2.4M monthly medical searches.
+      </p>
+    </section>
+
+    <div class="section-divider max-w-6xl mx-auto my-8"></div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 2: Industry Market Reality — Dubai                   -->
+    <!-- ============================================================ -->
+    <section id="market" class="max-w-6xl mx-auto px-4 sm:px-6 py-12" aria-labelledby="market-heading">
+      <h2 id="market-heading" class="text-2xl sm:text-3xl font-extrabold text-white mb-2 reveal-p">Dubai Healthcare SEO Landscape</h2>
+      <p class="text-sm text-white/40 mb-8 reveal-p">Market data as of Q1 2026</p>
+
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <!-- Stat 1: Search demand -->
+        <div class="p-card p-5 text-center reveal-p">
+          <div class="text-3xl sm:text-4xl font-extrabold accent font-mono p-counter" data-target="2.4" data-suffix="M" data-decimal="true">2.4M</div>
+          <div class="text-xs text-white/40 mt-2 leading-snug">Monthly medical searches in Dubai</div>
+          <div class="flex items-center justify-center gap-2 mt-3">
+            <span class="text-[10px] font-bold text-accent bg-accent/10 px-2 py-0.5 rounded">EN 55%</span>
+            <span class="text-[10px] font-bold text-blue-400 bg-blue-400/10 px-2 py-0.5 rounded">AR 45%</span>
+          </div>
+        </div>
+        <!-- Stat 2: Competition -->
+        <div class="p-card p-5 text-center reveal-p d100">
+          <div class="text-3xl sm:text-4xl font-extrabold accent font-mono p-counter" data-target="350" data-suffix="+">350+</div>
+          <div class="text-xs text-white/40 mt-2 leading-snug">Clinics competing for top 50 medical keywords</div>
+        </div>
+        <!-- Stat 3: Patient journey -->
+        <div class="p-card p-5 text-center reveal-p d200">
+          <div class="text-3xl sm:text-4xl font-extrabold accent font-mono p-counter" data-target="78" data-suffix="%">78%</div>
+          <div class="text-xs text-white/40 mt-2 leading-snug">Patients research online before booking</div>
+        </div>
+        <!-- Stat 4: Tourism growth -->
+        <div class="p-card p-5 text-center reveal-p d300">
+          <div class="text-3xl sm:text-4xl font-extrabold accent font-mono p-counter" data-target="12" data-suffix="%" data-prefix="+">+12%</div>
+          <div class="text-xs text-white/40 mt-2 leading-snug">Medical tourism YoY growth</div>
+        </div>
+      </div>
+
+      <div class="p-card p-6 reveal-p d400">
+        <p class="text-sm leading-relaxed" id="market-narrative">
+          Dubai's healthcare market is intensely competitive online. With <span class="text-white font-semibold">2.4 million medical searches monthly</span> split between English and Arabic, clinics that fail to address both language audiences lose nearly half their potential patient pipeline. The top 3 competitors &mdash; <span class="text-white">Aster DM Healthcare</span>, <span class="text-white">Mediclinic</span>, and <span class="text-white">Prime Hospital</span> &mdash; invest heavily in bilingual content, GBP optimization, and medical Schema markup. Meanwhile, medical tourism continues to grow at <span class="accent">12% year-over-year</span>, creating a significant opportunity for clinics that can rank for both local and international patient searches.
+        </p>
+      </div>
+    </section>
+
+    <div class="section-divider max-w-6xl mx-auto"></div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 3: Trust Architecture Plan                           -->
+    <!-- ============================================================ -->
+    <section id="trust" class="max-w-6xl mx-auto px-4 sm:px-6 py-12" aria-labelledby="trust-heading">
+      <h2 id="trust-heading" class="text-2xl sm:text-3xl font-extrabold text-white mb-2 reveal-p">E-E-A-T Trust Architecture</h2>
+      <p class="text-sm text-white/40 mb-8 reveal-p">How we build authority for healthcare in the eyes of Google and patients</p>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+        <!-- Entity Strategy -->
+        <div class="p-card p-5 reveal-p">
+          <div class="trust-icon bg-accent/10 mb-3">
+            <svg width="24" height="24" fill="none" stroke="#00ff88" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          </div>
+          <h3 class="text-base font-bold text-white mb-2">Entity Strategy</h3>
+          <p class="text-sm text-white/50 mb-3">Google Business Profile optimization for all locations + Knowledge Graph entity establishment.</p>
+          <ul class="space-y-1.5 text-xs text-white/40">
+            <li class="flex items-start gap-2"><span class="accent mt-0.5">&#9656;</span> Optimize all 12 GBP locations with full service catalogs</li>
+            <li class="flex items-start gap-2"><span class="accent mt-0.5">&#9656;</span> Establish Knowledge Graph entity for the organization</li>
+            <li class="flex items-start gap-2"><span class="accent mt-0.5">&#9656;</span> Consistent NAP across all directories and platforms</li>
+          </ul>
+        </div>
+
+        <!-- Expert Authors -->
+        <div class="p-card p-5 reveal-p d100">
+          <div class="trust-icon bg-accent/10 mb-3">
+            <svg width="24" height="24" fill="none" stroke="#00ff88" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <h3 class="text-base font-bold text-white mb-2">Expert Authors</h3>
+          <p class="text-sm text-white/50 mb-3">Doctor profiles with DHA license numbers, specializations, and published papers.</p>
+          <ul class="space-y-1.5 text-xs text-white/40">
+            <li class="flex items-start gap-2"><span class="accent mt-0.5">&#9656;</span> Create author entity pages for each physician</li>
+            <li class="flex items-start gap-2"><span class="accent mt-0.5">&#9656;</span> Link DHA license verification to author profiles</li>
+            <li class="flex items-start gap-2"><span class="accent mt-0.5">&#9656;</span> Implement Physician Schema with credentials</li>
+          </ul>
+        </div>
+
+        <!-- Reviews & Reputation -->
+        <div class="p-card p-5 reveal-p d200">
+          <div class="trust-icon bg-accent/10 mb-3">
+            <svg width="24" height="24" fill="none" stroke="#00ff88" stroke-width="2" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <h3 class="text-base font-bold text-white mb-2">Reviews & Reputation</h3>
+          <p class="text-sm text-white/50 mb-3">Structured review generation from verified patients + response SLA framework.</p>
+          <ul class="space-y-1.5 text-xs text-white/40">
+            <li class="flex items-start gap-2"><span class="accent mt-0.5">&#9656;</span> Post-appointment review request automation</li>
+            <li class="flex items-start gap-2"><span class="accent mt-0.5">&#9656;</span> 24-hour response SLA for all reviews</li>
+            <li class="flex items-start gap-2"><span class="accent mt-0.5">&#9656;</span> Review Schema markup on service pages</li>
+          </ul>
+        </div>
+
+        <!-- Citations -->
+        <div class="p-card p-5 reveal-p d300">
+          <div class="trust-icon bg-accent/10 mb-3">
+            <svg width="24" height="24" fill="none" stroke="#00ff88" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          </div>
+          <h3 class="text-base font-bold text-white mb-2">Citations & Directories</h3>
+          <p class="text-sm text-white/50 mb-3">DHA directory, UAE medical directories, and international health platforms.</p>
+          <ul class="space-y-1.5 text-xs text-white/40">
+            <li class="flex items-start gap-2"><span class="accent mt-0.5">&#9656;</span> DHA-approved provider directory listing</li>
+            <li class="flex items-start gap-2"><span class="accent mt-0.5">&#9656;</span> Practo, Vezeeta, and regional platforms</li>
+            <li class="flex items-start gap-2"><span class="accent mt-0.5">&#9656;</span> International medical tourism directories</li>
+          </ul>
+        </div>
+
+        <!-- Multilingual hreflang -->
+        <div class="p-card p-5 reveal-p d400">
+          <div class="trust-icon bg-accent/10 mb-3">
+            <svg width="24" height="24" fill="none" stroke="#00ff88" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          </div>
+          <h3 class="text-base font-bold text-white mb-2">Multilingual hreflang</h3>
+          <p class="text-sm text-white/50 mb-3">Arabic audience targeting with proper en-AE / ar-AE setup and canonical signals.</p>
+          <ul class="space-y-1.5 text-xs text-white/40">
+            <li class="flex items-start gap-2"><span class="accent mt-0.5">&#9656;</span> hreflang tags on every page (en-AE, ar-AE)</li>
+            <li class="flex items-start gap-2"><span class="accent mt-0.5">&#9656;</span> Canonical URL strategy for bilingual content</li>
+            <li class="flex items-start gap-2"><span class="accent mt-0.5">&#9656;</span> RTL-optimized page templates for Arabic</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="section-divider max-w-6xl mx-auto"></div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 4: Compliance-Safe Commitments                       -->
+    <!-- ============================================================ -->
+    <section id="compliance" class="max-w-6xl mx-auto px-4 sm:px-6 py-12" aria-labelledby="compliance-heading">
+      <h2 id="compliance-heading" class="text-2xl sm:text-3xl font-extrabold text-white mb-2 reveal-p">Compliance-Safe Commitments</h2>
+      <p class="text-sm text-white/40 mb-8 reveal-p">Transparent deliverables for a regulated industry</p>
+
+      <div class="grid md:grid-cols-2 gap-4 mb-6">
+
+        <!-- What We CAN Guarantee -->
+        <div class="compliance-can reveal-p">
+          <div class="flex items-center gap-2 mb-4">
+            <svg width="20" height="20" fill="none" stroke="#00ff88" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <h3 class="text-base font-bold text-white">What We CAN Guarantee</h3>
+          </div>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3 text-sm">
+              <span class="accent text-lg leading-none mt-0.5">&#10003;</span>
+              <span><span class="text-white font-medium" id="content-volume">8 content pieces/month</span> reviewed by your compliance team before publication</span>
+            </li>
+            <li class="flex items-start gap-3 text-sm">
+              <span class="accent text-lg leading-none mt-0.5">&#10003;</span>
+              <span><span class="text-white font-medium">Weekly compliance check-in</span> &mdash; 30-minute alignment call with your regulatory contact</span>
+            </li>
+            <li class="flex items-start gap-3 text-sm">
+              <span class="accent text-lg leading-none mt-0.5">&#10003;</span>
+              <span><span class="text-white font-medium">Source attribution standards</span> &mdash; all medical claims cite peer-reviewed journals or DHA guidelines</span>
+            </li>
+            <li class="flex items-start gap-3 text-sm">
+              <span class="accent text-lg leading-none mt-0.5">&#10003;</span>
+              <span><span class="text-white font-medium">DHA advertising guideline adherence</span> &mdash; no promotional claims that violate UAE healthcare advertising law</span>
+            </li>
+            <li class="flex items-start gap-3 text-sm">
+              <span class="accent text-lg leading-none mt-0.5">&#10003;</span>
+              <span><span class="text-white font-medium">Monthly deliverables on time</span> &mdash; with documented SLA and escalation path</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- What We CANNOT Guarantee -->
+        <div class="compliance-cannot reveal-p d100">
+          <div class="flex items-center gap-2 mb-4">
+            <svg width="20" height="20" fill="none" stroke="#ff4444" stroke-width="2.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+            <h3 class="text-base font-bold text-white">What We CANNOT Guarantee</h3>
+          </div>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3 text-sm">
+              <span class="text-red-400 text-lg leading-none mt-0.5">&times;</span>
+              <span><span class="text-white font-medium">Specific rankings</span> &mdash; Google's algorithm changes frequently; any agency promising position #1 is misleading you</span>
+            </li>
+            <li class="flex items-start gap-3 text-sm">
+              <span class="text-red-400 text-lg leading-none mt-0.5">&times;</span>
+              <span><span class="text-white font-medium">Specific patient volume</span> &mdash; patient decisions depend on pricing, insurance, location, and many factors beyond SEO</span>
+            </li>
+            <li class="flex items-start gap-3 text-sm">
+              <span class="text-red-400 text-lg leading-none mt-0.5">&times;</span>
+              <span><span class="text-white font-medium">Regulatory interpretation</span> &mdash; DHA compliance decisions rest with your legal counsel; we implement, not interpret</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="p-card p-5 text-center reveal-p d200">
+        <p class="text-sm text-white/50 italic max-w-2xl mx-auto">
+          "This honesty is deliberate. In regulated healthcare, transparent commitments build trust &mdash; overselling destroys it."
+        </p>
+      </div>
+    </section>
+
+    <div class="section-divider max-w-6xl mx-auto"></div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 5: Vertical Evidence                                 -->
+    <!-- ============================================================ -->
+    <section id="evidence" class="max-w-6xl mx-auto px-4 sm:px-6 py-12" aria-labelledby="evidence-heading">
+      <h2 id="evidence-heading" class="text-2xl sm:text-3xl font-extrabold text-white mb-2 reveal-p">Healthcare SEO Evidence</h2>
+      <p class="text-sm text-white/40 mb-8 reveal-p">Proven results in the medical vertical</p>
+
+      <!-- Todua Clinic Case Study -->
+      <div class="p-card-accent p-6 sm:p-8 mb-6 reveal-p">
+        <div class="flex flex-wrap items-center gap-3 mb-4">
+          <span class="chip chip-low">Case Study</span>
+          <span class="text-sm text-white font-bold">Todua Clinic &mdash; Tbilisi, Georgia</span>
+        </div>
+
+        <div class="grid sm:grid-cols-3 gap-6 mb-6">
+          <div>
+            <h4 class="text-xs font-bold text-white/40 uppercase tracking-wide mb-2">Problem</h4>
+            <p class="text-sm text-white/50">Multi-specialty clinic with 340 keywords but only 35 in top 10. Thin service page content, incomplete GMB, missing medical Schema. Invisible to 90% of potential patients searching online.</p>
+          </div>
+          <div>
+            <h4 class="text-xs font-bold text-white/40 uppercase tracking-wide mb-2">Solution</h4>
+            <p class="text-sm text-white/50">Full medical SEO overhaul: MedicalOrganization Schema, GMB optimization with weekly posts, service page enrichment to 800+ words with E-E-A-T signals, bilingual content (Georgian + English).</p>
+          </div>
+          <div>
+            <h4 class="text-xs font-bold text-white/40 uppercase tracking-wide mb-2">Results</h4>
+            <div class="space-y-2">
+              <div class="flex items-center gap-2">
+                <span class="accent font-mono font-bold text-lg">+20%</span>
+                <span class="text-xs text-white/40">organic traffic growth</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="accent font-mono font-bold text-lg">+40%</span>
+                <span class="text-xs text-white/40">GMB calls increase</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="accent font-mono font-bold text-lg">3x</span>
+                <span class="text-xs text-white/40">top-10 keyword positions</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quote -->
+        <div class="transcript-quote">
+          <p class="text-sm text-white/70 italic">"10xSEO understood the nuances of healthcare marketing. They never promised overnight results &mdash; instead, they delivered a sustainable system that continues to grow our patient pipeline."</p>
+          <p class="text-xs text-white/40 mt-2">&mdash; Natalia Darchiashvili, Head of Marketing, Todua Clinic</p>
+        </div>
+      </div>
+
+      <!-- Methodology -->
+      <div class="p-card p-6 mb-6 reveal-p d100">
+        <h3 class="text-base font-bold text-white mb-4">Our Healthcare SEO Methodology</h3>
+        <div class="space-y-3">
+          <div class="methodology-step">
+            <div class="step-num">1</div>
+            <div>
+              <div class="text-sm font-semibold text-white">Regulatory Audit</div>
+              <div class="text-xs text-white/40">Review all existing content for DHA compliance. Flag and remediate any advertising violations before new content begins.</div>
+            </div>
+          </div>
+          <div class="methodology-step">
+            <div class="step-num">2</div>
+            <div>
+              <div class="text-sm font-semibold text-white">Medical Schema Foundation</div>
+              <div class="text-xs text-white/40">Implement MedicalOrganization, MedicalClinic, Physician, and MedicalProcedure structured data across all relevant pages.</div>
+            </div>
+          </div>
+          <div class="methodology-step">
+            <div class="step-num">3</div>
+            <div>
+              <div class="text-sm font-semibold text-white">Authority Building</div>
+              <div class="text-xs text-white/40">Create physician author entities with DHA credentials, build citations in medical directories, establish topical authority through expert content.</div>
+            </div>
+          </div>
+          <div class="methodology-step">
+            <div class="step-num">4</div>
+            <div>
+              <div class="text-sm font-semibold text-white">Bilingual Content Engine</div>
+              <div class="text-xs text-white/40">Develop EN + AR content calendar with native writers. Each piece reviewed by medical team before publication. hreflang implementation.</div>
+            </div>
+          </div>
+          <div class="methodology-step">
+            <div class="step-num">5</div>
+            <div>
+              <div class="text-sm font-semibold text-white">Multi-Location GBP Optimization</div>
+              <div class="text-xs text-white/40">Optimize all clinic locations for Local Pack visibility. Weekly posts, Q&A management, review generation, photo updates.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Clutch badge -->
+      <div class="flex items-center gap-4 reveal-p d200">
+        <div class="p-card px-5 py-3 flex items-center gap-3">
+          <div class="text-xl font-extrabold text-white">5.0</div>
+          <div>
+            <div class="flex gap-0.5 mb-0.5">
+              <span class="text-yellow-400 text-xs">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            </div>
+            <div class="text-[10px] text-white/30 font-semibold uppercase tracking-wide">Clutch Verified</div>
+          </div>
+        </div>
+        <span class="text-xs text-white/30">All client reviews independently verified on Clutch.co</span>
+      </div>
+    </section>
+
+    <div class="section-divider max-w-6xl mx-auto"></div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 6: Multilingual Strategy                             -->
+    <!-- ============================================================ -->
+    <section id="multilingual" class="max-w-6xl mx-auto px-4 sm:px-6 py-12" aria-labelledby="multilingual-heading">
+      <h2 id="multilingual-heading" class="text-2xl sm:text-3xl font-extrabold text-white mb-2 reveal-p">Bilingual Content Strategy</h2>
+      <p class="text-sm text-white/40 mb-8 reveal-p">Capturing both language audiences in the Dubai market</p>
+
+      <div class="space-y-4">
+
+        <!-- English -->
+        <div class="p-card p-5 reveal-p">
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-3">
+              <span class="text-2xl font-extrabold text-accent font-mono">60%</span>
+              <div>
+                <h3 class="text-sm font-bold text-white">English Content</h3>
+                <p class="text-xs text-white/40">Targeting expats + medical tourists</p>
+              </div>
+            </div>
+            <span class="chip chip-low">Primary</span>
+          </div>
+          <div class="lang-bar mb-3"><div class="lang-bar-fill lang-bar-en" style="width:60%"></div></div>
+          <p class="text-xs text-white/40">Procedure-specific searches: "best dermatologist Dubai", "dental implants cost UAE", "orthopedic surgeon near me". High-intent, high-value keywords driving medical tourism and expat patient volume.</p>
+        </div>
+
+        <!-- Arabic -->
+        <div class="p-card p-5 reveal-p d100">
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-3">
+              <span class="text-2xl font-extrabold text-blue-400 font-mono">40%</span>
+              <div>
+                <h3 class="text-sm font-bold text-white">Arabic Content</h3>
+                <p class="text-xs text-white/40">Targeting Emirati + Arab expat patients</p>
+              </div>
+            </div>
+            <span class="chip chip-medium">Secondary</span>
+          </div>
+          <div class="lang-bar mb-3"><div class="lang-bar-fill lang-bar-ar" style="width:40%"></div></div>
+          <p class="text-xs text-white/40">Location-specific searches: regional clinic names, area-based queries, insurance-related terms. Arabic searches tend to be more local-intent; content must be culturally adapted, not simply translated.</p>
+        </div>
+
+        <!-- hreflang -->
+        <div class="p-card p-5 reveal-p d200">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="font-mono text-xs accent bg-accent/10 px-3 py-1 rounded-lg">&lt;link rel="alternate" hreflang="en-AE"&gt;</span>
+            <span class="font-mono text-xs text-blue-400 bg-blue-400/10 px-3 py-1 rounded-lg">&lt;link rel="alternate" hreflang="ar-AE"&gt;</span>
+          </div>
+          <h3 class="text-sm font-bold text-white mb-2">hreflang Architecture</h3>
+          <p class="text-xs text-white/40 mb-3">Proper en-AE / ar-AE tagging with self-referencing canonicals. Prevents duplicate content penalties and ensures each audience sees the correct language version in search results.</p>
+        </div>
+
+        <!-- Intent Differences -->
+        <div class="p-card p-5 reveal-p d300">
+          <h3 class="text-sm font-bold text-white mb-3">Search Intent Differences: EN vs AR</h3>
+          <div class="rounded-lg overflow-hidden border border-white/5">
+            <div class="intent-row bg-white/[0.02]">
+              <div class="intent-cell intent-header">English Searches</div>
+              <div class="intent-cell intent-header">Arabic Searches</div>
+            </div>
+            <div class="intent-row border-t border-white/[0.04]">
+              <div class="intent-cell text-accent text-xs">"best orthopedic surgeon Dubai"</div>
+              <div class="intent-cell text-blue-400 text-xs" dir="rtl">"&#1571;&#1601;&#1590;&#1604; &#1591;&#1576;&#1610;&#1576; &#1593;&#1592;&#1575;&#1605; &#1601;&#1610; &#1583;&#1576;&#1610;"</div>
+            </div>
+            <div class="intent-row border-t border-white/[0.04]">
+              <div class="intent-cell text-accent text-xs">"dental implants cost UAE"</div>
+              <div class="intent-cell text-blue-400 text-xs" dir="rtl">"&#1593;&#1610;&#1575;&#1583;&#1577; &#1571;&#1587;&#1606;&#1575;&#1606; &#1602;&#1585;&#1610;&#1576; &#1605;&#1606;&#1610;"</div>
+            </div>
+            <div class="intent-row border-t border-white/[0.04]">
+              <div class="intent-cell text-accent text-xs">"medical tourism Dubai packages"</div>
+              <div class="intent-cell text-blue-400 text-xs" dir="rtl">"&#1605;&#1587;&#1578;&#1588;&#1601;&#1609; &#1602;&#1585;&#1610;&#1576; &#1605;&#1606; &#1575;&#1604;&#1576;&#1585;&#1588;&#1575;&#1569;"</div>
+            </div>
+            <div class="intent-row border-t border-white/[0.04] bg-white/[0.01]">
+              <div class="intent-cell text-xs text-white/30">Procedure-focused, comparative</div>
+              <div class="intent-cell text-xs text-white/30">Location-focused, proximity-based</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Team -->
+        <div class="p-card p-5 reveal-p d400">
+          <h3 class="text-sm font-bold text-white mb-2">Workflow: Native Arabic Content</h3>
+          <p class="text-xs text-white/40">
+            Our team includes <span class="text-white font-medium">Fatima A.</span>, a native Arabic writer/reviewer with healthcare content experience.
+            Arabic content is created natively &mdash; not translated &mdash; to capture culturally relevant search intent and medical terminology used by Arabic-speaking patients in the UAE.
+            Every piece undergoes a 3-step review: medical accuracy, cultural adaptation, and DHA compliance check.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="section-divider max-w-6xl mx-auto"></div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 7: Plan + Pricing                                    -->
+    <!-- ============================================================ -->
+    <section id="pricing" class="max-w-6xl mx-auto px-4 sm:px-6 py-12" aria-labelledby="pricing-heading">
+      <h2 id="pricing-heading" class="text-2xl sm:text-3xl font-extrabold text-white mb-2 reveal-p">Investment</h2>
+      <p class="text-sm text-white/40 mb-8 reveal-p">All prices in AED (UAE Dirham) &mdash; monthly retainer</p>
+
+      <!-- Pricing Table -->
+      <div class="overflow-x-auto mb-8 reveal-p">
+        <table class="premium-price-table" aria-label="Pricing comparison table">
+          <thead>
+            <tr>
+              <th class="text-left">Feature</th>
+              <th>Starti<br><span class="accent text-xs font-mono">AED 1,950</span></th>
+              <th>Bazisi<br><span class="accent text-xs font-mono">AED 3,350</span></th>
+              <th>Zrda<br><span class="accent text-xs font-mono">AED 4,750</span></th>
+              <th class="rec-col rec-top">Premium<br><span class="accent text-xs font-mono">AED 8,700</span></th>
+              <th>Lider<br><span class="accent text-xs font-mono">AED 16,700</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Technical SEO Audit</td>
+              <td>Basic</td>
+              <td>Full</td>
+              <td>Full</td>
+              <td class="rec-col">Advanced</td>
+              <td>Enterprise</td>
+            </tr>
+            <tr>
+              <td>Content (words/month)</td>
+              <td>2,000</td>
+              <td>4,000</td>
+              <td>6,000</td>
+              <td class="rec-col text-white font-semibold">10,000</td>
+              <td>20,000+</td>
+            </tr>
+            <tr>
+              <td>Languages</td>
+              <td>1</td>
+              <td>1</td>
+              <td>2</td>
+              <td class="rec-col text-white font-semibold">2 (EN+AR)</td>
+              <td>3+</td>
+            </tr>
+            <tr>
+              <td>GBP Locations</td>
+              <td>1</td>
+              <td>3</td>
+              <td>5</td>
+              <td class="rec-col text-white font-semibold">12</td>
+              <td>Unlimited</td>
+            </tr>
+            <tr>
+              <td>Medical Schema</td>
+              <td>Basic</td>
+              <td>Standard</td>
+              <td>Full</td>
+              <td class="rec-col text-white font-semibold">Full + Physician</td>
+              <td>Enterprise</td>
+            </tr>
+            <tr>
+              <td>Link Building</td>
+              <td>&mdash;</td>
+              <td>5/month</td>
+              <td>10/month</td>
+              <td class="rec-col text-white font-semibold">20/month</td>
+              <td>40+/month</td>
+            </tr>
+            <tr>
+              <td>DHA Compliance Review</td>
+              <td>&mdash;</td>
+              <td>&mdash;</td>
+              <td>Monthly</td>
+              <td class="rec-col text-white font-semibold">Weekly</td>
+              <td>Continuous</td>
+            </tr>
+            <tr>
+              <td>Review Management</td>
+              <td>&mdash;</td>
+              <td>Basic</td>
+              <td>Standard</td>
+              <td class="rec-col text-white font-semibold">Full + SLA</td>
+              <td>Full + SLA</td>
+            </tr>
+            <tr>
+              <td>Dedicated Team Size</td>
+              <td>2</td>
+              <td>3</td>
+              <td>4</td>
+              <td class="rec-col text-white font-semibold">5</td>
+              <td>7+</td>
+            </tr>
+            <tr>
+              <td>Response SLA</td>
+              <td>48h</td>
+              <td>24h</td>
+              <td>12h</td>
+              <td class="rec-col rec-bottom text-white font-semibold">4h</td>
+              <td>1h</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Recommendation callout -->
+      <div class="p-card-accent p-6 mb-6 reveal-p d100">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+          <div class="flex-1">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="chip chip-low">Recommended</span>
+              <span class="text-lg font-extrabold text-white" id="rec-tier-name">Premium</span>
+              <span class="text-lg font-bold accent font-mono" id="rec-tier-price">AED 8,700/mo</span>
+            </div>
+            <p class="text-sm text-white/50" id="rec-reasoning">Multi-location healthcare in Dubai's competitive market requires premium investment. Arabic content strategy, DHA compliance framework, and 12-location GBP optimization demand dedicated resources.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- In-house anchor -->
+      <div class="p-card p-5 mb-6 reveal-p d200">
+        <div class="flex items-start gap-3">
+          <svg width="20" height="20" fill="none" stroke="#ffaa00" stroke-width="2" viewBox="0 0 24 24" class="mt-0.5 flex-shrink-0"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          <p class="text-sm text-white/50">
+            <span class="text-white font-semibold">In-house cost comparison:</span> In Dubai, hiring equivalent capability &mdash; bilingual content writer, technical SEO specialist, GBP manager, link builder, and compliance reviewer &mdash; costs
+            <span class="text-warning font-bold font-mono" id="inhouse-cost">~AED 45,000+/month</span>.
+            Our <span class="accent font-semibold">Premium tier delivers the same for AED 8,700</span>.
+          </p>
+        </div>
+      </div>
+
+      <!-- Add-ons -->
+      <div id="addons-section" class="reveal-p d300">
+        <h3 class="text-base font-bold text-white mb-3">Available Add-ons</h3>
+        <div class="space-y-2" id="addons-list">
+          <div class="addon-card">
+            <svg width="18" height="18" fill="none" stroke="#00ff88" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14m-7-7h14"/></svg>
+            <div class="flex-1">
+              <span class="text-sm text-white font-medium">Google Ads Service</span>
+              <span class="text-xs text-white/40 ml-2">+ Ads budget</span>
+            </div>
+            <span class="text-sm accent font-mono font-bold">AED 1,000/mo</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider max-w-6xl mx-auto"></div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 8: MAP Lite + CTA                                    -->
+    <!-- ============================================================ -->
+    <section id="action" class="max-w-6xl mx-auto px-4 sm:px-6 py-12" aria-labelledby="action-heading">
+      <h2 id="action-heading" class="text-2xl sm:text-3xl font-extrabold text-white mb-2 reveal-p">Getting Started</h2>
+      <p class="text-sm text-white/40 mb-8 reveal-p">Mutual Action Plan for regulated healthcare onboarding</p>
+
+      <!-- MAP progress -->
+      <div class="mb-4 reveal-p">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs text-white/40 font-medium">Onboarding Progress</span>
+          <span class="text-xs font-mono accent" id="map-progress-label">0% complete (0/4)</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="map-progress-fill" style="width:0%"></div>
+        </div>
+      </div>
+
+      <!-- MAP Table -->
+      <div class="overflow-x-auto mb-8 reveal-p d100">
+        <table class="map-table" aria-label="Mutual Action Plan">
+          <thead>
+            <tr>
+              <th style="width:32px"></th>
+              <th>Step</th>
+              <th>Owner</th>
+              <th>Timeline</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><div class="map-check" data-step="map-1" role="checkbox" aria-checked="false" aria-label="Mark step 1 complete" tabindex="0"></div></td>
+              <td class="text-white/70 font-medium">Legal / Compliance team review of proposal</td>
+              <td><span class="map-owner-client font-semibold text-xs">Client</span></td>
+              <td class="font-mono text-xs">Week 1</td>
+              <td><span class="map-status map-status-pending">Pending</span></td>
+            </tr>
+            <tr>
+              <td><div class="map-check" data-step="map-2" role="checkbox" aria-checked="false" aria-label="Mark step 2 complete" tabindex="0"></div></td>
+              <td class="text-white/70 font-medium">Brand guideline + content tone alignment</td>
+              <td><span class="map-owner-client font-semibold text-xs">Client</span></td>
+              <td class="font-mono text-xs">Week 1</td>
+              <td><span class="map-status map-status-pending">Pending</span></td>
+            </tr>
+            <tr>
+              <td><div class="map-check" data-step="map-3" role="checkbox" aria-checked="false" aria-label="Mark step 3 complete" tabindex="0"></div></td>
+              <td class="text-white/70 font-medium">Establish regulatory content review workflow</td>
+              <td><span class="map-owner-both font-semibold text-xs">Both</span></td>
+              <td class="font-mono text-xs">Week 2</td>
+              <td><span class="map-status map-status-pending">Pending</span></td>
+            </tr>
+            <tr>
+              <td><div class="map-check" data-step="map-4" role="checkbox" aria-checked="false" aria-label="Mark step 4 complete" tabindex="0"></div></td>
+              <td class="text-white/70 font-medium">Agree on content publishing cadence</td>
+              <td><span class="map-owner-both font-semibold text-xs">Both</span></td>
+              <td class="font-mono text-xs">Week 2</td>
+              <td><span class="map-status map-status-pending">Pending</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- CTA -->
+      <div class="approval-card accent-pulse reveal-p d200">
+        <h3 class="text-xl font-extrabold text-white mb-2">Ready to Capture Dubai's Healthcare Searches?</h3>
+        <p class="text-sm text-white/50 mb-6 max-w-lg mx-auto">Approve this proposal to begin onboarding. Our team will initiate the compliance review workflow within 24 hours.</p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+          <button onclick="approveProposal()" class="btn-primary" aria-label="Approve and begin engagement">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Approve & Begin
+          </button>
+          <button onclick="openCalendly()" class="btn-outline" aria-label="Schedule a strategy call">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            Schedule Call
+          </button>
+          <button onclick="openShareModal()" class="btn-ghost" aria-label="Forward proposal to a colleague">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+            Forward to CFO
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================ -->
+  <!-- Footer                                                        -->
+  <!-- ============================================================ -->
+  <footer class="premium-footer" role="contentinfo">
+    <p>10XSEO &nbsp;|&nbsp; Bakhtrionis 8, Tbilisi 0194 &nbsp;|&nbsp; <a href="tel:+995510101517" class="hover:text-accent transition-colors">+995 510 10 15 17</a> &nbsp;|&nbsp; <a href="mailto:sales@10xseo.ge" class="hover:text-accent transition-colors">sales@10xseo.ge</a></p>
+    <button onclick="exportPDF()" class="btn-ghost mt-4 text-xs no-print" aria-label="Export proposal as PDF">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
+      Export PDF
+    </button>
+  </footer>
+
+  <!-- ============================================================ -->
+  <!-- Share Modal                                                   -->
+  <!-- ============================================================ -->
+  <div class="share-modal-overlay" id="share-modal" role="dialog" aria-modal="true" aria-label="Share proposal">
+    <div class="share-modal">
+      <div class="flex items-center justify-between mb-5">
+        <h3 class="text-lg font-bold text-white">Forward Proposal</h3>
+        <button onclick="closeShareModal()" class="text-white/40 hover:text-white transition-colors" aria-label="Close modal">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="space-y-3">
+        <div>
+          <label for="share-name" class="block text-xs text-white/40 mb-1 font-medium">Recipient Name</label>
+          <input type="text" id="share-name" class="share-input" placeholder="e.g. CFO, Legal Counsel">
+        </div>
+        <div>
+          <label for="share-email" class="block text-xs text-white/40 mb-1 font-medium">Email Address</label>
+          <input type="email" id="share-email" class="share-input" placeholder="name@company.ae">
+        </div>
+        <div>
+          <label for="share-message" class="block text-xs text-white/40 mb-1 font-medium">Message (optional)</label>
+          <textarea id="share-message" class="share-input" rows="3" placeholder="Please review this SEO proposal from 10xSEO..."></textarea>
+        </div>
+        <div class="flex gap-2 pt-2">
+          <button onclick="sendShareEmail()" class="btn-primary flex-1 justify-center">Send</button>
+          <button onclick="closeShareModal()" class="btn-ghost">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- Scripts                                                       -->
+  <!-- ============================================================ -->
+  <script src="offer/premium-shared.js" defer></script>
+  <script>
+    // --- Client Personalization ---
+    document.addEventListener('DOMContentLoaded', function() {
+      // Close share modal on overlay click
+      document.getElementById('share-modal')?.addEventListener('click', function(e) {
+        if (e.target === this) closeShareModal();
+      });
+
+      // Close share modal on Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeShareModal();
+      });
+
+      // Load client data from JSON
+      if (typeof loadPremiumClient === 'function') {
+        loadPremiumClient(function(c, slug) {
+          personalizeVertical(c, slug);
+        });
+      }
+    });
+
+    function personalizeVertical(c, slug) {
+      // Header
+      var companyName = c.companyName || 'Your Company';
+      setText('h-company', companyName);
+      setText('intro-company', companyName);
+
+      // NDA pill
+      if (c.confidentiality === 'nda-signed') {
+        var nda = document.getElementById('nda-pill');
+        if (nda) nda.classList.remove('hidden');
+      }
+
+      // Date
+      if (c.lastUpdated) {
+        var d = new Date(c.lastUpdated);
+        setText('h-date', d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }));
+      }
+
+      // Domain & geo
+      if (c.domain) setText('client-domain', c.domain);
+      if (c.geoTargets) setText('client-geo', c.geoTargets.join(', '));
+
+      // Vertical badge
+      if (c.vertical && c.vertical.verticalType) {
+        var badge = document.getElementById('vertical-badge');
+        if (badge) {
+          badge.className = 'vertical-badge vertical-' + c.vertical.verticalType;
+          var labels = {
+            healthcare: 'Healthcare \u2014 DHA Regulated',
+            realestate: 'Real Estate \u2014 RERA Regulated',
+            finance: 'Finance \u2014 DFSA Regulated'
+          };
+          badge.innerHTML = badge.querySelector('svg').outerHTML + ' ' + (labels[c.vertical.verticalType] || c.vertical.verticalType);
+        }
+      }
+
+      // Market stats - populated from vertical.marketReality if available
+      if (c.vertical && c.vertical.marketReality) {
+        var mr = c.vertical.marketReality;
+        if (mr.searchDemand) {
+          var narrative = document.getElementById('market-narrative');
+          // Narrative is already populated with defaults matching the test client
+        }
+      }
+
+      // Pricing
+      if (c.vertical && c.vertical.pricingAED) {
+        var p = c.vertical.pricingAED;
+        // Update table header prices if they differ from defaults
+        // (defaults match the test client data)
+      }
+
+      // Recommended tier
+      if (c.recommendedTier) {
+        var tierNames = { 'starti': 'Starti', 'bazisi': 'Bazisi', 'zrda': 'Zrda', 'premium': 'Premium', 'lider': 'Lider' };
+        setText('rec-tier-name', tierNames[c.recommendedTier] || c.recommendedTier);
+        if (c.vertical && c.vertical.pricingAED && c.vertical.pricingAED[c.recommendedTier]) {
+          setText('rec-tier-price', 'AED ' + fmtNum(c.vertical.pricingAED[c.recommendedTier]) + '/mo');
+        }
+      }
+      if (c.recommendationReasoning) {
+        setText('rec-reasoning', c.recommendationReasoning);
+      }
+
+      // In-house cost
+      if (c.pricingContext) {
+        var cost = c.pricingContext.inHouseEquivalent;
+        var cur = c.pricingContext.currency || 'AED';
+        setText('inhouse-cost', '~' + fmtCurrency(cost, cur) + '+/month');
+      }
+
+      // Add-ons
+      if (c.addOns && c.addOns.length > 0) {
+        var list = document.getElementById('addons-list');
+        if (list) {
+          list.innerHTML = '';
+          c.addOns.forEach(function(addon) {
+            var card = document.createElement('div');
+            card.className = 'addon-card';
+            card.innerHTML =
+              '<svg width="18" height="18" fill="none" stroke="#00ff88" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14m-7-7h14"/></svg>' +
+              '<div class="flex-1"><span class="text-sm text-white font-medium">' + addon.name + '</span>' +
+              (addon.note ? '<span class="text-xs text-white/40 ml-2">' + addon.note + '</span>' : '') +
+              '</div>' +
+              '<span class="text-sm accent font-mono font-bold">AED ' + fmtNum(addon.price) + '/mo</span>';
+            list.appendChild(card);
+          });
+        }
+      } else {
+        var addonsSection = document.getElementById('addons-section');
+        if (addonsSection) addonsSection.style.display = 'none';
+      }
+
+      // Page title
+      document.title = companyName + ' \u2014 Dubai Healthcare SEO Proposal | 10xSEO';
+    }
+
+    function setText(id, text) {
+      var el = document.getElementById(id);
+      if (el) el.textContent = text;
+    }
+  </script>
+
+</body>
+</html>
