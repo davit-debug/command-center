@@ -42,7 +42,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Georgian:wght@400;500;700&family=Noto+Serif+Georgian:wght@400;500;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/firago@1.0.0/FiraGO.css" rel="stylesheet">
   <script>
     tailwind.config = {
@@ -75,6 +75,20 @@
       font-style: normal;
       font-display: swap;
     }
+    @font-face {
+      font-family: 'BOG 2023';
+      src: url('fonts/BOG2023-UltraBold.otf') format('opentype');
+      font-weight: 800;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* Font tester sample row */
+    .ft-sample-row { transition: font-size 0.15s ease, line-height 0.15s ease; }
+    /* Timezone good/bad/meh row tints */
+    .tz-good { background: rgba(33, 199, 67, 0.10); border-left: 3px solid #21C743; }
+    .tz-bad  { background: rgba(239, 68, 68, 0.10); border-left: 3px solid #ef4444; }
+    .tz-meh  { background: rgba(234, 179, 8, 0.10); border-left: 3px solid #eab308; }
 
     body { font-family: 'FiraGO', 'Inter', sans-serif; }
     h1, h2, h3 { font-family: 'Dachi the Lynx', sans-serif; }
@@ -188,6 +202,44 @@
     .menu-active .hamburger-line:nth-child(3) {
       transform: translateY(-8px) rotate(-45deg);
     }
+
+    /* ===== Brief Builder shared form styles ===== */
+    .cb-input { width: 100%; padding: 0.625rem 0.875rem; border-radius: 0.625rem; border: 1px solid rgb(229 231 235); background: white; color: #0f172a; font-size: 0.875rem; outline: none; transition: border-color 0.15s, box-shadow 0.15s; font-family: 'FiraGO', 'Inter', sans-serif; }
+    .dark .cb-input { background: #020710; color: #f8fafc; border-color: rgb(55 65 81); }
+    .cb-input::placeholder { color: #94a3b8; }
+    .cb-input:focus { border-color: #8B5CF6; box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15); }
+    textarea.cb-input { resize: vertical; min-height: 70px; }
+    .cb-radio { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0.75rem; border: 1px solid rgb(229 231 235); border-radius: 0.5rem; cursor: pointer; font-size: 0.875rem; color: #0f172a; transition: all 0.15s; background: white; }
+    .dark .cb-radio { background: #020710; color: #f8fafc; border-color: rgb(55 65 81); }
+    .cb-radio:hover { border-color: #8B5CF6; }
+    .cb-radio input[type="radio"] { accent-color: #8B5CF6; }
+    .cb-radio:has(input:checked) { border-color: #8B5CF6; background: rgba(139, 92, 246, 0.08); }
+    .cb-export-btn { display: inline-flex; align-items: center; gap: 0.25rem; padding: 0.375rem 0.625rem; font-size: 0.7rem; font-weight: 600; border-radius: 0.5rem; background: rgba(139, 92, 246, 0.1); color: #8B5CF6; transition: background 0.15s; cursor: pointer; border: none; font-family: 'Inter', sans-serif; }
+    .dark .cb-export-btn { color: #A78BFA; }
+    .cb-export-btn:hover { background: rgba(139, 92, 246, 0.2); }
+    .cb-pill { display: inline-flex; align-items: center; gap: 0.25rem; padding: 0.125rem 0.5rem; border-radius: 999px; font-size: 0.7rem; font-weight: 600; font-family: 'Inter', sans-serif; }
+    .cb-pill-ok { background: rgba(33, 199, 67, 0.15); color: #21C743; }
+    .cb-pill-warn { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
+    .cb-pill-err { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+    .cb-pxbar { height: 3px; border-radius: 999px; background: rgb(229 231 235); overflow: hidden; margin-top: 0.25rem; }
+    .dark .cb-pxbar { background: rgb(31 41 55); }
+    .cb-pxbar-fill { height: 100%; transition: width 0.2s, background 0.2s; }
+    .cb-aeo-callout { background: linear-gradient(135deg, rgba(139, 92, 246, 0.08), rgba(20, 184, 166, 0.06)); border: 1px solid rgba(139, 92, 246, 0.25); border-radius: 0.75rem; padding: 0.875rem 1rem; }
+    .dark .cb-aeo-callout { background: linear-gradient(135deg, rgba(139, 92, 246, 0.12), rgba(20, 184, 166, 0.08)); border-color: rgba(139, 92, 246, 0.3); }
+    .cb-suggest-chip { display: inline-block; padding: 0.25rem 0.625rem; font-size: 0.75rem; border-radius: 999px; background: rgba(139, 92, 246, 0.08); color: #8B5CF6; cursor: pointer; transition: background 0.15s; border: none; font-family: 'FiraGO', 'Inter', sans-serif; }
+    .dark .cb-suggest-chip { color: #A78BFA; }
+    .cb-suggest-chip:hover { background: rgba(139, 92, 246, 0.18); }
+    .cb-section-card { background: white; border-radius: 0.75rem; padding: 0.875rem 1rem; border: 1px solid rgb(243 244 246); }
+    .dark .cb-section-card { background: #020710; border-color: rgb(31 41 55); }
+    .cb-section-card h4 { font-family: 'Inter', sans-serif; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #8B5CF6; margin-bottom: 0.5rem; }
+    .dark .cb-section-card h4 { color: #A78BFA; }
+    .cb-anchor-card { background: rgba(139, 92, 246, 0.05); border: 1px solid rgba(139, 92, 246, 0.2); border-radius: 0.625rem; padding: 0.625rem 0.75rem; text-align: center; }
+    .cb-anchor-card .kw { font-size: 0.8rem; font-weight: 600; color: #0f172a; word-break: break-word; }
+    .dark .cb-anchor-card .kw { color: #f8fafc; }
+    .cb-anchor-card .target { font-size: 1.25rem; font-weight: 700; color: #8B5CF6; font-family: 'Inter', sans-serif; line-height: 1.1; margin-top: 0.125rem; }
+    .dark .cb-anchor-card .target { color: #A78BFA; }
+    .cb-anchor-card .label { font-size: 0.65rem; color: #475569; margin-top: 0.125rem; }
+    .dark .cb-anchor-card .label { color: #94a3b8; }
   </style>
 </head>
 <body class="font-body bg-surface-dark text-body-dark transition-colors duration-300">
@@ -348,6 +400,24 @@
           <span class="flex items-center gap-2">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>
             Content Brief
+          </span>
+        </button>
+        <button data-tab="numbers-to-words" class="tab-btn flex-shrink-0 px-4 py-3 text-sm font-semibold rounded-t-lg border-b-2 transition-all duration-200 whitespace-nowrap border-transparent text-body dark:text-body-dark hover:text-heading dark:hover:text-heading-dark">
+          <span class="flex items-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"/></svg>
+            რიცხვები სიტყვებში
+          </span>
+        </button>
+        <button data-tab="font-tester" class="tab-btn flex-shrink-0 px-4 py-3 text-sm font-semibold rounded-t-lg border-b-2 transition-all duration-200 whitespace-nowrap border-transparent text-body dark:text-body-dark hover:text-heading dark:hover:text-heading-dark">
+          <span class="flex items-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7V4h16v3M9 20h6M12 4v16"/></svg>
+            ფონტის ტესტერი
+          </span>
+        </button>
+        <button data-tab="timezone" class="tab-btn flex-shrink-0 px-4 py-3 text-sm font-semibold rounded-t-lg border-b-2 transition-all duration-200 whitespace-nowrap border-transparent text-body dark:text-body-dark hover:text-heading dark:hover:text-heading-dark">
+          <span class="flex items-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            Timezone
           </span>
         </button>
       </div>
@@ -777,95 +847,285 @@
 
       <!-- ==================== TOOL 7: CONTENT BRIEF BUILDER ==================== -->
       <div id="tab-brief-builder" class="tab-content hidden">
+        <div class="grid lg:grid-cols-2 gap-6">
+
+          <!-- LEFT: FORM -->
+          <div class="bg-surface-alt dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 p-5 sm:p-7 space-y-7">
+
+            <div class="flex items-center justify-between">
+              <h2 class="font-heading text-lg sm:text-xl font-bold text-heading dark:text-heading-dark">Content Brief Builder</h2>
+              <div class="flex items-center gap-1">
+                <button id="brief-lang-ka" class="px-3 py-1 text-xs font-semibold rounded-lg bg-primary/10 text-primary dark:text-primary-light">KA</button>
+                <button id="brief-lang-en" class="px-3 py-1 text-xs font-semibold rounded-lg text-body dark:text-body-dark hover:bg-gray-100 dark:hover:bg-gray-800">EN</button>
+              </div>
+            </div>
+
+            <!-- A. Setup -->
+            <div class="border-t border-gray-200 dark:border-gray-700 pt-5">
+              <p class="text-[11px] font-bold uppercase tracking-wider text-primary dark:text-primary-light mb-4 font-inter">A. პროექტის პარამეტრები</p>
+              <div class="mb-4">
+                <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2" data-i18n="purpose">დანიშნულება</label>
+                <div class="grid grid-cols-3 gap-2">
+                  <label class="cb-radio justify-center"><input type="radio" name="cb-purpose" value="blog" checked><span data-i18n="purpose-blog">ბლოგი</span></label>
+                  <label class="cb-radio justify-center"><input type="radio" name="cb-purpose" value="landing"><span data-i18n="purpose-landing">Landing</span></label>
+                  <label class="cb-radio justify-center"><input type="radio" name="cb-purpose" value="media"><span data-i18n="purpose-media">მედია</span></label>
+                </div>
+              </div>
+              <div class="mb-4">
+                <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2" data-i18n="audience">სამიზნე აუდიტორია</label>
+                <input type="text" id="cb-audience" placeholder="მაგ: ბიზნესის მფლობელები" class="cb-input">
+              </div>
+              <div>
+                <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2" data-i18n="stage">მყიდველის გადაწყვეტილების ეტაპი</label>
+                <select id="cb-stage" class="cb-input">
+                  <option value="awareness" data-i18n="stage-awareness">Awareness — ინფორმაციული ძიება</option>
+                  <option value="consideration" selected data-i18n="stage-consideration">Consideration — შედარება/მოძიება</option>
+                  <option value="decision" data-i18n="stage-decision">Decision — ყიდვის განზრახვა</option>
+                  <option value="retention" data-i18n="stage-retention">Retention — არსებული მომხმარებელი</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- B. Keywords & length -->
+            <div class="border-t border-gray-200 dark:border-gray-700 pt-5">
+              <p class="text-[11px] font-bold uppercase tracking-wider text-primary dark:text-primary-light mb-4 font-inter">B. ქივორდები და მოცულობა</p>
+              <div class="mb-4">
+                <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2" data-i18n="mainKw">მთავარი ქივორდი *</label>
+                <input type="text" id="cb-mainKw" placeholder="მაგ: SEO სააგენტო" class="cb-input" required>
+              </div>
+              <div class="mb-4">
+                <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2" data-i18n="secKw">დამატებითი ქივორდები (3-მდე)</label>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                  <input type="text" id="cb-secKw1" placeholder="ქივორდი 1" class="cb-input">
+                  <input type="text" id="cb-secKw2" placeholder="ქივორდი 2" class="cb-input">
+                  <input type="text" id="cb-secKw3" placeholder="ქივორდი 3" class="cb-input">
+                </div>
+              </div>
+              <div>
+                <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2" data-i18n="wordCount">სიტყვების რაოდენობა</label>
+                <input type="number" id="cb-wordCount" value="1000" min="200" step="50" class="cb-input">
+                <p class="text-xs text-body dark:text-body-dark mt-1.5"><span data-i18n="anchor-hint">Anchor Cloud 1% =</span> <span id="cb-anchor-hint" class="font-semibold text-primary dark:text-primary-light">10</span> <span data-i18n="mentions">ხსენება თითო ქივორდზე</span></p>
+              </div>
+            </div>
+
+            <!-- C. Linking, CTA, title -->
+            <div class="border-t border-gray-200 dark:border-gray-700 pt-5">
+              <p class="text-[11px] font-bold uppercase tracking-wider text-primary dark:text-primary-light mb-4 font-inter">C. ბმულები, CTA, სათაური</p>
+              <div class="mb-4">
+                <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2" data-i18n="internal">შიდა გადალინკვები</label>
+                <textarea id="cb-internal" rows="3" placeholder="https://10xseo.ge/seo-management — SEO მენეჯმენტი&#10;https://10xseo.ge/seo-audit — უფასო აუდიტი" class="cb-input"></textarea>
+                <p class="text-xs text-body dark:text-body-dark mt-1" data-i18n="internal-hint">თითოეული ხაზი: URL — anchor</p>
+              </div>
+              <div class="mb-4">
+                <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2" data-i18n="cta">CTA</label>
+                <textarea id="cb-cta" rows="2" placeholder="მაგ: დაგვირეკეთ +XXX XXX XXX XXX | დაჯავშნეთ კონსულტაცია | შეიძინე დღესვე..." class="cb-input"></textarea>
+                <p class="text-xs text-body dark:text-body-dark mt-1" data-i18n="cta-hint">დაწერე CTA შენი ბრენდისთვის</p>
+              </div>
+              <div>
+                <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2" data-i18n="title">სათაური (H1)</label>
+                <input type="text" id="cb-title" placeholder="მთავარი ქივორდით..." class="cb-input">
+                <button type="button" onclick="suggestTitles()" class="mt-2 text-xs font-semibold text-primary dark:text-primary-light hover:underline" data-i18n="suggest-titles">+ 5 ვარიანტის შემოთავაზება</button>
+                <div id="cb-title-suggestions" class="mt-2 flex flex-wrap gap-1.5"></div>
+              </div>
+            </div>
+
+            <!-- D. AEO, meta, Q&A -->
+            <div class="border-t border-gray-200 dark:border-gray-700 pt-5">
+              <p class="text-[11px] font-bold uppercase tracking-wider text-primary dark:text-primary-light mb-4 font-inter">D. Meta და კითხვა-პასუხი</p>
+              <div class="mb-4">
+                <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2">Meta Title</label>
+                <input type="text" id="cb-metaTitle" placeholder="მთავარი ქივორდი + ბრენდი" class="cb-input" maxlength="100">
+                <div class="flex items-center justify-between text-xs text-body dark:text-body-dark mt-1.5 gap-2">
+                  <span id="cb-metaTitle-counter" class="font-inter">0 / 60 — 0px / 580px</span>
+                  <span id="cb-metaTitle-warn"></span>
+                </div>
+              </div>
+              <div class="mb-4">
+                <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2">Meta Description</label>
+                <textarea id="cb-metaDesc" rows="3" placeholder="მთავარი ქივორდი + 1-2 დამატებითი ქივორდი..." class="cb-input" maxlength="200"></textarea>
+                <div class="flex items-center justify-between text-xs text-body dark:text-body-dark mt-1.5 gap-2">
+                  <span id="cb-metaDesc-counter" class="font-inter">0 / 160 — 0px / 920px</span>
+                  <span id="cb-metaDesc-warn"></span>
+                </div>
+              </div>
+              <div>
+                <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2" data-i18n="qa">კითხვა-პასუხი (2-3)</label>
+                <div id="cb-qa-list" class="space-y-2"></div>
+                <button type="button" onclick="addQaRow()" class="mt-2 text-xs font-semibold text-primary dark:text-primary-light hover:underline" data-i18n="qa-add">+ კითხვის დამატება</button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- RIGHT: PREVIEW -->
+          <div>
+            <div class="lg:sticky lg:top-24 bg-surface-alt dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 p-5 sm:p-7 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto">
+              <div class="flex items-center justify-between mb-5 gap-3 flex-wrap">
+                <h2 class="font-heading text-lg sm:text-xl font-bold text-heading dark:text-heading-dark" data-i18n="preview">ბრიფის preview</h2>
+                <div class="flex flex-wrap gap-1.5">
+                  <button onclick="exportFull()" class="cb-export-btn" data-i18n="export-full">სრული</button>
+                  <button onclick="exportMarkdown()" class="cb-export-btn">.md</button>
+                  <button onclick="exportOutline()" class="cb-export-btn">Outline</button>
+                </div>
+              </div>
+              <div id="cb-preview" class="space-y-4"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ==================== TOOL 8: NUMBERS TO WORDS ==================== -->
+      <div id="tab-numbers-to-words" class="tab-content hidden">
         <div class="bg-surface-alt dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 p-6 sm:p-8">
-          <h2 class="font-heading text-xl sm:text-2xl font-bold text-heading dark:text-heading-dark mb-2">Content Brief Builder</h2>
-          <p class="text-sm text-body dark:text-body-dark mb-6">შექმენით სტრუქტურირებული კონტენტ-ბრიფი წამებში. სათაურის ვარიანტები, H2/H3 outline, SEO checklist — კოპირაიტერისთვის მზა დავალება.</p>
+          <h2 class="font-heading text-xl sm:text-2xl font-bold text-heading dark:text-heading-dark mb-2">რიცხვები სიტყვებში</h2>
+          <p class="text-sm text-body dark:text-body-dark mb-6">გადაიყვანეთ რიცხვი ქართულ წერით ფორმაში — ხელშეკრულებების, ინვოისების და ლეგალური დოკუმენტებისთვის.</p>
 
-          <!-- Step 1: Setup -->
-          <div id="brief-setup">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
-              <div>
-                <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2">სამიზნე Keyword *</label>
-                <input type="text" id="brief-keyword" placeholder="მაგ: SEO სერვისები" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark placeholder-gray-400 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all">
-              </div>
-              <div>
-                <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2">კონტენტის ტიპი</label>
-                <select id="brief-type" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark focus:ring-2 focus:ring-primary/50 outline-none transition-all">
-                  <option value="blog">ბლოგ პოსტი</option>
-                  <option value="landing">Landing Page</option>
-                  <option value="product">Product Page</option>
-                  <option value="guide">Guide / Tutorial</option>
-                  <option value="comparison">Comparison</option>
-                  <option value="howto">How-To</option>
-                </select>
-              </div>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
-              <div>
-                <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2">სამიზნე აუდიტორია</label>
-                <input type="text" id="brief-audience" placeholder="მაგ: ბიზნესის მფლობელები" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark placeholder-gray-400 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all">
-              </div>
-              <div>
-                <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2">ტონი</label>
-                <select id="brief-tone" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark focus:ring-2 focus:ring-primary/50 outline-none transition-all">
-                  <option value="expert">ექსპერტული</option>
-                  <option value="formal">ფორმალური</option>
-                  <option value="informal">არაფორმალური</option>
-                  <option value="educational">სასწავლო</option>
-                </select>
-              </div>
-            </div>
-            <div class="flex items-center gap-3 mb-6">
-              <label class="block text-sm font-semibold text-heading dark:text-heading-dark">ენა:</label>
-              <button id="brief-lang-ka" class="px-3 py-1 text-sm font-semibold rounded-lg bg-primary/10 text-primary dark:text-primary-light">ქართული</button>
-              <button id="brief-lang-en" class="px-3 py-1 text-sm font-semibold rounded-lg text-body dark:text-body-dark hover:bg-gray-100 dark:hover:bg-gray-800">English</button>
-            </div>
-            <button onclick="generateBrief()" class="inline-flex items-center gap-2 px-6 py-3 ai-cta-animate text-white font-bold rounded-xl hover:shadow-lg hover:shadow-primary/30 transition-all text-sm">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-              ბრიფის გენერირება
-            </button>
+          <div class="mb-5">
+            <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2">რიცხვი</label>
+            <input type="text" inputmode="decimal" id="ntw-number" placeholder="მაგ: 1234.56" value="1234"
+              class="w-full px-4 py-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark text-2xl font-inter font-semibold placeholder-gray-400 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all">
+            <p class="text-xs text-body dark:text-body-dark mt-2">მხარდაჭერა: 0 — 999,999,999,999. წილადი ნაწილი: მძიმე ან წერტილი.</p>
           </div>
 
-          <!-- Step 2: Generated Brief -->
-          <div id="brief-output" class="hidden mt-6 space-y-6">
-            <!-- Title Suggestions -->
-            <div class="bg-white dark:bg-surface-dark rounded-xl p-4 border border-gray-100 dark:border-gray-800">
-              <h3 class="text-sm font-semibold text-heading dark:text-heading-dark mb-3">სათაურის ვარიანტები</h3>
-              <div id="brief-titles" class="space-y-2"></div>
-            </div>
+          <div class="grid sm:grid-cols-3 gap-3 mb-6">
+            <label class="flex items-start gap-2.5 p-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark cursor-pointer hover:border-primary/50 transition-colors">
+              <input type="checkbox" id="ntw-ordinal" class="mt-1 w-4 h-4 accent-primary cursor-pointer">
+              <div>
+                <div class="text-sm font-semibold text-heading dark:text-heading-dark">რიგობითი</div>
+                <div class="text-xs text-body dark:text-body-dark">პირველი, მეორე...</div>
+              </div>
+            </label>
+            <label class="flex items-start gap-2.5 p-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark cursor-pointer hover:border-primary/50 transition-colors">
+              <input type="checkbox" id="ntw-currency" class="mt-1 w-4 h-4 accent-primary cursor-pointer" checked>
+              <div>
+                <div class="text-sm font-semibold text-heading dark:text-heading-dark">ვალუტით (₾)</div>
+                <div class="text-xs text-body dark:text-body-dark">ლარი / თეთრი</div>
+              </div>
+            </label>
+            <label class="flex items-start gap-2.5 p-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark cursor-pointer hover:border-primary/50 transition-colors">
+              <input type="checkbox" id="ntw-legal" class="mt-1 w-4 h-4 accent-primary cursor-pointer">
+              <div>
+                <div class="text-sm font-semibold text-heading dark:text-heading-dark">ლეგალური ფორმა</div>
+                <div class="text-xs text-body dark:text-body-dark">ხუთასი (500) ლარი</div>
+              </div>
+            </label>
+          </div>
 
-            <!-- Structure Outline -->
-            <div class="bg-white dark:bg-surface-dark rounded-xl p-4 border border-gray-100 dark:border-gray-800">
-              <h3 class="text-sm font-semibold text-heading dark:text-heading-dark mb-3">რეკომენდებული სტრუქტურა</h3>
-              <div id="brief-structure" class="space-y-1"></div>
+          <div class="mb-4">
+            <div class="flex items-center justify-between mb-2">
+              <label class="block text-sm font-semibold text-heading dark:text-heading-dark">შედეგი</label>
+              <button onclick="ntwCopy()" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-primary/10 text-primary dark:text-primary-light hover:bg-primary/20 transition-colors">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                დაკოპირება
+              </button>
             </div>
+            <div id="ntw-output" class="px-4 py-4 rounded-xl border border-primary/30 bg-primary/5 dark:bg-primary/10 text-heading dark:text-heading-dark text-lg leading-relaxed font-medium min-h-[60px] break-words">ერთი ათას ორას ოცდათოთხმეტი</div>
+          </div>
 
-            <!-- Content Parameters -->
-            <div class="bg-white dark:bg-surface-dark rounded-xl p-4 border border-gray-100 dark:border-gray-800">
-              <h3 class="text-sm font-semibold text-heading dark:text-heading-dark mb-3">კონტენტის პარამეტრები</h3>
-              <div id="brief-params" class="grid grid-cols-2 sm:grid-cols-4 gap-3"></div>
-            </div>
-
-            <!-- SEO Checklist -->
-            <div class="bg-white dark:bg-surface-dark rounded-xl p-4 border border-gray-100 dark:border-gray-800">
-              <h3 class="text-sm font-semibold text-heading dark:text-heading-dark mb-3">SEO Checklist</h3>
-              <div id="brief-checklist" class="space-y-2"></div>
-            </div>
-
-            <!-- Questions to Answer -->
-            <div class="bg-white dark:bg-surface-dark rounded-xl p-4 border border-gray-100 dark:border-gray-800">
-              <h3 class="text-sm font-semibold text-heading dark:text-heading-dark mb-3">კითხვები პასუხის გასაცემად</h3>
-              <div id="brief-questions" class="space-y-1.5"></div>
-            </div>
-
-            <!-- Export -->
+          <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+            <p class="text-xs font-semibold uppercase tracking-wider text-body dark:text-body-dark mb-3">სწრაფი მაგალითები</p>
             <div class="flex flex-wrap gap-2">
-              <button onclick="briefExport('full')" class="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-lg bg-primary/10 text-primary dark:text-primary-light hover:bg-primary/20 transition-colors">სრული ბრიფი</button>
-              <button onclick="briefExport('markdown')" class="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-lg bg-primary/10 text-primary dark:text-primary-light hover:bg-primary/20 transition-colors">Markdown</button>
-              <button onclick="briefExport('outline')" class="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-lg bg-primary/10 text-primary dark:text-primary-light hover:bg-primary/20 transition-colors">Outline Only</button>
-              <button onclick="document.getElementById('brief-output').classList.add('hidden')" class="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-lg border border-gray-200 dark:border-gray-700 text-body dark:text-body-dark hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">თავიდან</button>
+              <button onclick="ntwSet('100')" class="px-3 py-1.5 text-xs font-inter font-semibold rounded-lg border border-gray-200 dark:border-gray-700 hover:border-primary text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light transition-colors">100</button>
+              <button onclick="ntwSet('500.50')" class="px-3 py-1.5 text-xs font-inter font-semibold rounded-lg border border-gray-200 dark:border-gray-700 hover:border-primary text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light transition-colors">500.50</button>
+              <button onclick="ntwSet('1000')" class="px-3 py-1.5 text-xs font-inter font-semibold rounded-lg border border-gray-200 dark:border-gray-700 hover:border-primary text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light transition-colors">1,000</button>
+              <button onclick="ntwSet('2500')" class="px-3 py-1.5 text-xs font-inter font-semibold rounded-lg border border-gray-200 dark:border-gray-700 hover:border-primary text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light transition-colors">2,500</button>
+              <button onclick="ntwSet('12345')" class="px-3 py-1.5 text-xs font-inter font-semibold rounded-lg border border-gray-200 dark:border-gray-700 hover:border-primary text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light transition-colors">12,345</button>
+              <button onclick="ntwSet('1000000')" class="px-3 py-1.5 text-xs font-inter font-semibold rounded-lg border border-gray-200 dark:border-gray-700 hover:border-primary text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light transition-colors">1,000,000</button>
             </div>
           </div>
+        </div>
+        <div class="mt-4 text-center">
+          <a href="tools/numbers-to-words.html" class="text-sm text-primary dark:text-primary-light hover:underline">გახსენით სრული გვერდი &rarr;</a>
+        </div>
+      </div>
+
+      <!-- ==================== TOOL 9: GEORGIAN FONT TESTER ==================== -->
+      <div id="tab-font-tester" class="tab-content hidden">
+        <div class="bg-surface-alt dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 p-6 sm:p-8">
+          <h2 class="font-heading text-xl sm:text-2xl font-bold text-heading dark:text-heading-dark mb-2">ქართული ფონტის ტესტერი</h2>
+          <p class="text-sm text-body dark:text-body-dark mb-6">შეადარეთ ქართული ფონტები — დიზაინერებისთვის და დეველოპერებისთვის.</p>
+
+          <div class="mb-4">
+            <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2">ტექსტი</label>
+            <textarea id="ft-text" rows="2"
+              class="w-full px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all resize-none">ვეფხი და მოყმე — ღმერთო მკადრე, ყური მათხოვე.</textarea>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
+            <div>
+              <label class="block text-xs font-semibold uppercase tracking-wider text-body dark:text-body-dark mb-1.5">ზომა: <span id="ft-size-label" class="text-primary font-inter">28px</span></label>
+              <input type="range" id="ft-size" min="12" max="96" value="28" class="w-full accent-primary cursor-pointer">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold uppercase tracking-wider text-body dark:text-body-dark mb-1.5">სიმაღლე: <span id="ft-lh-label" class="text-primary font-inter">1.4</span></label>
+              <input type="range" id="ft-lh" min="100" max="200" value="140" class="w-full accent-primary cursor-pointer">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold uppercase tracking-wider text-body dark:text-body-dark mb-1.5">წონა</label>
+              <select id="ft-weight" class="w-full px-2 py-1.5 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark text-sm focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none">
+                <option value="400">Regular</option>
+                <option value="500">Medium</option>
+                <option value="700">Bold</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="ft-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+        </div>
+        <div class="mt-4 text-center">
+          <a href="tools/georgian-font-tester.html" class="text-sm text-primary dark:text-primary-light hover:underline">გახსენით სრული გვერდი &rarr;</a>
+        </div>
+      </div>
+
+      <!-- ==================== TOOL 10: TIMEZONE CONVERTER ==================== -->
+      <div id="tab-timezone" class="tab-content hidden">
+        <div class="bg-surface-alt dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 p-6 sm:p-8">
+          <h2 class="font-heading text-xl sm:text-2xl font-bold text-heading dark:text-heading-dark mb-2">საათის zone კონვერტერი</h2>
+          <p class="text-sm text-body dark:text-body-dark mb-6">გადაიყვანეთ დრო თბილისიდან Dubai, London, Moscow, NY და სხვა ქალაქებში. DST ავტომატურად.</p>
+
+          <div class="grid sm:grid-cols-3 gap-3 mb-4">
+            <div>
+              <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2">საწყისი ქალაქი</label>
+              <select id="tz-source" class="w-full px-3 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all"></select>
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2">დრო</label>
+              <input type="time" id="tz-time" class="w-full px-3 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark font-inter focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all">
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2">თარიღი</label>
+              <input type="date" id="tz-date" class="w-full px-3 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark font-inter focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all">
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between mb-4">
+            <button onclick="tzNow()" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border border-gray-200 dark:border-gray-700 text-body dark:text-body-dark hover:border-primary hover:text-primary transition-colors">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              ახლა
+            </button>
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="checkbox" id="tz-meeting-mode" class="w-4 h-4 accent-primary cursor-pointer">
+              <span class="text-sm text-body dark:text-body-dark">Meeting Finder (8:00–18:00)</span>
+            </label>
+          </div>
+
+          <div class="overflow-hidden rounded-xl border border-gray-100 dark:border-gray-800">
+            <table class="w-full text-sm">
+              <thead class="bg-gray-50 dark:bg-surface-dark">
+                <tr>
+                  <th class="text-left py-3 px-4 font-semibold text-heading dark:text-heading-dark">ქალაქი</th>
+                  <th class="text-left py-3 px-4 font-semibold text-heading dark:text-heading-dark">დრო</th>
+                  <th class="text-left py-3 px-4 font-semibold text-heading dark:text-heading-dark">თარიღი</th>
+                  <th class="text-right py-3 px-4 font-semibold text-heading dark:text-heading-dark">UTC</th>
+                </tr>
+              </thead>
+              <tbody id="tz-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="mt-4 text-center">
+          <a href="tools/timezone-converter.html" class="text-sm text-primary dark:text-primary-light hover:underline">გახსენით სრული გვერდი &rarr;</a>
         </div>
       </div>
 
@@ -1611,166 +1871,802 @@
     ceTargetSel.addEventListener('change', updateContentEditor);
 
     // ========================================
-    // TOOL 7: CONTENT BRIEF BUILDER
+    // TOOL 7: CONTENT BRIEF BUILDER (brief-standard aligned)
+    // Reuses global helpers: showToast, escHtml, measurePixelWidth
     // ========================================
     let briefLang = 'ka';
-    let briefData = null;
-
-    document.getElementById('brief-lang-ka').addEventListener('click', function() {
-      briefLang = 'ka';
-      this.classList.add('bg-primary/10', 'text-primary', 'dark:text-primary-light');
-      this.classList.remove('text-body', 'dark:text-body-dark');
-      const en = document.getElementById('brief-lang-en');
-      en.classList.remove('bg-primary/10', 'text-primary', 'dark:text-primary-light');
-      en.classList.add('text-body', 'dark:text-body-dark');
-    });
-    document.getElementById('brief-lang-en').addEventListener('click', function() {
-      briefLang = 'en';
-      this.classList.add('bg-primary/10', 'text-primary', 'dark:text-primary-light');
-      this.classList.remove('text-body', 'dark:text-body-dark');
-      const ka = document.getElementById('brief-lang-ka');
-      ka.classList.remove('bg-primary/10', 'text-primary', 'dark:text-primary-light');
-      ka.classList.add('text-body', 'dark:text-body-dark');
-    });
 
     const briefTpl = {
       ka: {
         titles: {
-          blog: ['{kw}: სრული გზამკვლევი 2026','{kw} — რა უნდა იცოდეთ','საუკეთესო {kw}: ტოპ რჩევები და სტრატეგიები','{kw}: პრაქტიკული სახელმძღვანელო დამწყებთათვის','რატომ არის {kw} მნიშვნელოვანი და როგორ დავიწყოთ'],
-          landing: ['{kw} — #1 სერვისი საქართველოში','პროფესიონალური {kw} | მიიღეთ შედეგი','{kw}: სწრაფი, ხარისხიანი, ხელმისაწვდომი','გჭირდებათ {kw}? მიმართეთ ექსპერტებს'],
-          product: ['{kw} — შეიძინეთ საუკეთესო ფასად','{kw}: მახასიათებლები, ფასი, მიმოხილვა','საუკეთესო {kw} 2026 — სრული მიმოხილვა'],
-          guide: ['{kw}: A-დან Z-მდე სრული გზამკვლევი','სრული სახელმძღვანელო: {kw}','{kw} — ნაბიჯ-ნაბიჯ ინსტრუქცია','{kw} — ყველაფერი რაც უნდა იცოდეთ'],
-          comparison: ['{kw}: რომელი აჯობებს? სრული შედარება','{kw} — დადებითი და უარყოფითი მხარეები','საუკეთესო {kw}: შედარებითი ანალიზი 2026'],
-          howto: ['როგორ გავაკეთოთ {kw}: ნაბიჯ-ნაბიჯ','{kw} — მარტივი ინსტრუქცია 5 ნაბიჯში','{kw}: პრაქტიკული გზამკვლევი']
+          blog: ['{kw}: სრული გზამკვლევი 2026', '{kw} — რა უნდა იცოდეთ', 'საუკეთესო {kw}: ტოპ რჩევები და სტრატეგიები', '{kw}: პრაქტიკული სახელმძღვანელო დამწყებთათვის', 'რატომ არის {kw} მნიშვნელოვანი და როგორ დავიწყოთ'],
+          landing: ['{kw} — #1 სერვისი საქართველოში', 'პროფესიონალური {kw} | მიიღეთ შედეგი', '{kw}: სწრაფი, ხარისხიანი, ხელმისაწვდომი', 'გჭირდებათ {kw}? მიმართეთ ექსპერტებს', '{kw} — დაიწყე დღესვე'],
+          media: ['{kw} — ექსკლუზიური მასალა', 'ყველაფერი {kw}-ზე ერთ სტატიაში', '{kw}: სიახლეები და ანალიზი 2026', '{kw} — რას ამბობენ ექსპერტები', 'რატომ ლაპარაკობს ყველა {kw}-ზე']
         },
-        structures: {
-          blog: [{l:'h2',t:'შესავალი'},{l:'h2',t:'რა არის {kw}?'},{l:'h3',t:'რატომ არის {kw} მნიშვნელოვანი'},{l:'h2',t:'{kw} — ძირითადი უპირატესობები'},{l:'h3',t:'უპირატესობა #1'},{l:'h3',t:'უპირატესობა #2'},{l:'h2',t:'როგორ დავიწყოთ {kw}'},{l:'h3',t:'ნაბიჯი 1'},{l:'h3',t:'ნაბიჯი 2'},{l:'h2',t:'ხშირად დაშვებული შეცდომები'},{l:'h2',t:'ხშირად დასმული კითხვები (FAQ)'},{l:'h2',t:'დასკვნა'}],
-          landing: [{l:'h2',t:'{kw} — ჩვენი სერვისი'},{l:'h2',t:'რატომ ჩვენ?'},{l:'h3',t:'გამოცდილება'},{l:'h3',t:'შედეგები'},{l:'h2',t:'სერვისის მახასიათებლები'},{l:'h2',t:'როგორ მუშაობს'},{l:'h3',t:'ნაბიჯი 1: კონსულტაცია'},{l:'h3',t:'ნაბიჯი 2: სტრატეგია'},{l:'h3',t:'ნაბიჯი 3: განხორციელება'},{l:'h2',t:'კლიენტების შეფასებები'},{l:'h2',t:'ფასები'},{l:'h2',t:'FAQ'},{l:'h2',t:'დაგვიკავშირდით'}],
-          product: [{l:'h2',t:'{kw} — მიმოხილვა'},{l:'h2',t:'ძირითადი მახასიათებლები'},{l:'h3',t:'მახასიათებელი #1'},{l:'h3',t:'მახასიათებელი #2'},{l:'h2',t:'ვისთვისაა განკუთვნილი'},{l:'h2',t:'დადებითი და უარყოფითი მხარეები'},{l:'h2',t:'ფასი და შეძენა'},{l:'h2',t:'FAQ'}],
-          guide: [{l:'h2',t:'რა არის {kw}?'},{l:'h2',t:'წინაპირობები'},{l:'h2',t:'ნაბიჯი 1: მომზადება'},{l:'h3',t:'საჭირო ინსტრუმენტები'},{l:'h2',t:'ნაბიჯი 2: ძირითადი პროცესი'},{l:'h3',t:'დეტალური ახსნა'},{l:'h2',t:'ნაბიჯი 3: შედეგების შემოწმება'},{l:'h2',t:'გაფართოებული რჩევები'},{l:'h2',t:'ხშირი პრობლემები და გადაწყვეტები'},{l:'h2',t:'FAQ'},{l:'h2',t:'დასკვნა'}],
-          comparison: [{l:'h2',t:'{kw} — რატომ არის შედარება მნიშვნელოვანი'},{l:'h2',t:'ვარიანტი A: მიმოხილვა'},{l:'h3',t:'დადებითი მხარეები'},{l:'h3',t:'უარყოფითი მხარეები'},{l:'h2',t:'ვარიანტი B: მიმოხილვა'},{l:'h3',t:'დადებითი მხარეები'},{l:'h3',t:'უარყოფითი მხარეები'},{l:'h2',t:'პირდაპირი შედარება (ცხრილი)'},{l:'h2',t:'რომელი აირჩიოთ?'},{l:'h2',t:'FAQ'}],
-          howto: [{l:'h2',t:'რა დაგჭირდებათ'},{l:'h2',t:'ნაბიჯი 1: {kw} — დაწყება'},{l:'h2',t:'ნაბიჯი 2: ძირითადი მოქმედებები'},{l:'h3',t:'მნიშვნელოვანი დეტალი'},{l:'h2',t:'ნაბიჯი 3: დასრულება'},{l:'h2',t:'პროფესიონალური რჩევები'},{l:'h2',t:'ხშირი შეცდომები'},{l:'h2',t:'FAQ'}]
+        labels: {
+          purpose: 'დანიშნულება',
+          'purpose-blog': 'ბლოგი', 'purpose-landing': 'Landing', 'purpose-media': 'მედია',
+          audience: 'სამიზნე აუდიტორია',
+          stage: 'მყიდველის გადაწყვეტილების ეტაპი',
+          'stage-awareness': 'Awareness — ინფორმაციული ძიება', 'stage-consideration': 'Consideration — შედარება/მოძიება', 'stage-decision': 'Decision — ყიდვის განზრახვა', 'stage-retention': 'Retention — არსებული მომხმარებელი',
+          mainKw: 'მთავარი ქივორდი *',
+          secKw: 'დამატებითი ქივორდები (3-მდე)',
+          wordCount: 'სიტყვების რაოდენობა',
+          'anchor-hint': 'Anchor Cloud 1% =',
+          mentions: 'ხსენება თითო ქივორდზე',
+          internal: 'შიდა გადალინკვები',
+          'internal-hint': 'თითოეული ხაზი: URL — anchor',
+          cta: 'CTA',
+          'cta-hint': 'დაწერე CTA შენი ბრენდისთვის',
+          title: 'სათაური (H1)',
+          'suggest-titles': '+ 5 ვარიანტის შემოთავაზება',
+          qa: 'კითხვა-პასუხი (2-3)',
+          'qa-add': '+ კითხვის დამატება',
+          preview: 'ბრიფის preview',
+          'export-full': 'სრული'
         },
-        params: {blog:{words:'1200-2000',images:'3-5',internal:'3-5',external:'2-3'},landing:{words:'800-1200',images:'5-8',internal:'3-5',external:'1-2'},product:{words:'800-1500',images:'5-10',internal:'3-5',external:'2-3'},guide:{words:'2000-3000',images:'5-10',internal:'5-8',external:'3-5'},comparison:{words:'1500-2500',images:'4-6',internal:'3-5',external:'3-5'},howto:{words:'1000-2000',images:'5-10',internal:'3-5',external:'2-3'}},
-        checklist: ['Keyword სათაურში','Keyword პირველ 100 სიტყვაში','Keyword მინიმუმ 1 H2-ში','Meta Description 120-160 სიმბოლო','Alt ტექსტი ყველა სურათზე','Internal ბმულები მსგავს კონტენტზე','External ბმულები ავტორიტეტულ წყაროებზე','FAQ სექცია Schema-ready კითხვებით'],
-        questions: ['რა არის {kw}?','რატომ არის {kw} მნიშვნელოვანი?','როგორ ავირჩიოთ საუკეთესო {kw}?','რა ღირს {kw}?','ხშირი შეცდომები — {kw}'],
-        paramLabels: {words:'სიტყვები',images:'სურათები',internal:'Internal ბმულები',external:'External ბმულები'}
+        qaPrefill: ['რა არის {kw}?', 'როგორ ვირჩიოთ {kw}?', 'რამდენი ღირს {kw}?'],
+        out: {
+          purposeMap: { blog: 'ბლოგი', landing: 'Landing Page', media: 'მედია პუბლიკაცია' },
+          stageMap: { awareness: 'Awareness — ინფორმაციული ძიება', consideration: 'Consideration — შედარება/მოძიება', decision: 'Decision — ყიდვის განზრახვა', retention: 'Retention — არსებული მომხმარებელი' },
+          aeo: 'პირველ 50 სიტყვაში პირდაპირი პასუხი იმ კითხვაზე, რომელსაც სტატია ეხება.',
+          checklist: [
+            'მთავარი ქივორდი H1-ში (სათაურში)',
+            'მთავარი ქივორდი H2-ში (ქვესათაურში)',
+            'მთავარი ქივორდი პირველ 150 სიტყვაში'
+          ],
+          headers: {
+            purpose: 'დანიშნულება', audience: 'აუდიტორია', stage: 'მყიდველის ეტაპი',
+            words: 'მოცულობა', title: 'სათაური (H1)',
+            metaTitle: 'Meta Title', metaDesc: 'Meta Description',
+            aeo: 'AEO Overview', anchor: 'Anchor Cloud (target 1%)',
+            internal: 'შიდა გადალინკვები', cta: 'CTA',
+            qa: 'კითხვა-პასუხი', checklist: 'SEO Checklist',
+            next: 'შემდეგი ნაბიჯები'
+          },
+          mentions: 'ხსენება', wordsUnit: 'სიტყვა',
+          empty: 'შეიყვანეთ მთავარი ქივორდი ბრიფის სანახავად',
+          warnKwInTitle: 'მთავარი ქივორდი უნდა იყოს დასაწყისში',
+          warnKwMissingDesc: 'მთავარი ქივორდი ვერ მოიძებნა',
+          warnNoSecInDesc: 'დამატებითი ქივორდი არ ფიგურირებს',
+          tooLong: 'გრძელია',
+          ok: 'OK',
+          copied: 'დაკოპირდა!'
+        }
       },
       en: {
         titles: {
-          blog: ['How to {kw}: Complete Guide 2026','{kw} — Everything You Need to Know','Best {kw}: Top Tips and Strategies','{kw}: A Practical Guide for Beginners','Why {kw} Matters and How to Get Started'],
-          landing: ['{kw} — #1 Service Provider','Professional {kw} | Get Results','{kw}: Fast, Quality, Affordable','Need {kw}? Trust the Experts'],
-          product: ['{kw} — Buy at the Best Price','{kw}: Features, Pricing, Review','Best {kw} 2026 — Complete Review'],
-          guide: ['{kw}: Complete A-to-Z Guide','The Ultimate Guide to {kw}','{kw} — Step-by-Step Instructions','Everything You Need to Know About {kw}'],
-          comparison: ['{kw}: Which One Wins? Full Comparison','{kw} — Pros and Cons','Best {kw}: Comparative Analysis 2026'],
-          howto: ['How to {kw}: Step by Step','{kw} — Easy Guide in 5 Steps','DIY {kw}: A Practical Guide']
+          blog: ['How to {kw}: Complete Guide 2026', '{kw} — Everything You Need to Know', 'Best {kw}: Top Tips and Strategies', '{kw}: A Practical Guide for Beginners', 'Why {kw} Matters and How to Get Started'],
+          landing: ['{kw} — #1 Service Provider', 'Professional {kw} | Get Results', '{kw}: Fast, Quality, Affordable', 'Need {kw}? Trust the Experts', '{kw} — Start Today'],
+          media: ['{kw} — Exclusive Coverage', 'Everything About {kw} in One Article', '{kw}: News and Analysis 2026', '{kw} — What Experts Say', 'Why Everyone Talks About {kw}']
         },
-        structures: {
-          blog: [{l:'h2',t:'Introduction'},{l:'h2',t:'What is {kw}?'},{l:'h3',t:'Why {kw} Matters'},{l:'h2',t:'Key Benefits of {kw}'},{l:'h3',t:'Benefit #1'},{l:'h3',t:'Benefit #2'},{l:'h2',t:'How to Get Started with {kw}'},{l:'h3',t:'Step 1'},{l:'h3',t:'Step 2'},{l:'h2',t:'Common Mistakes to Avoid'},{l:'h2',t:'Frequently Asked Questions'},{l:'h2',t:'Conclusion'}],
-          landing: [{l:'h2',t:'{kw} — Our Service'},{l:'h2',t:'Why Choose Us?'},{l:'h3',t:'Experience'},{l:'h3',t:'Results'},{l:'h2',t:'Service Features'},{l:'h2',t:'How It Works'},{l:'h3',t:'Step 1: Consultation'},{l:'h3',t:'Step 2: Strategy'},{l:'h3',t:'Step 3: Implementation'},{l:'h2',t:'Client Testimonials'},{l:'h2',t:'Pricing'},{l:'h2',t:'FAQ'},{l:'h2',t:'Contact Us'}],
-          product: [{l:'h2',t:'{kw} — Overview'},{l:'h2',t:'Key Features'},{l:'h3',t:'Feature #1'},{l:'h3',t:'Feature #2'},{l:'h2',t:'Who Is It For?'},{l:'h2',t:'Pros and Cons'},{l:'h2',t:'Pricing'},{l:'h2',t:'FAQ'}],
-          guide: [{l:'h2',t:'What is {kw}?'},{l:'h2',t:'Prerequisites'},{l:'h2',t:'Step 1: Preparation'},{l:'h3',t:'Tools Needed'},{l:'h2',t:'Step 2: Main Process'},{l:'h3',t:'Detailed Explanation'},{l:'h2',t:'Step 3: Verification'},{l:'h2',t:'Advanced Tips'},{l:'h2',t:'Common Issues and Solutions'},{l:'h2',t:'FAQ'},{l:'h2',t:'Conclusion'}],
-          comparison: [{l:'h2',t:'{kw} — Why Comparison Matters'},{l:'h2',t:'Option A: Overview'},{l:'h3',t:'Pros'},{l:'h3',t:'Cons'},{l:'h2',t:'Option B: Overview'},{l:'h3',t:'Pros'},{l:'h3',t:'Cons'},{l:'h2',t:'Head-to-Head Comparison'},{l:'h2',t:'Which One to Choose?'},{l:'h2',t:'FAQ'}],
-          howto: [{l:'h2',t:'What You Need'},{l:'h2',t:'Step 1: Getting Started with {kw}'},{l:'h2',t:'Step 2: Main Actions'},{l:'h3',t:'Important Detail'},{l:'h2',t:'Step 3: Finishing Up'},{l:'h2',t:'Pro Tips'},{l:'h2',t:'Common Mistakes'},{l:'h2',t:'FAQ'}]
+        labels: {
+          purpose: 'Purpose',
+          'purpose-blog': 'Blog', 'purpose-landing': 'Landing', 'purpose-media': 'Media',
+          audience: 'Target Audience',
+          stage: 'Buyer Decision Stage',
+          'stage-awareness': 'Awareness — informational search', 'stage-consideration': 'Consideration — comparison', 'stage-decision': 'Decision — purchase intent', 'stage-retention': 'Retention — existing customer',
+          mainKw: 'Primary Keyword *',
+          secKw: 'Secondary Keywords (up to 3)',
+          wordCount: 'Word Count',
+          'anchor-hint': 'Anchor Cloud 1% =',
+          mentions: 'mentions per keyword',
+          internal: 'Internal Linking',
+          'internal-hint': 'One per line: URL — anchor',
+          cta: 'CTA',
+          'cta-hint': 'Write your own CTA',
+          title: 'Title (H1)',
+          'suggest-titles': '+ Suggest 5 variants',
+          qa: 'Q&A (2–3)',
+          'qa-add': '+ Add question',
+          preview: 'Brief preview',
+          'export-full': 'Full'
         },
-        params: {blog:{words:'1200-2000',images:'3-5',internal:'3-5',external:'2-3'},landing:{words:'800-1200',images:'5-8',internal:'3-5',external:'1-2'},product:{words:'800-1500',images:'5-10',internal:'3-5',external:'2-3'},guide:{words:'2000-3000',images:'5-10',internal:'5-8',external:'3-5'},comparison:{words:'1500-2500',images:'4-6',internal:'3-5',external:'3-5'},howto:{words:'1000-2000',images:'5-10',internal:'3-5',external:'2-3'}},
-        checklist: ['Keyword in title','Keyword in first 100 words','Keyword in at least 1 H2','Meta description 120-160 characters','Alt text on all images','Internal links to related content','External links to authoritative sources','FAQ section with schema-ready Q&As'],
-        questions: ['What is {kw}?','Why is {kw} important?','How to choose the best {kw}?','How much does {kw} cost?','What mistakes to avoid with {kw}?'],
-        paramLabels: {words:'Words',images:'Images',internal:'Internal Links',external:'External Links'}
+        qaPrefill: ['What is {kw}?', 'How to choose {kw}?', 'How much does {kw} cost?'],
+        out: {
+          purposeMap: { blog: 'Blog', landing: 'Landing Page', media: 'Media Publication' },
+          stageMap: { awareness: 'Awareness', consideration: 'Consideration', decision: 'Decision', retention: 'Retention' },
+          aeo: 'In the first 50 words, give a direct answer to the question this article addresses.',
+          checklist: [
+            'Primary keyword in H1 (title)',
+            'Primary keyword in H2 (subheading)',
+            'Primary keyword in first 150 words'
+          ],
+          headers: {
+            purpose: 'Purpose', audience: 'Audience', stage: 'Buyer Stage',
+            words: 'Length', title: 'Title (H1)',
+            metaTitle: 'Meta Title', metaDesc: 'Meta Description',
+            aeo: 'AEO Overview', anchor: 'Anchor Cloud (target 1%)',
+            internal: 'Internal Links', cta: 'CTA',
+            qa: 'Q&A', checklist: 'SEO Checklist',
+            next: 'Next steps'
+          },
+          mentions: 'mentions', wordsUnit: 'words',
+          empty: 'Enter the primary keyword to see the brief',
+          warnKwInTitle: 'Primary keyword must come first',
+          warnKwMissingDesc: 'Primary keyword missing',
+          warnNoSecInDesc: 'No secondary keyword present',
+          tooLong: 'too long',
+          ok: 'OK',
+          copied: 'Copied!'
+        }
       }
     };
 
-    function generateBrief() {
-      const kw = document.getElementById('brief-keyword').value.trim();
-      if (!kw) { showToast('შეიყვანეთ keyword!'); return; }
-      const type = document.getElementById('brief-type').value;
-      const tpl = briefTpl[briefLang];
-
-      briefData = {keyword: kw, type: type, lang: briefLang};
-
-      // Titles
-      const titles = (tpl.titles[type] || tpl.titles.blog).map(t => t.replace(/\{kw\}/g, () => kw));
-      briefData.titles = titles;
-      document.getElementById('brief-titles').innerHTML = titles.map(t =>
-        '<div class="flex items-center gap-2 p-2 rounded-lg bg-gray-50 dark:bg-gray-800/50">' +
-        '<span class="text-sm text-heading dark:text-heading-dark flex-1">' + escHtml(t) + '</span>' +
-        '<button class="brief-copy-title shrink-0 text-xs text-primary dark:text-primary-light hover:underline">Copy</button></div>'
-      ).join('');
-      document.querySelectorAll('.brief-copy-title').forEach((btn, i) => {
-        btn.addEventListener('click', () => { navigator.clipboard.writeText(titles[i]).then(() => showToast()); });
+    function applyI18n(lang) {
+      briefLang = lang;
+      const L = briefTpl[lang].labels;
+      document.querySelectorAll('#tab-brief-builder [data-i18n]').forEach(el => {
+        const k = el.dataset.i18n;
+        if (L[k] !== undefined) el.textContent = L[k];
       });
+      const ka = document.getElementById('brief-lang-ka');
+      const en = document.getElementById('brief-lang-en');
+      const active = lang === 'ka' ? ka : en;
+      const inactive = lang === 'ka' ? en : ka;
+      active.classList.add('bg-primary/10', 'text-primary', 'dark:text-primary-light');
+      active.classList.remove('text-body', 'dark:text-body-dark');
+      inactive.classList.remove('bg-primary/10', 'text-primary', 'dark:text-primary-light');
+      inactive.classList.add('text-body', 'dark:text-body-dark');
+      refreshPristineQa();
+      renderBrief();
+    }
+    document.getElementById('brief-lang-ka').addEventListener('click', () => applyI18n('ka'));
+    document.getElementById('brief-lang-en').addEventListener('click', () => applyI18n('en'));
 
-      // Structure
-      const struct = (tpl.structures[type] || tpl.structures.blog).map(s => ({level: s.l, text: s.t.replace(/\{kw\}/g, () => kw)}));
-      briefData.structure = struct;
-      document.getElementById('brief-structure').innerHTML = struct.map(s => {
-        const indent = s.level === 'h3' ? 'ml-6' : s.level === 'h4' ? 'ml-12' : '';
-        return '<div class="flex items-center gap-2 ' + indent + '">' +
-          '<span class="text-[10px] font-inter font-bold px-1.5 py-0.5 rounded bg-primary/10 text-primary dark:text-primary-light">' + s.level.toUpperCase() + '</span>' +
-          '<span class="text-sm text-heading dark:text-heading-dark">' + escHtml(s.text) + '</span></div>';
-      }).join('');
+    const TITLE_FONT = '20px Arial, sans-serif';
+    const DESC_FONT = '14px Arial, sans-serif';
+    const TITLE_PX_LIMIT = 580;
+    const DESC_PX_LIMIT = 920;
+    const TITLE_CHAR_LIMIT = 60;
+    const DESC_CHAR_LIMIT = 160;
 
-      // Params
-      const params = tpl.params[type] || tpl.params.blog;
-      briefData.params = params;
-      document.getElementById('brief-params').innerHTML = Object.entries(params).map(([k, v]) =>
-        '<div class="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-3 text-center">' +
-        '<div class="text-lg font-inter font-bold text-heading dark:text-heading-dark">' + v + '</div>' +
-        '<div class="text-[10px] text-body dark:text-body-dark mt-0.5">' + tpl.paramLabels[k] + '</div></div>'
-      ).join('');
+    function anchorTarget(wc) { return Math.max(1, Math.round((Number(wc) || 1000) * 0.01)); }
 
-      // Checklist
-      briefData.checklist = tpl.checklist;
-      document.getElementById('brief-checklist').innerHTML = tpl.checklist.map(item =>
-        '<label class="flex items-center gap-2 cursor-pointer group">' +
-        '<input type="checkbox" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary/50">' +
-        '<span class="text-sm text-heading dark:text-heading-dark group-hover:text-primary transition-colors">' + escHtml(item) + '</span></label>'
-      ).join('');
-
-      // Questions
-      const questions = tpl.questions.map(q => q.replace(/\{kw\}/g, () => kw));
-      briefData.questions = questions;
-      document.getElementById('brief-questions').innerHTML = questions.map(q =>
-        '<div class="flex items-center gap-2 text-sm text-heading dark:text-heading-dark">' +
-        '<span class="text-primary dark:text-primary-light">&#8226;</span> ' + escHtml(q) + '</div>'
-      ).join('');
-
-      document.getElementById('brief-output').classList.remove('hidden');
+    function parseInternalLinks(text) {
+      return (text || '').split('\n')
+        .map(line => line.trim())
+        .filter(Boolean)
+        .map(line => {
+          const m = line.match(/^(.+?)\s*[—–|\-]\s*(.+)$/);
+          return m ? { url: m[1].trim(), anchor: m[2].trim() } : null;
+        })
+        .filter(Boolean);
     }
 
-    function briefExport(format) {
-      if (!briefData) return;
-      const {keyword, titles, structure, params, checklist, questions} = briefData;
-      let out = '';
-      if (format === 'outline') {
-        out = structure.map(s => {
-          const pre = s.level === 'h3' ? '  ' : s.level === 'h4' ? '    ' : '';
-          return pre + s.level.toUpperCase() + ': ' + s.text;
-        }).join('\n');
-      } else if (format === 'markdown') {
-        out = '# Content Brief: ' + keyword + '\n\n## Title Suggestions\n';
-        titles.forEach(t => out += '- ' + t + '\n');
-        out += '\n## Structure\n';
-        structure.forEach(s => out += (s.level === 'h2' ? '## ' : s.level === 'h3' ? '### ' : '#### ') + s.text + '\n');
-        out += '\n## Parameters\n- Words: ' + params.words + '\n- Images: ' + params.images + '\n- Internal Links: ' + params.internal + '\n- External Links: ' + params.external + '\n';
-        out += '\n## SEO Checklist\n';
-        checklist.forEach(c => out += '- [ ] ' + c + '\n');
-        out += '\n## Questions to Answer\n';
-        questions.forEach(q => out += '- ' + q + '\n');
-      } else {
-        out = 'CONTENT BRIEF: ' + keyword + '\n' + '\u2550'.repeat(40) + '\n\n';
-        out += 'TITLE SUGGESTIONS:\n';
-        titles.forEach((t, i) => out += (i + 1) + '. ' + t + '\n');
-        out += '\nSTRUCTURE:\n';
-        structure.forEach(s => out += (s.level === 'h3' ? '  ' : '') + s.level.toUpperCase() + ': ' + s.text + '\n');
-        out += '\nPARAMETERS:\n  Words: ' + params.words + '\n  Images: ' + params.images + '\n  Internal Links: ' + params.internal + '\n  External Links: ' + params.external + '\n';
-        out += '\nSEO CHECKLIST:\n';
-        checklist.forEach(c => out += '  [ ] ' + c + '\n');
-        out += '\nQUESTIONS:\n';
-        questions.forEach(q => out += '  \u2022 ' + q + '\n');
+    function metaTitleStartsWithKw(metaTitle, kw) {
+      if (!metaTitle || !kw) return true;
+      const tokens = metaTitle.toLowerCase().trim().split(/\s+/).slice(0, 2).join(' ');
+      return tokens.includes(kw.toLowerCase());
+    }
+
+    function addQaRow(value, pristine) {
+      const list = document.getElementById('cb-qa-list');
+      const wrap = document.createElement('div');
+      wrap.className = 'flex items-start gap-2';
+      wrap.dataset.pristine = pristine ? 'true' : 'false';
+      wrap.innerHTML =
+        '<textarea rows="2" class="cb-input flex-1" placeholder="' + escHtml(briefTpl[briefLang].labels.qa) + '">' + escHtml(value || '') + '</textarea>' +
+        '<button type="button" class="text-body dark:text-body-dark hover:text-red-500 px-2 py-2 rounded-lg" aria-label="Remove">&#10005;</button>';
+      const ta = wrap.querySelector('textarea');
+      ta.addEventListener('input', () => { wrap.dataset.pristine = 'false'; scheduleRender(); schedulePersist(); });
+      wrap.querySelector('button').addEventListener('click', () => { wrap.remove(); scheduleRender(); schedulePersist(); });
+      list.appendChild(wrap);
+    }
+    function refreshPristineQa() {
+      const kw = document.getElementById('cb-mainKw').value.trim() || '{kw}';
+      const tpl = briefTpl[briefLang].qaPrefill;
+      const rows = document.querySelectorAll('#cb-qa-list > div');
+      rows.forEach((row, i) => {
+        if (row.dataset.pristine === 'true' && tpl[i]) {
+          row.querySelector('textarea').value = tpl[i].replace(/\{kw\}/g, kw);
+        }
+      });
+    }
+    function initQa() {
+      const list = document.getElementById('cb-qa-list');
+      list.innerHTML = '';
+      briefTpl[briefLang].qaPrefill.forEach(q => addQaRow(q.replace(/\{kw\}/g, '{kw}'), true));
+    }
+
+    function readForm() {
+      const purposeEl = document.querySelector('input[name="cb-purpose"]:checked');
+      const qaTextareas = document.querySelectorAll('#cb-qa-list textarea');
+      return {
+        purpose: purposeEl ? purposeEl.value : 'blog',
+        audience: document.getElementById('cb-audience').value.trim(),
+        stage: document.getElementById('cb-stage').value,
+        mainKw: document.getElementById('cb-mainKw').value.trim(),
+        secKw: [
+          document.getElementById('cb-secKw1').value.trim(),
+          document.getElementById('cb-secKw2').value.trim(),
+          document.getElementById('cb-secKw3').value.trim()
+        ].filter(Boolean),
+        wordCount: parseInt(document.getElementById('cb-wordCount').value, 10) || 1000,
+        internalLinks: parseInternalLinks(document.getElementById('cb-internal').value),
+        cta: document.getElementById('cb-cta').value.trim(),
+        title: document.getElementById('cb-title').value.trim(),
+        metaTitle: document.getElementById('cb-metaTitle').value.trim(),
+        metaDesc: document.getElementById('cb-metaDesc').value.trim(),
+        qa: Array.from(qaTextareas).map(t => t.value.trim()).filter(Boolean)
+      };
+    }
+
+    function updateMetaCounters() {
+      const mt = document.getElementById('cb-metaTitle').value;
+      const md = document.getElementById('cb-metaDesc').value;
+      const mtPx = Math.round(measurePixelWidth(mt, TITLE_FONT));
+      const mdPx = Math.round(measurePixelWidth(md, DESC_FONT));
+      document.getElementById('cb-metaTitle-counter').textContent = mt.length + ' / ' + TITLE_CHAR_LIMIT + ' — ' + mtPx + 'px / ' + TITLE_PX_LIMIT + 'px';
+      document.getElementById('cb-metaDesc-counter').textContent = md.length + ' / ' + DESC_CHAR_LIMIT + ' — ' + mdPx + 'px / ' + DESC_PX_LIMIT + 'px';
+      const out = briefTpl[briefLang].out;
+      const kw = document.getElementById('cb-mainKw').value.trim();
+      const mtWarnEl = document.getElementById('cb-metaTitle-warn');
+      const mdWarnEl = document.getElementById('cb-metaDesc-warn');
+      let mtWarn = '';
+      if (mt && kw && !metaTitleStartsWithKw(mt, kw)) mtWarn = out.warnKwInTitle;
+      else if (mt.length > TITLE_CHAR_LIMIT || mtPx > TITLE_PX_LIMIT) mtWarn = out.tooLong;
+      mtWarnEl.innerHTML = mtWarn ? '<span class="cb-pill cb-pill-warn">' + escHtml(mtWarn) + '</span>' : '';
+      let mdWarn = '';
+      const secKw = [1, 2, 3].map(i => document.getElementById('cb-secKw' + i).value.trim().toLowerCase()).filter(Boolean);
+      if (md && kw && !md.toLowerCase().includes(kw.toLowerCase())) mdWarn = out.warnKwMissingDesc;
+      else if (md && secKw.length && !secKw.some(k => md.toLowerCase().includes(k))) mdWarn = out.warnNoSecInDesc;
+      else if (md.length > DESC_CHAR_LIMIT || mdPx > DESC_PX_LIMIT) mdWarn = out.tooLong;
+      mdWarnEl.innerHTML = mdWarn ? '<span class="cb-pill cb-pill-warn">' + escHtml(mdWarn) + '</span>' : '';
+    }
+
+    function updateAnchorHint() {
+      const wc = parseInt(document.getElementById('cb-wordCount').value, 10) || 1000;
+      document.getElementById('cb-anchor-hint').textContent = anchorTarget(wc);
+    }
+
+    function suggestTitles() {
+      const kw = document.getElementById('cb-mainKw').value.trim();
+      const purposeEl = document.querySelector('input[name="cb-purpose"]:checked');
+      const purpose = purposeEl ? purposeEl.value : 'blog';
+      if (!kw) { showToast(briefLang === 'ka' ? 'შეიყვანეთ მთავარი ქივორდი' : 'Enter primary keyword'); return; }
+      const titles = (briefTpl[briefLang].titles[purpose] || briefTpl[briefLang].titles.blog).map(t => t.replace(/\{kw\}/g, kw));
+      const wrap = document.getElementById('cb-title-suggestions');
+      wrap.innerHTML = titles.map(t => '<button type="button" class="cb-suggest-chip">' + escHtml(t) + '</button>').join('');
+      wrap.querySelectorAll('.cb-suggest-chip').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.getElementById('cb-title').value = btn.textContent;
+          wrap.innerHTML = '';
+          scheduleRender();
+          schedulePersist();
+        });
+      });
+    }
+
+    function renderBrief() {
+      const s = readForm();
+      const out = briefTpl[briefLang].out;
+      const H = out.headers;
+      const preview = document.getElementById('cb-preview');
+      if (!s.mainKw) {
+        preview.innerHTML = '<div class="text-center py-12 text-body dark:text-body-dark text-sm">' + escHtml(out.empty) + '</div>';
+        return;
       }
-      navigator.clipboard.writeText(out).then(() => showToast('დაკოპირდა!')).catch(() => showToast('ვერ დაკოპირდა'));
+      const target = anchorTarget(s.wordCount);
+      const mtPx = Math.round(measurePixelWidth(s.metaTitle, TITLE_FONT));
+      const mdPx = Math.round(measurePixelWidth(s.metaDesc, DESC_FONT));
+      const mtKwOk = !s.metaTitle || metaTitleStartsWithKw(s.metaTitle, s.mainKw);
+      const mtCharOk = s.metaTitle.length <= TITLE_CHAR_LIMIT && mtPx <= TITLE_PX_LIMIT;
+      const mdHasMain = !s.metaDesc || s.metaDesc.toLowerCase().includes(s.mainKw.toLowerCase());
+      const mdHasSec = s.secKw.length === 0 || !s.metaDesc || s.secKw.some(k => s.metaDesc.toLowerCase().includes(k.toLowerCase()));
+      const mdCharOk = s.metaDesc.length <= DESC_CHAR_LIMIT && mdPx <= DESC_PX_LIMIT;
+      const allKw = [s.mainKw, ...s.secKw];
+      function pxBar(px, limit) {
+        const ratio = Math.min(1, px / limit);
+        const color = ratio < 0.85 ? '#21C743' : ratio < 1 ? '#f59e0b' : '#ef4444';
+        return '<div class="cb-pxbar"><div class="cb-pxbar-fill" style="width:' + (ratio * 100).toFixed(1) + '%;background:' + color + '"></div></div>';
+      }
+      function pill(ok, text) {
+        return '<span class="cb-pill ' + (ok ? 'cb-pill-ok' : 'cb-pill-warn') + '">' + escHtml(text) + '</span>';
+      }
+      const html = [];
+      html.push('<div class="flex flex-wrap gap-1.5">' +
+        '<span class="cb-pill cb-pill-ok">' + escHtml(s.mainKw) + '</span>' +
+        '<span class="cb-pill" style="background:rgba(20,184,166,0.12);color:#14B8A6">' + escHtml(out.purposeMap[s.purpose]) + '</span>' +
+        '<span class="cb-pill" style="background:rgba(59,130,246,0.12);color:#3B82F6">' + escHtml(out.stageMap[s.stage]) + '</span>' +
+        (s.audience ? '<span class="cb-pill" style="background:rgba(148,163,184,0.18);color:#475569">' + escHtml(s.audience) + '</span>' : '') +
+        '<span class="cb-pill" style="background:rgba(148,163,184,0.18);color:#475569">' + s.wordCount + ' ' + escHtml(out.wordsUnit) + '</span>' +
+      '</div>');
+      if (s.title) {
+        html.push('<div class="cb-section-card"><h4>' + escHtml(H.title) + '</h4>' +
+          '<p class="text-sm text-heading dark:text-heading-dark font-semibold">' + escHtml(s.title) + '</p></div>');
+      }
+      html.push('<div class="cb-section-card"><h4>' + escHtml(H.metaTitle) + '</h4>' +
+        (s.metaTitle ? '<p class="text-sm text-heading dark:text-heading-dark">' + escHtml(s.metaTitle) + '</p>' +
+          pxBar(mtPx, TITLE_PX_LIMIT) +
+          '<div class="flex flex-wrap gap-1 mt-2">' +
+            pill(mtKwOk, mtKwOk ? out.ok : out.warnKwInTitle) +
+            pill(mtCharOk, mtPx + 'px / ' + TITLE_PX_LIMIT + 'px') +
+            pill(s.metaTitle.length <= TITLE_CHAR_LIMIT, s.metaTitle.length + ' / ' + TITLE_CHAR_LIMIT) +
+          '</div>'
+          : '<p class="text-xs text-body dark:text-body-dark">—</p>') +
+      '</div>');
+      html.push('<div class="cb-section-card"><h4>' + escHtml(H.metaDesc) + '</h4>' +
+        (s.metaDesc ? '<p class="text-sm text-heading dark:text-heading-dark">' + escHtml(s.metaDesc) + '</p>' +
+          pxBar(mdPx, DESC_PX_LIMIT) +
+          '<div class="flex flex-wrap gap-1 mt-2">' +
+            pill(mdHasMain, mdHasMain ? out.ok : out.warnKwMissingDesc) +
+            pill(mdHasSec, mdHasSec ? out.ok : out.warnNoSecInDesc) +
+            pill(mdCharOk, mdPx + 'px / ' + DESC_PX_LIMIT + 'px') +
+          '</div>'
+          : '<p class="text-xs text-body dark:text-body-dark">—</p>') +
+      '</div>');
+      html.push('<div class="cb-aeo-callout">' +
+        '<div class="flex items-center gap-2 mb-1">' +
+          '<span class="cb-pill" style="background:rgba(139,92,246,0.18);color:#8B5CF6">AEO</span>' +
+          '<span class="text-xs font-bold uppercase tracking-wider text-heading dark:text-heading-dark font-inter">' + escHtml(H.aeo) + '</span>' +
+        '</div>' +
+        '<p class="text-sm text-heading dark:text-heading-dark">' + escHtml(out.aeo) + '</p>' +
+      '</div>');
+      html.push('<div class="cb-section-card"><h4>' + escHtml(H.anchor) + ' — ' + target + ' ' + escHtml(out.mentions) + '</h4>' +
+        '<div class="grid grid-cols-2 gap-2">' +
+          allKw.map(k => '<div class="cb-anchor-card"><div class="kw">' + escHtml(k) + '</div><div class="target">' + target + '</div><div class="label">' + escHtml(out.mentions) + '</div></div>').join('') +
+        '</div>' +
+      '</div>');
+      if (s.internalLinks.length) {
+        html.push('<div class="cb-section-card"><h4>' + escHtml(H.internal) + '</h4>' +
+          '<ul class="space-y-1 text-sm">' +
+            s.internalLinks.map(l => '<li class="text-heading dark:text-heading-dark"><span class="text-primary dark:text-primary-light">→</span> <a href="' + escHtml(l.url) + '" target="_blank" rel="noopener" class="hover:underline break-all">' + escHtml(l.url) + '</a> — <span class="text-body dark:text-body-dark">' + escHtml(l.anchor) + '</span></li>').join('') +
+          '</ul></div>');
+      }
+      if (s.cta) {
+        html.push('<div class="cb-section-card"><h4>' + escHtml(H.cta) + '</h4>' +
+          '<p class="text-sm text-heading dark:text-heading-dark font-semibold">' + escHtml(s.cta) + '</p></div>');
+      }
+      if (s.qa.length) {
+        html.push('<div class="cb-section-card"><h4>' + escHtml(H.qa) + '</h4>' +
+          '<ol class="space-y-1.5 text-sm list-decimal list-inside text-heading dark:text-heading-dark">' +
+            s.qa.map(q => '<li>' + escHtml(q) + '</li>').join('') +
+          '</ol></div>');
+      }
+      html.push('<div class="cb-section-card"><h4>' + escHtml(H.checklist) + '</h4>' +
+        '<ul class="space-y-1.5 text-sm">' +
+          out.checklist.map(c => '<li class="flex items-start gap-2 text-heading dark:text-heading-dark"><span class="text-primary dark:text-primary-light mt-0.5">☐</span> ' + escHtml(c) + '</li>').join('') +
+        '</ul></div>');
+      preview.innerHTML = html.join('');
     }
+
+    function buildBriefMarkdown() {
+      const s = readForm();
+      if (!s.mainKw) return '';
+      const out = briefTpl[briefLang].out;
+      const H = out.headers;
+      const target = anchorTarget(s.wordCount);
+      const mtPx = Math.round(measurePixelWidth(s.metaTitle, TITLE_FONT));
+      const mdPx = Math.round(measurePixelWidth(s.metaDesc, DESC_FONT));
+      const lines = [];
+      lines.push('# Content Brief: ' + s.mainKw, '');
+      lines.push('**' + H.purpose + ':** ' + out.purposeMap[s.purpose]);
+      if (s.audience) lines.push('**' + H.audience + ':** ' + s.audience);
+      lines.push('**' + H.stage + ':** ' + out.stageMap[s.stage]);
+      lines.push('**' + H.words + ':** ' + s.wordCount + ' ' + out.wordsUnit, '');
+      if (s.title) lines.push('## ' + H.title, s.title, '');
+      lines.push('## Meta');
+      lines.push('- **Title:** ' + (s.metaTitle || '—') + '  (' + mtPx + 'px / ' + TITLE_PX_LIMIT + 'px, ' + s.metaTitle.length + '/' + TITLE_CHAR_LIMIT + ')');
+      lines.push('- **Description:** ' + (s.metaDesc || '—') + '  (' + mdPx + 'px / ' + DESC_PX_LIMIT + 'px, ' + s.metaDesc.length + '/' + DESC_CHAR_LIMIT + ')', '');
+      lines.push('## ' + H.aeo, out.aeo, '');
+      lines.push('## ' + H.anchor);
+      [s.mainKw, ...s.secKw].forEach(k => lines.push('- ' + k + ': ' + target + ' ' + out.mentions));
+      lines.push('');
+      if (s.internalLinks.length) {
+        lines.push('## ' + H.internal);
+        s.internalLinks.forEach(l => lines.push('- ' + l.url + ' — ' + l.anchor));
+        lines.push('');
+      }
+      if (s.cta) lines.push('## ' + H.cta, s.cta, '');
+      if (s.qa.length) {
+        lines.push('## ' + H.qa);
+        s.qa.forEach((q, i) => lines.push((i + 1) + '. ' + q));
+        lines.push('');
+      }
+      lines.push('## ' + H.checklist);
+      out.checklist.forEach(c => lines.push('- [ ] ' + c));
+      return lines.join('\n');
+    }
+
+    function buildBriefPlain() {
+      const md = buildBriefMarkdown();
+      return md
+        .replace(/^# (.+)$/gm, (m, t) => t.toUpperCase() + '\n' + '='.repeat(Math.min(60, t.length)))
+        .replace(/^## (.+)$/gm, (m, t) => '\n' + t.toUpperCase() + '\n' + '-'.repeat(Math.min(40, t.length)))
+        .replace(/\*\*(.+?):\*\*/g, '$1:')
+        .replace(/^- \[ \] /gm, '  [ ] ')
+        .replace(/^- /gm, '  • ');
+    }
+
+    function buildBriefOutline() {
+      const s = readForm();
+      if (!s.mainKw) return '';
+      const out = briefTpl[briefLang].out;
+      const lines = ['# ' + s.mainKw, ''];
+      if (s.title) lines.push('H1: ' + s.title, '');
+      lines.push('H2: ' + (briefLang === 'ka' ? 'შესავალი / AEO Overview' : 'Introduction / AEO Overview'));
+      lines.push('H2: ' + (briefLang === 'ka' ? 'რა არის ' : 'What is ') + s.mainKw + '?');
+      lines.push('H2: ' + (briefLang === 'ka' ? 'ძირითადი მნიშვნელოვანი ასპექტები' : 'Key aspects'));
+      lines.push('H2: ' + (briefLang === 'ka' ? 'როგორ ' : 'How to ') + s.mainKw);
+      lines.push('H2: ' + out.headers.qa);
+      if (s.qa.length) s.qa.forEach((q, i) => lines.push('  H3: ' + q));
+      lines.push('H2: ' + (briefLang === 'ka' ? 'დასკვნა + CTA' : 'Conclusion + CTA'));
+      return lines.join('\n');
+    }
+
+    function downloadText(text, filename) {
+      const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => { document.body.removeChild(a); URL.revokeObjectURL(url); }, 100);
+    }
+    function deliverBrief(text, filename) {
+      if (!text) { showToast(briefLang === 'ka' ? 'შეიყვანეთ მთავარი ქივორდი' : 'Enter primary keyword'); return; }
+      downloadText(text, filename);
+      navigator.clipboard.writeText(text).catch(() => {});
+      showToast(briefLang === 'ka' ? 'ჩამოიტვირთა + დაკოპირდა' : 'Downloaded + copied');
+    }
+    function safeFilename() {
+      const kw = (document.getElementById('cb-mainKw').value.trim() || 'brief')
+        .replace(/[\\/:*?"<>|\s]+/g, '-')
+        .replace(/^-+|-+$/g, '')
+        .slice(0, 60);
+      return kw || 'brief';
+    }
+    function exportFull() { deliverBrief(buildBriefPlain(), 'brief-' + safeFilename() + '.txt'); }
+    function exportMarkdown() { deliverBrief(buildBriefMarkdown(), 'brief-' + safeFilename() + '.md'); }
+    function exportOutline() { deliverBrief(buildBriefOutline(), 'outline-' + safeFilename() + '.txt'); }
+
+    const STORAGE_KEY = 'cb_state_v1';
+    function persistState() {
+      try {
+        const s = readForm();
+        s.lang = briefLang;
+        s.internalLinksRaw = document.getElementById('cb-internal').value;
+        s.qaRows = Array.from(document.querySelectorAll('#cb-qa-list > div')).map(row => ({
+          value: row.querySelector('textarea').value,
+          pristine: row.dataset.pristine === 'true'
+        }));
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(s));
+      } catch (e) {}
+    }
+    function restoreState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return false;
+        const s = JSON.parse(raw);
+        if (s.lang && s.lang !== briefLang) briefLang = s.lang;
+        const setRadio = (name, val) => { const el = document.querySelector('input[name="' + name + '"][value="' + val + '"]'); if (el) el.checked = true; };
+        if (s.purpose) setRadio('cb-purpose', s.purpose);
+        if (s.audience) document.getElementById('cb-audience').value = s.audience;
+        if (s.stage) document.getElementById('cb-stage').value = s.stage;
+        if (s.mainKw) document.getElementById('cb-mainKw').value = s.mainKw;
+        (s.secKw || []).forEach((k, i) => { const el = document.getElementById('cb-secKw' + (i + 1)); if (el) el.value = k; });
+        if (s.wordCount) document.getElementById('cb-wordCount').value = s.wordCount;
+        if (s.internalLinksRaw !== undefined) document.getElementById('cb-internal').value = s.internalLinksRaw;
+        if (s.cta) document.getElementById('cb-cta').value = s.cta;
+        if (s.title) document.getElementById('cb-title').value = s.title;
+        if (s.metaTitle) document.getElementById('cb-metaTitle').value = s.metaTitle;
+        if (s.metaDesc) document.getElementById('cb-metaDesc').value = s.metaDesc;
+        const list = document.getElementById('cb-qa-list');
+        list.innerHTML = '';
+        if (Array.isArray(s.qaRows) && s.qaRows.length) {
+          s.qaRows.forEach(r => addQaRow(r.value, r.pristine));
+        } else {
+          briefTpl[briefLang].qaPrefill.forEach(q => addQaRow(q.replace(/\{kw\}/g, s.mainKw || '{kw}'), true));
+        }
+        return true;
+      } catch (e) { return false; }
+    }
+
+    let renderTimer = null, persistTimer = null, counterTimer = null;
+    function scheduleRender() { clearTimeout(renderTimer); renderTimer = setTimeout(renderBrief, 120); }
+    function schedulePersist() { clearTimeout(persistTimer); persistTimer = setTimeout(persistState, 500); }
+    function scheduleCounters() { clearTimeout(counterTimer); counterTimer = setTimeout(updateMetaCounters, 150); }
+
+    function wireBriefForm() {
+      const allInputs = document.querySelectorAll('#cb-audience, #cb-mainKw, #cb-secKw1, #cb-secKw2, #cb-secKw3, #cb-wordCount, #cb-internal, #cb-cta, #cb-title, #cb-metaTitle, #cb-metaDesc, #cb-stage');
+      allInputs.forEach(el => {
+        el.addEventListener('input', () => { scheduleRender(); schedulePersist(); });
+      });
+      document.getElementById('cb-wordCount').addEventListener('input', updateAnchorHint);
+      document.getElementById('cb-metaTitle').addEventListener('input', scheduleCounters);
+      document.getElementById('cb-metaDesc').addEventListener('input', scheduleCounters);
+      document.getElementById('cb-mainKw').addEventListener('input', () => { refreshPristineQa(); scheduleCounters(); });
+      document.getElementById('cb-secKw1').addEventListener('input', scheduleCounters);
+      document.getElementById('cb-secKw2').addEventListener('input', scheduleCounters);
+      document.getElementById('cb-secKw3').addEventListener('input', scheduleCounters);
+      document.querySelectorAll('input[name="cb-purpose"]').forEach(el => el.addEventListener('change', () => { scheduleRender(); schedulePersist(); }));
+    }
+
+    (function bootBrief() {
+      wireBriefForm();
+      const restored = restoreState();
+      if (!restored) initQa();
+      applyI18n(briefLang);
+      updateAnchorHint();
+      updateMetaCounters();
+      renderBrief();
+    })();
+
+    // ========================================
+    // TOOL 8: NUMBERS TO WORDS (Georgian)
+    // ========================================
+    const NTW_ONES = ['', 'ერთი', 'ორი', 'სამი', 'ოთხი', 'ხუთი', 'ექვსი', 'შვიდი', 'რვა', 'ცხრა'];
+    const NTW_TEENS = ['ათი', 'თერთმეტი', 'თორმეტი', 'ცამეტი', 'თოთხმეტი', 'თხუთმეტი', 'თექვსმეტი', 'ჩვიდმეტი', 'თვრამეტი', 'ცხრამეტი'];
+    const NTW_VIG = { 20: 'ოცი', 40: 'ორმოცი', 60: 'სამოცი', 80: 'ოთხმოცი' };
+    const NTW_VIG_PFX = { 20: 'ოცდა', 40: 'ორმოცდა', 60: 'სამოცდა', 80: 'ოთხმოცდა' };
+    const NTW_HUND = ['', 'ას', 'ორას', 'სამას', 'ოთხას', 'ხუთას', 'ექვსას', 'შვიდას', 'რვაას', 'ცხრაას'];
+    const NTW_HUND_FIN = ['', 'ასი', 'ორასი', 'სამასი', 'ოთხასი', 'ხუთასი', 'ექვსასი', 'შვიდასი', 'რვაასი', 'ცხრაასი'];
+    function ntwUnder100(n, isFinal) {
+      if (n === 0) return '';
+      if (n < 10) return NTW_ONES[n];
+      if (n < 20) return NTW_TEENS[n - 10];
+      const base = Math.floor(n / 20) * 20;
+      const rem = n - base;
+      if (rem === 0) return isFinal ? NTW_VIG[base] : NTW_VIG[base].replace(/ი$/, '');
+      return NTW_VIG_PFX[base] + (rem < 10 ? NTW_ONES[rem] : NTW_TEENS[rem - 10]);
+    }
+    function ntwUnder1000(n, isFinal) {
+      if (n === 0) return '';
+      if (n < 100) return ntwUnder100(n, isFinal);
+      const h = Math.floor(n / 100);
+      const rem = n % 100;
+      if (rem === 0) return isFinal ? NTW_HUND_FIN[h] : NTW_HUND[h];
+      return NTW_HUND[h] + ' ' + ntwUnder100(rem, isFinal);
+    }
+    function intToGeorgian(n) {
+      if (n === 0) return 'ნული';
+      const parts = [];
+      const billions = Math.floor(n / 1000000000);
+      const millions = Math.floor((n % 1000000000) / 1000000);
+      const thousands = Math.floor((n % 1000000) / 1000);
+      const ones = n % 1000;
+      if (billions > 0) {
+        const restAfter = ones + thousands + millions;
+        if (billions === 1) parts.push(restAfter === 0 ? 'მილიარდი' : 'მილიარდ');
+        else parts.push(ntwUnder1000(billions, true) + ' ' + (restAfter === 0 ? 'მილიარდი' : 'მილიარდ'));
+      }
+      if (millions > 0) {
+        const restAfter = ones + thousands;
+        if (millions === 1) parts.push(restAfter === 0 ? 'მილიონი' : 'მილიონ');
+        else parts.push(ntwUnder1000(millions, true) + ' ' + (restAfter === 0 ? 'მილიონი' : 'მილიონ'));
+      }
+      if (thousands > 0) {
+        if (thousands === 1) parts.push(ones === 0 ? 'ათასი' : 'ათას');
+        else parts.push(ntwUnder1000(thousands, true) + ' ' + (ones === 0 ? 'ათასი' : 'ათას'));
+      }
+      if (ones > 0) parts.push(ntwUnder1000(ones, true));
+      return parts.join(' ');
+    }
+    const NTW_ORD = {
+      1:'პირველი',2:'მეორე',3:'მესამე',4:'მეოთხე',5:'მეხუთე',6:'მეექვსე',7:'მეშვიდე',8:'მერვე',9:'მეცხრე',10:'მეათე',
+      11:'მეთერთმეტე',12:'მეთორმეტე',13:'მეცამეტე',14:'მეთოთხმეტე',15:'მეთხუთმეტე',16:'მეთექვსმეტე',17:'მეჩვიდმეტე',
+      18:'მეთვრამეტე',19:'მეცხრამეტე',20:'მეოცე',30:'მეოცდამეათე',40:'მეორმოცე',50:'მეორმოცდამეათე',60:'მესამოცე',
+      70:'მესამოცდამეათე',80:'მეოთხმოცე',90:'მეოთხმოცდამეათე',100:'მეასე',1000:'მეათასე',1000000:'მემილიონე'
+    };
+    function intToGeorgianOrdinal(n) {
+      if (n === 0) return 'ნულოვანი';
+      if (NTW_ORD[n]) return NTW_ORD[n];
+      if (n < 100) {
+        const base = Math.floor(n / 20) * 20;
+        const rem = n - base;
+        if (rem === 0) return NTW_ORD[base] || ('მე' + NTW_VIG[base] + 'ე');
+        const remOrd = NTW_ORD[rem];
+        if (remOrd) return NTW_VIG_PFX[base] + remOrd;
+      }
+      const card = intToGeorgian(n);
+      const ord = card.replace(/ი$/, 'ე').replace(/ა$/, 'ე');
+      return 'მე' + ord;
+    }
+    function ntwUpdate() {
+      const elNum = document.getElementById('ntw-number');
+      if (!elNum) return;
+      const raw = elNum.value.replace(/,/g, '.').replace(/\s/g, '').trim();
+      const isOrdinal = document.getElementById('ntw-ordinal').checked;
+      const isCurrency = document.getElementById('ntw-currency').checked;
+      const isLegal = document.getElementById('ntw-legal').checked;
+      const out = document.getElementById('ntw-output');
+      if (!raw) { out.textContent = '—'; return; }
+      let isNegative = false;
+      let cleaned = raw;
+      if (cleaned.startsWith('-')) { isNegative = true; cleaned = cleaned.slice(1); }
+      if (!/^\d+(\.\d+)?$/.test(cleaned)) { out.textContent = 'არასწორი ფორმატი'; return; }
+      const num = parseFloat(cleaned);
+      if (num > 999999999999) { out.textContent = 'რიცხვი ძალიან დიდია (მაქს. 999,999,999,999)'; return; }
+      const intPart = Math.floor(num);
+      const decPart = Math.round((num - intPart) * 100);
+      let result = '';
+      if (isOrdinal && decPart === 0) result = intToGeorgianOrdinal(intPart);
+      else if (isCurrency) {
+        result = intToGeorgian(intPart) + ' ლარი';
+        if (decPart > 0) result += ' და ' + intToGeorgian(decPart) + ' თეთრი';
+      } else {
+        result = intToGeorgian(intPart);
+        if (decPart > 0) result += ' მთელი ' + intToGeorgian(decPart) + ' მეასედი';
+      }
+      if (isLegal) {
+        const formatNum = isCurrency ? num.toFixed(2) : intPart.toLocaleString('en-US');
+        result = result.charAt(0).toUpperCase() + result.slice(1) + ' (' + formatNum + ')';
+      }
+      if (isNegative) result = 'მინუს ' + result;
+      out.textContent = result;
+    }
+    function ntwSet(val) { const e = document.getElementById('ntw-number'); if (e) { e.value = val; ntwUpdate(); } }
+    function ntwCopy() {
+      const text = document.getElementById('ntw-output').textContent;
+      navigator.clipboard.writeText(text).then(() => showToast('დაკოპირდა!')).catch(() => showToast('ვერ დაკოპირდა'));
+    }
+    ['ntw-number', 'ntw-ordinal', 'ntw-currency', 'ntw-legal'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) { el.addEventListener('input', ntwUpdate); el.addEventListener('change', ntwUpdate); }
+    });
+    ntwUpdate();
+
+    // ========================================
+    // TOOL 9: GEORGIAN FONT TESTER
+    // ========================================
+    const FT_FONTS = [
+      { name: 'FiraGO', stack: '"FiraGO", sans-serif', source: 'Local (10xSEO)', tag: 'Sans' },
+      { name: 'Noto Sans Georgian', stack: '"Noto Sans Georgian", sans-serif', source: 'Google Fonts', tag: 'Sans' },
+      { name: 'Noto Serif Georgian', stack: '"Noto Serif Georgian", serif', source: 'Google Fonts', tag: 'Serif' },
+      { name: 'Dachi the Lynx', stack: '"Dachi the Lynx", sans-serif', source: 'Local (10xSEO Brand)', tag: 'Display' },
+      { name: 'BOG 2023 UltraBold', stack: '"BOG 2023", sans-serif', source: 'Local (10xSEO)', tag: 'Bold Display' },
+      { name: 'Sylfaen', stack: 'Sylfaen, "Times New Roman", serif', source: 'Windows System', tag: 'System' },
+      { name: 'System Sans', stack: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif', source: 'OS Default', tag: 'System' },
+      { name: 'System Serif', stack: 'Georgia, "Times New Roman", serif', source: 'OS Default', tag: 'System Serif' },
+    ];
+    function ftRender() {
+      const elText = document.getElementById('ft-text');
+      if (!elText) return;
+      const text = elText.value || 'ვეფხი და მოყმე';
+      const size = document.getElementById('ft-size').value;
+      const lh = (document.getElementById('ft-lh').value / 100).toFixed(2);
+      const weight = document.getElementById('ft-weight').value;
+      document.getElementById('ft-size-label').textContent = size + 'px';
+      document.getElementById('ft-lh-label').textContent = lh;
+      const grid = document.getElementById('ft-grid');
+      grid.innerHTML = FT_FONTS.map((f, i) => {
+        return '<div class="p-4 rounded-xl border border-gray-100 dark:border-gray-800 bg-white dark:bg-surface-dark transition-colors">' +
+          '<div class="flex items-start justify-between mb-3 gap-2">' +
+            '<div>' +
+              '<div class="text-[10px] uppercase tracking-wider text-primary font-inter font-bold mb-0.5">' + f.source + ' · ' + f.tag + '</div>' +
+              '<div class="text-sm font-inter font-semibold text-heading dark:text-heading-dark">' + f.name + '</div>' +
+            '</div>' +
+            '<button onclick="ftCopyCss(' + i + ')" class="shrink-0 inline-flex items-center gap-1 px-2 py-1 text-[10px] font-semibold rounded-lg bg-primary/10 text-primary dark:text-primary-light hover:bg-primary/20 transition-colors">' +
+              'CSS' +
+            '</button>' +
+          '</div>' +
+          '<div class="ft-sample-row" style="font-family: ' + f.stack + '; font-size: ' + size + 'px; line-height: ' + lh + '; font-weight: ' + weight + '; word-break: break-word;">' + escHtml(text) + '</div>' +
+        '</div>';
+      }).join('');
+    }
+    function ftCopyCss(i) {
+      const css = 'font-family: ' + FT_FONTS[i].stack + ';';
+      navigator.clipboard.writeText(css).then(() => showToast('CSS დაკოპირდა!')).catch(() => showToast('ვერ დაკოპირდა'));
+    }
+    ['ft-text', 'ft-size', 'ft-lh', 'ft-weight'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) { el.addEventListener('input', ftRender); el.addEventListener('change', ftRender); }
+    });
+    ftRender();
+
+    // ========================================
+    // TOOL 10: TIMEZONE CONVERTER
+    // ========================================
+    const TZ_CITIES = [
+      { name: 'თბილისი', flag: '🇬🇪', tz: 'Asia/Tbilisi' },
+      { name: 'დუბაი', flag: '🇦🇪', tz: 'Asia/Dubai' },
+      { name: 'მოსკოვი', flag: '🇷🇺', tz: 'Europe/Moscow' },
+      { name: 'სტამბული', flag: '🇹🇷', tz: 'Europe/Istanbul' },
+      { name: 'ბერლინი', flag: '🇩🇪', tz: 'Europe/Berlin' },
+      { name: 'ლონდონი', flag: '🇬🇧', tz: 'Europe/London' },
+      { name: 'ნიუ-იორკი', flag: '🇺🇸', tz: 'America/New_York' },
+      { name: 'ლოს-ანჯელესი', flag: '🇺🇸', tz: 'America/Los_Angeles' },
+      { name: 'პეკინი', flag: '🇨🇳', tz: 'Asia/Shanghai' },
+      { name: 'ტოკიო', flag: '🇯🇵', tz: 'Asia/Tokyo' },
+    ];
+    function tzGetOffsetMin(date, tz) {
+      const dtf = new Intl.DateTimeFormat('en-US', {
+        timeZone: tz, year: 'numeric', month: '2-digit', day: '2-digit',
+        hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23'
+      });
+      const parts = dtf.formatToParts(date);
+      const map = {};
+      parts.forEach(p => { if (p.type !== 'literal') map[p.type] = p.value; });
+      const asUtc = Date.UTC(+map.year, +map.month - 1, +map.day, +map.hour, +map.minute, +map.second);
+      return Math.round((asUtc - date.getTime()) / 60000);
+    }
+    function tzWallToUtc(y, mo, d, h, mi, tz) {
+      const naive = new Date(Date.UTC(y, mo - 1, d, h, mi));
+      const offsetMin = tzGetOffsetMin(naive, tz);
+      return new Date(naive.getTime() - offsetMin * 60000);
+    }
+    function tzFormat(utcDate, tz) {
+      const dtf = new Intl.DateTimeFormat('ka-GE', {
+        timeZone: tz, hour: '2-digit', minute: '2-digit', hourCycle: 'h23',
+        weekday: 'short', month: 'short', day: 'numeric'
+      });
+      const parts = dtf.formatToParts(utcDate);
+      const map = {};
+      parts.forEach(p => { if (p.type !== 'literal') map[p.type] = p.value; });
+      return { time: map.hour + ':' + map.minute, date: map.weekday + ', ' + map.day + ' ' + map.month, hour: parseInt(map.hour, 10) };
+    }
+    function tzFormatUtc(utcDate, tz) {
+      const offsetMin = tzGetOffsetMin(utcDate, tz);
+      const sign = offsetMin >= 0 ? '+' : '-';
+      const abs = Math.abs(offsetMin);
+      return 'UTC' + sign + Math.floor(abs / 60).toString().padStart(2, '0') + ':' + (abs % 60).toString().padStart(2, '0');
+    }
+    function tzPopulateSelect() {
+      const sel = document.getElementById('tz-source');
+      if (!sel) return;
+      sel.innerHTML = TZ_CITIES.map((c, i) => '<option value="' + i + '"' + (c.tz === 'Asia/Tbilisi' ? ' selected' : '') + '>' + c.flag + ' ' + c.name + '</option>').join('');
+    }
+    function tzNow() {
+      const now = new Date();
+      const parts = new Intl.DateTimeFormat('en-CA', {
+        timeZone: 'Asia/Tbilisi', year: 'numeric', month: '2-digit', day: '2-digit',
+        hour: '2-digit', minute: '2-digit', hourCycle: 'h23'
+      }).formatToParts(now);
+      const map = {};
+      parts.forEach(p => { if (p.type !== 'literal') map[p.type] = p.value; });
+      const dateEl = document.getElementById('tz-date');
+      const timeEl = document.getElementById('tz-time');
+      const srcEl = document.getElementById('tz-source');
+      if (!dateEl || !timeEl || !srcEl) return;
+      dateEl.value = map.year + '-' + map.month + '-' + map.day;
+      timeEl.value = map.hour + ':' + map.minute;
+      srcEl.value = TZ_CITIES.findIndex(c => c.tz === 'Asia/Tbilisi');
+      tzUpdate();
+    }
+    function tzUpdate() {
+      const srcEl = document.getElementById('tz-source');
+      const timeEl = document.getElementById('tz-time');
+      const dateEl = document.getElementById('tz-date');
+      if (!srcEl || !timeEl || !dateEl) return;
+      const sourceIdx = parseInt(srcEl.value, 10);
+      const timeStr = timeEl.value;
+      const dateStr = dateEl.value;
+      const meetingMode = document.getElementById('tz-meeting-mode').checked;
+      if (!timeStr || !dateStr) return;
+      const sourceCity = TZ_CITIES[sourceIdx];
+      const [y, mo, d] = dateStr.split('-').map(n => parseInt(n, 10));
+      const [h, mi] = timeStr.split(':').map(n => parseInt(n, 10));
+      const utcInstant = tzWallToUtc(y, mo, d, h, mi, sourceCity.tz);
+      const tbody = document.getElementById('tz-table-body');
+      tbody.innerHTML = TZ_CITIES.map((c, i) => {
+        const f = tzFormat(utcInstant, c.tz);
+        const utcLabel = tzFormatUtc(utcInstant, c.tz);
+        const localDateStr = new Intl.DateTimeFormat('en-CA', { timeZone: c.tz, year: 'numeric', month: '2-digit', day: '2-digit' }).format(utcInstant);
+        const diffDays = Math.round((Date.parse(localDateStr) - Date.parse(dateStr)) / 86400000);
+        const dayBadge = diffDays === 0 ? '' : (diffDays > 0 ? '<span class="ml-2 inline-block px-1.5 py-0.5 text-[10px] font-bold rounded bg-ai-blue/20 text-ai-blue">+' + diffDays + ' დღე</span>' : '<span class="ml-2 inline-block px-1.5 py-0.5 text-[10px] font-bold rounded bg-orange-500/20 text-orange-400">' + diffDays + ' დღე</span>');
+        let rowCls = '';
+        if (i === sourceIdx) rowCls = 'bg-primary/10';
+        else if (meetingMode) {
+          if (f.hour >= 8 && f.hour < 18) rowCls = 'tz-good';
+          else if (f.hour >= 6 && f.hour < 22) rowCls = 'tz-meh';
+          else rowCls = 'tz-bad';
+        }
+        return '<tr class="border-t border-gray-100 dark:border-gray-800 ' + rowCls + '">' +
+          '<td class="py-3 px-4 font-medium text-heading dark:text-heading-dark"><span class="mr-1.5">' + c.flag + '</span>' + c.name + (i === sourceIdx ? ' <span class="ml-1 text-xs font-bold text-primary">(საწყისი)</span>' : '') + '</td>' +
+          '<td class="py-3 px-4 font-inter font-bold text-heading dark:text-heading-dark text-base">' + f.time + dayBadge + '</td>' +
+          '<td class="py-3 px-4 text-body dark:text-body-dark text-xs font-inter">' + f.date + '</td>' +
+          '<td class="py-3 px-4 text-right text-body dark:text-body-dark text-xs font-inter">' + utcLabel + '</td>' +
+        '</tr>';
+      }).join('');
+    }
+    tzPopulateSelect();
+    tzNow();
+    ['tz-source', 'tz-time', 'tz-date', 'tz-meeting-mode'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) { el.addEventListener('input', tzUpdate); el.addEventListener('change', tzUpdate); }
+    });
 
   </script>
   <script>
