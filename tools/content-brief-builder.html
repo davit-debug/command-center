@@ -496,12 +496,8 @@
             <!-- 5. CTA -->
             <div class="mb-4">
               <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2" data-i18n="cta">CTA</label>
-              <div class="space-y-2">
-                <label class="cb-radio w-full"><input type="radio" name="cb-cta" value="call" checked><span>დაგვირეკეთ +995 510 10 15 17</span></label>
-                <label class="cb-radio w-full"><input type="radio" name="cb-cta" value="book"><span data-i18n="cta-book">დაჯავშნეთ კონსულტაცია</span></label>
-                <label class="cb-radio w-full"><input type="radio" name="cb-cta" value="custom"><span data-i18n="cta-custom">სხვა (ხელით)</span></label>
-                <textarea id="cb-ctaCustom" rows="2" placeholder="სხვა CTA ტექსტი..." class="cb-input hidden"></textarea>
-              </div>
+              <textarea id="cb-cta" rows="2" placeholder="მაგ: დაგვირეკეთ +XXX XXX XXX XXX | დაჯავშნეთ კონსულტაცია | შეიძინე დღესვე..." class="cb-input"></textarea>
+              <p class="text-xs text-body dark:text-body-dark mt-1" data-i18n="cta-hint">დაწერე CTA შენი ბრენდისთვის</p>
             </div>
 
             <!-- 6. სათაური -->
@@ -706,8 +702,7 @@
           internal: 'შიდა გადალინკვები',
           'internal-hint': 'თითოეული ხაზი: URL — anchor',
           cta: 'CTA',
-          'cta-book': 'დაჯავშნეთ კონსულტაცია',
-          'cta-custom': 'სხვა (ხელით)',
+          'cta-hint': 'დაწერე CTA შენი ბრენდისთვის',
           title: 'სათაური (H1)',
           'suggest-titles': '+ 5 ვარიანტის შემოთავაზება',
           qa: 'კითხვა-პასუხი (2-3)',
@@ -719,7 +714,6 @@
         out: {
           purposeMap: { blog: 'ბლოგი', landing: 'Landing Page', media: 'მედია პუბლიკაცია' },
           stageMap: { awareness: 'Awareness — ინფორმაციული ძიება', consideration: 'Consideration — შედარება/მოძიება', decision: 'Decision — ყიდვის განზრახვა', retention: 'Retention — არსებული მომხმარებელი' },
-          ctaMap: { call: 'დაგვირეკეთ +995 510 10 15 17', book: 'დაჯავშნეთ კონსულტაცია' },
           aeo: 'პირველ 50 სიტყვაში პირდაპირი პასუხი იმ კითხვაზე, რომელსაც სტატია ეხება.',
           checklist: [
             'მთავარი ქივორდი H1-ში (სათაურში)',
@@ -765,8 +759,7 @@
           internal: 'Internal Linking',
           'internal-hint': 'One per line: URL — anchor',
           cta: 'CTA',
-          'cta-book': 'Book a consultation',
-          'cta-custom': 'Custom',
+          'cta-hint': 'Write your own CTA',
           title: 'Title (H1)',
           'suggest-titles': '+ Suggest 5 variants',
           qa: 'Q&A (2–3)',
@@ -778,7 +771,6 @@
         out: {
           purposeMap: { blog: 'Blog', landing: 'Landing Page', media: 'Media Publication' },
           stageMap: { awareness: 'Awareness', consideration: 'Consideration', decision: 'Decision', retention: 'Retention' },
-          ctaMap: { call: 'Call us +995 510 10 15 17', book: 'Book a consultation' },
           aeo: 'In the first 50 words, give a direct answer to the question this article addresses.',
           checklist: [
             'Primary keyword in H1 (title)',
@@ -854,12 +846,6 @@
         .filter(Boolean);
     }
 
-    function resolveCta(preset, custom) {
-      const m = briefTpl[briefLang].out.ctaMap;
-      if (preset === 'custom') return (custom || '').trim() || '—';
-      return m[preset] || m.call;
-    }
-
     function metaTitleStartsWithKw(metaTitle, kw) {
       if (!metaTitle || !kw) return true;
       const tokens = metaTitle.toLowerCase().trim().split(/\s+/).slice(0, 2).join(' ');
@@ -897,7 +883,6 @@
 
     function readForm() {
       const purposeEl = document.querySelector('input[name="cb-purpose"]:checked');
-      const ctaEl = document.querySelector('input[name="cb-cta"]:checked');
       const qaTextareas = document.querySelectorAll('#cb-qa-list textarea');
       return {
         purpose: purposeEl ? purposeEl.value : 'blog',
@@ -911,8 +896,7 @@
         ].filter(Boolean),
         wordCount: parseInt(document.getElementById('cb-wordCount').value, 10) || 1000,
         internalLinks: parseInternalLinks(document.getElementById('cb-internal').value),
-        ctaPreset: ctaEl ? ctaEl.value : 'call',
-        ctaCustom: document.getElementById('cb-ctaCustom').value.trim(),
+        cta: document.getElementById('cb-cta').value.trim(),
         title: document.getElementById('cb-title').value.trim(),
         metaTitle: document.getElementById('cb-metaTitle').value.trim(),
         metaDesc: document.getElementById('cb-metaDesc').value.trim(),
@@ -967,13 +951,6 @@
           schedulePersist();
         });
       });
-    }
-
-    function syncCtaCustomVisibility() {
-      const sel = document.querySelector('input[name="cb-cta"]:checked');
-      const ta = document.getElementById('cb-ctaCustom');
-      if (sel && sel.value === 'custom') ta.classList.remove('hidden');
-      else ta.classList.add('hidden');
     }
 
     function renderBrief() {
@@ -1065,8 +1042,10 @@
           '</ul></div>');
       }
 
-      html.push('<div class="cb-section-card"><h4>' + escHtml(H.cta) + '</h4>' +
-        '<p class="text-sm text-heading dark:text-heading-dark font-semibold">' + escHtml(resolveCta(s.ctaPreset, s.ctaCustom)) + '</p></div>');
+      if (s.cta) {
+        html.push('<div class="cb-section-card"><h4>' + escHtml(H.cta) + '</h4>' +
+          '<p class="text-sm text-heading dark:text-heading-dark font-semibold">' + escHtml(s.cta) + '</p></div>');
+      }
 
       if (s.qa.length) {
         html.push('<div class="cb-section-card"><h4>' + escHtml(H.qa) + '</h4>' +
@@ -1117,7 +1096,7 @@
         s.internalLinks.forEach(l => lines.push('- ' + l.url + ' — ' + l.anchor));
         lines.push('');
       }
-      lines.push('## ' + H.cta, resolveCta(s.ctaPreset, s.ctaCustom), '');
+      if (s.cta) lines.push('## ' + H.cta, s.cta, '');
       if (s.qa.length) {
         lines.push('## ' + H.qa);
         s.qa.forEach((q, i) => lines.push((i + 1) + '. ' + q));
@@ -1154,15 +1133,32 @@
       return lines.join('\n');
     }
 
-    function copyToClipboard(text, msg) {
-      if (!text) { showToast(briefLang === 'ka' ? 'შეიყვანეთ მთავარი ქივორდი' : 'Enter primary keyword'); return; }
-      navigator.clipboard.writeText(text)
-        .then(() => showToast(msg || briefTpl[briefLang].out.copied))
-        .catch(() => showToast('Error'));
+    function downloadText(text, filename) {
+      const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => { document.body.removeChild(a); URL.revokeObjectURL(url); }, 100);
     }
-    function exportFull() { copyToClipboard(buildBriefPlain()); }
-    function exportMarkdown() { copyToClipboard(buildBriefMarkdown()); }
-    function exportOutline() { copyToClipboard(buildBriefOutline()); }
+    function deliverBrief(text, filename) {
+      if (!text) { showToast(briefLang === 'ka' ? 'შეიყვანეთ მთავარი ქივორდი' : 'Enter primary keyword'); return; }
+      downloadText(text, filename);
+      navigator.clipboard.writeText(text).catch(() => {});
+      showToast(briefLang === 'ka' ? 'ჩამოიტვირთა + დაკოპირდა' : 'Downloaded + copied');
+    }
+    function safeFilename() {
+      const kw = (document.getElementById('cb-mainKw').value.trim() || 'brief')
+        .replace(/[\\/:*?"<>|\s]+/g, '-')
+        .replace(/^-+|-+$/g, '')
+        .slice(0, 60);
+      return kw || 'brief';
+    }
+    function exportFull() { deliverBrief(buildBriefPlain(), 'brief-' + safeFilename() + '.txt'); }
+    function exportMarkdown() { deliverBrief(buildBriefMarkdown(), 'brief-' + safeFilename() + '.md'); }
+    function exportOutline() { deliverBrief(buildBriefOutline(), 'outline-' + safeFilename() + '.txt'); }
 
     const STORAGE_KEY = 'cb_state_v1';
     function persistState() {
@@ -1185,14 +1181,13 @@
         if (s.lang && s.lang !== briefLang) briefLang = s.lang;
         const setRadio = (name, val) => { const el = document.querySelector('input[name="' + name + '"][value="' + val + '"]'); if (el) el.checked = true; };
         if (s.purpose) setRadio('cb-purpose', s.purpose);
-        if (s.ctaPreset) setRadio('cb-cta', s.ctaPreset);
+        if (s.cta) document.getElementById('cb-cta').value = s.cta;
         if (s.audience) document.getElementById('cb-audience').value = s.audience;
         if (s.stage) document.getElementById('cb-stage').value = s.stage;
         if (s.mainKw) document.getElementById('cb-mainKw').value = s.mainKw;
         (s.secKw || []).forEach((k, i) => { const el = document.getElementById('cb-secKw' + (i + 1)); if (el) el.value = k; });
         if (s.wordCount) document.getElementById('cb-wordCount').value = s.wordCount;
         if (s.internalLinksRaw !== undefined) document.getElementById('cb-internal').value = s.internalLinksRaw;
-        if (s.ctaCustom) document.getElementById('cb-ctaCustom').value = s.ctaCustom;
         if (s.title) document.getElementById('cb-title').value = s.title;
         if (s.metaTitle) document.getElementById('cb-metaTitle').value = s.metaTitle;
         if (s.metaDesc) document.getElementById('cb-metaDesc').value = s.metaDesc;
@@ -1213,7 +1208,7 @@
     function scheduleCounters() { clearTimeout(counterTimer); counterTimer = setTimeout(updateMetaCounters, 150); }
 
     function wireForm() {
-      const allInputs = document.querySelectorAll('#cb-audience, #cb-mainKw, #cb-secKw1, #cb-secKw2, #cb-secKw3, #cb-wordCount, #cb-internal, #cb-ctaCustom, #cb-title, #cb-metaTitle, #cb-metaDesc, #cb-stage');
+      const allInputs = document.querySelectorAll('#cb-audience, #cb-mainKw, #cb-secKw1, #cb-secKw2, #cb-secKw3, #cb-wordCount, #cb-internal, #cb-cta, #cb-title, #cb-metaTitle, #cb-metaDesc, #cb-stage');
       allInputs.forEach(el => {
         el.addEventListener('input', () => { scheduleRender(); schedulePersist(); });
       });
@@ -1226,7 +1221,6 @@
       document.getElementById('cb-secKw3').addEventListener('input', scheduleCounters);
 
       document.querySelectorAll('input[name="cb-purpose"]').forEach(el => el.addEventListener('change', () => { scheduleRender(); schedulePersist(); }));
-      document.querySelectorAll('input[name="cb-cta"]').forEach(el => el.addEventListener('change', () => { syncCtaCustomVisibility(); scheduleRender(); schedulePersist(); }));
     }
 
     (function boot() {
@@ -1234,7 +1228,6 @@
       const restored = restoreState();
       if (!restored) initQa();
       applyI18n(briefLang);
-      syncCtaCustomVisibility();
       updateAnchorHint();
       updateMetaCounters();
       renderBrief();
