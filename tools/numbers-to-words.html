@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="ka" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>რიცხვები სიტყვებში — ქართული რიცხვის წერითი ფორმა | 10XSEO</title>
+  <meta name="description" content="გადაიყვანეთ რიცხვი ქართულ წერით ფორმაში. იდეალურია ხელშეკრულებების, ინვოისების და ლეგალური დოკუმენტებისთვის. ერთი ლარი, ხუთასი თეთრი — უფასოდ.">
+  <link rel="canonical" href="https://10xseo.ge/tools/numbers-to-words/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="რიცხვები სიტყვებში — ქართული რიცხვის წერითი ფორმა | 10XSEO">
+  <meta property="og:description" content="გადაიყვანეთ რიცხვი ქართულ წერით ფორმაში. იდეალურია ხელშეკრულებების, ინვოისების და ლეგალური დოკუმენტებისთვის.">
+  <meta property="og:url" content="https://10xseo.ge/tools/numbers-to-words/">
+  <meta property="og:locale" content="ka_GE">
+  <meta property="og:site_name" content="10XSEO">
+
+  <!-- Schema: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "ქართული რიცხვები სიტყვებში — 10XSEO",
+    "description": "გადაიყვანეთ რიცხვი ქართულ წერით ფორმაში. იდეალურია ხელშეკრულებების, ინვოისების და ლეგალური დოკუმენტებისთვის.",
+    "url": "https://10xseo.ge/tools/numbers-to-words/",
+    "applicationCategory": "Utility",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "GEL"
+    },
+    "provider": {
+      "@type": "Organization",
+      "name": "10XSEO",
+      "url": "https://10xseo.ge"
+    }
+  }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/firago@1.0.0/FiraGO.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: { DEFAULT: '#8B5CF6', light: '#A78BFA', dark: '#7C3AED' },
+            accent: { DEFAULT: '#14B8A6', dark: '#0D9488' },
+            'ai-blue': '#3B82F6',
+            surface: { DEFAULT: '#ffffff', alt: '#f8fafc', dark: '#020710', 'dark-alt': '#0F0F0F' },
+            heading: { DEFAULT: '#0f172a', dark: '#f8fafc' },
+            body: { DEFAULT: '#475569', dark: '#94a3b8' },
+            success: '#21C743',
+          },
+          fontFamily: {
+            'heading': ['"Dachi the Lynx"', 'sans-serif'],
+            'body': ['FiraGO', 'sans-serif'],
+            'inter': ['Inter', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    @font-face {
+      font-family: 'Dachi the Lynx';
+      src: url('../fonts/DachiTheLynx.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    body { font-family: 'FiraGO', 'Inter', sans-serif; }
+    h1, h2, h3 { font-family: 'Dachi the Lynx', sans-serif; }
+    .gradient-text {
+      background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    @keyframes aiGradient {
+      0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; }
+    }
+    .ai-cta-animate {
+      background: linear-gradient(-45deg, #8B5CF6, #3B82F6, #14B8A6, #8B5CF6) !important;
+      background-size: 300% 300% !important;
+      animation: aiGradient 4s ease infinite;
+      box-shadow: 0 4px 25px rgba(139, 92, 246, 0.35);
+    }
+    .header-scrolled { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    .toast {
+      position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%) translateY(100px);
+      background: #21C743; color: white; padding: 12px 24px; border-radius: 12px;
+      font-weight: 600; font-size: 14px; z-index: 100; transition: transform 0.3s ease;
+      box-shadow: 0 8px 30px rgba(33, 199, 67, 0.3);
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+    #mobile-menu {
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+      opacity: 0;
+    }
+    #mobile-menu.menu-open { transform: translateX(0); opacity: 1; }
+    #mobile-menu .menu-link { opacity: 0; transform: translateX(30px); transition: opacity 0.3s ease, transform 0.3s ease; }
+    #mobile-menu.menu-open .menu-link { opacity: 1; transform: translateX(0); }
+    .hamburger-line { transition: transform 0.3s ease, opacity 0.2s ease; }
+    .menu-active .hamburger-line:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .menu-active .hamburger-line:nth-child(2) { opacity: 0; }
+    .menu-active .hamburger-line:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+  </style>
+</head>
+<body class="font-body bg-surface-dark text-body-dark transition-colors duration-300">
+
+  <!-- ========== HEADER ========== -->
+  <header id="main-header" class="fixed top-0 left-0 right-0 z-50 h-16 lg:h-[72px] bg-white/80 dark:bg-surface-dark/80 header-scrolled border-b border-gray-100 dark:border-gray-800 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-full flex items-center justify-between">
+      <a href="../index.html" class="flex items-center shrink-0">
+        <img src="../images/logo.png" alt="10XSEO" class="h-12 lg:h-14 w-auto">
+      </a>
+      <nav class="hidden lg:flex items-center gap-1">
+        <a href="../about-us.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">ჩვენს შესახებ</a>
+        <a href="../seo-tools.html" class="px-3 py-2 text-sm font-medium text-primary dark:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">ინსტრუმენტები</a>
+        <a href="../portfolio.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">პორტფოლიო</a>
+        <a href="../case-studies.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">შედეგები</a>
+        <a href="../blog.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">ბლოგი</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <a href="#" onclick="openCalendly();return false;" class="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 ai-cta-animate text-white text-sm font-semibold rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-200">
+          დაჯავშნე კონსულტაცია
+        </a>
+        <button id="mobile-menu-btn" class="lg:hidden w-9 h-9 rounded-lg flex flex-col items-center justify-center gap-[6px] hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-heading dark:text-heading-dark">
+          <span class="hamburger-line block w-5 h-[2px] bg-current rounded-full"></span>
+          <span class="hamburger-line block w-5 h-[2px] bg-current rounded-full"></span>
+          <span class="hamburger-line block w-5 h-[2px] bg-current rounded-full"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Overlay -->
+  <div id="mobile-menu" class="lg:hidden fixed inset-0 top-16 bg-surface-dark z-[60] overflow-y-auto pointer-events-none">
+    <nav class="max-w-md mx-auto px-6 py-8 flex flex-col gap-2">
+      <a href="../index.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50">მთავარი</a>
+      <a href="../about-us.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50">ჩვენს შესახებ</a>
+      <a href="../seo-tools.html" class="menu-link block px-4 py-3 text-lg font-medium text-primary-light rounded-xl hover:bg-gray-800/50">ინსტრუმენტები</a>
+      <a href="../portfolio.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50">პორტფოლიო</a>
+      <a href="../case-studies.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50">შედეგები</a>
+      <a href="../blog.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50">ბლოგი</a>
+      <hr class="menu-link my-3 border-gray-800">
+      <a href="#" onclick="openCalendly();return false;" class="menu-link block text-center px-6 py-4 ai-cta-animate text-white text-lg font-bold rounded-xl mt-2">
+        დაჯავშნე კონსულტაცია
+      </a>
+    </nav>
+  </div>
+
+  <!-- ========== HERO ========== -->
+  <section class="pt-24 lg:pt-28 pb-8 bg-surface dark:bg-surface-dark">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <h1 class="font-heading text-[28px] sm:text-[36px] lg:text-[44px] font-bold text-heading dark:text-heading-dark leading-[1.2] mb-4">რიცხვები სიტყვებში</h1>
+      <p class="text-body dark:text-body-dark max-w-2xl mx-auto mb-2">გადაიყვანეთ რიცხვი ქართულ წერით ფორმაში — ხელშეკრულებების, ინვოისებისა და ლეგალური დოკუმენტებისთვის.</p>
+      <a href="../seo-tools.html" class="text-sm text-primary dark:text-primary-light hover:underline">&larr; ყველა ინსტრუმენტი</a>
+    </div>
+  </section>
+
+  <!-- ========== TOOL ========== -->
+  <section class="pb-16 lg:pb-20 bg-surface dark:bg-surface-dark">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="bg-surface-alt dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 p-6 sm:p-8">
+
+        <!-- Number Input -->
+        <div class="mb-5">
+          <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2">რიცხვი</label>
+          <input type="text" inputmode="decimal" id="ntw-number" placeholder="მაგ: 1234.56" value="1234"
+            class="w-full px-4 py-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark text-2xl font-inter font-semibold placeholder-gray-400 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all">
+          <p class="text-xs text-body dark:text-body-dark mt-2">მხარდაჭერა: 0 — 999,999,999,999. წილადი ნაწილი: მძიმე ან წერტილი.</p>
+        </div>
+
+        <!-- Options -->
+        <div class="grid sm:grid-cols-3 gap-3 mb-6">
+          <label class="flex items-start gap-2.5 p-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark cursor-pointer hover:border-primary/50 transition-colors">
+            <input type="checkbox" id="ntw-ordinal" class="mt-1 w-4 h-4 accent-primary cursor-pointer">
+            <div>
+              <div class="text-sm font-semibold text-heading dark:text-heading-dark">რიგობითი</div>
+              <div class="text-xs text-body dark:text-body-dark">პირველი, მეორე, მესამე...</div>
+            </div>
+          </label>
+          <label class="flex items-start gap-2.5 p-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark cursor-pointer hover:border-primary/50 transition-colors">
+            <input type="checkbox" id="ntw-currency" class="mt-1 w-4 h-4 accent-primary cursor-pointer" checked>
+            <div>
+              <div class="text-sm font-semibold text-heading dark:text-heading-dark">ვალუტით (₾)</div>
+              <div class="text-xs text-body dark:text-body-dark">ლარი / თეთრი</div>
+            </div>
+          </label>
+          <label class="flex items-start gap-2.5 p-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark cursor-pointer hover:border-primary/50 transition-colors">
+            <input type="checkbox" id="ntw-legal" class="mt-1 w-4 h-4 accent-primary cursor-pointer">
+            <div>
+              <div class="text-sm font-semibold text-heading dark:text-heading-dark">ლეგალური ფორმა</div>
+              <div class="text-xs text-body dark:text-body-dark">ხუთასი (500) ლარი</div>
+            </div>
+          </label>
+        </div>
+
+        <!-- Output -->
+        <div class="mb-4">
+          <div class="flex items-center justify-between mb-2">
+            <label class="block text-sm font-semibold text-heading dark:text-heading-dark">შედეგი</label>
+            <button onclick="ntwCopy()" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-primary/10 text-primary dark:text-primary-light hover:bg-primary/20 transition-colors">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+              დაკოპირება
+            </button>
+          </div>
+          <div id="ntw-output" class="px-4 py-4 rounded-xl border border-primary/30 bg-primary/5 dark:bg-primary/10 text-heading dark:text-heading-dark text-lg leading-relaxed font-medium min-h-[60px] break-words">
+            ერთი ათას ორას ოცდათოთხმეტი
+          </div>
+        </div>
+
+        <!-- Quick examples -->
+        <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+          <p class="text-xs font-semibold uppercase tracking-wider text-body dark:text-body-dark mb-3">სწრაფი მაგალითები</p>
+          <div class="flex flex-wrap gap-2">
+            <button onclick="ntwSet('100')" class="px-3 py-1.5 text-xs font-inter font-semibold rounded-lg border border-gray-200 dark:border-gray-700 hover:border-primary text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light transition-colors">100</button>
+            <button onclick="ntwSet('500.50')" class="px-3 py-1.5 text-xs font-inter font-semibold rounded-lg border border-gray-200 dark:border-gray-700 hover:border-primary text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light transition-colors">500.50</button>
+            <button onclick="ntwSet('1000')" class="px-3 py-1.5 text-xs font-inter font-semibold rounded-lg border border-gray-200 dark:border-gray-700 hover:border-primary text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light transition-colors">1,000</button>
+            <button onclick="ntwSet('2500')" class="px-3 py-1.5 text-xs font-inter font-semibold rounded-lg border border-gray-200 dark:border-gray-700 hover:border-primary text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light transition-colors">2,500</button>
+            <button onclick="ntwSet('12345')" class="px-3 py-1.5 text-xs font-inter font-semibold rounded-lg border border-gray-200 dark:border-gray-700 hover:border-primary text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light transition-colors">12,345</button>
+            <button onclick="ntwSet('1000000')" class="px-3 py-1.5 text-xs font-inter font-semibold rounded-lg border border-gray-200 dark:border-gray-700 hover:border-primary text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light transition-colors">1,000,000</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Info / About -->
+      <div class="mt-6 grid sm:grid-cols-2 gap-4">
+        <div class="p-5 rounded-xl bg-white dark:bg-surface-dark-alt border border-gray-100 dark:border-gray-800">
+          <h3 class="font-heading text-base font-bold text-heading dark:text-heading-dark mb-2">სად გამოიყენოთ?</h3>
+          <ul class="text-sm text-body dark:text-body-dark space-y-1.5 list-disc pl-5">
+            <li>ხელშეკრულებებში თანხის ჩაწერა</li>
+            <li>ინვოისებზე / ფაქტურებზე</li>
+            <li>ჩეკები, საბანკო დოკუმენტები</li>
+            <li>ნოტარიული აქტები</li>
+          </ul>
+        </div>
+        <div class="p-5 rounded-xl bg-white dark:bg-surface-dark-alt border border-gray-100 dark:border-gray-800">
+          <h3 class="font-heading text-base font-bold text-heading dark:text-heading-dark mb-2">ქართული რიცხვების შესახებ</h3>
+          <p class="text-sm text-body dark:text-body-dark">ქართული იყენებს <strong>20-სისტემიან</strong> (ვიგეზიმალურ) წყობას 20-დან 99-მდე: 40 = "ორმოცი" (ორი × ოცი), 60 = "სამოცი" (სამი × ოცი). ეს უნიკალური სისტემაა მსოფლიოში.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== OTHER TOOLS ========== -->
+  <section class="py-12 bg-surface-alt dark:bg-surface-dark-alt">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <h2 class="font-heading text-xl font-bold text-heading dark:text-heading-dark mb-6 text-center">სხვა ინსტრუმენტები</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+        <a href="pixel-width-checker.html" class="block p-3 rounded-xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-gray-800 hover:border-primary/50 transition-colors text-center">
+          <span class="text-sm font-semibold text-heading dark:text-heading-dark">Pixel Width Checker</span>
+        </a>
+        <a href="keyword-density.html" class="block p-3 rounded-xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-gray-800 hover:border-primary/50 transition-colors text-center">
+          <span class="text-sm font-semibold text-heading dark:text-heading-dark">Keyword Density</span>
+        </a>
+        <a href="og-preview.html" class="block p-3 rounded-xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-gray-800 hover:border-primary/50 transition-colors text-center">
+          <span class="text-sm font-semibold text-heading dark:text-heading-dark">OG Preview</span>
+        </a>
+        <a href="readability-score.html" class="block p-3 rounded-xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-gray-800 hover:border-primary/50 transition-colors text-center">
+          <span class="text-sm font-semibold text-heading dark:text-heading-dark">Readability Score</span>
+        </a>
+        <a href="georgian-font-tester.html" class="block p-3 rounded-xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-gray-800 hover:border-primary/50 transition-colors text-center">
+          <span class="text-sm font-semibold text-heading dark:text-heading-dark">ფონტის ტესტერი</span>
+        </a>
+        <a href="timezone-converter.html" class="block p-3 rounded-xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-gray-800 hover:border-primary/50 transition-colors text-center">
+          <span class="text-sm font-semibold text-heading dark:text-heading-dark">Timezone Converter</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA BANNER ========== -->
+  <section class="py-16 lg:py-20 bg-surface-alt dark:bg-surface-dark-alt">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+      <div class="bg-gradient-to-br from-primary/10 via-accent/5 to-primary/10 dark:from-primary/20 dark:via-accent/10 dark:to-primary/20 rounded-3xl p-8 sm:p-12 border border-primary/20 dark:border-primary/30">
+        <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-heading dark:text-heading-dark leading-[1.3] mb-4">
+          გჭირდებათ პროფესიონალური SEO?
+        </h2>
+        <p class="text-body dark:text-body-dark mb-8 max-w-lg mx-auto">
+          ჩვენი ექსპერტები უფასოდ გაგიანალიზებენ საიტს და მოგცემენ კონკრეტულ რეკომენდაციებს.
+        </p>
+        <a href="#" onclick="openCalendly();return false;" class="inline-flex items-center gap-2 px-8 py-4 ai-cta-animate text-white text-lg font-bold rounded-2xl hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 transition-all duration-200">
+          დაჯავშნე კონსულტაცია
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="bg-heading dark:bg-surface-dark-alt text-gray-400 py-12 lg:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
+        <div class="col-span-2 lg:col-span-1">
+          <a href="../index.html" class="flex items-center gap-2 mb-4">
+            <img src="../images/logo.png" alt="10XSEO" class="h-12 w-auto">
+          </a>
+          <p class="text-sm leading-relaxed mb-4">საქართველოს #1 SEO სააგენტო. რეალური შედეგები, ყოველკვირეული ანგარიშები, სწრაფი მომსახურება.</p>
+        </div>
+        <div>
+          <p class="font-heading text-white font-semibold mb-4">სერვისები</p>
+          <ul class="space-y-2.5 text-sm">
+            <li><a href="../seo-management.html" class="hover:text-white transition-colors">SEO მენეჯმენტი</a></li>
+            <li><a href="../seo-consultation.html" class="hover:text-white transition-colors">SEO კონსულტაცია</a></li>
+            <li><a href="../seo-strategy.html" class="hover:text-white transition-colors">SEO სტრატეგია</a></li>
+            <li><a href="../seo-audit.html" class="hover:text-white transition-colors">უფასო SEO აუდიტი</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-heading text-white font-semibold mb-4">კომპანია</p>
+          <ul class="space-y-2.5 text-sm">
+            <li><a href="../portfolio.html" class="hover:text-white transition-colors">პორტფოლიო</a></li>
+            <li><a href="../blog.html" class="hover:text-white transition-colors">ბლოგი</a></li>
+            <li><a href="../ra-aris-seo.html" class="hover:text-white transition-colors">რა არის SEO</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-heading text-white font-semibold mb-4">კონტაქტი</p>
+          <ul class="space-y-2.5 text-sm">
+            <li>+995 510 10 15 17</li>
+            <li>sales@10xseo.ge</li>
+            <li>თბილისი, საქართველო</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
+        <p>&copy; 2026 10XSEO. ყველა უფლება დაცულია.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast">დაკოპირდა!</div>
+
+  <!-- ========== JAVASCRIPT ========== -->
+  <script>
+    if (localStorage.getItem('theme') !== 'light') { document.documentElement.classList.add('dark'); }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg || 'დაკოპირდა!';
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2000);
+    }
+
+    // ========================================
+    // GEORGIAN NUMBERS TO WORDS
+    // ========================================
+    // Cardinal lookup tables
+    const ONES = ['', 'ერთი', 'ორი', 'სამი', 'ოთხი', 'ხუთი', 'ექვსი', 'შვიდი', 'რვა', 'ცხრა'];
+    const TEENS = ['ათი', 'თერთმეტი', 'თორმეტი', 'ცამეტი', 'თოთხმეტი', 'თხუთმეტი', 'თექვსმეტი', 'ჩვიდმეტი', 'თვრამეტი', 'ცხრამეტი'];
+    // Vigesimal bases (multiples of 20): 20, 40, 60, 80
+    const VIGESIMAL = { 20: 'ოცი', 40: 'ორმოცი', 60: 'სამოცი', 80: 'ოთხმოცი' };
+    const VIGESIMAL_PREFIX = { 20: 'ოცდა', 40: 'ორმოცდა', 60: 'სამოცდა', 80: 'ოთხმოცდა' };
+    const HUNDREDS = ['', 'ას', 'ორას', 'სამას', 'ოთხას', 'ხუთას', 'ექვსას', 'შვიდას', 'რვაას', 'ცხრაას'];
+    const HUNDREDS_FINAL = ['', 'ასი', 'ორასი', 'სამასი', 'ოთხასი', 'ხუთასი', 'ექვსასი', 'შვიდასი', 'რვაასი', 'ცხრაასი'];
+
+    // Convert 0-99 to Georgian
+    function under100(n, isFinal = true) {
+      if (n === 0) return '';
+      if (n < 10) return ONES[n];
+      if (n < 20) return TEENS[n - 10];
+      const base = Math.floor(n / 20) * 20;
+      const rem = n - base;
+      if (rem === 0) {
+        return isFinal ? VIGESIMAL[base] : VIGESIMAL[base].replace(/ი$/, ''); // strip final ი in compound
+      }
+      // 21-39, 41-59, etc.
+      return VIGESIMAL_PREFIX[base] + (rem < 10 ? ONES[rem] : TEENS[rem - 10]);
+    }
+
+    // Convert 0-999 to Georgian
+    function under1000(n, isFinal = true) {
+      if (n === 0) return '';
+      if (n < 100) return under100(n, isFinal);
+      const h = Math.floor(n / 100);
+      const rem = n % 100;
+      if (rem === 0) {
+        return isFinal ? HUNDREDS_FINAL[h] : HUNDREDS[h];
+      }
+      // hundreds (compound) + space + rest
+      return HUNDREDS[h] + ' ' + under100(rem, isFinal);
+    }
+
+    // Convert any non-negative integer up to 999,999,999,999
+    function intToGeorgian(n) {
+      if (n === 0) return 'ნული';
+      const parts = [];
+      const billions = Math.floor(n / 1000000000);
+      const millions = Math.floor((n % 1000000000) / 1000000);
+      const thousands = Math.floor((n % 1000000) / 1000);
+      const ones = n % 1000;
+
+      if (billions > 0) {
+        if (billions === 1) {
+          parts.push(ones + thousands + millions === 0 ? 'მილიარდი' : 'მილიარდ');
+        } else {
+          parts.push(under1000(billions, true) + ' ' + (ones + thousands + millions === 0 ? 'მილიარდი' : 'მილიარდ'));
+        }
+      }
+      if (millions > 0) {
+        const rest = ones + thousands;
+        if (millions === 1) {
+          parts.push(rest === 0 ? 'მილიონი' : 'მილიონ');
+        } else {
+          parts.push(under1000(millions, true) + ' ' + (rest === 0 ? 'მილიონი' : 'მილიონ'));
+        }
+      }
+      if (thousands > 0) {
+        if (thousands === 1) {
+          parts.push(ones === 0 ? 'ათასი' : 'ათას');
+        } else {
+          parts.push(under1000(thousands, true) + ' ' + (ones === 0 ? 'ათასი' : 'ათას'));
+        }
+      }
+      if (ones > 0) {
+        parts.push(under1000(ones, true));
+      }
+      return parts.join(' ');
+    }
+
+    // Ordinal: 1-100 special-cased, beyond uses "მე-...-ე" pattern
+    const ORDINALS_SPECIAL = {
+      1: 'პირველი', 2: 'მეორე', 3: 'მესამე', 4: 'მეოთხე', 5: 'მეხუთე',
+      6: 'მეექვსე', 7: 'მეშვიდე', 8: 'მერვე', 9: 'მეცხრე', 10: 'მეათე',
+      11: 'მეთერთმეტე', 12: 'მეთორმეტე', 13: 'მეცამეტე', 14: 'მეთოთხმეტე', 15: 'მეთხუთმეტე',
+      16: 'მეთექვსმეტე', 17: 'მეჩვიდმეტე', 18: 'მეთვრამეტე', 19: 'მეცხრამეტე', 20: 'მეოცე',
+      30: 'მეოცდამეათე', 40: 'მეორმოცე', 50: 'მეორმოცდამეათე', 60: 'მესამოცე',
+      70: 'მესამოცდამეათე', 80: 'მეოთხმოცე', 90: 'მეოთხმოცდამეათე', 100: 'მეასე',
+      1000: 'მეათასე', 1000000: 'მემილიონე'
+    };
+
+    function intToGeorgianOrdinal(n) {
+      if (n === 0) return 'ნულოვანი';
+      if (ORDINALS_SPECIAL[n]) return ORDINALS_SPECIAL[n];
+      // For 21-99: take vigesimal prefix + ordinal of remainder
+      // e.g., 21 = ოცდამეერთე, 25 = ოცდამეხუთე, 35 = ოცდამეთხუთმეტე, 47 = ორმოცდამეშვიდე
+      if (n < 100) {
+        const base = Math.floor(n / 20) * 20;
+        const rem = n - base;
+        if (rem === 0) return ORDINALS_SPECIAL[base] || ('მე' + VIGESIMAL[base] + 'ე');
+        // ordinal of rem (1-19)
+        const remOrdinal = ORDINALS_SPECIAL[rem]; // 1-19 always in special table
+        if (remOrdinal) return VIGESIMAL_PREFIX[base] + remOrdinal;
+      }
+      // For 100+: append "-ე" pattern: take cardinal, drop final "ი", add "მე-...-ე"
+      // Simplification: prefix entire cardinal with "მე" and replace final "ი" with "ე"
+      const card = intToGeorgian(n);
+      // Replace final "ი" → "ე", or "ა" → "ე" (for რვა, ცხრა)
+      let ord = card.replace(/ი$/, 'ე').replace(/ა$/, 'ე');
+      return 'მე' + ord;
+    }
+
+    // ========================================
+    // UI WIRING
+    // ========================================
+    function ntwUpdate() {
+      const raw = document.getElementById('ntw-number').value.replace(/,/g, '.').replace(/\s/g, '').trim();
+      const isOrdinal = document.getElementById('ntw-ordinal').checked;
+      const isCurrency = document.getElementById('ntw-currency').checked;
+      const isLegal = document.getElementById('ntw-legal').checked;
+      const out = document.getElementById('ntw-output');
+
+      if (!raw) { out.textContent = '—'; return; }
+
+      // Parse number
+      let isNegative = false;
+      let cleaned = raw;
+      if (cleaned.startsWith('-')) { isNegative = true; cleaned = cleaned.slice(1); }
+      // Validate
+      if (!/^\d+(\.\d+)?$/.test(cleaned)) { out.textContent = 'არასწორი ფორმატი — შეიყვანეთ რიცხვი'; return; }
+      const num = parseFloat(cleaned);
+      if (num > 999999999999) { out.textContent = 'რიცხვი ძალიან დიდია (მაქს. 999,999,999,999)'; return; }
+
+      const intPart = Math.floor(num);
+      const decPart = Math.round((num - intPart) * 100); // tetris/cents
+
+      let result = '';
+
+      if (isOrdinal && decPart === 0) {
+        result = intToGeorgianOrdinal(intPart);
+      } else if (isCurrency) {
+        const lariWord = intToGeorgian(intPart) + ' ლარი';
+        if (decPart > 0) {
+          result = lariWord + ' და ' + intToGeorgian(decPart) + ' თეთრი';
+        } else {
+          result = lariWord;
+        }
+      } else {
+        result = intToGeorgian(intPart);
+        if (decPart > 0) {
+          result += ' მთელი ' + intToGeorgian(decPart) + ' მეასედი';
+        }
+      }
+
+      // Capitalize first letter (Georgian doesn't have uppercase but the output looks better starting clean)
+      if (isLegal) {
+        const formatNum = isCurrency ? num.toFixed(2) : intPart.toLocaleString('en-US');
+        result = result.charAt(0).toUpperCase() + result.slice(1) + ' (' + formatNum + ')';
+      }
+      if (isNegative) result = 'მინუს ' + result;
+
+      out.textContent = result;
+    }
+
+    function ntwSet(val) {
+      document.getElementById('ntw-number').value = val;
+      ntwUpdate();
+    }
+
+    function ntwCopy() {
+      const text = document.getElementById('ntw-output').textContent;
+      navigator.clipboard.writeText(text).then(() => showToast('დაკოპირდა!')).catch(() => {
+        const ta = document.createElement('textarea');
+        ta.value = text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+        showToast('დაკოპირდა!');
+      });
+    }
+
+    // Wire up listeners
+    ['ntw-number', 'ntw-ordinal', 'ntw-currency', 'ntw-legal'].forEach(id => {
+      const el = document.getElementById(id);
+      el.addEventListener('input', ntwUpdate);
+      el.addEventListener('change', ntwUpdate);
+    });
+    ntwUpdate();
+  </script>
+
+  <!-- Mobile menu -->
+  <script>
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (menuBtn && mobileMenu) {
+      let menuOpen = false;
+      menuBtn.addEventListener('click', () => {
+        menuOpen = !menuOpen;
+        if (menuOpen) {
+          mobileMenu.classList.add('menu-open');
+          mobileMenu.style.pointerEvents = 'auto';
+          menuBtn.classList.add('menu-active');
+          document.body.classList.add('overflow-hidden');
+        } else {
+          mobileMenu.classList.remove('menu-open');
+          mobileMenu.style.pointerEvents = 'none';
+          menuBtn.classList.remove('menu-active');
+          document.body.classList.remove('overflow-hidden');
+        }
+      });
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          menuOpen = false;
+          mobileMenu.classList.remove('menu-open');
+          mobileMenu.style.pointerEvents = 'none';
+          menuBtn.classList.remove('menu-active');
+          document.body.classList.remove('overflow-hidden');
+        });
+      });
+    }
+  </script>
+
+  <!-- Calendly -->
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <script>function openCalendly(){Calendly.initPopupWidget({url:'https://calendly.com/10xseo-sales/30-seo-clone?background_color=0f172a&text_color=f8fafc&primary_color=8b5cf6'});return false;}</script>
+</body>
+</html>
