@@ -1,4 +1,43 @@
-# Healthcare Landing Page Redesign — CHANGES
+# Industries Landing Pages — CHANGES
+
+## 2026-04-26 — Construction A/B Variants (V1 + V6)
+
+Two A/B-test variants of `construction.html` shipped, targeting **large-project Georgian developers** (Chronometri / Coordinate / Central MG / Next Property tier). Both files are `noindex, nofollow` until A/B winner picked. Canonical points to original `construction.html` for both. See full strategy at `~/.claude/plans/users-imac-desktop-10xseo-main-docs-seo-abstract-seal.md`.
+
+### Files added
+| File | Variant | Audience | Lines |
+|---|---|---|---|
+| `construction-clarity.html` | V6 Clarity | High-intent referral / branded search buyers | 385 |
+| `construction-premium-multi-project.html` | V1 Premium Multi-Project | Premium developers (Chronometri-tier) with foreign-investor audiences | 551 |
+
+### V6 Clarity — design intent
+- **Hypothesis:** sophisticated buyers from referrals don't need persuasion — they need confidence signals. Brutal subtraction filters tire-kickers, only serious developers convert.
+- **Visual:** monochrome, `#020710` base, white type, single purple `#8B5CF6` accent reserved for the CTA only. Inter font (skip FiraGO Heavy on display sizes). No glass cards, no gradients.
+- **Sections (7):** Single-sentence hero promise → single anonymized case study (resort developer +68%) → 4 services as plain icons → 4-step process as numbered list → all-5-tiers pricing table → single FAQ ("რატომ ჯერ კიდევ არ რანქავ?") → single CTA.
+- **CTA strategy:** single CTA, repeated only twice (top + bottom). "დაგვიკავშირდი." Calendly popup. No WhatsApp above fold (footer only). No lead-magnet form. No exit-intent.
+- **What's cut from current 13-section page:** Portal Problem comparison, 8-card service grid, 7-tab niche grid, transparency band, AI/GEO deep dive, 15-Q FAQ, 47-point PDF lead magnet, sticky mobile CTA, animated dashboard.
+
+### V1 Premium Multi-Project — design intent
+- **Hypothesis:** premium developers with 2-10 active projects respond to brand-book aesthetic that signals premium positioning + multi-language investor capability. CTA = single Calendly, no quizzes/calculators (these buyers want a real conversation).
+- **Visual:** brand-book "მზად ხარ იყო პირველი?" palette — Yellow `#FFC000` accents on Navy `#0F172A` base, gold pyramid mark in hero corner, Dachi the Lynx font for headings, off-white "cream" section break for the SEO architecture diagram (visual contrast against all-dark monotony).
+- **Sections (10):** Hero with 4-language pill dashboard mock → trust bar with hex logos + investor stats (15+ years, 600+ projects, 1000+ investors, 95% retention — anonymized) → 5 service cards (Project SEO / Brand SEO / Off-Plan / Multi-language Investor / Schema) → SEO Architecture SVG diagram (cream section) → 3 sub-niche tabs (Residential / Mixed-Use / Commercial) → 4-phase process timeline → investor-trust signal stats → testimonial (anonymized "Premium Resort Developer") → 10-Q FAQ → final CTA.
+- **NEW components vs. current page:** (a) Project Portfolio Architecture SVG diagram showing brand domain + project nodes + neighborhood hubs + 4-language layer; (b) 4-language pill system (KA/EN/RU/TR) shown in hero dashboard mock and ready for hreflang wiring; (c) cream section break for diagram (#F5F1E8); (d) gold-accent FAQ component (replaces v29 purple variant).
+- **Languages declared:** KA primary, EN/RU/TR placeholders in toggle (translation pending — Phase 1 dev work doesn't block on translation).
+
+### Reference clients — anonymization
+Per user decision (2026-04-26), no client is named in prose. The hex client logo bar reuses the existing public logo images (Chronometri, Coordinate, Horizon, myhome) — these are public marks already on the live site. Case study testimonial is anonymized to "Premium Resort Developer (Batumi)" / "Director" framing instead of the original "Horizon Development / გიორგი ხარაიშვილი" attribution.
+
+### Schema preserved across variants
+Both variants ship full schema: Service, Organization, BreadcrumbList. V1 also ships FAQPage schema (10 Qs, KA). V6 omits FAQPage (only 1 question — not worth schema).
+
+### Open items not yet resolved (carry to next sprint)
+- RU + TR translation copy for V1 (placeholder UI in place)
+- A/B traffic split mechanism (Cloudflare or URL param)
+- Promote winner to canonical `construction.html` once test concludes
+
+---
+
+# Healthcare Landing Page Redesign — CHANGES (prior)
 
 ## What changed and why
 
