@@ -5,6 +5,8 @@
 !.gitignore
 !.github/
 !.github/**
+!scripts/
+!scripts/**
 
 # Design mockup files
 !index.html
