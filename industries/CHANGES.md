@@ -1,5 +1,41 @@
 # Industries Landing Pages — CHANGES
 
+## 2026-04-26 — RealEstate Full-Stack Variants (3 new pages, exact site design)
+
+Per user feedback: scrap the experimental design variations, build new variants that strictly match the existing site design system (purple/teal, glass-cards, Dachi the Lynx, FiraGO, ai-cta-animate). Focus = real estate developers seeing the FULL PICTURE — bundled SEO + AI + CRO + UI/UX + Copywriting offering.
+
+### Files added (3)
+| File | Variant | Centerpiece pattern (reused from index.html / service pages) | Lines |
+|---|---|---|---|
+| `construction-realestate-pyramid.html` | RealEstate Pyramid | Floating 5-tier pyramid (homepage V13 services pattern, extended from 4 → 5 tiers) | 492 |
+| `construction-realestate-honeycomb.html` | Service Honeycomb | 4-3-3 honeycomb hex grid for 10 services (homepage clients honeycomb pattern adapted for services) | 424 |
+| `construction-realestate-stack.html` | Stack + Calculator | Hero with split layout (text + ROI calculator), services in homepage results-grid 3x2 with bar charts | 466 |
+
+### What's the same in all 3
+- Header, mobile menu, breadcrumb, footer, sticky-cta — copied from construction.html
+- Color palette: primary `#8B5CF6`, accent `#14B8A6`, ai-blue `#3B82F6` — exact site design
+- Fonts: Dachi the Lynx (h1-h3) + FiraGO body
+- glass-card, ai-cta-animate, gradient-text, hex-cell — all reused
+- Stock ticker pattern from homepage
+- v29 FAQ accordion
+- All anonymized references in prose
+
+### What differs (per variant)
+- **Pyramid**: hero with pyramid-top.png (homepage hero) + 5-tier floating pyramid showing service hierarchy (SEO → AI → CRO → UI/UX → Copywriting). User loved homepage style — this maximally reuses it.
+- **Honeycomb**: services as 10 hex cells in 4-3-3 layout. Visual riff on homepage clients honeycomb. Stock ticker carries client growth %.
+- **Stack**: split hero (left: text + dual CTA, right: live ROI calculator). Services in 6-card 3x2 grid with bar charts (homepage results-grid pattern). Recommended bundle auto-updates with calculator inputs.
+
+### Bundle pricing (in all 3)
+- GROWTH 15,000 GEL/mo (1-3 projects)
+- SCALE 25,000 GEL/mo (3-7 projects, featured)
+- DOMINATE 45,000+ GEL/mo (7+ projects)
+- Anchored against ~22,200 GEL/mo for 5-7 separate vendors → 32% bundle savings
+
+### Earlier obsolete variants (all still in repo, not removed)
+The previous V1-V6 + Mix-A/B/C + SUPER variants used different palettes (yellow/navy brand-book, blueprint blue, monochrome, etc.) — user feedback rejected those. New 3 variants above replace them as the active candidates. Old files can be deleted in a future cleanup commit.
+
+---
+
 ## 2026-04-26 — Construction A/B Variants (V2-V5 + Mix-A/B/C + SUPER full-stack)
 
 Eight more A/B-test variants of `construction.html` shipped on top of V1+V6. Total 10 variants now live for testing. All `noindex,nofollow` until A/B winner picked. Canonical → `construction.html`. Anonymized references throughout.
