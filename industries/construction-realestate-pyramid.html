@@ -37,12 +37,12 @@
   ]}
   </script>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"HowTo","name":"როგორ ვმუშაობთ — Real Estate Growth Stack 5-ეტაპიანი პროცესი","description":"5-ეტაპიანი workflow დეველოპერული კომპანიების SEO + AI + CRO + Ads + Copywriting გადაწყვეტისთვის.","totalTime":"P6M","step":[
-    {"@type":"HowToStep","position":1,"name":"Discovery & Audit","text":"ტექნიკური აუდიტი, კონკურენტის ანალიზი (5+ კონკურენტი), keyword research (300-500 ფრაზა), GSC/GA4 setup ან audit. ვადა: კვირა 1-2."},
-    {"@type":"HowToStep","position":2,"name":"Strategy & Architecture","text":"საიტის სტრუქტურა (brand → projects → locations), მრავალენოვანი layer-ის გეგმა, content roadmap, on-page priority list. ვადა: კვირა 3-4."},
-    {"@type":"HowToStep","position":3,"name":"Foundation Build","text":"On-page optimization, schema markup, Core Web Vitals fixing, content hub-ების launch. ვადა: თვე 2-3."},
-    {"@type":"HowToStep","position":4,"name":"Authority & Content","text":"ქართული + ENG + RU კონტენტი (8-12 ცალი/თვე), backlink outreach, AI citation optimization. ვადა: თვე 3-6."},
-    {"@type":"HowToStep","position":5,"name":"Scale & Optimize","text":"A/B test, CRO, ანალიტიკის dashboard, ახალი პროექტების ინტეგრაცია stack-ში. ვადა: თვე 6+."}
+  {"@context":"https://schema.org","@type":"HowTo","name":"10xSEO: მომხმარებლის გზა — 5 ეტაპი","description":"მომხმარებლის გზა ცნობადობიდან გრძელვადიან პარტნიორობამდე — როგორ ხდება დეველოპერული კომპანიის გადაწყვეტილება 10xSEO-სთან თანამშრომლობაზე.","step":[
+    {"@type":"HowToStep","position":1,"name":"ცნობადობა","text":"კლიენტი პირველად აღმოაჩენს ბრენდს — სოც.მედია, რეკლამა, ვებგვერდის სტუმრობა, წყაროების იდენტიფიცირება, ინტერესის გაჩენა."},
+    {"@type":"HowToStep","position":2,"name":"ინტერესი","text":"სიღრმისეული შესწავლა — კონტენტის შერჩევა, ჩართულობა, სიახლეების გამოწერა, ინფორმაციის მიწოდება."},
+    {"@type":"HowToStep","position":3,"name":"განხილვა","text":"აქტიური შეფასება — უფასო SEO აუდიტის მოთხოვნა, ვებინარები, ბლოგები, საჭიროების განსაზღვრა."},
+    {"@type":"HowToStep","position":4,"name":"გადაწყვეტილება","text":"საბოლოო არჩევანი — კონკურენტების შედარება, დარწმუნება, პაკეტების შედარება, წარმატებების დემონსტრირება."},
+    {"@type":"HowToStep","position":5,"name":"მოქმედება","text":"პარტნიორობა — სერვისის შეკვეთა, პროექტის დაწყება, კმაყოფილება, თანამშრომლობის შეფასება."}
   ]}
   </script>
   <script>
@@ -152,6 +152,55 @@
     .proc-num-4 { background: linear-gradient(135deg, rgba(59,130,246,0.55), rgba(59,130,246,0.2)); border: 1px solid rgba(96,165,250,0.5); box-shadow: 0 4px 20px rgba(59,130,246,0.25); }
     .proc-num-5 { background: linear-gradient(135deg, rgba(34,197,94,0.55), rgba(34,197,94,0.2)); border: 1px solid rgba(74,222,128,0.5); box-shadow: 0 4px 20px rgba(34,197,94,0.25); }
     .proc-pill { display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 999px; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.1); }
+    /* Mobile readability — Stack tier widths */
+    @media (max-width: 640px) {
+      .v13-tier-1 { width: 55% !important; }
+      .v13-tier-2 { width: 70% !important; }
+      .v13-tier-3 { width: 82% !important; }
+      .v13-tier-4 { width: 92% !important; }
+      .v13-tier-5 { width: 100% !important; }
+    }
+    /* Process Timeline hover tooltip (desktop) */
+    @media (min-width: 1024px) {
+      .proc-step[data-example]::before {
+        content: attr(data-example);
+        position: absolute;
+        bottom: calc(100% + 12px);
+        left: 50%;
+        transform: translateX(-50%) translateY(4px);
+        background: rgba(2,7,16,0.97);
+        border: 1px solid rgba(139,92,246,0.45);
+        color: rgba(255,255,255,0.92);
+        padding: 12px 14px;
+        border-radius: 10px;
+        width: 260px;
+        font-size: 12px;
+        line-height: 1.55;
+        z-index: 50;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+      }
+      .proc-step[data-example]::after {
+        content: '';
+        position: absolute;
+        bottom: calc(100% + 4px);
+        left: 50%;
+        transform: translateX(-50%);
+        border: 6px solid transparent;
+        border-top-color: rgba(139,92,246,0.45);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+        z-index: 50;
+      }
+      .proc-step[data-example]:hover::before { opacity: 1; transform: translateX(-50%) translateY(0); }
+      .proc-step[data-example]:hover::after { opacity: 1; }
+    }
+    /* Pyramid SVG polygon hover */
+    .pyramid-glow polygon { transition: filter 0.35s ease, fill 0.35s ease; cursor: help; }
+    .pyramid-glow polygon:hover { filter: url(#sky-glow) drop-shadow(0 0 24px rgba(167,139,250,0.85)); }
   </style>
 </head>
 <body class="font-body bg-[#020710] text-[#94A3B8]">
@@ -702,107 +751,167 @@
       </div>
     </section>
 
-    <!-- ===== PROCESS TIMELINE — 5 PHASES ===== -->
-    <section id="process" class="py-20 lg:py-28 border-y border-white/5">
+    <!-- ===== CUSTOMER JOURNEY — 5 STAGES (from Customer Journey PDF) ===== -->
+    <section id="journey" class="py-20 lg:py-28 border-y border-white/5">
       <div class="max-w-6xl mx-auto px-4 sm:px-6">
         <div class="text-center mb-16 reveal">
-          <p class="text-sm font-semibold text-primary uppercase tracking-wider mb-3">პროცესი</p>
-          <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">როგორ ვმუშაობთ — <span class="gradient-text">5 ეტაპი</span></h2>
-          <p class="text-lg text-white/50 max-w-3xl mx-auto">გასაგები ვადები, კონკრეტული deliverable-ები — არცერთი თვე „დაკარგული" არ რჩება. ყოველ ეტაპს თავისი outcome აქვს.</p>
+          <p class="text-sm font-semibold text-primary uppercase tracking-wider mb-3">მომხმარებლის გზა</p>
+          <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">10xSEO: <span class="gradient-text">მომხმარებლის გზა</span></h2>
+          <p class="text-lg text-white/50 max-w-3xl mx-auto">ხუთი ეტაპი ცნობადობიდან გრძელვადიან პარტნიორობამდე — ნახე სად ხარ ამ გზაზე ამჟამად.</p>
         </div>
         <div class="grid lg:grid-cols-5 gap-8 lg:gap-6 reveal">
-          <!-- Step 1 -->
-          <div class="proc-step glass-card rounded-2xl p-6 flex flex-col">
+          <!-- Stage 1: ცნობადობა -->
+          <div class="proc-step glass-card rounded-2xl p-6 flex flex-col" data-example="💡 'სამშენებლო კომპანიისთვის SEO რას ნიშნავს?' — Google ძიება → 10xSEO ბლოგი → 8 წუთი წაკითხვა → ბრენდი დარჩა მახსოვრობაში.">
             <div class="flex items-center gap-3 mb-4">
               <div class="proc-num proc-num-1">1</div>
-              <span class="proc-pill">კვირა 1-2</span>
+              <span class="proc-pill">პირველი შეხება</span>
             </div>
-            <h3 class="font-heading text-lg font-bold text-white mb-3">Discovery & Audit</h3>
+            <h3 class="font-heading text-lg font-bold text-white mb-3">ცნობადობა</h3>
             <ul class="space-y-1.5 text-sm text-white/60 mb-4 flex-1">
-              <li>• ტექნიკური აუდიტი (40+ პუნქტი)</li>
-              <li>• კონკურენტის ანალიზი (5+)</li>
-              <li>• Keyword research (300-500)</li>
-              <li>• GSC/GA4 setup ან audit</li>
+              <li>• სოც.მედია &amp; რეკლამა</li>
+              <li>• ვებგვერდზე სტუმრობა</li>
+              <li>• წყაროების იდენტიფიცირება</li>
+              <li>• ინტერესის გაჩენა</li>
             </ul>
             <div class="pt-3 border-t border-white/5">
-              <p class="text-[11px] text-purple-300/70 uppercase tracking-wider mb-1">📦 Deliverable</p>
-              <p class="text-xs text-white/70">აუდიტის PDF (40+ გვ) + სტრატეგიის mind map</p>
+              <p class="text-[11px] text-purple-300/70 uppercase tracking-wider mb-1">🎯 ჩვენი ფოკუსი</p>
+              <p class="text-xs text-white/70">ხილვადობა და პირველი ნდობის ჩამოყალიბება</p>
             </div>
           </div>
-          <!-- Step 2 -->
-          <div class="proc-step glass-card rounded-2xl p-6 flex flex-col">
+          <!-- Stage 2: ინტერესი -->
+          <div class="proc-step glass-card rounded-2xl p-6 flex flex-col" data-example="💡 კლიენტი წაიკითხავს 3 ბლოგ-პოსტს 2 კვირაში + ჩამოტვირთავს 'Real Estate SEO Checklist 2026' PDF-ს ელფოსტით.">
             <div class="flex items-center gap-3 mb-4">
               <div class="proc-num proc-num-2">2</div>
-              <span class="proc-pill">კვირა 3-4</span>
+              <span class="proc-pill">სიღრმისეული შესწავლა</span>
             </div>
-            <h3 class="font-heading text-lg font-bold text-white mb-3">Strategy & Architecture</h3>
+            <h3 class="font-heading text-lg font-bold text-white mb-3">ინტერესი</h3>
             <ul class="space-y-1.5 text-sm text-white/60 mb-4 flex-1">
-              <li>• საიტის სტრუქტურა (brand → projects → locations)</li>
-              <li>• მრავალენოვანი layer-ის გეგმა</li>
-              <li>• Content roadmap</li>
-              <li>• On-page priority list</li>
+              <li>• კონტენტის შერჩევა</li>
+              <li>• ჩართულობა</li>
+              <li>• სიახლეების გამოწერა</li>
+              <li>• ინფორმაციის მიწოდება</li>
             </ul>
             <div class="pt-3 border-t border-white/5">
-              <p class="text-[11px] text-pink-300/70 uppercase tracking-wider mb-1">📦 Deliverable</p>
-              <p class="text-xs text-white/70">Strategy doc + technical sitemap + content calendar</p>
+              <p class="text-[11px] text-pink-300/70 uppercase tracking-wider mb-1">🎯 ჩვენი ფოკუსი</p>
+              <p class="text-xs text-white/70">ღირებული ცოდნის გაცემა და ღია დიალოგი</p>
             </div>
           </div>
-          <!-- Step 3 -->
-          <div class="proc-step glass-card rounded-2xl p-6 flex flex-col">
+          <!-- Stage 3: განხილვა -->
+          <div class="proc-step glass-card rounded-2xl p-6 flex flex-col" data-example="💡 უფასო Real Estate SEO აუდიტის მოთხოვნა → 24 საათში PDF 47 ცვლილებით + დიაგნოსტიკა + 30 წუთიანი diagnostic call.">
             <div class="flex items-center gap-3 mb-4">
               <div class="proc-num proc-num-3">3</div>
-              <span class="proc-pill">თვე 2-3</span>
+              <span class="proc-pill">აქტიური შეფასება</span>
             </div>
-            <h3 class="font-heading text-lg font-bold text-white mb-3">Foundation Build</h3>
+            <h3 class="font-heading text-lg font-bold text-white mb-3">განხილვა</h3>
             <ul class="space-y-1.5 text-sm text-white/60 mb-4 flex-1">
-              <li>• On-page optimization</li>
-              <li>• Schema markup (Organization + RealEstateAgent + Service)</li>
-              <li>• Core Web Vitals fix</li>
-              <li>• Content hub-ების launch</li>
+              <li>• უფასო SEO აუდიტი</li>
+              <li>• ვებინარები / ბლოგები</li>
+              <li>• შეფასება</li>
+              <li>• საჭიროების განსაზღვრა</li>
             </ul>
             <div class="pt-3 border-t border-white/5">
-              <p class="text-[11px] text-teal-300/70 uppercase tracking-wider mb-1">📦 Deliverable</p>
-              <p class="text-xs text-white/70">10-15 ჰაბ-გვერდი + technical health &gt; 90</p>
+              <p class="text-[11px] text-teal-300/70 uppercase tracking-wider mb-1">🎯 ჩვენი ფოკუსი</p>
+              <p class="text-xs text-white/70">პერსონალიზებული დიაგნოსტიკა და კონკრეტული რჩევა</p>
             </div>
           </div>
-          <!-- Step 4 -->
-          <div class="proc-step glass-card rounded-2xl p-6 flex flex-col">
+          <!-- Stage 4: გადაწყვეტილება -->
+          <div class="proc-step glass-card rounded-2xl p-6 flex flex-col" data-example="💡 კლიენტი ადარებს ჩვენ 4 სხვა სააგენტოს — ფასი 32% ქვემოთ + სრული 5-ფენიანი სტეკი + წარმატებული ქეისები (Horizon, Coordinate).">
             <div class="flex items-center gap-3 mb-4">
               <div class="proc-num proc-num-4">4</div>
-              <span class="proc-pill">თვე 3-6</span>
+              <span class="proc-pill">საბოლოო არჩევანი</span>
             </div>
-            <h3 class="font-heading text-lg font-bold text-white mb-3">Authority & Content</h3>
+            <h3 class="font-heading text-lg font-bold text-white mb-3">გადაწყვეტილება</h3>
             <ul class="space-y-1.5 text-sm text-white/60 mb-4 flex-1">
-              <li>• KA + EN + RU კონტენტი (8-12/თვე)</li>
-              <li>• Backlink outreach</li>
-              <li>• AI citation optimization (llms.txt, schema)</li>
-              <li>• Local pack signals</li>
+              <li>• კონკურენტების შედარება</li>
+              <li>• დარწმუნება</li>
+              <li>• პაკეტების შედარება</li>
+              <li>• წარმატებების დემონსტრირება</li>
             </ul>
             <div class="pt-3 border-t border-white/5">
-              <p class="text-[11px] text-blue-300/70 uppercase tracking-wider mb-1">📦 Deliverable</p>
-              <p class="text-xs text-white/70">30-50 ახალი გვერდი + 20+ backlink + AI Overview ხილვადობა</p>
+              <p class="text-[11px] text-blue-300/70 uppercase tracking-wider mb-1">🎯 ჩვენი ფოკუსი</p>
+              <p class="text-xs text-white/70">გამჭვირვალე პირობები და ცოცხალი შედეგების ჩვენება</p>
             </div>
           </div>
-          <!-- Step 5 -->
-          <div class="proc-step glass-card rounded-2xl p-6 flex flex-col">
+          <!-- Stage 5: მოქმედება -->
+          <div class="proc-step glass-card rounded-2xl p-6 flex flex-col" data-example="💡 ხელშეკრულების ხელმოწერის შემდეგ — 7 დღეში Onboarding Call + ტექნიკური წვდომები + სამუშაო სივრცე + WhatsApp კავშირი.">
             <div class="flex items-center gap-3 mb-4">
               <div class="proc-num proc-num-5">5</div>
-              <span class="proc-pill">თვე 6+</span>
+              <span class="proc-pill">პარტნიორობა</span>
             </div>
-            <h3 class="font-heading text-lg font-bold text-white mb-3">Scale & Optimize</h3>
+            <h3 class="font-heading text-lg font-bold text-white mb-3">მოქმედება</h3>
             <ul class="space-y-1.5 text-sm text-white/60 mb-4 flex-1">
-              <li>• A/B test (CTA, headline)</li>
-              <li>• CRO (conversion path)</li>
-              <li>• ანალიტიკის dashboard</li>
-              <li>• ახალი პროექტების ინტეგრაცია</li>
+              <li>• სერვისის შეკვეთა</li>
+              <li>• პროექტის დაწყება</li>
+              <li>• კმაყოფილება</li>
+              <li>• თანამშრომლობის შეფასება</li>
             </ul>
             <div class="pt-3 border-t border-white/5">
-              <p class="text-[11px] text-green-300/70 uppercase tracking-wider mb-1">📦 Deliverable</p>
-              <p class="text-xs text-white/70">თვიური report + scale playbook + ROI dashboard</p>
+              <p class="text-[11px] text-green-300/70 uppercase tracking-wider mb-1">🎯 ჩვენი ფოკუსი</p>
+              <p class="text-xs text-white/70">სრული გუნდად ინტეგრაცია და ხანგრძლივი ზრდა</p>
             </div>
           </div>
         </div>
-        <p class="text-center text-sm text-white/40 mt-10 max-w-2xl mx-auto italic">პროცესი არ არის ხისტი — თქვენი პროექტის სიჩქარეს შევუხამებთ. პრიორიტეტული ცვლილებები (CWV fix, Google Ads launch) შეიძლება პირველ თვეშივე ამოქმედდეს.</p>
+        <p class="text-center text-sm text-white/40 mt-10 max-w-2xl mx-auto italic">თითო ეტაპს თავისი ემოცია აქვს — ცნობადობიდან კმაყოფილებამდე. ჩვენ ვცდილობთ, ყოველ ნაბიჯზე გვერდით ვიყოთ, არა მხოლოდ პროექტის დაწყებისას.</p>
+      </div>
+    </section>
+
+    <!-- ===== LIVE DASHBOARD — Monthly Reporting (from real-estate-developers.html) ===== -->
+    <section id="dashboard" class="py-20 lg:py-28">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12 reveal">
+          <p class="text-sm font-semibold text-primary uppercase tracking-wider mb-3">ყოველთვიური ანგარიშგება</p>
+          <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">რას იღებთ <span class="gradient-text">ყოველთვიურად</span></h2>
+        </div>
+        <div class="glass-card rounded-2xl p-6 lg:p-10 reveal">
+          <div class="flex items-center gap-3 mb-6 pb-4 border-b border-white/10">
+            <div class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></div>
+            <p class="font-mono text-sm text-white/70">10xseo · live dashboard · [your-brand]</p>
+            <span class="ml-auto text-xs text-white/40 font-mono">აპრილი 2026</span>
+          </div>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div>
+              <p class="text-xs text-white/40 uppercase tracking-wider mb-2">organic traffic</p>
+              <p class="font-heading text-2xl lg:text-3xl font-bold text-emerald-400 font-mono">+312%</p>
+              <p class="text-xs text-white/40 mt-1">YoY</p>
+            </div>
+            <div>
+              <p class="text-xs text-white/40 uppercase tracking-wider mb-2">qualified leads</p>
+              <p class="font-heading text-2xl lg:text-3xl font-bold text-primary font-mono">87</p>
+              <p class="text-xs text-white/40 mt-1">target: 60</p>
+            </div>
+            <div>
+              <p class="text-xs text-white/40 uppercase tracking-wider mb-2">brand position</p>
+              <p class="font-heading text-2xl lg:text-3xl font-bold text-accent font-mono">1.4</p>
+              <p class="text-xs text-white/40 mt-1">avg google rank</p>
+            </div>
+            <div>
+              <p class="text-xs text-white/40 uppercase tracking-wider mb-2">map pack</p>
+              <p class="font-heading text-2xl lg:text-3xl font-bold text-ai-blue font-mono">94%</p>
+              <p class="text-xs text-white/40 mt-1">visibility</p>
+            </div>
+            <div>
+              <p class="text-xs text-white/40 uppercase tracking-wider mb-2">AI citations</p>
+              <p class="font-heading text-2xl lg:text-3xl font-bold text-primary font-mono">23</p>
+              <p class="text-xs text-white/40 mt-1">chatgpt + gemini</p>
+            </div>
+            <div>
+              <p class="text-xs text-white/40 uppercase tracking-wider mb-2">cost per lead</p>
+              <p class="font-heading text-2xl lg:text-3xl font-bold text-emerald-400 font-mono">₾18</p>
+              <p class="text-xs text-white/40 mt-1">portal: ₾140</p>
+            </div>
+            <div>
+              <p class="text-xs text-white/40 uppercase tracking-wider mb-2">conversion</p>
+              <p class="font-heading text-2xl lg:text-3xl font-bold text-accent font-mono">6.2%</p>
+              <p class="text-xs text-white/40 mt-1">market avg: 1.5%</p>
+            </div>
+            <div>
+              <p class="text-xs text-white/40 uppercase tracking-wider mb-2">ROI</p>
+              <p class="font-heading text-2xl lg:text-3xl font-bold text-primary font-mono">9.4x</p>
+              <p class="text-xs text-white/40 mt-1">vs spend</p>
+            </div>
+          </div>
+          <p class="text-sm text-white/50 mt-8 pt-6 border-t border-white/10 text-center">ყოველთვიური ანგარიში · კვარტალური video walk-through · Slack/WhatsApp პირდაპირი წვდომა</p>
+        </div>
       </div>
     </section>
 
@@ -814,7 +923,7 @@
         </div>
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <div class="glass-card rounded-2xl p-8 text-center reveal"><p class="text-4xl lg:text-5xl font-bold text-primary mb-2">+68%</p><p class="text-white font-semibold mb-1">ორგანული ტრაფიკი</p><p class="text-sm text-white/40">პრემიუმ კურორტული დეველოპერი (ბათუმი)</p></div>
-          <div class="glass-card rounded-2xl p-8 text-center reveal"><p class="text-4xl lg:text-5xl font-bold text-accent mb-2">+120%</p><p class="text-white font-semibold mb-1">ლიდების ზრდა</p><p class="text-sm text-white/40">ანონიმიზებული პორტალი (Tbilisi)</p></div>
+          <div class="glass-card rounded-2xl p-8 text-center reveal"><p class="text-4xl lg:text-5xl font-bold text-accent mb-2">+120%</p><p class="text-white font-semibold mb-1">ლიდების ზრდა</p><p class="text-sm text-white/40">NDA-ს ქვეშ — TOP-3 ქართული უძრავი ქონების პორტალი</p></div>
           <div class="glass-card rounded-2xl p-8 text-center reveal"><p class="text-4xl lg:text-5xl font-bold text-primary mb-2">-45%</p><p class="text-white font-semibold mb-1">პორტალ-დამოკიდებულება</p><p class="text-sm text-white/40">myhome.ge / ss.ge ხარჯი</p></div>
           <div class="glass-card rounded-2xl p-8 text-center reveal"><p class="text-4xl lg:text-5xl font-bold text-ai-blue mb-2">6+</p><p class="text-white font-semibold mb-1">დეველოპერ-კლიენტი</p><p class="text-sm text-white/40">აქტიურ პორტფოლიოში</p></div>
         </div>
@@ -862,15 +971,25 @@
       <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center reveal">
         <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">მზად ხარ <span class="gradient-text">ერთი პარტნიორისთვის?</span></h2>
         <p class="text-lg text-white/50 max-w-2xl mx-auto mb-10">30 წუთიანი ზარი — გაჩვენებთ, როგორ შეიძლება შენი ბრენდის ციფრული მარკეტინგი ხუთიდან ერთ გუნდად გადავიდეს. ნამდვილ ციფრებზე, შენი ბაზრიდან.</p>
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4">
           <a href="#" onclick="openCalendly();return false;" class="inline-flex items-center justify-center gap-2 px-10 py-5 ai-cta-animate text-white font-bold rounded-xl text-lg hover:brightness-110 transition-all">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
             დაჯავშნე უფასო Strategy Call</a>
           <a href="tel:+995510101517" class="inline-flex items-center justify-center gap-2 px-8 py-5 border border-white/20 text-white font-semibold rounded-xl text-lg hover:border-primary hover:text-primary transition-all">+995 510 10 15 17</a>
         </div>
-        <div class="flex items-center justify-center gap-6 text-sm text-white/40 flex-wrap">
+        <div class="flex items-center justify-center gap-3 mb-8 text-xs text-white/50 flex-wrap">
+          <span class="inline-flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg> 30 წუთი</span>
+          <span class="text-white/15">·</span>
+          <span class="inline-flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg> ნულოვანი ვალდებულება</span>
+          <span class="text-white/15">·</span>
+          <span class="inline-flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg> არანაირი sales pitch</span>
+        </div>
+        <div class="flex items-center justify-center gap-6 text-sm text-white/40 flex-wrap mb-8">
           <a href="https://wa.me/995510101517" target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-primary transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059"/></svg> WhatsApp 10 წთ-ში</a>
           <span>|</span><span>sales@10xseo.ge</span>
+        </div>
+        <div class="pt-6 border-t border-white/5 max-w-xl mx-auto">
+          <p class="text-sm text-white/45">ჯერ არ ხარ მზად ზარისთვის? <a href="mailto:sales@10xseo.ge?subject=Real%20Estate%20SEO%20%E1%83%90%E1%83%A3%E1%83%93%E1%83%98%E1%83%A2%E1%83%98&body=%E1%83%92%E1%83%90%E1%83%9B%E1%83%90%E1%83%A0%E1%83%AF%E1%83%9D%E1%83%91%E1%83%90%2C%0A%0A%E1%83%9B%E1%83%98%E1%83%9C%E1%83%93%E1%83%90%20%E1%83%A3%E1%83%A4%E1%83%90%E1%83%A1%E1%83%9D%20Real%20Estate%20SEO%20%E1%83%90%E1%83%A3%E1%83%93%E1%83%98%E1%83%A2%E1%83%98%E1%83%A1%20%E1%83%9B%E1%83%98%E1%83%A6%E1%83%94%E1%83%91%E1%83%90.%0A%0A%E1%83%A1%E1%83%90%E1%83%98%E1%83%A2%E1%83%98%3A%20%5B%E1%83%9B%E1%83%98%E1%83%A3%E1%83%97%E1%83%98%E1%83%97%E1%83%94%E1%83%97%20URL%5D%0A%E1%83%99%E1%83%9D%E1%83%9B%E1%83%9E%E1%83%90%E1%83%9C%E1%83%98%E1%83%90%3A%20%5B%E1%83%93%E1%83%94%E1%83%95%E1%83%94%E1%83%9A%E1%83%9D%E1%83%9E%E1%83%94%E1%83%A0%E1%83%98%E1%83%A1%20%E1%83%A1%E1%83%90%E1%83%AE%E1%83%94%E1%83%9A%E1%83%98%5D%0A%E1%83%92%E1%83%90%E1%83%9C%E1%83%93%E1%83%9D%E1%83%9B%E1%83%94%E1%83%91%E1%83%98%E1%83%A1%20%E1%83%97%E1%83%90%E1%83%A0%E1%83%98%E1%83%A6%E1%83%98%3A%20%5B%E1%83%96%E1%83%92%E1%83%A3%E1%83%A4%E1%83%98%2F%E1%83%93%E1%83%98%E1%83%93%E1%83%98%2F%E1%83%9D%E1%83%A4%E1%83%98%E1%83%A1%5D%0A%0A%E1%83%9B%E1%83%90%E1%83%93%E1%83%9A%E1%83%9D%E1%83%91%E1%83%90." class="text-primary hover:text-primary-light underline font-semibold">მიიღე უფასო Real Estate SEO აუდიტი ელფოსტით</a> — 24 საათში PDF ანგარიში 5 პრიორიტეტული ცვლილებით.</p>
         </div>
       </div>
     </section>
