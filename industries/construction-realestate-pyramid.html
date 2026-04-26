@@ -86,9 +86,9 @@
     .glass-card { background: rgba(255,255,255,0.035); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; transition: all 0.35s ease; }
     .glass-card:hover { border-color: rgba(139,92,246,0.3); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(139,92,246,0.1); }
     .gradient-text { background: linear-gradient(135deg, #8B5CF6, #14B8A6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    @keyframes aiCtaPulse { 0%,100% { box-shadow: 0 0 20px rgba(139,92,246,0.4), 0 0 40px rgba(139,92,246,0.1); } 50% { box-shadow: 0 0 30px rgba(139,92,246,0.6), 0 0 60px rgba(139,92,246,0.2); } }
-    .ai-cta-animate { animation: aiCtaPulse 2s ease-in-out infinite; background: linear-gradient(135deg, #8B5CF6, #7C3AED); }
-    .ai-cta-animate:hover { background: linear-gradient(135deg, #7C3AED, #6D28D9); }
+    @keyframes aiCtaPulse { 0%,100% { box-shadow: 0 0 20px rgba(139,92,246,0.35), 0 0 40px rgba(20,184,166,0.18); } 50% { box-shadow: 0 0 30px rgba(139,92,246,0.5), 0 0 60px rgba(20,184,166,0.3); } }
+    .ai-cta-animate { animation: aiCtaPulse 2s ease-in-out infinite; background: linear-gradient(135deg, #8B5CF6, #14B8A6); }
+    .ai-cta-animate:hover { background: linear-gradient(135deg, #7C3AED, #0D9488); }
     @keyframes pyramidGlow { 0%,100% { filter: drop-shadow(0 0 30px rgba(139,92,246,0.3)) drop-shadow(0 0 60px rgba(20,184,166,0.2)); } 50% { filter: drop-shadow(0 0 50px rgba(139,92,246,0.5)) drop-shadow(0 0 100px rgba(20,184,166,0.3)); } }
     .pyramid-glow { animation: pyramidGlow 4s ease-in-out infinite; }
     @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
@@ -446,38 +446,6 @@
           <div class="hex-client hex-client-dark"><div class="hex-client-inner"><img src="../images/clients/chronometri.svg" alt="ქრონომეტრი" loading="lazy" width="125" height="85"></div></div>
           <div class="hex-client"><div class="hex-client-inner"><img src="../images/clients/horizon.png" alt="Horizon Batumi" loading="lazy" width="125" height="85"></div></div>
           <div class="hex-client"><div class="hex-client-inner"><img src="../images/clients/myhome.png" alt="myhome.ge" loading="lazy" width="125" height="85"></div></div>
-        </div>
-        <div class="mt-10 relative overflow-hidden border-y border-white/[0.06] py-3 ticker-fade">
-          <div class="flex whitespace-nowrap ticker-scroll">
-            <div class="flex items-center gap-8 px-4 shrink-0">
-              <span class="flex items-center gap-2"><span class="text-emerald-400 text-xs font-mono">▲</span><span class="text-white/80 text-sm font-medium">HORIZON BATUMI</span><span class="text-emerald-400 text-xs font-mono">+68%</span></span>
-              <span class="text-white/10">|</span>
-              <span class="flex items-center gap-2"><span class="text-emerald-400 text-xs font-mono">▲</span><span class="text-white/80 text-sm font-medium">MYHOME.GE</span><span class="text-emerald-400 text-xs font-mono">+120%</span></span>
-              <span class="text-white/10">|</span>
-              <span class="flex items-center gap-2"><span class="text-emerald-400 text-xs font-mono">▲</span><span class="text-white/80 text-sm font-medium">KOORDINATI</span><span class="text-emerald-400 text-xs font-mono">+270%</span></span>
-              <span class="text-white/10">|</span>
-              <span class="flex items-center gap-2"><span class="text-emerald-400 text-xs font-mono">▲</span><span class="text-white/80 text-sm font-medium">CHRONOMETRI</span><span class="text-emerald-400 text-xs font-mono">+185%</span></span>
-              <span class="text-white/10">|</span>
-              <span class="flex items-center gap-2"><span class="text-emerald-400 text-xs font-mono">▲</span><span class="text-white/80 text-sm font-medium">KVARELI LAKE</span><span class="text-emerald-400 text-xs font-mono">+175%</span></span>
-              <span class="text-white/10">|</span>
-              <span class="flex items-center gap-2"><span class="text-emerald-400 text-xs font-mono">▲</span><span class="text-white/80 text-sm font-medium">BELLE MAISON</span><span class="text-emerald-400 text-xs font-mono">+310%</span></span>
-              <span class="text-white/10">|</span>
-            </div>
-            <div class="flex items-center gap-8 px-4 shrink-0" aria-hidden="true">
-              <span class="flex items-center gap-2"><span class="text-emerald-400 text-xs font-mono">▲</span><span class="text-white/80 text-sm font-medium">HORIZON BATUMI</span><span class="text-emerald-400 text-xs font-mono">+68%</span></span>
-              <span class="text-white/10">|</span>
-              <span class="flex items-center gap-2"><span class="text-emerald-400 text-xs font-mono">▲</span><span class="text-white/80 text-sm font-medium">MYHOME.GE</span><span class="text-emerald-400 text-xs font-mono">+120%</span></span>
-              <span class="text-white/10">|</span>
-              <span class="flex items-center gap-2"><span class="text-emerald-400 text-xs font-mono">▲</span><span class="text-white/80 text-sm font-medium">KOORDINATI</span><span class="text-emerald-400 text-xs font-mono">+270%</span></span>
-              <span class="text-white/10">|</span>
-              <span class="flex items-center gap-2"><span class="text-emerald-400 text-xs font-mono">▲</span><span class="text-white/80 text-sm font-medium">CHRONOMETRI</span><span class="text-emerald-400 text-xs font-mono">+185%</span></span>
-              <span class="text-white/10">|</span>
-              <span class="flex items-center gap-2"><span class="text-emerald-400 text-xs font-mono">▲</span><span class="text-white/80 text-sm font-medium">KVARELI LAKE</span><span class="text-emerald-400 text-xs font-mono">+175%</span></span>
-              <span class="text-white/10">|</span>
-              <span class="flex items-center gap-2"><span class="text-emerald-400 text-xs font-mono">▲</span><span class="text-white/80 text-sm font-medium">BELLE MAISON</span><span class="text-emerald-400 text-xs font-mono">+310%</span></span>
-              <span class="text-white/10">|</span>
-            </div>
-          </div>
         </div>
       </div>
     </section>
