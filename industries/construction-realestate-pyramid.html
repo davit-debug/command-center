@@ -36,6 +36,15 @@
     {"@type":"ListItem","position":3,"name":"სამშენებლო & უძრავი ქონება","item":"https://10xseo.ge/industries/construction.html"}
   ]}
   </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"HowTo","name":"როგორ ვმუშაობთ — Real Estate Growth Stack 5-ეტაპიანი პროცესი","description":"5-ეტაპიანი workflow დეველოპერული კომპანიების SEO + AI + CRO + Ads + Copywriting გადაწყვეტისთვის.","totalTime":"P6M","step":[
+    {"@type":"HowToStep","position":1,"name":"Discovery & Audit","text":"ტექნიკური აუდიტი, კონკურენტის ანალიზი (5+ კონკურენტი), keyword research (300-500 ფრაზა), GSC/GA4 setup ან audit. ვადა: კვირა 1-2."},
+    {"@type":"HowToStep","position":2,"name":"Strategy & Architecture","text":"საიტის სტრუქტურა (brand → projects → locations), მრავალენოვანი layer-ის გეგმა, content roadmap, on-page priority list. ვადა: კვირა 3-4."},
+    {"@type":"HowToStep","position":3,"name":"Foundation Build","text":"On-page optimization, schema markup, Core Web Vitals fixing, content hub-ების launch. ვადა: თვე 2-3."},
+    {"@type":"HowToStep","position":4,"name":"Authority & Content","text":"ქართული + ENG + RU კონტენტი (8-12 ცალი/თვე), backlink outreach, AI citation optimization. ვადა: თვე 3-6."},
+    {"@type":"HowToStep","position":5,"name":"Scale & Optimize","text":"A/B test, CRO, ანალიტიკის dashboard, ახალი პროექტების ინტეგრაცია stack-ში. ვადა: თვე 6+."}
+  ]}
+  </script>
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -126,6 +135,23 @@
     .v29-ans{max-height:0;overflow:hidden;transition:max-height .4s ease}
     .v29-open .v29-ans{max-height:500px}
     .v29-ans-inner{padding:0 18px 18px 18px;font-size:14px;line-height:1.75;color:rgba(255,255,255,.6)}
+    /* Segment Tabs (#segments) */
+    .seg-tab-btn { transition: all 0.3s ease; }
+    .seg-tab-btn.active { color: #fff; background: linear-gradient(135deg, #8B5CF6, #7C3AED); border-color: rgba(139,92,246,0.5); box-shadow: 0 0 20px rgba(139,92,246,0.35); }
+    .seg-tab-content { animation: segFade 0.4s ease-out; }
+    @keyframes segFade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    /* Process Timeline (#process) */
+    .proc-step { position: relative; }
+    @media (min-width: 1024px) {
+      .proc-step:not(:last-child)::after { content: ''; position: absolute; right: -12px; top: 32px; width: 24px; height: 2px; background: linear-gradient(90deg, rgba(255,255,255,0.25), rgba(255,255,255,0.05)); z-index: 0; }
+    }
+    .proc-num { width: 56px; height: 56px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 20px; color: #fff; backdrop-filter: blur(8px); position: relative; z-index: 1; }
+    .proc-num-1 { background: linear-gradient(135deg, rgba(139,92,246,0.55), rgba(139,92,246,0.2)); border: 1px solid rgba(167,139,250,0.5); box-shadow: 0 4px 20px rgba(139,92,246,0.25); }
+    .proc-num-2 { background: linear-gradient(135deg, rgba(236,72,153,0.55), rgba(236,72,153,0.2)); border: 1px solid rgba(244,114,182,0.5); box-shadow: 0 4px 20px rgba(236,72,153,0.25); }
+    .proc-num-3 { background: linear-gradient(135deg, rgba(20,184,166,0.55), rgba(20,184,166,0.2)); border: 1px solid rgba(45,212,191,0.5); box-shadow: 0 4px 20px rgba(20,184,166,0.25); }
+    .proc-num-4 { background: linear-gradient(135deg, rgba(59,130,246,0.55), rgba(59,130,246,0.2)); border: 1px solid rgba(96,165,250,0.5); box-shadow: 0 4px 20px rgba(59,130,246,0.25); }
+    .proc-num-5 { background: linear-gradient(135deg, rgba(34,197,94,0.55), rgba(34,197,94,0.2)); border: 1px solid rgba(74,222,128,0.5); box-shadow: 0 4px 20px rgba(34,197,94,0.25); }
+    .proc-pill { display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 999px; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.1); }
   </style>
 </head>
 <body class="font-body bg-[#020710] text-[#94A3B8]">
@@ -449,6 +475,201 @@
       </div>
     </section>
 
+    <!-- ===== SEGMENT TABS — 6 PROPERTY TYPES ===== -->
+    <section id="segments" class="py-20 lg:py-28">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12 reveal">
+          <p class="text-sm font-semibold text-primary uppercase tracking-wider mb-3">თქვენი სეგმენტი</p>
+          <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">თქვენი პროექტის ტიპი — <span class="gradient-text">ჩვენი მიდგომა</span></h2>
+          <p class="text-lg text-white/50 max-w-3xl mx-auto">ერთი 5-ფენიანი სტეკი, 6 განსხვავებული ბაზრის სეგმენტი — სტრატეგია იცვლება, ხარისხი არა.</p>
+        </div>
+        <div class="flex flex-wrap justify-center gap-2 mb-10 reveal" role="tablist" aria-label="ქონების სეგმენტები">
+          <button class="seg-tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold border border-white/10 text-white/60 hover:border-primary/30" role="tab" aria-selected="false" aria-controls="seg-residential" data-tab="seg-residential">🏢 საცხოვრებელი</button>
+          <button class="seg-tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold border border-white/10 text-white/60 hover:border-primary/30" role="tab" aria-selected="false" aria-controls="seg-commercial" data-tab="seg-commercial">🏬 კომერციული</button>
+          <button class="seg-tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold border border-white/10 text-white/60 hover:border-primary/30" role="tab" aria-selected="false" aria-controls="seg-luxury" data-tab="seg-luxury">💎 ლუქს</button>
+          <button class="seg-tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold border border-white/10 text-white/60 hover:border-primary/30" role="tab" aria-selected="false" aria-controls="seg-offplan" data-tab="seg-offplan">🏗️ Off-Plan</button>
+          <button class="seg-tab-btn active px-4 py-2.5 rounded-xl text-sm font-semibold border border-white/10" role="tab" aria-selected="true" aria-controls="seg-developer" data-tab="seg-developer">👨‍💼 დეველოპერი</button>
+          <button class="seg-tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold border border-white/10 text-white/60 hover:border-primary/30" role="tab" aria-selected="false" aria-controls="seg-management" data-tab="seg-management">🔑 მართვა</button>
+        </div>
+        <div class="glass-card rounded-2xl p-6 lg:p-10 reveal">
+          <!-- Residential -->
+          <div id="seg-residential" class="seg-tab-content hidden" role="tabpanel" aria-labelledby="seg-residential-btn">
+            <div class="flex items-start gap-4 mb-6">
+              <span class="text-4xl">🏢</span>
+              <div>
+                <h3 class="font-heading text-2xl font-bold text-white mb-2">საცხოვრებელი ქონება</h3>
+                <p class="text-sm text-white/50">საცხოვრებელი კომპლექსები, ბინები, საოჯახო სახლები</p>
+              </div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6 mb-6">
+              <div>
+                <p class="text-sm font-semibold text-danger uppercase tracking-wider mb-3">🎯 ძირითადი გამოწვევა</p>
+                <p class="text-white/70 leading-relaxed">მყიდველი myhome.ge-ზე ეძებს — თქვენი ბრენდი იქ ერთ-ერთ ლისტინგად იკარგება, არც სახელი ახსოვს, არც პირდაპირ მოძებნის.</p>
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-accent uppercase tracking-wider mb-3">✅ ჩვენი მიდგომა</p>
+                <ul class="space-y-2 text-white/70 text-sm">
+                  <li><strong class="text-purple-300">SEO:</strong> უბნების ჰაბები (ვაკე, საბურთალო, დიდუბე) + RealEstateListing schema</li>
+                  <li><strong class="text-pink-300">AI/GEO:</strong> ChatGPT-ში გამოდის რომ თქვენი პროექტი საუკეთესო ვარიანტია უბანში</li>
+                  <li><strong class="text-green-300">Copy:</strong> ბინების აღწერებიდან ბრენდის ხმა — არა მშრალი ტექნიკური დეტალი</li>
+                </ul>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 p-4 rounded-xl bg-primary/5 border border-primary/15">
+              <span class="text-2xl">📊</span>
+              <p class="text-sm text-white/80"><strong class="text-primary">მოსალოდნელი შედეგი:</strong> 30-60% myhome.ge-ის ლიდის შემცირება 6 თვეში — მყიდველი პირდაპირ თქვენთან მოდის.</p>
+            </div>
+          </div>
+          <!-- Commercial -->
+          <div id="seg-commercial" class="seg-tab-content hidden" role="tabpanel" aria-labelledby="seg-commercial-btn">
+            <div class="flex items-start gap-4 mb-6">
+              <span class="text-4xl">🏬</span>
+              <div>
+                <h3 class="font-heading text-2xl font-bold text-white mb-2">კომერციული ქონება</h3>
+                <p class="text-sm text-white/50">ოფისები, სავაჭრო ფართები, საწყობები, ბიზნეს-ცენტრები</p>
+              </div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6 mb-6">
+              <div>
+                <p class="text-sm font-semibold text-danger uppercase tracking-wider mb-3">🎯 ძირითადი გამოწვევა</p>
+                <p class="text-white/70 leading-relaxed">B2B ლიდი იშვიათია, საშუალო გარიგების ფასი მაღალი — ერთი ცუდი ლიდი = 3 თვის სარეკლამო ხარჯი.</p>
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-accent uppercase tracking-wider mb-3">✅ ჩვენი მიდგომა</p>
+                <ul class="space-y-2 text-white/70 text-sm">
+                  <li><strong class="text-purple-300">SEO:</strong> B2B keyword cluster — „საოფისე ფართი", „warehouse rental Tbilisi"</li>
+                  <li><strong class="text-blue-300">Google Ads:</strong> Custom intent + LinkedIn audience გადაწყვეტილების მიმღებებზე</li>
+                  <li><strong class="text-green-300">Copy:</strong> Case study-ბაზრებული PDF/landing — დირექტორების ენაზე</li>
+                </ul>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 p-4 rounded-xl bg-primary/5 border border-primary/15">
+              <span class="text-2xl">📊</span>
+              <p class="text-sm text-white/80"><strong class="text-primary">მოსალოდნელი შედეგი:</strong> 5-10 ხარისხიანი B2B ლიდი თვეში, საშუალო გარიგება $50K+.</p>
+            </div>
+          </div>
+          <!-- Luxury -->
+          <div id="seg-luxury" class="seg-tab-content hidden" role="tabpanel" aria-labelledby="seg-luxury-btn">
+            <div class="flex items-start gap-4 mb-6">
+              <span class="text-4xl">💎</span>
+              <div>
+                <h3 class="font-heading text-2xl font-bold text-white mb-2">ლუქს / Premium</h3>
+                <p class="text-sm text-white/50">პენთჰაუსები, ვილები, კურორტული ნივთობრიობა, ინვესტორებზე ორიენტირებული პროექტები</p>
+              </div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6 mb-6">
+              <div>
+                <p class="text-sm font-semibold text-danger uppercase tracking-wider mb-3">🎯 ძირითადი გამოწვევა</p>
+                <p class="text-white/70 leading-relaxed">საერთაშორისო მყიდველი ხედავს მხოლოდ ინგლისურ პორტალებს — თქვენ მის რადარზე არ ხართ. ლოკალური ბრენდი ვერ აღწევს Forbes/Bloomberg მკითხველს.</p>
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-accent uppercase tracking-wider mb-3">✅ ჩვენი მიდგომა</p>
+                <ul class="space-y-2 text-white/70 text-sm">
+                  <li><strong class="text-purple-300">SEO:</strong> EN/RU პარალელური საიტი + hreflang + luxury-specific schema</li>
+                  <li><strong class="text-pink-300">AI/GEO:</strong> Forbes/Bloomberg-style PR + AI Overview ციტირება „best luxury apartments Tbilisi"</li>
+                  <li><strong class="text-teal-300">CRO:</strong> არქიტექტორის ინტერვიუები, virtual tour, კონცეპტ-ვიდეო</li>
+                </ul>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 p-4 rounded-xl bg-primary/5 border border-primary/15">
+              <span class="text-2xl">📊</span>
+              <p class="text-sm text-white/80"><strong class="text-primary">მოსალოდნელი შედეგი:</strong> 80%+ საერთაშორისო ტრაფიკი, საშუალო ვიზიტის ღირებულება 8x მეტი.</p>
+            </div>
+          </div>
+          <!-- Off-Plan -->
+          <div id="seg-offplan" class="seg-tab-content hidden" role="tabpanel" aria-labelledby="seg-offplan-btn">
+            <div class="flex items-start gap-4 mb-6">
+              <span class="text-4xl">🏗️</span>
+              <div>
+                <h3 class="font-heading text-2xl font-bold text-white mb-2">Off-Plan / Pre-Construction</h3>
+                <p class="text-sm text-white/50">მშენებარე პროექტები, pre-sales, ინვესტორის მოზიდვა მშენებლობის ფაზაში</p>
+              </div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6 mb-6">
+              <div>
+                <p class="text-sm font-semibold text-danger uppercase tracking-wider mb-3">🎯 ძირითადი გამოწვევა</p>
+                <p class="text-white/70 leading-relaxed">მშენებლობის ფაზაში ლიდი არ გროვდება — მზად-შესასვლელად ბინები ცარიელი დარჩება, ფული გაიყინება, ROI ჩაიკარგება.</p>
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-accent uppercase tracking-wider mb-3">✅ ჩვენი მიდგომა</p>
+                <ul class="space-y-2 text-white/70 text-sm">
+                  <li><strong class="text-purple-300">SEO:</strong> პროექტის brand authority — „ახალი პროექტი ბათუმში 2026" კატეგორია</li>
+                  <li><strong class="text-teal-300">CRO:</strong> 3D ვირტუალური ტური + investment ROI calculator — ხარისხიანი ლიდ-ფანელი</li>
+                  <li><strong class="text-green-300">Copy:</strong> 6-12 თვიანი email nurture sequence + build progress updates</li>
+                </ul>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 p-4 rounded-xl bg-primary/5 border border-primary/15">
+              <span class="text-2xl">📊</span>
+              <p class="text-sm text-white/80"><strong class="text-primary">მოსალოდნელი შედეგი:</strong> 40-60% ბინების pre-sale მშენებლობის დასრულებამდე.</p>
+            </div>
+          </div>
+          <!-- Developer (default active) -->
+          <div id="seg-developer" class="seg-tab-content" role="tabpanel" aria-labelledby="seg-developer-btn">
+            <div class="flex items-start gap-4 mb-6">
+              <span class="text-4xl">👨‍💼</span>
+              <div>
+                <h3 class="font-heading text-2xl font-bold text-white mb-2">დეველოპერი — Full Portfolio</h3>
+                <p class="text-sm text-white/50">მრავალპროექტიანი დეველოპერული კომპანია, ბრენდის ცენტრალიზაცია</p>
+              </div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6 mb-6">
+              <div>
+                <p class="text-sm font-semibold text-danger uppercase tracking-wider mb-3">🎯 ძირითადი გამოწვევა</p>
+                <p class="text-white/70 leading-relaxed">6 პროექტი — 6 დამოუკიდებელი საიტი — 0 SEO authority. თითოეული პროექტი თავიდან იწყება, ბრენდის წონა არ გროვდება.</p>
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-accent uppercase tracking-wider mb-3">✅ ჩვენი მიდგომა</p>
+                <ul class="space-y-2 text-white/70 text-sm">
+                  <li><strong class="text-purple-300">Architecture:</strong> Brand domain + project subdomains + cross-linking სტრატეგია</li>
+                  <li><strong class="text-pink-300">SEO:</strong> ერთი ბრენდის ავტორიტეტი ანაწილდება ყველა პროექტზე</li>
+                  <li><strong class="text-blue-300">Multilingual:</strong> KA + EN + RU layer ერთდროულად ყოველ პროექტზე</li>
+                </ul>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 p-4 rounded-xl bg-primary/5 border border-primary/15">
+              <span class="text-2xl">📊</span>
+              <p class="text-sm text-white/80"><strong class="text-primary">მოსალოდნელი შედეგი:</strong> 3-5x ტრაფიკი იმავე კონტენტზე — economy of scale.</p>
+            </div>
+          </div>
+          <!-- Property Management -->
+          <div id="seg-management" class="seg-tab-content hidden" role="tabpanel" aria-labelledby="seg-management-btn">
+            <div class="flex items-start gap-4 mb-6">
+              <span class="text-4xl">🔑</span>
+              <div>
+                <h3 class="font-heading text-2xl font-bold text-white mb-2">Property Management</h3>
+                <p class="text-sm text-white/50">ქირაობის მართვა, short-term rental, owner-tenant პლატფორმები</p>
+              </div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6 mb-6">
+              <div>
+                <p class="text-sm font-semibold text-danger uppercase tracking-wider mb-3">🎯 ძირითადი გამოწვევა</p>
+                <p class="text-white/70 leading-relaxed">პირდაპირი ლიდი არ მოდის — Booking.com და Airbnb-ში 30% კომისიად მიდის, თქვენი ბრენდი მხოლოდ მათი პლატფორმის ჩრდილში არსებობს.</p>
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-accent uppercase tracking-wider mb-3">✅ ჩვენი მიდგომა</p>
+                <ul class="space-y-2 text-white/70 text-sm">
+                  <li><strong class="text-purple-300">Local SEO:</strong> GBP optimization + map pack ranking თბილისში/ბათუმში</li>
+                  <li><strong class="text-pink-300">Schema:</strong> Accommodation + AggregateRating + LocalBusiness</li>
+                  <li><strong class="text-green-300">Copy:</strong> rental policy + owner trust content + guest review optimization</li>
+                </ul>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 p-4 rounded-xl bg-primary/5 border border-primary/15">
+              <span class="text-2xl">📊</span>
+              <p class="text-sm text-white/80"><strong class="text-primary">მოსალოდნელი შედეგი:</strong> 40% direct booking, კომისიის ხარჯი ნახევრდება.</p>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-10 reveal">
+          <a href="#" onclick="openCalendly();return false;" class="inline-flex items-center gap-2 px-7 py-3 ai-cta-animate text-white text-base font-bold rounded-xl hover:brightness-110 transition-all">
+            ისაუბრე ჩემს პროექტზე
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <!-- ===== WHY BUNDLE (3 results vs vendor chaos) ===== -->
     <section class="py-20 lg:py-28">
       <div class="max-w-6xl mx-auto px-4 sm:px-6">
@@ -478,6 +699,110 @@
             </ul>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- ===== PROCESS TIMELINE — 5 PHASES ===== -->
+    <section id="process" class="py-20 lg:py-28 border-y border-white/5">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-16 reveal">
+          <p class="text-sm font-semibold text-primary uppercase tracking-wider mb-3">პროცესი</p>
+          <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">როგორ ვმუშაობთ — <span class="gradient-text">5 ეტაპი</span></h2>
+          <p class="text-lg text-white/50 max-w-3xl mx-auto">გასაგები ვადები, კონკრეტული deliverable-ები — არცერთი თვე „დაკარგული" არ რჩება. ყოველ ეტაპს თავისი outcome აქვს.</p>
+        </div>
+        <div class="grid lg:grid-cols-5 gap-8 lg:gap-6 reveal">
+          <!-- Step 1 -->
+          <div class="proc-step glass-card rounded-2xl p-6 flex flex-col">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="proc-num proc-num-1">1</div>
+              <span class="proc-pill">კვირა 1-2</span>
+            </div>
+            <h3 class="font-heading text-lg font-bold text-white mb-3">Discovery & Audit</h3>
+            <ul class="space-y-1.5 text-sm text-white/60 mb-4 flex-1">
+              <li>• ტექნიკური აუდიტი (40+ პუნქტი)</li>
+              <li>• კონკურენტის ანალიზი (5+)</li>
+              <li>• Keyword research (300-500)</li>
+              <li>• GSC/GA4 setup ან audit</li>
+            </ul>
+            <div class="pt-3 border-t border-white/5">
+              <p class="text-[11px] text-purple-300/70 uppercase tracking-wider mb-1">📦 Deliverable</p>
+              <p class="text-xs text-white/70">აუდიტის PDF (40+ გვ) + სტრატეგიის mind map</p>
+            </div>
+          </div>
+          <!-- Step 2 -->
+          <div class="proc-step glass-card rounded-2xl p-6 flex flex-col">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="proc-num proc-num-2">2</div>
+              <span class="proc-pill">კვირა 3-4</span>
+            </div>
+            <h3 class="font-heading text-lg font-bold text-white mb-3">Strategy & Architecture</h3>
+            <ul class="space-y-1.5 text-sm text-white/60 mb-4 flex-1">
+              <li>• საიტის სტრუქტურა (brand → projects → locations)</li>
+              <li>• მრავალენოვანი layer-ის გეგმა</li>
+              <li>• Content roadmap</li>
+              <li>• On-page priority list</li>
+            </ul>
+            <div class="pt-3 border-t border-white/5">
+              <p class="text-[11px] text-pink-300/70 uppercase tracking-wider mb-1">📦 Deliverable</p>
+              <p class="text-xs text-white/70">Strategy doc + technical sitemap + content calendar</p>
+            </div>
+          </div>
+          <!-- Step 3 -->
+          <div class="proc-step glass-card rounded-2xl p-6 flex flex-col">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="proc-num proc-num-3">3</div>
+              <span class="proc-pill">თვე 2-3</span>
+            </div>
+            <h3 class="font-heading text-lg font-bold text-white mb-3">Foundation Build</h3>
+            <ul class="space-y-1.5 text-sm text-white/60 mb-4 flex-1">
+              <li>• On-page optimization</li>
+              <li>• Schema markup (Organization + RealEstateAgent + Service)</li>
+              <li>• Core Web Vitals fix</li>
+              <li>• Content hub-ების launch</li>
+            </ul>
+            <div class="pt-3 border-t border-white/5">
+              <p class="text-[11px] text-teal-300/70 uppercase tracking-wider mb-1">📦 Deliverable</p>
+              <p class="text-xs text-white/70">10-15 ჰაბ-გვერდი + technical health &gt; 90</p>
+            </div>
+          </div>
+          <!-- Step 4 -->
+          <div class="proc-step glass-card rounded-2xl p-6 flex flex-col">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="proc-num proc-num-4">4</div>
+              <span class="proc-pill">თვე 3-6</span>
+            </div>
+            <h3 class="font-heading text-lg font-bold text-white mb-3">Authority & Content</h3>
+            <ul class="space-y-1.5 text-sm text-white/60 mb-4 flex-1">
+              <li>• KA + EN + RU კონტენტი (8-12/თვე)</li>
+              <li>• Backlink outreach</li>
+              <li>• AI citation optimization (llms.txt, schema)</li>
+              <li>• Local pack signals</li>
+            </ul>
+            <div class="pt-3 border-t border-white/5">
+              <p class="text-[11px] text-blue-300/70 uppercase tracking-wider mb-1">📦 Deliverable</p>
+              <p class="text-xs text-white/70">30-50 ახალი გვერდი + 20+ backlink + AI Overview ხილვადობა</p>
+            </div>
+          </div>
+          <!-- Step 5 -->
+          <div class="proc-step glass-card rounded-2xl p-6 flex flex-col">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="proc-num proc-num-5">5</div>
+              <span class="proc-pill">თვე 6+</span>
+            </div>
+            <h3 class="font-heading text-lg font-bold text-white mb-3">Scale & Optimize</h3>
+            <ul class="space-y-1.5 text-sm text-white/60 mb-4 flex-1">
+              <li>• A/B test (CTA, headline)</li>
+              <li>• CRO (conversion path)</li>
+              <li>• ანალიტიკის dashboard</li>
+              <li>• ახალი პროექტების ინტეგრაცია</li>
+            </ul>
+            <div class="pt-3 border-t border-white/5">
+              <p class="text-[11px] text-green-300/70 uppercase tracking-wider mb-1">📦 Deliverable</p>
+              <p class="text-xs text-white/70">თვიური report + scale playbook + ROI dashboard</p>
+            </div>
+          </div>
+        </div>
+        <p class="text-center text-sm text-white/40 mt-10 max-w-2xl mx-auto italic">პროცესი არ არის ხისტი — თქვენი პროექტის სიჩქარეს შევუხამებთ. პრიორიტეტული ცვლილებები (CWV fix, Google Ads launch) შეიძლება პირველ თვეშივე ამოქმედდეს.</p>
       </div>
     </section>
 
@@ -581,6 +906,8 @@
     const revealObserver=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');revealObserver.unobserve(entry.target);}});},{threshold:0.1});document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
     /* FAQ */
     (function(){const cards=document.querySelectorAll('#faq-list .v29-card');cards.forEach(c=>{const toggle=c.querySelector('.v29-toggle');toggle.addEventListener('click',()=>{const isOpen=c.classList.contains('v29-open');cards.forEach(x=>{x.classList.remove('v29-open');x.querySelector('.v29-toggle').setAttribute('aria-expanded','false');});if(!isOpen){c.classList.add('v29-open');toggle.setAttribute('aria-expanded','true');}else{toggle.setAttribute('aria-expanded','false');}});});})();
+    /* Segment Tabs */
+    (function(){const btns=document.querySelectorAll('#segments .seg-tab-btn');btns.forEach(btn=>{btn.addEventListener('click',()=>{btns.forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false');b.classList.add('text-white/60');});btn.classList.add('active');btn.setAttribute('aria-selected','true');btn.classList.remove('text-white/60');document.querySelectorAll('#segments .seg-tab-content').forEach(c=>c.classList.add('hidden'));const target=document.getElementById(btn.dataset.tab);if(target)target.classList.remove('hidden');});});})();
   </script>
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
