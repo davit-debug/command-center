@@ -154,6 +154,149 @@
     .menu-active .hamburger-line:nth-child(3) {
       transform: translateY(-8px) rotate(-45deg);
     }
+
+    /* ===== Brief Builder shared form styles ===== */
+    .cb-input {
+      width: 100%;
+      padding: 0.625rem 0.875rem;
+      border-radius: 0.625rem;
+      border: 1px solid rgb(229 231 235);
+      background: white;
+      color: #0f172a;
+      font-size: 0.875rem;
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+      font-family: 'FiraGO', 'Inter', sans-serif;
+    }
+    .dark .cb-input {
+      background: #020710;
+      color: #f8fafc;
+      border-color: rgb(55 65 81);
+    }
+    .cb-input::placeholder { color: #94a3b8; }
+    .cb-input:focus {
+      border-color: #8B5CF6;
+      box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
+    }
+    textarea.cb-input { resize: vertical; min-height: 70px; }
+
+    .cb-radio {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid rgb(229 231 235);
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-size: 0.875rem;
+      color: #0f172a;
+      transition: all 0.15s;
+      background: white;
+    }
+    .dark .cb-radio { background: #020710; color: #f8fafc; border-color: rgb(55 65 81); }
+    .cb-radio:hover { border-color: #8B5CF6; }
+    .cb-radio input[type="radio"] { accent-color: #8B5CF6; }
+    .cb-radio:has(input:checked) { border-color: #8B5CF6; background: rgba(139, 92, 246, 0.08); }
+
+    .cb-export-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.375rem 0.625rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      border-radius: 0.5rem;
+      background: rgba(139, 92, 246, 0.1);
+      color: #8B5CF6;
+      transition: background 0.15s;
+      cursor: pointer;
+      border: none;
+      font-family: 'Inter', sans-serif;
+    }
+    .dark .cb-export-btn { color: #A78BFA; }
+    .cb-export-btn:hover { background: rgba(139, 92, 246, 0.2); }
+
+    .cb-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.125rem 0.5rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+    }
+    .cb-pill-ok { background: rgba(33, 199, 67, 0.15); color: #21C743; }
+    .cb-pill-warn { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
+    .cb-pill-err { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+
+    .cb-pxbar {
+      height: 3px;
+      border-radius: 999px;
+      background: rgb(229 231 235);
+      overflow: hidden;
+      margin-top: 0.25rem;
+    }
+    .dark .cb-pxbar { background: rgb(31 41 55); }
+    .cb-pxbar-fill { height: 100%; transition: width 0.2s, background 0.2s; }
+
+    .cb-aeo-callout {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.08), rgba(20, 184, 166, 0.06));
+      border: 1px solid rgba(139, 92, 246, 0.25);
+      border-radius: 0.75rem;
+      padding: 0.875rem 1rem;
+    }
+    .dark .cb-aeo-callout {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.12), rgba(20, 184, 166, 0.08));
+      border-color: rgba(139, 92, 246, 0.3);
+    }
+
+    .cb-suggest-chip {
+      display: inline-block;
+      padding: 0.25rem 0.625rem;
+      font-size: 0.75rem;
+      border-radius: 999px;
+      background: rgba(139, 92, 246, 0.08);
+      color: #8B5CF6;
+      cursor: pointer;
+      transition: background 0.15s;
+      border: none;
+      font-family: 'FiraGO', 'Inter', sans-serif;
+    }
+    .dark .cb-suggest-chip { color: #A78BFA; }
+    .cb-suggest-chip:hover { background: rgba(139, 92, 246, 0.18); }
+
+    .cb-section-card {
+      background: white;
+      border-radius: 0.75rem;
+      padding: 0.875rem 1rem;
+      border: 1px solid rgb(243 244 246);
+    }
+    .dark .cb-section-card { background: #020710; border-color: rgb(31 41 55); }
+    .cb-section-card h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #8B5CF6;
+      margin-bottom: 0.5rem;
+    }
+    .dark .cb-section-card h4 { color: #A78BFA; }
+
+    .cb-anchor-card {
+      background: rgba(139, 92, 246, 0.05);
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      border-radius: 0.625rem;
+      padding: 0.625rem 0.75rem;
+      text-align: center;
+    }
+    .cb-anchor-card .kw { font-size: 0.8rem; font-weight: 600; color: #0f172a; word-break: break-word; }
+    .dark .cb-anchor-card .kw { color: #f8fafc; }
+    .cb-anchor-card .target { font-size: 1.25rem; font-weight: 700; color: #8B5CF6; font-family: 'Inter', sans-serif; line-height: 1.1; margin-top: 0.125rem; }
+    .dark .cb-anchor-card .target { color: #A78BFA; }
+    .cb-anchor-card .label { font-size: 0.65rem; color: #475569; margin-top: 0.125rem; }
+    .dark .cb-anchor-card .label { color: #94a3b8; }
   </style>
 </head>
 <body class="font-body bg-surface-dark text-body-dark transition-colors duration-300">
@@ -265,96 +408,160 @@
 
   <!-- ========== TOOL ========== -->
   <section class="pb-16 lg:pb-20 bg-surface dark:bg-surface-dark">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6">
-      <div class="bg-surface-alt dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 p-6 sm:p-8">
-        <h2 class="font-heading text-xl sm:text-2xl font-bold text-heading dark:text-heading-dark mb-2">Content Brief Builder</h2>
-        <p class="text-sm text-body dark:text-body-dark mb-6">შექმენით სტრუქტურირებული კონტენტ-ბრიფი წამებში. სათაურის ვარიანტები, H2/H3 outline, SEO checklist — კოპირაიტერისთვის მზა დავალება.</p>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="grid lg:grid-cols-2 gap-6">
 
-        <!-- Step 1: Setup -->
-        <div id="brief-setup">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
-            <div>
-              <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2">სამიზნე Keyword *</label>
-              <input type="text" id="brief-keyword" placeholder="მაგ: SEO სერვისები" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark placeholder-gray-400 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all">
+        <!-- LEFT PANE: FORM -->
+        <div class="bg-surface-alt dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 p-5 sm:p-7 space-y-7">
+
+          <div class="flex items-center justify-between">
+            <h2 class="font-heading text-lg sm:text-xl font-bold text-heading dark:text-heading-dark">ბრიფის ფორმა</h2>
+            <div class="flex items-center gap-1">
+              <button id="brief-lang-ka" class="px-3 py-1 text-xs font-semibold rounded-lg bg-primary/10 text-primary dark:text-primary-light">KA</button>
+              <button id="brief-lang-en" class="px-3 py-1 text-xs font-semibold rounded-lg text-body dark:text-body-dark hover:bg-gray-100 dark:hover:bg-gray-800">EN</button>
             </div>
+          </div>
+
+          <!-- A. Setup -->
+          <div class="border-t border-gray-200 dark:border-gray-700 pt-5">
+            <p class="text-[11px] font-bold uppercase tracking-wider text-primary dark:text-primary-light mb-4 font-inter">A. პროექტის პარამეტრები</p>
+
+            <!-- 1. დანიშნულება -->
+            <div class="mb-4">
+              <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2" data-i18n="purpose">დანიშნულება</label>
+              <div class="grid grid-cols-3 gap-2">
+                <label class="cb-radio justify-center"><input type="radio" name="cb-purpose" value="blog" checked><span data-i18n="purpose-blog">ბლოგი</span></label>
+                <label class="cb-radio justify-center"><input type="radio" name="cb-purpose" value="landing"><span data-i18n="purpose-landing">Landing</span></label>
+                <label class="cb-radio justify-center"><input type="radio" name="cb-purpose" value="media"><span data-i18n="purpose-media">მედია</span></label>
+              </div>
+            </div>
+
+            <!-- 2. სამიზნე აუდიტორია -->
+            <div class="mb-4">
+              <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2" data-i18n="audience">სამიზნე აუდიტორია</label>
+              <input type="text" id="cb-audience" placeholder="მაგ: ბიზნესის მფლობელები" class="cb-input">
+            </div>
+
+            <!-- 4. მყიდველის ეტაპი -->
             <div>
-              <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2">კონტენტის ტიპი</label>
-              <select id="brief-type" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark focus:ring-2 focus:ring-primary/50 outline-none transition-all">
-                <option value="blog">ბლოგ პოსტი</option>
-                <option value="landing">Landing Page</option>
-                <option value="product">Product Page</option>
-                <option value="guide">Guide / Tutorial</option>
-                <option value="comparison">Comparison</option>
-                <option value="howto">How-To</option>
+              <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2" data-i18n="stage">მყიდველის გადაწყვეტილების ეტაპი</label>
+              <select id="cb-stage" class="cb-input">
+                <option value="awareness" data-i18n="stage-awareness">Awareness — ინფორმაციული ძიება</option>
+                <option value="consideration" selected data-i18n="stage-consideration">Consideration — შედარება/მოძიება</option>
+                <option value="decision" data-i18n="stage-decision">Decision — ყიდვის განზრახვა</option>
+                <option value="retention" data-i18n="stage-retention">Retention — არსებული მომხმარებელი</option>
               </select>
             </div>
           </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
-            <div>
-              <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2">სამიზნე აუდიტორია</label>
-              <input type="text" id="brief-audience" placeholder="მაგ: ბიზნესის მფლობელები" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark placeholder-gray-400 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all">
+
+          <!-- B. Keywords & length -->
+          <div class="border-t border-gray-200 dark:border-gray-700 pt-5">
+            <p class="text-[11px] font-bold uppercase tracking-wider text-primary dark:text-primary-light mb-4 font-inter">B. ქივორდები და მოცულობა</p>
+
+            <!-- 7. მთავარი ქივორდი -->
+            <div class="mb-4">
+              <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2" data-i18n="mainKw">მთავარი ქივორდი *</label>
+              <input type="text" id="cb-mainKw" placeholder="მაგ: SEO სააგენტო" class="cb-input" required>
             </div>
+
+            <!-- 8. დამატებითი ქივორდები -->
+            <div class="mb-4">
+              <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2" data-i18n="secKw">დამატებითი ქივორდები (3-მდე)</label>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                <input type="text" id="cb-secKw1" placeholder="ქივორდი 1" class="cb-input">
+                <input type="text" id="cb-secKw2" placeholder="ქივორდი 2" class="cb-input">
+                <input type="text" id="cb-secKw3" placeholder="ქივორდი 3" class="cb-input">
+              </div>
+            </div>
+
+            <!-- 9. სიტყვების რაოდენობა -->
             <div>
-              <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2">ტონი</label>
-              <select id="brief-tone" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark focus:ring-2 focus:ring-primary/50 outline-none transition-all">
-                <option value="expert">ექსპერტული</option>
-                <option value="formal">ფორმალური</option>
-                <option value="informal">არაფორმალური</option>
-                <option value="educational">სასწავლო</option>
-              </select>
+              <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2" data-i18n="wordCount">სიტყვების რაოდენობა</label>
+              <input type="number" id="cb-wordCount" value="1000" min="200" step="50" class="cb-input">
+              <p class="text-xs text-body dark:text-body-dark mt-1.5"><span data-i18n="anchor-hint">Anchor Cloud 1% =</span> <span id="cb-anchor-hint" class="font-semibold text-primary dark:text-primary-light">10</span> <span data-i18n="mentions">ხსენება თითო ქივორდზე</span></p>
             </div>
           </div>
-          <div class="flex items-center gap-3 mb-6">
-            <label class="block text-sm font-semibold text-heading dark:text-heading-dark">ენა:</label>
-            <button id="brief-lang-ka" class="px-3 py-1 text-sm font-semibold rounded-lg bg-primary/10 text-primary dark:text-primary-light">ქართული</button>
-            <button id="brief-lang-en" class="px-3 py-1 text-sm font-semibold rounded-lg text-body dark:text-body-dark hover:bg-gray-100 dark:hover:bg-gray-800">English</button>
+
+          <!-- C. Linking, CTA, title -->
+          <div class="border-t border-gray-200 dark:border-gray-700 pt-5">
+            <p class="text-[11px] font-bold uppercase tracking-wider text-primary dark:text-primary-light mb-4 font-inter">C. ბმულები, CTA, სათაური</p>
+
+            <!-- 3. შიდა გადალინკვები -->
+            <div class="mb-4">
+              <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2" data-i18n="internal">შიდა გადალინკვები</label>
+              <textarea id="cb-internal" rows="3" placeholder="https://10xseo.ge/seo-management — SEO მენეჯმენტი&#10;https://10xseo.ge/seo-audit — უფასო აუდიტი" class="cb-input"></textarea>
+              <p class="text-xs text-body dark:text-body-dark mt-1" data-i18n="internal-hint">თითოეული ხაზი: URL — anchor</p>
+            </div>
+
+            <!-- 5. CTA -->
+            <div class="mb-4">
+              <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2" data-i18n="cta">CTA</label>
+              <div class="space-y-2">
+                <label class="cb-radio w-full"><input type="radio" name="cb-cta" value="call" checked><span>დაგვირეკეთ +995 510 10 15 17</span></label>
+                <label class="cb-radio w-full"><input type="radio" name="cb-cta" value="book"><span data-i18n="cta-book">დაჯავშნეთ კონსულტაცია</span></label>
+                <label class="cb-radio w-full"><input type="radio" name="cb-cta" value="custom"><span data-i18n="cta-custom">სხვა (ხელით)</span></label>
+                <textarea id="cb-ctaCustom" rows="2" placeholder="სხვა CTA ტექსტი..." class="cb-input hidden"></textarea>
+              </div>
+            </div>
+
+            <!-- 6. სათაური -->
+            <div>
+              <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2" data-i18n="title">სათაური (H1)</label>
+              <input type="text" id="cb-title" placeholder="მთავარი ქივორდით..." class="cb-input">
+              <button type="button" onclick="suggestTitles()" class="mt-2 text-xs font-semibold text-primary dark:text-primary-light hover:underline" data-i18n="suggest-titles">+ 5 ვარიანტის შემოთავაზება</button>
+              <div id="cb-title-suggestions" class="mt-2 flex flex-wrap gap-1.5"></div>
+            </div>
           </div>
-          <button onclick="generateBrief()" class="inline-flex items-center gap-2 px-6 py-3 ai-cta-animate text-white font-bold rounded-xl hover:shadow-lg hover:shadow-primary/30 transition-all text-sm">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-            ბრიფის გენერირება
-          </button>
+
+          <!-- D. AEO, meta, Q&A -->
+          <div class="border-t border-gray-200 dark:border-gray-700 pt-5">
+            <p class="text-[11px] font-bold uppercase tracking-wider text-primary dark:text-primary-light mb-4 font-inter">D. Meta და კითხვა-პასუხი</p>
+
+            <!-- 13. Meta Title -->
+            <div class="mb-4">
+              <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2">Meta Title</label>
+              <input type="text" id="cb-metaTitle" placeholder="მთავარი ქივორდი + ბრენდი" class="cb-input" maxlength="100">
+              <div class="flex items-center justify-between text-xs text-body dark:text-body-dark mt-1.5 gap-2">
+                <span id="cb-metaTitle-counter" class="font-inter">0 / 60 — 0px / 580px</span>
+                <span id="cb-metaTitle-warn"></span>
+              </div>
+            </div>
+
+            <!-- 14. Meta Description -->
+            <div class="mb-4">
+              <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2">Meta Description</label>
+              <textarea id="cb-metaDesc" rows="3" placeholder="მთავარი ქივორდი + 1-2 დამატებითი ქივორდი..." class="cb-input" maxlength="200"></textarea>
+              <div class="flex items-center justify-between text-xs text-body dark:text-body-dark mt-1.5 gap-2">
+                <span id="cb-metaDesc-counter" class="font-inter">0 / 160 — 0px / 920px</span>
+                <span id="cb-metaDesc-warn"></span>
+              </div>
+            </div>
+
+            <!-- 10. Q&A -->
+            <div>
+              <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2" data-i18n="qa">კითხვა-პასუხი (2-3)</label>
+              <div id="cb-qa-list" class="space-y-2"></div>
+              <button type="button" onclick="addQaRow()" class="mt-2 text-xs font-semibold text-primary dark:text-primary-light hover:underline" data-i18n="qa-add">+ კითხვის დამატება</button>
+            </div>
+          </div>
+
         </div>
 
-        <!-- Step 2: Generated Brief -->
-        <div id="brief-output" class="hidden mt-6 space-y-6">
-          <!-- Title Suggestions -->
-          <div class="bg-white dark:bg-surface-dark rounded-xl p-4 border border-gray-100 dark:border-gray-800">
-            <h3 class="text-sm font-semibold text-heading dark:text-heading-dark mb-3">სათაურის ვარიანტები</h3>
-            <div id="brief-titles" class="space-y-2"></div>
-          </div>
-
-          <!-- Structure Outline -->
-          <div class="bg-white dark:bg-surface-dark rounded-xl p-4 border border-gray-100 dark:border-gray-800">
-            <h3 class="text-sm font-semibold text-heading dark:text-heading-dark mb-3">რეკომენდებული სტრუქტურა</h3>
-            <div id="brief-structure" class="space-y-1"></div>
-          </div>
-
-          <!-- Content Parameters -->
-          <div class="bg-white dark:bg-surface-dark rounded-xl p-4 border border-gray-100 dark:border-gray-800">
-            <h3 class="text-sm font-semibold text-heading dark:text-heading-dark mb-3">კონტენტის პარამეტრები</h3>
-            <div id="brief-params" class="grid grid-cols-2 sm:grid-cols-4 gap-3"></div>
-          </div>
-
-          <!-- SEO Checklist -->
-          <div class="bg-white dark:bg-surface-dark rounded-xl p-4 border border-gray-100 dark:border-gray-800">
-            <h3 class="text-sm font-semibold text-heading dark:text-heading-dark mb-3">SEO Checklist</h3>
-            <div id="brief-checklist" class="space-y-2"></div>
-          </div>
-
-          <!-- Questions to Answer -->
-          <div class="bg-white dark:bg-surface-dark rounded-xl p-4 border border-gray-100 dark:border-gray-800">
-            <h3 class="text-sm font-semibold text-heading dark:text-heading-dark mb-3">კითხვები პასუხის გასაცემად</h3>
-            <div id="brief-questions" class="space-y-1.5"></div>
-          </div>
-
-          <!-- Export -->
-          <div class="flex flex-wrap gap-2">
-            <button onclick="briefExport('full')" class="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-lg bg-primary/10 text-primary dark:text-primary-light hover:bg-primary/20 transition-colors">სრული ბრიფი</button>
-            <button onclick="briefExport('markdown')" class="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-lg bg-primary/10 text-primary dark:text-primary-light hover:bg-primary/20 transition-colors">Markdown</button>
-            <button onclick="briefExport('outline')" class="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-lg bg-primary/10 text-primary dark:text-primary-light hover:bg-primary/20 transition-colors">Outline Only</button>
-            <button onclick="document.getElementById('brief-output').classList.add('hidden')" class="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-lg border border-gray-200 dark:border-gray-700 text-body dark:text-body-dark hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">თავიდან</button>
+        <!-- RIGHT PANE: PREVIEW -->
+        <div>
+          <div class="lg:sticky lg:top-24 bg-surface-alt dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 p-5 sm:p-7 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto">
+            <div class="flex items-center justify-between mb-5 gap-3 flex-wrap">
+              <h2 class="font-heading text-lg sm:text-xl font-bold text-heading dark:text-heading-dark" data-i18n="preview">ბრიფის preview</h2>
+              <div class="flex flex-wrap gap-1.5">
+                <button onclick="exportFull()" class="cb-export-btn" data-i18n="export-full">სრული</button>
+                <button onclick="exportMarkdown()" class="cb-export-btn">.md</button>
+                <button onclick="exportOutline()" class="cb-export-btn">Outline</button>
+              </div>
+            </div>
+            <div id="cb-preview" class="space-y-4"></div>
           </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -474,166 +681,564 @@
     function escHtml(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
     // ========================================
-    // CONTENT BRIEF BUILDER
+    // CONTENT BRIEF BUILDER — brief-standard aligned
     // ========================================
     let briefLang = 'ka';
-    let briefData = null;
-
-    document.getElementById('brief-lang-ka').addEventListener('click', function() {
-      briefLang = 'ka';
-      this.classList.add('bg-primary/10', 'text-primary', 'dark:text-primary-light');
-      this.classList.remove('text-body', 'dark:text-body-dark');
-      const en = document.getElementById('brief-lang-en');
-      en.classList.remove('bg-primary/10', 'text-primary', 'dark:text-primary-light');
-      en.classList.add('text-body', 'dark:text-body-dark');
-    });
-    document.getElementById('brief-lang-en').addEventListener('click', function() {
-      briefLang = 'en';
-      this.classList.add('bg-primary/10', 'text-primary', 'dark:text-primary-light');
-      this.classList.remove('text-body', 'dark:text-body-dark');
-      const ka = document.getElementById('brief-lang-ka');
-      ka.classList.remove('bg-primary/10', 'text-primary', 'dark:text-primary-light');
-      ka.classList.add('text-body', 'dark:text-body-dark');
-    });
 
     const briefTpl = {
       ka: {
         titles: {
-          blog: ['{kw}: სრული გზამკვლევი 2026','{kw} — რა უნდა იცოდეთ','საუკეთესო {kw}: ტოპ რჩევები და სტრატეგიები','{kw}: პრაქტიკული სახელმძღვანელო დამწყებთათვის','რატომ არის {kw} მნიშვნელოვანი და როგორ დავიწყოთ'],
-          landing: ['{kw} — #1 სერვისი საქართველოში','პროფესიონალური {kw} | მიიღეთ შედეგი','{kw}: სწრაფი, ხარისხიანი, ხელმისაწვდომი','გჭირდებათ {kw}? მიმართეთ ექსპერტებს'],
-          product: ['{kw} — შეიძინეთ საუკეთესო ფასად','{kw}: მახასიათებლები, ფასი, მიმოხილვა','საუკეთესო {kw} 2026 — სრული მიმოხილვა'],
-          guide: ['{kw}: A-დან Z-მდე სრული გზამკვლევი','სრული სახელმძღვანელო: {kw}','{kw} — ნაბიჯ-ნაბიჯ ინსტრუქცია','{kw} — ყველაფერი რაც უნდა იცოდეთ'],
-          comparison: ['{kw}: რომელი აჯობებს? სრული შედარება','{kw} — დადებითი და უარყოფითი მხარეები','საუკეთესო {kw}: შედარებითი ანალიზი 2026'],
-          howto: ['როგორ გავაკეთოთ {kw}: ნაბიჯ-ნაბიჯ','{kw} — მარტივი ინსტრუქცია 5 ნაბიჯში','{kw}: პრაქტიკული გზამკვლევი']
+          blog: ['{kw}: სრული გზამკვლევი 2026', '{kw} — რა უნდა იცოდეთ', 'საუკეთესო {kw}: ტოპ რჩევები და სტრატეგიები', '{kw}: პრაქტიკული სახელმძღვანელო დამწყებთათვის', 'რატომ არის {kw} მნიშვნელოვანი და როგორ დავიწყოთ'],
+          landing: ['{kw} — #1 სერვისი საქართველოში', 'პროფესიონალური {kw} | მიიღეთ შედეგი', '{kw}: სწრაფი, ხარისხიანი, ხელმისაწვდომი', 'გჭირდებათ {kw}? მიმართეთ ექსპერტებს', '{kw} — დაიწყე დღესვე'],
+          media: ['{kw} — ექსკლუზიური მასალა', 'ყველაფერი {kw}-ზე ერთ სტატიაში', '{kw}: სიახლეები და ანალიზი 2026', '{kw} — რას ამბობენ ექსპერტები', 'რატომ ლაპარაკობს ყველა {kw}-ზე']
         },
-        structures: {
-          blog: [{l:'h2',t:'შესავალი'},{l:'h2',t:'რა არის {kw}?'},{l:'h3',t:'რატომ არის {kw} მნიშვნელოვანი'},{l:'h2',t:'{kw} — ძირითადი უპირატესობები'},{l:'h3',t:'უპირატესობა #1'},{l:'h3',t:'უპირატესობა #2'},{l:'h2',t:'როგორ დავიწყოთ {kw}'},{l:'h3',t:'ნაბიჯი 1'},{l:'h3',t:'ნაბიჯი 2'},{l:'h2',t:'ხშირად დაშვებული შეცდომები'},{l:'h2',t:'ხშირად დასმული კითხვები (FAQ)'},{l:'h2',t:'დასკვნა'}],
-          landing: [{l:'h2',t:'{kw} — ჩვენი სერვისი'},{l:'h2',t:'რატომ ჩვენ?'},{l:'h3',t:'გამოცდილება'},{l:'h3',t:'შედეგები'},{l:'h2',t:'სერვისის მახასიათებლები'},{l:'h2',t:'როგორ მუშაობს'},{l:'h3',t:'ნაბიჯი 1: კონსულტაცია'},{l:'h3',t:'ნაბიჯი 2: სტრატეგია'},{l:'h3',t:'ნაბიჯი 3: განხორციელება'},{l:'h2',t:'კლიენტების შეფასებები'},{l:'h2',t:'ფასები'},{l:'h2',t:'FAQ'},{l:'h2',t:'დაგვიკავშირდით'}],
-          product: [{l:'h2',t:'{kw} — მიმოხილვა'},{l:'h2',t:'ძირითადი მახასიათებლები'},{l:'h3',t:'მახასიათებელი #1'},{l:'h3',t:'მახასიათებელი #2'},{l:'h2',t:'ვისთვისაა განკუთვნილი'},{l:'h2',t:'დადებითი და უარყოფითი მხარეები'},{l:'h2',t:'ფასი და შეძენა'},{l:'h2',t:'FAQ'}],
-          guide: [{l:'h2',t:'რა არის {kw}?'},{l:'h2',t:'წინაპირობები'},{l:'h2',t:'ნაბიჯი 1: მომზადება'},{l:'h3',t:'საჭირო ინსტრუმენტები'},{l:'h2',t:'ნაბიჯი 2: ძირითადი პროცესი'},{l:'h3',t:'დეტალური ახსნა'},{l:'h2',t:'ნაბიჯი 3: შედეგების შემოწმება'},{l:'h2',t:'გაფართოებული რჩევები'},{l:'h2',t:'ხშირი პრობლემები და გადაწყვეტები'},{l:'h2',t:'FAQ'},{l:'h2',t:'დასკვნა'}],
-          comparison: [{l:'h2',t:'{kw} — რატომ არის შედარება მნიშვნელოვანი'},{l:'h2',t:'ვარიანტი A: მიმოხილვა'},{l:'h3',t:'დადებითი მხარეები'},{l:'h3',t:'უარყოფითი მხარეები'},{l:'h2',t:'ვარიანტი B: მიმოხილვა'},{l:'h3',t:'დადებითი მხარეები'},{l:'h3',t:'უარყოფითი მხარეები'},{l:'h2',t:'პირდაპირი შედარება (ცხრილი)'},{l:'h2',t:'რომელი აირჩიოთ?'},{l:'h2',t:'FAQ'}],
-          howto: [{l:'h2',t:'რა დაგჭირდებათ'},{l:'h2',t:'ნაბიჯი 1: {kw} — დაწყება'},{l:'h2',t:'ნაბიჯი 2: ძირითადი მოქმედებები'},{l:'h3',t:'მნიშვნელოვანი დეტალი'},{l:'h2',t:'ნაბიჯი 3: დასრულება'},{l:'h2',t:'პროფესიონალური რჩევები'},{l:'h2',t:'ხშირი შეცდომები'},{l:'h2',t:'FAQ'}]
+        labels: {
+          purpose: 'დანიშნულება',
+          'purpose-blog': 'ბლოგი', 'purpose-landing': 'Landing', 'purpose-media': 'მედია',
+          audience: 'სამიზნე აუდიტორია',
+          stage: 'მყიდველის გადაწყვეტილების ეტაპი',
+          'stage-awareness': 'Awareness — ინფორმაციული ძიება', 'stage-consideration': 'Consideration — შედარება/მოძიება', 'stage-decision': 'Decision — ყიდვის განზრახვა', 'stage-retention': 'Retention — არსებული მომხმარებელი',
+          mainKw: 'მთავარი ქივორდი *',
+          secKw: 'დამატებითი ქივორდები (3-მდე)',
+          wordCount: 'სიტყვების რაოდენობა',
+          'anchor-hint': 'Anchor Cloud 1% =',
+          mentions: 'ხსენება თითო ქივორდზე',
+          internal: 'შიდა გადალინკვები',
+          'internal-hint': 'თითოეული ხაზი: URL — anchor',
+          cta: 'CTA',
+          'cta-book': 'დაჯავშნეთ კონსულტაცია',
+          'cta-custom': 'სხვა (ხელით)',
+          title: 'სათაური (H1)',
+          'suggest-titles': '+ 5 ვარიანტის შემოთავაზება',
+          qa: 'კითხვა-პასუხი (2-3)',
+          'qa-add': '+ კითხვის დამატება',
+          preview: 'ბრიფის preview',
+          'export-full': 'სრული'
         },
-        params: {blog:{words:'1200-2000',images:'3-5',internal:'3-5',external:'2-3'},landing:{words:'800-1200',images:'5-8',internal:'3-5',external:'1-2'},product:{words:'800-1500',images:'5-10',internal:'3-5',external:'2-3'},guide:{words:'2000-3000',images:'5-10',internal:'5-8',external:'3-5'},comparison:{words:'1500-2500',images:'4-6',internal:'3-5',external:'3-5'},howto:{words:'1000-2000',images:'5-10',internal:'3-5',external:'2-3'}},
-        checklist: ['Keyword სათაურში','Keyword პირველ 100 სიტყვაში','Keyword მინიმუმ 1 H2-ში','Meta Description 120-160 სიმბოლო','Alt ტექსტი ყველა სურათზე','Internal ბმულები მსგავს კონტენტზე','External ბმულები ავტორიტეტულ წყაროებზე','FAQ სექცია Schema-ready კითხვებით'],
-        questions: ['რა არის {kw}?','რატომ არის {kw} მნიშვნელოვანი?','როგორ ავირჩიოთ საუკეთესო {kw}?','რა ღირს {kw}?','ხშირი შეცდომები — {kw}'],
-        paramLabels: {words:'სიტყვები',images:'სურათები',internal:'Internal ბმულები',external:'External ბმულები'}
+        qaPrefill: ['რა არის {kw}?', 'როგორ ვირჩიოთ {kw}?', 'რამდენი ღირს {kw}?'],
+        out: {
+          purposeMap: { blog: 'ბლოგი', landing: 'Landing Page', media: 'მედია პუბლიკაცია' },
+          stageMap: { awareness: 'Awareness — ინფორმაციული ძიება', consideration: 'Consideration — შედარება/მოძიება', decision: 'Decision — ყიდვის განზრახვა', retention: 'Retention — არსებული მომხმარებელი' },
+          ctaMap: { call: 'დაგვირეკეთ +995 510 10 15 17', book: 'დაჯავშნეთ კონსულტაცია' },
+          aeo: 'პირველ 50 სიტყვაში პირდაპირი პასუხი იმ კითხვაზე, რომელსაც სტატია ეხება.',
+          checklist: [
+            'მთავარი ქივორდი H1-ში (სათაურში)',
+            'მთავარი ქივორდი H2-ში (ქვესათაურში)',
+            'მთავარი ქივორდი პირველ 150 სიტყვაში'
+          ],
+          headers: {
+            purpose: 'დანიშნულება', audience: 'აუდიტორია', stage: 'მყიდველის ეტაპი',
+            words: 'მოცულობა', title: 'სათაური (H1)',
+            metaTitle: 'Meta Title', metaDesc: 'Meta Description',
+            aeo: 'AEO Overview', anchor: 'Anchor Cloud (target 1%)',
+            internal: 'შიდა გადალინკვები', cta: 'CTA',
+            qa: 'კითხვა-პასუხი', checklist: 'SEO Checklist',
+            next: 'შემდეგი ნაბიჯები'
+          },
+          mentions: 'ხსენება', wordsUnit: 'სიტყვა',
+          empty: 'შეიყვანეთ მთავარი ქივორდი ბრიფის სანახავად',
+          warnKwInTitle: 'მთავარი ქივორდი უნდა იყოს დასაწყისში',
+          warnKwMissingDesc: 'მთავარი ქივორდი ვერ მოიძებნა',
+          warnNoSecInDesc: 'დამატებითი ქივორდი არ ფიგურირებს',
+          tooLong: 'გრძელია',
+          ok: 'OK',
+          copied: 'დაკოპირდა!'
+        }
       },
       en: {
         titles: {
-          blog: ['How to {kw}: Complete Guide 2026','{kw} — Everything You Need to Know','Best {kw}: Top Tips and Strategies','{kw}: A Practical Guide for Beginners','Why {kw} Matters and How to Get Started'],
-          landing: ['{kw} — #1 Service Provider','Professional {kw} | Get Results','{kw}: Fast, Quality, Affordable','Need {kw}? Trust the Experts'],
-          product: ['{kw} — Buy at the Best Price','{kw}: Features, Pricing, Review','Best {kw} 2026 — Complete Review'],
-          guide: ['{kw}: Complete A-to-Z Guide','The Ultimate Guide to {kw}','{kw} — Step-by-Step Instructions','Everything You Need to Know About {kw}'],
-          comparison: ['{kw}: Which One Wins? Full Comparison','{kw} — Pros and Cons','Best {kw}: Comparative Analysis 2026'],
-          howto: ['How to {kw}: Step by Step','{kw} — Easy Guide in 5 Steps','DIY {kw}: A Practical Guide']
+          blog: ['How to {kw}: Complete Guide 2026', '{kw} — Everything You Need to Know', 'Best {kw}: Top Tips and Strategies', '{kw}: A Practical Guide for Beginners', 'Why {kw} Matters and How to Get Started'],
+          landing: ['{kw} — #1 Service Provider', 'Professional {kw} | Get Results', '{kw}: Fast, Quality, Affordable', 'Need {kw}? Trust the Experts', '{kw} — Start Today'],
+          media: ['{kw} — Exclusive Coverage', 'Everything About {kw} in One Article', '{kw}: News and Analysis 2026', '{kw} — What Experts Say', 'Why Everyone Talks About {kw}']
         },
-        structures: {
-          blog: [{l:'h2',t:'Introduction'},{l:'h2',t:'What is {kw}?'},{l:'h3',t:'Why {kw} Matters'},{l:'h2',t:'Key Benefits of {kw}'},{l:'h3',t:'Benefit #1'},{l:'h3',t:'Benefit #2'},{l:'h2',t:'How to Get Started with {kw}'},{l:'h3',t:'Step 1'},{l:'h3',t:'Step 2'},{l:'h2',t:'Common Mistakes to Avoid'},{l:'h2',t:'Frequently Asked Questions'},{l:'h2',t:'Conclusion'}],
-          landing: [{l:'h2',t:'{kw} — Our Service'},{l:'h2',t:'Why Choose Us?'},{l:'h3',t:'Experience'},{l:'h3',t:'Results'},{l:'h2',t:'Service Features'},{l:'h2',t:'How It Works'},{l:'h3',t:'Step 1: Consultation'},{l:'h3',t:'Step 2: Strategy'},{l:'h3',t:'Step 3: Implementation'},{l:'h2',t:'Client Testimonials'},{l:'h2',t:'Pricing'},{l:'h2',t:'FAQ'},{l:'h2',t:'Contact Us'}],
-          product: [{l:'h2',t:'{kw} — Overview'},{l:'h2',t:'Key Features'},{l:'h3',t:'Feature #1'},{l:'h3',t:'Feature #2'},{l:'h2',t:'Who Is It For?'},{l:'h2',t:'Pros and Cons'},{l:'h2',t:'Pricing'},{l:'h2',t:'FAQ'}],
-          guide: [{l:'h2',t:'What is {kw}?'},{l:'h2',t:'Prerequisites'},{l:'h2',t:'Step 1: Preparation'},{l:'h3',t:'Tools Needed'},{l:'h2',t:'Step 2: Main Process'},{l:'h3',t:'Detailed Explanation'},{l:'h2',t:'Step 3: Verification'},{l:'h2',t:'Advanced Tips'},{l:'h2',t:'Common Issues and Solutions'},{l:'h2',t:'FAQ'},{l:'h2',t:'Conclusion'}],
-          comparison: [{l:'h2',t:'{kw} — Why Comparison Matters'},{l:'h2',t:'Option A: Overview'},{l:'h3',t:'Pros'},{l:'h3',t:'Cons'},{l:'h2',t:'Option B: Overview'},{l:'h3',t:'Pros'},{l:'h3',t:'Cons'},{l:'h2',t:'Head-to-Head Comparison'},{l:'h2',t:'Which One to Choose?'},{l:'h2',t:'FAQ'}],
-          howto: [{l:'h2',t:'What You Need'},{l:'h2',t:'Step 1: Getting Started with {kw}'},{l:'h2',t:'Step 2: Main Actions'},{l:'h3',t:'Important Detail'},{l:'h2',t:'Step 3: Finishing Up'},{l:'h2',t:'Pro Tips'},{l:'h2',t:'Common Mistakes'},{l:'h2',t:'FAQ'}]
+        labels: {
+          purpose: 'Purpose',
+          'purpose-blog': 'Blog', 'purpose-landing': 'Landing', 'purpose-media': 'Media',
+          audience: 'Target Audience',
+          stage: 'Buyer Decision Stage',
+          'stage-awareness': 'Awareness — informational search', 'stage-consideration': 'Consideration — comparison', 'stage-decision': 'Decision — purchase intent', 'stage-retention': 'Retention — existing customer',
+          mainKw: 'Primary Keyword *',
+          secKw: 'Secondary Keywords (up to 3)',
+          wordCount: 'Word Count',
+          'anchor-hint': 'Anchor Cloud 1% =',
+          mentions: 'mentions per keyword',
+          internal: 'Internal Linking',
+          'internal-hint': 'One per line: URL — anchor',
+          cta: 'CTA',
+          'cta-book': 'Book a consultation',
+          'cta-custom': 'Custom',
+          title: 'Title (H1)',
+          'suggest-titles': '+ Suggest 5 variants',
+          qa: 'Q&A (2–3)',
+          'qa-add': '+ Add question',
+          preview: 'Brief preview',
+          'export-full': 'Full'
         },
-        params: {blog:{words:'1200-2000',images:'3-5',internal:'3-5',external:'2-3'},landing:{words:'800-1200',images:'5-8',internal:'3-5',external:'1-2'},product:{words:'800-1500',images:'5-10',internal:'3-5',external:'2-3'},guide:{words:'2000-3000',images:'5-10',internal:'5-8',external:'3-5'},comparison:{words:'1500-2500',images:'4-6',internal:'3-5',external:'3-5'},howto:{words:'1000-2000',images:'5-10',internal:'3-5',external:'2-3'}},
-        checklist: ['Keyword in title','Keyword in first 100 words','Keyword in at least 1 H2','Meta description 120-160 characters','Alt text on all images','Internal links to related content','External links to authoritative sources','FAQ section with schema-ready Q&As'],
-        questions: ['What is {kw}?','Why is {kw} important?','How to choose the best {kw}?','How much does {kw} cost?','What mistakes to avoid with {kw}?'],
-        paramLabels: {words:'Words',images:'Images',internal:'Internal Links',external:'External Links'}
+        qaPrefill: ['What is {kw}?', 'How to choose {kw}?', 'How much does {kw} cost?'],
+        out: {
+          purposeMap: { blog: 'Blog', landing: 'Landing Page', media: 'Media Publication' },
+          stageMap: { awareness: 'Awareness', consideration: 'Consideration', decision: 'Decision', retention: 'Retention' },
+          ctaMap: { call: 'Call us +995 510 10 15 17', book: 'Book a consultation' },
+          aeo: 'In the first 50 words, give a direct answer to the question this article addresses.',
+          checklist: [
+            'Primary keyword in H1 (title)',
+            'Primary keyword in H2 (subheading)',
+            'Primary keyword in first 150 words'
+          ],
+          headers: {
+            purpose: 'Purpose', audience: 'Audience', stage: 'Buyer Stage',
+            words: 'Length', title: 'Title (H1)',
+            metaTitle: 'Meta Title', metaDesc: 'Meta Description',
+            aeo: 'AEO Overview', anchor: 'Anchor Cloud (target 1%)',
+            internal: 'Internal Links', cta: 'CTA',
+            qa: 'Q&A', checklist: 'SEO Checklist',
+            next: 'Next steps'
+          },
+          mentions: 'mentions', wordsUnit: 'words',
+          empty: 'Enter the primary keyword to see the brief',
+          warnKwInTitle: 'Primary keyword must come first',
+          warnKwMissingDesc: 'Primary keyword missing',
+          warnNoSecInDesc: 'No secondary keyword present',
+          tooLong: 'too long',
+          ok: 'OK',
+          copied: 'Copied!'
+        }
       }
     };
 
-    function generateBrief() {
-      const kw = document.getElementById('brief-keyword').value.trim();
-      if (!kw) { showToast('შეიყვანეთ keyword!'); return; }
-      const type = document.getElementById('brief-type').value;
-      const tpl = briefTpl[briefLang];
-
-      briefData = {keyword: kw, type: type, lang: briefLang};
-
-      // Titles
-      const titles = (tpl.titles[type] || tpl.titles.blog).map(t => t.replace(/\{kw\}/g, () => kw));
-      briefData.titles = titles;
-      document.getElementById('brief-titles').innerHTML = titles.map(t =>
-        '<div class="flex items-center gap-2 p-2 rounded-lg bg-gray-50 dark:bg-gray-800/50">' +
-        '<span class="text-sm text-heading dark:text-heading-dark flex-1">' + escHtml(t) + '</span>' +
-        '<button class="brief-copy-title shrink-0 text-xs text-primary dark:text-primary-light hover:underline">Copy</button></div>'
-      ).join('');
-      document.querySelectorAll('.brief-copy-title').forEach((btn, i) => {
-        btn.addEventListener('click', () => { navigator.clipboard.writeText(titles[i]).then(() => showToast()); });
+    function applyI18n(lang) {
+      briefLang = lang;
+      const L = briefTpl[lang].labels;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const k = el.dataset.i18n;
+        if (L[k] !== undefined) el.textContent = L[k];
       });
+      const ka = document.getElementById('brief-lang-ka');
+      const en = document.getElementById('brief-lang-en');
+      const active = lang === 'ka' ? ka : en;
+      const inactive = lang === 'ka' ? en : ka;
+      active.classList.add('bg-primary/10', 'text-primary', 'dark:text-primary-light');
+      active.classList.remove('text-body', 'dark:text-body-dark');
+      inactive.classList.remove('bg-primary/10', 'text-primary', 'dark:text-primary-light');
+      inactive.classList.add('text-body', 'dark:text-body-dark');
+      refreshPristineQa();
+      renderBrief();
+    }
+    document.getElementById('brief-lang-ka').addEventListener('click', () => applyI18n('ka'));
+    document.getElementById('brief-lang-en').addEventListener('click', () => applyI18n('en'));
 
-      // Structure
-      const struct = (tpl.structures[type] || tpl.structures.blog).map(s => ({level: s.l, text: s.t.replace(/\{kw\}/g, () => kw)}));
-      briefData.structure = struct;
-      document.getElementById('brief-structure').innerHTML = struct.map(s => {
-        const indent = s.level === 'h3' ? 'ml-6' : s.level === 'h4' ? 'ml-12' : '';
-        return '<div class="flex items-center gap-2 ' + indent + '">' +
-          '<span class="text-[10px] font-inter font-bold px-1.5 py-0.5 rounded bg-primary/10 text-primary dark:text-primary-light">' + s.level.toUpperCase() + '</span>' +
-          '<span class="text-sm text-heading dark:text-heading-dark">' + escHtml(s.text) + '</span></div>';
-      }).join('');
+    // Lifted from pixel-width-checker.html (canvas pixel measurement)
+    const _pxCanvas = document.createElement('canvas');
+    const _pxCtx = _pxCanvas.getContext('2d');
+    function measurePixelWidth(text, font) {
+      _pxCtx.font = font;
+      return Math.round(_pxCtx.measureText(text || '').width);
+    }
+    const TITLE_FONT = '20px Arial, sans-serif';
+    const DESC_FONT = '14px Arial, sans-serif';
+    const TITLE_PX_LIMIT = 580;
+    const DESC_PX_LIMIT = 920;
+    const TITLE_CHAR_LIMIT = 60;
+    const DESC_CHAR_LIMIT = 160;
 
-      // Params
-      const params = tpl.params[type] || tpl.params.blog;
-      briefData.params = params;
-      document.getElementById('brief-params').innerHTML = Object.entries(params).map(([k, v]) =>
-        '<div class="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-3 text-center">' +
-        '<div class="text-lg font-inter font-bold text-heading dark:text-heading-dark">' + v + '</div>' +
-        '<div class="text-[10px] text-body dark:text-body-dark mt-0.5">' + tpl.paramLabels[k] + '</div></div>'
-      ).join('');
+    function anchorTarget(wc) { return Math.max(1, Math.round((Number(wc) || 1000) * 0.01)); }
 
-      // Checklist
-      briefData.checklist = tpl.checklist;
-      document.getElementById('brief-checklist').innerHTML = tpl.checklist.map(item =>
-        '<label class="flex items-center gap-2 cursor-pointer group">' +
-        '<input type="checkbox" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary/50">' +
-        '<span class="text-sm text-heading dark:text-heading-dark group-hover:text-primary transition-colors">' + escHtml(item) + '</span></label>'
-      ).join('');
-
-      // Questions
-      const questions = tpl.questions.map(q => q.replace(/\{kw\}/g, () => kw));
-      briefData.questions = questions;
-      document.getElementById('brief-questions').innerHTML = questions.map(q =>
-        '<div class="flex items-center gap-2 text-sm text-heading dark:text-heading-dark">' +
-        '<span class="text-primary dark:text-primary-light">&#8226;</span> ' + escHtml(q) + '</div>'
-      ).join('');
-
-      document.getElementById('brief-output').classList.remove('hidden');
+    function parseInternalLinks(text) {
+      return (text || '').split('\n')
+        .map(line => line.trim())
+        .filter(Boolean)
+        .map(line => {
+          const m = line.match(/^(.+?)\s*[—–|\-]\s*(.+)$/);
+          return m ? { url: m[1].trim(), anchor: m[2].trim() } : null;
+        })
+        .filter(Boolean);
     }
 
-    function briefExport(format) {
-      if (!briefData) return;
-      const {keyword, titles, structure, params, checklist, questions} = briefData;
-      let out = '';
-      if (format === 'outline') {
-        out = structure.map(s => {
-          const pre = s.level === 'h3' ? '  ' : s.level === 'h4' ? '    ' : '';
-          return pre + s.level.toUpperCase() + ': ' + s.text;
-        }).join('\n');
-      } else if (format === 'markdown') {
-        out = '# Content Brief: ' + keyword + '\n\n## Title Suggestions\n';
-        titles.forEach(t => out += '- ' + t + '\n');
-        out += '\n## Structure\n';
-        structure.forEach(s => out += (s.level === 'h2' ? '## ' : s.level === 'h3' ? '### ' : '#### ') + s.text + '\n');
-        out += '\n## Parameters\n- Words: ' + params.words + '\n- Images: ' + params.images + '\n- Internal Links: ' + params.internal + '\n- External Links: ' + params.external + '\n';
-        out += '\n## SEO Checklist\n';
-        checklist.forEach(c => out += '- [ ] ' + c + '\n');
-        out += '\n## Questions to Answer\n';
-        questions.forEach(q => out += '- ' + q + '\n');
-      } else {
-        out = 'CONTENT BRIEF: ' + keyword + '\n' + '\u2550'.repeat(40) + '\n\n';
-        out += 'TITLE SUGGESTIONS:\n';
-        titles.forEach((t, i) => out += (i + 1) + '. ' + t + '\n');
-        out += '\nSTRUCTURE:\n';
-        structure.forEach(s => out += (s.level === 'h3' ? '  ' : '') + s.level.toUpperCase() + ': ' + s.text + '\n');
-        out += '\nPARAMETERS:\n  Words: ' + params.words + '\n  Images: ' + params.images + '\n  Internal Links: ' + params.internal + '\n  External Links: ' + params.external + '\n';
-        out += '\nSEO CHECKLIST:\n';
-        checklist.forEach(c => out += '  [ ] ' + c + '\n');
-        out += '\nQUESTIONS:\n';
-        questions.forEach(q => out += '  \u2022 ' + q + '\n');
+    function resolveCta(preset, custom) {
+      const m = briefTpl[briefLang].out.ctaMap;
+      if (preset === 'custom') return (custom || '').trim() || '—';
+      return m[preset] || m.call;
+    }
+
+    function metaTitleStartsWithKw(metaTitle, kw) {
+      if (!metaTitle || !kw) return true;
+      const tokens = metaTitle.toLowerCase().trim().split(/\s+/).slice(0, 2).join(' ');
+      return tokens.includes(kw.toLowerCase());
+    }
+
+    function addQaRow(value, pristine) {
+      const list = document.getElementById('cb-qa-list');
+      const wrap = document.createElement('div');
+      wrap.className = 'flex items-start gap-2';
+      wrap.dataset.pristine = pristine ? 'true' : 'false';
+      wrap.innerHTML =
+        '<textarea rows="2" class="cb-input flex-1" placeholder="' + escHtml(briefTpl[briefLang].labels.qa) + '">' + escHtml(value || '') + '</textarea>' +
+        '<button type="button" class="text-body dark:text-body-dark hover:text-red-500 px-2 py-2 rounded-lg" aria-label="Remove">&#10005;</button>';
+      const ta = wrap.querySelector('textarea');
+      ta.addEventListener('input', () => { wrap.dataset.pristine = 'false'; scheduleRender(); schedulePersist(); });
+      wrap.querySelector('button').addEventListener('click', () => { wrap.remove(); scheduleRender(); schedulePersist(); });
+      list.appendChild(wrap);
+    }
+    function refreshPristineQa() {
+      const kw = document.getElementById('cb-mainKw').value.trim() || '{kw}';
+      const tpl = briefTpl[briefLang].qaPrefill;
+      const rows = document.querySelectorAll('#cb-qa-list > div');
+      rows.forEach((row, i) => {
+        if (row.dataset.pristine === 'true' && tpl[i]) {
+          row.querySelector('textarea').value = tpl[i].replace(/\{kw\}/g, kw);
+        }
+      });
+    }
+    function initQa() {
+      const list = document.getElementById('cb-qa-list');
+      list.innerHTML = '';
+      briefTpl[briefLang].qaPrefill.forEach(q => addQaRow(q.replace(/\{kw\}/g, '{kw}'), true));
+    }
+
+    function readForm() {
+      const purposeEl = document.querySelector('input[name="cb-purpose"]:checked');
+      const ctaEl = document.querySelector('input[name="cb-cta"]:checked');
+      const qaTextareas = document.querySelectorAll('#cb-qa-list textarea');
+      return {
+        purpose: purposeEl ? purposeEl.value : 'blog',
+        audience: document.getElementById('cb-audience').value.trim(),
+        stage: document.getElementById('cb-stage').value,
+        mainKw: document.getElementById('cb-mainKw').value.trim(),
+        secKw: [
+          document.getElementById('cb-secKw1').value.trim(),
+          document.getElementById('cb-secKw2').value.trim(),
+          document.getElementById('cb-secKw3').value.trim()
+        ].filter(Boolean),
+        wordCount: parseInt(document.getElementById('cb-wordCount').value, 10) || 1000,
+        internalLinks: parseInternalLinks(document.getElementById('cb-internal').value),
+        ctaPreset: ctaEl ? ctaEl.value : 'call',
+        ctaCustom: document.getElementById('cb-ctaCustom').value.trim(),
+        title: document.getElementById('cb-title').value.trim(),
+        metaTitle: document.getElementById('cb-metaTitle').value.trim(),
+        metaDesc: document.getElementById('cb-metaDesc').value.trim(),
+        qa: Array.from(qaTextareas).map(t => t.value.trim()).filter(Boolean)
+      };
+    }
+
+    function updateMetaCounters() {
+      const mt = document.getElementById('cb-metaTitle').value;
+      const md = document.getElementById('cb-metaDesc').value;
+      const mtPx = measurePixelWidth(mt, TITLE_FONT);
+      const mdPx = measurePixelWidth(md, DESC_FONT);
+      document.getElementById('cb-metaTitle-counter').textContent = mt.length + ' / ' + TITLE_CHAR_LIMIT + ' — ' + mtPx + 'px / ' + TITLE_PX_LIMIT + 'px';
+      document.getElementById('cb-metaDesc-counter').textContent = md.length + ' / ' + DESC_CHAR_LIMIT + ' — ' + mdPx + 'px / ' + DESC_PX_LIMIT + 'px';
+
+      const out = briefTpl[briefLang].out;
+      const kw = document.getElementById('cb-mainKw').value.trim();
+      const mtWarnEl = document.getElementById('cb-metaTitle-warn');
+      const mdWarnEl = document.getElementById('cb-metaDesc-warn');
+
+      let mtWarn = '';
+      if (mt && kw && !metaTitleStartsWithKw(mt, kw)) mtWarn = out.warnKwInTitle;
+      else if (mt.length > TITLE_CHAR_LIMIT || mtPx > TITLE_PX_LIMIT) mtWarn = out.tooLong;
+      mtWarnEl.innerHTML = mtWarn ? '<span class="cb-pill cb-pill-warn">' + escHtml(mtWarn) + '</span>' : '';
+
+      let mdWarn = '';
+      const secKw = [1, 2, 3].map(i => document.getElementById('cb-secKw' + i).value.trim().toLowerCase()).filter(Boolean);
+      if (md && kw && !md.toLowerCase().includes(kw.toLowerCase())) mdWarn = out.warnKwMissingDesc;
+      else if (md && secKw.length && !secKw.some(k => md.toLowerCase().includes(k))) mdWarn = out.warnNoSecInDesc;
+      else if (md.length > DESC_CHAR_LIMIT || mdPx > DESC_PX_LIMIT) mdWarn = out.tooLong;
+      mdWarnEl.innerHTML = mdWarn ? '<span class="cb-pill cb-pill-warn">' + escHtml(mdWarn) + '</span>' : '';
+    }
+
+    function updateAnchorHint() {
+      const wc = parseInt(document.getElementById('cb-wordCount').value, 10) || 1000;
+      document.getElementById('cb-anchor-hint').textContent = anchorTarget(wc);
+    }
+
+    function suggestTitles() {
+      const kw = document.getElementById('cb-mainKw').value.trim();
+      const purposeEl = document.querySelector('input[name="cb-purpose"]:checked');
+      const purpose = purposeEl ? purposeEl.value : 'blog';
+      if (!kw) { showToast(briefLang === 'ka' ? 'შეიყვანეთ მთავარი ქივორდი' : 'Enter primary keyword'); return; }
+      const titles = (briefTpl[briefLang].titles[purpose] || briefTpl[briefLang].titles.blog).map(t => t.replace(/\{kw\}/g, kw));
+      const wrap = document.getElementById('cb-title-suggestions');
+      wrap.innerHTML = titles.map(t => '<button type="button" class="cb-suggest-chip">' + escHtml(t) + '</button>').join('');
+      wrap.querySelectorAll('.cb-suggest-chip').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.getElementById('cb-title').value = btn.textContent;
+          wrap.innerHTML = '';
+          scheduleRender();
+          schedulePersist();
+        });
+      });
+    }
+
+    function syncCtaCustomVisibility() {
+      const sel = document.querySelector('input[name="cb-cta"]:checked');
+      const ta = document.getElementById('cb-ctaCustom');
+      if (sel && sel.value === 'custom') ta.classList.remove('hidden');
+      else ta.classList.add('hidden');
+    }
+
+    function renderBrief() {
+      const s = readForm();
+      const out = briefTpl[briefLang].out;
+      const H = out.headers;
+      const preview = document.getElementById('cb-preview');
+
+      if (!s.mainKw) {
+        preview.innerHTML = '<div class="text-center py-12 text-body dark:text-body-dark text-sm">' + escHtml(out.empty) + '</div>';
+        return;
       }
-      navigator.clipboard.writeText(out).then(() => showToast('დაკოპირდა!')).catch(() => showToast('ვერ დაკოპირდა'));
+
+      const target = anchorTarget(s.wordCount);
+      const mtPx = measurePixelWidth(s.metaTitle, TITLE_FONT);
+      const mdPx = measurePixelWidth(s.metaDesc, DESC_FONT);
+      const mtKwOk = !s.metaTitle || metaTitleStartsWithKw(s.metaTitle, s.mainKw);
+      const mtCharOk = s.metaTitle.length <= TITLE_CHAR_LIMIT && mtPx <= TITLE_PX_LIMIT;
+      const mdHasMain = !s.metaDesc || s.metaDesc.toLowerCase().includes(s.mainKw.toLowerCase());
+      const mdHasSec = s.secKw.length === 0 || !s.metaDesc || s.secKw.some(k => s.metaDesc.toLowerCase().includes(k.toLowerCase()));
+      const mdCharOk = s.metaDesc.length <= DESC_CHAR_LIMIT && mdPx <= DESC_PX_LIMIT;
+
+      const allKw = [s.mainKw, ...s.secKw];
+
+      function pxBar(px, limit) {
+        const ratio = Math.min(1, px / limit);
+        const color = ratio < 0.85 ? '#21C743' : ratio < 1 ? '#f59e0b' : '#ef4444';
+        return '<div class="cb-pxbar"><div class="cb-pxbar-fill" style="width:' + (ratio * 100).toFixed(1) + '%;background:' + color + '"></div></div>';
+      }
+      function pill(ok, text) {
+        return '<span class="cb-pill ' + (ok ? 'cb-pill-ok' : 'cb-pill-warn') + '">' + escHtml(text) + '</span>';
+      }
+
+      const html = [];
+
+      html.push('<div class="flex flex-wrap gap-1.5">' +
+        '<span class="cb-pill cb-pill-ok">' + escHtml(s.mainKw) + '</span>' +
+        '<span class="cb-pill" style="background:rgba(20,184,166,0.12);color:#14B8A6">' + escHtml(out.purposeMap[s.purpose]) + '</span>' +
+        '<span class="cb-pill" style="background:rgba(59,130,246,0.12);color:#3B82F6">' + escHtml(out.stageMap[s.stage]) + '</span>' +
+        (s.audience ? '<span class="cb-pill" style="background:rgba(148,163,184,0.18);color:#475569">' + escHtml(s.audience) + '</span>' : '') +
+        '<span class="cb-pill" style="background:rgba(148,163,184,0.18);color:#475569">' + s.wordCount + ' ' + escHtml(out.wordsUnit) + '</span>' +
+      '</div>');
+
+      if (s.title) {
+        html.push('<div class="cb-section-card"><h4>' + escHtml(H.title) + '</h4>' +
+          '<p class="text-sm text-heading dark:text-heading-dark font-semibold">' + escHtml(s.title) + '</p></div>');
+      }
+
+      html.push('<div class="cb-section-card"><h4>' + escHtml(H.metaTitle) + '</h4>' +
+        (s.metaTitle ? '<p class="text-sm text-heading dark:text-heading-dark">' + escHtml(s.metaTitle) + '</p>' +
+          pxBar(mtPx, TITLE_PX_LIMIT) +
+          '<div class="flex flex-wrap gap-1 mt-2">' +
+            pill(mtKwOk, mtKwOk ? out.ok : out.warnKwInTitle) +
+            pill(mtCharOk, mtPx + 'px / ' + TITLE_PX_LIMIT + 'px') +
+            pill(s.metaTitle.length <= TITLE_CHAR_LIMIT, s.metaTitle.length + ' / ' + TITLE_CHAR_LIMIT) +
+          '</div>'
+          : '<p class="text-xs text-body dark:text-body-dark">—</p>') +
+      '</div>');
+
+      html.push('<div class="cb-section-card"><h4>' + escHtml(H.metaDesc) + '</h4>' +
+        (s.metaDesc ? '<p class="text-sm text-heading dark:text-heading-dark">' + escHtml(s.metaDesc) + '</p>' +
+          pxBar(mdPx, DESC_PX_LIMIT) +
+          '<div class="flex flex-wrap gap-1 mt-2">' +
+            pill(mdHasMain, mdHasMain ? out.ok : out.warnKwMissingDesc) +
+            pill(mdHasSec, mdHasSec ? out.ok : out.warnNoSecInDesc) +
+            pill(mdCharOk, mdPx + 'px / ' + DESC_PX_LIMIT + 'px') +
+          '</div>'
+          : '<p class="text-xs text-body dark:text-body-dark">—</p>') +
+      '</div>');
+
+      html.push('<div class="cb-aeo-callout">' +
+        '<div class="flex items-center gap-2 mb-1">' +
+          '<span class="cb-pill" style="background:rgba(139,92,246,0.18);color:#8B5CF6">AEO</span>' +
+          '<span class="text-xs font-bold uppercase tracking-wider text-heading dark:text-heading-dark font-inter">' + escHtml(H.aeo) + '</span>' +
+        '</div>' +
+        '<p class="text-sm text-heading dark:text-heading-dark">' + escHtml(out.aeo) + '</p>' +
+      '</div>');
+
+      html.push('<div class="cb-section-card"><h4>' + escHtml(H.anchor) + ' — ' + target + ' ' + escHtml(out.mentions) + '</h4>' +
+        '<div class="grid grid-cols-2 gap-2">' +
+          allKw.map(k => '<div class="cb-anchor-card"><div class="kw">' + escHtml(k) + '</div><div class="target">' + target + '</div><div class="label">' + escHtml(out.mentions) + '</div></div>').join('') +
+        '</div>' +
+      '</div>');
+
+      if (s.internalLinks.length) {
+        html.push('<div class="cb-section-card"><h4>' + escHtml(H.internal) + '</h4>' +
+          '<ul class="space-y-1 text-sm">' +
+            s.internalLinks.map(l => '<li class="text-heading dark:text-heading-dark"><span class="text-primary dark:text-primary-light">→</span> <a href="' + escHtml(l.url) + '" target="_blank" rel="noopener" class="hover:underline break-all">' + escHtml(l.url) + '</a> — <span class="text-body dark:text-body-dark">' + escHtml(l.anchor) + '</span></li>').join('') +
+          '</ul></div>');
+      }
+
+      html.push('<div class="cb-section-card"><h4>' + escHtml(H.cta) + '</h4>' +
+        '<p class="text-sm text-heading dark:text-heading-dark font-semibold">' + escHtml(resolveCta(s.ctaPreset, s.ctaCustom)) + '</p></div>');
+
+      if (s.qa.length) {
+        html.push('<div class="cb-section-card"><h4>' + escHtml(H.qa) + '</h4>' +
+          '<ol class="space-y-1.5 text-sm list-decimal list-inside text-heading dark:text-heading-dark">' +
+            s.qa.map(q => '<li>' + escHtml(q) + '</li>').join('') +
+          '</ol></div>');
+      }
+
+      html.push('<div class="cb-section-card"><h4>' + escHtml(H.checklist) + '</h4>' +
+        '<ul class="space-y-1.5 text-sm">' +
+          out.checklist.map(c => '<li class="flex items-start gap-2 text-heading dark:text-heading-dark"><span class="text-primary dark:text-primary-light mt-0.5">☐</span> ' + escHtml(c) + '</li>').join('') +
+        '</ul></div>');
+
+      html.push('<div class="cb-section-card"><h4>' + escHtml(H.next) + '</h4>' +
+        '<div class="grid grid-cols-3 gap-2">' +
+          '<a href="pixel-width-checker.html" class="block p-2 rounded-lg bg-primary/5 hover:bg-primary/15 text-center text-xs font-semibold text-primary dark:text-primary-light transition-colors">Pixel Width</a>' +
+          '<a href="keyword-density.html" class="block p-2 rounded-lg bg-primary/5 hover:bg-primary/15 text-center text-xs font-semibold text-primary dark:text-primary-light transition-colors">Keyword Density</a>' +
+          '<a href="readability-score.html" class="block p-2 rounded-lg bg-primary/5 hover:bg-primary/15 text-center text-xs font-semibold text-primary dark:text-primary-light transition-colors">Readability</a>' +
+        '</div></div>');
+
+      preview.innerHTML = html.join('');
     }
+
+    function buildBriefMarkdown() {
+      const s = readForm();
+      if (!s.mainKw) return '';
+      const out = briefTpl[briefLang].out;
+      const H = out.headers;
+      const target = anchorTarget(s.wordCount);
+      const mtPx = measurePixelWidth(s.metaTitle, TITLE_FONT);
+      const mdPx = measurePixelWidth(s.metaDesc, DESC_FONT);
+      const lines = [];
+      lines.push('# Content Brief: ' + s.mainKw, '');
+      lines.push('**' + H.purpose + ':** ' + out.purposeMap[s.purpose]);
+      if (s.audience) lines.push('**' + H.audience + ':** ' + s.audience);
+      lines.push('**' + H.stage + ':** ' + out.stageMap[s.stage]);
+      lines.push('**' + H.words + ':** ' + s.wordCount + ' ' + out.wordsUnit, '');
+      if (s.title) lines.push('## ' + H.title, s.title, '');
+      lines.push('## Meta');
+      lines.push('- **Title:** ' + (s.metaTitle || '—') + '  (' + mtPx + 'px / ' + TITLE_PX_LIMIT + 'px, ' + s.metaTitle.length + '/' + TITLE_CHAR_LIMIT + ')');
+      lines.push('- **Description:** ' + (s.metaDesc || '—') + '  (' + mdPx + 'px / ' + DESC_PX_LIMIT + 'px, ' + s.metaDesc.length + '/' + DESC_CHAR_LIMIT + ')', '');
+      lines.push('## ' + H.aeo, out.aeo, '');
+      lines.push('## ' + H.anchor);
+      [s.mainKw, ...s.secKw].forEach(k => lines.push('- ' + k + ': ' + target + ' ' + out.mentions));
+      lines.push('');
+      if (s.internalLinks.length) {
+        lines.push('## ' + H.internal);
+        s.internalLinks.forEach(l => lines.push('- ' + l.url + ' — ' + l.anchor));
+        lines.push('');
+      }
+      lines.push('## ' + H.cta, resolveCta(s.ctaPreset, s.ctaCustom), '');
+      if (s.qa.length) {
+        lines.push('## ' + H.qa);
+        s.qa.forEach((q, i) => lines.push((i + 1) + '. ' + q));
+        lines.push('');
+      }
+      lines.push('## ' + H.checklist);
+      out.checklist.forEach(c => lines.push('- [ ] ' + c));
+      return lines.join('\n');
+    }
+
+    function buildBriefPlain() {
+      const md = buildBriefMarkdown();
+      return md
+        .replace(/^# (.+)$/gm, (m, t) => t.toUpperCase() + '\n' + '='.repeat(Math.min(60, t.length)))
+        .replace(/^## (.+)$/gm, (m, t) => '\n' + t.toUpperCase() + '\n' + '-'.repeat(Math.min(40, t.length)))
+        .replace(/\*\*(.+?):\*\*/g, '$1:')
+        .replace(/^- \[ \] /gm, '  [ ] ')
+        .replace(/^- /gm, '  • ');
+    }
+
+    function buildBriefOutline() {
+      const s = readForm();
+      if (!s.mainKw) return '';
+      const out = briefTpl[briefLang].out;
+      const lines = ['# ' + s.mainKw, ''];
+      if (s.title) lines.push('H1: ' + s.title, '');
+      lines.push('H2: ' + (briefLang === 'ka' ? 'შესავალი / AEO Overview' : 'Introduction / AEO Overview'));
+      lines.push('H2: ' + (briefLang === 'ka' ? 'რა არის ' : 'What is ') + s.mainKw + '?');
+      lines.push('H2: ' + (briefLang === 'ka' ? 'ძირითადი მნიშვნელოვანი ასპექტები' : 'Key aspects'));
+      lines.push('H2: ' + (briefLang === 'ka' ? 'როგორ ' : 'How to ') + s.mainKw);
+      lines.push('H2: ' + out.headers.qa);
+      if (s.qa.length) s.qa.forEach((q, i) => lines.push('  H3: ' + q));
+      lines.push('H2: ' + (briefLang === 'ka' ? 'დასკვნა + CTA' : 'Conclusion + CTA'));
+      return lines.join('\n');
+    }
+
+    function copyToClipboard(text, msg) {
+      if (!text) { showToast(briefLang === 'ka' ? 'შეიყვანეთ მთავარი ქივორდი' : 'Enter primary keyword'); return; }
+      navigator.clipboard.writeText(text)
+        .then(() => showToast(msg || briefTpl[briefLang].out.copied))
+        .catch(() => showToast('Error'));
+    }
+    function exportFull() { copyToClipboard(buildBriefPlain()); }
+    function exportMarkdown() { copyToClipboard(buildBriefMarkdown()); }
+    function exportOutline() { copyToClipboard(buildBriefOutline()); }
+
+    const STORAGE_KEY = 'cb_state_v1';
+    function persistState() {
+      try {
+        const s = readForm();
+        s.lang = briefLang;
+        s.internalLinksRaw = document.getElementById('cb-internal').value;
+        s.qaRows = Array.from(document.querySelectorAll('#cb-qa-list > div')).map(row => ({
+          value: row.querySelector('textarea').value,
+          pristine: row.dataset.pristine === 'true'
+        }));
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(s));
+      } catch (e) {}
+    }
+    function restoreState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return false;
+        const s = JSON.parse(raw);
+        if (s.lang && s.lang !== briefLang) briefLang = s.lang;
+        const setRadio = (name, val) => { const el = document.querySelector('input[name="' + name + '"][value="' + val + '"]'); if (el) el.checked = true; };
+        if (s.purpose) setRadio('cb-purpose', s.purpose);
+        if (s.ctaPreset) setRadio('cb-cta', s.ctaPreset);
+        if (s.audience) document.getElementById('cb-audience').value = s.audience;
+        if (s.stage) document.getElementById('cb-stage').value = s.stage;
+        if (s.mainKw) document.getElementById('cb-mainKw').value = s.mainKw;
+        (s.secKw || []).forEach((k, i) => { const el = document.getElementById('cb-secKw' + (i + 1)); if (el) el.value = k; });
+        if (s.wordCount) document.getElementById('cb-wordCount').value = s.wordCount;
+        if (s.internalLinksRaw !== undefined) document.getElementById('cb-internal').value = s.internalLinksRaw;
+        if (s.ctaCustom) document.getElementById('cb-ctaCustom').value = s.ctaCustom;
+        if (s.title) document.getElementById('cb-title').value = s.title;
+        if (s.metaTitle) document.getElementById('cb-metaTitle').value = s.metaTitle;
+        if (s.metaDesc) document.getElementById('cb-metaDesc').value = s.metaDesc;
+        const list = document.getElementById('cb-qa-list');
+        list.innerHTML = '';
+        if (Array.isArray(s.qaRows) && s.qaRows.length) {
+          s.qaRows.forEach(r => addQaRow(r.value, r.pristine));
+        } else {
+          briefTpl[briefLang].qaPrefill.forEach(q => addQaRow(q.replace(/\{kw\}/g, s.mainKw || '{kw}'), true));
+        }
+        return true;
+      } catch (e) { return false; }
+    }
+
+    let renderTimer = null, persistTimer = null, counterTimer = null;
+    function scheduleRender() { clearTimeout(renderTimer); renderTimer = setTimeout(renderBrief, 120); }
+    function schedulePersist() { clearTimeout(persistTimer); persistTimer = setTimeout(persistState, 500); }
+    function scheduleCounters() { clearTimeout(counterTimer); counterTimer = setTimeout(updateMetaCounters, 150); }
+
+    function wireForm() {
+      const allInputs = document.querySelectorAll('#cb-audience, #cb-mainKw, #cb-secKw1, #cb-secKw2, #cb-secKw3, #cb-wordCount, #cb-internal, #cb-ctaCustom, #cb-title, #cb-metaTitle, #cb-metaDesc, #cb-stage');
+      allInputs.forEach(el => {
+        el.addEventListener('input', () => { scheduleRender(); schedulePersist(); });
+      });
+      document.getElementById('cb-wordCount').addEventListener('input', updateAnchorHint);
+      document.getElementById('cb-metaTitle').addEventListener('input', scheduleCounters);
+      document.getElementById('cb-metaDesc').addEventListener('input', scheduleCounters);
+      document.getElementById('cb-mainKw').addEventListener('input', () => { refreshPristineQa(); scheduleCounters(); });
+      document.getElementById('cb-secKw1').addEventListener('input', scheduleCounters);
+      document.getElementById('cb-secKw2').addEventListener('input', scheduleCounters);
+      document.getElementById('cb-secKw3').addEventListener('input', scheduleCounters);
+
+      document.querySelectorAll('input[name="cb-purpose"]').forEach(el => el.addEventListener('change', () => { scheduleRender(); schedulePersist(); }));
+      document.querySelectorAll('input[name="cb-cta"]').forEach(el => el.addEventListener('change', () => { syncCtaCustomVisibility(); scheduleRender(); schedulePersist(); }));
+    }
+
+    (function boot() {
+      wireForm();
+      const restored = restoreState();
+      if (!restored) initQa();
+      applyI18n(briefLang);
+      syncCtaCustomVisibility();
+      updateAnchorHint();
+      updateMetaCounters();
+      renderBrief();
+    })();
 
   </script>
   <script>
