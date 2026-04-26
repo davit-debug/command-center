@@ -225,9 +225,85 @@
           </div>
           <div class="hidden lg:flex justify-center items-center">
             <div class="relative flex items-center justify-center animate-float">
-              <img src="../images/pyramid-top.png" alt="SEO Growth Stack" class="w-full max-w-lg pyramid-glow">
-              <div class="absolute top-[26%] left-1/2 -translate-x-1/2 text-center pointer-events-none z-10">
-                <span class="font-heading text-xl lg:text-2xl font-bold text-white" style="text-shadow: 0 0 20px rgba(139,92,246,0.8), 0 0 40px rgba(20,184,166,0.5), 0 2px 8px rgba(0,0,0,0.9);">იყავი<br>პირველი</span>
+              <svg viewBox="0 0 320 700" class="w-full max-w-md pyramid-glow" role="img" aria-label="დეველოპერული ბრენდის ციფრული ცათამბჯენი">
+                <defs>
+                  <linearGradient id="sky-body" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#A78BFA" stop-opacity="0.45"/>
+                    <stop offset="40%" stop-color="#8B5CF6" stop-opacity="0.30"/>
+                    <stop offset="100%" stop-color="#14B8A6" stop-opacity="0.18"/>
+                  </linearGradient>
+                  <linearGradient id="sky-edge" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#fff" stop-opacity="1"/>
+                    <stop offset="50%" stop-color="#A78BFA" stop-opacity="0.95"/>
+                    <stop offset="100%" stop-color="#14B8A6" stop-opacity="0.7"/>
+                  </linearGradient>
+                  <filter id="sky-glow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="3.5" result="coloredBlur"/>
+                    <feMerge>
+                      <feMergeNode in="coloredBlur"/>
+                      <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                  </filter>
+                  <radialGradient id="sky-tip" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#fff" stop-opacity="1"/>
+                    <stop offset="60%" stop-color="#A78BFA" stop-opacity="0.7"/>
+                    <stop offset="100%" stop-color="#A78BFA" stop-opacity="0"/>
+                  </radialGradient>
+                </defs>
+                <!-- Ground reflection -->
+                <ellipse cx="160" cy="660" rx="130" ry="10" fill="url(#sky-body)" opacity="0.4"/>
+                <!-- Glowing tip halo -->
+                <circle cx="160" cy="20" r="22" fill="url(#sky-tip)"/>
+                <!-- Spire/antenna -->
+                <line x1="160" y1="22" x2="160" y2="80" stroke="url(#sky-edge)" stroke-width="2" filter="url(#sky-glow)"/>
+                <circle cx="160" cy="22" r="4" fill="#fff" filter="url(#sky-glow)"/>
+                <!-- Tier 1 (top, narrowest) -->
+                <polygon points="148,80 172,80 170,170 150,170" fill="url(#sky-body)" stroke="url(#sky-edge)" stroke-width="1.5" filter="url(#sky-glow)"/>
+                <!-- Tier 2 -->
+                <polygon points="135,170 185,170 183,300 137,300" fill="url(#sky-body)" stroke="url(#sky-edge)" stroke-width="1.5" filter="url(#sky-glow)"/>
+                <!-- Tier 3 (base) -->
+                <polygon points="115,300 205,300 203,650 117,650" fill="url(#sky-body)" stroke="url(#sky-edge)" stroke-width="1.5" filter="url(#sky-glow)"/>
+                <!-- Vertical window lines -->
+                <g stroke="rgba(255,255,255,0.45)" stroke-width="0.6">
+                  <!-- Tier 1 -->
+                  <line x1="155" y1="85" x2="155" y2="167"/>
+                  <line x1="160" y1="85" x2="160" y2="167"/>
+                  <line x1="165" y1="85" x2="165" y2="167"/>
+                  <!-- Tier 2 -->
+                  <line x1="142" y1="175" x2="142" y2="297"/>
+                  <line x1="148" y1="175" x2="148" y2="297"/>
+                  <line x1="154" y1="175" x2="154" y2="297"/>
+                  <line x1="160" y1="175" x2="160" y2="297"/>
+                  <line x1="166" y1="175" x2="166" y2="297"/>
+                  <line x1="172" y1="175" x2="172" y2="297"/>
+                  <line x1="178" y1="175" x2="178" y2="297"/>
+                  <!-- Tier 3 -->
+                  <line x1="120" y1="305" x2="120" y2="647"/>
+                  <line x1="128" y1="305" x2="128" y2="647"/>
+                  <line x1="136" y1="305" x2="136" y2="647"/>
+                  <line x1="144" y1="305" x2="144" y2="647"/>
+                  <line x1="152" y1="305" x2="152" y2="647"/>
+                  <line x1="160" y1="305" x2="160" y2="647"/>
+                  <line x1="168" y1="305" x2="168" y2="647"/>
+                  <line x1="176" y1="305" x2="176" y2="647"/>
+                  <line x1="184" y1="305" x2="184" y2="647"/>
+                  <line x1="192" y1="305" x2="192" y2="647"/>
+                  <line x1="200" y1="305" x2="200" y2="647"/>
+                </g>
+                <!-- Horizontal floor lines on tier 3 -->
+                <g stroke="rgba(255,255,255,0.18)" stroke-width="0.4">
+                  <line x1="117" y1="360" x2="203" y2="360"/>
+                  <line x1="117" y1="420" x2="203" y2="420"/>
+                  <line x1="117" y1="480" x2="203" y2="480"/>
+                  <line x1="117" y1="540" x2="203" y2="540"/>
+                  <line x1="117" y1="600" x2="203" y2="600"/>
+                </g>
+                <!-- Tier dividers (highlight ledges) -->
+                <line x1="135" y1="170" x2="185" y2="170" stroke="url(#sky-edge)" stroke-width="1.2" filter="url(#sky-glow)"/>
+                <line x1="115" y1="300" x2="205" y2="300" stroke="url(#sky-edge)" stroke-width="1.2" filter="url(#sky-glow)"/>
+              </svg>
+              <div class="absolute top-[2%] left-1/2 -translate-x-1/2 text-center pointer-events-none z-10">
+                <span class="font-heading text-xl lg:text-2xl font-bold text-white" style="text-shadow: 0 0 20px rgba(139,92,246,0.9), 0 0 40px rgba(20,184,166,0.6), 0 2px 8px rgba(0,0,0,0.9);">იყავი<br>პირველი</span>
               </div>
             </div>
           </div>
