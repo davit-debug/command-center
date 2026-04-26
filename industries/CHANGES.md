@@ -1,6 +1,104 @@
 # Industries Landing Pages — CHANGES
 
-## 2026-04-26 — Construction A/B Variants (V1 + V6)
+## 2026-04-26 — Construction A/B Variants (V2-V5 + Mix-A/B/C + SUPER full-stack)
+
+Eight more A/B-test variants of `construction.html` shipped on top of V1+V6. Total 10 variants now live for testing. All `noindex,nofollow` until A/B winner picked. Canonical → `construction.html`. Anonymized references throughout.
+
+### Files added (8)
+| File | Variant | Audience | Lines |
+|---|---|---|---|
+| `construction-mid-market-quiz.html` | V2 Mid-Market Quiz | Mid-tier dev (1 project) | 462 |
+| `construction-roi-calculator.html` | V3 ROI Calculator | Investor-led CFO buyers | 391 |
+| `construction-project-architecture.html` | V4 Multi-Project Architecture | 5+ project CMOs | 452 |
+| `construction-vsl-cold-traffic.html` | V5 VSL Cold Traffic | Cold paid traffic | 526 |
+| `construction-pyramid-hero.html` | Mix-A Pyramid Hero | High-intent referral (brand-book minimal) | 253 |
+| `construction-editorial.html` | Mix-B Editorial Story | Reading-oriented premium decision-makers | 239 |
+| `construction-manifesto.html` | Mix-C Manifesto | Confident anti-portal buyers | 254 |
+| `construction-full-stack.html` | SUPER Full-Stack Growth Partner | Devs wanting one agency for everything | 484 |
+
+### V2 Mid-Market Quiz
+- 4-step inline quiz: project type → # active projects → current SEO budget → primary market
+- Personalized strategy card generated from answers (5 templates)
+- Auto-highlighted recommended pricing tier
+- WhatsApp deep-link with quiz answers pre-filled in message body
+- Current purple/teal palette + glass-morphism + progress bar
+
+### V3 ROI Calculator
+- 4-slider interactive calculator: monthly portal spend (GEL 500-15k), avg apartment price ($30K-€2.5M), foreign investor share (0-80%), conversion %
+- Real-time output: lead cost, 12-month portal cost, lost foreign-investor market in $, SEO break-even month
+- Auto-recommended package based on inputs
+- Email-gated PDF projection + Calendly final CTA
+- AI Blue accent color for calculator UI
+
+### V4 Multi-Project Architecture
+- Blueprint dark + JetBrains Mono technical aesthetic
+- Hero preview + full SVG architecture diagram (15 project nodes + 5 hubs + 4-language layer)
+- 3-layer explainer (Brand SEO / Project SEO / Local Hubs)
+- Per-project playbook (8 steps mono-style)
+- Multi-project Live Dashboard mock (7 projects with bars)
+- Targets developers with 5+ active projects (Next Property tier)
+
+### V5 VSL Cold Traffic
+- Full Hormozi 10-beat structure (Hook → Agitate → Enemy → Mechanism → Proof → Stack → Price → Guarantee → Urgency → CTA)
+- 90s VSL placeholder (poster + play button — actual video pending)
+- Same gold CTA repeated 9 times throughout
+- Live "slots remaining" pills (4 taken, 2 open)
+- 90-day Top 5 guarantee badge ("or next month free")
+- Skip-pill appears 30s after page load
+- Aggressive yellow + dark contrast, single-column flow
+
+### Mix-A Pyramid Hero (V1+V6 mix)
+- Most minimal of all variants — full-viewport hero with animated gold pyramid (FB/IG cover image inspired)
+- "მზად ხარ იყო პირველი?" tagline as h1
+- Single proof point (+68% / -45% / 6 months)
+- 4 service icons (no descriptions — bare minimum)
+- Pricing table (5 tiers compact)
+- Final CTA with second pyramid
+- Spotlight gradient + pyramid glow animation
+
+### Mix-B Editorial Story (V1+V6 mix)
+- Magazine-style storytelling with chapter numbering (Lora serif italic)
+- Alternating navy/cream sections for visual rhythm
+- Drop-cap on first essay paragraph
+- Pull-quotes between chapters
+- 4 chapters: The Problem / How We Think / Single Case Study / 4 Services
+- KA + EN toggle ready
+- Reading-oriented for premium decision-makers
+
+### Mix-C Manifesto (V1+V6 mix)
+- Bold declarative statements with massive Inter Black typography
+- "We Believe / We Don't / We Promise" three-act structure
+- Strike-through for what they DON'T do (red strike-color)
+- Section dividers with dashed yellow pattern
+- Confidence-driven anti-portal positioning
+- 6 sections, all KA, no images other than logos
+
+### SUPER Full-Stack Growth Partner
+- Bundles 11 services in one offering: SEO + **AI SEO/GEO** + CRO + Google Ads + UI/UX + Copywriting + Branding + Email + Social + Analytics + Video
+- Hero anchored on "stop juggling 5 agencies" pain
+- "Vendor Chaos" section showing 11 separate vendors at GEL 22,200/mo
+- 11-service grid with color-coded badges per service
+- 4-step "How it works" timeline
+- 3 pricing tiers: GROWTH (15k GEL), SCALE (25k GEL — featured), DOMINATE (45k+ GEL)
+- 8-Q FAQ specific to bundling concerns
+- Targets developers wanting ONE growth partner instead of vendor management
+
+### Why these variants together?
+The 10 total variants (V1-V6 + Mix-A/B/C + SUPER) cover orthogonal dimensions:
+- **Audience scale**: V2 (1 project) → V1 (premium multi) → V4 (5+ projects) → SUPER (full-stack)
+- **Conversion mechanic**: V6 (clarity) → V2 (quiz) → V3 (calculator) → V5 (VSL) → SUPER (consultative)
+- **Visual identity**: monochrome (V6) → brand-book yellow (V1, Mix-A/B/C, SUPER) → blueprint (V4) → multi-color (SUPER)
+- **CTA strategy**: 1 CTA twice (V6) → 1 CTA × 3 (V1) → multi-tier (V2, V3) → 1 CTA × 9 (V5)
+
+A/B test pairs to consider:
+- **V1 vs V6** — info-density vs subtraction (same premium audience)
+- **V3 vs V5** — calculator self-discovery vs Hormozi persuasion (cold traffic test)
+- **Mix-A vs Mix-B vs Mix-C** — minimal vs editorial vs manifesto (brand-book aesthetic test)
+- **SUPER vs V1** — full-stack bundle vs SEO-only at premium tier (cross-sell test)
+
+---
+
+## 2026-04-26 — Construction A/B Variants (V1 + V6) — initial pair
 
 Two A/B-test variants of `construction.html` shipped, targeting **large-project Georgian developers** (Chronometri / Coordinate / Central MG / Next Property tier). Both files are `noindex, nofollow` until A/B winner picked. Canonical points to original `construction.html` for both. See full strategy at `~/.claude/plans/users-imac-desktop-10xseo-main-docs-seo-abstract-seal.md`.
 
