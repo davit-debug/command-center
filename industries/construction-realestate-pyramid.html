@@ -225,12 +225,12 @@
           </div>
           <div class="hidden lg:flex justify-center items-center">
             <div class="relative flex items-center justify-center animate-float">
-              <svg viewBox="0 0 320 700" class="w-full max-w-md pyramid-glow" role="img" aria-label="დეველოპერული ბრენდის ციფრული ცათამბჯენი">
+              <svg viewBox="0 0 320 700" class="w-full max-w-md pyramid-glow" role="img" aria-label="Burj Khalifa-სტილის ცათამბჯენი — დეველოპერული ბრენდის ციფრული მწვერვალი">
                 <defs>
                   <linearGradient id="sky-body" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#A78BFA" stop-opacity="0.45"/>
+                    <stop offset="0%" stop-color="#A78BFA" stop-opacity="0.50"/>
                     <stop offset="40%" stop-color="#8B5CF6" stop-opacity="0.30"/>
-                    <stop offset="100%" stop-color="#14B8A6" stop-opacity="0.18"/>
+                    <stop offset="100%" stop-color="#14B8A6" stop-opacity="0.15"/>
                   </linearGradient>
                   <linearGradient id="sky-edge" x1="0%" y1="0%" x2="0%" y2="100%">
                     <stop offset="0%" stop-color="#fff" stop-opacity="1"/>
@@ -238,7 +238,7 @@
                     <stop offset="100%" stop-color="#14B8A6" stop-opacity="0.7"/>
                   </linearGradient>
                   <filter id="sky-glow" x="-50%" y="-50%" width="200%" height="200%">
-                    <feGaussianBlur stdDeviation="3.5" result="coloredBlur"/>
+                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
                     <feMerge>
                       <feMergeNode in="coloredBlur"/>
                       <feMergeNode in="SourceGraphic"/>
@@ -251,56 +251,77 @@
                   </radialGradient>
                 </defs>
                 <!-- Ground reflection -->
-                <ellipse cx="160" cy="660" rx="130" ry="10" fill="url(#sky-body)" opacity="0.4"/>
+                <ellipse cx="160" cy="660" rx="120" ry="10" fill="url(#sky-body)" opacity="0.4"/>
                 <!-- Glowing tip halo -->
-                <circle cx="160" cy="20" r="22" fill="url(#sky-tip)"/>
-                <!-- Spire/antenna -->
-                <line x1="160" y1="22" x2="160" y2="80" stroke="url(#sky-edge)" stroke-width="2" filter="url(#sky-glow)"/>
+                <circle cx="160" cy="20" r="20" fill="url(#sky-tip)"/>
+                <!-- Tall spire (40% of height — Burj Khalifa signature) -->
+                <line x1="160" y1="22" x2="160" y2="120" stroke="url(#sky-edge)" stroke-width="1.5" filter="url(#sky-glow)"/>
                 <circle cx="160" cy="22" r="4" fill="#fff" filter="url(#sky-glow)"/>
-                <!-- Tier 1 (top, narrowest) -->
-                <polygon points="148,80 172,80 170,170 150,170" fill="url(#sky-body)" stroke="url(#sky-edge)" stroke-width="1.5" filter="url(#sky-glow)"/>
+                <circle cx="160" cy="55" r="2" fill="#fff" opacity="0.7"/>
+                <circle cx="160" cy="90" r="2" fill="#fff" opacity="0.5"/>
+                <!-- Tier 1 (narrowest, top spire base) -->
+                <polygon points="156,120 164,120 163,180 157,180" fill="url(#sky-body)" stroke="url(#sky-edge)" stroke-width="1" filter="url(#sky-glow)"/>
                 <!-- Tier 2 -->
-                <polygon points="135,170 185,170 183,300 137,300" fill="url(#sky-body)" stroke="url(#sky-edge)" stroke-width="1.5" filter="url(#sky-glow)"/>
-                <!-- Tier 3 (base) -->
-                <polygon points="115,300 205,300 203,650 117,650" fill="url(#sky-body)" stroke="url(#sky-edge)" stroke-width="1.5" filter="url(#sky-glow)"/>
-                <!-- Vertical window lines -->
-                <g stroke="rgba(255,255,255,0.45)" stroke-width="0.6">
+                <polygon points="150,180 170,180 169,260 151,260" fill="url(#sky-body)" stroke="url(#sky-edge)" stroke-width="1" filter="url(#sky-glow)"/>
+                <!-- Tier 3 -->
+                <polygon points="142,260 178,260 177,360 143,360" fill="url(#sky-body)" stroke="url(#sky-edge)" stroke-width="1.2" filter="url(#sky-glow)"/>
+                <!-- Tier 4 -->
+                <polygon points="130,360 190,360 189,470 131,470" fill="url(#sky-body)" stroke="url(#sky-edge)" stroke-width="1.2" filter="url(#sky-glow)"/>
+                <!-- Tier 5 -->
+                <polygon points="115,470 205,470 204,580 116,580" fill="url(#sky-body)" stroke="url(#sky-edge)" stroke-width="1.5" filter="url(#sky-glow)"/>
+                <!-- Tier 6 (widest base) -->
+                <polygon points="100,580 220,580 219,650 101,650" fill="url(#sky-body)" stroke="url(#sky-edge)" stroke-width="1.5" filter="url(#sky-glow)"/>
+                <!-- Vertical window lines on each tier -->
+                <g stroke="rgba(255,255,255,0.45)" stroke-width="0.5">
                   <!-- Tier 1 -->
-                  <line x1="155" y1="85" x2="155" y2="167"/>
-                  <line x1="160" y1="85" x2="160" y2="167"/>
-                  <line x1="165" y1="85" x2="165" y2="167"/>
+                  <line x1="160" y1="125" x2="160" y2="178"/>
                   <!-- Tier 2 -->
-                  <line x1="142" y1="175" x2="142" y2="297"/>
-                  <line x1="148" y1="175" x2="148" y2="297"/>
-                  <line x1="154" y1="175" x2="154" y2="297"/>
-                  <line x1="160" y1="175" x2="160" y2="297"/>
-                  <line x1="166" y1="175" x2="166" y2="297"/>
-                  <line x1="172" y1="175" x2="172" y2="297"/>
-                  <line x1="178" y1="175" x2="178" y2="297"/>
+                  <line x1="155" y1="185" x2="155" y2="258"/>
+                  <line x1="160" y1="185" x2="160" y2="258"/>
+                  <line x1="165" y1="185" x2="165" y2="258"/>
                   <!-- Tier 3 -->
-                  <line x1="120" y1="305" x2="120" y2="647"/>
-                  <line x1="128" y1="305" x2="128" y2="647"/>
-                  <line x1="136" y1="305" x2="136" y2="647"/>
-                  <line x1="144" y1="305" x2="144" y2="647"/>
-                  <line x1="152" y1="305" x2="152" y2="647"/>
-                  <line x1="160" y1="305" x2="160" y2="647"/>
-                  <line x1="168" y1="305" x2="168" y2="647"/>
-                  <line x1="176" y1="305" x2="176" y2="647"/>
-                  <line x1="184" y1="305" x2="184" y2="647"/>
-                  <line x1="192" y1="305" x2="192" y2="647"/>
-                  <line x1="200" y1="305" x2="200" y2="647"/>
+                  <line x1="148" y1="265" x2="148" y2="358"/>
+                  <line x1="156" y1="265" x2="156" y2="358"/>
+                  <line x1="164" y1="265" x2="164" y2="358"/>
+                  <line x1="172" y1="265" x2="172" y2="358"/>
+                  <!-- Tier 4 -->
+                  <line x1="138" y1="365" x2="138" y2="468"/>
+                  <line x1="148" y1="365" x2="148" y2="468"/>
+                  <line x1="158" y1="365" x2="158" y2="468"/>
+                  <line x1="168" y1="365" x2="168" y2="468"/>
+                  <line x1="178" y1="365" x2="178" y2="468"/>
+                  <!-- Tier 5 -->
+                  <line x1="125" y1="475" x2="125" y2="578"/>
+                  <line x1="138" y1="475" x2="138" y2="578"/>
+                  <line x1="151" y1="475" x2="151" y2="578"/>
+                  <line x1="164" y1="475" x2="164" y2="578"/>
+                  <line x1="177" y1="475" x2="177" y2="578"/>
+                  <line x1="190" y1="475" x2="190" y2="578"/>
+                  <!-- Tier 6 (base) -->
+                  <line x1="115" y1="585" x2="115" y2="647"/>
+                  <line x1="130" y1="585" x2="130" y2="647"/>
+                  <line x1="145" y1="585" x2="145" y2="647"/>
+                  <line x1="160" y1="585" x2="160" y2="647"/>
+                  <line x1="175" y1="585" x2="175" y2="647"/>
+                  <line x1="190" y1="585" x2="190" y2="647"/>
+                  <line x1="205" y1="585" x2="205" y2="647"/>
                 </g>
-                <!-- Horizontal floor lines on tier 3 -->
-                <g stroke="rgba(255,255,255,0.18)" stroke-width="0.4">
-                  <line x1="117" y1="360" x2="203" y2="360"/>
-                  <line x1="117" y1="420" x2="203" y2="420"/>
-                  <line x1="117" y1="480" x2="203" y2="480"/>
-                  <line x1="117" y1="540" x2="203" y2="540"/>
-                  <line x1="117" y1="600" x2="203" y2="600"/>
+                <!-- Horizontal floor lines on bigger tiers -->
+                <g stroke="rgba(255,255,255,0.18)" stroke-width="0.35">
+                  <line x1="143" y1="290" x2="177" y2="290"/>
+                  <line x1="143" y1="320" x2="177" y2="320"/>
+                  <line x1="131" y1="395" x2="189" y2="395"/>
+                  <line x1="131" y1="430" x2="189" y2="430"/>
+                  <line x1="116" y1="505" x2="204" y2="505"/>
+                  <line x1="116" y1="540" x2="204" y2="540"/>
+                  <line x1="101" y1="610" x2="219" y2="610"/>
                 </g>
-                <!-- Tier dividers (highlight ledges) -->
-                <line x1="135" y1="170" x2="185" y2="170" stroke="url(#sky-edge)" stroke-width="1.2" filter="url(#sky-glow)"/>
-                <line x1="115" y1="300" x2="205" y2="300" stroke="url(#sky-edge)" stroke-width="1.2" filter="url(#sky-glow)"/>
+                <!-- Tier divider highlights -->
+                <line x1="150" y1="180" x2="170" y2="180" stroke="url(#sky-edge)" stroke-width="0.8"/>
+                <line x1="142" y1="260" x2="178" y2="260" stroke="url(#sky-edge)" stroke-width="0.8"/>
+                <line x1="130" y1="360" x2="190" y2="360" stroke="url(#sky-edge)" stroke-width="1" filter="url(#sky-glow)"/>
+                <line x1="115" y1="470" x2="205" y2="470" stroke="url(#sky-edge)" stroke-width="1.2" filter="url(#sky-glow)"/>
+                <line x1="100" y1="580" x2="220" y2="580" stroke="url(#sky-edge)" stroke-width="1.2" filter="url(#sky-glow)"/>
               </svg>
               <div class="absolute top-[2%] left-1/2 -translate-x-1/2 text-center pointer-events-none z-10">
                 <span class="font-heading text-xl lg:text-2xl font-bold text-white" style="text-shadow: 0 0 20px rgba(139,92,246,0.9), 0 0 40px rgba(20,184,166,0.6), 0 2px 8px rgba(0,0,0,0.9);">იყავი<br>პირველი</span>
