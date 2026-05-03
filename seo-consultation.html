@@ -819,14 +819,6 @@
   </div>
 
   <script>
-    // Theme toggle
-    const themeToggle = document.getElementById('theme-toggle');
-    if (localStorage.getItem('theme') !== 'light') document.documentElement.classList.add('dark');
-    themeToggle.addEventListener('click', () => {
-      document.documentElement.classList.toggle('dark');
-      localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
-    });
-
     // Animations
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('animate-fade-in-up'); observer.unobserve(e.target); }});

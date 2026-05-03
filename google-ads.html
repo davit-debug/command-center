@@ -922,21 +922,6 @@
 
   <!-- ========== SCRIPTS ========== -->
   <script>
-    // Dark mode
-    const themeToggle = document.getElementById('theme-toggle');
-    if (localStorage.getItem('theme') !== 'light' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.add('dark');
-    }
-    themeToggle.addEventListener('click', () => {
-      document.documentElement.classList.toggle('dark');
-      localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
-    });
-
-    // Mobile menu
-    const mobileMenu = document.getElementById('mobile-menu');
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenuClose = 
-
     // FAQ
     function toggleFaq(btn) {
       const item = btn.closest('.faq-item');

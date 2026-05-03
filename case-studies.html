@@ -756,19 +756,6 @@
 
   <!-- ========== SCRIPTS ========== -->
   <script>
-    // Theme toggle
-    const themeToggle = document.getElementById('theme-toggle');
-    if (localStorage.getItem('theme') !== 'light') document.documentElement.classList.add('dark');
-    themeToggle.addEventListener('click', () => {
-      document.documentElement.classList.toggle('dark');
-      localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
-    });
-
-    // Mobile menu
-    
-    document.getElementById('mobile-menu-cta').addEventListener('click', () => { mm.style.transform = 'translateX(100%)'; document.body.style.overflow = ''; });
-    mm.querySelectorAll('nav a:not(#mobile-menu-cta)').forEach(l => l.addEventListener('click', () => { mm.style.transform = 'translateX(100%)'; document.body.style.overflow = ''; }));
-
     // Dashboard filter
     function filterDash(industry, btn) {
       document.querySelectorAll('.dash-filter').forEach(b => {
