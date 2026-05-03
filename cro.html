@@ -160,14 +160,6 @@
           "@type": "Answer",
           "text": "პირველი 3 თვე — აუდიტი, ჰიპოთეზები და პირველი ტესტები. 3-6 თვე — მნიშვნელოვანი კონვერსიის ზრდა. 6+ თვე — კომპაუნდინგ ეფექტი, სადაც ყოველი ახალი ოპტიმიზაცია წინა შედეგებს აძლიერებს."
         }
-      },
-      {
-        "@type": "Question",
-        "name": "იძლევით გარანტიას?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "SEO-ს მსგავსად, CRO-შიც ვერ ვიტყვით '100% გარანტირებული შედეგი' — ეს პროფესიონალურ ეთიკას ეწინააღმდეგება. თუმცა, ჩვენი data-driven მიდგომა და 12+ წლიანი გამოცდილება უზრუნველყოფს, რომ ყოველი ტესტი გასწავლით რაღაც ახალს და თქვენს საიტს უკეთეს მიმართულებით წაიყვანს."
-        }
       }
     ]
   }
@@ -991,7 +983,7 @@
         <p class="text-sm font-semibold uppercase tracking-wider mb-3" style="color:#D4A017">FAQ</p>
         <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-heading dark:text-heading-dark leading-[1.3]">ხშირად დასმული კითხვები</h2>
       </div>
-      <div class="flex flex-wrap justify-center gap-2 mb-8" id="v29-tabs"></div>
+      
       <div class="space-y-3" id="v29-items"></div>
     </div>
     <script>
@@ -1001,22 +993,12 @@
           { q: "რამდენ ხანში ჩანს CRO-ს შედეგი?", a: "პირველ პოზიტიურ დინამიკას ტესტირების დაწყებიდან პირველივე თვეში დაინახავთ. სრულყოფილი შედეგისთვის საჭიროა 2-დან 3 თვემდე.", cat: "შედეგები" },
           { q: "რამდენი ღირს CRO სერვისი?", a: "CRO სერვისის ღირებულება დამოკიდებულია საიტის მოცულობაზე, ტრაფიკზე და ოპტიმიზაციის მოცულობაზე. დაგვიკავშირდით უფასო კონსულტაციისთვის — შევაფასებთ თქვენს საჭიროებებს და მოგცემთ ინდივიდუალურ შეთავაზებას.", cat: "ფასი" },
           { q: "რა ROI-ს უნდა ველოდო?", a: "კარგად ჩატარებული CRO კამპანია საშუალოდ 3-5x ROI-ს იძლევა პირველი 6 თვის განმავლობაში. კონვერსიის 30-50% ზრდა ტიპიური შედეგია, რაც პირდაპირ შემოსავლის ზრდაში აისახება.", cat: "შედეგები" },
-          { q: "რატომ არის SEO + CRO ერთად უკეთესი?", a: "SEO-ს გუნდმა იცის რომელი გვერდები იზიდავს ტრაფიკს. CRO-ს გუნდმა იცის რომელი გვერდები აკონვერტირებს. როცა ორივე ერთ გუნდშია, სინერგიული ეფექტი 2-3-ჯერ აჭარბებს ცალკეულ შედეგებს.", cat: "ზოგადი" },
-          { q: "იძლევით გარანტიას?", a: "SEO-ს მსგავსად, CRO-შიც ვერ ვიტყვით '100% გარანტირებული შედეგი' — ეს პროფესიონალურ ეთიკას ეწინააღმდეგება. თუმცა, ჩვენი data-driven მიდგომა და 12+ წლიანი გამოცდილება უზრუნველყოფს, რომ ყოველი ტესტი გასწავლით რაღაც ახალს და თქვენს საიტს უკეთეს მიმართულებით წაიყვანს.", cat: "ფასი" }
+          { q: "რატომ არის SEO + CRO ერთად უკეთესი?", a: "SEO-ს გუნდმა იცის რომელი გვერდები იზიდავს ტრაფიკს. CRO-ს გუნდმა იცის რომელი გვერდები აკონვერტირებს. როცა ორივე ერთ გუნდშია, სინერგიული ეფექტი 2-3-ჯერ აჭარბებს ცალკეულ შედეგებს.", cat: "ზოგადი" }
         ];
-        var faqCategories = [
-          {name:"ყველა", key:"all"}, {name:"ზოგადი", key:"general"}, {name:"ფასი", key:"price"}, {name:"შედეგები", key:"results"}
-        ];
-        var tabs=document.getElementById('v29-tabs'), list=document.getElementById('v29-items'), activeCat='ყველა';
-        faqCategories.forEach(function(item){
-          var cat=item.name, t=document.createElement('button');
-          t.className='v29-tab'+(cat==='ყველა'?' v29-active':'');
-          t.setAttribute('data-cat', item.key);
-          t.textContent=cat;
-          t.onclick=function(){ activeCat=cat; tabs.querySelectorAll('.v29-tab').forEach(function(b){b.classList.remove('v29-active');}); t.classList.add('v29-active'); filter(); };
+        var list=document.getElementById('v29-items');
+t.classList.add('v29-active'); filter(); };
           tabs.appendChild(t);
         });
-        var catKeyMap={"ზოგადი":"general","ფასი":"price","შედეგები":"results"};
         faqData.forEach(function(faq){
           var d=document.createElement('div'), ck=catKeyMap[faq.cat]||'';
           d.className='v29-card'; d.setAttribute('data-cat',faq.cat);
@@ -1024,7 +1006,7 @@
           d.querySelector('.v29-cq').onclick=function(){ var o=d.classList.contains('v29-open'); list.querySelectorAll('.v29-card').forEach(function(el){el.classList.remove('v29-open');}); if(!o) d.classList.add('v29-open'); };
           list.appendChild(d);
         });
-        function filter(){ list.querySelectorAll('.v29-card').forEach(function(el){ el.classList.remove('v29-open'); if(activeCat==='ყველა'||el.getAttribute('data-cat')===activeCat) el.classList.remove('v29-hidden'); else el.classList.add('v29-hidden'); }); }
+      }
       })();
     </script>
   </section>
