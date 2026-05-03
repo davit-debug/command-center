@@ -704,6 +704,33 @@ a:focus-visible { outline-offset: 3px; }
   [style*="grid-template-columns: repeat(3"] { grid-template-columns: 1fr !important; }
   .why-list { padding: 0 0.5rem; }
 }
+
+/* Canonical mobile menu animation (matches index.html) */
+#mobile-menu {
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+  opacity: 0;
+}
+#mobile-menu.menu-open {
+  transform: translateX(0);
+  opacity: 1;
+}
+#mobile-menu .menu-link {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+#mobile-menu.menu-open .menu-link {
+  opacity: 1;
+  transform: translateX(0);
+}
+.hamburger-line {
+  transition: transform 0.3s ease, opacity 0.2s ease;
+  transform-origin: center;
+}
+.menu-active .hamburger-line:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.menu-active .hamburger-line:nth-child(2) { opacity: 0; }
+.menu-active .hamburger-line:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 </style>
 </head>
 <body>
@@ -1288,26 +1315,34 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// Mobile menu toggle
-const mobileBtn = document.getElementById('mobile-menu-btn');
-if (mobileBtn) {
-  const nav = document.querySelector('header nav');
-  mobileBtn.addEventListener('click', () => {
-    const expanded = mobileBtn.getAttribute('aria-expanded') === 'true';
-    mobileBtn.setAttribute('aria-expanded', !expanded);
-    if (nav) {
-      nav.classList.toggle('!flex');
-      nav.classList.toggle('!flex-col');
-      nav.classList.toggle('!absolute');
-      nav.classList.toggle('!top-full');
-      nav.classList.toggle('!left-0');
-      nav.classList.toggle('!right-0');
-      nav.classList.toggle('!bg-surface-dark');
-      nav.classList.toggle('!p-4');
-      nav.classList.toggle('!border-b');
-      nav.classList.toggle('!border-gray-800');
+// Canonical mobile menu (matches index.html)
+const menuBtn = document.getElementById('mobile-menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+if (menuBtn && mobileMenu) {
+  let menuOpen = false;
+  menuBtn.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    menuBtn.setAttribute('aria-expanded', menuOpen);
+    if (menuOpen) {
+      mobileMenu.classList.add('menu-open');
+      mobileMenu.style.pointerEvents = 'auto';
+      menuBtn.classList.add('menu-active');
+      document.body.classList.add('overflow-hidden');
+    } else {
+      mobileMenu.classList.remove('menu-open');
+      mobileMenu.style.pointerEvents = 'none';
+      menuBtn.classList.remove('menu-active');
+      document.body.classList.remove('overflow-hidden');
     }
   });
+  mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+    menuOpen = false;
+    menuBtn.setAttribute('aria-expanded', 'false');
+    mobileMenu.classList.remove('menu-open');
+    mobileMenu.style.pointerEvents = 'none';
+    menuBtn.classList.remove('menu-active');
+    document.body.classList.remove('overflow-hidden');
+  }));
 }
 </script>
 </body>
