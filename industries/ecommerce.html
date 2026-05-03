@@ -67,6 +67,9 @@
     }
   </script>
   <style>
+    /* Prevent decorative blob overflow on mobile */
+    html, body { overflow-x: hidden; overflow-x: clip; }
+
     @font-face { font-family: 'Dachi the Lynx'; src: url('../fonts/DachiTheLynx.otf') format('opentype'); font-weight: 400; font-style: normal; font-display: swap; }
     body { font-family: 'FiraGO', 'Inter', sans-serif; background: #020710; color: #94A3B8; }
     h1, h2, h3 { font-family: 'Dachi the Lynx', sans-serif; }

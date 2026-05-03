@@ -36,6 +36,9 @@ tailwind.config = {
 }
 </script>
 <style>
+/* Prevent decorative blob overflow on mobile */
+html, body { overflow-x: hidden; overflow-x: clip; }
+
 @keyframes aiGradient {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
