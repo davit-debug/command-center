@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ka" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>H1 Variants — 10xSEO</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#8B5CF6',
+            'primary-light': '#A78BFA',
+            accent: '#14B8A6',
+            heading: '#0F172A',
+            'heading-dark': '#F1F5F9',
+            body: '#475569',
+            'body-dark': '#CBD5E1',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @font-face {
+      font-family: 'Dachi the Lynx';
+      src: url('fonts/DachiTheLynx.otf') format('opentype');
+      font-weight: 400;
+      font-display: swap;
+    }
+    body { font-family: 'FiraGO', 'Inter', sans-serif; background: #0a0e1a; color: #F1F5F9; }
+    .font-heading { font-family: 'Dachi the Lynx', sans-serif; }
+    .gradient-text {
+      background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .variant-card {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(20, 184, 166, 0.03));
+      border: 1px solid rgba(139, 92, 246, 0.15);
+      border-radius: 24px;
+      transition: border-color .3s, transform .3s;
+    }
+    .variant-card:hover {
+      border-color: rgba(139, 92, 246, 0.4);
+      transform: translateY(-4px);
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 0.9rem;
+      border-radius: 9999px;
+      background: rgba(139, 92, 246, 0.15);
+      color: #A78BFA;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .badge-current { background: rgba(20, 184, 166, 0.18); color: #5EEAD4; }
+    .pros li::before { content: "✓"; color: #5EEAD4; margin-right: 0.5rem; }
+    .cons li::before { content: "✕"; color: #F87171; margin-right: 0.5rem; }
+    .pros li, .cons li { list-style: none; padding-left: 0; }
+  </style>
+</head>
+<body class="min-h-screen">
+
+  <!-- Top bar -->
+  <header class="border-b border-white/10 sticky top-0 backdrop-blur-md bg-[#0a0e1a]/80 z-10">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <h1 class="font-heading text-2xl font-bold">H1 ვარიანტები</h1>
+      <div class="flex gap-3 text-sm">
+        <a href="index.html" class="px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10 transition">← LIVE</a>
+        <a href="index-v2.html" class="px-3 py-2 rounded-lg bg-purple-500/20 text-purple-300 hover:bg-purple-500/30 transition">v2 (იმპლემენტირებული)</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-6 py-10">
+
+    <!-- Intro -->
+    <section class="mb-12">
+      <h2 class="font-heading text-3xl font-bold mb-3">5 ალტერნატიული H1 — ყველა SEO სააგენტო-თი</h2>
+      <p class="text-body-dark text-lg leading-relaxed max-w-3xl">
+        თითოეული ვარიანტი იყენებს იგივე typography-ს, gradient-ს და hero ვიზუალურ სტილს როგორც ნამდვილ გვერდზე. ცხრილში ნახე keyword count-ის ცვლილება და trade-off.
+      </p>
+    </section>
+
+    <!-- Reference: Variant 1 (already implemented) -->
+    <section class="variant-card p-8 mb-8">
+      <div class="flex flex-wrap items-center gap-3 mb-6">
+        <span class="badge badge-current">★ ვარიანტი 1 — იმპლემენტირებული</span>
+        <span class="text-sm text-body-dark">3-line, brand hook + subtitle</span>
+      </div>
+
+      <h1 class="font-heading text-[32px] sm:text-[40px] lg:text-[56px] !leading-[1.15] font-extrabold mb-6">
+        იყავი<br>
+        <span class="gradient-text">პირველი</span><br>
+        <span class="block text-xl sm:text-2xl lg:text-3xl font-bold text-body-dark mt-2">SEO სააგენტო #1 საქართველოში</span>
+      </h1>
+
+      <div class="grid sm:grid-cols-2 gap-6 mt-6 pt-6 border-t border-white/10">
+        <div>
+          <h3 class="text-sm font-bold text-purple-300 uppercase tracking-wider mb-2">დადებითი</h3>
+          <ul class="pros space-y-1 text-body-dark text-sm">
+            <li>ბრენდული "იყავი/პირველი" hook უცვლელი</li>
+            <li>keyword H1-ის შიგნით (highest-weight tag)</li>
+            <li>semantic hierarchy არ ირღვევა</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold text-red-300 uppercase tracking-wider mb-2">უარყოფითი</h3>
+          <ul class="cons space-y-1 text-body-dark text-sm">
+            <li>3-line H1 ზოგ მობილურზე გრძელი ჩანს</li>
+            <li>subtitle visual emphasis-ში hook-ს ვერ უტოლდება</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== VARIANT 4: Keyword-first ===== -->
+    <section class="variant-card p-8 mb-8">
+      <div class="flex flex-wrap items-center gap-3 mb-6">
+        <span class="badge">ვარიანტი 4</span>
+        <span class="text-sm text-body-dark">Keyword-first — სათაურად ყველაზე დიდი</span>
+      </div>
+
+      <h1 class="font-heading text-[32px] sm:text-[40px] lg:text-[56px] !leading-[1.15] font-extrabold mb-6">
+        SEO სააგენტო<br>
+        <span class="gradient-text">#1 საქართველოში</span>
+      </h1>
+
+      <div class="grid sm:grid-cols-2 gap-6 mt-6 pt-6 border-t border-white/10">
+        <div>
+          <h3 class="text-sm font-bold text-purple-300 uppercase tracking-wider mb-2">დადებითი</h3>
+          <ul class="pros space-y-1 text-body-dark text-sm">
+            <li>keyword ყველაზე დიდი ფონტით (max prominence)</li>
+            <li>WP-ს მსგავსი structure</li>
+            <li>"#1 საქართველოში" — claim gradient-ში</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold text-red-300 uppercase tracking-wider mb-2">უარყოფითი</h3>
+          <ul class="cons space-y-1 text-body-dark text-sm">
+            <li>"იყავი / პირველი" emotional hook იკარგება</li>
+            <li>generic — ჩვეულებრივი SEO სააგენტოს მსგავსად</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== VARIANT 5: Question hook ===== -->
+    <section class="variant-card p-8 mb-8">
+      <div class="flex flex-wrap items-center gap-3 mb-6">
+        <span class="badge">ვარიანტი 5</span>
+        <span class="text-sm text-body-dark">კითხვით ფორმა — engagement-ზე ფსიქოლოგიური hook</span>
+      </div>
+
+      <h1 class="font-heading text-[32px] sm:text-[40px] lg:text-[56px] !leading-[1.15] font-extrabold mb-6">
+        გჭირდება<br>
+        <span class="gradient-text">SEO სააგენტო?</span>
+      </h1>
+
+      <div class="grid sm:grid-cols-2 gap-6 mt-6 pt-6 border-t border-white/10">
+        <div>
+          <h3 class="text-sm font-bold text-purple-300 uppercase tracking-wider mb-2">დადებითი</h3>
+          <ul class="pros space-y-1 text-body-dark text-sm">
+            <li>პირდაპირ ვიზიტორს მიმართავს — engagement +</li>
+            <li>კითხვა → პასუხი (CTA) კოგნიტური flow</li>
+            <li>keyword ჯერ კიდევ gradient-ში</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold text-red-300 uppercase tracking-wider mb-2">უარყოფითი</h3>
+          <ul class="cons space-y-1 text-body-dark text-sm">
+            <li>თუ ვიზიტორი უკვე არ არის ნამდვილად მოტივირებული, "არ" შეიძლება უპასუხოს</li>
+            <li>ბრენდის authority-ს ცოტათი ანიჭებს</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== VARIANT 6: 10X-aligned ===== -->
+    <section class="variant-card p-8 mb-8">
+      <div class="flex flex-wrap items-center gap-3 mb-6">
+        <span class="badge">ვარიანტი 6</span>
+        <span class="text-sm text-body-dark">10X-aligned — ბრენდული მათემატიკა (10xSEO)</span>
+      </div>
+
+      <h1 class="font-heading text-[32px] sm:text-[40px] lg:text-[56px] !leading-[1.15] font-extrabold mb-6">
+        SEO სააგენტო<br>
+        <span class="gradient-text">10X შედეგისთვის</span>
+      </h1>
+
+      <div class="grid sm:grid-cols-2 gap-6 mt-6 pt-6 border-t border-white/10">
+        <div>
+          <h3 class="text-sm font-bold text-purple-300 uppercase tracking-wider mb-2">დადებითი</h3>
+          <ul class="pros space-y-1 text-body-dark text-sm">
+            <li>"10X" = 10xSEO ბრენდთან პირდაპირი mapping</li>
+            <li>value-led — keyword + outcome ერთად</li>
+            <li>numerical claim (10X) recall-ს ზრდის</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold text-red-300 uppercase tracking-wider mb-2">უარყოფითი</h3>
+          <ul class="cons space-y-1 text-body-dark text-sm">
+            <li>"10X" promise აღსრულება სავალდებულოა (legal-ის რისკი)</li>
+            <li>"იყავი/პირველი" hook აქაც იკარგება</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== VARIANT 7: WP-style trust ===== -->
+    <section class="variant-card p-8 mb-8">
+      <div class="flex flex-wrap items-center gap-3 mb-6">
+        <span class="badge">ვარიანტი 7</span>
+        <span class="text-sm text-body-dark">WP-style — "ჩვენს SEO სააგენტოს" ფრაგმენტი + ნდობის CTA</span>
+      </div>
+
+      <h1 class="font-heading text-[32px] sm:text-[40px] lg:text-[56px] !leading-[1.15] font-extrabold mb-6">
+        ენდე ჩვენს<br>
+        <span class="gradient-text">SEO სააგენტოს</span>
+      </h1>
+
+      <div class="grid sm:grid-cols-2 gap-6 mt-6 pt-6 border-t border-white/10">
+        <div>
+          <h3 class="text-sm font-bold text-purple-300 uppercase tracking-wider mb-2">დადებითი</h3>
+          <ul class="pros space-y-1 text-body-dark text-sm">
+            <li>WP-ის ranking H1-სთან მაქსიმალური სიახლოვე</li>
+            <li>imperative tone — "ენდე" psychological CTA</li>
+            <li>keyword gradient-ში, dative case (WP-ს ემთხვევა)</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold text-red-300 uppercase tracking-wider mb-2">უარყოფითი</h3>
+          <ul class="cons space-y-1 text-body-dark text-sm">
+            <li>"ენდე" pushy შეიძლება ჩანდეს trust-ის დადებამდე</li>
+            <li>"ჩვენს" possessive — visitor-დან სტილისტურად მოშორებული</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== VARIANT 8: Result-led with comma ===== -->
+    <section class="variant-card p-8 mb-8">
+      <div class="flex flex-wrap items-center gap-3 mb-6">
+        <span class="badge">ვარიანტი 8</span>
+        <span class="text-sm text-body-dark">Result-led — keyword + differentiator ერთ წინადადებად</span>
+      </div>
+
+      <h1 class="font-heading text-[32px] sm:text-[40px] lg:text-[56px] !leading-[1.15] font-extrabold mb-6">
+        SEO სააგენტო,<br>
+        <span class="gradient-text">რომელიც გასცდება მოლოდინს</span>
+      </h1>
+
+      <div class="grid sm:grid-cols-2 gap-6 mt-6 pt-6 border-t border-white/10">
+        <div>
+          <h3 class="text-sm font-bold text-purple-300 uppercase tracking-wider mb-2">დადებითი</h3>
+          <ul class="pros space-y-1 text-body-dark text-sm">
+            <li>keyword + differentiation ერთ კონცეპტუალურ H1-ში</li>
+            <li>"გასცდება მოლოდინს" — emotional + tangible value</li>
+            <li>ერთიანი წინადადება უკეთესი readability მობილურზე</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold text-red-300 uppercase tracking-wider mb-2">უარყოფითი</h3>
+          <ul class="cons space-y-1 text-body-dark text-sm">
+            <li>გრძელია — heroze visual hierarchy ცოტა იხრჩობა</li>
+            <li>"მოლოდინს" abstract — concrete proof საჭიროა sub-headline-ში</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparison table -->
+    <section class="variant-card p-8 mt-12">
+      <h2 class="font-heading text-2xl font-bold mb-6">📊 შედარების ცხრილი</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-sm">
+          <thead>
+            <tr class="border-b border-white/15 text-purple-300">
+              <th class="py-3 pr-4">ვარიანტი</th>
+              <th class="py-3 pr-4">Keyword line</th>
+              <th class="py-3 pr-4">Brand hook</th>
+              <th class="py-3 pr-4">SEO ძალა</th>
+              <th class="py-3 pr-4">Emotional pull</th>
+            </tr>
+          </thead>
+          <tbody class="text-body-dark">
+            <tr class="border-b border-white/5">
+              <td class="py-3 pr-4 font-semibold text-teal-300">★ V1 (live)</td>
+              <td class="py-3 pr-4">subtitle</td>
+              <td class="py-3 pr-4">✓ "იყავი/პირველი"</td>
+              <td class="py-3 pr-4">⭐⭐⭐</td>
+              <td class="py-3 pr-4">⭐⭐⭐</td>
+            </tr>
+            <tr class="border-b border-white/5">
+              <td class="py-3 pr-4 font-semibold">V4</td>
+              <td class="py-3 pr-4">primary (largest)</td>
+              <td class="py-3 pr-4">✗</td>
+              <td class="py-3 pr-4">⭐⭐⭐⭐</td>
+              <td class="py-3 pr-4">⭐⭐</td>
+            </tr>
+            <tr class="border-b border-white/5">
+              <td class="py-3 pr-4 font-semibold">V5</td>
+              <td class="py-3 pr-4">gradient (line 2)</td>
+              <td class="py-3 pr-4">✗</td>
+              <td class="py-3 pr-4">⭐⭐⭐</td>
+              <td class="py-3 pr-4">⭐⭐⭐⭐</td>
+            </tr>
+            <tr class="border-b border-white/5">
+              <td class="py-3 pr-4 font-semibold">V6</td>
+              <td class="py-3 pr-4">primary</td>
+              <td class="py-3 pr-4">✓ "10X"</td>
+              <td class="py-3 pr-4">⭐⭐⭐⭐</td>
+              <td class="py-3 pr-4">⭐⭐⭐</td>
+            </tr>
+            <tr class="border-b border-white/5">
+              <td class="py-3 pr-4 font-semibold">V7</td>
+              <td class="py-3 pr-4">gradient (WP form)</td>
+              <td class="py-3 pr-4">~</td>
+              <td class="py-3 pr-4">⭐⭐⭐⭐⭐</td>
+              <td class="py-3 pr-4">⭐⭐⭐</td>
+            </tr>
+            <tr>
+              <td class="py-3 pr-4 font-semibold">V8</td>
+              <td class="py-3 pr-4">primary + clause</td>
+              <td class="py-3 pr-4">~</td>
+              <td class="py-3 pr-4">⭐⭐⭐</td>
+              <td class="py-3 pr-4">⭐⭐⭐⭐</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs text-body-dark mt-6">
+        SEO ძალა: keyword position weight + WP parity. Emotional pull: hook strength + visitor identification.
+      </p>
+    </section>
+
+    <footer class="text-center text-body-dark text-sm mt-16 mb-8">
+      აარჩიე ვარიანტი — შემიძლია V4–V8-დან რომელიმე ან V1-ის გადანაცვლება index-v2.html-ში.
+    </footer>
+
+  </main>
+</body>
+</html>
