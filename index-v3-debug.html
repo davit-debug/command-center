@@ -2329,19 +2329,59 @@
     box-shadow: 0 0 0 6px rgba(167, 139, 250, 0.2) !important;
     position: relative !important;
   }
-  .kw-hl-attr::after {
-    content: 'attr';
-    position: absolute;
-    top: -22px;
-    left: 0;
+  .kw-attr-bubble {
+    display: inline-block;
+    margin-left: 4px;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+    vertical-align: middle;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+  .kw-attr-bubble.bubble-data-ka {
+    background: linear-gradient(135deg, #A78BFA, #8B5CF6);
+    color: white;
+    box-shadow: 0 2px 6px rgba(139, 92, 246, 0.4);
+  }
+  .kw-attr-bubble.bubble-alt {
+    background: linear-gradient(135deg, #34D399, #10B981);
+    color: white;
+    box-shadow: 0 2px 6px rgba(16, 185, 129, 0.4);
+  }
+  .kw-attr-block {
+    display: block;
+    margin-top: 6px;
+    padding: 8px 12px;
+    background: rgba(167, 139, 250, 0.15);
+    border-left: 3px solid #A78BFA;
+    border-radius: 6px;
+    font-size: 13px;
+    font-family: 'FiraGO', sans-serif;
+    color: #1E293B;
+  }
+  .dark .kw-attr-block { color: #E0E7FF; background: rgba(167, 139, 250, 0.18); }
+  .kw-attr-block.block-alt {
+    background: rgba(16, 185, 129, 0.12);
+    border-left-color: #10B981;
+  }
+  .kw-attr-block .kw-attr-label {
+    display: inline-block;
     background: #A78BFA;
     color: white;
-    font-size: 11px;
-    font-weight: bold;
-    padding: 2px 6px;
-    border-radius: 4px;
-    pointer-events: none;
-    z-index: 999;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 1px 6px;
+    border-radius: 3px;
+    margin-right: 8px;
+    vertical-align: middle;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .kw-attr-block.block-alt .kw-attr-label {
+    background: #10B981;
   }
   #kw-debug-panel {
     position: fixed;
@@ -2413,8 +2453,12 @@
     <div><span class="kw-counter-geo" id="kw-count-seo-geo">0</span>x <strong>სეო სააგენტო</strong></div>
   </div>
   <div class="kw-legend">
-    <div class="kw-swatch" style="background:#A78BFA;border:2px dotted #A78BFA"></div>
-    <div>attribute (data-ka, alt)</div>
+    <div class="kw-swatch" style="background:linear-gradient(135deg,#A78BFA,#8B5CF6)"></div>
+    <div><strong>data-ka</strong> hidden text *(იისფერი ბლოკი ქვემოთ)*</div>
+  </div>
+  <div class="kw-legend">
+    <div class="kw-swatch" style="background:linear-gradient(135deg,#34D399,#10B981)"></div>
+    <div><strong>alt</strong> hidden text *(მწვანე ბლოკი ქვემოთ)*</div>
   </div>
   <button onclick="document.getElementById('kw-debug-panel').style.display='none'">დავხურო პანელი</button>
   <button onclick="document.querySelectorAll('.kw-hl-seo, .kw-hl-seo-geo, .kw-hl-attr').forEach(e => { e.classList.remove('kw-hl-seo','kw-hl-seo-geo','kw-hl-attr'); }); this.parentElement.style.display='none';">წავშალო ყველაფერი</button>
@@ -2445,18 +2489,43 @@
     });
 
     // 2. Highlight elements with data-ka or alt containing keyword
+    //    AND inject visible bubble showing the hidden text
     document.querySelectorAll('[data-ka], [alt]').forEach(function(el){
       if (el.id === 'kw-debug-panel' || el.closest('#kw-debug-panel')) return;
       var dataKa = el.getAttribute('data-ka') || '';
       var alt = el.getAttribute('alt') || '';
-      var combined = dataKa + ' ' + alt;
-      if (combined.indexOf(SEO) !== -1 && !el.classList.contains('kw-hl-seo')) {
+
+      var hasDataKaSeo = dataKa.indexOf(SEO) !== -1 || dataKa.indexOf(GEO) !== -1;
+      var hasAltSeo = alt.indexOf(SEO) !== -1 || alt.indexOf(GEO) !== -1;
+
+      if (hasDataKaSeo) {
         el.classList.add('kw-hl-attr');
-        seoCount++;
+        if (dataKa.indexOf(SEO) !== -1) seoCount++;
+        if (dataKa.indexOf(GEO) !== -1) geoCount++;
+
+        // Inject visible bubble with the actual hidden text
+        var block = document.createElement('span');
+        block.className = 'kw-attr-block';
+        block.innerHTML = '<span class="kw-attr-label">data-ka (hidden)</span>' + dataKa;
+        // Insert AFTER the element so it doesn't disrupt layout
+        if (el.parentNode) {
+          el.parentNode.insertBefore(block, el.nextSibling);
+        }
       }
-      if (combined.indexOf(GEO) !== -1 && !el.classList.contains('kw-hl-seo-geo')) {
-        el.classList.add('kw-hl-attr');
-        geoCount++;
+
+      if (hasAltSeo) {
+        if (!el.classList.contains('kw-hl-attr')) el.classList.add('kw-hl-attr');
+        if (alt.indexOf(SEO) !== -1) seoCount++;
+        if (alt.indexOf(GEO) !== -1) geoCount++;
+
+        // For images, insert bubble after the parent (since img is void)
+        var block = document.createElement('div');
+        block.className = 'kw-attr-block block-alt';
+        block.innerHTML = '<span class="kw-attr-label">alt (hidden)</span>' + alt;
+        var insertTarget = el.tagName === 'IMG' ? (el.parentNode || el) : el;
+        if (insertTarget.parentNode) {
+          insertTarget.parentNode.insertBefore(block, insertTarget.nextSibling);
+        }
       }
     });
 
