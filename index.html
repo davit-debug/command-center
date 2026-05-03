@@ -244,6 +244,13 @@
     .v29-ca { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1), padding 0.3s; padding: 0 22px 0 76px; }
     .v29-open .v29-ca { max-height: 400px; padding: 0 22px 18px 76px; }
     .v29-ca p { color: #CBD5E1; font-size: 15px; line-height: 1.8; }
+    .v29-card.v29-extra-hidden { display: none; }
+    .v29-more-wrap { text-align: center; margin-top: 24px; }
+    .v29-more-wrap.v29-hidden { display: none; }
+    .v29-more-btn { background: linear-gradient(135deg, rgba(139,92,246,0.15), rgba(124,58,237,0.1)); border: 1px solid rgba(139,92,246,0.3); color: #C4B5FD; padding: 14px 32px; border-radius: 12px; font-weight: 700; font-size: 14px; cursor: pointer; transition: all 0.3s; display: inline-flex; align-items: center; gap: 10px; font-family: inherit; }
+    .v29-more-btn:hover { background: linear-gradient(135deg, rgba(139,92,246,0.25), rgba(124,58,237,0.15)); border-color: rgba(139,92,246,0.5); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(139,92,246,0.15); }
+    .v29-more-btn svg { width: 14px; height: 14px; transition: transform 0.3s; }
+    .v29-more-btn.v29-expanded svg { transform: rotate(180deg); }
 
     /* Mobile menu animation */
     #mobile-menu {
@@ -1841,6 +1848,12 @@
       </div>
       <div class="flex flex-wrap justify-center gap-2 mb-8" id="v29-tabs"></div>
       <div class="space-y-3" id="v29-items"></div>
+      <div class="v29-more-wrap" id="v29-more-wrap">
+        <button class="v29-more-btn" id="v29-more-btn" type="button">
+          <span id="v29-more-txt">დანარჩენი 8 კითხვის ნახვა</span>
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+      </div>
     </div>
     <script>
       (function(){
@@ -1864,6 +1877,8 @@
           {name:"ყველა", key:"all"}, {name:"ზოგადი", key:"general"}, {name:"ფასი", key:"price"}, {name:"შედეგები", key:"results"}
         ];
         var tabs=document.getElementById('v29-tabs'), list=document.getElementById('v29-items'), activeCat='ყველა';
+        var moreBtn=document.getElementById('v29-more-btn'), moreWrap=document.getElementById('v29-more-wrap'), moreTxt=document.getElementById('v29-more-txt');
+        var INITIAL=6, expanded=false;
         faqCategories.forEach(function(item){
           var cat=item.name, t=document.createElement('button');
           t.className='v29-tab'+(cat==='ყველა'?' v29-active':'');
@@ -1882,14 +1897,34 @@
           list.appendChild(d);
         });
         function filter(){
-          var shown=0;
+          var matchedCount=0;
           list.querySelectorAll('.v29-card').forEach(function(el){
             el.classList.remove('v29-open');
+            el.classList.remove('v29-extra-hidden');
             var match = activeCat==='ყველა' || el.getAttribute('data-cat')===activeCat;
-            if(match){ el.classList.remove('v29-hidden'); shown++; }
-            else { el.classList.add('v29-hidden'); }
+            if(match){
+              el.classList.remove('v29-hidden');
+              matchedCount++;
+              if(!expanded && matchedCount>INITIAL) el.classList.add('v29-extra-hidden');
+            } else {
+              el.classList.add('v29-hidden');
+            }
           });
+          // Toggle button visibility based on whether there's a hidden remainder
+          var remainder = matchedCount - INITIAL;
+          if(remainder>0){
+            moreWrap.classList.remove('v29-hidden');
+            moreTxt.textContent = expanded ? 'ნაკლების ჩვენება' : ('დანარჩენი ' + remainder + ' კითხვის ნახვა');
+          } else {
+            moreWrap.classList.add('v29-hidden');
+          }
         }
+        moreBtn.addEventListener('click', function(){
+          expanded = !expanded;
+          moreBtn.classList.toggle('v29-expanded', expanded);
+          filter();
+        });
+        filter();
       })();
     </script>
   </section>
