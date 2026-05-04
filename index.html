@@ -9,6 +9,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preload" href="images/logo-glow.webp" as="image" fetchpriority="high">
   <title>SEO სააგენტო - 10xSEO</title>
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://10xseo.ge/">
@@ -28,7 +29,7 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/tailwind.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -53,29 +54,6 @@
   }
   // Prefetch Calendly iframe on first user interaction
   document.addEventListener('mousemove',function _c(){_calendlyReady=true;document.removeEventListener('mousemove',_c);},{ once:true, passive:true });
-  </script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            primary: { DEFAULT: '#8B5CF6', light: '#A78BFA', dark: '#7C3AED' },
-            accent: { DEFAULT: '#14B8A6', dark: '#0D9488' },
-            'ai-blue': '#3B82F6',
-            surface: { DEFAULT: '#ffffff', alt: '#f8fafc', dark: '#020710', 'dark-alt': '#0F0F0F' },
-            heading: { DEFAULT: '#0f172a', dark: '#f8fafc' },
-            body: { DEFAULT: '#475569', dark: '#94a3b8' },
-            success: '#21C743',
-          },
-          fontFamily: {
-            'heading': ['"Dachi the Lynx"', 'sans-serif'],
-            'body': ['FiraGO', 'sans-serif'],
-            'inter': ['Inter', 'sans-serif'],
-          },
-        }
-      }
-    }
   </script>
   <style>
     @font-face {
@@ -460,7 +438,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 h-full flex items-center justify-between">
       <!-- Logo -->
       <a href="#" class="flex items-center shrink-0">
-        <img src="images/logo-glow.png" alt="10XSEO" class="h-auto w-40 lg:w-44 dark:mix-blend-screen">
+        <img src="images/logo-glow.webp" alt="10XSEO" class="h-auto w-40 lg:w-44 dark:mix-blend-screen">
       </a>
 
       <!-- Desktop Nav -->
