@@ -183,6 +183,17 @@
     .ai-float { animation: float 4s ease-in-out infinite; }
     .ai-float-delay { animation: float 4s ease-in-out 1s infinite; }
     .ai-float-delay-2 { animation: float 4s ease-in-out 2s infinite; }
+    @keyframes aiGradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .ai-cta-animate {
+      background: linear-gradient(-45deg, #8B5CF6, #3B82F6, #14B8A6, #8B5CF6) !important;
+      background-size: 300% 300% !important;
+      animation: aiGradient 4s ease infinite;
+      box-shadow: 0 4px 25px rgba(139, 92, 246, 0.35);
+    }
     .ai-bg-animate {
       position: relative;
       background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6);
@@ -993,7 +1004,8 @@ AI პასუხებით<br></p>
   </script>
 
 <!-- Calendly Popup Widget -->
-<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<link rel="preload" href="https://assets.calendly.com/assets/external/widget.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css"></noscript>
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 <script>function openCalendly(){Calendly.initPopupWidget({url:'https://calendly.com/10xseo-sales/30-seo-clone?background_color=0f172a&text_color=f8fafc&primary_color=8b5cf6'});return false;}</script>
 </body>
