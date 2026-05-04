@@ -2,6 +2,7 @@
 <html lang="ka" class="dark scroll-smooth">
 <head>
   <meta charset="UTF-8">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <meta name="robots" content="noindex, nofollow">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -33,14 +34,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/firago@1.0.0/FiraGO.css" rel="stylesheet">
   <!-- Lite YouTube Embed (facade pattern — 1KB JS + 1.2KB CSS instead of 500KB+ YouTube iframe) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.3/src/lite-yt-embed.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.3/src/lite-yt-embed.min.css" media="print" onload="this.media='all'">
   <script src="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.3/src/lite-yt-embed.min.js" defer></script>
   <script type="text/javascript" src="https://widget.clutch.co/static/js/widget.js" async></script>
   <link rel="dns-prefetch" href="https://calendly.com">
   <link rel="preconnect" href="https://calendly.com" crossorigin>
   <link rel="dns-prefetch" href="https://assets.calendly.com">
   <link rel="preconnect" href="https://assets.calendly.com" crossorigin>
-  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css"></noscript>
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript"></script>
   <script>
   var _calendlyReady=false;
