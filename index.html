@@ -10,6 +10,8 @@
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preload" href="images/pyramid-top.webp" as="image" fetchpriority="high">
+  <link rel="preload" href="fonts/FiraGO-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/DachiTheLynx.woff2" as="font" type="font/woff2" crossorigin>
   <title>SEO სააგენტო - 10xSEO</title>
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://10xseo.ge/">
@@ -29,11 +31,9 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/firago@1.0.0/FiraGO.css" rel="stylesheet">
+  <link rel="preload" href="assets/index.tailwind.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+  <noscript><link rel="stylesheet" href="assets/index.tailwind.css"></noscript>
   <!-- Lite YouTube Embed (facade pattern — 1KB JS + 1.2KB CSS instead of 500KB+ YouTube iframe) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.3/src/lite-yt-embed.min.css" media="print" onload="this.media='all'">
   <script src="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.3/src/lite-yt-embed.min.js" defer></script>
@@ -55,33 +55,17 @@
   // Prefetch Calendly iframe on first user interaction
   document.addEventListener('mousemove',function _c(){_calendlyReady=true;document.removeEventListener('mousemove',_c);},{ once:true, passive:true });
   </script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            primary: { DEFAULT: '#8B5CF6', light: '#A78BFA', dark: '#7C3AED' },
-            accent: { DEFAULT: '#14B8A6', dark: '#0D9488' },
-            'ai-blue': '#3B82F6',
-            surface: { DEFAULT: '#ffffff', alt: '#f8fafc', dark: '#020710', 'dark-alt': '#0F0F0F' },
-            heading: { DEFAULT: '#0f172a', dark: '#f8fafc' },
-            body: { DEFAULT: '#475569', dark: '#94a3b8' },
-            success: '#21C743',
-          },
-          fontFamily: {
-            'heading': ['"Dachi the Lynx"', 'sans-serif'],
-            'body': ['FiraGO', 'sans-serif'],
-            'inter': ['Inter', 'sans-serif'],
-          },
-        }
-      }
-    }
-  </script>
   <style>
     @font-face {
+      font-family: 'FiraGO';
+      src: url('fonts/FiraGO-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
       font-family: 'Dachi the Lynx';
-      src: url('fonts/DachiTheLynx.otf') format('opentype');
+      src: url('fonts/DachiTheLynx.woff2') format('woff2');
       font-weight: 400;
       font-style: normal;
       font-display: swap;
