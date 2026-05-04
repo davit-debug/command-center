@@ -93,101 +93,49 @@
   }
   </script>
 
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/firago@1.0.0/FiraGO.css" rel="stylesheet">
-  <!-- Lite YouTube Embed -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.3/src/lite-yt-embed.min.css">
+  <link rel="preload" href="images/logo-glow.webp" as="image" fetchpriority="high">
+  <link rel="preload" href="fonts/FiraGO-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/DachiTheLynx.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/tailwind.aiseo.css">
+  <link rel="preload" href="assets/ai-seo-deferred.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.3/src/lite-yt-embed.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="assets/ai-seo-deferred.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.3/src/lite-yt-embed.min.css">
+  </noscript>
   <script src="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.3/src/lite-yt-embed.min.js" defer></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            primary: { DEFAULT: '#58E6FF', light: '#7AEDFF', dark: '#3ED8F5' },
-            accent: { DEFAULT: '#FC81FE', dark: '#E070E2' },
-            surface: { DEFAULT: '#ffffff', alt: '#f8fafc', dark: '#020710', 'dark-alt': '#0F0F0F' },
-            heading: { DEFAULT: '#0f172a', dark: '#f8fafc' },
-            body: { DEFAULT: '#475569', dark: '#94a3b8' },
-            success: '#21C743',
-            ai: { purple: '#8B5CF6', blue: '#3B82F6', teal: '#14B8A6', orange: '#F97316', pink: '#EC4899' },
-          },
-          fontFamily: {
-            'heading': ['"Dachi the Lynx"', 'sans-serif'],
-            'body': ['FiraGO', 'sans-serif'],
-            'inter': ['Inter', 'sans-serif'],
-          },
-        }
-      }
-    }
-  </script>
   <style>
-    /* FAQ v29 Gold Glassmorphism (homepage parity) */
-    .v29-tab { padding: 8px 18px; border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; transition: all 0.3s; border: none; text-transform: uppercase; letter-spacing: 0.5px; }
-    .v29-tab:hover { opacity: 0.85; }
-    .v29-tab.v29-active { box-shadow: 0 0 16px rgba(0,0,0,0.3); }
-    .v29-tab[data-cat="all"] { background: rgba(20,184,166,0.15); color: #2DD4BF; }
-    .v29-tab[data-cat="general"] { background: rgba(236,72,153,0.15); color: #F472B6; }
-    .v29-tab[data-cat="price"] { background: rgba(245,158,11,0.15); color: #FBBF24; }
-    .v29-tab[data-cat="results"] { background: rgba(59,130,246,0.15); color: #60A5FA; }
-    .v29-card { border-radius: 16px; overflow: hidden; background: rgba(255,255,255,0.035); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.08); transition: all 0.35s; position: relative; }
-    .v29-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; border-radius: 14px 0 0 14px; opacity: 0; transition: opacity 0.3s; background: #D4A017; }
-    .v29-card[data-cat="ზოგადი"]::before { background: #EC4899; }
-    .v29-card[data-cat="შედეგები"]::before { background: #3B82F6; }
-    .v29-card[data-cat="ფასი"]::before { background: #F59E0B; }
-    .v29-card:hover { border-color: rgba(212,160,23,0.25); }
-    .v29-card[data-cat="ზოგადი"]:hover { border-color: rgba(236,72,153,0.25); }
-    .v29-card[data-cat="შედეგები"]:hover { border-color: rgba(59,130,246,0.25); }
-    .v29-card[data-cat="ფასი"]:hover { border-color: rgba(245,158,11,0.25); }
-    .v29-card:hover::before { opacity: 0.5; }
-    .v29-card.v29-open { border-color: rgba(212,160,23,0.35); background: rgba(212,160,23,0.04); box-shadow: 0 0 30px rgba(212,160,23,0.06); }
-    .v29-card[data-cat="ზოგადი"].v29-open { border-color: rgba(236,72,153,0.35); background: rgba(236,72,153,0.04); box-shadow: 0 0 30px rgba(236,72,153,0.06); }
-    .v29-card[data-cat="შედეგები"].v29-open { border-color: rgba(59,130,246,0.35); background: rgba(59,130,246,0.04); box-shadow: 0 0 30px rgba(59,130,246,0.06); }
-    .v29-card[data-cat="ფასი"].v29-open { border-color: rgba(245,158,11,0.35); background: rgba(245,158,11,0.04); box-shadow: 0 0 30px rgba(245,158,11,0.06); }
-    .v29-card.v29-open::before { opacity: 1; }
-    .v29-card.v29-hidden { display: none; }
-    .v29-cq { display: flex; align-items: center; padding: 18px 22px; cursor: pointer; gap: 16px; }
-    .v29-cq .v29-badge { width: 38px; height: 38px; border-radius: 10px; background: rgba(212,160,23,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.3s; }
-    .v29-open .v29-badge { background: rgba(212,160,23,0.2); box-shadow: 0 0 12px rgba(212,160,23,0.15); }
-    .v29-cq .v29-badge svg { width: 16px; height: 16px; stroke: #D4A017; transition: transform 0.3s; }
-    .v29-open .v29-badge svg { transform: rotate(180deg); stroke: #EAB308; }
-    .v29-cq .v29-txt { flex: 1; font-weight: 600; color: #F1F5F9; font-size: 17px; line-height: 1.4; }
-    .v29-cat { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; }
-    .v29-cat[data-key="general"] { color: #F472B6; background: rgba(236,72,153,0.15); }
-    .v29-cat[data-key="price"] { color: #FBBF24; background: rgba(245,158,11,0.15); }
-    .v29-cat[data-key="results"] { color: #60A5FA; background: rgba(59,130,246,0.15); }
-    .v29-ca { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1), padding 0.3s; padding: 0 22px 0 76px; }
-    .v29-open .v29-ca { max-height: 500px; padding: 0 22px 18px 76px; }
-    .v29-ca p { color: #CBD5E1; font-size: 15px; line-height: 1.8; }
-    .v29-card.v29-extra-hidden { display: none; }
-    .v29-more-wrap { text-align: center; margin-top: 24px; }
-    .v29-more-wrap.v29-hidden { display: none; }
-    .v29-more-btn { background: linear-gradient(135deg, rgba(139,92,246,0.15), rgba(124,58,237,0.1)); border: 1px solid rgba(139,92,246,0.3); color: #C4B5FD; padding: 14px 32px; border-radius: 12px; font-weight: 700; font-size: 14px; cursor: pointer; transition: all 0.3s; display: inline-flex; align-items: center; gap: 10px; font-family: inherit; }
-    .v29-more-btn:hover { background: linear-gradient(135deg, rgba(139,92,246,0.25), rgba(124,58,237,0.15)); border-color: rgba(139,92,246,0.5); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(139,92,246,0.15); }
-    .v29-more-btn svg { width: 14px; height: 14px; transition: transform 0.3s; }
-    .v29-more-btn.v29-expanded svg { transform: rotate(180deg); }
-
     @font-face {
       font-family: 'Dachi the Lynx';
-      src: url('fonts/DachiTheLynx.otf') format('opentype');
+      src: url('fonts/DachiTheLynx.woff2') format('woff2'),
+           url('fonts/DachiTheLynx.otf') format('opentype');
       font-weight: 400;
       font-style: normal;
       font-display: swap;
     }
-    body { font-family: 'FiraGO', 'Inter', sans-serif; }
+    @font-face {
+      font-family: 'FiraGO';
+      src: url('fonts/FiraGO-Regular.woff2') format('woff2'),
+           url('fonts/FiraGO-Regular.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    body { font-family: 'FiraGO', system-ui, -apple-system, sans-serif; }
+    .font-inter, .font-inter * { font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; font-feature-settings: 'tnum'; }
     h1, h2, h3 { font-family: 'Dachi the Lynx', sans-serif; }
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(24px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    .animate-fade-in-up { opacity: 0; animation: fadeInUp 0.5s ease-out forwards; }
-    .delay-100 { animation-delay: 0.1s; }
-    .delay-200 { animation-delay: 0.2s; }
-    .delay-300 { animation-delay: 0.3s; }
-    .delay-400 { animation-delay: 0.4s; }
+    .animate-fade-in-up { animation: fadeInUp 0.5s ease-out both; }
+    .delay-100 { animation-delay: 0.05s; }
+    .delay-200 { animation-delay: 0.1s; }
+    .delay-300 { animation-delay: 0.15s; }
+    .delay-400 { animation-delay: 0.2s; }
+    @media (prefers-reduced-motion: reduce) {
+      .animate-fade-in-up { animation: none; }
+    }
     .gradient-text {
       background: linear-gradient(135deg, #58E6FF, #FC81FE);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
@@ -239,14 +187,6 @@
       background-size: 300% 300%;
       animation: gradient-shift 8s ease infinite;
     }
-  
-    /* Lite YouTube Embed — brand styling */
-    lite-youtube { border-radius: 16px; overflow: hidden; background-color: #0d1117; max-width: 100%; }
-    lite-youtube::before { display: none; }
-    lite-youtube > .lty-playbtn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 68px; height: 48px; background-color: rgba(139,92,246,0.9); border-radius: 14px; transition: all 0.3s; border: none; filter: none; }
-    lite-youtube:hover > .lty-playbtn { background-color: rgba(139,92,246,1); box-shadow: 0 0 30px rgba(139,92,246,0.5); transform: translate(-50%,-50%) scale(1.08); }
-    lite-youtube > .lty-playbtn::before { border-color: transparent transparent transparent #fff; }
-    lite-youtube > .lty-playbtn::after { display: none; }
 
     /* Mobile Menu */
     #mobile-menu {
@@ -279,23 +219,6 @@
     .menu-active .hamburger-line:nth-child(3) {
       transform: translateY(-8px) rotate(-45deg);
     }
-
-    /* FAQ Variant 1 — Gold Glassmorphism */
-    .fq1-card { border-radius: 16px; overflow: hidden; background: rgba(255,255,255,0.03); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.06); transition: all 0.4s cubic-bezier(0.4,0,0.2,1); position: relative; }
-    .fq1-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; border-radius: 14px 0 0 14px; background: linear-gradient(180deg, #D4A017, #EAB308); opacity: 0; transition: opacity 0.3s; }
-    .fq1-card:hover { border-color: rgba(212,160,23,0.2); transform: translateY(-1px); }
-    .fq1-card:hover::before { opacity: 0.5; }
-    .fq1-card.fq1-open { border-color: rgba(212,160,23,0.35); background: rgba(212,160,23,0.04); box-shadow: 0 4px 40px rgba(212,160,23,0.08); }
-    .fq1-card.fq1-open::before { opacity: 1; }
-    .fq1-q { display: flex; align-items: center; padding: 20px 24px; cursor: pointer; gap: 16px; }
-    .fq1-num { width: 40px; height: 40px; border-radius: 12px; background: rgba(212,160,23,0.08); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 15px; font-weight: 800; color: #D4A017; transition: all 0.3s; font-variant-numeric: tabular-nums; }
-    .fq1-open .fq1-num { background: rgba(212,160,23,0.18); box-shadow: 0 0 16px rgba(212,160,23,0.2); color: #EAB308; }
-    .fq1-txt { flex: 1; font-weight: 600; color: #F1F5F9; font-size: 16px; line-height: 1.5; }
-    .fq1-arrow { width: 20px; height: 20px; stroke: #64748B; transition: all 0.35s; flex-shrink: 0; }
-    .fq1-open .fq1-arrow { transform: rotate(180deg); stroke: #D4A017; }
-    .fq1-a { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1), padding 0.35s; padding: 0 24px 0 80px; }
-    .fq1-open .fq1-a { max-height: 500px; padding: 0 24px 20px 80px; }
-    .fq1-a p { color: #94A3B8; font-size: 15px; line-height: 1.85; }
   </style>
 <script type="application/ld+json">
 {
@@ -317,7 +240,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 h-full flex items-center justify-between">
       <!-- Logo -->
       <a href="index.html" class="flex items-center shrink-0">
-        <img src="images/logo-glow.png" alt="10XSEO" class="h-auto w-40 lg:w-44 dark:mix-blend-screen">
+        <img src="images/logo-glow.webp" alt="10XSEO" width="176" height="66" class="h-auto w-40 lg:w-44 dark:mix-blend-screen" fetchpriority="high">
       </a>
 
       <!-- Desktop Nav -->
@@ -980,7 +903,7 @@ AI პასუხებით<br></p>
       <!-- Bottom Bar -->
       <div class="border-t border-white/10 pt-8 flex items-center justify-center gap-3">
         <a href="index.html">
-          <img src="images/logo.png" alt="10XSEO" class="h-8 w-auto">
+          <img src="images/logo.webp" alt="10XSEO" width="200" height="75" class="h-8 w-auto" loading="lazy">
         </a>
         <p class="text-xs text-gray-500">საქართველოს #1 SEO სააგენტო. &copy; 2026 ყველა უფლება დაცულია.</p>
       </div>

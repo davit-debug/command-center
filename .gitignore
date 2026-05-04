@@ -98,3 +98,7 @@
 !404.html
 !assets/
 !assets/**
+
+# Tailwind build inputs
+!tailwind.config.js
+!tailwind.input.css

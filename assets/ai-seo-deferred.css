@@ -1,0 +1,69 @@
+/* FAQ v29 Gold Glassmorphism (homepage parity) */
+.v29-tab { padding: 8px 18px; border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; transition: all 0.3s; border: none; text-transform: uppercase; letter-spacing: 0.5px; }
+.v29-tab:hover { opacity: 0.85; }
+.v29-tab.v29-active { box-shadow: 0 0 16px rgba(0,0,0,0.3); }
+.v29-tab[data-cat="all"] { background: rgba(20,184,166,0.15); color: #2DD4BF; }
+.v29-tab[data-cat="general"] { background: rgba(236,72,153,0.15); color: #F472B6; }
+.v29-tab[data-cat="price"] { background: rgba(245,158,11,0.15); color: #FBBF24; }
+.v29-tab[data-cat="results"] { background: rgba(59,130,246,0.15); color: #60A5FA; }
+.v29-card { border-radius: 16px; overflow: hidden; background: rgba(255,255,255,0.035); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.08); transition: all 0.35s; position: relative; }
+.v29-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; border-radius: 14px 0 0 14px; opacity: 0; transition: opacity 0.3s; background: #D4A017; }
+.v29-card[data-cat="ზოგადი"]::before { background: #EC4899; }
+.v29-card[data-cat="შედეგები"]::before { background: #3B82F6; }
+.v29-card[data-cat="ფასი"]::before { background: #F59E0B; }
+.v29-card:hover { border-color: rgba(212,160,23,0.25); }
+.v29-card[data-cat="ზოგადი"]:hover { border-color: rgba(236,72,153,0.25); }
+.v29-card[data-cat="შედეგები"]:hover { border-color: rgba(59,130,246,0.25); }
+.v29-card[data-cat="ფასი"]:hover { border-color: rgba(245,158,11,0.25); }
+.v29-card:hover::before { opacity: 0.5; }
+.v29-card.v29-open { border-color: rgba(212,160,23,0.35); background: rgba(212,160,23,0.04); box-shadow: 0 0 30px rgba(212,160,23,0.06); }
+.v29-card[data-cat="ზოგადი"].v29-open { border-color: rgba(236,72,153,0.35); background: rgba(236,72,153,0.04); box-shadow: 0 0 30px rgba(236,72,153,0.06); }
+.v29-card[data-cat="შედეგები"].v29-open { border-color: rgba(59,130,246,0.35); background: rgba(59,130,246,0.04); box-shadow: 0 0 30px rgba(59,130,246,0.06); }
+.v29-card[data-cat="ფასი"].v29-open { border-color: rgba(245,158,11,0.35); background: rgba(245,158,11,0.04); box-shadow: 0 0 30px rgba(245,158,11,0.06); }
+.v29-card.v29-open::before { opacity: 1; }
+.v29-card.v29-hidden { display: none; }
+.v29-cq { display: flex; align-items: center; padding: 18px 22px; cursor: pointer; gap: 16px; }
+.v29-cq .v29-badge { width: 38px; height: 38px; border-radius: 10px; background: rgba(212,160,23,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.3s; }
+.v29-open .v29-badge { background: rgba(212,160,23,0.2); box-shadow: 0 0 12px rgba(212,160,23,0.15); }
+.v29-cq .v29-badge svg { width: 16px; height: 16px; stroke: #D4A017; transition: transform 0.3s; }
+.v29-open .v29-badge svg { transform: rotate(180deg); stroke: #EAB308; }
+.v29-cq .v29-txt { flex: 1; font-weight: 600; color: #F1F5F9; font-size: 17px; line-height: 1.4; }
+.v29-cat { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; }
+.v29-cat[data-key="general"] { color: #F472B6; background: rgba(236,72,153,0.15); }
+.v29-cat[data-key="price"] { color: #FBBF24; background: rgba(245,158,11,0.15); }
+.v29-cat[data-key="results"] { color: #60A5FA; background: rgba(59,130,246,0.15); }
+.v29-ca { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1), padding 0.3s; padding: 0 22px 0 76px; }
+.v29-open .v29-ca { max-height: 500px; padding: 0 22px 18px 76px; }
+.v29-ca p { color: #CBD5E1; font-size: 15px; line-height: 1.8; }
+.v29-card.v29-extra-hidden { display: none; }
+.v29-more-wrap { text-align: center; margin-top: 24px; }
+.v29-more-wrap.v29-hidden { display: none; }
+.v29-more-btn { background: linear-gradient(135deg, rgba(139,92,246,0.15), rgba(124,58,237,0.1)); border: 1px solid rgba(139,92,246,0.3); color: #C4B5FD; padding: 14px 32px; border-radius: 12px; font-weight: 700; font-size: 14px; cursor: pointer; transition: all 0.3s; display: inline-flex; align-items: center; gap: 10px; font-family: inherit; }
+.v29-more-btn:hover { background: linear-gradient(135deg, rgba(139,92,246,0.25), rgba(124,58,237,0.15)); border-color: rgba(139,92,246,0.5); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(139,92,246,0.15); }
+.v29-more-btn svg { width: 14px; height: 14px; transition: transform 0.3s; }
+.v29-more-btn.v29-expanded svg { transform: rotate(180deg); }
+
+/* Lite YouTube Embed — brand styling */
+lite-youtube { border-radius: 16px; overflow: hidden; background-color: #0d1117; max-width: 100%; }
+lite-youtube::before { display: none; }
+lite-youtube > .lty-playbtn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 68px; height: 48px; background-color: rgba(139,92,246,0.9); border-radius: 14px; transition: all 0.3s; border: none; filter: none; }
+lite-youtube:hover > .lty-playbtn { background-color: rgba(139,92,246,1); box-shadow: 0 0 30px rgba(139,92,246,0.5); transform: translate(-50%,-50%) scale(1.08); }
+lite-youtube > .lty-playbtn::before { border-color: transparent transparent transparent #fff; }
+lite-youtube > .lty-playbtn::after { display: none; }
+
+/* FAQ Variant 1 — Gold Glassmorphism */
+.fq1-card { border-radius: 16px; overflow: hidden; background: rgba(255,255,255,0.03); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.06); transition: all 0.4s cubic-bezier(0.4,0,0.2,1); position: relative; }
+.fq1-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; border-radius: 14px 0 0 14px; background: linear-gradient(180deg, #D4A017, #EAB308); opacity: 0; transition: opacity 0.3s; }
+.fq1-card:hover { border-color: rgba(212,160,23,0.2); transform: translateY(-1px); }
+.fq1-card:hover::before { opacity: 0.5; }
+.fq1-card.fq1-open { border-color: rgba(212,160,23,0.35); background: rgba(212,160,23,0.04); box-shadow: 0 4px 40px rgba(212,160,23,0.08); }
+.fq1-card.fq1-open::before { opacity: 1; }
+.fq1-q { display: flex; align-items: center; padding: 20px 24px; cursor: pointer; gap: 16px; }
+.fq1-num { width: 40px; height: 40px; border-radius: 12px; background: rgba(212,160,23,0.08); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 15px; font-weight: 800; color: #D4A017; transition: all 0.3s; font-variant-numeric: tabular-nums; }
+.fq1-open .fq1-num { background: rgba(212,160,23,0.18); box-shadow: 0 0 16px rgba(212,160,23,0.2); color: #EAB308; }
+.fq1-txt { flex: 1; font-weight: 600; color: #F1F5F9; font-size: 16px; line-height: 1.5; }
+.fq1-arrow { width: 20px; height: 20px; stroke: #64748B; transition: all 0.35s; flex-shrink: 0; }
+.fq1-open .fq1-arrow { transform: rotate(180deg); stroke: #D4A017; }
+.fq1-a { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1), padding 0.35s; padding: 0 24px 0 80px; }
+.fq1-open .fq1-a { max-height: 500px; padding: 0 24px 20px 80px; }
+.fq1-a p { color: #94A3B8; font-size: 15px; line-height: 1.85; }
