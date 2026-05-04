@@ -150,6 +150,16 @@
     }
     .header-scrolled { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
     .safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
+    /* WCAG AA contrast fixes for brand color tags in dark mode */
+    .dark .text-ai-purple { color: #C4B5FD; }
+    .dark .text-ai-blue { color: #93C5FD; }
+    .dark .text-ai-pink { color: #F9A8D4; }
+    .dark .text-ai-orange { color: #FDBA74; }
+    .dark .text-ai-teal { color: #5EEAD4; }
+    .dark .text-success { color: #6EE7B7; }
+    .dark .text-\[\#10A37F\] { color: #34D399; }
+    .dark .text-\[\#0078D4\] { color: #60A5FA; }
+    .dark .text-\[\#D4A017\] { color: #FCD34D; }
     @keyframes aiGradient {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
@@ -351,7 +361,7 @@
         <!-- Right: AI Stats showcase -->
         <div class="animate-fade-in-up delay-300">
           <div class="bg-white dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 p-6 lg:p-8 accent-glow ai-pulse">
-            <p class="text-sm font-semibold text-body/60 dark:text-body-dark/60 uppercase tracking-wider mb-6">რატომ იცვლება თამაშის წესები 2026-ში?</p>
+            <p class="text-sm font-semibold text-body dark:text-body-dark uppercase tracking-wider mb-6">რატომ იცვლება თამაშის წესები 2026-ში?</p>
             <div class="grid grid-cols-2 gap-6">
               <div>
                 <div class="text-3xl lg:text-4xl font-extrabold text-ai-purple font-inter mb-1">300M+</div>
@@ -364,12 +374,12 @@ AI პასუხებით<br></p>
               </div>
               <div>
                 <div class="text-3xl lg:text-4xl font-extrabold text-ai-teal font-inter mb-1">68%</div>
-                <p class="text-xs text-body dark:text-body-dark">Gen Z-ის არჩევანი:<br><span class="text-body/50 dark:text-body-dark/50">AI ძიება</span></p>
+                <p class="text-xs text-body dark:text-body-dark">Gen Z-ის არჩევანი:<br><span class="text-body dark:text-body-dark">AI ძიება</span></p>
               </div>
               <div>
                 <div class="text-3xl lg:text-4xl font-extrabold text-ai-orange font-inter mb-1">-25%</div>
                 <p class="text-xs text-body dark:text-body-dark">მომხმარებელთა
-ნაკადის შემცირება<br><span class="text-body/50 dark:text-body-dark/50">AI Overviews-ით</span></p>
+ნაკადის შემცირება<br><span class="text-body dark:text-body-dark">AI Overviews-ით</span></p>
               </div>
             </div>
           </div>
@@ -649,8 +659,8 @@ AI პასუხებით<br></p>
         </div>
         <div class="grid sm:grid-cols-2 gap-4 mb-4">
           <div>
-            <label class="block text-sm font-medium text-heading dark:text-heading-dark mb-1.5">ინდუსტრია</label>
-            <select class="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 text-heading dark:text-heading-dark text-sm focus:outline-none focus:ring-2 focus:ring-ai-purple/50 focus:border-ai-purple transition-colors">
+            <label for="industry-select" class="block text-sm font-medium text-heading dark:text-heading-dark mb-1.5">ინდუსტრია</label>
+            <select id="industry-select" name="industry" aria-label="ინდუსტრია" class="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 text-heading dark:text-heading-dark text-sm focus:outline-none focus:ring-2 focus:ring-ai-purple/50 focus:border-ai-purple transition-colors">
               <option value="">აირჩიეთ...</option>
               <option value="ecommerce">ელექტრონული კომერცია</option>
               <option value="saas">SaaS / ტექნოლოგია</option>
@@ -664,8 +674,8 @@ AI პასუხებით<br></p>
             </select>
           </div>
           <div>
-            <label class="block text-sm font-medium text-heading dark:text-heading-dark mb-1.5">რა გაინტერესებთ?</label>
-            <select class="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 text-heading dark:text-heading-dark text-sm focus:outline-none focus:ring-2 focus:ring-ai-purple/50 focus:border-ai-purple transition-colors">
+            <label for="interest-select" class="block text-sm font-medium text-heading dark:text-heading-dark mb-1.5">რა გაინტერესებთ?</label>
+            <select id="interest-select" name="interest" aria-label="რა გაინტერესებთ" class="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 text-heading dark:text-heading-dark text-sm focus:outline-none focus:ring-2 focus:ring-ai-purple/50 focus:border-ai-purple transition-colors">
               <option value="">აირჩიეთ...</option>
               <option value="full-geo">სრული GEO / AEO სერვისი</option>
               <option value="ai-audit">AI Visibility აუდიტი</option>
@@ -682,7 +692,7 @@ AI პასუხებით<br></p>
         <button type="submit" class="w-full py-4 ai-bg-animate text-white font-bold rounded-xl text-lg hover:shadow-xl hover:shadow-ai-purple/25 transition-all duration-200">
           გაგზავნა
         </button>
-        <p class="text-xs text-body/50 dark:text-body-dark/50 text-center mt-3">მონაცემები კონფიდენციალურია. ჩვენ არ ვიყენებთ თქვენს ინფორმაციას სარეკლამო გზავნილებისთვის</p>
+        <p class="text-xs text-body dark:text-body-dark text-center mt-3">მონაცემები კონფიდენციალურია. ჩვენ არ ვიყენებთ თქვენს ინფორმაციას სარეკლამო გზავნილებისთვის</p>
       </form>
     </div>
   </section>
@@ -875,8 +885,8 @@ AI პასუხებით<br></p>
       <a href="#" onclick="openCalendly();return false;" class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 ai-cta-animate text-white text-sm font-bold rounded-xl" data-ka="დაჯავშნე კონსულტაცია" data-en="Book Consultation">
         დაჯავშნე კონსულტაცია
       </a>
-      <a href="tel:+995510101517" class="w-12 h-12 flex items-center justify-center border-2 border-primary dark:border-primary-light rounded-xl text-primary dark:text-primary-light shrink-0">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+      <a href="tel:+995510101517" aria-label="დაგვირეკეთ" class="w-12 h-12 flex items-center justify-center border-2 border-primary dark:border-primary-light rounded-xl text-primary dark:text-primary-light shrink-0">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
       </a>
     </div>
   </div>
