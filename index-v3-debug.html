@@ -40,29 +40,7 @@
   // Prefetch Calendly iframe on first user interaction
   document.addEventListener('mousemove',function _c(){_calendlyReady=true;document.removeEventListener('mousemove',_c);},{ once:true, passive:true });
   </script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            primary: { DEFAULT: '#8B5CF6', light: '#A78BFA', dark: '#7C3AED' },
-            accent: { DEFAULT: '#14B8A6', dark: '#0D9488' },
-            'ai-blue': '#3B82F6',
-            surface: { DEFAULT: '#ffffff', alt: '#f8fafc', dark: '#020710', 'dark-alt': '#0F0F0F' },
-            heading: { DEFAULT: '#0f172a', dark: '#f8fafc' },
-            body: { DEFAULT: '#475569', dark: '#94a3b8' },
-            success: '#21C743',
-          },
-          fontFamily: {
-            'heading': ['"Dachi the Lynx"', 'sans-serif'],
-            'body': ['FiraGO', 'sans-serif'],
-            'inter': ['Inter', 'sans-serif'],
-          },
-        }
-      }
-    }
-  </script>
+  
   <style>
     @font-face {
       font-family: 'Dachi the Lynx';
@@ -438,7 +416,7 @@
   <header id="main-header" class="fixed top-0 left-0 right-0 z-50 h-16 lg:h-[72px] bg-white/80 dark:bg-surface-dark/80 header-scrolled border-b border-gray-100 dark:border-gray-800 transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 h-full flex items-center justify-between">
       <!-- Logo -->
-      <a href="#" class="flex items-center shrink-0">
+      <a href="index.html" class="flex items-center shrink-0">
         <img src="images/logo-glow.png" alt="10XSEO" class="h-auto w-40 lg:w-44 dark:mix-blend-screen">
       </a>
 
