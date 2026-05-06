@@ -88,7 +88,7 @@
         }
 
         /* Network canvas */
-        .network-canvas { position: relative; width: 100%; height: 100vh; min-height: 700px; overflow: hidden; padding-top: 72px; }
+        .network-canvas { position: relative; width: 100%; height: 100vh; min-height: 950px; overflow: hidden; padding-top: 72px; }
         .network-canvas .overlay-title { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 5; text-align: center; pointer-events: none; }
         .network-canvas .overlay-title h1 { font-size: clamp(2rem, 5vw, 4.5rem); font-weight: 700; color: rgba(255,255,255,0.08); letter-spacing: -0.02em; }
 
@@ -108,6 +108,9 @@
         .network-node:hover img { filter: brightness(1.05); }
         .network-node.center-node { width: 160px; height: 160px; background: linear-gradient(135deg, #12121E, #1a1a30); border: 2px solid rgba(139,92,246,0.4); }
         .network-node.center-node img { width: auto; height: auto; max-width: 100px; max-height: 70px; filter: brightness(1.2); padding: 0; }
+        .network-node.node-sm { width: 110px; height: 110px; }
+        .network-node.node-sm img { padding: 8px; }
+        .network-node.node-sm .node-tooltip { bottom: -36px; font-size: 11px; padding: 4px 10px; }
 
         /* Float animation */
         @keyframes float1 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(5px,-8px); } }
@@ -271,7 +274,7 @@
 <section class="network-canvas" id="networkCanvas">
     <!-- Overlay title -->
     <div class="overlay-title">
-        <h1>SEO პორტფოლიო — 50+ ქართული ბიზნეს პარტნიორი</h1>
+        <h1>SEO პორტფოლიო — 38+ ბიზნეს პარტნიორი</h1>
     </div>
 
     <!-- SVG connection lines -->
@@ -357,30 +360,147 @@
         <img src="images/clients/gergili.webp" alt="Gergili" width="300" height="300" loading="lazy" decoding="async">
         <div class="node-tooltip">Gergili</div>
     </div>
+
+    <!-- New nodes -->
+    <div class="network-node node-sm float-2" id="node-enmedici" data-id="enmedici" data-cluster="medical" style="left:35%;top:3%;">
+        <img src="images/clients/enmedici.svg" alt="ენმედიცი" loading="lazy" decoding="async">
+        <div class="node-tooltip">ენმედიცი</div>
+    </div>
+    <div class="network-node node-sm float-3" id="node-ibccs-tax" data-id="ibccs-tax" data-cluster="financial" style="left:46%;top:3%;">
+        <img src="images/clients/ibccs-tax.png" alt="ibccs.tax" loading="lazy" decoding="async">
+        <div class="node-tooltip">ibccs.tax</div>
+    </div>
+    <div class="network-node node-sm float-1" id="node-temu" data-id="temu" data-cluster="ecommerce" style="left:56%;top:3%;">
+        <img src="images/clients/temu.webp" alt="Temu" loading="lazy" decoding="async">
+        <div class="node-tooltip">Temu</div>
+    </div>
+    <div class="network-node node-sm float-4" id="node-fanjrebi" data-id="fanjrebi" data-cluster="realestate" style="left:92%;top:3%;">
+        <img src="images/clients/fanjrebi.png" alt="Fanjrebi.Ge" loading="lazy" decoding="async">
+        <div class="node-tooltip">Fanjrebi.Ge</div>
+    </div>
+    <div class="network-node node-sm float-1" id="node-legi" data-id="legi" data-cluster="financial" style="left:44%;top:20%;">
+        <img src="images/clients/legi.png" alt="Legi" loading="lazy" decoding="async">
+        <div class="node-tooltip">Legi</div>
+    </div>
+    <div class="network-node node-sm float-4" id="node-gstlegal" data-id="gstlegal" data-cluster="financial" style="left:36%;top:30%;">
+        <img src="images/clients/gstlegal.webp" alt="GST Legal" loading="lazy" decoding="async">
+        <div class="node-tooltip">GST Legal</div>
+    </div>
+    <div class="network-node node-sm float-2" id="node-yandy" data-id="yandy" data-cluster="ecommerce" style="left:56%;top:26%;">
+        <img src="images/clients/yandy.png" alt="Yandy" loading="lazy" decoding="async">
+        <div class="node-tooltip">Yandy</div>
+    </div>
+    <div class="network-node node-sm float-3" id="node-savvy" data-id="savvy" data-cluster="ecommerce" style="left:66%;top:28%;">
+        <img src="images/clients/savvy.png" alt="Savvy" loading="lazy" decoding="async">
+        <div class="node-tooltip">Savvy</div>
+    </div>
+    <div class="network-node node-sm float-2" id="node-kotejebi" data-id="kotejebi" data-cluster="realestate" style="left:92%;top:32%;">
+        <img src="images/clients/kotejebi.png" alt="Kotejebi.Ge" loading="lazy" decoding="async">
+        <div class="node-tooltip">Kotejebi.Ge</div>
+    </div>
+    <div class="network-node node-sm float-3" id="node-chronometri" data-id="chronometri" data-cluster="other" style="left:2%;top:40%;">
+        <img src="images/clients/chronometri.svg" alt="ქრონ(ო)მეტრი" loading="lazy" decoding="async">
+        <div class="node-tooltip">ქრონ(ო)მეტრი</div>
+    </div>
+    <div class="network-node node-sm float-1" id="node-milana" data-id="milana" data-cluster="other" style="left:14%;top:38%;">
+        <img src="images/clients/milana.svg" alt="MILANA" loading="lazy" decoding="async">
+        <div class="node-tooltip">MILANA</div>
+    </div>
+    <div class="network-node node-sm float-4" id="node-agileschool" data-id="agileschool" data-cluster="other" style="left:28%;top:40%;">
+        <img src="images/clients/agileschool.png" alt="AgileSchool" loading="lazy" decoding="async">
+        <div class="node-tooltip">AgileSchool</div>
+    </div>
+    <div class="network-node node-sm float-2" id="node-fchain" data-id="fchain" data-cluster="other" style="left:32%;top:48%;">
+        <img src="images/clients/fchain.webp" alt="FCHAIN" loading="lazy" decoding="async">
+        <div class="node-tooltip">FCHAIN</div>
+    </div>
+    <div class="network-node node-sm float-1" id="node-clearminds" data-id="clearminds" data-cluster="ecommerce" style="left:60%;top:42%;">
+        <img src="images/clients/clearminds.png" alt="ClearMinds" loading="lazy" decoding="async">
+        <div class="node-tooltip">ClearMinds</div>
+    </div>
+    <div class="network-node node-sm float-3" id="node-bedstar" data-id="bedstar" data-cluster="ecommerce" style="left:70%;top:42%;">
+        <img src="images/clients/bedstar.png" alt="Bedstar" loading="lazy" decoding="async">
+        <div class="node-tooltip">Bedstar</div>
+    </div>
+    <div class="network-node node-sm float-2" id="node-tripify" data-id="tripify" data-cluster="hospitality" style="left:80%;top:48%;">
+        <img src="images/clients/tripify.png" alt="Tripify" loading="lazy" decoding="async">
+        <div class="node-tooltip">Tripify</div>
+    </div>
+    <div class="network-node node-sm float-4" id="node-metrix" data-id="metrix" data-cluster="other" style="left:36%;top:58%;">
+        <img src="images/clients/metrix.svg" alt="მეტრიქსი" loading="lazy" decoding="async">
+        <div class="node-tooltip">მეტრიქსი</div>
+    </div>
+    <div class="network-node node-sm float-1" id="node-centralmg" data-id="centralmg" data-cluster="other" style="left:46%;top:60%;">
+        <img src="images/clients/centralmg.svg" alt="Central MG" loading="lazy" decoding="async">
+        <div class="node-tooltip">Central MG</div>
+    </div>
+    <div class="network-node node-sm float-3" id="node-british-bed-co" data-id="british-bed-co" data-cluster="ecommerce" style="left:62%;top:58%;">
+        <img src="images/clients/british-bed-co.png" alt="British Bed Co." loading="lazy" decoding="async">
+        <div class="node-tooltip">British Bed Co.</div>
+    </div>
+    <div class="network-node node-sm float-2" id="node-1clickblinds" data-id="1clickblinds" data-cluster="ecommerce" style="left:72%;top:62%;">
+        <img src="images/clients/1clickblinds.webp" alt="1Click Blinds" loading="lazy" decoding="async">
+        <div class="node-tooltip">1Click Blinds</div>
+    </div>
+    <div class="network-node node-sm float-1" id="node-bbe" data-id="bbe" data-cluster="other" style="left:22%;top:82%;">
+        <img src="images/clients/bbe.webp" alt="BBE" loading="lazy" decoding="async">
+        <div class="node-tooltip">BBE</div>
+    </div>
+    <div class="network-node node-sm float-3" id="node-veridia" data-id="veridia" data-cluster="other" style="left:44%;top:80%;">
+        <img src="images/clients/veridia.svg" alt="Veridia" loading="lazy" decoding="async">
+        <div class="node-tooltip">Veridia</div>
+    </div>
+    <div class="network-node node-sm float-4" id="node-flyhelp" data-id="flyhelp" data-cluster="ecommerce" style="left:74%;top:78%;">
+        <img src="images/clients/flyhelp.svg" alt="FlyHelp" loading="lazy" decoding="async">
+        <div class="node-tooltip">FlyHelp</div>
+    </div>
 </section>
 
 <!-- Mobile Grid Fallback -->
 <section class="mobile-grid grid-cols-3 gap-4 p-6 pt-20">
     <div class="text-center col-span-3 mb-6">
         <h2 class="text-4xl font-bold text-white mb-3">ჩვენი ქსელი</h2>
-        <p class="text-gray-400">16+ პარტნიორი კომპანია</p>
+        <p class="text-gray-400">38 პარტნიორი კომპანია</p>
     </div>
-    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/todua-clinic.webp" alt="თოდუას კლინიკა" class="w-full h-full object-cover rounded-full" width="300" height="300" loading="lazy" decoding="async"></div>
-    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/gepha.png" alt="GEPHA" class="w-full h-full object-cover rounded-full" width="300" height="300" loading="lazy" decoding="async"></div>
-    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/kvareli-lake.webp" alt="Kvareli Lake" class="w-full h-full object-cover rounded-full" width="300" height="300" loading="lazy" decoding="async"></div>
-    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/gpc.webp" alt="GPC" class="w-full h-full object-cover rounded-full" width="300" height="300" loading="lazy" decoding="async"></div>
-    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/elehear.webp" alt="ELEHEAR" class="w-full h-full object-cover rounded-full" width="300" height="300" loading="lazy" decoding="async"></div>
-    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/irao.png" alt="IRAO" class="w-full h-full object-cover rounded-full" width="300" height="300" loading="lazy" decoding="async"></div>
-    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/koordinati.webp" alt="კოორდინატი" class="w-full h-full object-cover rounded-full" width="300" height="300" loading="lazy" decoding="async"></div>
-    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/horizon.webp" alt="Horizon Batumi" class="w-full h-full object-cover rounded-full" width="300" height="300" loading="lazy" decoding="async"></div>
-    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/juba.png" alt="Juba" class="w-full h-full object-cover rounded-full" width="883" height="398" loading="lazy" decoding="async"></div>
-    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/belle-maison.webp" alt="Belle Maison" class="w-full h-full object-cover rounded-full" width="300" height="300" loading="lazy" decoding="async"></div>
-    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/nicolo.png" alt="Nicolo" class="w-full h-full object-cover rounded-full" width="300" height="300" loading="lazy" decoding="async"></div>
-    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/myhome.webp" alt="myhome.ge" class="w-full h-full object-cover rounded-full" width="300" height="300" loading="lazy" decoding="async"></div>
-    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/avia.webp" alt="avia.ge" class="w-full h-full object-cover rounded-full" width="300" height="300" loading="lazy" decoding="async"></div>
-    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/smile-studio.webp" alt="Smile Studio" class="w-full h-full object-cover rounded-full" width="300" height="300" loading="lazy" decoding="async"></div>
-    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/gergili.webp" alt="Gergili" class="w-full h-full object-cover rounded-full" width="300" height="300" loading="lazy" decoding="async"></div>
-    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/pharmadepot.webp" alt="ფარმადეპო" class="w-full h-full object-cover rounded-full" width="300" height="300" loading="lazy" decoding="async"></div>
+    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/gpc.webp" alt="GPC" class="w-full h-full object-cover rounded-full" loading="lazy" decoding="async"></div>
+    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/pharmadepot.webp" alt="ფარმადეპო" class="w-full h-full object-cover rounded-full" loading="lazy" decoding="async"></div>
+    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/todua-clinic.webp" alt="თოდუას კლინიკა" class="w-full h-full object-cover rounded-full" loading="lazy" decoding="async"></div>
+    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/irao.png" alt="IRAO" class="w-full h-full object-cover rounded-full" loading="lazy" decoding="async"></div>
+    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/kvareli-lake.webp" alt="Kvareli Lake" class="w-full h-full object-cover rounded-full" loading="lazy" decoding="async"></div>
+    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/juba.png" alt="Jubá" class="w-full h-full object-cover rounded-full" loading="lazy" decoding="async"></div>
+    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/myhome.webp" alt="myhome.ge" class="w-full h-full object-cover rounded-full" loading="lazy" decoding="async"></div>
+    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/ibccs-tax.png" alt="ibccs.tax" class="w-full h-full object-cover rounded-full" loading="lazy" decoding="async"></div>
+    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/legi.png" alt="Legi" class="w-full h-full object-cover rounded-full" loading="lazy" decoding="async"></div>
+    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/savvy.png" alt="Savvy" class="w-full h-full object-cover rounded-full" loading="lazy" decoding="async"></div>
+    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/milana.svg" alt="MILANA" class="w-full h-full object-cover rounded-full" loading="lazy" decoding="async"></div>
+    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/enmedici.svg" alt="ენმედიცი" class="w-full h-full object-cover rounded-full" loading="lazy" decoding="async"></div>
+    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/gergili.webp" alt="Gergili" class="w-full h-full object-cover rounded-full" loading="lazy" decoding="async"></div>
+    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/belle-maison.webp" alt="Belle Maison" class="w-full h-full object-cover rounded-full" loading="lazy" decoding="async"></div>
+    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/smile-studio.webp" alt="Smile Studio" class="w-full h-full object-cover rounded-full" loading="lazy" decoding="async"></div>
+    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/chronometri.svg" alt="ქრონ(ო)მეტრი" class="w-full h-full object-cover rounded-full" loading="lazy" decoding="async"></div>
+    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/fchain.webp" alt="FCHAIN" class="w-full h-full object-cover rounded-full" loading="lazy" decoding="async"></div>
+    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/horizon.webp" alt="Horizon Batumi" class="w-full h-full object-cover rounded-full" loading="lazy" decoding="async"></div>
+    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/nicolo.png" alt="NICOLO" class="w-full h-full object-cover rounded-full" loading="lazy" decoding="async"></div>
+    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/gstlegal.webp" alt="GST Legal" class="w-full h-full object-cover rounded-full" loading="lazy" decoding="async"></div>
+    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/fanjrebi.png" alt="Fanjrebi.Ge" class="w-full h-full object-cover rounded-full" loading="lazy" decoding="async"></div>
+    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/avia.webp" alt="avia.ge" class="w-full h-full object-cover rounded-full" loading="lazy" decoding="async"></div>
+    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/kotejebi.png" alt="Kotejebi.Ge" class="w-full h-full object-cover rounded-full" loading="lazy" decoding="async"></div>
+    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/metrix.svg" alt="მეტრიქსი" class="w-full h-full object-cover rounded-full" loading="lazy" decoding="async"></div>
+    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/centralmg.svg" alt="Central MG" class="w-full h-full object-cover rounded-full" loading="lazy" decoding="async"></div>
+    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/coordinate.webp" alt="Coordinate" class="w-full h-full object-cover rounded-full" loading="lazy" decoding="async"></div>
+    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/agileschool.png" alt="AgileSchool" class="w-full h-full object-cover rounded-full" loading="lazy" decoding="async"></div>
+    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/bbe.webp" alt="BBE" class="w-full h-full object-cover rounded-full" loading="lazy" decoding="async"></div>
+    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/tripify.png" alt="Tripify" class="w-full h-full object-cover rounded-full" loading="lazy" decoding="async"></div>
+    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/veridia.svg" alt="Veridia" class="w-full h-full object-cover rounded-full" loading="lazy" decoding="async"></div>
+    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/gepha.png" alt="GEPHA" class="w-full h-full object-cover rounded-full" loading="lazy" decoding="async"></div>
+    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/bedstar.png" alt="Bedstar" class="w-full h-full object-cover rounded-full" loading="lazy" decoding="async"></div>
+    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/temu.webp" alt="Temu" class="w-full h-full object-cover rounded-full" loading="lazy" decoding="async"></div>
+    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/yandy.png" alt="Yandy" class="w-full h-full object-cover rounded-full" loading="lazy" decoding="async"></div>
+    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/british-bed-co.png" alt="British Bed Co." class="w-full h-full object-cover rounded-full" loading="lazy" decoding="async"></div>
+    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/1clickblinds.webp" alt="1Click Blinds" class="w-full h-full object-cover rounded-full" loading="lazy" decoding="async"></div>
+    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/clearminds.png" alt="ClearMinds" class="w-full h-full object-cover rounded-full" loading="lazy" decoding="async"></div>
+    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/elehear.webp" alt="Elehear" class="w-full h-full object-cover rounded-full" loading="lazy" decoding="async"></div>
+    <div class="flex items-center justify-center rounded-full w-20 h-20 p-0 border-2 border-purple-500/20 bg-white shadow-md"><img src="images/clients/flyhelp.svg" alt="FlyHelp" class="w-full h-full object-cover rounded-full" loading="lazy" decoding="async"></div>
 </section>
 
 <!-- Industry Cluster Breakdown -->
@@ -394,14 +514,15 @@
             <div class="cluster-card">
                 <div class="flex items-center justify-between mb-2">
                     <h3 class="text-xl font-bold text-white">მედიცინა / ფარმაცია</h3>
-                    <span class="stat-pill">4,200/mo</span>
+                    <span class="stat-pill">5 კლიენტი</span>
                 </div>
                 <p class="text-gray-400 text-sm mb-4">სამედიცინო და ფარმაცევტული სექტორი — ვიზიტორები, პაციენტები</p>
                 <div class="cluster-logos">
-                    <div class="cluster-logo-item"><img src="images/clients/todua-clinic.webp" alt="თოდუას კლინიკა" width="300" height="300" loading="lazy" decoding="async"></div>
-                    <div class="cluster-logo-item"><img src="images/clients/gepha.png" alt="GEPHA" width="300" height="300" loading="lazy" decoding="async"></div>
-                    <div class="cluster-logo-item"><img src="images/clients/pharmadepot.webp" alt="ფარმადეპო" width="300" height="300" loading="lazy" decoding="async"></div>
-                    <div class="cluster-logo-item"><img src="images/clients/smile-studio.webp" alt="Smile Studio" width="300" height="300" loading="lazy" decoding="async"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/todua-clinic.webp" alt="თოდუას კლინიკა" loading="lazy" decoding="async"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/gepha.png" alt="GEPHA" loading="lazy" decoding="async"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/pharmadepot.webp" alt="ფარმადეპო" loading="lazy" decoding="async"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/smile-studio.webp" alt="Smile Studio" loading="lazy" decoding="async"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/enmedici.svg" alt="ენმედიცი" loading="lazy" decoding="async"></div>
                 </div>
                 <div class="mt-4 space-y-1 text-sm">
                     <div class="flex justify-between"><span class="text-gray-500">თოდუას კლინიკა</span><span class="text-success font-semibold">0→4,200/mo</span></div>
@@ -413,13 +534,15 @@
             <div class="cluster-card">
                 <div class="flex items-center justify-between mb-2">
                     <h3 class="text-xl font-bold text-white">უძრავი ქონება</h3>
-                    <span class="stat-pill">+210% avg</span>
+                    <span class="stat-pill">5 კლიენტი</span>
                 </div>
                 <p class="text-gray-400 text-sm mb-4">უძრავი ქონების ბაზარი — ლიდები, ტრაფიკი, ჯავშნები</p>
                 <div class="cluster-logos">
-                    <div class="cluster-logo-item"><img src="images/clients/myhome.webp" alt="myhome.ge" width="300" height="300" loading="lazy" decoding="async"></div>
-                    <div class="cluster-logo-item"><img src="images/clients/belle-maison.webp" alt="Belle Maison" width="300" height="300" loading="lazy" decoding="async"></div>
-                    <div class="cluster-logo-item"><img src="images/clients/horizon.webp" alt="Horizon Batumi" width="300" height="300" loading="lazy" decoding="async"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/myhome.webp" alt="myhome.ge" loading="lazy" decoding="async"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/belle-maison.webp" alt="Belle Maison" loading="lazy" decoding="async"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/horizon.webp" alt="Horizon Batumi" loading="lazy" decoding="async"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/fanjrebi.png" alt="Fanjrebi.Ge" loading="lazy" decoding="async"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/kotejebi.png" alt="Kotejebi.Ge" loading="lazy" decoding="async"></div>
                 </div>
                 <div class="mt-4 space-y-1 text-sm">
                     <div class="flex justify-between"><span class="text-gray-500">myhome.ge</span><span class="text-success font-semibold">+220% traffic</span></div>
@@ -431,13 +554,14 @@
             <!-- Hospitality -->
             <div class="cluster-card">
                 <div class="flex items-center justify-between mb-2">
-                    <h3 class="text-xl font-bold text-white">ჰოსპიტალობა</h3>
-                    <span class="stat-pill">+165% avg</span>
+                    <h3 class="text-xl font-bold text-white">ჰოსპიტალობა / ტურიზმი</h3>
+                    <span class="stat-pill">3 კლიენტი</span>
                 </div>
-                <p class="text-gray-400 text-sm mb-4">სასტუმროები და კურორტები — ჯავშნები, ხილვადობა</p>
+                <p class="text-gray-400 text-sm mb-4">სასტუმროები, კურორტები, ტურიზმი — ჯავშნები, ხილვადობა</p>
                 <div class="cluster-logos">
-                    <div class="cluster-logo-item"><img src="images/clients/horizon.webp" alt="Horizon Batumi" width="300" height="300" loading="lazy" decoding="async"></div>
-                    <div class="cluster-logo-item"><img src="images/clients/kvareli-lake.webp" alt="Kvareli Lake" width="300" height="300" loading="lazy" decoding="async"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/horizon.webp" alt="Horizon Batumi" loading="lazy" decoding="async"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/kvareli-lake.webp" alt="Kvareli Lake" loading="lazy" decoding="async"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/tripify.png" alt="Tripify" loading="lazy" decoding="async"></div>
                 </div>
                 <div class="mt-4 space-y-1 text-sm">
                     <div class="flex justify-between"><span class="text-gray-500">Horizon Batumi</span><span class="text-success font-semibold">+150% bookings</span></div>
@@ -445,15 +569,18 @@
                 </div>
             </div>
 
-            <!-- Financial -->
+            <!-- Financial / Legal -->
             <div class="cluster-card">
                 <div class="flex items-center justify-between mb-2">
-                    <h3 class="text-xl font-bold text-white">ფინანსები</h3>
-                    <span class="stat-pill">+180%</span>
+                    <h3 class="text-xl font-bold text-white">ფინანსები / იურიდიული</h3>
+                    <span class="stat-pill">4 კლიენტი</span>
                 </div>
-                <p class="text-gray-400 text-sm mb-4">ფინანსური სექტორი — ხილვადობა, ორგანული ტრაფიკი</p>
+                <p class="text-gray-400 text-sm mb-4">ფინანსური და იურიდიული სექტორი — ხილვადობა, ორგანული ტრაფიკი</p>
                 <div class="cluster-logos">
-                    <div class="cluster-logo-item"><img src="images/clients/irao.png" alt="IRAO" width="300" height="300" loading="lazy" decoding="async"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/irao.png" alt="IRAO" loading="lazy" decoding="async"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/ibccs-tax.png" alt="ibccs.tax" loading="lazy" decoding="async"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/gstlegal.webp" alt="GST Legal" loading="lazy" decoding="async"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/legi.png" alt="Legi" loading="lazy" decoding="async"></div>
                 </div>
                 <div class="mt-4 space-y-1 text-sm">
                     <div class="flex justify-between"><span class="text-gray-500">IRAO</span><span class="text-success font-semibold">+180% visibility</span></div>
@@ -464,31 +591,47 @@
             <div class="cluster-card">
                 <div class="flex items-center justify-between mb-2">
                     <h3 class="text-xl font-bold text-white">E-Commerce</h3>
-                    <span class="stat-pill">+270%</span>
+                    <span class="stat-pill">12 კლიენტი</span>
                 </div>
-                <p class="text-gray-400 text-sm mb-4">ონლაინ კომერციის სექტორი — ტრაფიკი, კონვერსია</p>
+                <p class="text-gray-400 text-sm mb-4">ონლაინ კომერცია — ქართული და საერთაშორისო ბრენდები</p>
                 <div class="cluster-logos">
-                    <div class="cluster-logo-item"><img src="images/clients/elehear.webp" alt="ELEHEAR" width="300" height="300" loading="lazy" decoding="async"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/elehear.webp" alt="ELEHEAR" loading="lazy" decoding="async"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/temu.webp" alt="Temu" loading="lazy" decoding="async"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/yandy.png" alt="Yandy" loading="lazy" decoding="async"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/bedstar.png" alt="Bedstar" loading="lazy" decoding="async"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/british-bed-co.png" alt="British Bed Co." loading="lazy" decoding="async"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/1clickblinds.webp" alt="1Click Blinds" loading="lazy" decoding="async"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/clearminds.png" alt="ClearMinds" loading="lazy" decoding="async"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/flyhelp.svg" alt="FlyHelp" loading="lazy" decoding="async"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/fchain.webp" alt="FCHAIN" loading="lazy" decoding="async"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/savvy.png" alt="Savvy" loading="lazy" decoding="async"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/milana.svg" alt="MILANA" loading="lazy" decoding="async"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/nicolo.png" alt="Nicolo" loading="lazy" decoding="async"></div>
                 </div>
                 <div class="mt-4 space-y-1 text-sm">
                     <div class="flex justify-between"><span class="text-gray-500">ELEHEAR</span><span class="text-success font-semibold">+270% traffic</span></div>
                 </div>
             </div>
 
-            <!-- Others -->
+            <!-- Other -->
             <div class="cluster-card">
                 <div class="flex items-center justify-between mb-2">
                     <h3 class="text-xl font-bold text-white">სხვა ინდუსტრიები</h3>
-                    <span class="stat-pill">6 კლიენტი</span>
+                    <span class="stat-pill">9 კლიენტი</span>
                 </div>
                 <p class="text-gray-400 text-sm mb-4">მრავალფეროვანი სექტორები — ზრდის პოტენციალი</p>
                 <div class="cluster-logos">
-                    <div class="cluster-logo-item"><img src="images/clients/gpc.webp" alt="GPC" width="300" height="300" loading="lazy" decoding="async"></div>
-                    <div class="cluster-logo-item"><img src="images/clients/koordinati.webp" alt="კოორდინატი" width="300" height="300" loading="lazy" decoding="async"></div>
-                    <div class="cluster-logo-item"><img src="images/clients/juba.png" alt="Jubá" width="883" height="398" loading="lazy" decoding="async"></div>
-                    <div class="cluster-logo-item"><img src="images/clients/nicolo.png" alt="Nicolo" width="300" height="300" loading="lazy" decoding="async"></div>
-                    <div class="cluster-logo-item"><img src="images/clients/avia.webp" alt="avia.ge" width="300" height="300" loading="lazy" decoding="async"></div>
-                    <div class="cluster-logo-item"><img src="images/clients/gergili.webp" alt="Gergili" width="300" height="300" loading="lazy" decoding="async"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/gpc.webp" alt="GPC" loading="lazy" decoding="async"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/koordinati.webp" alt="კოორდინატი" loading="lazy" decoding="async"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/juba.png" alt="Jubá" loading="lazy" decoding="async"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/avia.webp" alt="avia.ge" loading="lazy" decoding="async"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/gergili.webp" alt="Gergili" loading="lazy" decoding="async"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/chronometri.svg" alt="ქრონ(ო)მეტრი" loading="lazy" decoding="async"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/metrix.svg" alt="მეტრიქსი" loading="lazy" decoding="async"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/centralmg.svg" alt="Central MG" loading="lazy" decoding="async"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/agileschool.png" alt="AgileSchool" loading="lazy" decoding="async"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/bbe.webp" alt="BBE" loading="lazy" decoding="async"></div>
+                    <div class="cluster-logo-item"><img src="images/clients/veridia.svg" alt="Veridia" loading="lazy" decoding="async"></div>
                 </div>
             </div>
         </div>
@@ -515,29 +658,58 @@
     // Connection definitions
     const connections = {
         cluster: [
-            // Medical / Pharmacy cluster
+            // Medical / Pharmacy
             ['todua-clinic', 'gepha'],
             ['todua-clinic', 'pharmadepot'],
             ['todua-clinic', 'smile-studio'],
             ['gepha', 'pharmadepot'],
-            ['gepha', 'smile-studio'],
+            ['gepha', 'enmedici'],
             ['pharmadepot', 'smile-studio'],
-            // Real Estate cluster
+            ['smile-studio', 'enmedici'],
+            // Real Estate
             ['myhome', 'belle-maison'],
             ['myhome', 'horizon'],
             ['belle-maison', 'horizon'],
-            // Hospitality (kvareli-lake connected to horizon)
+            ['fanjrebi', 'kotejebi'],
+            ['myhome', 'fanjrebi'],
+            ['belle-maison', 'kotejebi'],
+            // Hospitality
             ['kvareli-lake', 'horizon'],
-            // Others cluster
+            ['kvareli-lake', 'tripify'],
+            ['tripify', 'horizon'],
+            // Financial / Legal
+            ['irao', 'ibccs-tax'],
+            ['irao', 'legi'],
+            ['ibccs-tax', 'gstlegal'],
+            ['legi', 'gstlegal'],
+            // E-Commerce
+            ['elehear', 'temu'],
+            ['elehear', 'yandy'],
+            ['temu', 'yandy'],
+            ['savvy', 'yandy'],
+            ['clearminds', 'bedstar'],
+            ['bedstar', 'british-bed-co'],
+            ['british-bed-co', '1clickblinds'],
+            ['clearminds', 'flyhelp'],
+            // Others
             ['gpc', 'koordinati'],
             ['juba', 'nicolo'],
             ['avia', 'gergili'],
+            ['chronometri', 'milana'],
+            ['milana', 'agileschool'],
+            ['fchain', 'metrix'],
+            ['metrix', 'centralmg'],
+            ['bbe', 'veridia'],
         ],
         center: [
-            'todua-clinic', 'gepha', 'pharmadepot', 'smile-studio',
+            'todua-clinic', 'gepha', 'pharmadepot', 'smile-studio', 'enmedici',
             'kvareli-lake', 'gpc', 'elehear', 'irao', 'koordinati',
             'horizon', 'juba', 'belle-maison', 'nicolo', 'myhome',
-            'avia', 'gergili'
+            'avia', 'gergili', 'ibccs-tax', 'legi', 'gstlegal',
+            'temu', 'yandy', 'savvy', 'fanjrebi', 'kotejebi',
+            'chronometri', 'milana', 'agileschool', 'fchain', 'clearminds',
+            'bedstar', 'tripify', 'metrix', 'centralmg', 'british-bed-co',
+            '1clickblinds', 'bbe', 'veridia', 'flyhelp'
         ]
     };
 
