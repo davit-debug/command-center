@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>OG Image Designer Test — 10xSEO</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0b0f17; color: #e5e7eb;
+      min-height: 100vh; padding: 24px 16px 80px;
+    }
+    .wrap { max-width: 1280px; margin: 0 auto; }
+    header { text-align: center; margin-bottom: 32px; }
+    h1 {
+      font-size: 28px; font-weight: 800; margin-bottom: 8px;
+      background: linear-gradient(135deg, #8B5CF6, #14B8A6);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    header p { color: #9ca3af; font-size: 14px; }
+
+    /* Upload zone */
+    .upload-card {
+      background: #111827; border: 1px solid #1f2937;
+      border-radius: 16px; padding: 24px; margin-bottom: 24px;
+    }
+    .upload-zone {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 10px; padding: 40px 20px; border: 2px dashed rgba(139, 92, 246, 0.4);
+      border-radius: 12px; background: rgba(139, 92, 246, 0.04);
+      cursor: pointer; transition: all 0.2s ease; text-align: center;
+    }
+    .upload-zone:hover, .upload-zone.drag-over {
+      border-color: #8B5CF6; background: rgba(139, 92, 246, 0.1);
+    }
+    .upload-zone svg { width: 48px; height: 48px; color: #8B5CF6; opacity: 0.8; }
+    .upload-zone .title { font-size: 16px; font-weight: 600; color: #f3f4f6; }
+    .upload-zone .hint { font-size: 13px; color: #9ca3af; }
+
+    /* Validation */
+    .info-row { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
+    .file-name { font-size: 15px; font-weight: 600; color: #f3f4f6; }
+    .file-meta { font-size: 13px; color: #9ca3af; margin-top: 2px; }
+    .clear-btn {
+      background: transparent; border: 1px solid #374151; color: #9ca3af;
+      padding: 6px 12px; border-radius: 8px; font-size: 12px; cursor: pointer;
+      transition: all 0.2s;
+    }
+    .clear-btn:hover { background: #1f2937; color: #f3f4f6; }
+    .badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 5px 12px; border-radius: 6px; font-size: 13px; font-weight: 600;
+    }
+    .badge.ok { background: rgba(34, 197, 94, 0.15); color: #4ade80; }
+    .badge.warn { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+    .badge.err { background: rgba(239, 68, 68, 0.15); color: #f87171; }
+
+    /* Previews grid */
+    .grid {
+      display: grid; gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    }
+    .preview-card {
+      background: #111827; border: 1px solid #1f2937;
+      border-radius: 16px; overflow: hidden;
+    }
+    .preview-header {
+      padding: 12px 18px; border-bottom: 1px solid #1f2937;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .preview-platform { font-weight: 700; font-size: 14px; color: #f3f4f6; display: flex; align-items: center; gap: 8px; }
+    .preview-spec { font-size: 11px; color: #6b7280; }
+    .preview-body { padding: 18px; background: #0b0f17; }
+
+    /* Empty state */
+    .empty-img {
+      background: #1f2937;
+      display: flex; align-items: center; justify-content: center;
+      color: #4b5563; font-size: 13px;
+    }
+    .empty-img svg { width: 40px; height: 40px; opacity: 0.4; }
+
+    /* ───── Facebook desktop ───── */
+    .fb-card {
+      max-width: 100%; border: 1px solid #dadde1; border-radius: 8px;
+      overflow: hidden; background: #fff; font-family: 'Helvetica', sans-serif;
+    }
+    .fb-card .img { width: 100%; aspect-ratio: 1.91/1; background: #e4e6eb; overflow: hidden; }
+    .fb-card .img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .fb-card .body { padding: 10px 12px; background: #f0f2f5; }
+    .fb-card .domain { font-size: 12px; color: #606770; text-transform: uppercase; letter-spacing: 0.3px; margin-bottom: 3px; }
+    .fb-card .title { font-size: 16px; font-weight: 600; color: #1c1e21; line-height: 1.3; margin-bottom: 4px; word-wrap: break-word; }
+    .fb-card .desc { font-size: 13px; color: #606770; line-height: 1.4;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+    /* ───── Facebook mobile (square crop demo) ───── */
+    .fb-mobile {
+      max-width: 320px; margin: 0 auto; border: 1px solid #dadde1; border-radius: 8px;
+      overflow: hidden; background: #fff; font-family: 'Helvetica', sans-serif;
+    }
+    .fb-mobile .img { width: 100%; aspect-ratio: 1.91/1; background: #e4e6eb; overflow: hidden; }
+    .fb-mobile .img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .fb-mobile .body { padding: 10px 12px; background: #f0f2f5; }
+    .fb-mobile .domain { font-size: 11px; color: #606770; text-transform: uppercase; margin-bottom: 2px; }
+    .fb-mobile .title { font-size: 14px; font-weight: 600; color: #1c1e21; line-height: 1.3; }
+
+    /* ───── LinkedIn ───── */
+    .li-card {
+      max-width: 100%; border: 1px solid #d0d4d9; border-radius: 4px;
+      overflow: hidden; background: #fff; font-family: -apple-system, sans-serif;
+    }
+    .li-card .img { width: 100%; aspect-ratio: 1.91/1; background: #eef3f8; overflow: hidden; }
+    .li-card .img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .li-card .body { padding: 12px 14px; background: #fff; border-top: 1px solid #e0e3e7; }
+    .li-card .title { font-size: 15px; font-weight: 600; color: #000; line-height: 1.4; margin-bottom: 4px;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .li-card .domain { font-size: 12px; color: #5e6770; }
+
+    /* ───── Twitter / X ───── */
+    .tw-card {
+      max-width: 100%; border: 1px solid #2f3336; border-radius: 16px;
+      overflow: hidden; background: #000; font-family: -apple-system, sans-serif;
+    }
+    .tw-card .img { width: 100%; aspect-ratio: 1.91/1; background: #16181c; overflow: hidden; position: relative; }
+    .tw-card .img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .tw-card .body { padding: 10px 14px; background: #000; border-top: 1px solid #2f3336; }
+    .tw-card .domain { font-size: 13px; color: #71767b; margin-bottom: 2px; }
+    .tw-card .title { font-size: 15px; font-weight: 400; color: #e7e9ea; line-height: 1.3;
+      display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+
+    /* ───── WhatsApp ───── */
+    .wa-card {
+      max-width: 380px; background: #d9fdd3; border-radius: 8px; overflow: hidden;
+      font-family: -apple-system, sans-serif; padding: 4px; margin: 0 auto;
+    }
+    .wa-inner { background: #fff; border-radius: 6px; overflow: hidden; }
+    .wa-card .img { width: 100%; aspect-ratio: 1.91/1; background: #f0f2f5; overflow: hidden; }
+    .wa-card .img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .wa-card .body { padding: 8px 12px 10px; }
+    .wa-card .title { font-size: 14px; font-weight: 600; color: #111b21; line-height: 1.3; margin-bottom: 2px;
+      display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+    .wa-card .desc { font-size: 12px; color: #667781; line-height: 1.3; margin-bottom: 4px;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .wa-card .domain { font-size: 11px; color: #8696a0; }
+
+    /* ───── Discord ───── */
+    .dc-card {
+      max-width: 100%; background: #2f3136; border-left: 4px solid #5865f2;
+      border-radius: 4px; padding: 10px 14px; font-family: 'gg sans', sans-serif;
+    }
+    .dc-card .domain { font-size: 12px; color: #b9bbbe; margin-bottom: 4px; }
+    .dc-card .title { font-size: 14px; font-weight: 600; color: #00b0f4; line-height: 1.3; margin-bottom: 4px; }
+    .dc-card .desc { font-size: 13px; color: #dcddde; line-height: 1.4; margin-bottom: 8px;
+      display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .dc-card .img { width: 100%; max-width: 400px; aspect-ratio: 1.91/1; border-radius: 4px; overflow: hidden; background: #202225; }
+    .dc-card .img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* ───── Slack ───── */
+    .sl-card {
+      max-width: 100%; background: #fff; border-left: 4px solid #1d9bd1; padding: 8px 14px;
+      font-family: 'Slack-Lato', -apple-system, sans-serif;
+    }
+    .sl-card .domain { font-size: 13px; font-weight: 700; color: #1d1c1d; margin-bottom: 4px; }
+    .sl-card .title { font-size: 15px; font-weight: 700; color: #1264a3; line-height: 1.3; margin-bottom: 4px; }
+    .sl-card .desc { font-size: 14px; color: #1d1c1d; line-height: 1.4; margin-bottom: 8px;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .sl-card .img { width: 100%; max-width: 360px; aspect-ratio: 1.91/1; border-radius: 6px; overflow: hidden; background: #f4f4f4; }
+    .sl-card .img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* Custom inputs */
+    .input-row { display: grid; gap: 12px; grid-template-columns: 1fr 1fr; margin-bottom: 18px; }
+    .input-row.single { grid-template-columns: 1fr; }
+    .input-group label { display: block; font-size: 12px; font-weight: 600; color: #9ca3af; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .input-group input, .input-group textarea {
+      width: 100%; padding: 10px 14px; background: #0b0f17; border: 1px solid #1f2937;
+      color: #f3f4f6; border-radius: 8px; font-size: 14px; font-family: inherit;
+      transition: border-color 0.2s;
+    }
+    .input-group input:focus, .input-group textarea:focus { outline: none; border-color: #8B5CF6; }
+
+    /* Safe-zone overlay (FB safe zone visualization) */
+    .safe-zone-card {
+      background: #111827; border: 1px solid #1f2937; border-radius: 16px;
+      padding: 24px; margin-bottom: 24px;
+    }
+    .safe-zone-title { font-size: 14px; font-weight: 700; color: #f3f4f6; margin-bottom: 12px; }
+    .safe-zone-wrap {
+      position: relative; max-width: 600px; margin: 0 auto;
+      aspect-ratio: 1.91/1; background: #1f2937; border-radius: 8px; overflow: hidden;
+    }
+    .safe-zone-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .safe-zone-overlay {
+      position: absolute; inset: 0; pointer-events: none;
+    }
+    .safe-zone-box {
+      position: absolute; left: 15.83%; top: 15.87%; width: 68.33%; height: 68.25%;
+      border: 2px dashed #fbbf24; border-radius: 4px;
+    }
+    .safe-zone-label {
+      position: absolute; top: 8px; left: 8px;
+      background: rgba(251, 191, 36, 0.9); color: #000;
+      padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: 700;
+    }
+    .safe-zone-circle {
+      position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+      width: 109.47%; aspect-ratio: 1; border: 2px dashed rgba(255, 255, 255, 0.4); border-radius: 50%;
+    }
+    .safe-zone-help { font-size: 12px; color: #9ca3af; margin-top: 12px; text-align: center; line-height: 1.6; }
+    .safe-zone-help span.amber { color: #fbbf24; }
+    .safe-zone-help span.gray { color: #d1d5db; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>OG Image Designer Test</h1>
+      <p>ატვირთე სურათი და ნახე როგორ ჩნდება ყველა სოციალურ ქსელში — Facebook, LinkedIn, X, WhatsApp, Discord, Slack</p>
+    </header>
+
+    <!-- Upload -->
+    <div class="upload-card">
+      <label for="img-input" class="upload-zone" id="drop-zone">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+        </svg>
+        <div class="title">ჩააგდე ან აირჩიე სურათი</div>
+        <div class="hint">JPG / PNG / WebP — რეკომენდებული 1200×630 px (მაქს. 8MB)</div>
+        <input type="file" id="img-input" accept="image/jpeg,image/png,image/webp,image/gif" hidden>
+      </label>
+
+      <!-- Validation panel -->
+      <div id="validation-panel" style="display:none; margin-top:20px;">
+        <div class="info-row">
+          <div>
+            <div class="file-name" id="file-name">—</div>
+            <div class="file-meta" id="file-meta">—</div>
+          </div>
+          <button type="button" class="clear-btn" id="clear-btn">წაშლა</button>
+        </div>
+        <div class="badges" id="badges"></div>
+      </div>
+    </div>
+
+    <!-- Title/Desc/URL inputs -->
+    <div class="upload-card">
+      <div class="input-row single">
+        <div class="input-group">
+          <label>OG Title (გვერდის სათაური)</label>
+          <input type="text" id="og-title" maxlength="60" value="10xSEO — იყავი პირველი Google-ში და ChatGPT-ში" placeholder="გვერდის სათაური">
+        </div>
+      </div>
+      <div class="input-row single">
+        <div class="input-group">
+          <label>OG Description</label>
+          <input type="text" id="og-desc" maxlength="200" value="საქართველოს #1 SEO სააგენტო — Google, ChatGPT, ყველა AI პლატფორმა." placeholder="გვერდის აღწერა">
+        </div>
+      </div>
+      <div class="input-row">
+        <div class="input-group">
+          <label>OG URL (დომენი)</label>
+          <input type="text" id="og-url" value="https://10xseo.ge" placeholder="https://example.com">
+        </div>
+        <div class="input-group">
+          <label>ბრენდი (LinkedIn-ზე ჩანს)</label>
+          <input type="text" id="og-brand" value="10xseo.ge">
+        </div>
+      </div>
+    </div>
+
+    <!-- Safe Zone Visualization -->
+    <div class="safe-zone-card">
+      <div class="safe-zone-title">🎯 Safe Zone — სად მოთავსდეს ტექსტი/ლოგო</div>
+      <div class="safe-zone-wrap">
+        <img id="safe-zone-img" alt="">
+        <div class="safe-zone-overlay">
+          <div class="safe-zone-circle" title="WhatsApp/Telegram წრიული crop"></div>
+          <div class="safe-zone-box"></div>
+          <div class="safe-zone-label">SAFE 820×430</div>
+        </div>
+      </div>
+      <div class="safe-zone-help">
+        <span class="amber">━ ━ ━ ყვითელი:</span> Facebook safe zone — მთავარი ტექსტი/ლოგო აქ უნდა ჩატევოს •
+        <span class="gray">━ ━ ━ წრე:</span> WhatsApp/Telegram-ის circular crop
+      </div>
+    </div>
+
+    <!-- Previews grid -->
+    <div class="grid" id="grid">
+
+      <!-- Facebook Desktop -->
+      <div class="preview-card">
+        <div class="preview-header">
+          <div class="preview-platform">📘 Facebook Desktop</div>
+          <div class="preview-spec">1.91:1 • 524×274</div>
+        </div>
+        <div class="preview-body">
+          <div class="fb-card">
+            <div class="img" id="fb-img"></div>
+            <div class="body">
+              <div class="domain" id="fb-domain">10xseo.ge</div>
+              <div class="title" id="fb-title">გვერდის სათაური</div>
+              <div class="desc" id="fb-desc">აღწერა გამოჩნდება აქ...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Facebook Mobile -->
+      <div class="preview-card">
+        <div class="preview-header">
+          <div class="preview-platform">📱 Facebook Mobile</div>
+          <div class="preview-spec">1.91:1 • smaller</div>
+        </div>
+        <div class="preview-body">
+          <div class="fb-mobile">
+            <div class="img" id="fbm-img"></div>
+            <div class="body">
+              <div class="domain" id="fbm-domain">10XSEO.GE</div>
+              <div class="title" id="fbm-title">გვერდის სათაური</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LinkedIn -->
+      <div class="preview-card">
+        <div class="preview-header">
+          <div class="preview-platform">💼 LinkedIn</div>
+          <div class="preview-spec">1.91:1 • 552×289</div>
+        </div>
+        <div class="preview-body">
+          <div class="li-card">
+            <div class="img" id="li-img"></div>
+            <div class="body">
+              <div class="title" id="li-title">გვერდის სათაური</div>
+              <div class="domain" id="li-domain">10xseo.ge</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Twitter/X -->
+      <div class="preview-card">
+        <div class="preview-header">
+          <div class="preview-platform">𝕏 Twitter / X</div>
+          <div class="preview-spec">1.91:1 • summary_large_image</div>
+        </div>
+        <div class="preview-body">
+          <div class="tw-card">
+            <div class="img" id="tw-img"></div>
+            <div class="body">
+              <div class="domain" id="tw-domain">10xseo.ge</div>
+              <div class="title" id="tw-title">გვერდის სათაური</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WhatsApp -->
+      <div class="preview-card">
+        <div class="preview-header">
+          <div class="preview-platform">💬 WhatsApp</div>
+          <div class="preview-spec">1.91:1 • პრევიუ ბმულის ქვეშ</div>
+        </div>
+        <div class="preview-body">
+          <div class="wa-card">
+            <div class="wa-inner">
+              <div class="img" id="wa-img"></div>
+              <div class="body">
+                <div class="title" id="wa-title">გვერდის სათაური</div>
+                <div class="desc" id="wa-desc">აღწერა...</div>
+                <div class="domain" id="wa-domain">10xseo.ge</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Discord -->
+      <div class="preview-card">
+        <div class="preview-header">
+          <div class="preview-platform">🎮 Discord</div>
+          <div class="preview-spec">1.91:1 • embed</div>
+        </div>
+        <div class="preview-body">
+          <div class="dc-card">
+            <div class="domain" id="dc-domain">10xseo.ge</div>
+            <div class="title" id="dc-title">გვერდის სათაური</div>
+            <div class="desc" id="dc-desc">აღწერა...</div>
+            <div class="img" id="dc-img"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slack -->
+      <div class="preview-card">
+        <div class="preview-header">
+          <div class="preview-platform">💼 Slack</div>
+          <div class="preview-spec">1.91:1 • unfurl</div>
+        </div>
+        <div class="preview-body">
+          <div class="sl-card">
+            <div class="domain" id="sl-domain">10xseo.ge</div>
+            <div class="title" id="sl-title">გვერდის სათაური</div>
+            <div class="desc" id="sl-desc">აღწერა...</div>
+            <div class="img" id="sl-img"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // Inputs
+    const fileInput = document.getElementById('img-input');
+    const dropZone = document.getElementById('drop-zone');
+    const validationPanel = document.getElementById('validation-panel');
+    const fileName = document.getElementById('file-name');
+    const fileMeta = document.getElementById('file-meta');
+    const badgesEl = document.getElementById('badges');
+    const clearBtn = document.getElementById('clear-btn');
+
+    const titleInput = document.getElementById('og-title');
+    const descInput = document.getElementById('og-desc');
+    const urlInput = document.getElementById('og-url');
+    const brandInput = document.getElementById('og-brand');
+
+    // Image targets (all preview img containers + safe zone)
+    const imgTargets = ['fb-img','fbm-img','li-img','tw-img','wa-img','dc-img','sl-img'];
+    let currentImageData = null;
+
+    function emptyImgHtml() {
+      return '<div class="empty-img" style="width:100%; height:100%; display:flex; align-items:center; justify-content:center;"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div>';
+    }
+
+    function setImage(dataUrl) {
+      currentImageData = dataUrl;
+      imgTargets.forEach(id => {
+        const el = document.getElementById(id);
+        if (dataUrl) el.innerHTML = '<img src="' + dataUrl + '" alt="">';
+        else el.innerHTML = emptyImgHtml();
+      });
+      const safeImg = document.getElementById('safe-zone-img');
+      if (dataUrl) safeImg.src = dataUrl;
+      else safeImg.removeAttribute('src');
+    }
+
+    function setText() {
+      const title = titleInput.value || 'გვერდის სათაური';
+      const desc = descInput.value || 'აღწერა გამოჩნდება აქ...';
+      const url = urlInput.value || 'https://example.com';
+      const brand = brandInput.value || 'example.com';
+      const domain = url.replace(/^https?:\/\//, '').split('/')[0] || 'example.com';
+
+      const map = {
+        'fb-title': title, 'fbm-title': title, 'li-title': title, 'tw-title': title,
+        'wa-title': title, 'dc-title': title, 'sl-title': title,
+        'fb-desc': desc, 'wa-desc': desc, 'dc-desc': desc, 'sl-desc': desc,
+        'fb-domain': domain, 'tw-domain': domain, 'wa-domain': domain,
+        'dc-domain': domain, 'sl-domain': brand,
+        'fbm-domain': domain.toUpperCase(),
+        'li-domain': brand,
+      };
+      Object.entries(map).forEach(([id, val]) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = val;
+      });
+    }
+
+    function formatBytes(bytes) {
+      if (bytes < 1024) return bytes + ' B';
+      if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+      return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
+    }
+
+    function badge(type, text) {
+      return '<span class="badge ' + type + '">' + text + '</span>';
+    }
+
+    function validate(file, w, h) {
+      const out = [];
+      const ratio = w / h;
+      const target = 1200 / 630; // 1.9047
+      const dRatio = Math.abs(ratio - target) / target;
+      const sizeMB = file.size / (1024 * 1024);
+
+      // Dimensions
+      if (w === 1200 && h === 630) {
+        out.push(badge('ok', '✓ სრულყოფილი 1200×630'));
+      } else if (w >= 1200 && h >= 630 && dRatio < 0.05) {
+        out.push(badge('ok', '✓ ' + w + '×' + h + ' (კარგი)'));
+      } else if (w < 600 || h < 315) {
+        out.push(badge('err', '✗ ' + w + '×' + h + ' — ძალიან პატარა (მინ. 600×315)'));
+      } else if (dRatio > 0.1) {
+        out.push(badge('warn', '⚠ aspect ratio ' + ratio.toFixed(2) + ':1 (იდეალური 1.91:1)'));
+      } else {
+        out.push(badge('warn', '⚠ ' + w + '×' + h + ' (იდეალური 1200×630)'));
+      }
+
+      // File size
+      if (sizeMB > 8) out.push(badge('err', '✗ ' + formatBytes(file.size) + ' (FB ლიმიტი 8MB)'));
+      else if (sizeMB > 5) out.push(badge('warn', '⚠ ' + formatBytes(file.size) + ' (X ლიმიტი 5MB)'));
+      else if (sizeMB > 0.3) out.push(badge('ok', '✓ ' + formatBytes(file.size)));
+      else out.push(badge('ok', '✓ ' + formatBytes(file.size) + ' — სწრაფი'));
+
+      // Format
+      const ext = (file.name.split('.').pop() || '').toLowerCase();
+      if (ext === 'webp') out.push(badge('ok', '✓ WebP — ოპტიმალური'));
+      else if (['jpg','jpeg','png'].includes(ext)) out.push(badge('ok', '✓ ' + ext.toUpperCase()));
+      else if (ext === 'gif') out.push(badge('warn', '⚠ GIF — ანიმაცია არ ჩაიტვირთება'));
+
+      return out.join('');
+    }
+
+    function handleFile(file) {
+      if (!file || !file.type.startsWith('image/')) {
+        alert('აირჩიე სურათი (JPG, PNG, WebP)');
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const dataUrl = e.target.result;
+        const img = new Image();
+        img.onload = function() {
+          fileName.textContent = file.name;
+          fileMeta.textContent = img.naturalWidth + ' × ' + img.naturalHeight + ' px • ' + formatBytes(file.size);
+          badgesEl.innerHTML = validate(file, img.naturalWidth, img.naturalHeight);
+          validationPanel.style.display = 'block';
+          setImage(dataUrl);
+        };
+        img.src = dataUrl;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    fileInput.addEventListener('change', e => {
+      if (e.target.files && e.target.files[0]) handleFile(e.target.files[0]);
+    });
+
+    ['dragenter','dragover'].forEach(ev => {
+      dropZone.addEventListener(ev, e => {
+        e.preventDefault(); dropZone.classList.add('drag-over');
+      });
+    });
+    ['dragleave','drop'].forEach(ev => {
+      dropZone.addEventListener(ev, e => {
+        e.preventDefault(); dropZone.classList.remove('drag-over');
+      });
+    });
+    dropZone.addEventListener('drop', e => {
+      const dt = e.dataTransfer;
+      if (dt && dt.files && dt.files[0]) handleFile(dt.files[0]);
+    });
+
+    clearBtn.addEventListener('click', () => {
+      currentImageData = null;
+      fileInput.value = '';
+      validationPanel.style.display = 'none';
+      setImage(null);
+    });
+
+    // Page-wide paste support
+    document.addEventListener('paste', e => {
+      const items = (e.clipboardData || {}).items || [];
+      for (const item of items) {
+        if (item.type && item.type.startsWith('image/')) {
+          const file = item.getAsFile();
+          if (file) { handleFile(file); break; }
+        }
+      }
+    });
+
+    [titleInput, descInput, urlInput, brandInput].forEach(i => i.addEventListener('input', setText));
+
+    // Initial render
+    setImage(null);
+    setText();
+  </script>
+</body>
+</html>
