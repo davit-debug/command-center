@@ -58,6 +58,72 @@
     .badge.warn { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
     .badge.err { background: rgba(239, 68, 68, 0.15); color: #f87171; }
 
+    /* Thumbnail gallery */
+    .thumbs-wrap {
+      margin-top: 18px; padding-top: 18px; border-top: 1px solid #1f2937;
+    }
+    .thumbs-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 12px;
+    }
+    .thumbs-title { font-size: 13px; font-weight: 600; color: #d1d5db; }
+    .thumbs-count { font-size: 12px; color: #9ca3af; }
+    .clear-all {
+      background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #f87171; padding: 5px 11px; border-radius: 6px;
+      font-size: 12px; cursor: pointer; transition: all 0.2s;
+    }
+    .clear-all:hover { background: rgba(239, 68, 68, 0.2); }
+    .thumbs-grid {
+      display: grid; gap: 12px;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
+    .thumb {
+      position: relative; cursor: pointer;
+      border-radius: 10px; overflow: hidden;
+      border: 2px solid transparent; transition: all 0.2s;
+      background: #0b0f17;
+    }
+    .thumb:hover { transform: translateY(-2px); border-color: #374151; }
+    .thumb.active { border-color: #8B5CF6; box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.3); }
+    .thumb-img {
+      width: 100%; aspect-ratio: 1.91/1; background: #1f2937;
+      display: block; object-fit: cover;
+    }
+    .thumb-info {
+      padding: 8px 10px; background: #111827;
+    }
+    .thumb-name {
+      font-size: 11px; color: #d1d5db; white-space: nowrap;
+      overflow: hidden; text-overflow: ellipsis; margin-bottom: 4px;
+    }
+    .thumb-status { display: flex; gap: 4px; align-items: center; }
+    .thumb-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+    }
+    .thumb-dot.ok { background: #4ade80; }
+    .thumb-dot.warn { background: #fbbf24; }
+    .thumb-dot.err { background: #f87171; }
+    .thumb-meta { font-size: 10px; color: #6b7280; }
+    .thumb-remove {
+      position: absolute; top: 6px; right: 6px;
+      width: 24px; height: 24px; border-radius: 50%;
+      background: rgba(0,0,0,0.7); color: #fff; border: none;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; opacity: 0; transition: opacity 0.2s;
+      font-size: 14px; line-height: 1;
+    }
+    .thumb:hover .thumb-remove { opacity: 1; }
+    .thumb-remove:hover { background: rgba(239, 68, 68, 0.9); }
+    .thumb-active-badge {
+      position: absolute; bottom: 8px; left: 8px;
+      background: #8B5CF6; color: #fff;
+      padding: 2px 8px; border-radius: 4px;
+      font-size: 10px; font-weight: 700;
+      display: none;
+    }
+    .thumb.active .thumb-active-badge { display: block; }
+
     /* Previews grid */
     .grid {
       display: grid; gap: 24px;
@@ -226,21 +292,33 @@
         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
         </svg>
-        <div class="title">ჩააგდე ან აირჩიე სურათი</div>
-        <div class="hint">JPG / PNG / WebP — რეკომენდებული 1200×630 px (მაქს. 8MB)</div>
-        <input type="file" id="img-input" accept="image/jpeg,image/png,image/webp,image/gif" hidden>
+        <div class="title">ჩააგდე ან აირჩიე ფოტოები</div>
+        <div class="hint">რამდენიც გინდა — ყველა ფორმატი • ყველა ზომა • ყველა წონა</div>
+        <input type="file" id="img-input" accept="image/*" multiple hidden>
       </label>
 
-      <!-- Validation panel -->
+      <!-- Active image validation panel -->
       <div id="validation-panel" style="display:none; margin-top:20px;">
         <div class="info-row">
           <div>
             <div class="file-name" id="file-name">—</div>
             <div class="file-meta" id="file-meta">—</div>
           </div>
-          <button type="button" class="clear-btn" id="clear-btn">წაშლა</button>
+          <button type="button" class="clear-btn" id="clear-btn">აქტიურის წაშლა</button>
         </div>
         <div class="badges" id="badges"></div>
+      </div>
+
+      <!-- Thumbnail gallery -->
+      <div id="thumbs-wrap" class="thumbs-wrap" style="display:none;">
+        <div class="thumbs-header">
+          <div>
+            <span class="thumbs-title">ყველა ატვირთული</span>
+            <span class="thumbs-count" id="thumbs-count">(0)</span>
+          </div>
+          <button type="button" class="clear-all" id="clear-all-btn">ყველას წაშლა</button>
+        </div>
+        <div class="thumbs-grid" id="thumbs-grid"></div>
       </div>
     </div>
 
@@ -423,6 +501,10 @@
     const fileMeta = document.getElementById('file-meta');
     const badgesEl = document.getElementById('badges');
     const clearBtn = document.getElementById('clear-btn');
+    const thumbsWrap = document.getElementById('thumbs-wrap');
+    const thumbsGrid = document.getElementById('thumbs-grid');
+    const thumbsCount = document.getElementById('thumbs-count');
+    const clearAllBtn = document.getElementById('clear-all-btn');
 
     const titleInput = document.getElementById('og-title');
     const descInput = document.getElementById('og-desc');
@@ -431,14 +513,17 @@
 
     // Image targets (all preview img containers + safe zone)
     const imgTargets = ['fb-img','fbm-img','li-img','tw-img','wa-img','dc-img','sl-img'];
-    let currentImageData = null;
+
+    // Multi-image state
+    const images = []; // { id, name, dataUrl, width, height, size, type }
+    let activeId = null;
+    let nextId = 1;
 
     function emptyImgHtml() {
       return '<div class="empty-img" style="width:100%; height:100%; display:flex; align-items:center; justify-content:center;"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div>';
     }
 
     function setImage(dataUrl) {
-      currentImageData = dataUrl;
       imgTargets.forEach(id => {
         const el = document.getElementById(id);
         if (dataUrl) el.innerHTML = '<img src="' + dataUrl + '" alt="">';
@@ -447,6 +532,93 @@
       const safeImg = document.getElementById('safe-zone-img');
       if (dataUrl) safeImg.src = dataUrl;
       else safeImg.removeAttribute('src');
+    }
+
+    function getStatusLevel(img) {
+      // err > warn > ok
+      const ratio = img.width / img.height;
+      const target = 1200 / 630;
+      const dRatio = Math.abs(ratio - target) / target;
+      const sizeMB = img.size / (1024 * 1024);
+      if (img.width < 600 || img.height < 315) return 'err';
+      if (sizeMB > 8) return 'err';
+      if (dRatio > 0.1) return 'warn';
+      if (sizeMB > 5) return 'warn';
+      if (img.width !== 1200 || img.height !== 630) {
+        if (!(img.width >= 1200 && img.height >= 630 && dRatio < 0.05)) return 'warn';
+      }
+      return 'ok';
+    }
+
+    function renderThumbs() {
+      if (images.length === 0) {
+        thumbsWrap.style.display = 'none';
+        return;
+      }
+      thumbsWrap.style.display = 'block';
+      thumbsCount.textContent = '(' + images.length + ')';
+      thumbsGrid.innerHTML = images.map(img => {
+        const level = getStatusLevel(img);
+        const isActive = img.id === activeId;
+        return '<div class="thumb' + (isActive ? ' active' : '') + '" data-id="' + img.id + '">' +
+          '<img class="thumb-img" src="' + img.dataUrl + '" alt="">' +
+          '<button type="button" class="thumb-remove" data-remove="' + img.id + '" title="წაშლა">×</button>' +
+          '<div class="thumb-active-badge">აქტიური</div>' +
+          '<div class="thumb-info">' +
+            '<div class="thumb-name" title="' + img.name + '">' + img.name + '</div>' +
+            '<div class="thumb-status">' +
+              '<span class="thumb-dot ' + level + '"></span>' +
+              '<span class="thumb-meta">' + img.width + '×' + img.height + ' • ' + formatBytes(img.size) + '</span>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+      }).join('');
+
+      thumbsGrid.querySelectorAll('.thumb').forEach(el => {
+        el.addEventListener('click', e => {
+          if (e.target.closest('.thumb-remove')) return;
+          setActive(parseInt(el.dataset.id, 10));
+        });
+      });
+      thumbsGrid.querySelectorAll('.thumb-remove').forEach(btn => {
+        btn.addEventListener('click', e => {
+          e.stopPropagation();
+          removeImage(parseInt(btn.dataset.remove, 10));
+        });
+      });
+    }
+
+    function setActive(id) {
+      const img = images.find(x => x.id === id);
+      if (!img) return;
+      activeId = id;
+      setImage(img.dataUrl);
+      fileName.textContent = img.name;
+      fileMeta.textContent = img.width + ' × ' + img.height + ' px • ' + formatBytes(img.size);
+      badgesEl.innerHTML = validate(img, img.width, img.height);
+      validationPanel.style.display = 'block';
+      renderThumbs();
+    }
+
+    function removeImage(id) {
+      const idx = images.findIndex(x => x.id === id);
+      if (idx === -1) return;
+      images.splice(idx, 1);
+      if (activeId === id) {
+        if (images.length > 0) setActive(images[Math.max(0, idx - 1)].id);
+        else clearAll();
+      } else {
+        renderThumbs();
+      }
+    }
+
+    function clearAll() {
+      images.length = 0;
+      activeId = null;
+      fileInput.value = '';
+      validationPanel.style.display = 'none';
+      setImage(null);
+      renderThumbs();
     }
 
     function setText() {
@@ -481,12 +653,12 @@
       return '<span class="badge ' + type + '">' + text + '</span>';
     }
 
-    function validate(file, w, h) {
+    function validate(img, w, h) {
       const out = [];
       const ratio = w / h;
-      const target = 1200 / 630; // 1.9047
+      const target = 1200 / 630;
       const dRatio = Math.abs(ratio - target) / target;
-      const sizeMB = file.size / (1024 * 1024);
+      const sizeMB = img.size / (1024 * 1024);
 
       // Dimensions
       if (w === 1200 && h === 630) {
@@ -501,44 +673,63 @@
         out.push(badge('warn', '⚠ ' + w + '×' + h + ' (იდეალური 1200×630)'));
       }
 
-      // File size
-      if (sizeMB > 8) out.push(badge('err', '✗ ' + formatBytes(file.size) + ' (FB ლიმიტი 8MB)'));
-      else if (sizeMB > 5) out.push(badge('warn', '⚠ ' + formatBytes(file.size) + ' (X ლიმიტი 5MB)'));
-      else if (sizeMB > 0.3) out.push(badge('ok', '✓ ' + formatBytes(file.size)));
-      else out.push(badge('ok', '✓ ' + formatBytes(file.size) + ' — სწრაფი'));
+      // File size (informational only — no upload restriction)
+      if (sizeMB > 8) out.push(badge('err', '✗ ' + formatBytes(img.size) + ' (FB ლიმიტი 8MB)'));
+      else if (sizeMB > 5) out.push(badge('warn', '⚠ ' + formatBytes(img.size) + ' (X ლიმიტი 5MB)'));
+      else if (sizeMB > 0.3) out.push(badge('ok', '✓ ' + formatBytes(img.size)));
+      else out.push(badge('ok', '✓ ' + formatBytes(img.size) + ' — სწრაფი'));
 
       // Format
-      const ext = (file.name.split('.').pop() || '').toLowerCase();
+      const ext = (img.name.split('.').pop() || '').toLowerCase();
       if (ext === 'webp') out.push(badge('ok', '✓ WebP — ოპტიმალური'));
       else if (['jpg','jpeg','png'].includes(ext)) out.push(badge('ok', '✓ ' + ext.toUpperCase()));
       else if (ext === 'gif') out.push(badge('warn', '⚠ GIF — ანიმაცია არ ჩაიტვირთება'));
+      else if (ext) out.push(badge('warn', '⚠ ' + ext.toUpperCase() + ' — ნაკლებად მხარდაჭერილი'));
 
       return out.join('');
     }
 
-    function handleFile(file) {
-      if (!file || !file.type.startsWith('image/')) {
-        alert('აირჩიე სურათი (JPG, PNG, WebP)');
-        return;
-      }
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        const dataUrl = e.target.result;
-        const img = new Image();
-        img.onload = function() {
-          fileName.textContent = file.name;
-          fileMeta.textContent = img.naturalWidth + ' × ' + img.naturalHeight + ' px • ' + formatBytes(file.size);
-          badgesEl.innerHTML = validate(file, img.naturalWidth, img.naturalHeight);
-          validationPanel.style.display = 'block';
-          setImage(dataUrl);
+    function loadFile(file) {
+      return new Promise((resolve, reject) => {
+        if (!file || !file.type.startsWith('image/')) { resolve(null); return; }
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const dataUrl = e.target.result;
+          const img = new Image();
+          img.onload = function() {
+            resolve({
+              id: nextId++,
+              name: file.name,
+              dataUrl: dataUrl,
+              width: img.naturalWidth,
+              height: img.naturalHeight,
+              size: file.size,
+              type: file.type,
+            });
+          };
+          img.onerror = () => resolve(null);
+          img.src = dataUrl;
         };
-        img.src = dataUrl;
-      };
-      reader.readAsDataURL(file);
+        reader.onerror = () => resolve(null);
+        reader.readAsDataURL(file);
+      });
+    }
+
+    async function handleFiles(fileList) {
+      const files = Array.from(fileList || []).filter(f => f && f.type && f.type.startsWith('image/'));
+      if (files.length === 0) return;
+      const loaded = await Promise.all(files.map(loadFile));
+      const valid = loaded.filter(Boolean);
+      if (valid.length === 0) return;
+      images.push(...valid);
+      // Make the first newly-uploaded one active (if nothing's active yet, or always switch to the latest batch)
+      setActive(valid[0].id);
     }
 
     fileInput.addEventListener('change', e => {
-      if (e.target.files && e.target.files[0]) handleFile(e.target.files[0]);
+      handleFiles(e.target.files);
+      // Reset input so re-selecting the same file still triggers change
+      fileInput.value = '';
     });
 
     ['dragenter','dragover'].forEach(ev => {
@@ -553,25 +744,25 @@
     });
     dropZone.addEventListener('drop', e => {
       const dt = e.dataTransfer;
-      if (dt && dt.files && dt.files[0]) handleFile(dt.files[0]);
+      if (dt && dt.files) handleFiles(dt.files);
     });
 
     clearBtn.addEventListener('click', () => {
-      currentImageData = null;
-      fileInput.value = '';
-      validationPanel.style.display = 'none';
-      setImage(null);
+      if (activeId !== null) removeImage(activeId);
     });
+    clearAllBtn.addEventListener('click', clearAll);
 
-    // Page-wide paste support
+    // Page-wide paste support (multiple images at once)
     document.addEventListener('paste', e => {
       const items = (e.clipboardData || {}).items || [];
+      const files = [];
       for (const item of items) {
         if (item.type && item.type.startsWith('image/')) {
           const file = item.getAsFile();
-          if (file) { handleFile(file); break; }
+          if (file) files.push(file);
         }
       }
+      if (files.length > 0) handleFiles(files);
     });
 
     [titleInput, descInput, urlInput, brandInput].forEach(i => i.addEventListener('input', setText));
