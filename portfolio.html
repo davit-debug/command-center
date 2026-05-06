@@ -88,12 +88,13 @@
         }
 
         /* Network canvas */
-        .network-canvas { position: relative; width: 100%; height: 100vh; min-height: 950px; overflow: hidden; padding-top: 72px; }
+        .network-canvas { position: relative; width: 100%; height: calc(100vh - 80px); min-height: 870px; overflow: hidden; padding-top: 0; }
         .network-canvas .overlay-title { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 5; text-align: center; pointer-events: none; }
         .network-canvas .overlay-title h1 { font-size: clamp(2rem, 5vw, 4.5rem); font-weight: 700; color: rgba(255,255,255,0.08); letter-spacing: -0.02em; }
 
-        /* Region filter pills */
-        .canvas-filter-bar { position: absolute; top: 88px; left: 50%; transform: translateX(-50%); z-index: 25; display: inline-flex; gap: 4px; background: rgba(18,18,30,0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(139,92,246,0.25); border-radius: 100px; padding: 5px; box-shadow: 0 4px 24px rgba(0,0,0,0.3); }
+        /* Region filter strip — sits below navbar, above canvas */
+        .canvas-filter-strip { display: flex; justify-content: center; align-items: center; padding: 88px 16px 16px; background: transparent; pointer-events: none; }
+        .canvas-filter-bar { pointer-events: auto; display: inline-flex; gap: 4px; background: rgba(18,18,30,0.85); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(139,92,246,0.3); border-radius: 100px; padding: 5px; box-shadow: 0 4px 24px rgba(0,0,0,0.4); }
         .filter-pill { font-family: inherit; font-size: 13px; font-weight: 500; padding: 8px 16px; border-radius: 100px; color: rgba(255,255,255,0.7); background: transparent; border: none; cursor: pointer; transition: all 0.25s ease; display: inline-flex; align-items: center; gap: 7px; white-space: nowrap; }
         .filter-pill:hover { color: white; background: rgba(139,92,246,0.15); }
         .filter-pill.active { background: linear-gradient(135deg, #8b5cf6, #a78bfa); color: white; box-shadow: 0 0 16px rgba(139,92,246,0.45); }
@@ -287,18 +288,20 @@
   </div>
 
   <main id="main-content">
+<!-- Region filter strip — sits below navbar, above canvas -->
+<div class="canvas-filter-strip">
+    <div class="canvas-filter-bar" role="tablist" aria-label="Filter clients by region">
+        <button class="filter-pill active" data-filter="all" type="button" role="tab" aria-selected="true">ყველა <span class="count">39</span></button>
+        <button class="filter-pill" data-filter="ge" type="button" role="tab" aria-selected="false"><span class="flag">🇬🇪</span>ქართული <span class="count">25</span></button>
+        <button class="filter-pill" data-filter="intl" type="button" role="tab" aria-selected="false"><span class="flag">🌍</span>საერთაშორისო <span class="count">14</span></button>
+    </div>
+</div>
+
 <!-- Full-viewport Network Canvas (Desktop) -->
 <section class="network-canvas" id="networkCanvas">
     <!-- Overlay title -->
     <div class="overlay-title">
         <h1>SEO პორტფოლიო — 38+ ბიზნეს პარტნიორი</h1>
-    </div>
-
-    <!-- Region filter pills -->
-    <div class="canvas-filter-bar" role="tablist" aria-label="Filter clients by region">
-        <button class="filter-pill active" data-filter="all" type="button" role="tab" aria-selected="true">ყველა <span class="count">39</span></button>
-        <button class="filter-pill" data-filter="ge" type="button" role="tab" aria-selected="false"><span class="flag">🇬🇪</span>ქართული <span class="count">25</span></button>
-        <button class="filter-pill" data-filter="intl" type="button" role="tab" aria-selected="false"><span class="flag">🌍</span>საერთაშორისო <span class="count">14</span></button>
     </div>
 
     <!-- SVG connection lines -->
