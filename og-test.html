@@ -236,6 +236,143 @@
     .sl-card .img { width: 100%; max-width: 360px; aspect-ratio: 1.91/1; border-radius: 6px; overflow: hidden; background: #f4f4f4; }
     .sl-card .img img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
+    /* ═══════════════════════════════════════════════════════════
+       REAL FACEBOOK SHARE — newsfeed simulation
+       ═══════════════════════════════════════════════════════════ */
+    .real-fb-section {
+      background: #18191a; border-radius: 16px; padding: 32px 16px;
+      margin-top: 40px;
+    }
+    .real-fb-title {
+      text-align: center; color: #f3f4f6; font-size: 22px; font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .real-fb-sub {
+      text-align: center; color: #9ca3af; font-size: 13px; margin-bottom: 28px;
+    }
+    .real-fb-grid {
+      display: grid; gap: 28px;
+      grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width: 900px) {
+      .real-fb-grid { grid-template-columns: 1fr; }
+    }
+    .real-fb-col h3 {
+      color: #d1d5db; font-size: 13px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.5px;
+      margin-bottom: 12px; text-align: center;
+    }
+
+    /* Facebook desktop post */
+    .rfb-post {
+      background: #242526; border-radius: 8px; overflow: hidden;
+      font-family: 'Helvetica', -apple-system, sans-serif;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+      max-width: 500px; margin: 0 auto;
+      color: #e4e6eb;
+    }
+    .rfb-post-header { padding: 12px 16px 0; display: flex; align-items: flex-start; gap: 8px; }
+    .rfb-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: linear-gradient(135deg, #8B5CF6, #14B8A6);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-weight: 800; font-size: 16px;
+      flex-shrink: 0;
+    }
+    .rfb-post-meta { flex: 1; min-width: 0; }
+    .rfb-page-name {
+      font-size: 15px; font-weight: 600; color: #e4e6eb;
+      display: flex; align-items: center; gap: 4px;
+    }
+    .rfb-verified { color: #2374e1; }
+    .rfb-post-time {
+      font-size: 13px; color: #b0b3b8;
+      display: flex; align-items: center; gap: 4px; margin-top: 1px;
+    }
+    .rfb-dot { color: #b0b3b8; }
+    .rfb-more {
+      width: 32px; height: 32px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: #b0b3b8; cursor: pointer;
+      font-size: 18px; line-height: 1;
+    }
+    .rfb-more:hover { background: rgba(255,255,255,0.05); }
+
+    .rfb-caption {
+      padding: 8px 16px 12px; font-size: 15px; color: #e4e6eb; line-height: 1.4;
+    }
+
+    /* The actual OG card inside the post */
+    .rfb-og {
+      border-top: 1px solid #3a3b3c;
+    }
+    .rfb-og .img { width: 100%; aspect-ratio: 1.91/1; background: #3a3b3c; overflow: hidden; }
+    .rfb-og .img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .rfb-og .body { padding: 10px 16px 12px; background: #3a3b3c; }
+    .rfb-og .domain {
+      font-size: 13px; color: #b0b3b8; text-transform: uppercase;
+      letter-spacing: 0.3px; margin-bottom: 3px;
+    }
+    .rfb-og .title {
+      font-size: 17px; font-weight: 600; color: #e4e6eb; line-height: 1.25;
+      margin-bottom: 4px; word-wrap: break-word;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .rfb-og .desc {
+      font-size: 14px; color: #b0b3b8; line-height: 1.35;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+
+    /* Engagement bar */
+    .rfb-engagement {
+      padding: 10px 16px; display: flex; justify-content: space-between;
+      font-size: 13px; color: #b0b3b8;
+    }
+    .rfb-reactions { display: flex; align-items: center; gap: 6px; }
+    .rfb-reaction-icons { display: flex; }
+    .rfb-reaction-icons span {
+      width: 18px; height: 18px; border-radius: 50%; border: 2px solid #242526;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 10px; margin-left: -4px;
+    }
+    .rfb-reaction-icons span:first-child { margin-left: 0; }
+    .rfb-react-like { background: #2374e1; }
+    .rfb-react-love { background: #e0245e; }
+    .rfb-react-care { background: #f7b125; }
+
+    /* Action buttons */
+    .rfb-actions {
+      border-top: 1px solid #3a3b3c;
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      padding: 4px 8px;
+    }
+    .rfb-action {
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+      padding: 8px; border-radius: 6px; cursor: pointer;
+      color: #b0b3b8; font-size: 14px; font-weight: 600;
+    }
+    .rfb-action:hover { background: rgba(255,255,255,0.05); }
+    .rfb-action svg { width: 18px; height: 18px; }
+
+    /* Mobile FB variant */
+    .rfb-mobile {
+      max-width: 360px; margin: 0 auto;
+      background: #242526; border-radius: 12px; overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .rfb-mobile .rfb-post-header { padding: 10px 14px 0; }
+    .rfb-mobile .rfb-avatar { width: 36px; height: 36px; font-size: 14px; }
+    .rfb-mobile .rfb-page-name { font-size: 14px; }
+    .rfb-mobile .rfb-post-time { font-size: 12px; }
+    .rfb-mobile .rfb-caption { padding: 6px 14px 10px; font-size: 14px; }
+    .rfb-mobile .rfb-og .body { padding: 8px 14px 10px; }
+    .rfb-mobile .rfb-og .domain { font-size: 11px; }
+    .rfb-mobile .rfb-og .title { font-size: 15px; }
+    .rfb-mobile .rfb-og .desc { font-size: 13px; -webkit-line-clamp: 1; }
+    .rfb-mobile .rfb-engagement { padding: 8px 14px; font-size: 12px; }
+    .rfb-mobile .rfb-actions { padding: 2px 6px; }
+    .rfb-mobile .rfb-action { font-size: 13px; padding: 7px; }
+
     /* Custom inputs */
     .input-row { display: grid; gap: 12px; grid-template-columns: 1fr 1fr; margin-bottom: 18px; }
     .input-row.single { grid-template-columns: 1fr; }
@@ -490,6 +627,114 @@
       </div>
 
     </div>
+
+    <!-- ═══ Real Facebook share simulation ═══ -->
+    <div class="real-fb-section">
+      <div class="real-fb-title">📘 ნამდვილი Facebook გაზიარება</div>
+      <div class="real-fb-sub">ასე ნახავს მომხმარებელი feed-ში, როცა ვინმე გააზიარებს ბმულს</div>
+
+      <div class="real-fb-grid">
+
+        <!-- Desktop newsfeed post -->
+        <div class="real-fb-col">
+          <h3>💻 Desktop News Feed</h3>
+          <div class="rfb-post">
+            <div class="rfb-post-header">
+              <div class="rfb-avatar" id="rfb-avatar-d">10</div>
+              <div class="rfb-post-meta">
+                <div class="rfb-page-name">
+                  <span id="rfb-page-d">10xSEO</span>
+                  <svg class="rfb-verified" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L9.91 4.09 7 4l-1 2.91L3.09 9 5.18 12 3.09 15 6 17.09 7 20l2.91-.09L12 22l2.09-2.09L17 20l1-2.91L20.91 15 18.82 12l2.09-3L18 6.91 17 4l-2.91.09L12 2zm-1.41 14.59L6.5 12.5l1.41-1.41 2.68 2.67L16.18 8.5l1.41 1.42-7 7z"/></svg>
+                </div>
+                <div class="rfb-post-time">
+                  2 სთ <span class="rfb-dot">·</span>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                </div>
+              </div>
+              <div class="rfb-more">···</div>
+            </div>
+            <div class="rfb-caption" id="rfb-caption-d">აუცილებლად ნახეთ! 👇</div>
+            <div class="rfb-og">
+              <div class="img" id="rfb-img-d"></div>
+              <div class="body">
+                <div class="domain" id="rfb-domain-d">10XSEO.GE</div>
+                <div class="title" id="rfb-title-d">გვერდის სათაური</div>
+                <div class="desc" id="rfb-desc-d">აღწერა...</div>
+              </div>
+            </div>
+            <div class="rfb-engagement">
+              <div class="rfb-reactions">
+                <span class="rfb-reaction-icons">
+                  <span class="rfb-react-like">👍</span>
+                  <span class="rfb-react-love">❤️</span>
+                  <span class="rfb-react-care">🥰</span>
+                </span>
+                <span>247</span>
+              </div>
+              <div>32 კომენტარი · 18 გაზიარება</div>
+            </div>
+            <div class="rfb-actions">
+              <div class="rfb-action">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"/></svg>
+                Like
+              </div>
+              <div class="rfb-action">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                Comment
+              </div>
+              <div class="rfb-action">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+                Share
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile newsfeed post -->
+        <div class="real-fb-col">
+          <h3>📱 Mobile News Feed</h3>
+          <div class="rfb-post rfb-mobile">
+            <div class="rfb-post-header">
+              <div class="rfb-avatar" id="rfb-avatar-m">10</div>
+              <div class="rfb-post-meta">
+                <div class="rfb-page-name">
+                  <span id="rfb-page-m">10xSEO</span>
+                  <svg class="rfb-verified" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L9.91 4.09 7 4l-1 2.91L3.09 9 5.18 12 3.09 15 6 17.09 7 20l2.91-.09L12 22l2.09-2.09L17 20l1-2.91L20.91 15 18.82 12l2.09-3L18 6.91 17 4l-2.91.09L12 2zm-1.41 14.59L6.5 12.5l1.41-1.41 2.68 2.67L16.18 8.5l1.41 1.42-7 7z"/></svg>
+                </div>
+                <div class="rfb-post-time">2 სთ <span class="rfb-dot">·</span> 🌍</div>
+              </div>
+              <div class="rfb-more">···</div>
+            </div>
+            <div class="rfb-caption" id="rfb-caption-m">აუცილებლად ნახეთ! 👇</div>
+            <div class="rfb-og">
+              <div class="img" id="rfb-img-m"></div>
+              <div class="body">
+                <div class="domain" id="rfb-domain-m">10XSEO.GE</div>
+                <div class="title" id="rfb-title-m">გვერდის სათაური</div>
+                <div class="desc" id="rfb-desc-m">აღწერა...</div>
+              </div>
+            </div>
+            <div class="rfb-engagement">
+              <div class="rfb-reactions">
+                <span class="rfb-reaction-icons">
+                  <span class="rfb-react-like">👍</span>
+                  <span class="rfb-react-love">❤️</span>
+                </span>
+                <span>247</span>
+              </div>
+              <div>32 · 18</div>
+            </div>
+            <div class="rfb-actions">
+              <div class="rfb-action">👍 Like</div>
+              <div class="rfb-action">💬 Comment</div>
+              <div class="rfb-action">↗ Share</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 
   <script>
@@ -512,7 +757,7 @@
     const brandInput = document.getElementById('og-brand');
 
     // Image targets (all preview img containers + safe zone)
-    const imgTargets = ['fb-img','fbm-img','li-img','tw-img','wa-img','dc-img','sl-img'];
+    const imgTargets = ['fb-img','fbm-img','li-img','tw-img','wa-img','dc-img','sl-img','rfb-img-d','rfb-img-m'];
 
     // Multi-image state
     const images = []; // { id, name, dataUrl, width, height, size, type }
@@ -636,6 +881,12 @@
         'dc-domain': domain, 'sl-domain': brand,
         'fbm-domain': domain.toUpperCase(),
         'li-domain': brand,
+        // Real Facebook (desktop + mobile)
+        'rfb-title-d': title, 'rfb-title-m': title,
+        'rfb-desc-d': desc, 'rfb-desc-m': desc,
+        'rfb-domain-d': domain.toUpperCase(), 'rfb-domain-m': domain.toUpperCase(),
+        'rfb-page-d': brand.replace(/\.[a-z]{2,}$/i, '').replace(/^./, c => c.toUpperCase()),
+        'rfb-page-m': brand.replace(/\.[a-z]{2,}$/i, '').replace(/^./, c => c.toUpperCase()),
       };
       Object.entries(map).forEach(([id, val]) => {
         const el = document.getElementById(id);
