@@ -207,6 +207,7 @@
     .form-steps-wrapper {
       overflow: hidden;
       position: relative;
+      transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .form-steps-track {
       display: flex;
@@ -993,6 +994,7 @@
     // ===== DOM REFS =====
     const form = document.getElementById('lead-form');
     const track = document.getElementById('form-steps-track');
+    const wrapper = track.parentElement;
     const btnNext = document.getElementById('btn-next');
     const btnBack = document.getElementById('btn-back');
     const btnSubmit = document.getElementById('btn-submit');
@@ -1035,6 +1037,11 @@
     }
 
     // ===== STEP NAVIGATION =====
+    function syncWrapperHeight() {
+      var activeStep = document.querySelector('.form-step[data-step="' + currentStep + '"]');
+      if (activeStep) wrapper.style.height = activeStep.offsetHeight + 'px';
+    }
+
     function goToStep(step) {
       if (step < 1 || step > TOTAL_STEPS) return;
       currentStep = step;
@@ -1047,8 +1054,8 @@
       });
       updateProgress();
       updateNavButtons();
+      syncWrapperHeight();
       trackStepEvent(step);
-      // Scroll form into view
       form.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
@@ -1371,6 +1378,7 @@
     // ===== INIT =====
     updateProgress();
     updateNavButtons();
+    syncWrapperHeight();
 
   })();
   </script>
