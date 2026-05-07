@@ -155,163 +155,10 @@
     }
 
     /* ===== LEAD FORM STYLES ===== */
-
-    /* Progress bar */
-    .step-progress { display: flex; align-items: center; justify-content: center; position: relative; }
-    .step-circle {
-      width: 40px; height: 40px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 700; font-size: 14px;
-      border: 2px solid #374151;
-      color: #6b7280;
-      background: #020710;
-      transition: all 0.4s ease;
-      position: relative; z-index: 2;
-      flex-shrink: 0;
-    }
-    .step-circle.active {
-      border-color: #8B5CF6;
-      color: #fff;
-      background: #8B5CF6;
-      box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
-    }
-    .step-circle.completed {
-      border-color: #21C743;
-      color: #fff;
-      background: #21C743;
-    }
-    .step-label {
-      font-size: 11px; margin-top: 6px;
-      color: #6b7280;
-      text-align: center;
-      transition: color 0.3s ease;
-      max-width: 90px;
-    }
-    .step-label.active { color: #A78BFA; }
-    .step-label.completed { color: #21C743; }
-    .step-connector {
-      flex: 1; height: 2px;
-      background: #374151;
-      position: relative;
-      margin: 0 -2px;
-      z-index: 1;
-    }
-    .step-connector .step-connector-fill {
-      height: 100%; width: 0%;
-      background: linear-gradient(90deg, #21C743, #8B5CF6);
-      transition: width 0.5s ease;
-    }
-    .step-connector.completed .step-connector-fill { width: 100%; }
-
-    /* Form steps container */
-    .form-steps-wrapper {
-      overflow: hidden;
-      position: relative;
-      transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .form-steps-track {
-      display: flex;
-      align-items: flex-start;
-      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .form-step {
-      min-width: 100%;
-      opacity: 0;
-      transform: translateY(12px);
-      transition: opacity 0.4s ease 0.1s, transform 0.4s ease 0.1s;
-    }
-    .form-step.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Service card selection */
-    .service-card {
-      cursor: pointer;
-      border: 1.5px solid #374151;
-      border-radius: 12px;
-      padding: 16px;
-      background: #020710;
-      transition: all 0.25s ease;
-      position: relative;
-      min-height: 44px;
-    }
-    .service-card:hover {
-      border-color: rgba(139, 92, 246, 0.4);
-      transform: translateY(-2px);
-    }
-    .service-card.selected {
-      border-color: #8B5CF6;
-      background: rgba(139, 92, 246, 0.08);
-      box-shadow: 0 0 20px rgba(139, 92, 246, 0.15);
-    }
-    .service-card .check-icon {
-      position: absolute; top: 10px; right: 10px;
-      width: 22px; height: 22px;
-      border-radius: 50%;
-      background: #8B5CF6;
-      display: flex; align-items: center; justify-content: center;
-      opacity: 0; transform: scale(0.5);
-      transition: all 0.25s ease;
-    }
-    .service-card.selected .check-icon {
-      opacity: 1; transform: scale(1);
-    }
-
-    /* Radio card selection */
-    .radio-card {
-      cursor: pointer;
-      border: 1.5px solid #374151;
-      border-radius: 12px;
-      padding: 14px 18px;
-      background: #020710;
-      transition: all 0.25s ease;
-      min-height: 44px;
-      display: flex; align-items: center; gap: 12px;
-    }
-    .radio-card:hover {
-      border-color: rgba(139, 92, 246, 0.4);
-    }
-    .radio-card.selected {
-      border-color: #8B5CF6;
-      background: rgba(139, 92, 246, 0.08);
-    }
-    .radio-dot {
-      width: 20px; height: 20px;
-      border-radius: 50%;
-      border: 2px solid #4B5563;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-      transition: all 0.25s ease;
-    }
-    .radio-card.selected .radio-dot {
-      border-color: #8B5CF6;
-    }
-    .radio-dot-inner {
-      width: 10px; height: 10px;
-      border-radius: 50%;
-      background: #8B5CF6;
-      transform: scale(0);
-      transition: transform 0.25s ease;
-    }
-    .radio-card.selected .radio-dot-inner {
-      transform: scale(1);
-    }
-
-    /* Input error + shake */
-    .input-error {
-      border-color: #EF4444 !important;
-    }
-    .field-error-msg {
-      color: #EF4444;
-      font-size: 12px;
-      margin-top: 4px;
-      display: none;
-    }
+    .input-error { border-color: #EF4444 !important; }
+    .field-error-msg { color: #EF4444; font-size: 12px; margin-top: 4px; display: none; }
     .input-error ~ .field-error-msg,
-    .show-error .field-error-msg {
-      display: block;
-    }
+    .show-error .field-error-msg { display: block; }
     @keyframes shake {
       0%, 100% { transform: translateX(0); }
       20% { transform: translateX(-6px); }
@@ -320,47 +167,12 @@
       80% { transform: translateX(4px); }
     }
     .shake { animation: shake 0.4s ease; }
-
-    /* Autosave indicator */
-    .autosave-indicator {
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      font-size: 11px;
-      color: #21C743;
-    }
-    .autosave-indicator.visible { opacity: 1; }
-
-    /* Success state */
-    @keyframes checkDraw {
-      0% { stroke-dashoffset: 50; }
-      100% { stroke-dashoffset: 0; }
-    }
-    @keyframes circleGrow {
-      0% { transform: scale(0); opacity: 0; }
-      60% { transform: scale(1.15); }
-      100% { transform: scale(1); opacity: 1; }
-    }
-    .success-checkmark {
-      width: 80px; height: 80px;
-      animation: circleGrow 0.5s ease forwards;
-    }
-    .success-checkmark .check-path {
-      stroke-dasharray: 50;
-      stroke-dashoffset: 50;
-      animation: checkDraw 0.4s ease forwards 0.4s;
-    }
-
-    /* Spinner */
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-    .spinner {
-      width: 20px; height: 20px;
-      border: 2px solid rgba(255,255,255,0.3);
-      border-top-color: #fff;
-      border-radius: 50%;
-      animation: spin 0.6s linear infinite;
-    }
+    @keyframes checkDraw { 0% { stroke-dashoffset: 50; } 100% { stroke-dashoffset: 0; } }
+    @keyframes circleGrow { 0% { transform: scale(0); opacity: 0; } 60% { transform: scale(1.15); } 100% { transform: scale(1); opacity: 1; } }
+    .success-checkmark { width: 80px; height: 80px; animation: circleGrow 0.5s ease forwards; }
+    .success-checkmark .check-path { stroke-dasharray: 50; stroke-dashoffset: 50; animation: checkDraw 0.4s ease forwards 0.4s; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .spinner { width: 20px; height: 20px; border: 2px solid rgba(255,255,255,0.3); border-top-color: #fff; border-radius: 50%; animation: spin 0.6s linear infinite; }
   </style>
 </head>
 <body class="font-body bg-surface-dark text-body-dark transition-colors duration-300">
@@ -500,349 +312,97 @@
     </div>
   </section>
 
-  <!-- ========== MULTI-STEP FORM ========== -->
+  <!-- ========== CONTACT FORM ========== -->
   <section class="py-8 lg:py-12 bg-white dark:bg-surface-dark">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+    <div class="max-w-xl mx-auto px-4 sm:px-6">
 
-      <!-- Progress Bar -->
-      <div class="mb-10">
-        <div class="step-progress">
-          <!-- Step 1 -->
-          <div class="flex flex-col items-center" style="min-width:40px">
-            <div class="step-circle active" data-step="1">1</div>
-            <div class="step-label active hidden sm:block">კონტაქტი</div>
-          </div>
-          <div class="step-connector" data-connector="1"><div class="step-connector-fill"></div></div>
-          <!-- Step 2 -->
-          <div class="flex flex-col items-center" style="min-width:40px">
-            <div class="step-circle" data-step="2">2</div>
-            <div class="step-label hidden sm:block">ბიზნესი</div>
-          </div>
-          <div class="step-connector" data-connector="2"><div class="step-connector-fill"></div></div>
-          <!-- Step 3 -->
-          <div class="flex flex-col items-center" style="min-width:40px">
-            <div class="step-circle" data-step="3">3</div>
-            <div class="step-label hidden sm:block">სერვისი</div>
-          </div>
-          <div class="step-connector" data-connector="3"><div class="step-connector-fill"></div></div>
-          <!-- Step 4 -->
-          <div class="flex flex-col items-center" style="min-width:40px">
-            <div class="step-circle" data-step="4">4</div>
-            <div class="step-label hidden sm:block">ბიუჯეტი</div>
-          </div>
-          <div class="step-connector" data-connector="4"><div class="step-connector-fill"></div></div>
-          <!-- Step 5 -->
-          <div class="flex flex-col items-center" style="min-width:40px">
-            <div class="step-circle" data-step="5">5</div>
-            <div class="step-label hidden sm:block">გაგზავნა</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Autosave indicator -->
-      <div class="flex justify-end mb-3">
-        <span id="autosave-indicator" class="autosave-indicator flex items-center gap-1">
-          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-          ავტომატურად შენახულია
-        </span>
-      </div>
-
-      <!-- Form Card -->
       <div class="bg-surface-alt dark:bg-surface-dark-alt rounded-2xl p-6 sm:p-8 border border-gray-100 dark:border-gray-800">
 
         <form id="lead-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
 
-          <div class="form-steps-wrapper">
-            <div class="form-steps-track" id="form-steps-track">
+          <div class="space-y-5">
 
-              <!-- ===== STEP 1: საკონტაქტო ინფორმაცია ===== -->
-              <div class="form-step active" data-step="1">
-                <h2 class="font-heading text-[22px] sm:text-[26px] font-bold text-heading dark:text-heading-dark mb-2">საკონტაქტო ინფორმაცია</h2>
-                <p class="text-sm text-body-dark/60 mb-6">გვითხარით, როგორ დაგიკავშირდეთ</p>
+            <!-- სახელი -->
+            <div>
+              <label for="lf-name" class="block text-sm font-medium text-heading dark:text-heading-dark mb-1.5">სახელი და გვარი <span class="text-red-500">*</span></label>
+              <input type="text" id="lf-name" name="name" required autocomplete="name" placeholder="თქვენი სახელი და გვარი" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors text-sm">
+              <p class="field-error-msg">გთხოვთ შეიყვანოთ სახელი და გვარი</p>
+            </div>
 
-                <div class="space-y-5">
-                  <!-- Name -->
-                  <div>
-                    <label for="lf-name" class="block text-sm font-medium text-heading dark:text-heading-dark mb-1.5">სახელი და გვარი <span class="text-red-500">*</span></label>
-                    <input type="text" id="lf-name" name="name" required autocomplete="name" placeholder="თქვენი სახელი და გვარი" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors text-sm">
-                    <p class="field-error-msg">გთხოვთ შეიყვანოთ სახელი და გვარი</p>
-                  </div>
-                  <!-- Phone -->
-                  <div>
-                    <label for="lf-phone" class="block text-sm font-medium text-heading dark:text-heading-dark mb-1.5">ტელეფონი</label>
-                    <div class="flex gap-2">
-                      <span class="inline-flex items-center px-3 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-body-dark text-sm font-inter shrink-0">+995</span>
-                      <input type="tel" id="lf-phone" name="phone" autocomplete="tel" placeholder="5XX XX XX XX" class="flex-1 w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors text-sm font-inter">
-                    </div>
-                  </div>
-                  <!-- Email -->
-                  <div>
-                    <label for="lf-email" class="block text-sm font-medium text-heading dark:text-heading-dark mb-1.5">ემაილი <span class="text-red-500">*</span></label>
-                    <input type="email" id="lf-email" name="email" required autocomplete="email" placeholder="info@example.com" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors text-sm">
-                    <p class="field-error-msg">გთხოვთ შეიყვანოთ სწორი ემაილის მისამართი</p>
-                  </div>
-                </div>
+            <!-- ტელეფონი -->
+            <div>
+              <label for="lf-phone" class="block text-sm font-medium text-heading dark:text-heading-dark mb-1.5">ტელეფონი</label>
+              <div class="flex gap-2">
+                <span class="inline-flex items-center px-3 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-body-dark text-sm font-inter shrink-0">+995</span>
+                <input type="tel" id="lf-phone" name="phone" autocomplete="tel" placeholder="5XX XX XX XX" class="flex-1 w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors text-sm font-inter">
               </div>
+            </div>
 
-              <!-- ===== STEP 2: ბიზნესის შესახებ ===== -->
-              <div class="form-step" data-step="2">
-                <h2 class="font-heading text-[22px] sm:text-[26px] font-bold text-heading dark:text-heading-dark mb-2">ბიზნესის შესახებ</h2>
-                <p class="text-sm text-body-dark/60 mb-6">გვიამბეთ თქვენი კომპანიის შესახებ</p>
+            <!-- ემაილი -->
+            <div>
+              <label for="lf-email" class="block text-sm font-medium text-heading dark:text-heading-dark mb-1.5">ემაილი <span class="text-red-500">*</span></label>
+              <input type="email" id="lf-email" name="email" required autocomplete="email" placeholder="info@example.com" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors text-sm">
+              <p class="field-error-msg">გთხოვთ შეიყვანოთ სწორი ემაილის მისამართი</p>
+            </div>
 
-                <div class="space-y-5">
-                  <!-- Company Name -->
-                  <div>
-                    <label for="lf-company" class="block text-sm font-medium text-heading dark:text-heading-dark mb-1.5">კომპანიის სახელი</label>
-                    <input type="text" id="lf-company" name="company" autocomplete="organization" placeholder="კომპანიის სახელი" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors text-sm">
-                  </div>
-                  <!-- Website URL -->
-                  <div>
-                    <label for="lf-website" class="block text-sm font-medium text-heading dark:text-heading-dark mb-1.5">ვებსაიტის URL</label>
-                    <input type="url" id="lf-website" name="website" autocomplete="url" placeholder="https://example.com" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors text-sm">
-                  </div>
-                  <!-- Industry -->
-                  <div>
-                    <label for="lf-industry" class="block text-sm font-medium text-heading dark:text-heading-dark mb-1.5">ინდუსტრია</label>
-                    <select id="lf-industry" name="industry" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors text-sm appearance-none" style="background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2224%22 height=%2224%22 fill=%22none%22 stroke=%22%2394a3b8%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M6 9l6 6 6-6%22/%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 12px center; background-size: 20px;">
-                      <option value="">აირჩიეთ ინდუსტრია</option>
-                      <option value="ecommerce">E-commerce</option>
-                      <option value="construction">სამშენებლო</option>
-                      <option value="healthcare">ჯანდაცვა</option>
-                      <option value="finance">ფინანსები</option>
-                      <option value="education">განათლება</option>
-                      <option value="tourism">ტურიზმი</option>
-                      <option value="other">სხვა</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
+            <!-- ვებსაიტი -->
+            <div>
+              <label for="lf-website" class="block text-sm font-medium text-heading dark:text-heading-dark mb-1.5">ვებსაიტის URL</label>
+              <input type="url" id="lf-website" name="website" autocomplete="url" placeholder="https://example.com" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors text-sm">
+            </div>
 
-              <!-- ===== STEP 3: სერვისის არჩევა ===== -->
-              <div class="form-step" data-step="3">
-                <h2 class="font-heading text-[22px] sm:text-[26px] font-bold text-heading dark:text-heading-dark mb-2">სერვისის არჩევა</h2>
-                <p class="text-sm text-body-dark/60 mb-6">აირჩიეთ ერთი ან რამდენიმე სერვისი</p>
+            <!-- სერვისი -->
+            <div>
+              <label for="lf-service" class="block text-sm font-medium text-heading dark:text-heading-dark mb-1.5">რა სერვისით ხართ დაინტერესებული?</label>
+              <select id="lf-service" name="service" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors text-sm appearance-none" style="background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2224%22 height=%2224%22 fill=%22none%22 stroke=%22%2394a3b8%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M6 9l6 6 6-6%22/%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 12px center; background-size: 20px;">
+                <option value="">აირჩიეთ სერვისი</option>
+                <option value="seo-management">SEO მომსახურება</option>
+                <option value="seo-consultation">SEO კონსულტაცია</option>
+                <option value="seo-strategy">SEO სტრატეგია</option>
+                <option value="google-ads">Google Ads</option>
+                <option value="ai-seo">AI SEO / GEO</option>
+                <option value="copywriting">კოპირაიტინგი</option>
+                <option value="cro">კონვერსიის ოპტიმიზაცია</option>
+                <option value="seo-course">SEO კურსი</option>
+                <option value="other">სხვა</option>
+              </select>
+            </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="service-cards">
+            <!-- ბიუჯეტი -->
+            <div>
+              <label for="lf-budget" class="block text-sm font-medium text-heading dark:text-heading-dark mb-1.5">ბიუჯეტის დიაპაზონი</label>
+              <select id="lf-budget" name="budget" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors text-sm appearance-none" style="background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2224%22 height=%2224%22 fill=%22none%22 stroke=%22%2394a3b8%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M6 9l6 6 6-6%22/%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 12px center; background-size: 20px;">
+                <option value="">აირჩიეთ</option>
+                <option value="500-1000">500 &#8211; 1,000 &#8382;/თვე</option>
+                <option value="1000-2000">1,000 &#8211; 2,000 &#8382;/თვე</option>
+                <option value="2000-5000">2,000 &#8211; 5,000 &#8382;/თვე</option>
+                <option value="5000+">5,000 &#8382;+/თვე</option>
+                <option value="unknown">არ ვიცი ჯერ</option>
+              </select>
+            </div>
 
-                  <!-- SEO მომსახურება -->
-                  <div class="service-card" data-service="seo-management" tabindex="0" role="checkbox" aria-checked="false">
-                    <div class="check-icon"><svg class="w-3 h-3" fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>
-                    <div class="flex items-start gap-3">
-                      <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
-                        <svg class="w-5 h-5 text-primary-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
-                      </div>
-                      <div>
-                        <p class="text-sm font-semibold text-heading-dark">SEO მომსახურება</p>
-                        <p class="text-xs text-body-dark/60 mt-0.5">სრული SEO მართვა და ოპტიმიზაცია</p>
-                      </div>
-                    </div>
-                  </div>
+            <!-- კომენტარი -->
+            <div>
+              <label for="lf-comment" class="block text-sm font-medium text-heading dark:text-heading-dark mb-1.5">კომენტარი</label>
+              <textarea id="lf-comment" name="comment" rows="3" placeholder="გვიამბეთ თქვენი გამოწვევის ან პროექტის შესახებ..." class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors text-sm resize-y"></textarea>
+            </div>
 
-                  <!-- SEO კონსულტაცია -->
-                  <div class="service-card" data-service="seo-consultation" tabindex="0" role="checkbox" aria-checked="false">
-                    <div class="check-icon"><svg class="w-3 h-3" fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>
-                    <div class="flex items-start gap-3">
-                      <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center shrink-0 mt-0.5">
-                        <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-                      </div>
-                      <div>
-                        <p class="text-sm font-semibold text-heading-dark">SEO კონსულტაცია</p>
-                        <p class="text-xs text-body-dark/60 mt-0.5">ექსპერტის რჩევები და ანალიზი</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- SEO სტრატეგია -->
-                  <div class="service-card" data-service="seo-strategy" tabindex="0" role="checkbox" aria-checked="false">
-                    <div class="check-icon"><svg class="w-3 h-3" fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>
-                    <div class="flex items-start gap-3">
-                      <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
-                        <svg class="w-5 h-5 text-primary-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-                      </div>
-                      <div>
-                        <p class="text-sm font-semibold text-heading-dark">SEO სტრატეგია</p>
-                        <p class="text-xs text-body-dark/60 mt-0.5">ინდივიდუალური სტრატეგიული გეგმა</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Google Ads -->
-                  <div class="service-card" data-service="google-ads" tabindex="0" role="checkbox" aria-checked="false">
-                    <div class="check-icon"><svg class="w-3 h-3" fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>
-                    <div class="flex items-start gap-3">
-                      <div class="w-10 h-10 rounded-lg bg-yellow-500/10 flex items-center justify-center shrink-0 mt-0.5">
-                        <svg class="w-5 h-5 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"/></svg>
-                      </div>
-                      <div>
-                        <p class="text-sm font-semibold text-heading-dark">Google Ads</p>
-                        <p class="text-xs text-body-dark/60 mt-0.5">ფასიანი რეკლამის მართვა</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- AI SEO / GEO -->
-                  <div class="service-card" data-service="ai-seo" tabindex="0" role="checkbox" aria-checked="false">
-                    <div class="check-icon"><svg class="w-3 h-3" fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>
-                    <div class="flex items-start gap-3">
-                      <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center shrink-0 mt-0.5">
-                        <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                      </div>
-                      <div>
-                        <p class="text-sm font-semibold text-heading-dark">AI SEO / GEO</p>
-                        <p class="text-xs text-body-dark/60 mt-0.5">AI ძიების ოპტიმიზაცია</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- კოპირაიტინგი -->
-                  <div class="service-card" data-service="copywriting" tabindex="0" role="checkbox" aria-checked="false">
-                    <div class="check-icon"><svg class="w-3 h-3" fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>
-                    <div class="flex items-start gap-3">
-                      <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
-                        <svg class="w-5 h-5 text-primary-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
-                      </div>
-                      <div>
-                        <p class="text-sm font-semibold text-heading-dark">კოპირაიტინგი</p>
-                        <p class="text-xs text-body-dark/60 mt-0.5">SEO-ოპტიმიზებული ტექსტები</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- CRO -->
-                  <div class="service-card" data-service="cro" tabindex="0" role="checkbox" aria-checked="false">
-                    <div class="check-icon"><svg class="w-3 h-3" fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>
-                    <div class="flex items-start gap-3">
-                      <div class="w-10 h-10 rounded-lg bg-success/10 flex items-center justify-center shrink-0 mt-0.5">
-                        <svg class="w-5 h-5 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                      </div>
-                      <div>
-                        <p class="text-sm font-semibold text-heading-dark">CRO</p>
-                        <p class="text-xs text-body-dark/60 mt-0.5">კონვერსიის ოპტიმიზაცია</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- SEO კურსი -->
-                  <div class="service-card" data-service="seo-course" tabindex="0" role="checkbox" aria-checked="false">
-                    <div class="check-icon"><svg class="w-3 h-3" fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>
-                    <div class="flex items-start gap-3">
-                      <div class="w-10 h-10 rounded-lg bg-yellow-500/10 flex items-center justify-center shrink-0 mt-0.5">
-                        <svg class="w-5 h-5 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-                      </div>
-                      <div>
-                        <p class="text-sm font-semibold text-heading-dark">SEO კურსი</p>
-                        <p class="text-xs text-body-dark/60 mt-0.5">ისწავლეთ SEO თავად</p>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-                <!-- Hidden input to hold selected services -->
-                <input type="hidden" id="lf-services" name="services" value="">
-              </div>
-
-              <!-- ===== STEP 4: ბიუჯეტი და ვადები ===== -->
-              <div class="form-step" data-step="4">
-                <h2 class="font-heading text-[22px] sm:text-[26px] font-bold text-heading dark:text-heading-dark mb-2">ბიუჯეტი და ვადები</h2>
-                <p class="text-sm text-body-dark/60 mb-6">დაგვეხმარეთ შეთავაზების მომზადებაში</p>
-
-                <div class="space-y-8">
-                  <!-- Budget -->
-                  <div>
-                    <p class="text-sm font-medium text-heading dark:text-heading-dark mb-3">ბიუჯეტის დიაპაზონი</p>
-                    <div class="space-y-2" id="budget-cards">
-                      <div class="radio-card" data-budget="500-1000" tabindex="0" role="radio" aria-checked="false">
-                        <div class="radio-dot"><div class="radio-dot-inner"></div></div>
-                        <span class="text-sm text-heading-dark font-inter">500 - 1,000 &#8382;/თვე</span>
-                      </div>
-                      <div class="radio-card" data-budget="1000-2000" tabindex="0" role="radio" aria-checked="false">
-                        <div class="radio-dot"><div class="radio-dot-inner"></div></div>
-                        <span class="text-sm text-heading-dark font-inter">1,000 - 2,000 &#8382;/თვე</span>
-                      </div>
-                      <div class="radio-card" data-budget="2000-5000" tabindex="0" role="radio" aria-checked="false">
-                        <div class="radio-dot"><div class="radio-dot-inner"></div></div>
-                        <span class="text-sm text-heading-dark font-inter">2,000 - 5,000 &#8382;/თვე</span>
-                      </div>
-                      <div class="radio-card" data-budget="5000+" tabindex="0" role="radio" aria-checked="false">
-                        <div class="radio-dot"><div class="radio-dot-inner"></div></div>
-                        <span class="text-sm text-heading-dark font-inter">5,000 &#8382;+/თვე</span>
-                      </div>
-                      <div class="radio-card" data-budget="unknown" tabindex="0" role="radio" aria-checked="false">
-                        <div class="radio-dot"><div class="radio-dot-inner"></div></div>
-                        <span class="text-sm text-heading-dark">არ ვიცი ჯერ</span>
-                      </div>
-                    </div>
-                    <input type="hidden" id="lf-budget" name="budget" value="">
-                  </div>
-
-                  <!-- Timeline -->
-                  <div>
-                    <p class="text-sm font-medium text-heading dark:text-heading-dark mb-3">როდის გინდათ დაწყება?</p>
-                    <div class="space-y-2" id="timeline-cards">
-                      <div class="radio-card" data-timeline="asap" tabindex="0" role="radio" aria-checked="false">
-                        <div class="radio-dot"><div class="radio-dot-inner"></div></div>
-                        <span class="text-sm text-heading-dark">რაც შეიძლება სწრაფად</span>
-                      </div>
-                      <div class="radio-card" data-timeline="1-2-weeks" tabindex="0" role="radio" aria-checked="false">
-                        <div class="radio-dot"><div class="radio-dot-inner"></div></div>
-                        <span class="text-sm text-heading-dark">1-2 კვირაში</span>
-                      </div>
-                      <div class="radio-card" data-timeline="1-month" tabindex="0" role="radio" aria-checked="false">
-                        <div class="radio-dot"><div class="radio-dot-inner"></div></div>
-                        <span class="text-sm text-heading-dark">1 თვეში</span>
-                      </div>
-                      <div class="radio-card" data-timeline="just-exploring" tabindex="0" role="radio" aria-checked="false">
-                        <div class="radio-dot"><div class="radio-dot-inner"></div></div>
-                        <span class="text-sm text-heading-dark">უბრალოდ ვეცნობი</span>
-                      </div>
-                    </div>
-                    <input type="hidden" id="lf-timeline" name="timeline" value="">
-                  </div>
-                </div>
-              </div>
-
-              <!-- ===== STEP 5: დამატებითი ინფორმაცია ===== -->
-              <div class="form-step" data-step="5">
-                <h2 class="font-heading text-[22px] sm:text-[26px] font-bold text-heading dark:text-heading-dark mb-2">დამატებითი ინფორმაცია</h2>
-                <p class="text-sm text-body-dark/60 mb-6">რაიმე, რაც გვინდა ვიცოდეთ?</p>
-
-                <div class="space-y-5">
-                  <!-- Challenge -->
-                  <div>
-                    <label for="lf-challenge" class="block text-sm font-medium text-heading dark:text-heading-dark mb-1.5">რა არის თქვენი მთავარი გამოწვევა?</label>
-                    <textarea id="lf-challenge" name="challenge" rows="3" placeholder="მაგ: ვებსაიტზე ტრაფიკი არ მოდის, კონკურენტები წინ არიან..." class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors text-sm resize-y"></textarea>
-                  </div>
-                  <!-- Additional Notes -->
-                  <div>
-                    <label for="lf-notes" class="block text-sm font-medium text-heading dark:text-heading-dark mb-1.5">რამე დამატებითი?</label>
-                    <textarea id="lf-notes" name="notes" rows="3" placeholder="ნებისმიერი ინფორმაცია, რაც გამოგვადგება..." class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors text-sm resize-y"></textarea>
-                  </div>
-                </div>
-              </div>
-
-            </div><!-- /form-steps-track -->
-          </div><!-- /form-steps-wrapper -->
-
-          <!-- Navigation Buttons -->
-          <div class="flex items-center justify-between mt-8" id="form-nav">
-            <button type="button" id="btn-back" class="hidden items-center gap-2 px-5 py-3 rounded-xl border border-gray-200 dark:border-gray-700 text-heading dark:text-heading-dark font-medium text-sm hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors min-h-[44px]">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-              უკან
-            </button>
-            <div class="flex-1"></div>
-            <button type="button" id="btn-next" class="inline-flex items-center gap-2 px-8 py-3 ai-cta-animate text-white font-bold rounded-xl hover:shadow-lg hover:shadow-primary/30 transition-all duration-200 text-sm min-h-[44px]">
-              შემდეგი
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-            </button>
-            <button type="submit" id="btn-submit" class="hidden inline-flex items-center gap-2 px-8 py-3 ai-cta-animate text-white font-bold rounded-xl hover:shadow-lg hover:shadow-primary/30 transition-all duration-200 text-sm min-h-[44px]">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-              გაგზავნა
-            </button>
           </div>
+
+          <!-- Submit -->
+          <button type="submit" id="btn-submit" class="w-full mt-6 inline-flex items-center justify-center gap-2 px-8 py-3.5 ai-cta-animate text-white font-bold rounded-xl hover:shadow-lg hover:shadow-primary/30 transition-all duration-200 text-base min-h-[44px]">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            გაგზავნა
+          </button>
+
+          <p class="text-xs text-body-dark/60 text-center mt-3 flex items-center justify-center gap-1">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+            24 საათში მოგწერთ. მონაცემები დაცულია.
+          </p>
 
         </form>
 
-        <!-- Success State (hidden by default) -->
+        <!-- Success State -->
         <div id="form-success" class="hidden text-center py-12">
           <svg class="success-checkmark mx-auto mb-6" viewBox="0 0 80 80" fill="none">
             <circle cx="40" cy="40" r="38" stroke="#21C743" stroke-width="3" fill="rgba(33,199,67,0.1)"/>
@@ -857,13 +417,13 @@
           </a>
         </div>
 
-        <!-- Error State (hidden by default) -->
+        <!-- Error State -->
         <div id="form-error" class="hidden mt-4 p-4 rounded-xl bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-900/30 text-red-600 dark:text-red-400 text-sm font-medium flex items-center justify-between">
           <span>გაგზავნა ვერ მოხერხდა. გთხოვთ სცადოთ ხელახლა.</span>
           <button type="button" id="btn-retry" class="px-4 py-1.5 bg-red-600 text-white text-xs font-bold rounded-lg hover:bg-red-700 transition-colors">ხელახლა</button>
         </div>
 
-      </div><!-- /form card -->
+      </div>
 
     </div>
   </section>
@@ -981,405 +541,103 @@
   (function() {
     'use strict';
 
-    // TODO: Replace YOUR_FORM_ID with your Formspree form ID
+    var form = document.getElementById('lead-form');
+    var submitBtn = document.getElementById('btn-submit');
+    var successDiv = document.getElementById('form-success');
+    var errorDiv = document.getElementById('form-error');
+    var retryBtn = document.getElementById('btn-retry');
 
-    // ===== STATE =====
-    const TOTAL_STEPS = 5;
-    let currentStep = 1;
-    let selectedServices = [];
-    let selectedBudget = '';
-    let selectedTimeline = '';
-    const STORAGE_KEY = 'lead_form_data';
-
-    // ===== DOM REFS =====
-    const form = document.getElementById('lead-form');
-    const track = document.getElementById('form-steps-track');
-    const wrapper = track.parentElement;
-    const btnNext = document.getElementById('btn-next');
-    const btnBack = document.getElementById('btn-back');
-    const btnSubmit = document.getElementById('btn-submit');
-    const formNav = document.getElementById('form-nav');
-    const successDiv = document.getElementById('form-success');
-    const errorDiv = document.getElementById('form-error');
-    const btnRetry = document.getElementById('btn-retry');
-    const autosaveEl = document.getElementById('autosave-indicator');
-    const stepCircles = document.querySelectorAll('.step-circle');
-    const stepLabels = document.querySelectorAll('.step-label');
-    const stepConnectors = document.querySelectorAll('.step-connector');
-    const formSteps = document.querySelectorAll('.form-step');
-
-    // ===== PROGRESS BAR =====
-    function updateProgress() {
-      stepCircles.forEach(function(circle) {
-        var s = parseInt(circle.dataset.step);
-        circle.classList.remove('active', 'completed');
-        if (s < currentStep) {
-          circle.classList.add('completed');
-          circle.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>';
-        } else if (s === currentStep) {
-          circle.classList.add('active');
-          circle.textContent = s;
-        } else {
-          circle.textContent = s;
-        }
-      });
-      stepLabels.forEach(function(label, i) {
-        var s = i + 1;
-        label.classList.remove('active', 'completed');
-        if (s < currentStep) label.classList.add('completed');
-        else if (s === currentStep) label.classList.add('active');
-      });
-      stepConnectors.forEach(function(conn) {
-        var c = parseInt(conn.dataset.connector);
-        if (c < currentStep) conn.classList.add('completed');
-        else conn.classList.remove('completed');
-      });
-    }
-
-    // ===== STEP NAVIGATION =====
-    function syncWrapperHeight() {
-      var activeStep = document.querySelector('.form-step[data-step="' + currentStep + '"]');
-      if (activeStep) wrapper.style.height = activeStep.offsetHeight + 'px';
-    }
-
-    function goToStep(step) {
-      if (step < 1 || step > TOTAL_STEPS) return;
-      currentStep = step;
-      track.style.transform = 'translateX(-' + ((step - 1) * 100) + '%)';
-      formSteps.forEach(function(el) {
-        el.classList.remove('active');
-        if (parseInt(el.dataset.step) === step) {
-          el.classList.add('active');
-        }
-      });
-      updateProgress();
-      updateNavButtons();
-      syncWrapperHeight();
-      trackStepEvent(step);
-      form.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-
-    function updateNavButtons() {
-      if (currentStep === 1) {
-        btnBack.classList.add('hidden');
-        btnBack.classList.remove('inline-flex');
-      } else {
-        btnBack.classList.remove('hidden');
-        btnBack.classList.add('inline-flex');
-      }
-      if (currentStep === TOTAL_STEPS) {
-        btnNext.classList.add('hidden');
-        btnSubmit.classList.remove('hidden');
-        btnSubmit.classList.add('inline-flex');
-      } else {
-        btnNext.classList.remove('hidden');
-        btnSubmit.classList.add('hidden');
-        btnSubmit.classList.remove('inline-flex');
-      }
-    }
-
-    btnNext.addEventListener('click', function() {
-      if (validateStep(currentStep)) {
-        goToStep(currentStep + 1);
-      }
-    });
-
-    btnBack.addEventListener('click', function() {
-      goToStep(currentStep - 1);
-    });
-
-    // ===== VALIDATION =====
-    function validateStep(step) {
-      clearErrors();
+    function validateField(input) {
       var valid = true;
-      if (step === 1) {
-        var name = document.getElementById('lf-name');
-        var email = document.getElementById('lf-email');
-        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-        if (!name.value.trim()) {
-          showFieldError(name);
-          valid = false;
-        }
-        if (!email.value.trim() || !emailRegex.test(email.value.trim())) {
-          showFieldError(email);
-          valid = false;
-        }
+      if (input.required && !input.value.trim()) valid = false;
+      if (input.type === 'email' && input.value.trim()) {
+        valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim());
       }
-      if (!valid) {
-        // Shake the current step
-        var stepEl = document.querySelector('.form-step[data-step="' + step + '"]');
-        stepEl.classList.add('shake');
-        setTimeout(function() { stepEl.classList.remove('shake'); }, 400);
-      }
+      if (valid) { input.classList.remove('input-error'); }
+      else { input.classList.add('input-error'); }
       return valid;
     }
 
-    function showFieldError(input) {
-      input.classList.add('input-error');
-      var errorMsg = input.nextElementSibling;
-      if (errorMsg && errorMsg.classList.contains('field-error-msg')) {
-        errorMsg.style.display = 'block';
-      }
-      // Also check parent for flex layouts
-      var parent = input.closest('div');
-      if (parent) parent.classList.add('show-error');
-    }
-
-    function clearErrors() {
-      document.querySelectorAll('.input-error').forEach(function(el) {
-        el.classList.remove('input-error');
-      });
-      document.querySelectorAll('.field-error-msg').forEach(function(el) {
-        el.style.display = 'none';
-      });
-      document.querySelectorAll('.show-error').forEach(function(el) {
-        el.classList.remove('show-error');
-      });
-    }
-
-    // Remove error on focus
-    form.querySelectorAll('input, textarea, select').forEach(function(el) {
-      el.addEventListener('focus', function() {
-        this.classList.remove('input-error');
-        var errorMsg = this.nextElementSibling;
-        if (errorMsg && errorMsg.classList.contains('field-error-msg')) {
-          errorMsg.style.display = 'none';
-        }
+    form.querySelectorAll('input[required], input[type="email"]').forEach(function(input) {
+      input.addEventListener('blur', function() { validateField(this); });
+      input.addEventListener('input', function() {
+        if (this.classList.contains('input-error')) validateField(this);
       });
     });
 
-    // ===== SERVICE CARD SELECTION =====
-    document.querySelectorAll('.service-card').forEach(function(card) {
-      card.addEventListener('click', function() { toggleService(this); });
-      card.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleService(this); }
-      });
-    });
-
-    function toggleService(card) {
-      var service = card.dataset.service;
-      card.classList.toggle('selected');
-      var isSelected = card.classList.contains('selected');
-      card.setAttribute('aria-checked', isSelected);
-
-      if (isSelected) {
-        if (selectedServices.indexOf(service) === -1) selectedServices.push(service);
-      } else {
-        selectedServices = selectedServices.filter(function(s) { return s !== service; });
-      }
-      document.getElementById('lf-services').value = selectedServices.join(', ');
-      saveToStorage();
-    }
-
-    // ===== BUDGET RADIO CARDS =====
-    document.querySelectorAll('#budget-cards .radio-card').forEach(function(card) {
-      card.addEventListener('click', function() { selectBudget(this); });
-      card.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectBudget(this); }
-      });
-    });
-
-    function selectBudget(card) {
-      document.querySelectorAll('#budget-cards .radio-card').forEach(function(c) {
-        c.classList.remove('selected');
-        c.setAttribute('aria-checked', 'false');
-      });
-      card.classList.add('selected');
-      card.setAttribute('aria-checked', 'true');
-      selectedBudget = card.dataset.budget;
-      document.getElementById('lf-budget').value = selectedBudget;
-      saveToStorage();
-    }
-
-    // ===== TIMELINE RADIO CARDS =====
-    document.querySelectorAll('#timeline-cards .radio-card').forEach(function(card) {
-      card.addEventListener('click', function() { selectTimeline(this); });
-      card.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectTimeline(this); }
-      });
-    });
-
-    function selectTimeline(card) {
-      document.querySelectorAll('#timeline-cards .radio-card').forEach(function(c) {
-        c.classList.remove('selected');
-        c.setAttribute('aria-checked', 'false');
-      });
-      card.classList.add('selected');
-      card.setAttribute('aria-checked', 'true');
-      selectedTimeline = card.dataset.timeline;
-      document.getElementById('lf-timeline').value = selectedTimeline;
-      saveToStorage();
-    }
-
-    // ===== LOCALSTORAGE AUTOSAVE =====
+    // LocalStorage autosave
+    var STORAGE_KEY = '10xseo-lead-form';
     function saveToStorage() {
+      var data = {};
+      form.querySelectorAll('input:not([type="hidden"]), select, textarea').forEach(function(el) {
+        if (el.name) data[el.name] = el.value;
+      });
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch(e) {}
+    }
+    function restoreFromStorage() {
       try {
-        var data = {
-          name: document.getElementById('lf-name').value,
-          phone: document.getElementById('lf-phone').value,
-          email: document.getElementById('lf-email').value,
-          company: document.getElementById('lf-company').value,
-          website: document.getElementById('lf-website').value,
-          industry: document.getElementById('lf-industry').value,
-          services: selectedServices,
-          budget: selectedBudget,
-          timeline: selectedTimeline,
-          challenge: document.getElementById('lf-challenge').value,
-          notes: document.getElementById('lf-notes').value,
-          step: currentStep
-        };
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-        showAutosave();
-      } catch (e) { /* localStorage not available */ }
+        var data = JSON.parse(localStorage.getItem(STORAGE_KEY));
+        if (!data) return;
+        Object.keys(data).forEach(function(key) {
+          var el = form.querySelector('[name="' + key + '"]');
+          if (el && data[key]) el.value = data[key];
+        });
+      } catch(e) {}
     }
+    form.addEventListener('input', saveToStorage);
+    form.addEventListener('change', saveToStorage);
+    restoreFromStorage();
 
-    function loadFromStorage() {
-      try {
-        var raw = localStorage.getItem(STORAGE_KEY);
-        if (!raw) return;
-        var data = JSON.parse(raw);
-        if (data.name) document.getElementById('lf-name').value = data.name;
-        if (data.phone) document.getElementById('lf-phone').value = data.phone;
-        if (data.email) document.getElementById('lf-email').value = data.email;
-        if (data.company) document.getElementById('lf-company').value = data.company;
-        if (data.website) document.getElementById('lf-website').value = data.website;
-        if (data.industry) document.getElementById('lf-industry').value = data.industry;
-        if (data.challenge) document.getElementById('lf-challenge').value = data.challenge;
-        if (data.notes) document.getElementById('lf-notes').value = data.notes;
-
-        // Restore services
-        if (data.services && data.services.length) {
-          selectedServices = data.services;
-          document.getElementById('lf-services').value = selectedServices.join(', ');
-          selectedServices.forEach(function(svc) {
-            var card = document.querySelector('.service-card[data-service="' + svc + '"]');
-            if (card) { card.classList.add('selected'); card.setAttribute('aria-checked', 'true'); }
-          });
-        }
-
-        // Restore budget
-        if (data.budget) {
-          selectedBudget = data.budget;
-          document.getElementById('lf-budget').value = selectedBudget;
-          var budgetCard = document.querySelector('#budget-cards .radio-card[data-budget="' + data.budget + '"]');
-          if (budgetCard) { budgetCard.classList.add('selected'); budgetCard.setAttribute('aria-checked', 'true'); }
-        }
-
-        // Restore timeline
-        if (data.timeline) {
-          selectedTimeline = data.timeline;
-          document.getElementById('lf-timeline').value = selectedTimeline;
-          var timelineCard = document.querySelector('#timeline-cards .radio-card[data-timeline="' + data.timeline + '"]');
-          if (timelineCard) { timelineCard.classList.add('selected'); timelineCard.setAttribute('aria-checked', 'true'); }
-        }
-      } catch (e) { /* ignore */ }
-    }
-
-    var autosaveTimer;
-    function showAutosave() {
-      autosaveEl.classList.add('visible');
-      clearTimeout(autosaveTimer);
-      autosaveTimer = setTimeout(function() {
-        autosaveEl.classList.remove('visible');
-      }, 2000);
-    }
-
-    // Auto-save on every input change
-    form.querySelectorAll('input, textarea, select').forEach(function(el) {
-      el.addEventListener('input', saveToStorage);
-      el.addEventListener('change', saveToStorage);
-    });
-
-    // Load saved data on page load
-    loadFromStorage();
-
-    // ===== FORM SUBMISSION =====
+    // Submit
+    var submitLabel = submitBtn.innerHTML;
     form.addEventListener('submit', function(e) {
       e.preventDefault();
-      if (!validateStep(currentStep)) return;
-
-      // Show loading state
-      btnSubmit.disabled = true;
-      btnSubmit.innerHTML = '<div class="spinner"></div> იგზავნება...';
+      var allValid = true;
+      form.querySelectorAll('input[required], input[type="email"]').forEach(function(input) {
+        if (!validateField(input)) allValid = false;
+      });
+      if (!allValid) {
+        var first = form.querySelector('.input-error');
+        if (first) {
+          first.focus();
+          first.parentElement.classList.add('shake');
+          setTimeout(function() { first.parentElement.classList.remove('shake'); }, 400);
+        }
+        return;
+      }
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span class="spinner"></span> იგზავნება...';
       errorDiv.classList.add('hidden');
 
-      // Gather form data
-      var formData = new FormData(form);
+      if (typeof gtag === 'function') {
+        gtag('event', 'form_submit', { event_category: 'Lead', event_label: 'lead-form' });
+      }
 
-      // Submit via Fetch
       fetch(form.action, {
         method: 'POST',
-        body: formData,
+        body: new FormData(form),
         headers: { 'Accept': 'application/json' }
       })
-      .then(function(response) {
-        if (response.ok) {
-          // Success
+      .then(function(r) {
+        if (r.ok) {
           form.classList.add('hidden');
-          formNav.classList.add('hidden');
           successDiv.classList.remove('hidden');
-          // Clear localStorage
-          try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
-          // GA4 event
-          trackFormSubmit(formData);
-        } else {
-          throw new Error('Server error');
-        }
+          try { localStorage.removeItem(STORAGE_KEY); } catch(e) {}
+        } else { throw new Error('fail'); }
       })
       .catch(function() {
-        // Error
         errorDiv.classList.remove('hidden');
-        btnSubmit.disabled = false;
-        btnSubmit.innerHTML = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg> გაგზავნა';
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = submitLabel;
       });
     });
 
-    // Retry button
-    btnRetry.addEventListener('click', function() {
-      errorDiv.classList.add('hidden');
-      form.dispatchEvent(new Event('submit'));
-    });
-
-    // ===== GA4 EVENT TRACKING STUBS =====
-    function trackStepEvent(step) {
-      var stepNames = ['', 'contact_info', 'business_info', 'service_selection', 'budget_timeline', 'additional_info'];
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'form_step', {
-          step: step,
-          step_name: stepNames[step] || ''
-        });
-      }
+    if (retryBtn) {
+      retryBtn.addEventListener('click', function() {
+        errorDiv.classList.add('hidden');
+        form.dispatchEvent(new Event('submit'));
+      });
     }
-
-    function trackFormSubmit(formData) {
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'form_submit', {
-          form_name: 'lead_form',
-          services: selectedServices.join(', '),
-          budget: selectedBudget,
-          timeline: selectedTimeline
-        });
-      }
-    }
-
-    // Track abandonment
-    window.addEventListener('beforeunload', function() {
-      if (currentStep < TOTAL_STEPS && !successDiv.classList.contains('hidden') === false) {
-        if (typeof gtag !== 'undefined') {
-          gtag('event', 'form_abandon', {
-            last_step: currentStep,
-            form_name: 'lead_form'
-          });
-        }
-      }
-    });
-
-    // ===== INIT =====
-    updateProgress();
-    updateNavButtons();
-    syncWrapperHeight();
-
   })();
   </script>
 
