@@ -527,7 +527,7 @@ Call Us
     // SHARED: Syllable counter
     // ========================================
     function countSyllables(word) {
-      const gVowels = (word.match(/[აეიოუ]/g) || []).length;
+      const vowels = (word.match(/[aeiou]/g) || []).length;
       const lVowels = (word.match(/[aeiouy]+/gi) || []).length;
       return Math.max(1, gVowels + lVowels);
     }
