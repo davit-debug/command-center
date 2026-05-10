@@ -15,6 +15,9 @@
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://10xseo.ge/ai-seo.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://10xseo.ge/en/ai-seo.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://10xseo.ge/ai-seo.html"/>
   </url>
   <url>
     <loc>https://10xseo.ge/copywriting.html</loc>
@@ -81,6 +84,9 @@
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://10xseo.ge/services.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://10xseo.ge/en/services.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://10xseo.ge/services.html"/>
   </url>
   <url>
     <loc>https://10xseo.ge/roi-calculator.html</loc>
@@ -93,12 +99,18 @@
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://10xseo.ge/about-us.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://10xseo.ge/en/about-us.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://10xseo.ge/about-us.html"/>
   </url>
   <url>
     <loc>https://10xseo.ge/contact-us.html</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://10xseo.ge/contact-us.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://10xseo.ge/en/contact-us.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://10xseo.ge/contact-us.html"/>
   </url>
   <url>
     <loc>https://10xseo.ge/vacancies.html</loc>
@@ -450,5 +462,41 @@
     <xhtml:link rel="alternate" hreflang="ka" href="https://10xseo.ge/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://10xseo.ge/en/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://10xseo.ge/"/>
+  </url>
+  <url>
+    <loc>https://10xseo.ge/en/ai-seo.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://10xseo.ge/ai-seo.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://10xseo.ge/en/ai-seo.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://10xseo.ge/ai-seo.html"/>
+  </url>
+  <url>
+    <loc>https://10xseo.ge/en/services.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://10xseo.ge/services.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://10xseo.ge/en/services.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://10xseo.ge/services.html"/>
+  </url>
+  <url>
+    <loc>https://10xseo.ge/en/about-us.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://10xseo.ge/about-us.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://10xseo.ge/en/about-us.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://10xseo.ge/about-us.html"/>
+  </url>
+  <url>
+    <loc>https://10xseo.ge/en/contact-us.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://10xseo.ge/contact-us.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://10xseo.ge/en/contact-us.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://10xseo.ge/contact-us.html"/>
   </url>
 </urlset>
