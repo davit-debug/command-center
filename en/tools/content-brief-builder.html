@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth" data-beasties-container>
+<head>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Content Brief Builder — SEO Content Brief Generator | 10xSEO</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Create a structured content brief in seconds. Title options, H2/H3 outline, SEO checklist — a ready-made assignment for your copywriter. Free tool.">
+  <link rel="canonical" href="https://10xseo.ge/tools/content-brief-builder/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Content Brief Builder — კონტენტ-ბრიფის გენერატორი | 10XSEO">
+  <meta property="og:description" content="Create a structured content brief in seconds. Title options, H2/H3 outline, SEO checklist — a ready-made assignment for your copywriter. Free tool.">
+  <meta property="og:url" content="https://10xseo.ge/tools/content-brief-builder/">
+  <meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ka_GE">
+  <meta property="og:site_name" content="10XSEO">
+
+  <!-- Schema: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Content Brief Builder",
+    "description": "შექმენით სტრუქტურირებული კონტენტ-ბრიფი წამებში. სათაურის ვარიანტები, H2/H3 outline, SEO checklist — კოპირაიტერისთვის მზა დავალება.",
+    "url": "https://10xseo.ge/tools/content-brief-builder/",
+    "applicationCategory": "SEO Tool",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "GEL"
+    },
+    "provider": {
+      "@type": "Organization",
+      "name": "10XSEO",
+      "url": "https://10xseo.ge"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="../assets/site.tailwind.css">
+  
+  <style>
+    @font-face {
+      font-family: 'Dachi the Lynx';
+      src: url('../fonts/DachiTheLynx.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    body { font-family: 'FiraGO', 'Inter', sans-serif; }
+    h1, h2, h3 { font-family: 'Dachi the Lynx', sans-serif; }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .dark .gradient-text {
+      background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    @keyframes aiGradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .ai-cta-animate {
+      background: linear-gradient(-45deg, #8B5CF6, #3B82F6, #14B8A6, #8B5CF6) !important;
+      background-size: 300% 300% !important;
+      animation: aiGradient 4s ease infinite;
+      box-shadow: 0 4px 25px rgba(139, 92, 246, 0.35);
+    }
+
+    .header-scrolled { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    .safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
+    .accent-glow { box-shadow: 0 0 40px rgba(139, 92, 246, 0.15); }
+    .dark .accent-glow { box-shadow: 0 0 60px rgba(139, 92, 246, 0.2); }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in-up { opacity: 0; animation: fadeInUp 0.5s ease-out forwards; }
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+
+    /* Toast notification */
+    .toast {
+      position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%) translateY(100px);
+      background: #15803d; color: white; padding: 12px 24px; border-radius: 12px;
+      font-weight: 600; font-size: 14px; z-index: 100; transition: transform 0.3s ease;
+      box-shadow: 0 8px 30px rgba(33, 199, 67, 0.3);
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+
+    /* Mobile Menu */
+    #mobile-menu {
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+      opacity: 0;
+    }
+    #mobile-menu.menu-open {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    #mobile-menu .menu-link {
+      opacity: 0;
+      transform: translateX(30px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    #mobile-menu.menu-open .menu-link {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .hamburger-line {
+      transition: transform 0.3s ease, opacity 0.2s ease;
+    }
+    .menu-active .hamburger-line:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    .menu-active .hamburger-line:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-active .hamburger-line:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* ===== Brief Builder shared form styles ===== */
+    .cb-input {
+      width: 100%;
+      padding: 0.625rem 0.875rem;
+      border-radius: 0.625rem;
+      border: 1px solid rgb(229 231 235);
+      background: white;
+      color: #0f172a;
+      font-size: 0.875rem;
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+      font-family: 'FiraGO', 'Inter', sans-serif;
+    }
+    .dark .cb-input {
+      background: #020710;
+      color: #f8fafc;
+      border-color: rgb(55 65 81);
+    }
+    .cb-input::placeholder { color: #94a3b8; }
+    .cb-input:focus {
+      border-color: #8B5CF6;
+      box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
+    }
+    textarea.cb-input { resize: vertical; min-height: 70px; }
+
+    .cb-radio {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid rgb(229 231 235);
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-size: 0.875rem;
+      color: #0f172a;
+      transition: all 0.15s;
+      background: white;
+    }
+    .dark .cb-radio { background: #020710; color: #f8fafc; border-color: rgb(55 65 81); }
+    .cb-radio:hover { border-color: #8B5CF6; }
+    .cb-radio input[type="radio"] { accent-color: #8B5CF6; }
+    .cb-radio:has(input:checked) { border-color: #8B5CF6; background: rgba(139, 92, 246, 0.08); }
+
+    .cb-export-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.375rem 0.625rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      border-radius: 0.5rem;
+      background: rgba(139, 92, 246, 0.1);
+      color: #8B5CF6;
+      transition: background 0.15s;
+      cursor: pointer;
+      border: none;
+      font-family: 'Inter', sans-serif;
+    }
+    .dark .cb-export-btn { color: #A78BFA; }
+    .cb-export-btn:hover { background: rgba(139, 92, 246, 0.2); }
+
+    .cb-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.125rem 0.5rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+    }
+    .cb-pill-ok { background: rgba(33, 199, 67, 0.15); color: #21C743; }
+    .cb-pill-warn { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
+    .cb-pill-err { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+
+    .cb-pxbar {
+      height: 3px;
+      border-radius: 999px;
+      background: rgb(229 231 235);
+      overflow: hidden;
+      margin-top: 0.25rem;
+    }
+    .dark .cb-pxbar { background: rgb(31 41 55); }
+    .cb-pxbar-fill { height: 100%; transition: width 0.2s, background 0.2s; }
+
+    .cb-aeo-callout {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.08), rgba(20, 184, 166, 0.06));
+      border: 1px solid rgba(139, 92, 246, 0.25);
+      border-radius: 0.75rem;
+      padding: 0.875rem 1rem;
+    }
+    .dark .cb-aeo-callout {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.12), rgba(20, 184, 166, 0.08));
+      border-color: rgba(139, 92, 246, 0.3);
+    }
+
+    .cb-suggest-chip {
+      display: inline-block;
+      padding: 0.25rem 0.625rem;
+      font-size: 0.75rem;
+      border-radius: 999px;
+      background: rgba(139, 92, 246, 0.08);
+      color: #8B5CF6;
+      cursor: pointer;
+      transition: background 0.15s;
+      border: none;
+      font-family: 'FiraGO', 'Inter', sans-serif;
+    }
+    .dark .cb-suggest-chip { color: #A78BFA; }
+    .cb-suggest-chip:hover { background: rgba(139, 92, 246, 0.18); }
+
+    .cb-section-card {
+      background: white;
+      border-radius: 0.75rem;
+      padding: 0.875rem 1rem;
+      border: 1px solid rgb(243 244 246);
+    }
+    .dark .cb-section-card { background: #020710; border-color: rgb(31 41 55); }
+    .cb-section-card h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #8B5CF6;
+      margin-bottom: 0.5rem;
+    }
+    .dark .cb-section-card h4 { color: #A78BFA; }
+
+    .cb-anchor-card {
+      background: rgba(139, 92, 246, 0.05);
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      border-radius: 0.625rem;
+      padding: 0.625rem 0.75rem;
+      text-align: center;
+    }
+    .cb-anchor-card .kw { font-size: 0.8rem; font-weight: 600; color: #0f172a; word-break: break-word; }
+    .dark .cb-anchor-card .kw { color: #f8fafc; }
+    .cb-anchor-card .target { font-size: 1.25rem; font-weight: 700; color: #8B5CF6; font-family: 'Inter', sans-serif; line-height: 1.1; margin-top: 0.125rem; }
+    .dark .cb-anchor-card .target { color: #A78BFA; }
+    .cb-anchor-card .label { font-size: 0.65rem; color: #475569; margin-top: 0.125rem; }
+    .dark .cb-anchor-card .label { color: #94a3b8; }
+  </style>
+</head>
+<body class="font-body bg-surface-dark text-body-dark transition-colors duration-300">
+
+  <!-- ========== HEADER ========== -->
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 h-16 lg:h-[72px] bg-white/80 dark:bg-surface-dark/80 header-scrolled border-b border-gray-100 dark:border-gray-800 transition-all duration-300">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 h-full flex items-center justify-between">
+<a href="../index.html" class="flex items-center shrink-0">
+<img src="../images/logo.webp" alt="10XSEO" decoding="async" class="h-auto w-40 lg:w-44 dark:mix-blend-screen" width="600" height="125">
+</a>
+<nav class="hidden lg:flex items-center gap-1" aria-label="Main navigation">
+<a href="../about-us.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors" data-ka="ჩვენს შესახებ" data-en="About Us">About Us</a>
+<div class="relative group">
+<button class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors flex items-center gap-1" data-ka="სერვისები" data-en="Services">
+Services
+<svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+</button>
+<div class="absolute top-full left-0 mt-1 w-56 bg-white dark:bg-surface-dark-alt rounded-xl shadow-xl border border-gray-100 dark:border-gray-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 p-2">
+<a href="../seo-management.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark" data-ka="SEO მომსახურება" data-en="SEO Management">SEO მომსახურება <span class="text-[10px] bg-primary/15 text-primary-light px-1.5 py-0.5 rounded-full font-bold ml-1">რეკომენდებული</span></a>
+<a href="../seo-consultation.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark" data-ka="SEO კონსულტაცია" data-en="SEO Consultation">SEO Consultation</a>
+<a href="../seo-strategy.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark" data-ka="SEO სტრატეგია" data-en="Strategy Outline">Strategy Outline</a>
+<div class="relative group/copy">
+<button class="w-full flex items-center justify-between px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark" data-ka="კოპირაიტინგი" data-en="Copywriting">
+Copywriting
+<svg class="w-3.5 h-3.5 opacity-50 -rotate-90 group-hover/copy:rotate-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+</button>
+<div class="overflow-hidden max-h-0 group-hover/copy:max-h-40 transition-all duration-300 pl-3">
+<a href="../seo-copywriting.html" class="block px-3 py-2 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-body dark:text-body-dark" data-ka="SEO კოპირაიტინგი" data-en="SEO Copywriting">SEO Copywriting</a>
+<a href="../copywriting.html" class="block px-3 py-2 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-body dark:text-body-dark" data-ka="UI/UX Copy" data-en="UI/UX Copy">UI/UX Copy <span class="text-[10px] text-primary-light ml-1">Premium</span></a>
+</div>
+</div>
+<a href="../cro.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark" data-ka="კონვერსიის ოპტიმიზაცია" data-en="Conversion Optimization">Conversion Optimization</a>
+<a href="../google-ads.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">Google Ads</a>
+<a href="../ai-seo.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">AI SEO / GEO / AEO</a>
+<a href="../seo-course.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark" data-ka="SEO კურსი" data-en="SEO Course">SEO Course</a>
+</div>
+</div>
+<div class="relative group/ind">
+<a href="#" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors flex items-center gap-1" data-ka="ინდუსტრიები" data-en="Industries">
+Industries
+<svg class="w-4 h-4 transition-transform group-hover/ind:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+</a>
+<div class="absolute top-full left-0 mt-1 w-64 bg-white dark:bg-surface-dark-alt rounded-xl shadow-xl border border-gray-100 dark:border-gray-800 opacity-0 invisible group-hover/ind:opacity-100 group-hover/ind:visible transition-all duration-200 p-2">
+<a href="../industries/construction.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">Construction &amp; Real Estate</a>
+<a href="../industries/healthcare.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">Healthcare &amp; Clinics</a>
+<a href="../industries/financial-services.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">Financial Services</a>
+<a href="../industries/ecommerce.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">E-commerce</a>
+</div>
+</div>
+<a href="../portfolio.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors" data-ka="პორტფოლიო" data-en="Portfolio">Portfolio</a>
+<a href="../case-studies.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors" data-ka="შედეგები" data-en="Results">Results</a>
+<a href="../blog.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors" data-ka="ბლოგი" data-en="Blog">Blog</a>
+</nav>
+<div class="flex items-center gap-2">
+<a href="../index.html" id="lang-toggle" class="hidden sm:flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark transition-colors" hreflang="ka" aria-label="Switch to Georgian">
+<span id="lang-ka" class="opacity-50">KA</span>
+<span class="opacity-50">/</span>
+<span id="lang-en" class="text-primary font-bold">EN</span>
+</a>
+<a href="#" onclick="openCalendly();return false;" class="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 ai-cta-animate text-white text-sm font-semibold rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-200" data-ka="დაჯავშნეთ კონსულტაცია" data-en="Book Consultation">Book Consultation</a>
+<button id="mobile-menu-btn" class="lg:hidden w-9 h-9 min-w-[44px] min-h-[44px] rounded-lg flex flex-col items-center justify-center gap-[6px] hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-heading dark:text-heading-dark" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+<span class="hamburger-line block w-5 h-[2px] bg-current rounded-full"></span>
+<span class="hamburger-line block w-5 h-[2px] bg-current rounded-full"></span>
+<span class="hamburger-line block w-5 h-[2px] bg-current rounded-full"></span>
+</button>
+</div>
+</div>
+</header>
+<div id="mobile-menu" class="lg:hidden fixed inset-0 top-16 bg-surface-dark z-[60] overflow-y-auto pointer-events-none">
+<nav class="max-w-md mx-auto px-6 py-8 flex flex-col gap-2" aria-label="Mobile navigation">
+<a href="../index.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.05s" data-ka="მთავარი" data-en="Home">Home</a>
+<a href="../about-us.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.08s" data-ka="ჩვენს შესახებ" data-en="About Us">About Us</a>
+<hr class="menu-link my-3 border-gray-800" style="transition-delay:0.11s">
+<p class="menu-link text-xs font-semibold text-body-dark/80 uppercase tracking-wider mb-2" style="transition-delay:0.14s" data-ka="სერვისები" data-en="Services">Services</p>
+<a href="../seo-management.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.17s" data-ka="SEO მომსახურება" data-en="SEO Management">SEO Management</a>
+<a href="../seo-consultation.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.2s" data-ka="SEO კონსულტაცია" data-en="SEO Consultation">SEO Consultation</a>
+<a href="../seo-strategy.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.23s" data-ka="SEO სტრატეგია" data-en="Strategy Outline">Strategy Outline</a>
+<p class="menu-link text-xs font-semibold text-body-dark/40 uppercase tracking-wider mt-2 mb-1 pl-4" style="transition-delay:0.25s">Copywriting</p>
+<a href="../seo-copywriting.html" class="menu-link block px-4 py-3 rounded-xl text-base font-medium text-heading-dark hover:bg-gray-800/50 pl-8" style="transition-delay:0.26s" data-ka="SEO კოპირაიტინგი" data-en="SEO Copywriting">SEO Copywriting</a>
+<a href="../copywriting.html" class="menu-link block px-4 py-3 rounded-xl text-base font-medium text-heading-dark hover:bg-gray-800/50 pl-8" style="transition-delay:0.28s" data-ka="UI/UX Copy" data-en="UI/UX Copy">UI/UX Copy <span class="text-xs text-primary-light ml-1">Premium</span></a>
+<a href="../cro.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.29s" data-ka="კონვერსიის ოპტიმიზაცია" data-en="Conversion Optimization">Conversion Optimization</a>
+<a href="../google-ads.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.32s">Google Ads</a>
+<a href="../ai-seo.html" class="menu-link block px-4 py-3 rounded-xl text-base font-medium text-heading-dark hover:bg-gray-800/50 pl-8" style="transition-delay:0.35s">AI SEO / GEO / AEO</a>
+<a href="../seo-course.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.38s" data-ka="SEO კურსი" data-en="SEO Course">SEO Course</a>
+<hr class="menu-link my-3 border-gray-800" style="transition-delay:0.41s">
+<p class="menu-link text-xs font-semibold text-body-dark/80 uppercase tracking-wider mt-2 mb-1" style="transition-delay:0.43s">Industries</p>
+<a href="../industries/construction.html" class="menu-link block px-4 py-3 rounded-xl text-base font-medium text-heading-dark hover:bg-gray-800/50 pl-8" style="transition-delay:0.435s">Construction &amp; Real Estate</a>
+<a href="../industries/healthcare.html" class="menu-link block px-4 py-3 rounded-xl text-base font-medium text-heading-dark hover:bg-gray-800/50 pl-8" style="transition-delay:0.45s">Healthcare &amp; Clinics</a>
+<a href="../industries/financial-services.html" class="menu-link block px-4 py-3 rounded-xl text-base font-medium text-heading-dark hover:bg-gray-800/50 pl-8" style="transition-delay:0.46s">Financial Services</a>
+<a href="../industries/ecommerce.html" class="menu-link block px-4 py-3 rounded-xl text-base font-medium text-heading-dark hover:bg-gray-800/50 pl-8" style="transition-delay:0.47s">E-commerce</a>
+<a href="../portfolio.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.47s" data-ka="პორტფოლიო" data-en="Portfolio">Portfolio</a>
+<a href="../case-studies.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.5s" data-ka="შედეგები" data-en="Results">Results</a>
+<a href="../blog.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.53s" data-ka="ბლოგი" data-en="Blog">Blog</a>
+<hr class="menu-link my-3 border-gray-800" style="transition-delay:0.56s">
+<a href="#" onclick="openCalendly();return false;" class="menu-link block text-center px-6 py-4 ai-cta-animate text-white text-lg font-bold rounded-xl mt-2" style="transition-delay:0.59s" data-ka="დაჯავშნეთ კონსულტაცია" data-en="Book Consultation">
+Book Consultation
+</a>
+<a href="tel:+995510101517" class="menu-link call-btn block text-center px-6 py-3 border-2 border-primary-light text-primary-light text-lg font-bold rounded-xl flex items-center justify-center gap-2 transition-all duration-200" style="transition-delay:0.62s" data-ka="დაგვირეკეთ" data-en="Call Us">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+Call Us
+</a>
+</nav>
+</div>
+<!-- ========== HERO ========== -->
+  <section class="pt-24 lg:pt-28 pb-8 bg-surface dark:bg-surface-dark">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <h1 class="font-heading text-[28px] sm:text-[36px] lg:text-[44px] font-bold text-heading dark:text-heading-dark leading-[1.2] mb-4">Content Brief Builder</h1>
+      <p class="text-body dark:text-body-dark max-w-2xl mx-auto mb-2">შექმენით სტრუქტურირებული კონტენტ-ბრიფი წამებში. სათაურის ვარიანტები, H2/H3 outline, SEO checklist — კოპირაიტერისთვის მზა დავალება.</p>
+      <a href="../seo-tools.html" class="text-sm text-primary dark:text-primary-light hover:underline">&larr; ყველა ინსტრუმენტი</a>
+    </div>
+  </section>
+
+  <!-- ========== TOOL ========== -->
+  <section class="pb-16 lg:pb-20 bg-surface dark:bg-surface-dark">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="grid lg:grid-cols-2 gap-6">
+
+        <!-- LEFT PANE: FORM -->
+        <div class="bg-surface-alt dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 p-5 sm:p-7 space-y-7">
+
+          <div class="flex items-center justify-between">
+            <h2 class="font-heading text-lg sm:text-xl font-bold text-heading dark:text-heading-dark">ბრიფის ფორმა</h2>
+            <div class="flex items-center gap-1">
+              <button id="brief-lang-ka" class="px-3 py-1 text-xs font-semibold rounded-lg bg-primary/10 text-primary dark:text-primary-light">KA</button>
+              <button id="brief-lang-en" class="px-3 py-1 text-xs font-semibold rounded-lg text-body dark:text-body-dark hover:bg-gray-100 dark:hover:bg-gray-800">EN</button>
+            </div>
+          </div>
+
+          <!-- A. Setup -->
+          <div class="border-t border-gray-200 dark:border-gray-700 pt-5">
+            <p class="text-[11px] font-bold uppercase tracking-wider text-primary dark:text-primary-light mb-4 font-inter">A. პროექტის პარამეტრები</p>
+
+            <!-- 1. დანიშნულება -->
+            <div class="mb-4">
+              <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2" data-i18n="purpose">დანიშნულება</label>
+              <div class="grid grid-cols-3 gap-2">
+                <label class="cb-radio justify-center"><input type="radio" name="cb-purpose" value="blog" checked><span data-i18n="purpose-blog">ბლოგი</span></label>
+                <label class="cb-radio justify-center"><input type="radio" name="cb-purpose" value="landing"><span data-i18n="purpose-landing">Landing</span></label>
+                <label class="cb-radio justify-center"><input type="radio" name="cb-purpose" value="media"><span data-i18n="purpose-media">მედია</span></label>
+              </div>
+            </div>
+
+            <!-- 2. სამიზნე აუდიტორია -->
+            <div class="mb-4">
+              <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2" data-i18n="audience">სამიზნე აუდიტორია</label>
+              <input type="text" id="cb-audience" placeholder="მაგ: ბიზნესის მფლობელები" class="cb-input">
+            </div>
+
+            <!-- 4. მყიდველის ეტაპი -->
+            <div>
+              <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2" data-i18n="stage">მყიდველის გადაწყვეტილების ეტაპი</label>
+              <select id="cb-stage" class="cb-input">
+                <option value="awareness" data-i18n="stage-awareness">Awareness — ინფორმაციული ძიება</option>
+                <option value="consideration" selected data-i18n="stage-consideration">Consideration — შედარება/მოძიება</option>
+                <option value="decision" data-i18n="stage-decision">Decision — ყიდვის განზრახვა</option>
+                <option value="retention" data-i18n="stage-retention">Retention — არსებული მომხმარებელი</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- B. Keywords & length -->
+          <div class="border-t border-gray-200 dark:border-gray-700 pt-5">
+            <p class="text-[11px] font-bold uppercase tracking-wider text-primary dark:text-primary-light mb-4 font-inter">B. ქივორდები და მოცულობა</p>
+
+            <!-- 7. მთავარი ქივორდი -->
+            <div class="mb-4">
+              <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2" data-i18n="mainKw">მთავარი ქივორდი *</label>
+              <input type="text" id="cb-mainKw" placeholder="მაგ: SEO სააგენტო" class="cb-input" required>
+            </div>
+
+            <!-- 8. დამატებითი ქივორდები -->
+            <div class="mb-4">
+              <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2" data-i18n="secKw">დამატებითი ქივორდები (3-მდე)</label>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                <input type="text" id="cb-secKw1" placeholder="ქივორდი 1" class="cb-input">
+                <input type="text" id="cb-secKw2" placeholder="ქივორდი 2" class="cb-input">
+                <input type="text" id="cb-secKw3" placeholder="ქივორდი 3" class="cb-input">
+              </div>
+            </div>
+
+            <!-- 9. სიტყვების რაოდენობა -->
+            <div>
+              <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2" data-i18n="wordCount">სიტყვების რაოდენობა</label>
+              <input type="number" id="cb-wordCount" value="1000" min="200" step="50" class="cb-input">
+              <p class="text-xs text-body dark:text-body-dark mt-1.5"><span data-i18n="anchor-hint">Anchor Cloud 1% =</span> <span id="cb-anchor-hint" class="font-semibold text-primary dark:text-primary-light">10</span> <span data-i18n="mentions">ხსენება თითო ქივორდზე</span></p>
+            </div>
+          </div>
+
+          <!-- C. Linking, CTA, title -->
+          <div class="border-t border-gray-200 dark:border-gray-700 pt-5">
+            <p class="text-[11px] font-bold uppercase tracking-wider text-primary dark:text-primary-light mb-4 font-inter">C. ბმულები, CTA, სათაური</p>
+
+            <!-- 3. შიდა გადალინკვები -->
+            <div class="mb-4">
+              <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2" data-i18n="internal">შიდა გადალინკვები</label>
+              <textarea id="cb-internal" rows="3" placeholder="https://10xseo.ge/seo-management — SEO მომსახურება&#10;https://10xseo.ge/seo-audit — უფასო აუდიტი" class="cb-input"></textarea>
+              <p class="text-xs text-body dark:text-body-dark mt-1" data-i18n="internal-hint">თითოეული ხაზი: URL — anchor</p>
+            </div>
+
+            <!-- 5. CTA -->
+            <div class="mb-4">
+              <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2" data-i18n="cta">CTA</label>
+              <textarea id="cb-cta" rows="2" placeholder="მაგ: დაგვირეკეთ +XXX XXX XXX XXX | დაჯავშნეთ კონსულტაცია | შეიძინე დღესვე..." class="cb-input"></textarea>
+              <p class="text-xs text-body dark:text-body-dark mt-1" data-i18n="cta-hint">დაწერე CTA შენი ბრენდისთვის</p>
+            </div>
+
+            <!-- 6. სათაური -->
+            <div>
+              <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2" data-i18n="title">სათაური (H1)</label>
+              <input type="text" id="cb-title" placeholder="მთავარი ქივორდით..." class="cb-input">
+              <button type="button" onclick="suggestTitles()" class="mt-2 text-xs font-semibold text-primary dark:text-primary-light hover:underline" data-i18n="suggest-titles">+ 5 ვარიანტის შემოთავაზება</button>
+              <div id="cb-title-suggestions" class="mt-2 flex flex-wrap gap-1.5"></div>
+            </div>
+          </div>
+
+          <!-- D. AEO, meta, Q&A -->
+          <div class="border-t border-gray-200 dark:border-gray-700 pt-5">
+            <p class="text-[11px] font-bold uppercase tracking-wider text-primary dark:text-primary-light mb-4 font-inter">D. Meta და კითხვა-პასუხი</p>
+
+            <!-- 13. Meta Title -->
+            <div class="mb-4">
+              <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2">Meta Title</label>
+              <input type="text" id="cb-metaTitle" placeholder="მთავარი ქივორდი + ბრენდი" class="cb-input" maxlength="100">
+              <div class="flex items-center justify-between text-xs text-body dark:text-body-dark mt-1.5 gap-2">
+                <span id="cb-metaTitle-counter" class="font-inter">0 / 60 — 0px / 580px</span>
+                <span id="cb-metaTitle-warn"></span>
+              </div>
+            </div>
+
+            <!-- 14. Meta Description -->
+            <div class="mb-4">
+              <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2">Meta Description</label>
+              <textarea id="cb-metaDesc" rows="3" placeholder="მთავარი ქივორდი + 1-2 დამატებითი ქივორდი..." class="cb-input" maxlength="200"></textarea>
+              <div class="flex items-center justify-between text-xs text-body dark:text-body-dark mt-1.5 gap-2">
+                <span id="cb-metaDesc-counter" class="font-inter">0 / 160 — 0px / 920px</span>
+                <span id="cb-metaDesc-warn"></span>
+              </div>
+            </div>
+
+            <!-- 10. Q&A -->
+            <div>
+              <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2" data-i18n="qa">კითხვა-პასუხი (2-3)</label>
+              <div id="cb-qa-list" class="space-y-2"></div>
+              <button type="button" onclick="addQaRow()" class="mt-2 text-xs font-semibold text-primary dark:text-primary-light hover:underline" data-i18n="qa-add">+ კითხვის დამატება</button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT PANE: PREVIEW -->
+        <div>
+          <div class="lg:sticky lg:top-24 bg-surface-alt dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 p-5 sm:p-7 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto">
+            <div class="flex items-center justify-between mb-5 gap-3 flex-wrap">
+              <h2 class="font-heading text-lg sm:text-xl font-bold text-heading dark:text-heading-dark" data-i18n="preview">ბრიფის preview</h2>
+              <div class="flex flex-wrap gap-1.5">
+                <button onclick="exportFull()" class="cb-export-btn" data-i18n="export-full">სრული</button>
+                <button onclick="exportMarkdown()" class="cb-export-btn">.md</button>
+                <button onclick="exportOutline()" class="cb-export-btn">Outline</button>
+              </div>
+            </div>
+            <div id="cb-preview" class="space-y-4"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== OTHER TOOLS ========== -->
+  <section class="py-12 bg-surface-alt dark:bg-surface-dark-alt">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <h2 class="font-heading text-xl font-bold text-heading dark:text-heading-dark mb-6 text-center">სხვა ინსტრუმენტები</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+        <a href="pixel-width-checker.html" class="block p-3 rounded-xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-gray-800 hover:border-primary/50 transition-colors text-center"><span class="text-sm font-semibold text-heading dark:text-heading-dark">Pixel Width Checker</span></a>
+        <a href="keyword-density.html" class="block p-3 rounded-xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-gray-800 hover:border-primary/50 transition-colors text-center"><span class="text-sm font-semibold text-heading dark:text-heading-dark">Keyword Density</span></a>
+        <a href="og-preview.html" class="block p-3 rounded-xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-gray-800 hover:border-primary/50 transition-colors text-center"><span class="text-sm font-semibold text-heading dark:text-heading-dark">OG Preview</span></a>
+        <a href="readability-score.html" class="block p-3 rounded-xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-gray-800 hover:border-primary/50 transition-colors text-center"><span class="text-sm font-semibold text-heading dark:text-heading-dark">Readability Score</span></a>
+        <a href="seo-content-editor.html" class="block p-3 rounded-xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-gray-800 hover:border-primary/50 transition-colors text-center"><span class="text-sm font-semibold text-heading dark:text-heading-dark">SEO Content Editor</span></a>
+        <a href="numbers-to-words.html" class="block p-3 rounded-xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-gray-800 hover:border-primary/50 transition-colors text-center"><span class="text-sm font-semibold text-heading dark:text-heading-dark">რიცხვები სიტყვებში</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA BANNER ========== -->
+  <section class="py-16 lg:py-20 bg-surface-alt dark:bg-surface-dark-alt">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+      <div class="bg-gradient-to-br from-primary/10 via-accent/5 to-primary/10 dark:from-primary/20 dark:via-accent/10 dark:to-primary/20 rounded-3xl p-8 sm:p-12 border border-primary/20 dark:border-primary/30">
+        <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-heading dark:text-heading-dark leading-[1.3] mb-4">
+          გჭირდებათ პროფესიონალური SEO?
+        </h2>
+        <p class="text-body dark:text-body-dark mb-8 max-w-lg mx-auto">
+          ჩვენი ექსპერტები უფასოდ გაგიანალიზებენ საიტს და მოგცემენ კონკრეტულ რეკომენდაციებს.
+        </p>
+        <a href="#" onclick="openCalendly();return false;" class="inline-flex items-center gap-2 px-8 py-4 ai-cta-animate text-white text-lg font-bold rounded-2xl hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 transition-all duration-200">
+          დაჯავშნე კონსულტაცია
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+    <footer class="bg-heading dark:bg-surface-dark-alt text-gray-400 py-12 lg:py-16">
+<div class="max-w-7xl mx-auto px-4 sm:px-6">
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 lg:gap-6 mb-12">
+<div>
+<p class="font-heading text-white font-semibold text-sm uppercase tracking-wider mb-4">SEO სერვისები</p>
+<ul class="space-y-2.5 text-sm">
+<li><a href="../seo-management.html" class="hover:text-white transition-colors">SEO მომსახურება</a></li>
+<li><a href="../seo-consultation.html" class="hover:text-white transition-colors">SEO კონსულტაცია</a></li>
+<li><a href="../seo-strategy.html" class="hover:text-white transition-colors">SEO სტრატეგია</a></li>
+<li><a href="../seo-audit.html" class="hover:text-white transition-colors">უფასო SEO აუდიტი</a></li>
+<li><a href="../google-ads.html" class="hover:text-white transition-colors">Google Ads</a></li>
+<li><a href="../cro.html" class="hover:text-white transition-colors">კონვერსიის ოპტიმიზაცია</a></li>
+<li><a href="../ai-seo.html" class="hover:text-white transition-colors">AI SEO</a></li>
+<li><a href="../seo-copywriting.html" class="hover:text-white transition-colors">SEO კოპირაიტინგი</a></li>
+</ul>
+</div>
+<div>
+<p class="font-heading text-white font-semibold text-sm uppercase tracking-wider mb-4">Tools</p>
+<ul class="space-y-2.5 text-sm">
+<li><a href="../seo-tools.html" class="hover:text-white transition-colors">SEO ინსტრუმენტები</a></li>
+<li><a href="../tools/pixel-width-checker.html" class="hover:text-white transition-colors">ტექსტის სიგანის შემოწმება</a></li>
+<li><a href="../tools/keyword-density.html" class="hover:text-white transition-colors">საკვანძო სიტყვების სიხშირე</a></li>
+<li><a href="../tools/og-preview.html" class="hover:text-white transition-colors">OG ბარათის ნახვა</a></li>
+<li><a href="../tools/readability-score.html" class="hover:text-white transition-colors">წაკითხვადობის ქულა</a></li>
+<li><a href="../tools/seo-content-editor.html" class="hover:text-white transition-colors">SEO კონტენტის რედაქტორი</a></li>
+<li><a href="../tools/content-brief-builder.html" class="hover:text-white transition-colors">კონტენტ ბრიფის შემქმნელი</a></li>
+<li></li>          </ul>
+</div>
+<div>
+<p class="font-heading text-white font-semibold text-sm uppercase tracking-wider mb-4">Learn</p>
+<ul class="space-y-2.5 text-sm">
+<li><a href="../ra-aris-seo.html" class="hover:text-white transition-colors">რა არის SEO</a></li>
+<li><a href="../seo-leqsikoni.html" class="hover:text-white transition-colors">SEO ლექსიკონი</a></li>
+<li><a href="../startup-leqsikoni.html" class="hover:text-white transition-colors">სტარტაპ ლექსიკონი</a></li>
+<li><a href="../ai-leqsikoni.html" class="hover:text-white transition-colors">AI ლექსიკონი</a></li>
+<li><a href="../seo-course.html" class="hover:text-white transition-colors">SEO კურსი</a></li>
+<li><a href="../blog.html" class="hover:text-white transition-colors">ბლოგი</a></li>
+<li><a href="https://www.youtube.com/@10xSEO" class="hover:text-white transition-colors flex items-center gap-1.5" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 shrink-0 inline-block mr-1" viewBox="0 0 24 24" fill="#D4A017"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>YouTube არხი</a></li>
+</ul>
+</div>
+<div>
+<p class="font-heading text-white font-semibold text-sm uppercase tracking-wider mb-4">Industries</p>
+<ul class="space-y-2.5 text-sm">
+<li><a href="../industries/construction.html" class="hover:text-white transition-colors">Construction &amp; Real Estate</a></li>
+<li><a href="../industries/ecommerce.html" class="hover:text-white transition-colors">E-commerce</a></li>
+<li><a href="../industries/healthcare.html" class="hover:text-white transition-colors">ჯანდაცვა</a></li>
+<li><a href="../industries/financial-services.html" class="hover:text-white transition-colors">Financial Services</a></li>
+</ul>
+</div>
+<div>
+<p class="font-heading text-white font-semibold text-sm uppercase tracking-wider mb-4">Company</p>
+<ul class="space-y-2.5 text-sm">
+<li><a href="../about-us.html" class="hover:text-white transition-colors">ჩვენს შესახებ</a></li>
+<li><a href="../portfolio.html" class="hover:text-white transition-colors">პორტფოლიო</a></li>
+<li><a href="../vacancies.html" class="hover:text-white transition-colors">ვაკანსიები</a></li>
+<li><a href="../contact-us.html" class="hover:text-white transition-colors">Contact</a></li>
+</ul>
+</div>
+<div>
+<p class="font-heading text-white font-semibold text-sm uppercase tracking-wider mb-4">Contact</p>
+<ul class="space-y-3 text-sm">
+<li class="flex items-start gap-2">
+<svg class="w-4 h-4 mt-0.5 shrink-0 text-[#D4A017]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+<a href="tel:+995510101517" class="hover:text-white transition-colors">+995 510 10 15 17</a>
+</li>
+<li class="flex items-start gap-2">
+<svg class="w-4 h-4 mt-0.5 shrink-0 text-[#D4A017]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+<a href="mailto:sales@10xseo.ge" class="hover:text-white transition-colors">sales@10xseo.ge</a>
+</li>
+<li class="flex items-start gap-2">
+<svg class="w-4 h-4 mt-0.5 shrink-0 text-[#D4A017]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+<a href="https://share.google/SPa17J6BKtcs6g0ks" target="_blank" rel="noopener noreferrer" class="hover:text-[#D4A017] transition-colors">8 Bakhtrioni Street, Tbilisi 0194, Georgia</a>
+</li>
+</ul>
+<div class="flex gap-3 mt-5">
+<a href="https://www.facebook.com/10xSEO.Ge" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-gray-500 hover:bg-[#D4A017] hover:text-white transition-all duration-200" aria-label="Facebook">
+<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+</a>
+<a href="https://www.linkedin.com/company/10xseoge/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-gray-500 hover:bg-[#D4A017] hover:text-white transition-all duration-200" aria-label="LinkedIn">
+<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+</a>
+<a href="https://www.youtube.com/@10xSEO" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-gray-500 hover:bg-[#D4A017] hover:text-white transition-all duration-200" aria-label="YouTube">
+<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+</a>
+</div>
+</div>
+</div>
+<div class="border-t border-white/10 pt-8 flex items-center justify-center gap-3">
+<a href="../index.html">
+<img src="../images/logo-sm.webp" alt="10XSEO" loading="lazy" decoding="async" width="600" height="125" class="h-8 w-auto">
+</a>
+<p class="text-xs text-gray-300">Georgia's #1 SEO Agency. &copy; 2026 All rights reserved.</p>
+</div>
+</div>
+</footer>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast">დაკოპირდა!</div>
+
+  <!-- ========== JAVASCRIPT ========== -->
+  <script>
+    // ===== THEME =====
+    const html = document.documentElement;
+    if (localStorage.getItem('theme') !== 'light') { html.classList.add('dark'); }
+
+    // ===== TOAST =====
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg || 'დაკოპირდა!';
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2000);
+    }
+
+    function escHtml(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+    // ========================================
+    // CONTENT BRIEF BUILDER — brief-standard aligned
+    // ========================================
+    let briefLang = 'ka';
+
+    const briefTpl = {
+      ka: {
+        titles: {
+          blog: ['{kw}: სრული გზამკვლევი 2026', '{kw} — რა უნდა იცოდეთ', 'საუკეთესო {kw}: ტოპ რჩევები და სტრატეგიები', '{kw}: პრაქტიკული სახელმძღვანელო დამწყებთათვის', 'რატომ არის {kw} მნიშვნელოვანი და როგორ დავიწყოთ'],
+          landing: ['{kw} — #1 სერვისი საქართველოში', 'პროფესიონალური {kw} | მიიღეთ შედეგი', '{kw}: სწრაფი, ხარისხიანი, ხელმისაწვდომი', 'გჭირდებათ {kw}? მიმართეთ ექსპერტებს', '{kw} — დაიწყე დღესვე'],
+          media: ['{kw} — ექსკლუზიური მასალა', 'ყველაფერი {kw}-ზე ერთ სტატიაში', '{kw}: სიახლეები და ანალიზი 2026', '{kw} — რას ამბობენ ექსპერტები', 'რატომ ლაპარაკობს ყველა {kw}-ზე']
+        },
+        labels: {
+          purpose: 'დანიშნულება',
+          'purpose-blog': 'ბლოგი', 'purpose-landing': 'Landing', 'purpose-media': 'მედია',
+          audience: 'სამიზნე აუდიტორია',
+          stage: 'მყიდველის გადაწყვეტილების ეტაპი',
+          'stage-awareness': 'Awareness — ინფორმაციული ძიება', 'stage-consideration': 'Consideration — შედარება/მოძიება', 'stage-decision': 'Decision — ყიდვის განზრახვა', 'stage-retention': 'Retention — არსებული მომხმარებელი',
+          mainKw: 'მთავარი ქივორდი *',
+          secKw: 'დამატებითი ქივორდები (3-მდე)',
+          wordCount: 'სიტყვების რაოდენობა',
+          'anchor-hint': 'Anchor Cloud 1% =',
+          mentions: 'ხსენება თითო ქივორდზე',
+          internal: 'შიდა გადალინკვები',
+          'internal-hint': 'თითოეული ხაზი: URL — anchor',
+          cta: 'CTA',
+          'cta-hint': 'დაწერე CTA შენი ბრენდისთვის',
+          title: 'სათაური (H1)',
+          'suggest-titles': '+ 5 ვარიანტის შემოთავაზება',
+          qa: 'კითხვა-პასუხი (2-3)',
+          'qa-add': '+ კითხვის დამატება',
+          preview: 'ბრიფის preview',
+          'export-full': 'სრული'
+        },
+        qaPrefill: ['რა არის {kw}?', 'როგორ ვირჩიოთ {kw}?', 'რამდენი ღირს {kw}?'],
+        out: {
+          purposeMap: { blog: 'ბლოგი', landing: 'Landing Page', media: 'მედია პუბლიკაცია' },
+          stageMap: { awareness: 'Awareness — ინფორმაციული ძიება', consideration: 'Consideration — შედარება/მოძიება', decision: 'Decision — ყიდვის განზრახვა', retention: 'Retention — არსებული მომხმარებელი' },
+          aeo: 'პირველ 50 სიტყვაში პირდაპირი პასუხი იმ კითხვაზე, რომელსაც სტატია ეხება.',
+          checklist: [
+            'მთავარი ქივორდი H1-ში (სათაურში)',
+            'მთავარი ქივორდი H2-ში (ქვესათაურში)',
+            'მთავარი ქივორდი პირველ 150 სიტყვაში'
+          ],
+          headers: {
+            purpose: 'დანიშნულება', audience: 'აუდიტორია', stage: 'მყიდველის ეტაპი',
+            words: 'მოცულობა', title: 'სათაური (H1)',
+            metaTitle: 'Meta Title', metaDesc: 'Meta Description',
+            aeo: 'AEO Overview', anchor: 'Anchor Cloud (target 1%)',
+            internal: 'შიდა გადალინკვები', cta: 'CTA',
+            qa: 'კითხვა-პასუხი', checklist: 'SEO Checklist',
+            next: 'შემდეგი ნაბიჯები'
+          },
+          mentions: 'ხსენება', wordsUnit: 'სიტყვა',
+          empty: 'შეიყვანეთ მთავარი ქივორდი ბრიფის სანახავად',
+          warnKwInTitle: 'მთავარი ქივორდი უნდა იყოს დასაწყისში',
+          warnKwMissingDesc: 'მთავარი ქივორდი ვერ მოიძებნა',
+          warnNoSecInDesc: 'დამატებითი ქივორდი არ ფიგურირებს',
+          tooLong: 'გრძელია',
+          ok: 'OK',
+          copied: 'დაკოპირდა!'
+        }
+      },
+      en: {
+        titles: {
+          blog: ['How to {kw}: Complete Guide 2026', '{kw} — Everything You Need to Know', 'Best {kw}: Top Tips and Strategies', '{kw}: A Practical Guide for Beginners', 'Why {kw} Matters and How to Get Started'],
+          landing: ['{kw} — #1 Service Provider', 'Professional {kw} | Get Results', '{kw}: Fast, Quality, Affordable', 'Need {kw}? Trust the Experts', '{kw} — Start Today'],
+          media: ['{kw} — Exclusive Coverage', 'Everything About {kw} in One Article', '{kw}: News and Analysis 2026', '{kw} — What Experts Say', 'Why Everyone Talks About {kw}']
+        },
+        labels: {
+          purpose: 'Purpose',
+          'purpose-blog': 'Blog', 'purpose-landing': 'Landing', 'purpose-media': 'Media',
+          audience: 'Target Audience',
+          stage: 'Buyer Decision Stage',
+          'stage-awareness': 'Awareness — informational search', 'stage-consideration': 'Consideration — comparison', 'stage-decision': 'Decision — purchase intent', 'stage-retention': 'Retention — existing customer',
+          mainKw: 'Primary Keyword *',
+          secKw: 'Secondary Keywords (up to 3)',
+          wordCount: 'Word Count',
+          'anchor-hint': 'Anchor Cloud 1% =',
+          mentions: 'mentions per keyword',
+          internal: 'Internal Linking',
+          'internal-hint': 'One per line: URL — anchor',
+          cta: 'CTA',
+          'cta-hint': 'Write your own CTA',
+          title: 'Title (H1)',
+          'suggest-titles': '+ Suggest 5 variants',
+          qa: 'Q&A (2–3)',
+          'qa-add': '+ Add question',
+          preview: 'Brief preview',
+          'export-full': 'Full'
+        },
+        qaPrefill: ['What is {kw}?', 'How to choose {kw}?', 'How much does {kw} cost?'],
+        out: {
+          purposeMap: { blog: 'Blog', landing: 'Landing Page', media: 'Media Publication' },
+          stageMap: { awareness: 'Awareness', consideration: 'Consideration', decision: 'Decision', retention: 'Retention' },
+          aeo: 'In the first 50 words, give a direct answer to the question this article addresses.',
+          checklist: [
+            'Primary keyword in H1 (title)',
+            'Primary keyword in H2 (subheading)',
+            'Primary keyword in first 150 words'
+          ],
+          headers: {
+            purpose: 'Purpose', audience: 'Audience', stage: 'Buyer Stage',
+            words: 'Length', title: 'Title (H1)',
+            metaTitle: 'Meta Title', metaDesc: 'Meta Description',
+            aeo: 'AEO Overview', anchor: 'Anchor Cloud (target 1%)',
+            internal: 'Internal Links', cta: 'CTA',
+            qa: 'Q&A', checklist: 'SEO Checklist',
+            next: 'Next steps'
+          },
+          mentions: 'mentions', wordsUnit: 'words',
+          empty: 'Enter the primary keyword to see the brief',
+          warnKwInTitle: 'Primary keyword must come first',
+          warnKwMissingDesc: 'Primary keyword missing',
+          warnNoSecInDesc: 'No secondary keyword present',
+          tooLong: 'too long',
+          ok: 'OK',
+          copied: 'Copied!'
+        }
+      }
+    };
+
+    function applyI18n(lang) {
+      briefLang = lang;
+      const L = briefTpl[lang].labels;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const k = el.dataset.i18n;
+        if (L[k] !== undefined) el.textContent = L[k];
+      });
+      const ka = document.getElementById('brief-lang-ka');
+      const en = document.getElementById('brief-lang-en');
+      const active = lang === 'ka' ? ka : en;
+      const inactive = lang === 'ka' ? en : ka;
+      active.classList.add('bg-primary/10', 'text-primary', 'dark:text-primary-light');
+      active.classList.remove('text-body', 'dark:text-body-dark');
+      inactive.classList.remove('bg-primary/10', 'text-primary', 'dark:text-primary-light');
+      inactive.classList.add('text-body', 'dark:text-body-dark');
+      refreshPristineQa();
+      renderBrief();
+    }
+    document.getElementById('brief-lang-ka').addEventListener('click', () => applyI18n('ka'));
+    document.getElementById('brief-lang-en').addEventListener('click', () => applyI18n('en'));
+
+    // Lifted from pixel-width-checker.html (canvas pixel measurement)
+    const _pxCanvas = document.createElement('canvas');
+    const _pxCtx = _pxCanvas.getContext('2d');
+    function measurePixelWidth(text, font) {
+      _pxCtx.font = font;
+      return Math.round(_pxCtx.measureText(text || '').width);
+    }
+    const TITLE_FONT = '20px Arial, sans-serif';
+    const DESC_FONT = '14px Arial, sans-serif';
+    const TITLE_PX_LIMIT = 580;
+    const DESC_PX_LIMIT = 920;
+    const TITLE_CHAR_LIMIT = 60;
+    const DESC_CHAR_LIMIT = 160;
+
+    function anchorTarget(wc) { return Math.max(1, Math.round((Number(wc) || 1000) * 0.01)); }
+
+    function parseInternalLinks(text) {
+      return (text || '').split('\n')
+        .map(line => line.trim())
+        .filter(Boolean)
+        .map(line => {
+          const m = line.match(/^(.+?)\s*[—–|\-]\s*(.+)$/);
+          return m ? { url: m[1].trim(), anchor: m[2].trim() } : null;
+        })
+        .filter(Boolean);
+    }
+
+    function metaTitleStartsWithKw(metaTitle, kw) {
+      if (!metaTitle || !kw) return true;
+      const tokens = metaTitle.toLowerCase().trim().split(/\s+/).slice(0, 2).join(' ');
+      return tokens.includes(kw.toLowerCase());
+    }
+
+    function addQaRow(value, pristine) {
+      const list = document.getElementById('cb-qa-list');
+      const wrap = document.createElement('div');
+      wrap.className = 'flex items-start gap-2';
+      wrap.dataset.pristine = pristine ? 'true' : 'false';
+      wrap.innerHTML =
+        '<textarea rows="2" class="cb-input flex-1" placeholder="' + escHtml(briefTpl[briefLang].labels.qa) + '">' + escHtml(value || '') + '</textarea>' +
+        '<button type="button" class="text-body dark:text-body-dark hover:text-red-500 px-2 py-2 rounded-lg" aria-label="Remove">&#10005;</button>';
+      const ta = wrap.querySelector('textarea');
+      ta.addEventListener('input', () => { wrap.dataset.pristine = 'false'; scheduleRender(); schedulePersist(); });
+      wrap.querySelector('button').addEventListener('click', () => { wrap.remove(); scheduleRender(); schedulePersist(); });
+      list.appendChild(wrap);
+    }
+    function refreshPristineQa() {
+      const kw = document.getElementById('cb-mainKw').value.trim() || '{kw}';
+      const tpl = briefTpl[briefLang].qaPrefill;
+      const rows = document.querySelectorAll('#cb-qa-list > div');
+      rows.forEach((row, i) => {
+        if (row.dataset.pristine === 'true' && tpl[i]) {
+          row.querySelector('textarea').value = tpl[i].replace(/\{kw\}/g, kw);
+        }
+      });
+    }
+    function initQa() {
+      const list = document.getElementById('cb-qa-list');
+      list.innerHTML = '';
+      briefTpl[briefLang].qaPrefill.forEach(q => addQaRow(q.replace(/\{kw\}/g, '{kw}'), true));
+    }
+
+    function readForm() {
+      const purposeEl = document.querySelector('input[name="cb-purpose"]:checked');
+      const qaTextareas = document.querySelectorAll('#cb-qa-list textarea');
+      return {
+        purpose: purposeEl ? purposeEl.value : 'blog',
+        audience: document.getElementById('cb-audience').value.trim(),
+        stage: document.getElementById('cb-stage').value,
+        mainKw: document.getElementById('cb-mainKw').value.trim(),
+        secKw: [
+          document.getElementById('cb-secKw1').value.trim(),
+          document.getElementById('cb-secKw2').value.trim(),
+          document.getElementById('cb-secKw3').value.trim()
+        ].filter(Boolean),
+        wordCount: parseInt(document.getElementById('cb-wordCount').value, 10) || 1000,
+        internalLinks: parseInternalLinks(document.getElementById('cb-internal').value),
+        cta: document.getElementById('cb-cta').value.trim(),
+        title: document.getElementById('cb-title').value.trim(),
+        metaTitle: document.getElementById('cb-metaTitle').value.trim(),
+        metaDesc: document.getElementById('cb-metaDesc').value.trim(),
+        qa: Array.from(qaTextareas).map(t => t.value.trim()).filter(Boolean)
+      };
+    }
+
+    function updateMetaCounters() {
+      const mt = document.getElementById('cb-metaTitle').value;
+      const md = document.getElementById('cb-metaDesc').value;
+      const mtPx = measurePixelWidth(mt, TITLE_FONT);
+      const mdPx = measurePixelWidth(md, DESC_FONT);
+      document.getElementById('cb-metaTitle-counter').textContent = mt.length + ' / ' + TITLE_CHAR_LIMIT + ' — ' + mtPx + 'px / ' + TITLE_PX_LIMIT + 'px';
+      document.getElementById('cb-metaDesc-counter').textContent = md.length + ' / ' + DESC_CHAR_LIMIT + ' — ' + mdPx + 'px / ' + DESC_PX_LIMIT + 'px';
+
+      const out = briefTpl[briefLang].out;
+      const kw = document.getElementById('cb-mainKw').value.trim();
+      const mtWarnEl = document.getElementById('cb-metaTitle-warn');
+      const mdWarnEl = document.getElementById('cb-metaDesc-warn');
+
+      let mtWarn = '';
+      if (mt && kw && !metaTitleStartsWithKw(mt, kw)) mtWarn = out.warnKwInTitle;
+      else if (mt.length > TITLE_CHAR_LIMIT || mtPx > TITLE_PX_LIMIT) mtWarn = out.tooLong;
+      mtWarnEl.innerHTML = mtWarn ? '<span class="cb-pill cb-pill-warn">' + escHtml(mtWarn) + '</span>' : '';
+
+      let mdWarn = '';
+      const secKw = [1, 2, 3].map(i => document.getElementById('cb-secKw' + i).value.trim().toLowerCase()).filter(Boolean);
+      if (md && kw && !md.toLowerCase().includes(kw.toLowerCase())) mdWarn = out.warnKwMissingDesc;
+      else if (md && secKw.length && !secKw.some(k => md.toLowerCase().includes(k))) mdWarn = out.warnNoSecInDesc;
+      else if (md.length > DESC_CHAR_LIMIT || mdPx > DESC_PX_LIMIT) mdWarn = out.tooLong;
+      mdWarnEl.innerHTML = mdWarn ? '<span class="cb-pill cb-pill-warn">' + escHtml(mdWarn) + '</span>' : '';
+    }
+
+    function updateAnchorHint() {
+      const wc = parseInt(document.getElementById('cb-wordCount').value, 10) || 1000;
+      document.getElementById('cb-anchor-hint').textContent = anchorTarget(wc);
+    }
+
+    function suggestTitles() {
+      const kw = document.getElementById('cb-mainKw').value.trim();
+      const purposeEl = document.querySelector('input[name="cb-purpose"]:checked');
+      const purpose = purposeEl ? purposeEl.value : 'blog';
+      if (!kw) { showToast(briefLang === 'ka' ? 'შეიყვანეთ მთავარი ქივორდი' : 'Enter primary keyword'); return; }
+      const titles = (briefTpl[briefLang].titles[purpose] || briefTpl[briefLang].titles.blog).map(t => t.replace(/\{kw\}/g, kw));
+      const wrap = document.getElementById('cb-title-suggestions');
+      wrap.innerHTML = titles.map(t => '<button type="button" class="cb-suggest-chip">' + escHtml(t) + '</button>').join('');
+      wrap.querySelectorAll('.cb-suggest-chip').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.getElementById('cb-title').value = btn.textContent;
+          wrap.innerHTML = '';
+          scheduleRender();
+          schedulePersist();
+        });
+      });
+    }
+
+    function renderBrief() {
+      const s = readForm();
+      const out = briefTpl[briefLang].out;
+      const H = out.headers;
+      const preview = document.getElementById('cb-preview');
+
+      if (!s.mainKw) {
+        preview.innerHTML = '<div class="text-center py-12 text-body dark:text-body-dark text-sm">' + escHtml(out.empty) + '</div>';
+        return;
+      }
+
+      const target = anchorTarget(s.wordCount);
+      const mtPx = measurePixelWidth(s.metaTitle, TITLE_FONT);
+      const mdPx = measurePixelWidth(s.metaDesc, DESC_FONT);
+      const mtKwOk = !s.metaTitle || metaTitleStartsWithKw(s.metaTitle, s.mainKw);
+      const mtCharOk = s.metaTitle.length <= TITLE_CHAR_LIMIT && mtPx <= TITLE_PX_LIMIT;
+      const mdHasMain = !s.metaDesc || s.metaDesc.toLowerCase().includes(s.mainKw.toLowerCase());
+      const mdHasSec = s.secKw.length === 0 || !s.metaDesc || s.secKw.some(k => s.metaDesc.toLowerCase().includes(k.toLowerCase()));
+      const mdCharOk = s.metaDesc.length <= DESC_CHAR_LIMIT && mdPx <= DESC_PX_LIMIT;
+
+      const allKw = [s.mainKw, ...s.secKw];
+
+      function pxBar(px, limit) {
+        const ratio = Math.min(1, px / limit);
+        const color = ratio < 0.85 ? '#21C743' : ratio < 1 ? '#f59e0b' : '#ef4444';
+        return '<div class="cb-pxbar"><div class="cb-pxbar-fill" style="width:' + (ratio * 100).toFixed(1) + '%;background:' + color + '"></div></div>';
+      }
+      function pill(ok, text) {
+        return '<span class="cb-pill ' + (ok ? 'cb-pill-ok' : 'cb-pill-warn') + '">' + escHtml(text) + '</span>';
+      }
+
+      const html = [];
+
+      html.push('<div class="flex flex-wrap gap-1.5">' +
+        '<span class="cb-pill cb-pill-ok">' + escHtml(s.mainKw) + '</span>' +
+        '<span class="cb-pill" style="background:rgba(20,184,166,0.12);color:#14B8A6">' + escHtml(out.purposeMap[s.purpose]) + '</span>' +
+        '<span class="cb-pill" style="background:rgba(59,130,246,0.12);color:#3B82F6">' + escHtml(out.stageMap[s.stage]) + '</span>' +
+        (s.audience ? '<span class="cb-pill" style="background:rgba(148,163,184,0.18);color:#475569">' + escHtml(s.audience) + '</span>' : '') +
+        '<span class="cb-pill" style="background:rgba(148,163,184,0.18);color:#475569">' + s.wordCount + ' ' + escHtml(out.wordsUnit) + '</span>' +
+      '</div>');
+
+      if (s.title) {
+        html.push('<div class="cb-section-card"><h4>' + escHtml(H.title) + '</h4>' +
+          '<p class="text-sm text-heading dark:text-heading-dark font-semibold">' + escHtml(s.title) + '</p></div>');
+      }
+
+      html.push('<div class="cb-section-card"><h4>' + escHtml(H.metaTitle) + '</h4>' +
+        (s.metaTitle ? '<p class="text-sm text-heading dark:text-heading-dark">' + escHtml(s.metaTitle) + '</p>' +
+          pxBar(mtPx, TITLE_PX_LIMIT) +
+          '<div class="flex flex-wrap gap-1 mt-2">' +
+            pill(mtKwOk, mtKwOk ? out.ok : out.warnKwInTitle) +
+            pill(mtCharOk, mtPx + 'px / ' + TITLE_PX_LIMIT + 'px') +
+            pill(s.metaTitle.length <= TITLE_CHAR_LIMIT, s.metaTitle.length + ' / ' + TITLE_CHAR_LIMIT) +
+          '</div>'
+          : '<p class="text-xs text-body dark:text-body-dark">—</p>') +
+      '</div>');
+
+      html.push('<div class="cb-section-card"><h4>' + escHtml(H.metaDesc) + '</h4>' +
+        (s.metaDesc ? '<p class="text-sm text-heading dark:text-heading-dark">' + escHtml(s.metaDesc) + '</p>' +
+          pxBar(mdPx, DESC_PX_LIMIT) +
+          '<div class="flex flex-wrap gap-1 mt-2">' +
+            pill(mdHasMain, mdHasMain ? out.ok : out.warnKwMissingDesc) +
+            pill(mdHasSec, mdHasSec ? out.ok : out.warnNoSecInDesc) +
+            pill(mdCharOk, mdPx + 'px / ' + DESC_PX_LIMIT + 'px') +
+          '</div>'
+          : '<p class="text-xs text-body dark:text-body-dark">—</p>') +
+      '</div>');
+
+      html.push('<div class="cb-aeo-callout">' +
+        '<div class="flex items-center gap-2 mb-1">' +
+          '<span class="cb-pill" style="background:rgba(139,92,246,0.18);color:#8B5CF6">AEO</span>' +
+          '<span class="text-xs font-bold uppercase tracking-wider text-heading dark:text-heading-dark font-inter">' + escHtml(H.aeo) + '</span>' +
+        '</div>' +
+        '<p class="text-sm text-heading dark:text-heading-dark">' + escHtml(out.aeo) + '</p>' +
+      '</div>');
+
+      html.push('<div class="cb-section-card"><h4>' + escHtml(H.anchor) + ' — ' + target + ' ' + escHtml(out.mentions) + '</h4>' +
+        '<div class="grid grid-cols-2 gap-2">' +
+          allKw.map(k => '<div class="cb-anchor-card"><div class="kw">' + escHtml(k) + '</div><div class="target">' + target + '</div><div class="label">' + escHtml(out.mentions) + '</div></div>').join('') +
+        '</div>' +
+      '</div>');
+
+      if (s.internalLinks.length) {
+        html.push('<div class="cb-section-card"><h4>' + escHtml(H.internal) + '</h4>' +
+          '<ul class="space-y-1 text-sm">' +
+            s.internalLinks.map(l => '<li class="text-heading dark:text-heading-dark"><span class="text-primary dark:text-primary-light">→</span> <a href="' + escHtml(l.url) + '" target="_blank" rel="noopener" class="hover:underline break-all">' + escHtml(l.url) + '</a> — <span class="text-body dark:text-body-dark">' + escHtml(l.anchor) + '</span></li>').join('') +
+          '</ul></div>');
+      }
+
+      if (s.cta) {
+        html.push('<div class="cb-section-card"><h4>' + escHtml(H.cta) + '</h4>' +
+          '<p class="text-sm text-heading dark:text-heading-dark font-semibold">' + escHtml(s.cta) + '</p></div>');
+      }
+
+      if (s.qa.length) {
+        html.push('<div class="cb-section-card"><h4>' + escHtml(H.qa) + '</h4>' +
+          '<ol class="space-y-1.5 text-sm list-decimal list-inside text-heading dark:text-heading-dark">' +
+            s.qa.map(q => '<li>' + escHtml(q) + '</li>').join('') +
+          '</ol></div>');
+      }
+
+      html.push('<div class="cb-section-card"><h4>' + escHtml(H.checklist) + '</h4>' +
+        '<ul class="space-y-1.5 text-sm">' +
+          out.checklist.map(c => '<li class="flex items-start gap-2 text-heading dark:text-heading-dark"><span class="text-primary dark:text-primary-light mt-0.5">☐</span> ' + escHtml(c) + '</li>').join('') +
+        '</ul></div>');
+
+      html.push('<div class="cb-section-card"><h4>' + escHtml(H.next) + '</h4>' +
+        '<div class="grid grid-cols-3 gap-2">' +
+          '<a href="pixel-width-checker.html" class="block p-2 rounded-lg bg-primary/5 hover:bg-primary/15 text-center text-xs font-semibold text-primary dark:text-primary-light transition-colors">Pixel Width</a>' +
+          '<a href="keyword-density.html" class="block p-2 rounded-lg bg-primary/5 hover:bg-primary/15 text-center text-xs font-semibold text-primary dark:text-primary-light transition-colors">Keyword Density</a>' +
+          '<a href="readability-score.html" class="block p-2 rounded-lg bg-primary/5 hover:bg-primary/15 text-center text-xs font-semibold text-primary dark:text-primary-light transition-colors">Readability</a>' +
+        '</div></div>');
+
+      preview.innerHTML = html.join('');
+    }
+
+    function buildBriefMarkdown() {
+      const s = readForm();
+      if (!s.mainKw) return '';
+      const out = briefTpl[briefLang].out;
+      const H = out.headers;
+      const target = anchorTarget(s.wordCount);
+      const mtPx = measurePixelWidth(s.metaTitle, TITLE_FONT);
+      const mdPx = measurePixelWidth(s.metaDesc, DESC_FONT);
+      const lines = [];
+      lines.push('# Content Brief: ' + s.mainKw, '');
+      lines.push('**' + H.purpose + ':** ' + out.purposeMap[s.purpose]);
+      if (s.audience) lines.push('**' + H.audience + ':** ' + s.audience);
+      lines.push('**' + H.stage + ':** ' + out.stageMap[s.stage]);
+      lines.push('**' + H.words + ':** ' + s.wordCount + ' ' + out.wordsUnit, '');
+      if (s.title) lines.push('## ' + H.title, s.title, '');
+      lines.push('## Meta');
+      lines.push('- **Title:** ' + (s.metaTitle || '—') + '  (' + mtPx + 'px / ' + TITLE_PX_LIMIT + 'px, ' + s.metaTitle.length + '/' + TITLE_CHAR_LIMIT + ')');
+      lines.push('- **Description:** ' + (s.metaDesc || '—') + '  (' + mdPx + 'px / ' + DESC_PX_LIMIT + 'px, ' + s.metaDesc.length + '/' + DESC_CHAR_LIMIT + ')', '');
+      lines.push('## ' + H.aeo, out.aeo, '');
+      lines.push('## ' + H.anchor);
+      [s.mainKw, ...s.secKw].forEach(k => lines.push('- ' + k + ': ' + target + ' ' + out.mentions));
+      lines.push('');
+      if (s.internalLinks.length) {
+        lines.push('## ' + H.internal);
+        s.internalLinks.forEach(l => lines.push('- ' + l.url + ' — ' + l.anchor));
+        lines.push('');
+      }
+      if (s.cta) lines.push('## ' + H.cta, s.cta, '');
+      if (s.qa.length) {
+        lines.push('## ' + H.qa);
+        s.qa.forEach((q, i) => lines.push((i + 1) + '. ' + q));
+        lines.push('');
+      }
+      lines.push('## ' + H.checklist);
+      out.checklist.forEach(c => lines.push('- [ ] ' + c));
+      return lines.join('\n');
+    }
+
+    function buildBriefPlain() {
+      const md = buildBriefMarkdown();
+      return md
+        .replace(/^# (.+)$/gm, (m, t) => t.toUpperCase() + '\n' + '='.repeat(Math.min(60, t.length)))
+        .replace(/^## (.+)$/gm, (m, t) => '\n' + t.toUpperCase() + '\n' + '-'.repeat(Math.min(40, t.length)))
+        .replace(/\*\*(.+?):\*\*/g, '$1:')
+        .replace(/^- \[ \] /gm, '  [ ] ')
+        .replace(/^- /gm, '  • ');
+    }
+
+    function buildBriefOutline() {
+      const s = readForm();
+      if (!s.mainKw) return '';
+      const out = briefTpl[briefLang].out;
+      const lines = ['# ' + s.mainKw, ''];
+      if (s.title) lines.push('H1: ' + s.title, '');
+      lines.push('H2: ' + (briefLang === 'ka' ? 'შესავალი / AEO Overview' : 'Introduction / AEO Overview'));
+      lines.push('H2: ' + (briefLang === 'ka' ? 'რა არის ' : 'What is ') + s.mainKw + '?');
+      lines.push('H2: ' + (briefLang === 'ka' ? 'ძირითადი მნიშვნელოვანი ასპექტები' : 'Key aspects'));
+      lines.push('H2: ' + (briefLang === 'ka' ? 'როგორ ' : 'How to ') + s.mainKw);
+      lines.push('H2: ' + out.headers.qa);
+      if (s.qa.length) s.qa.forEach((q, i) => lines.push('  H3: ' + q));
+      lines.push('H2: ' + (briefLang === 'ka' ? 'დასკვნა + CTA' : 'Conclusion + CTA'));
+      return lines.join('\n');
+    }
+
+    function downloadText(text, filename) {
+      const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => { document.body.removeChild(a); URL.revokeObjectURL(url); }, 100);
+    }
+    function deliverBrief(text, filename) {
+      if (!text) { showToast(briefLang === 'ka' ? 'შეიყვანეთ მთავარი ქივორდი' : 'Enter primary keyword'); return; }
+      downloadText(text, filename);
+      navigator.clipboard.writeText(text).catch(() => {});
+      showToast(briefLang === 'ka' ? 'ჩამოიტვირთა + დაკოპირდა' : 'Downloaded + copied');
+    }
+    function safeFilename() {
+      const kw = (document.getElementById('cb-mainKw').value.trim() || 'brief')
+        .replace(/[\\/:*?"<>|\s]+/g, '-')
+        .replace(/^-+|-+$/g, '')
+        .slice(0, 60);
+      return kw || 'brief';
+    }
+    function exportFull() { deliverBrief(buildBriefPlain(), 'brief-' + safeFilename() + '.txt'); }
+    function exportMarkdown() { deliverBrief(buildBriefMarkdown(), 'brief-' + safeFilename() + '.md'); }
+    function exportOutline() { deliverBrief(buildBriefOutline(), 'outline-' + safeFilename() + '.txt'); }
+
+    const STORAGE_KEY = 'cb_state_v1';
+    function persistState() {
+      try {
+        const s = readForm();
+        s.lang = briefLang;
+        s.internalLinksRaw = document.getElementById('cb-internal').value;
+        s.qaRows = Array.from(document.querySelectorAll('#cb-qa-list > div')).map(row => ({
+          value: row.querySelector('textarea').value,
+          pristine: row.dataset.pristine === 'true'
+        }));
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(s));
+      } catch (e) {}
+    }
+    function restoreState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return false;
+        const s = JSON.parse(raw);
+        if (s.lang && s.lang !== briefLang) briefLang = s.lang;
+        const setRadio = (name, val) => { const el = document.querySelector('input[name="' + name + '"][value="' + val + '"]'); if (el) el.checked = true; };
+        if (s.purpose) setRadio('cb-purpose', s.purpose);
+        if (s.cta) document.getElementById('cb-cta').value = s.cta;
+        if (s.audience) document.getElementById('cb-audience').value = s.audience;
+        if (s.stage) document.getElementById('cb-stage').value = s.stage;
+        if (s.mainKw) document.getElementById('cb-mainKw').value = s.mainKw;
+        (s.secKw || []).forEach((k, i) => { const el = document.getElementById('cb-secKw' + (i + 1)); if (el) el.value = k; });
+        if (s.wordCount) document.getElementById('cb-wordCount').value = s.wordCount;
+        if (s.internalLinksRaw !== undefined) document.getElementById('cb-internal').value = s.internalLinksRaw;
+        if (s.title) document.getElementById('cb-title').value = s.title;
+        if (s.metaTitle) document.getElementById('cb-metaTitle').value = s.metaTitle;
+        if (s.metaDesc) document.getElementById('cb-metaDesc').value = s.metaDesc;
+        const list = document.getElementById('cb-qa-list');
+        list.innerHTML = '';
+        if (Array.isArray(s.qaRows) && s.qaRows.length) {
+          s.qaRows.forEach(r => addQaRow(r.value, r.pristine));
+        } else {
+          briefTpl[briefLang].qaPrefill.forEach(q => addQaRow(q.replace(/\{kw\}/g, s.mainKw || '{kw}'), true));
+        }
+        return true;
+      } catch (e) { return false; }
+    }
+
+    let renderTimer = null, persistTimer = null, counterTimer = null;
+    function scheduleRender() { clearTimeout(renderTimer); renderTimer = setTimeout(renderBrief, 120); }
+    function schedulePersist() { clearTimeout(persistTimer); persistTimer = setTimeout(persistState, 500); }
+    function scheduleCounters() { clearTimeout(counterTimer); counterTimer = setTimeout(updateMetaCounters, 150); }
+
+    function wireForm() {
+      const allInputs = document.querySelectorAll('#cb-audience, #cb-mainKw, #cb-secKw1, #cb-secKw2, #cb-secKw3, #cb-wordCount, #cb-internal, #cb-cta, #cb-title, #cb-metaTitle, #cb-metaDesc, #cb-stage');
+      allInputs.forEach(el => {
+        el.addEventListener('input', () => { scheduleRender(); schedulePersist(); });
+      });
+      document.getElementById('cb-wordCount').addEventListener('input', updateAnchorHint);
+      document.getElementById('cb-metaTitle').addEventListener('input', scheduleCounters);
+      document.getElementById('cb-metaDesc').addEventListener('input', scheduleCounters);
+      document.getElementById('cb-mainKw').addEventListener('input', () => { refreshPristineQa(); scheduleCounters(); });
+      document.getElementById('cb-secKw1').addEventListener('input', scheduleCounters);
+      document.getElementById('cb-secKw2').addEventListener('input', scheduleCounters);
+      document.getElementById('cb-secKw3').addEventListener('input', scheduleCounters);
+
+      document.querySelectorAll('input[name="cb-purpose"]').forEach(el => el.addEventListener('change', () => { scheduleRender(); schedulePersist(); }));
+    }
+
+    (function boot() {
+      wireForm();
+      const restored = restoreState();
+      if (!restored) initQa();
+      applyI18n(briefLang);
+      updateAnchorHint();
+      updateMetaCounters();
+      renderBrief();
+    })();
+
+  </script>
+  <script>
+    // Mobile menu with animation
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (menuBtn && mobileMenu) {
+      let menuOpen = false;
+      menuBtn.addEventListener('click', () => {
+        menuOpen = !menuOpen;
+        if (menuOpen) {
+          mobileMenu.classList.add('menu-open');
+          mobileMenu.style.pointerEvents = 'auto';
+          menuBtn.classList.add('menu-active');
+          document.body.classList.add('overflow-hidden');
+        } else {
+          mobileMenu.classList.remove('menu-open');
+          mobileMenu.style.pointerEvents = 'none';
+          menuBtn.classList.remove('menu-active');
+          document.body.classList.remove('overflow-hidden');
+        }
+      });
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          menuOpen = false;
+          mobileMenu.classList.remove('menu-open');
+          mobileMenu.style.pointerEvents = 'none';
+          menuBtn.classList.remove('menu-active');
+          document.body.classList.remove('overflow-hidden');
+        });
+      });
+    }
+  </script>
+
+<!-- Calendly Popup Widget -->
+<link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css"></noscript>
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+<script>function openCalendly(){Calendly.initPopupWidget({url:'https://calendly.com/10xseo-sales/quick-seo-consultation-15-minutes?background_color=0f172a&text_color=f8fafc&primary_color=8b5cf6'});return false;}</script>
+</body>
+</html>

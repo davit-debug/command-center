@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth" data-beasties-container>
+<head>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Numbers to Words — Georgian Number-to-Words Converter | 10xSEO</title>
+  <meta name="description" content="Convert numbers into Georgian written form. Ideal for contracts, invoices, and legal documents. One Georgian Lari, five hundred Tetri — free tool.">
+  <link rel="canonical" href="https://10xseo.ge/tools/numbers-to-words/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="რიცხვები სიტყვებში — ქართული რიცხვის წერითი ფორმა | 10XSEO">
+  <meta property="og:description" content="გადაიყვანეთ რიცხვი ქართულ წერით ფორმაში. იდეალურია ხელშეკრულებების, ინვოისების და ლეგალური დოკუმენტებისთვის.">
+  <meta property="og:url" content="https://10xseo.ge/tools/numbers-to-words/">
+  <meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ka_GE">
+  <meta property="og:site_name" content="10XSEO">
+
+  <!-- Schema: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "ქართული რიცხვები სიტყვებში — 10XSEO",
+    "description": "გადაიყვანეთ რიცხვი ქართულ წერით ფორმაში. იდეალურია ხელშეკრულებების, ინვოისების და ლეგალური დოკუმენტებისთვის.",
+    "url": "https://10xseo.ge/tools/numbers-to-words/",
+    "applicationCategory": "Utility",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "GEL"
+    },
+    "provider": {
+      "@type": "Organization",
+      "name": "10XSEO",
+      "url": "https://10xseo.ge"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="../assets/site.tailwind.css">
+  
+  <style>
+    @font-face {
+      font-family: 'Dachi the Lynx';
+      src: url('../fonts/DachiTheLynx.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    body { font-family: 'FiraGO', 'Inter', sans-serif; }
+    h1, h2, h3 { font-family: 'Dachi the Lynx', sans-serif; }
+    .gradient-text {
+      background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    @keyframes aiGradient {
+      0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; }
+    }
+    .ai-cta-animate {
+      background: linear-gradient(-45deg, #8B5CF6, #3B82F6, #14B8A6, #8B5CF6) !important;
+      background-size: 300% 300% !important;
+      animation: aiGradient 4s ease infinite;
+      box-shadow: 0 4px 25px rgba(139, 92, 246, 0.35);
+    }
+    .header-scrolled { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    .toast {
+      position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%) translateY(100px);
+      background: #15803d; color: white; padding: 12px 24px; border-radius: 12px;
+      font-weight: 600; font-size: 14px; z-index: 100; transition: transform 0.3s ease;
+      box-shadow: 0 8px 30px rgba(33, 199, 67, 0.3);
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+    #mobile-menu {
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+      opacity: 0;
+    }
+    #mobile-menu.menu-open { transform: translateX(0); opacity: 1; }
+    #mobile-menu .menu-link { opacity: 0; transform: translateX(30px); transition: opacity 0.3s ease, transform 0.3s ease; }
+    #mobile-menu.menu-open .menu-link { opacity: 1; transform: translateX(0); }
+    .hamburger-line { transition: transform 0.3s ease, opacity 0.2s ease; }
+    .menu-active .hamburger-line:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .menu-active .hamburger-line:nth-child(2) { opacity: 0; }
+    .menu-active .hamburger-line:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+  </style>
+</head>
+<body class="font-body bg-surface-dark text-body-dark transition-colors duration-300">
+
+  <!-- ========== HEADER ========== -->
+  <header id="main-header" class="fixed top-0 left-0 right-0 z-50 h-16 lg:h-[72px] bg-white/80 dark:bg-surface-dark/80 header-scrolled border-b border-gray-100 dark:border-gray-800 transition-all duration-300">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 h-full flex items-center justify-between">
+<a href="../index.html" class="flex items-center shrink-0">
+<img src="../images/logo.webp" alt="10XSEO" decoding="async" class="h-auto w-40 lg:w-44 dark:mix-blend-screen" width="600" height="125">
+</a>
+<nav class="hidden lg:flex items-center gap-1" aria-label="Main navigation">
+<a href="../about-us.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors" data-ka="ჩვენს შესახებ" data-en="About Us">About Us</a>
+<div class="relative group">
+<button class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors flex items-center gap-1" data-ka="სერვისები" data-en="Services">
+Services
+<svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+</button>
+<div class="absolute top-full left-0 mt-1 w-56 bg-white dark:bg-surface-dark-alt rounded-xl shadow-xl border border-gray-100 dark:border-gray-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 p-2">
+<a href="../seo-management.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark" data-ka="SEO მომსახურება" data-en="SEO Management">SEO მომსახურება <span class="text-[10px] bg-primary/15 text-primary-light px-1.5 py-0.5 rounded-full font-bold ml-1">რეკომენდებული</span></a>
+<a href="../seo-consultation.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark" data-ka="SEO კონსულტაცია" data-en="SEO Consultation">SEO Consultation</a>
+<a href="../seo-strategy.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark" data-ka="SEO სტრატეგია" data-en="Strategy Outline">Strategy Outline</a>
+<div class="relative group/copy">
+<button class="w-full flex items-center justify-between px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark" data-ka="კოპირაიტინგი" data-en="Copywriting">
+Copywriting
+<svg class="w-3.5 h-3.5 opacity-50 -rotate-90 group-hover/copy:rotate-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+</button>
+<div class="overflow-hidden max-h-0 group-hover/copy:max-h-40 transition-all duration-300 pl-3">
+<a href="../seo-copywriting.html" class="block px-3 py-2 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-body dark:text-body-dark" data-ka="SEO კოპირაიტინგი" data-en="SEO Copywriting">SEO Copywriting</a>
+<a href="../copywriting.html" class="block px-3 py-2 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-body dark:text-body-dark" data-ka="UI/UX Copy" data-en="UI/UX Copy">UI/UX Copy <span class="text-[10px] text-primary-light ml-1">Premium</span></a>
+</div>
+</div>
+<a href="../cro.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark" data-ka="კონვერსიის ოპტიმიზაცია" data-en="Conversion Optimization">Conversion Optimization</a>
+<a href="../google-ads.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">Google Ads</a>
+<a href="../ai-seo.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">AI SEO / GEO / AEO</a>
+<a href="../seo-course.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark" data-ka="SEO კურსი" data-en="SEO Course">SEO Course</a>
+</div>
+</div>
+<div class="relative group/ind">
+<a href="#" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors flex items-center gap-1" data-ka="ინდუსტრიები" data-en="Industries">
+Industries
+<svg class="w-4 h-4 transition-transform group-hover/ind:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+</a>
+<div class="absolute top-full left-0 mt-1 w-64 bg-white dark:bg-surface-dark-alt rounded-xl shadow-xl border border-gray-100 dark:border-gray-800 opacity-0 invisible group-hover/ind:opacity-100 group-hover/ind:visible transition-all duration-200 p-2">
+<a href="../industries/construction.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">Construction &amp; Real Estate</a>
+<a href="../industries/healthcare.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">Healthcare &amp; Clinics</a>
+<a href="../industries/financial-services.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">Financial Services</a>
+<a href="../industries/ecommerce.html" class="block px-3 py-2.5 text-sm rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark">E-commerce</a>
+</div>
+</div>
+<a href="../portfolio.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors" data-ka="პორტფოლიო" data-en="Portfolio">Portfolio</a>
+<a href="../case-studies.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors" data-ka="შედეგები" data-en="Results">Results</a>
+<a href="../blog.html" class="px-3 py-2 text-sm font-medium text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors" data-ka="ბლოგი" data-en="Blog">Blog</a>
+</nav>
+<div class="flex items-center gap-2">
+<a href="../index.html" id="lang-toggle" class="hidden sm:flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark transition-colors" hreflang="ka" aria-label="Switch to Georgian">
+<span id="lang-ka" class="opacity-50">KA</span>
+<span class="opacity-50">/</span>
+<span id="lang-en" class="text-primary font-bold">EN</span>
+</a>
+<a href="#" onclick="openCalendly();return false;" class="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 ai-cta-animate text-white text-sm font-semibold rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-200" data-ka="დაჯავშნეთ კონსულტაცია" data-en="Book Consultation">Book Consultation</a>
+<button id="mobile-menu-btn" class="lg:hidden w-9 h-9 min-w-[44px] min-h-[44px] rounded-lg flex flex-col items-center justify-center gap-[6px] hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-heading dark:text-heading-dark" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+<span class="hamburger-line block w-5 h-[2px] bg-current rounded-full"></span>
+<span class="hamburger-line block w-5 h-[2px] bg-current rounded-full"></span>
+<span class="hamburger-line block w-5 h-[2px] bg-current rounded-full"></span>
+</button>
+</div>
+</div>
+</header>
+<div id="mobile-menu" class="lg:hidden fixed inset-0 top-16 bg-surface-dark z-[60] overflow-y-auto pointer-events-none">
+<nav class="max-w-md mx-auto px-6 py-8 flex flex-col gap-2" aria-label="Mobile navigation">
+<a href="../index.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.05s" data-ka="მთავარი" data-en="Home">Home</a>
+<a href="../about-us.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.08s" data-ka="ჩვენს შესახებ" data-en="About Us">About Us</a>
+<hr class="menu-link my-3 border-gray-800" style="transition-delay:0.11s">
+<p class="menu-link text-xs font-semibold text-body-dark/80 uppercase tracking-wider mb-2" style="transition-delay:0.14s" data-ka="სერვისები" data-en="Services">Services</p>
+<a href="../seo-management.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.17s" data-ka="SEO მომსახურება" data-en="SEO Management">SEO Management</a>
+<a href="../seo-consultation.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.2s" data-ka="SEO კონსულტაცია" data-en="SEO Consultation">SEO Consultation</a>
+<a href="../seo-strategy.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.23s" data-ka="SEO სტრატეგია" data-en="Strategy Outline">Strategy Outline</a>
+<p class="menu-link text-xs font-semibold text-body-dark/40 uppercase tracking-wider mt-2 mb-1 pl-4" style="transition-delay:0.25s">Copywriting</p>
+<a href="../seo-copywriting.html" class="menu-link block px-4 py-3 rounded-xl text-base font-medium text-heading-dark hover:bg-gray-800/50 pl-8" style="transition-delay:0.26s" data-ka="SEO კოპირაიტინგი" data-en="SEO Copywriting">SEO Copywriting</a>
+<a href="../copywriting.html" class="menu-link block px-4 py-3 rounded-xl text-base font-medium text-heading-dark hover:bg-gray-800/50 pl-8" style="transition-delay:0.28s" data-ka="UI/UX Copy" data-en="UI/UX Copy">UI/UX Copy <span class="text-xs text-primary-light ml-1">Premium</span></a>
+<a href="../cro.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.29s" data-ka="კონვერსიის ოპტიმიზაცია" data-en="Conversion Optimization">Conversion Optimization</a>
+<a href="../google-ads.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.32s">Google Ads</a>
+<a href="../ai-seo.html" class="menu-link block px-4 py-3 rounded-xl text-base font-medium text-heading-dark hover:bg-gray-800/50 pl-8" style="transition-delay:0.35s">AI SEO / GEO / AEO</a>
+<a href="../seo-course.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.38s" data-ka="SEO კურსი" data-en="SEO Course">SEO Course</a>
+<hr class="menu-link my-3 border-gray-800" style="transition-delay:0.41s">
+<p class="menu-link text-xs font-semibold text-body-dark/80 uppercase tracking-wider mt-2 mb-1" style="transition-delay:0.43s">Industries</p>
+<a href="../industries/construction.html" class="menu-link block px-4 py-3 rounded-xl text-base font-medium text-heading-dark hover:bg-gray-800/50 pl-8" style="transition-delay:0.435s">Construction &amp; Real Estate</a>
+<a href="../industries/healthcare.html" class="menu-link block px-4 py-3 rounded-xl text-base font-medium text-heading-dark hover:bg-gray-800/50 pl-8" style="transition-delay:0.45s">Healthcare &amp; Clinics</a>
+<a href="../industries/financial-services.html" class="menu-link block px-4 py-3 rounded-xl text-base font-medium text-heading-dark hover:bg-gray-800/50 pl-8" style="transition-delay:0.46s">Financial Services</a>
+<a href="../industries/ecommerce.html" class="menu-link block px-4 py-3 rounded-xl text-base font-medium text-heading-dark hover:bg-gray-800/50 pl-8" style="transition-delay:0.47s">E-commerce</a>
+<a href="../portfolio.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.47s" data-ka="პორტფოლიო" data-en="Portfolio">Portfolio</a>
+<a href="../case-studies.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.5s" data-ka="შედეგები" data-en="Results">Results</a>
+<a href="../blog.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.53s" data-ka="ბლოგი" data-en="Blog">Blog</a>
+<hr class="menu-link my-3 border-gray-800" style="transition-delay:0.56s">
+<a href="#" onclick="openCalendly();return false;" class="menu-link block text-center px-6 py-4 ai-cta-animate text-white text-lg font-bold rounded-xl mt-2" style="transition-delay:0.59s" data-ka="დაჯავშნეთ კონსულტაცია" data-en="Book Consultation">
+Book Consultation
+</a>
+<a href="tel:+995510101517" class="menu-link call-btn block text-center px-6 py-3 border-2 border-primary-light text-primary-light text-lg font-bold rounded-xl flex items-center justify-center gap-2 transition-all duration-200" style="transition-delay:0.62s" data-ka="დაგვირეკეთ" data-en="Call Us">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+Call Us
+</a>
+</nav>
+</div>
+<!-- ========== HERO ========== -->
+  <section class="pt-24 lg:pt-28 pb-8 bg-surface dark:bg-surface-dark">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <h1 class="font-heading text-[28px] sm:text-[36px] lg:text-[44px] font-bold text-heading dark:text-heading-dark leading-[1.2] mb-4">რიცხვები სიტყვებში</h1>
+      <p class="text-body dark:text-body-dark max-w-2xl mx-auto mb-2">გადაიყვანეთ რიცხვი ქართულ წერით ფორმაში — ხელშეკრულებების, ინვოისებისა და ლეგალური დოკუმენტებისთვის.</p>
+      <a href="../seo-tools.html" class="text-sm text-primary dark:text-primary-light hover:underline">&larr; ყველა ინსტრუმენტი</a>
+    </div>
+  </section>
+
+  <!-- ========== TOOL ========== -->
+  <section class="pb-16 lg:pb-20 bg-surface dark:bg-surface-dark">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="bg-surface-alt dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 p-6 sm:p-8">
+
+        <!-- Number Input -->
+        <div class="mb-5">
+          <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2">რიცხვი</label>
+          <input type="text" inputmode="decimal" id="ntw-number" placeholder="მაგ: 1234.56" value="1234" class="w-full px-4 py-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark text-2xl font-inter font-semibold placeholder-gray-400 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all">
+          <p class="text-xs text-body dark:text-body-dark mt-2">დიაპაზონი: 0 — 999,999,999,999. წილადი ნაწილი: მძიმე ან წერტილი.</p>
+        </div>
+
+        <!-- Options -->
+        <div class="grid sm:grid-cols-3 gap-3 mb-6">
+          <label class="flex items-start gap-2.5 p-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark cursor-pointer hover:border-primary/50 transition-colors">
+            <input type="checkbox" id="ntw-ordinal" class="mt-1 w-4 h-4 accent-primary cursor-pointer">
+            <div>
+              <div class="text-sm font-semibold text-heading dark:text-heading-dark">რიგობითი</div>
+              <div class="text-xs text-body dark:text-body-dark">პირველი, მეორე, მესამე...</div>
+            </div>
+          </label>
+          <label class="flex items-start gap-2.5 p-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark cursor-pointer hover:border-primary/50 transition-colors">
+            <input type="checkbox" id="ntw-currency" class="mt-1 w-4 h-4 accent-primary cursor-pointer" checked>
+            <div>
+              <div class="text-sm font-semibold text-heading dark:text-heading-dark">ვალუტით (₾)</div>
+              <div class="text-xs text-body dark:text-body-dark">ლარი / თეთრი</div>
+            </div>
+          </label>
+          <label class="flex items-start gap-2.5 p-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark cursor-pointer hover:border-primary/50 transition-colors">
+            <input type="checkbox" id="ntw-legal" class="mt-1 w-4 h-4 accent-primary cursor-pointer">
+            <div>
+              <div class="text-sm font-semibold text-heading dark:text-heading-dark">ლეგალური ფორმა</div>
+              <div class="text-xs text-body dark:text-body-dark">ხუთასი (500) ლარი</div>
+            </div>
+          </label>
+        </div>
+
+        <!-- Output -->
+        <div class="mb-4">
+          <div class="flex items-center justify-between mb-2">
+            <label class="block text-sm font-semibold text-heading dark:text-heading-dark">შედეგი</label>
+            <button onclick="ntwCopy()" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-primary/10 text-primary dark:text-primary-light hover:bg-primary/20 transition-colors">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+              დაკოპირება
+            </button>
+          </div>
+          <div id="ntw-output" class="px-4 py-4 rounded-xl border border-primary/30 bg-primary/5 dark:bg-primary/10 text-heading dark:text-heading-dark text-lg leading-relaxed font-medium min-h-[60px] break-words">
+            ერთი ათას ორას ოცდათოთხმეტი
+          </div>
+        </div>
+
+        <!-- Quick examples -->
+        <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+          <p class="text-xs font-semibold uppercase tracking-wider text-body dark:text-body-dark mb-3">სწრაფი მაგალითები</p>
+          <div class="flex flex-wrap gap-2">
+            <button onclick="ntwSet('100')" class="px-3 py-1.5 text-xs font-inter font-semibold rounded-lg border border-gray-200 dark:border-gray-700 hover:border-primary text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light transition-colors">100</button>
+            <button onclick="ntwSet('500.50')" class="px-3 py-1.5 text-xs font-inter font-semibold rounded-lg border border-gray-200 dark:border-gray-700 hover:border-primary text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light transition-colors">500.50</button>
+            <button onclick="ntwSet('1000')" class="px-3 py-1.5 text-xs font-inter font-semibold rounded-lg border border-gray-200 dark:border-gray-700 hover:border-primary text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light transition-colors">1,000</button>
+            <button onclick="ntwSet('2500')" class="px-3 py-1.5 text-xs font-inter font-semibold rounded-lg border border-gray-200 dark:border-gray-700 hover:border-primary text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light transition-colors">2,500</button>
+            <button onclick="ntwSet('12345')" class="px-3 py-1.5 text-xs font-inter font-semibold rounded-lg border border-gray-200 dark:border-gray-700 hover:border-primary text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light transition-colors">12,345</button>
+            <button onclick="ntwSet('1000000')" class="px-3 py-1.5 text-xs font-inter font-semibold rounded-lg border border-gray-200 dark:border-gray-700 hover:border-primary text-heading dark:text-heading-dark hover:text-primary dark:hover:text-primary-light transition-colors">1,000,000</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Info / About -->
+      <div class="mt-6 grid sm:grid-cols-2 gap-4">
+        <div class="p-5 rounded-xl bg-white dark:bg-surface-dark-alt border border-gray-100 dark:border-gray-800">
+          <h3 class="font-heading text-base font-bold text-heading dark:text-heading-dark mb-2">სად გამოიყენოთ?</h3>
+          <ul class="text-sm text-body dark:text-body-dark space-y-1.5 list-disc pl-5">
+            <li>ხელშეკრულებებში თანხის ჩაწერა</li>
+            <li>ინვოისებზე / ფაქტურებზე</li>
+            <li>ჩეკები, საბანკო დოკუმენტები</li>
+            <li>ნოტარიული აქტები</li>
+          </ul>
+        </div>
+        <div class="p-5 rounded-xl bg-white dark:bg-surface-dark-alt border border-gray-100 dark:border-gray-800">
+          <h3 class="font-heading text-base font-bold text-heading dark:text-heading-dark mb-2">ქართული რიცხვების შესახებ</h3>
+          <p class="text-sm text-body dark:text-body-dark">ქართული იყენებს <strong>20-სისტემიან</strong> (ვიგეზიმალურ) წყობას 20-დან 99-მდე: 40 = "ორმოცი" (ორი × ოცი), 60 = "სამოცი" (სამი × ოცი). ეს უნიკალური სისტემაა მსოფლიოში.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== OTHER TOOLS ========== -->
+  <section class="py-12 bg-surface-alt dark:bg-surface-dark-alt">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <h2 class="font-heading text-xl font-bold text-heading dark:text-heading-dark mb-6 text-center">სხვა ინსტრუმენტები</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+        <a href="pixel-width-checker.html" class="block p-3 rounded-xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-gray-800 hover:border-primary/50 transition-colors text-center">
+          <span class="text-sm font-semibold text-heading dark:text-heading-dark">Pixel Width Checker</span>
+        </a>
+        <a href="keyword-density.html" class="block p-3 rounded-xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-gray-800 hover:border-primary/50 transition-colors text-center">
+          <span class="text-sm font-semibold text-heading dark:text-heading-dark">Keyword Density</span>
+        </a>
+        <a href="og-preview.html" class="block p-3 rounded-xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-gray-800 hover:border-primary/50 transition-colors text-center">
+          <span class="text-sm font-semibold text-heading dark:text-heading-dark">OG Preview</span>
+        </a>
+        <a href="readability-score.html" class="block p-3 rounded-xl bg-white dark:bg-surface-dark border border-gray-100 dark:border-gray-800 hover:border-primary/50 transition-colors text-center">
+          <span class="text-sm font-semibold text-heading dark:text-heading-dark">Readability Score</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA BANNER ========== -->
+  <section class="py-16 lg:py-20 bg-surface-alt dark:bg-surface-dark-alt">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+      <div class="bg-gradient-to-br from-primary/10 via-accent/5 to-primary/10 dark:from-primary/20 dark:via-accent/10 dark:to-primary/20 rounded-3xl p-8 sm:p-12 border border-primary/20 dark:border-primary/30">
+        <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-heading dark:text-heading-dark leading-[1.3] mb-4">
+          გჭირდებათ პროფესიონალური SEO?
+        </h2>
+        <p class="text-body dark:text-body-dark mb-8 max-w-lg mx-auto">
+          ჩვენი ექსპერტები უფასოდ გაგიანალიზებენ საიტს და მოგცემენ კონკრეტულ რეკომენდაციებს.
+        </p>
+        <a href="#" onclick="openCalendly();return false;" class="inline-flex items-center gap-2 px-8 py-4 ai-cta-animate text-white text-lg font-bold rounded-2xl hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 transition-all duration-200">
+          დაჯავშნე კონსულტაცია
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="bg-heading dark:bg-surface-dark-alt text-gray-400 py-12 lg:py-16">
+<div class="max-w-7xl mx-auto px-4 sm:px-6">
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 lg:gap-6 mb-12">
+<div>
+<p class="font-heading text-white font-semibold text-sm uppercase tracking-wider mb-4">SEO სერვისები</p>
+<ul class="space-y-2.5 text-sm">
+<li><a href="../seo-management.html" class="hover:text-white transition-colors">SEO მომსახურება</a></li>
+<li><a href="../seo-consultation.html" class="hover:text-white transition-colors">SEO კონსულტაცია</a></li>
+<li><a href="../seo-strategy.html" class="hover:text-white transition-colors">SEO სტრატეგია</a></li>
+<li><a href="../seo-audit.html" class="hover:text-white transition-colors">უფასო SEO აუდიტი</a></li>
+<li><a href="../google-ads.html" class="hover:text-white transition-colors">Google Ads</a></li>
+<li><a href="../cro.html" class="hover:text-white transition-colors">კონვერსიის ოპტიმიზაცია</a></li>
+<li><a href="../ai-seo.html" class="hover:text-white transition-colors">AI SEO</a></li>
+<li><a href="../seo-copywriting.html" class="hover:text-white transition-colors">SEO კოპირაიტინგი</a></li>
+</ul>
+</div>
+<div>
+<p class="font-heading text-white font-semibold text-sm uppercase tracking-wider mb-4">Tools</p>
+<ul class="space-y-2.5 text-sm">
+<li><a href="../seo-tools.html" class="hover:text-white transition-colors">SEO ინსტრუმენტები</a></li>
+<li><a href="../tools/pixel-width-checker.html" class="hover:text-white transition-colors">ტექსტის სიგანის შემოწმება</a></li>
+<li><a href="../tools/keyword-density.html" class="hover:text-white transition-colors">საკვანძო სიტყვების სიხშირე</a></li>
+<li><a href="../tools/og-preview.html" class="hover:text-white transition-colors">OG ბარათის ნახვა</a></li>
+<li><a href="../tools/readability-score.html" class="hover:text-white transition-colors">წაკითხვადობის ქულა</a></li>
+<li><a href="../tools/seo-content-editor.html" class="hover:text-white transition-colors">SEO კონტენტის რედაქტორი</a></li>
+<li><a href="../tools/content-brief-builder.html" class="hover:text-white transition-colors">კონტენტ ბრიფის შემქმნელი</a></li>
+<li></li>          </ul>
+</div>
+<div>
+<p class="font-heading text-white font-semibold text-sm uppercase tracking-wider mb-4">Learn</p>
+<ul class="space-y-2.5 text-sm">
+<li><a href="../ra-aris-seo.html" class="hover:text-white transition-colors">რა არის SEO</a></li>
+<li><a href="../seo-leqsikoni.html" class="hover:text-white transition-colors">SEO ლექსიკონი</a></li>
+<li><a href="../startup-leqsikoni.html" class="hover:text-white transition-colors">სტარტაპ ლექსიკონი</a></li>
+<li><a href="../ai-leqsikoni.html" class="hover:text-white transition-colors">AI ლექსიკონი</a></li>
+<li><a href="../seo-course.html" class="hover:text-white transition-colors">SEO კურსი</a></li>
+<li><a href="../blog.html" class="hover:text-white transition-colors">ბლოგი</a></li>
+<li><a href="https://www.youtube.com/@10xSEO" class="hover:text-white transition-colors flex items-center gap-1.5" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 shrink-0 inline-block mr-1" viewBox="0 0 24 24" fill="#D4A017"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>YouTube არხი</a></li>
+</ul>
+</div>
+<div>
+<p class="font-heading text-white font-semibold text-sm uppercase tracking-wider mb-4">Industries</p>
+<ul class="space-y-2.5 text-sm">
+<li><a href="../industries/construction.html" class="hover:text-white transition-colors">Construction &amp; Real Estate</a></li>
+<li><a href="../industries/ecommerce.html" class="hover:text-white transition-colors">E-commerce</a></li>
+<li><a href="../industries/healthcare.html" class="hover:text-white transition-colors">ჯანდაცვა</a></li>
+<li><a href="../industries/financial-services.html" class="hover:text-white transition-colors">Financial Services</a></li>
+</ul>
+</div>
+<div>
+<p class="font-heading text-white font-semibold text-sm uppercase tracking-wider mb-4">Company</p>
+<ul class="space-y-2.5 text-sm">
+<li><a href="../about-us.html" class="hover:text-white transition-colors">ჩვენს შესახებ</a></li>
+<li><a href="../portfolio.html" class="hover:text-white transition-colors">პორტფოლიო</a></li>
+<li><a href="../vacancies.html" class="hover:text-white transition-colors">ვაკანსიები</a></li>
+<li><a href="../contact-us.html" class="hover:text-white transition-colors">Contact</a></li>
+</ul>
+</div>
+<div>
+<p class="font-heading text-white font-semibold text-sm uppercase tracking-wider mb-4">Contact</p>
+<ul class="space-y-3 text-sm">
+<li class="flex items-start gap-2">
+<svg class="w-4 h-4 mt-0.5 shrink-0 text-[#D4A017]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+<a href="tel:+995510101517" class="hover:text-white transition-colors">+995 510 10 15 17</a>
+</li>
+<li class="flex items-start gap-2">
+<svg class="w-4 h-4 mt-0.5 shrink-0 text-[#D4A017]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+<a href="mailto:sales@10xseo.ge" class="hover:text-white transition-colors">sales@10xseo.ge</a>
+</li>
+<li class="flex items-start gap-2">
+<svg class="w-4 h-4 mt-0.5 shrink-0 text-[#D4A017]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+<a href="https://share.google/SPa17J6BKtcs6g0ks" target="_blank" rel="noopener noreferrer" class="hover:text-[#D4A017] transition-colors">8 Bakhtrioni Street, Tbilisi 0194, Georgia</a>
+</li>
+</ul>
+<div class="flex gap-3 mt-5">
+<a href="https://www.facebook.com/10xSEO.Ge" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-gray-500 hover:bg-[#D4A017] hover:text-white transition-all duration-200" aria-label="Facebook">
+<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+</a>
+<a href="https://www.linkedin.com/company/10xseoge/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-gray-500 hover:bg-[#D4A017] hover:text-white transition-all duration-200" aria-label="LinkedIn">
+<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+</a>
+<a href="https://www.youtube.com/@10xSEO" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-gray-500 hover:bg-[#D4A017] hover:text-white transition-all duration-200" aria-label="YouTube">
+<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+</a>
+</div>
+</div>
+</div>
+<div class="border-t border-white/10 pt-8 flex items-center justify-center gap-3">
+<a href="../index.html">
+<img src="../images/logo-sm.webp" alt="10XSEO" loading="lazy" decoding="async" width="600" height="125" class="h-8 w-auto">
+</a>
+<p class="text-xs text-gray-300">Georgia's #1 SEO Agency. &copy; 2026 All rights reserved.</p>
+</div>
+</div>
+</footer>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast">დაკოპირდა!</div>
+
+  <!-- ========== JAVASCRIPT ========== -->
+  <script>
+    if (localStorage.getItem('theme') !== 'light') { document.documentElement.classList.add('dark'); }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg || 'დაკოპირდა!';
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2000);
+    }
+
+    // ========================================
+    // GEORGIAN NUMBERS TO WORDS
+    // ========================================
+    // Cardinal lookup tables
+    const ONES = ['', 'ერთი', 'ორი', 'სამი', 'ოთხი', 'ხუთი', 'ექვსი', 'შვიდი', 'რვა', 'ცხრა'];
+    const TEENS = ['ათი', 'თერთმეტი', 'თორმეტი', 'ცამეტი', 'თოთხმეტი', 'თხუთმეტი', 'თექვსმეტი', 'ჩვიდმეტი', 'თვრამეტი', 'ცხრამეტი'];
+    // Vigesimal bases (multiples of 20): 20, 40, 60, 80
+    const VIGESIMAL = { 20: 'ოცი', 40: 'ორმოცი', 60: 'სამოცი', 80: 'ოთხმოცი' };
+    const VIGESIMAL_PREFIX = { 20: 'ოცდა', 40: 'ორმოცდა', 60: 'სამოცდა', 80: 'ოთხმოცდა' };
+    const HUNDREDS = ['', 'ას', 'ორას', 'სამას', 'ოთხას', 'ხუთას', 'ექვსას', 'შვიდას', 'რვაას', 'ცხრაას'];
+    const HUNDREDS_FINAL = ['', 'ასი', 'ორასი', 'სამასი', 'ოთხასი', 'ხუთასი', 'ექვსასი', 'შვიდასი', 'რვაასი', 'ცხრაასი'];
+
+    // Convert 0-99 to Georgian
+    function under100(n, isFinal = true) {
+      if (n === 0) return '';
+      if (n < 10) return ONES[n];
+      if (n < 20) return TEENS[n - 10];
+      const base = Math.floor(n / 20) * 20;
+      const rem = n - base;
+      if (rem === 0) {
+        return isFinal ? VIGESIMAL[base] : VIGESIMAL[base].replace(/ი$/, ''); // strip final ი in compound
+      }
+      // 21-39, 41-59, etc.
+      return VIGESIMAL_PREFIX[base] + (rem < 10 ? ONES[rem] : TEENS[rem - 10]);
+    }
+
+    // Convert 0-999 to Georgian
+    function under1000(n, isFinal = true) {
+      if (n === 0) return '';
+      if (n < 100) return under100(n, isFinal);
+      const h = Math.floor(n / 100);
+      const rem = n % 100;
+      if (rem === 0) {
+        return isFinal ? HUNDREDS_FINAL[h] : HUNDREDS[h];
+      }
+      // hundreds (compound) + space + rest
+      return HUNDREDS[h] + ' ' + under100(rem, isFinal);
+    }
+
+    // Convert any non-negative integer up to 999,999,999,999
+    function intToGeorgian(n) {
+      if (n === 0) return 'ნული';
+      const parts = [];
+      const billions = Math.floor(n / 1000000000);
+      const millions = Math.floor((n % 1000000000) / 1000000);
+      const thousands = Math.floor((n % 1000000) / 1000);
+      const ones = n % 1000;
+
+      if (billions > 0) {
+        if (billions === 1) {
+          parts.push(ones + thousands + millions === 0 ? 'მილიარდი' : 'მილიარდ');
+        } else {
+          parts.push(under1000(billions, true) + ' ' + (ones + thousands + millions === 0 ? 'მილიარდი' : 'მილიარდ'));
+        }
+      }
+      if (millions > 0) {
+        const rest = ones + thousands;
+        if (millions === 1) {
+          parts.push(rest === 0 ? 'მილიონი' : 'მილიონ');
+        } else {
+          parts.push(under1000(millions, true) + ' ' + (rest === 0 ? 'მილიონი' : 'მილიონ'));
+        }
+      }
+      if (thousands > 0) {
+        if (thousands === 1) {
+          parts.push(ones === 0 ? 'ათასი' : 'ათას');
+        } else {
+          parts.push(under1000(thousands, true) + ' ' + (ones === 0 ? 'ათასი' : 'ათას'));
+        }
+      }
+      if (ones > 0) {
+        parts.push(under1000(ones, true));
+      }
+      return parts.join(' ');
+    }
+
+    // Ordinal: 1-100 special-cased, beyond uses "მე-...-ე" pattern
+    const ORDINALS_SPECIAL = {
+      1: 'პირველი', 2: 'მეორე', 3: 'მესამე', 4: 'მეოთხე', 5: 'მეხუთე',
+      6: 'მეექვსე', 7: 'მეშვიდე', 8: 'მერვე', 9: 'მეცხრე', 10: 'მეათე',
+      11: 'მეთერთმეტე', 12: 'მეთორმეტე', 13: 'მეცამეტე', 14: 'მეთოთხმეტე', 15: 'მეთხუთმეტე',
+      16: 'მეთექვსმეტე', 17: 'მეჩვიდმეტე', 18: 'მეთვრამეტე', 19: 'მეცხრამეტე', 20: 'მეოცე',
+      30: 'მეოცდამეათე', 40: 'მეორმოცე', 50: 'მეორმოცდამეათე', 60: 'მესამოცე',
+      70: 'მესამოცდამეათე', 80: 'მეოთხმოცე', 90: 'მეოთხმოცდამეათე', 100: 'მეასე',
+      1000: 'მეათასე', 1000000: 'მემილიონე'
+    };
+
+    function intToGeorgianOrdinal(n) {
+      if (n === 0) return 'ნულოვანი';
+      if (ORDINALS_SPECIAL[n]) return ORDINALS_SPECIAL[n];
+      // For 21-99: take vigesimal prefix + ordinal of remainder
+      // e.g., 21 = ოცდამეერთე, 25 = ოცდამეხუთე, 35 = ოცდამეთხუთმეტე, 47 = ორმოცდამეშვიდე
+      if (n < 100) {
+        const base = Math.floor(n / 20) * 20;
+        const rem = n - base;
+        if (rem === 0) return ORDINALS_SPECIAL[base] || ('მე' + VIGESIMAL[base] + 'ე');
+        // ordinal of rem (1-19)
+        const remOrdinal = ORDINALS_SPECIAL[rem]; // 1-19 always in special table
+        if (remOrdinal) return VIGESIMAL_PREFIX[base] + remOrdinal;
+      }
+      // For 100+: append "-ე" pattern: take cardinal, drop final "ი", add "მე-...-ე"
+      // Simplification: prefix entire cardinal with "მე" and replace final "ი" with "ე"
+      const card = intToGeorgian(n);
+      // Replace final "ი" → "ე", or "ა" → "ე" (for რვა, ცხრა)
+      let ord = card.replace(/ი$/, 'ე').replace(/ა$/, 'ე');
+      return 'მე' + ord;
+    }
+
+    // ========================================
+    // UI WIRING
+    // ========================================
+    function ntwUpdate() {
+      const raw = document.getElementById('ntw-number').value.replace(/,/g, '.').replace(/\s/g, '').trim();
+      const isOrdinal = document.getElementById('ntw-ordinal').checked;
+      const isCurrency = document.getElementById('ntw-currency').checked;
+      const isLegal = document.getElementById('ntw-legal').checked;
+      const out = document.getElementById('ntw-output');
+
+      if (!raw) { out.textContent = '—'; return; }
+
+      // Parse number
+      let isNegative = false;
+      let cleaned = raw;
+      if (cleaned.startsWith('-')) { isNegative = true; cleaned = cleaned.slice(1); }
+      // Validate
+      if (!/^\d+(\.\d+)?$/.test(cleaned)) { out.textContent = 'არასწორი ფორმატი — შეიყვანეთ რიცხვი'; return; }
+      const num = parseFloat(cleaned);
+      if (num > 999999999999) { out.textContent = 'რიცხვი ძალიან დიდია (მაქს. 999,999,999,999)'; return; }
+
+      const intPart = Math.floor(num);
+      const decPart = Math.round((num - intPart) * 100); // tetris/cents
+
+      let result = '';
+
+      if (isOrdinal && decPart === 0) {
+        result = intToGeorgianOrdinal(intPart);
+      } else if (isCurrency) {
+        const lariWord = intToGeorgian(intPart) + ' ლარი';
+        if (decPart > 0) {
+          result = lariWord + ' და ' + intToGeorgian(decPart) + ' თეთრი';
+        } else {
+          result = lariWord;
+        }
+      } else {
+        result = intToGeorgian(intPart);
+        if (decPart > 0) {
+          result += ' მთელი ' + intToGeorgian(decPart) + ' მეასედი';
+        }
+      }
+
+      // Capitalize first letter (Georgian doesn't have uppercase but the output looks better starting clean)
+      if (isLegal) {
+        const formatNum = isCurrency ? num.toFixed(2) : intPart.toLocaleString('en-US');
+        result = result.charAt(0).toUpperCase() + result.slice(1) + ' (' + formatNum + ')';
+      }
+      if (isNegative) result = 'მინუს ' + result;
+
+      out.textContent = result;
+    }
+
+    function ntwSet(val) {
+      document.getElementById('ntw-number').value = val;
+      ntwUpdate();
+    }
+
+    function ntwCopy() {
+      const text = document.getElementById('ntw-output').textContent;
+      navigator.clipboard.writeText(text).then(() => showToast('დაკოპირდა!')).catch(() => {
+        const ta = document.createElement('textarea');
+        ta.value = text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+        showToast('დაკოპირდა!');
+      });
+    }
+
+    // Wire up listeners
+    ['ntw-number', 'ntw-ordinal', 'ntw-currency', 'ntw-legal'].forEach(id => {
+      const el = document.getElementById(id);
+      el.addEventListener('input', ntwUpdate);
+      el.addEventListener('change', ntwUpdate);
+    });
+    ntwUpdate();
+  </script>
+
+  <!-- Mobile menu -->
+  <script>
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (menuBtn && mobileMenu) {
+      let menuOpen = false;
+      menuBtn.addEventListener('click', () => {
+        menuOpen = !menuOpen;
+        if (menuOpen) {
+          mobileMenu.classList.add('menu-open');
+          mobileMenu.style.pointerEvents = 'auto';
+          menuBtn.classList.add('menu-active');
+          document.body.classList.add('overflow-hidden');
+        } else {
+          mobileMenu.classList.remove('menu-open');
+          mobileMenu.style.pointerEvents = 'none';
+          menuBtn.classList.remove('menu-active');
+          document.body.classList.remove('overflow-hidden');
+        }
+      });
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          menuOpen = false;
+          mobileMenu.classList.remove('menu-open');
+          mobileMenu.style.pointerEvents = 'none';
+          menuBtn.classList.remove('menu-active');
+          document.body.classList.remove('overflow-hidden');
+        });
+      });
+    }
+  </script>
+
+  <!-- Calendly -->
+  <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css"></noscript>
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <script>function openCalendly(){Calendly.initPopupWidget({url:'https://calendly.com/10xseo-sales/quick-seo-consultation-15-minutes?background_color=0f172a&text_color=f8fafc&primary_color=8b5cf6'});return false;}</script>
+</body>
+</html>
