@@ -75,3 +75,7 @@
 # Tailwind build inputs
 !tailwind.config.js
 !tailwind.input.css
+
+# English translation (/en/ subfolder)
+!en/
+!en/**

@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Regenerate sitemap.xml from current KEEP pages in command-center/."""
+"""Regenerate sitemap.xml from current KEEP pages in command-center/.
+
+Bilingual: includes both KA (root) and EN (/en/) URLs with xhtml:link
+hreflang annotations linking each page to its translation counterpart.
+"""
 import subprocess
 from datetime import datetime
 from pathlib import Path
@@ -9,10 +13,23 @@ OUT = ROOT / "sitemap.xml"
 DOMAIN = "https://10xseo.ge"
 
 # Pages to EXCLUDE from sitemap (system pages, campaign landings)
+# Matched against rel path; both root and en/ variants excluded.
 EXCLUDE = {
-    "404.html",          # System error page
-    "lead-form.html",    # Campaign landing — intentionally not in sitemap
+    "404.html",
+    "en/404.html",
+    "lead-form.html",
+    "en/lead-form.html",
 }
+
+# Skipped from translation — these are KA-only (no /en/ counterpart).
+# Used to suppress hreflang="en" annotation for these pages.
+KA_ONLY = {
+    "blog.html",
+    "seo-leqsikoni.html",
+    "ai-leqsikoni.html",
+    "startup-leqsikoni.html",
+}
+KA_ONLY_PREFIXES = ("blog/",)
 
 # Priority + changefreq by page type
 def page_meta(rel: str) -> tuple[float, str]:
@@ -70,12 +87,49 @@ def page_meta(rel: str) -> tuple[float, str]:
     return (0.6, "monthly")
 
 def url_for(rel: str) -> str:
-    """Convert rel path to public URL. Special case: index.html → /, seo-audit.html → seo-audit/."""
+    """Convert rel path to public URL.
+    - index.html → /
+    - en/index.html → /en/
+    - seo-audit.html → /seo-audit/
+    - en/<page>.html → /en/<page>.html
+    """
     if rel == "index.html":
         return f"{DOMAIN}/"
+    if rel == "en/index.html":
+        return f"{DOMAIN}/en/"
     if rel == "seo-audit.html":
         return f"{DOMAIN}/seo-audit/"
     return f"{DOMAIN}/{rel}"
+
+
+def is_ka_only(rel: str) -> bool:
+    """Page has no English translation (blog, dictionaries)."""
+    if rel in KA_ONLY:
+        return True
+    return any(rel.startswith(p) for p in KA_ONLY_PREFIXES)
+
+
+def is_en_path(rel: str) -> bool:
+    """Page lives under /en/ subtree."""
+    return rel.startswith("en/")
+
+
+def ka_counterpart(rel: str) -> str:
+    """Given an EN path en/foo.html, return ka counterpart 'foo.html'."""
+    return rel[len("en/"):] if rel.startswith("en/") else rel
+
+
+def en_counterpart(rel: str) -> str | None:
+    """Given a KA path foo.html, return en/foo.html if its EN translation
+    exists in the tracked file set; None if no EN counterpart."""
+    return f"en/{rel}"
+
+
+def has_en_translation(rel: str, all_files: set) -> bool:
+    """KA page has an EN counterpart if /en/<rel> exists in tracked files."""
+    if is_ka_only(rel) or is_en_path(rel):
+        return False
+    return f"en/{rel}" in all_files
 
 def get_lastmod(path: Path) -> str:
     """Get last commit date for file (or file mtime as fallback)."""
@@ -93,23 +147,29 @@ def get_lastmod(path: Path) -> str:
     return datetime.fromtimestamp(path.stat().st_mtime).strftime("%Y-%m-%d")
 
 def sort_key(rel: str) -> tuple:
-    """Order: homepage → core services → industries → blog/case indexes → details → tools → other."""
-    if rel == "index.html": return (0, rel)
-    if rel.startswith("blog/"): return (8, rel)
-    if rel.startswith("case-studies/"): return (7, rel)
-    if rel.startswith("industries/"): return (4, rel)
-    if rel.startswith("tools/"): return (9, rel)
-    if rel in ("blog.html", "case-studies.html", "portfolio.html"): return (5, rel)
+    """Order: KA pages first by category, then EN pages mirroring KA order.
+    Homepage → core services → industries → blog/case indexes → details → tools → other.
+    """
+    # KA pages get priority bucket 0-9; EN pages get 10-19 (mirrors KA order)
+    locale_offset = 10 if rel.startswith("en/") else 0
+    base = rel[len("en/"):] if rel.startswith("en/") else rel
+
+    if base == "index.html": return (0 + locale_offset, rel)
+    if base.startswith("blog/"): return (8 + locale_offset, rel)
+    if base.startswith("case-studies/"): return (7 + locale_offset, rel)
+    if base.startswith("industries/"): return (4 + locale_offset, rel)
+    if base.startswith("tools/"): return (9 + locale_offset, rel)
+    if base in ("blog.html", "case-studies.html", "portfolio.html"): return (5 + locale_offset, rel)
     SERVICES = {
         "services.html", "ai-seo.html", "copywriting.html", "cro.html",
         "google-ads.html", "seo-management.html", "seo-strategy.html",
         "seo-copywriting.html", "seo-audit.html", "seo-consultation.html",
         "seo-course.html", "seo-tools.html",
     }
-    if rel in SERVICES: return (1, rel)
-    if rel == "roi-calculator.html": return (2, rel)
-    if rel in ("about-us.html", "contact-us.html", "vacancies.html"): return (3, rel)
-    return (6, rel)
+    if base in SERVICES: return (1 + locale_offset, rel)
+    if base == "roi-calculator.html": return (2 + locale_offset, rel)
+    if base in ("about-us.html", "contact-us.html", "vacancies.html"): return (3 + locale_offset, rel)
+    return (6 + locale_offset, rel)
 
 def main():
     # Get all tracked HTML files
@@ -117,13 +177,15 @@ def main():
         ["git", "ls-files", "*.html"],
         cwd=ROOT, capture_output=True, text=True
     )
-    files = [f for f in result.stdout.strip().split("\n") if f and f not in EXCLUDE]
+    all_tracked = set(f for f in result.stdout.strip().split("\n") if f)
+    files = [f for f in all_tracked if f not in EXCLUDE]
     files.sort(key=sort_key)
 
-    print(f"Building sitemap from {len(files)} pages...")
+    print(f"Building bilingual sitemap from {len(files)} pages...")
 
     lines = ['<?xml version="1.0" encoding="UTF-8"?>',
-             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"',
+             '        xmlns:xhtml="http://www.w3.org/1999/xhtml">']
 
     for rel in files:
         path = ROOT / rel
@@ -133,13 +195,34 @@ def main():
         url = url_for(rel)
         lastmod = get_lastmod(path)
         priority, changefreq = page_meta(rel)
+
+        # Determine hreflang alternates
+        ka_url = None
+        en_url = None
+        if is_en_path(rel):
+            ka_rel = ka_counterpart(rel)
+            if ka_rel in all_tracked:
+                ka_url = url_for(ka_rel)
+            en_url = url
+        else:
+            ka_url = url
+            if has_en_translation(rel, all_tracked):
+                en_url = url_for(f"en/{rel}")
+
         lines.append("  <url>")
         lines.append(f"    <loc>{url}</loc>")
         lines.append(f"    <lastmod>{lastmod}</lastmod>")
         lines.append(f"    <changefreq>{changefreq}</changefreq>")
         lines.append(f"    <priority>{priority}</priority>")
+
+        if ka_url and en_url:
+            lines.append(f'    <xhtml:link rel="alternate" hreflang="ka" href="{ka_url}"/>')
+            lines.append(f'    <xhtml:link rel="alternate" hreflang="en" href="{en_url}"/>')
+            lines.append(f'    <xhtml:link rel="alternate" hreflang="x-default" href="{ka_url}"/>')
+
         lines.append("  </url>")
-        print(f"  ✓ [{priority}] {url}")
+        flag = "🌐" if (ka_url and en_url) else ""
+        print(f"  ✓ [{priority}] {url} {flag}")
 
     lines.append('</urlset>')
     lines.append('')
@@ -150,6 +233,8 @@ def main():
     print(f"\n✅ Wrote {OUT}")
     print(f"   Total URLs: {len(files)}")
     print(f"   Excluded: {sorted(EXCLUDE)}")
+    bilingual = sum(1 for f in files if not is_en_path(f) and has_en_translation(f, all_tracked))
+    print(f"   With EN translation: {bilingual} pages")
 
 if __name__ == "__main__":
     main()

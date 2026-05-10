@@ -19,7 +19,8 @@ import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-SOURCE_FILE = REPO_ROOT / 'index.html'
+SOURCE_FILE = REPO_ROOT / 'index.html'  # KA source-of-truth
+EN_SOURCE_FILE = REPO_ROOT / 'en' / 'index.html'  # EN source-of-truth
 
 EXCLUDE_PATTERNS = [
     'index.html',
@@ -143,9 +144,18 @@ def relative_path(path):
     return path.relative_to(REPO_ROOT)
 
 
+def is_en_path(path):
+    """True if file lives under /en/ (English locale subtree)."""
+    parts = relative_path(path).parts
+    return bool(parts) and parts[0] == 'en'
+
+
 def compute_depth(path):
-    """Number of subdirectories above the file (root files = 0)."""
-    return len(relative_path(path).parts) - 1
+    """Depth from the language root (KA root or /en/ root). /en/foo.html → 0."""
+    parts = relative_path(path).parts
+    if parts and parts[0] == 'en':
+        return len(parts) - 2  # depth within /en/
+    return len(parts) - 1  # depth from REPO_ROOT
 
 
 def is_excluded(path):
@@ -170,7 +180,7 @@ def collect_targets():
             if not fn.endswith('.html'):
                 continue
             full = Path(dirpath) / fn
-            if full == SOURCE_FILE:
+            if full == SOURCE_FILE or full == EN_SOURCE_FILE:
                 continue
             if is_excluded(full):
                 continue
@@ -198,7 +208,7 @@ def categorize(html):
     return 'MISMATCH'
 
 
-def process_file(path, source_footer, dry_run=True):
+def process_file(path, ka_source_footer, en_source_footer, dry_run=True):
     """Process one target file. Returns (action, message).
 
     action: 'changed', 'unchanged', 'aborted'
@@ -206,6 +216,14 @@ def process_file(path, source_footer, dry_run=True):
     html = path.read_text(encoding='utf-8-sig')
     cat = categorize(html)
     depth = compute_depth(path)
+
+    if is_en_path(path):
+        if en_source_footer is None:
+            return 'aborted', 'no_en_source'
+        source_footer = en_source_footer
+    else:
+        source_footer = ka_source_footer
+
     adjusted = adjust_paths(source_footer, depth)
 
     if cat in ('MULTIPLE', 'MISMATCH'):
@@ -319,14 +337,26 @@ def main():
         print(f"ERROR: source file not found: {SOURCE_FILE}", file=sys.stderr)
         return 1
 
-    # Step 1: extract source footer
-    source_html = SOURCE_FILE.read_text(encoding='utf-8-sig')
-    s, e = extract_footer_span(source_html)
+    # Step 1: extract KA + EN source footers
+    ka_source_html = SOURCE_FILE.read_text(encoding='utf-8-sig')
+    s, e = extract_footer_span(ka_source_html)
     if s is None:
         print(f"ERROR: could not extract <footer> from {SOURCE_FILE}", file=sys.stderr)
         return 1
-    source_footer = source_html[s:e]
-    print(f"✓ Extracted source footer from index.html ({len(source_footer)} bytes, {source_footer.count(chr(10))+1} lines)")
+    ka_source_footer = ka_source_html[s:e]
+    print(f"✓ Extracted KA source footer from index.html ({len(ka_source_footer)} bytes, {ka_source_footer.count(chr(10))+1} lines)")
+
+    en_source_footer = None
+    if EN_SOURCE_FILE.exists():
+        en_source_html = EN_SOURCE_FILE.read_text(encoding='utf-8-sig')
+        en_s, en_e = extract_footer_span(en_source_html)
+        if en_s is not None:
+            en_source_footer = en_source_html[en_s:en_e]
+            print(f"✓ Extracted EN source footer from en/index.html ({len(en_source_footer)} bytes, {en_source_footer.count(chr(10))+1} lines)")
+        else:
+            print(f"⚠ en/index.html exists but footer not found — /en/ targets will be skipped")
+    else:
+        print(f"  (en/index.html not found — only KA targets will be synced)")
 
     # Step 2: collect targets
     if args.target:
@@ -388,7 +418,7 @@ def main():
             aborted.append((path, cat))
             continue
         try:
-            action, msg = process_file(path, source_footer, dry_run=not args.apply)
+            action, msg = process_file(path, ka_source_footer, en_source_footer, dry_run=not args.apply)
             if action == 'changed':
                 changed.append(path)
                 if args.verbose:

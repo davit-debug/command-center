@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://10xseo.ge/</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://10xseo.ge/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://10xseo.ge/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://10xseo.ge/"/>
   </url>
   <url>
     <loc>https://10xseo.ge/ai-seo.html</loc>
@@ -14,7 +18,7 @@
   </url>
   <url>
     <loc>https://10xseo.ge/copywriting.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -26,7 +30,7 @@
   </url>
   <url>
     <loc>https://10xseo.ge/google-ads.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -62,13 +66,13 @@
   </url>
   <url>
     <loc>https://10xseo.ge/seo-strategy.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://10xseo.ge/seo-tools.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -80,7 +84,7 @@
   </url>
   <url>
     <loc>https://10xseo.ge/roi-calculator.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -122,13 +126,13 @@
   </url>
   <url>
     <loc>https://10xseo.ge/industries/healthcare.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://10xseo.ge/blog.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -146,7 +150,7 @@
   </url>
   <url>
     <loc>https://10xseo.ge/ai-leqsikoni.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -224,218 +228,227 @@
   </url>
   <url>
     <loc>https://10xseo.ge/blog/2023-seo-stats.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://10xseo.ge/blog/2024-seo-trendebi.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://10xseo.ge/blog/2025-dzebnebi.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://10xseo.ge/blog/2025-wlis-martis-ganaxlebebi-dasrulda.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://10xseo.ge/blog/best-seo-agency-in-georgia.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://10xseo.ge/blog/brand-mistakes.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://10xseo.ge/blog/business-seo-stats.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://10xseo.ge/blog/cifruli-marketingi.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://10xseo.ge/blog/cifruli-memkvidreoba.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://10xseo.ge/blog/copywriting.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://10xseo.ge/blog/geotegirebis-gavlena-reitingze.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://10xseo.ge/blog/google-2024-core-update.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://10xseo.ge/blog/google-sandbox.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://10xseo.ge/blog/how-instagram-detects-mood.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://10xseo.ge/blog/interaction-to-next-paint.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://10xseo.ge/blog/link-building-stats.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://10xseo.ge/blog/local-seo.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://10xseo.ge/blog/ra-aris-aeo.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://10xseo.ge/blog/ra-aris-seo.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://10xseo.ge/blog/ra-dro-schireba-seos-shedegebis-misagebad.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://10xseo.ge/blog/ratom-schirdeba-bizness-seo.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://10xseo.ge/blog/seo-2025-top-stories.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://10xseo.ge/blog/seo-2025.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://10xseo.ge/blog/seo-content.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://10xseo.ge/blog/seo-copywriting.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://10xseo.ge/blog/seo-for-business.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://10xseo.ge/blog/seo-saagento.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://10xseo.ge/blog/seo-vs-ppc.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://10xseo.ge/blog/soc-media-da-seo.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://10xseo.ge/tools/content-brief-builder.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://10xseo.ge/tools/keyword-density.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://10xseo.ge/tools/numbers-to-words.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://10xseo.ge/tools/og-preview.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://10xseo.ge/tools/pixel-width-checker.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://10xseo.ge/tools/readability-score.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://10xseo.ge/tools/seo-content-editor.html</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://10xseo.ge/en/</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://10xseo.ge/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://10xseo.ge/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://10xseo.ge/"/>
   </url>
 </urlset>
