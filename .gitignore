@@ -10,62 +10,36 @@
 
 # Design mockup files
 !index.html
-!og-test.html
-!index-v2.html
-!index-v3.html
-!index-v3-debug.html
-!h1-options.html
-!sections-preview.html
-!blog-post.html
 !seo-audit.html
 !seo-management.html
-!seo-management-v2.html
-!seo-management-v3.html
-!seo-management-v4.html
 !portfolio.html
 !seo-consultation.html
 !seo-course.html
 !seo-strategy.html
 !seo-copywriting.html
 !copywriting.html
-!copywriting-v2.html
 !cro.html
 !google-ads.html
 !ai-seo.html
-!ai-seo-v2.html
 !ra-aris-seo.html
 !vacancies.html
-!faq.html
-!faq-layout-options.html
-!faq-layout-options-v2.html
 !seo-leqsikoni.html
 !startup-leqsikoni.html
 !ai-leqsikoni.html
 !about-us.html
-!about-v*.html
 !about-final.html
 !about-variants.html
 !contact-us.html
 !lead-form.html
-!roi-calculator-v4.html
 !roi-calculator.html
 !services.html
-!keyword-research.html
-!videos.html
 !why-10xseo.html
 !seo-tools.html
 !blog.html
 !case-studies.html
-!case-studies-options.html
-!blog-layout-options.html
 !case-studies/
 !case-studies/**
 !case-studies-data.json
-!case-study-inner-options.html
-!font-options.html
-!color-options.html
-!animation-options.html
-!logos-preview.html
 
 # Design assets
 !fonts/
@@ -78,7 +52,6 @@
 !industries/**
 !tools/
 !tools/**
-!about-final-v2.html
 !about-new.html
 !about-preview.html
 !favicon.ico
@@ -86,21 +59,10 @@
 !favicon-32x32.png
 !favicon-*.png
 !apple-touch-icon.png
-!color-compare.html
-!new-sections.html
-!favicon-options.html
-!favicon-preview.html
 
 # Offer pages
 !offer/
 !offer/**
-!offer-v*.html
-!offer-deal-room.html
-!offer-video.html
-!offer-vertical.html
-!offer-premium.html
-!offer-premium-convert.html
-!offer-premium-brand.html
 !README-offer-system.md
 
 # 404 + tracking
