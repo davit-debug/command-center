@@ -172,6 +172,45 @@ COMMON_BODY = {
     '>სტარტაპ ლექსიკონი</a>': '>Startup Glossary (Georgian)</a>',
     '>AI ლექსიკონი</a>': '>AI Glossary (Georgian)</a>',
 
+    # Footer tool links (appear across most pages)
+    '>ტექსტის სიგანის შემოწმება</a>': '>Pixel Width Checker</a>',
+    '>საკვანძო სიტყვების სიხშირე</a>': '>Keyword Density</a>',
+    '>OG ბარათის ნახვა</a>': '>OG Preview</a>',
+    '>წაკითხვადობის ქულა</a>': '>Readability Score</a>',
+    '>SEO კონტენტის რედაქტორი</a>': '>SEO Content Editor</a>',
+    '>კონტენტ ბრიფის შემქმნელი</a>': '>Content Brief Builder</a>',
+    '>რიცხვები სიტყვებში</a>': '>Numbers to Words</a>',
+
+    # Common footer columns/headings
+    '<p class="font-heading text-white font-semibold text-sm uppercase tracking-wider mb-4">SEO სერვისები</p>':
+        '<p class="font-heading text-white font-semibold text-sm uppercase tracking-wider mb-4">SEO Services</p>',
+
+    # Common JSON-LD service names (cross-page)
+    '"name": "10XSEO სერვისები"': '"name": "10XSEO Services"',
+    '"description": "სრული SEO ეკოსისტემა თქვენი ბიზნესის ზრდისთვის"':
+        '"description": "Complete SEO ecosystem for your business growth"',
+    '"name": "SEO მომსახურება"': '"name": "SEO Management"',
+    '"name": "SEO კონსულტაცია"': '"name": "SEO Consultation"',
+    '"name": "SEO სტრატეგია"': '"name": "SEO Strategy"',
+    '"name": "SEO კოპირაიტინგი"': '"name": "SEO Copywriting"',
+    '"name": "კონვერსიის ოპტიმიზაცია"': '"name": "Conversion Optimization"',
+    '"name": "SEO კურსი"': '"name": "SEO Course"',
+    '"name": "SEO ინსტრუმენტები"': '"name": "SEO Tools"',
+    '"name": "უფასო SEO აუდიტი"': '"name": "Free SEO Audit"',
+    '"name": "მთავარი"': '"name": "Home"',
+    '"name": "სერვისები"': '"name": "Services"',
+    '"name": "კონტაქტი"': '"name": "Contact"',
+    '"name": "ჩვენ შესახებ"': '"name": "About Us"',
+    '"name": "პორტფოლიო"': '"name": "Portfolio"',
+    '"name": "შედეგები"': '"name": "Results"',
+
+    # Common CTA text (appears in many pages)
+    '\nდაგვირეკეთ\n</a>': '\nCall Us\n</a>',
+    '>დაგვირეკეთ</a>': '>Call Us</a>',
+    '>დაჯავშნეთ კონსულტაცია</a>': '>Book Consultation</a>',
+    '\nდაჯავშნეთ კონსულტაცია\n</a>': '\nBook Consultation\n</a>',
+    '\nდაჯავშნეთ კონსულტაცია\n<svg': '\nBook Consultation\n<svg',
+
     # Address
     'ბახტრიონის ქუჩა 8, თბილისი 0194': '8 Bakhtrioni Street, Tbilisi 0194, Georgia',
 
@@ -268,6 +307,90 @@ PAGES = {
             '<p class="text-sm text-body dark:text-body-dark leading-relaxed mb-4">პროფესიონალური SEO Roadmap — სრული ანალიზი, სამოქმედო გეგმა, კონკურენტების კვლევა და ტრაფიკის პროგნოზი.</p>':
                 '<p class="text-sm text-body dark:text-body-dark leading-relaxed mb-4">A professional SEO roadmap — complete analysis, action plan, competitor research, and traffic forecast.</p>',
             '<span class="text-xs text-body-dark/60">-დან</span>': '<span class="text-xs text-body-dark/60">starting at</span>',
+
+            # Tier 2 Specialized
+            '<p class="text-sm font-semibold text-primary-light uppercase tracking-wider mb-3">სპეციალიზებული სერვისები</p>':
+                '<p class="text-sm font-semibold text-primary-light uppercase tracking-wider mb-3">Specialized Services</p>',
+            '<h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-heading dark:text-heading-dark">კონტენტი, რეკლამა და კონვერსია</h2>':
+                '<h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-heading dark:text-heading-dark">Content, Ads & Conversion</h2>',
+            '<h3 class="font-heading text-xl font-bold text-heading dark:text-heading-dark mb-2">SEO კოპირაიტინგი</h3>':
+                '<h3 class="font-heading text-xl font-bold text-heading dark:text-heading-dark mb-2">SEO Copywriting</h3>',
+            '<p class="text-sm text-body dark:text-body-dark leading-relaxed mb-4">ბლოგ სტატიები, მთავარი გვერდის ქოფი, პრეს რელიზები, სერვის გვერდები — ტექსტები რომლებიც Google-ში რანჟირდება და კლიენტებს კონვერტავს.</p>':
+                '<p class="text-sm text-body dark:text-body-dark leading-relaxed mb-4">Blog articles, homepage copy, press releases, service pages — content that ranks on Google and converts visitors into customers.</p>',
+            '<p class="text-sm text-body dark:text-body-dark leading-relaxed mb-4">ინტერფეისის ტექსტები — ღილაკები, ფორმები, შეცდომის შეტყობინებები, onboarding ფლოუები. ტექსტი რომელიც პროდუქტს ინტუიციურს ხდის.</p>':
+                '<p class="text-sm text-body dark:text-body-dark leading-relaxed mb-4">Interface copy — buttons, forms, error messages, onboarding flows. Words that make your product feel intuitive.</p>',
+            '<h3 class="font-heading text-xl font-bold text-heading dark:text-heading-dark mb-2">კონვერსიის ოპტიმიზაცია (CRO)</h3>':
+                '<h3 class="font-heading text-xl font-bold text-heading dark:text-heading-dark mb-2">Conversion Rate Optimization (CRO)</h3>',
+            '<p class="text-sm text-body dark:text-body-dark leading-relaxed mb-4">მეტი კლიენტი იგივე ტრაფიკით — A/B ტესტინგი, UX ოპტიმიზაცია, ფორმების გაუმჯობესება და landing page ოპტიმიზაცია.</p>':
+                '<p class="text-sm text-body dark:text-body-dark leading-relaxed mb-4">More customers from the same traffic — A/B testing, UX optimization, form improvements, and landing page optimization.</p>',
+            '<h3 class="font-heading text-xl font-bold text-heading dark:text-heading-dark mb-2">Google Ads მენეჯმენტი</h3>':
+                '<h3 class="font-heading text-xl font-bold text-heading dark:text-heading-dark mb-2">Google Ads Management</h3>',
+            '<p class="text-sm text-body dark:text-body-dark leading-relaxed mb-4">ფასიანი რეკლამა რომელიც ანაზღაურდება — Search, Shopping, PMax, Display, YouTube კამპანიები ROI ფოკუსით.</p>':
+                '<p class="text-sm text-body dark:text-body-dark leading-relaxed mb-4">Paid ads that pay back — Search, Shopping, PMax, Display, and YouTube campaigns with ROI focus.</p>',
+            '<p class="text-body dark:text-body-dark leading-relaxed mb-4 max-w-2xl">Generative Engine Optimization — გახადეთ თქვენი ბრენდი ხილული ChatGPT-ში, Gemini-ში, Perplexity-ში, Claude-ში და Copilot-ში. მომავლის SEO დღეს.</p>':
+                '<p class="text-body dark:text-body-dark leading-relaxed mb-4 max-w-2xl">Generative Engine Optimization — make your brand visible in ChatGPT, Gemini, Perplexity, Claude, and Copilot. The SEO of tomorrow, today.</p>',
+
+            # Tier 3 Education & Tools
+            '<p class="text-sm font-semibold text-primary-light uppercase tracking-wider mb-3">განათლება & ინსტრუმენტები</p>':
+                '<p class="text-sm font-semibold text-primary-light uppercase tracking-wider mb-3">Education & Tools</p>',
+            '<h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-heading dark:text-heading-dark">ისწავლეთ SEO ან გამოიყენეთ ჩვენი უფასო ინსტრუმენტები</h2>':
+                '<h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-heading dark:text-heading-dark">Learn SEO or Use Our Free Tools</h2>',
+            '<h3 class="font-heading text-xl font-bold text-heading dark:text-heading-dark mb-2">SEO კურსი</h3>':
+                '<h3 class="font-heading text-xl font-bold text-heading dark:text-heading-dark mb-2">SEO Course</h3>',
+            '<p class="text-sm text-body dark:text-body-dark leading-relaxed mb-4">12 პრაქტიკული სესია, მენტორი: დავით წილოსანი. 8-12 მონაწილე, Ahrefs წვდომა, სერთიფიკატი და სტაჟირების შესაძლებლობა.</p>':
+                '<p class="text-sm text-body dark:text-body-dark leading-relaxed mb-4">12 hands-on sessions, mentor: Davit Tsilosani. 8-12 participants, Ahrefs access, certificate, and internship opportunity.</p>',
+            'უფასო</span>': 'Free</span>',
+            '<h3 class="font-heading text-xl font-bold text-heading dark:text-heading-dark mb-2">SEO ინსტრუმენტები</h3>':
+                '<h3 class="font-heading text-xl font-bold text-heading dark:text-heading-dark mb-2">SEO Tools</h3>',
+            '<p class="text-sm text-body dark:text-body-dark leading-relaxed mb-4">Meta Tag გენერატორი, SERP Preview, Keyword Density Checker, Schema Markup გენერატორი — ყველა ერთ ადგილას.</p>':
+                '<p class="text-sm text-body dark:text-body-dark leading-relaxed mb-4">Meta Tag generator, SERP Preview, Keyword Density Checker, Schema Markup generator — all in one place.</p>',
+            'გამოიყენეთ ახლავე': 'Use it now',
+
+            # Free audit CTA section
+            '<span class="text-sm font-semibold text-success">უფასო &bull; 10 წუთი &bull; 72 საათში</span>':
+                '<span class="text-sm font-semibold text-success">Free &bull; 10 minutes &bull; in 72 hours</span>',
+            'მიიღეთ უფასო <span class="gradient-text">ვიდეო SEO აუდიტი</span>':
+                'Get a free <span class="gradient-text">video SEO audit</span>',
+            'ჩვენი ექსპერტი პერსონალურად ჩაწერს Loom ვიდეოს თქვენი საიტისთვის — კონკრეტული რეკომენდაციებით, პრიორიტეტებით და სამოქმედო ნაბიჯებით.':
+                'Our expert personally records a Loom video for your site — with specific recommendations, priorities, and action steps.',
+            'მიიღეთ უფასო აუდიტი': 'Get a free audit',
+            '<p class="text-sm font-semibold text-heading-dark">დავით წილოსანი</p>':
+                '<p class="text-sm font-semibold text-heading-dark">Davit Tsilosani</p>',
+
+            # "How to choose service" scenarios section
+            '<p class="text-sm font-semibold text-primary-light uppercase tracking-wider mb-3">როგორ ავირჩიოთ სერვისი</p>':
+                '<p class="text-sm font-semibold text-primary-light uppercase tracking-wider mb-3">How to choose your service</p>',
+            '<h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-heading dark:text-heading-dark mb-4">რომელი სცენარი ემთხვევა თქვენს სიტუაციას?</h2>':
+                '<h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-heading dark:text-heading-dark mb-4">Which scenario fits your situation?</h2>',
+            '<p class="text-body dark:text-body-dark max-w-2xl mx-auto">აირჩიეთ თქვენთვის ყველაზე ახლო სცენარი და ჩვენ გირჩევთ ოპტიმალურ სერვისს.</p>':
+                '<p class="text-body dark:text-body-dark max-w-2xl mx-auto">Pick the closest scenario and we\'ll recommend the optimal service.</p>',
+            '<h3 class="font-heading text-xl font-bold text-heading dark:text-heading-dark mb-2">„გსურთ SEO სრულად ჩვენ გავაკეთოთ?"</h3>':
+                '<h3 class="font-heading text-xl font-bold text-heading dark:text-heading-dark mb-2">"Want us to handle SEO end-to-end?"</h3>',
+            '<p class="text-sm text-body dark:text-body-dark leading-relaxed mb-4">არ გაქვთ დრო ან გუნდი SEO-სთვის. გსურთ ექსპერტებმა აიღონ ყველაფერი — სტრატეგიიდან აღსრულებამდე.</p>':
+                '<p class="text-sm text-body dark:text-body-dark leading-relaxed mb-4">No time or team for SEO. You want experts to take everything — from strategy to execution.</p>',
+            '<span class="text-xs font-semibold text-primary-light bg-primary/10 px-3 py-1.5 rounded-full">SEO მომსახურება</span>':
+                '<span class="text-xs font-semibold text-primary-light bg-primary/10 px-3 py-1.5 rounded-full">SEO Management</span>',
+            '<h3 class="font-heading text-xl font-bold text-heading dark:text-heading-dark mb-2">„გსურთ თავად ისწავლოთ SEO?"</h3>':
+                '<h3 class="font-heading text-xl font-bold text-heading dark:text-heading-dark mb-2">"Want to learn SEO yourself?"</h3>',
+            '<p class="text-sm text-body dark:text-body-dark leading-relaxed mb-4">გინდათ თქვენი გუნდი ან საკუთარი თავი აღჭურვოთ SEO ცოდნით. პრაქტიკული კურსი მენტორინგით.</p>':
+                '<p class="text-sm text-body dark:text-body-dark leading-relaxed mb-4">You want to equip your team or yourself with SEO knowledge. A hands-on course with mentorship.</p>',
+            '<span class="text-xs font-semibold text-amber-400 bg-amber-500/10 px-3 py-1.5 rounded-full">SEO კურსი</span>':
+                '<span class="text-xs font-semibold text-amber-400 bg-amber-500/10 px-3 py-1.5 rounded-full">SEO Course</span>',
+            '<h3 class="font-heading text-xl font-bold text-heading dark:text-heading-dark mb-2">„უკვე გაქვთ გუნდი და გჭირდებათ მიმართულება?"</h3>':
+                '<h3 class="font-heading text-xl font-bold text-heading dark:text-heading-dark mb-2">"Have an in-house team but need direction?"</h3>',
+            '<p class="text-sm text-body dark:text-body-dark leading-relaxed mb-4">გაქვთ In-house მარკეტინგის გუნდი, მაგრამ გჭირდებათ SEO სტრატეგია ან ექსპერტის კონსულტაცია.</p>':
+                '<p class="text-sm text-body dark:text-body-dark leading-relaxed mb-4">You have an in-house marketing team but need an SEO strategy or expert consultation.</p>',
+            '<span class="text-xs font-semibold text-accent bg-accent/10 px-3 py-1.5 rounded-full">სტრატეგია / კონსულტაცია</span>':
+                '<span class="text-xs font-semibold text-accent bg-accent/10 px-3 py-1.5 rounded-full">Strategy / Consultation</span>',
+            '<h3 class="font-heading text-xl font-bold text-heading dark:text-heading-dark mb-2">„გჭირდებათ კონტენტი ან სწრაფი შედეგი?"</h3>':
+                '<h3 class="font-heading text-xl font-bold text-heading dark:text-heading-dark mb-2">"Need content or fast results?"</h3>',
+            '<p class="text-sm text-body dark:text-body-dark leading-relaxed mb-4">გჭირდებათ ხარისხიანი SEO ტექსტები, ან სწრაფი ტრაფიკი Google Ads-ით — სპეციალიზებული სერვისები.</p>':
+                '<p class="text-sm text-body dark:text-body-dark leading-relaxed mb-4">You need quality SEO copy, or fast traffic via Google Ads — specialized services.</p>',
+            '<span class="text-xs font-semibold text-pink-400 bg-pink-500/10 px-3 py-1.5 rounded-full">კოპირაიტინგი / Google Ads</span>':
+                '<span class="text-xs font-semibold text-pink-400 bg-pink-500/10 px-3 py-1.5 rounded-full">Copywriting / Google Ads</span>',
+            'არ იცით რომელი სერვისი გჭირდებათ?': 'Not sure which service you need?',
+            'დაგვიკავშირდით — ერთად შევარჩევთ თქვენი ბიზნესის საჭიროებებისთვის ოპტიმალურ სერვისს.':
+                'Get in touch — we\'ll pick the optimal service for your business together.',
         },
     },
     'ai-seo.html': {
