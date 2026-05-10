@@ -199,10 +199,75 @@ PAGES = {
                 'AI-Powered SEO Services <span class="gradient-text">for Ambitious Brands</span>',
             'SEO მომსახურებადან AI ოპტიმიზაციამდე — აირჩიეთ სერვისი თქვენი ბიზნესის საჭიროებების მიხედვით.':
                 'From full SEO management to AI search optimization — pick the service that matches your business stage. We serve Tbilisi-based and international brands.',
+            'SEO მომსახურებიდან AI ოპტიმიზაციამდე — აირჩიეთ სერვისი თქვენი ბიზნესის საჭიროებების მიხედვით.':
+                'From full SEO management to AI search optimization — pick the service that matches your business stage. We serve Tbilisi-based and international brands.',
             '<span class="text-xs text-body dark:text-body-dark">წლის<br>გამოცდილება</span>':
                 '<span class="text-xs text-body dark:text-body-dark">years of<br>experience</span>',
             '<span class="text-xs text-body dark:text-body-dark">კმაყოფილი<br>კლიენტი</span>':
                 '<span class="text-xs text-body dark:text-body-dark">happy<br>clients</span>',
+            '<span class="text-xs text-body dark:text-body-dark">ინდუსტრია<br>დაფარული</span>':
+                '<span class="text-xs text-body dark:text-body-dark">industries<br>covered</span>',
+
+            # Breadcrumbs
+            '<a href="index.html" class="text-body/60 dark:text-body-dark/60 hover:text-primary transition-colors">მთავარი</a>':
+                '<a href="index.html" class="text-body/60 dark:text-body-dark/60 hover:text-primary transition-colors">Home</a>',
+            '<span class="text-heading dark:text-heading-dark font-medium">სერვისები</span>':
+                '<span class="text-heading dark:text-heading-dark font-medium">Services</span>',
+
+            # Quick nav pills
+            '>ძირითადი სერვისები</a>': '>Core Services</a>',
+            '>სპეციალიზებული</a>': '>Specialized</a>',
+            '>ინსტრუმენტები</a>': '>Tools</a>',
+            '>უფასო აუდიტი</a>': '>Free Audit</a>',
+
+            # Tier 1 section headers
+            '<p class="text-sm font-semibold text-primary-light uppercase tracking-wider mb-3">ძირითადი სერვისები</p>':
+                '<p class="text-sm font-semibold text-primary-light uppercase tracking-wider mb-3">Core Services</p>',
+            '<h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-heading dark:text-heading-dark">სრული SEO მართვა თქვენი ბიზნესისთვის</h2>':
+                '<h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-heading dark:text-heading-dark">Complete SEO Management for Your Business</h2>',
+
+            # "Recommended" badge
+            'რეკომენდებული</span>': 'Recommended</span>',
+
+            # Tier 1 service cards
+            '<h3 class="font-heading text-2xl lg:text-3xl font-bold text-heading dark:text-heading-dark mb-3">SEO მომსახურება <span class="text-lg text-body-dark/60 font-normal">(Done-For-You)</span></h3>':
+                '<h3 class="font-heading text-2xl lg:text-3xl font-bold text-heading dark:text-heading-dark mb-3">SEO Management <span class="text-lg text-body-dark/60 font-normal">(Done-For-You)</span></h3>',
+            '<p class="text-body dark:text-body-dark leading-relaxed mb-5">სრული SEO მართვა — Keyword Research, ტექნიკური ოპტიმიზაცია, კონტენტი, Link Building, AEO/GEO. Live Dashboard რეპორტინგი და 10-წუთიანი SLA.</p>':
+                '<p class="text-body dark:text-body-dark leading-relaxed mb-5">Full-stack SEO management — keyword research, technical optimization, content, link building, AEO/GEO. Live dashboard reporting and 10-minute SLA.</p>',
+            '<span class="text-sm text-body-dark/60">/თვე-დან</span>': '<span class="text-sm text-body-dark/60">/mo, starting at</span>',
+
+            # Service feature lists
+            '>ტექნიკური ოპტიმიზაცია</li>': '>Technical optimization</li>',
+            '>კონტენტი & Link Building</li>': '>Content & link building</li>',
+            '>AEO/GEO ოპტიმიზაცია</li>': '>AEO/GEO optimization</li>',
+
+            # CTA buttons
+            'გაიგეთ მეტი': 'Learn more',
+
+            # Stats labels
+            '<span class="text-sm text-body-dark">წლის გამოცდილება<br>SEO ინდუსტრიაში</span>':
+                '<span class="text-sm text-body-dark">years experience<br>in the SEO industry</span>',
+            '<span class="text-sm text-body-dark">საშუალო ტრაფიკის<br>ზრდა პარტნიორებში</span>':
+                '<span class="text-sm text-body-dark">average traffic<br>growth across clients</span>',
+            '<span class="font-inter text-3xl font-extrabold text-accent">10 წთ</span>':
+                '<span class="font-inter text-3xl font-extrabold text-accent">10 min</span>',
+            '<span class="text-sm text-body-dark">SLA პასუხის<br>დრო სამუშაო საათებში</span>':
+                '<span class="text-sm text-body-dark">SLA response<br>time during business hours</span>',
+
+            # SEO Consultation card
+            '<h3 class="font-heading text-xl font-bold text-heading dark:text-heading-dark mb-2">SEO კონსულტაცია</h3>':
+                '<h3 class="font-heading text-xl font-bold text-heading dark:text-heading-dark mb-2">SEO Consultation</h3>',
+            '<p class="text-sm text-body dark:text-body-dark leading-relaxed mb-4">1-საათიანი ექსპერტ კონსულტაცია 12 წლის გამოცდილებით. რთული პრობლემები, გუნდის აწყობა, არსებული სტრატეგიის აუდიტი.</p>':
+                '<p class="text-sm text-body dark:text-body-dark leading-relaxed mb-4">1-hour expert consultation with 12+ years experience. Complex problems, team building, and audits of your existing strategy.</p>',
+            '<span class="text-xs text-body-dark/60">/სთ + დღგ</span>':
+                '<span class="text-xs text-body-dark/60">/hour + VAT</span>',
+
+            # SEO Strategy card
+            '<h3 class="font-heading text-xl font-bold text-heading dark:text-heading-dark mb-2">SEO სტრატეგია</h3>':
+                '<h3 class="font-heading text-xl font-bold text-heading dark:text-heading-dark mb-2">SEO Strategy</h3>',
+            '<p class="text-sm text-body dark:text-body-dark leading-relaxed mb-4">პროფესიონალური SEO Roadmap — სრული ანალიზი, სამოქმედო გეგმა, კონკურენტების კვლევა და ტრაფიკის პროგნოზი.</p>':
+                '<p class="text-sm text-body dark:text-body-dark leading-relaxed mb-4">A professional SEO roadmap — complete analysis, action plan, competitor research, and traffic forecast.</p>',
+            '<span class="text-xs text-body-dark/60">-დან</span>': '<span class="text-xs text-body-dark/60">starting at</span>',
         },
     },
     'ai-seo.html': {
