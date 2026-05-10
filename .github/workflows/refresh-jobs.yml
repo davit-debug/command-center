@@ -1,0 +1,33 @@
+name: Refresh JobPosting datePosted
+
+on:
+  schedule:
+    # 1st of every month at 09:00 UTC (13:00 Tbilisi time)
+    - cron: '0 9 1 * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Update datePosted to first of current month
+        run: python3 scripts/refresh-job-postings.py
+      - name: Commit and push if changed
+        run: |
+          if git diff --quiet vacancies.html; then
+            echo "No changes — vacancies.html already up to date."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add vacancies.html
+          git commit -m "schema: refresh JobPosting datePosted (monthly auto-run)"
+          git push
