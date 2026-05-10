@@ -167,6 +167,11 @@ COMMON_BODY = {
     '<a href="contact-us.html" class="hover:text-white transition-colors">კონტაქტი</a>':
         '<a href="contact-us.html" class="hover:text-white transition-colors">Contact</a>',
 
+    # Skipped-page link inner text (works regardless of href depth)
+    '>SEO ლექსიკონი</a>': '>SEO Glossary (Georgian)</a>',
+    '>სტარტაპ ლექსიკონი</a>': '>Startup Glossary (Georgian)</a>',
+    '>AI ლექსიკონი</a>': '>AI Glossary (Georgian)</a>',
+
     # Address
     'ბახტრიონის ქუჩა 8, თბილისი 0194': '8 Bakhtrioni Street, Tbilisi 0194, Georgia',
 
@@ -535,10 +540,11 @@ def swap_data_en_inner_text(html):
 # ============================================================
 
 SKIPPED_LINK_REWRITES = {
-    'href="seo-leqsikoni.html"': 'href="../seo-leqsikoni.html" hreflang="ka"',
-    'href="startup-leqsikoni.html"': 'href="../startup-leqsikoni.html" hreflang="ka"',
-    'href="ai-leqsikoni.html"': 'href="../ai-leqsikoni.html" hreflang="ka"',
-    'href="blog.html"': 'href="../blog.html" hreflang="ka"',
+    # hreflang="ka" added separately by COMMON_BODY translations to avoid duplicates
+    'href="seo-leqsikoni.html"': 'href="../seo-leqsikoni.html"',
+    'href="startup-leqsikoni.html"': 'href="../startup-leqsikoni.html"',
+    'href="ai-leqsikoni.html"': 'href="../ai-leqsikoni.html"',
+    'href="blog.html"': 'href="../blog.html"',
 }
 
 
@@ -607,14 +613,28 @@ def translate_page(page_name: str, dry_run: bool = False):
             html = html.replace(old, new)
             pb_applied += 1
 
-    # Phase 6: Skipped-page link rewrites (only for depth-0 pages)
+    # Phase 6: Skipped-page link rewrites — depth-aware
+    # KA root has href="<page>.html"; KA nested has href="../<page>.html" (sync-adjusted)
+    # EN root needs href="../<page>.html" (escape /en/)
+    # EN nested needs href="../../<page>.html" or more (escape /en/ + climb directories)
     page_depth = page_name.count('/')
     sl_applied = 0
-    if page_depth == 0:  # root page → ../path needed
-        for old, new in SKIPPED_LINK_REWRITES.items():
-            if old in html and 'hreflang="ka"' not in html.split(old, 1)[1][:50]:
-                html = html.replace(old, new)
+    skipped_pages = ['seo-leqsikoni.html', 'startup-leqsikoni.html', 'ai-leqsikoni.html', 'blog.html']
+    for skipped in skipped_pages:
+        # Target prefix for EN: one ../ to escape /en/, plus page_depth more ../ for nested
+        target_prefix = '../' * (page_depth + 1)
+        target_href = f'href="{target_prefix}{skipped}"'
+        # Match existing forms in source
+        candidates = [
+            f'href="{skipped}"',                    # KA root form
+            f'href="../{skipped}"',                 # KA depth-1 form (already has 1 ../)
+            f'href="../../{skipped}"',              # KA depth-2 form (rare)
+        ]
+        for old in candidates:
+            if old in html and old != target_href:
+                html = html.replace(old, target_href)
                 sl_applied += 1
+                break  # only one form should be in source
 
     # Phase 7: Lang switcher
     ls_applied = 0
@@ -622,6 +642,13 @@ def translate_page(page_name: str, dry_run: bool = False):
         if old in html:
             html = html.replace(old, new)
             ls_applied += 1
+
+    # Phase 8: Add hreflang="ka" to <a> tags pointing to skipped pages (any depth)
+    skip_pattern = re.compile(
+        r'(<a\s+href="(?:\.\./)+(?:seo-leqsikoni|startup-leqsikoni|ai-leqsikoni|blog)\.html")(?![^>]*hreflang=)',
+        re.IGNORECASE
+    )
+    html = skip_pattern.sub(r'\1 hreflang="ka"', html)
 
     new_size = len(html)
     print(f"\n=== {page_name} ===")

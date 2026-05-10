@@ -638,10 +638,11 @@ BODY_TRANSLATIONS = {
 # label and prepends "../" to the href.
 SKIPPED_LINK_REWRITES = {
     # Footer dictionary + blog links: href="<page>.html" → href="../<page>.html"
-    'href="seo-leqsikoni.html"': 'href="../seo-leqsikoni.html" hreflang="ka"',
-    'href="startup-leqsikoni.html"': 'href="../startup-leqsikoni.html" hreflang="ka"',
-    'href="ai-leqsikoni.html"': 'href="../ai-leqsikoni.html" hreflang="ka"',
-    'href="blog.html"': 'href="../blog.html" hreflang="ka"',
+    # (hreflang="ka" added separately by BODY_TRANSLATIONS to avoid duplicate attrs)
+    'href="seo-leqsikoni.html"': 'href="../seo-leqsikoni.html"',
+    'href="startup-leqsikoni.html"': 'href="../startup-leqsikoni.html"',
+    'href="ai-leqsikoni.html"': 'href="../ai-leqsikoni.html"',
+    'href="blog.html"': 'href="../blog.html"',
 }
 
 
@@ -684,12 +685,11 @@ def main():
         else:
             body_missed.append((i, old[:80] + '...' if len(old) > 80 else old))
 
-    # Phase 3: skipped-page link rewrites (applied after body translations
-    # because they depend on the post-translation HTML state)
+    # Phase 3: skipped-page link rewrites (just adds ../ prefix; hreflang added
+    # by BODY_TRANSLATIONS already)
     skip_applied = 0
     for old, new in SKIPPED_LINK_REWRITES.items():
-        # Only rewrite if hreflang isn't already present (idempotent)
-        if old in html and 'hreflang="ka"' not in html.split(old, 1)[1][:50]:
+        if old in html:
             html = html.replace(old, new)
             skip_applied += 1
     print(f"Phase 3 (skipped link rewrites): {skip_applied}/{len(SKIPPED_LINK_REWRITES)} applied")
