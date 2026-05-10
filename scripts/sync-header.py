@@ -183,6 +183,16 @@ def adjust_paths(block_html, depth):
     return HREF_SRC_RE.sub(replace, block_html)
 
 
+def swap_home_logo_to_default(block_html):
+    """Replace V4 home-only logo (logo-home.*) with the V2 default (logo.*).
+    The home page (index.html) uses a yellow-only V4 mark; every other page
+    uses the bicolor V2. Same width/height/class -> no layout shift on nav.
+    Called when propagating index.html's header to other pages."""
+    return (block_html
+            .replace('images/logo-home.webp', 'images/logo.webp')
+            .replace('images/logo-home.png', 'images/logo.png'))
+
+
 def rewrite_logo_links(block_html, depth):
     """Convert href="#" → href="index.html" (or ../index.html etc.)
     on the logo anchor and the mobile-menu home item."""
@@ -255,6 +265,7 @@ def process_file(path, ka_source_block, en_source_block, dry_run=True):
     depth = compute_depth(path)
     adjusted = adjust_paths(source_block, depth)
     adjusted = rewrite_logo_links(adjusted, depth)
+    adjusted = swap_home_logo_to_default(adjusted)
 
     existing = html[s:e]
     if existing == adjusted:
