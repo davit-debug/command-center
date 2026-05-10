@@ -59,8 +59,10 @@
     .v29-cat[data-key="results"] { font-size: 10px; font-weight: 700; color: #60A5FA; background: rgba(59,130,246,0.15); padding: 3px 8px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; }
     .v29-cq .v29-cat { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; }
     .v29-ca { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1), padding 0.3s; padding: 0 22px 0 76px; }
-    .v29-open .v29-ca { max-height: 400px; padding: 0 22px 18px 76px; }
+    .v29-open .v29-ca { max-height: 480px; padding: 0 22px 18px 76px; }
     .v29-ca p { color: #CBD5E1; font-size: 15px; line-height: 1.8; }
+    .v29-ca ul { color: #CBD5E1; font-size: 15px; line-height: 1.8; margin: 4px 0; padding-left: 22px; list-style: disc; }
+    .v29-ca li { margin-bottom: 2px; }
     .v29-card.v29-extra-hidden { display: none; }
     .v29-more-wrap { text-align: center; margin-top: 24px; }
     .v29-more-wrap.v29-hidden { display: none; }
