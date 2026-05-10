@@ -89,8 +89,6 @@
 
         /* Network canvas */
         .network-canvas { position: relative; width: 100%; height: calc(100vh - 80px); min-height: 870px; overflow: hidden; padding-top: 0; }
-        .network-canvas .overlay-title { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 5; text-align: center; pointer-events: none; }
-        .network-canvas .overlay-title h1 { font-size: clamp(2rem, 5vw, 4.5rem); font-weight: 700; color: rgba(255,255,255,0.08); letter-spacing: -0.02em; }
 
         /* Region filter strip — sits below navbar, above canvas */
         .canvas-filter-strip { display: flex; justify-content: center; align-items: center; padding: 88px 16px 16px; background: transparent; pointer-events: none; }
@@ -300,10 +298,7 @@
 
 <!-- Full-viewport Network Canvas (Desktop) -->
 <section class="network-canvas" id="networkCanvas" data-filter="ge">
-    <!-- Overlay title -->
-    <div class="overlay-title">
-        <h1>SEO პორტფოლიო — 38+ ბიზნესპარტნიორი</h1>
-    </div>
+    <h1 class="sr-only">SEO პორტფოლიო — 38+ ბიზნესპარტნიორი</h1>
 
     <!-- SVG connection lines -->
     <svg class="network-svg" id="networkSvg"/>
@@ -553,10 +548,6 @@
                     <div class="cluster-logo-item"><img src="images/clients/gpc.webp" alt="GPC" loading="lazy" decoding="async"></div>
                     <div class="cluster-logo-item"><img src="images/clients/clearminds.png" alt="ClearMinds" loading="lazy" decoding="async"></div>
                 </div>
-                <div class="mt-4 space-y-1 text-sm">
-                    <div class="flex justify-between"><span class="text-gray-500">თოდუას კლინიკა</span><span class="text-success font-semibold">0 → 4,200 ვიზიტორი/თვეში</span></div>
-                    <div class="flex justify-between"><span class="text-gray-500">ფარმადეპო</span><span class="text-success font-semibold">+340% მომხმარებელთა ნაკადი</span></div>
-                </div>
             </div>
 
             <!-- Real Estate / Construction -->
@@ -577,11 +568,6 @@
                     <div class="cluster-logo-item dark-bg"><img src="images/clients/chronometri.svg" alt="ქრონ(ო)მეტრი" loading="lazy" decoding="async"></div>
                     <div class="cluster-logo-item"><img src="images/clients/legi.png" alt="Legi" loading="lazy" decoding="async"></div>
                 </div>
-                <div class="mt-4 space-y-1 text-sm">
-                    <div class="flex justify-between"><span class="text-gray-500">myhome.ge</span><span class="text-success font-semibold">+220% მომხმარებელთა ნაკადი</span></div>
-                    <div class="flex justify-between"><span class="text-gray-500">Belle Maison</span><span class="text-success font-semibold">+200% მოთხოვნების მატება</span></div>
-                    <div class="flex justify-between"><span class="text-gray-500">Horizon Batumi</span><span class="text-success font-semibold">+150% ჯავშნების ზრდა</span></div>
-                </div>
             </div>
 
             <!-- Hospitality / Travel -->
@@ -596,9 +582,6 @@
                     <div class="cluster-logo-item"><img src="images/clients/tripify.png" alt="Tripify" loading="lazy" decoding="async"></div>
                     <div class="cluster-logo-item"><img src="images/clients/avia.webp" alt="avia.ge" loading="lazy" decoding="async"></div>
                     <div class="cluster-logo-item"><img src="images/clients/flyhelp.svg" alt="FlyHelp" loading="lazy" decoding="async"></div>
-                </div>
-                <div class="mt-4 space-y-1 text-sm">
-                    <div class="flex justify-between"><span class="text-gray-500">Kvareli Lake</span><span class="text-success font-semibold">+180% ჯავშნების ზრდა</span></div>
                 </div>
             </div>
 
@@ -616,9 +599,6 @@
                     <div class="cluster-logo-item"><img src="images/clients/fchain.webp" alt="FCHAIN" loading="lazy" decoding="async"></div>
                     <div class="cluster-logo-item"><img src="images/clients/veridia.svg" alt="Veridia" loading="lazy" decoding="async"></div>
                 </div>
-                <div class="mt-4 space-y-1 text-sm">
-                    <div class="flex justify-between"><span class="text-gray-500">IRAO</span><span class="text-success font-semibold">+180% ხილვადობა</span></div>
-                </div>
             </div>
 
             <!-- E-Commerce -->
@@ -635,9 +615,6 @@
                     <div class="cluster-logo-item dark-bg"><img src="images/clients/bedstar.webp" alt="Bedstar" loading="lazy" decoding="async"></div>
                     <div class="cluster-logo-item"><img src="images/clients/british-bed-co.png" alt="British Bed Co." loading="lazy" decoding="async"></div>
                     <div class="cluster-logo-item"><img src="images/clients/1clickblinds.webp" alt="1Click Blinds" loading="lazy" decoding="async"></div>
-                </div>
-                <div class="mt-4 space-y-1 text-sm">
-                    <div class="flex justify-between"><span class="text-gray-500">ELEHEAR</span><span class="text-success font-semibold">+270% მომხმარებელთა ნაკადი</span></div>
                 </div>
             </div>
 
