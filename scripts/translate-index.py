@@ -626,8 +626,8 @@ BODY_TRANSLATIONS = {
     # Fallback: any standalone "დაჯავშნეთ კონსულტაცია" line wrapped in tags
     "\nდაჯავშნეთ კონსულტაცია\n": "\nBook Consultation\n",
 
-    # === LANGUAGE SWITCHER (EN active) ===
-    '<button id="lang-toggle" class="hidden sm:flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark transition-colors">\n<span id="lang-ka" class="text-primary font-bold">KA</span>\n<span class="opacity-50">/</span>\n<span id="lang-en" class="opacity-50">EN</span>\n</button>':
+    # === LANGUAGE SWITCHER (EN active, links back to KA root) ===
+    '<a href="en/index.html" id="lang-toggle" class="hidden sm:flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark transition-colors" hreflang="en" aria-label="Switch to English">\n<span id="lang-ka" class="text-primary font-bold">KA</span>\n<span class="opacity-50">/</span>\n<span id="lang-en" class="opacity-50">EN</span>\n</a>':
         '<a href="../index.html" id="lang-toggle" class="hidden sm:flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50 text-heading dark:text-heading-dark transition-colors" hreflang="ka" aria-label="Switch to Georgian">\n<span id="lang-ka" class="opacity-50">KA</span>\n<span class="opacity-50">/</span>\n<span id="lang-en" class="text-primary font-bold">EN</span>\n</a>',
 
 }
