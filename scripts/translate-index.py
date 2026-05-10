@@ -76,19 +76,19 @@ add('<a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:
     '<a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-primary focus:text-white focus:px-4 focus:py-2 focus:rounded-lg">Skip to main content</a>')
 
 add('<title>SEO სააგენტო - 10xSEO</title>',
-    '<title>SEO Agency Georgia | #1 SEO Services in Tbilisi — 10xSEO</title>')
+    '<title>#1 SEO Agency in Georgia | Rank on Google &amp; ChatGPT — 10xSEO</title>')
 
 add('<meta name="description" content="SEO სააგენტო -10xSEO საქართველოში საუკეთესო სეო სააგენტოა. ითანამშრომლე ჩვენთან - იყავი პირველი.">',
-    '<meta name="description" content="10xSEO is the leading SEO agency in Georgia (Tbilisi). Rank #1 on Google, ChatGPT, Perplexity, and every AI search platform. Partner with the SEO agency Tbilisi businesses trust — be first.">')
+    '<meta name="description" content="Top SEO agency in Tbilisi, Georgia. 10xSEO delivers #1 rankings on Google, ChatGPT, Perplexity &amp; all AI search. Book a free 15-min consult today.">')
 
 add('<meta property="og:locale" content="ka_GE">',
     '<meta property="og:locale" content="en_US">\n<meta property="og:locale:alternate" content="ka_GE">')
 
 add('<meta property="og:title" content="SEO სააგენტო - 10xSEO">',
-    '<meta property="og:title" content="SEO Agency Georgia | #1 SEO Services in Tbilisi — 10xSEO">')
+    '<meta property="og:title" content="#1 SEO Agency in Georgia | Rank on Google &amp; ChatGPT — 10xSEO">')
 
 add('<meta property="og:description" content="SEO სააგენტო - 10xSEO საქართველოში საუკეთესო სეო სააგენტოა. ითანამშრომლე ჩვენთან - იყავი პირველი.">',
-    '<meta property="og:description" content="10xSEO is the leading SEO agency in Georgia (Tbilisi). Rank #1 on Google, ChatGPT, Perplexity, and every AI search platform. Partner with the SEO agency Tbilisi businesses trust — be first.">')
+    '<meta property="og:description" content="Top SEO agency in Tbilisi, Georgia. 10xSEO delivers #1 rankings on Google, ChatGPT, Perplexity &amp; all AI search. Book a free 15-min consult today.">')
 
 add('<meta property="og:url" content="https://10xseo.ge/">',
     '<meta property="og:url" content="https://10xseo.ge/en/">')
@@ -119,7 +119,7 @@ add('"description": "#1 SEO სააგენტო საქართველ
 # We replace the entire single-line JSON-LD with an English version.
 KA_GRAPH_NEEDLE = '"@graph":[{"@type":"WebPage","@id":"https://10xseo.ge/#webpage","url":"https://10xseo.ge/","name":"SEO სააგენტო - 10xSEO","description":"SEO სააგენტო — 10xSEO საქართველოში საუკეთესო სეო სააგენტოა. Google-ში, ChatGPT-ში და ყველა AI პლატფორმაზე პირველობის მოპოვება.","inLanguage":"ka-GE"'
 
-EN_GRAPH_NEEDLE = '"@graph":[{"@type":"WebPage","@id":"https://10xseo.ge/en/#webpage","url":"https://10xseo.ge/en/","name":"SEO Agency Georgia | #1 SEO Services in Tbilisi — 10xSEO","description":"10xSEO is the leading SEO agency in Georgia. Rank #1 on Google, ChatGPT, Perplexity, and every AI search platform.","inLanguage":"en-US"'
+EN_GRAPH_NEEDLE = '"@graph":[{"@type":"WebPage","@id":"https://10xseo.ge/en/#webpage","url":"https://10xseo.ge/en/","name":"#1 SEO Agency in Georgia | Rank on Google & ChatGPT — 10xSEO","description":"Top SEO agency in Tbilisi, Georgia. 10xSEO delivers #1 rankings on Google, ChatGPT, Perplexity & all AI search. Book a free 15-min consult today.","inLanguage":"en-US"'
 
 add(KA_GRAPH_NEEDLE, EN_GRAPH_NEEDLE)
 
@@ -153,8 +153,8 @@ add('{"@type":"Question","name":"რამდენი ხანი სჭირ
 add('{"@type":"Question","name":"რა ღირს SEO მომსახურება?","acceptedAnswer":{"@type":"Answer","text":"10xSEO-ში SEO მომსახურების ღირებულება 1880 ლარიდან იწყება. საბოლოო ფასი დამოკიდებულია სამუშაოს სპეციფიკასა და თქვენ მიერ დასახულ მიზნებზე. ჩვენ მაქსიმალურად ვერგებით პარტნიორი კომპანიის ინტერესებს, რათა თანამშრომლობა ორივე მხარისთვის მომგებიანი იყოს."}}',
     '{"@type":"Question","name":"How much does SEO cost?","acceptedAnswer":{"@type":"Answer","text":"At 10xSEO, SEO services start from $695/month. The final price depends on the scope of work and your specific goals. We adapt to each partner\'s needs to ensure the engagement is profitable for both sides."}}')
 
-add('{"@type":"Question","name":"როგორ იზომება შედეგები?","acceptedAnswer":{"@type":"Answer","text":"წარმატებას სამი ძირითადი კრიტერიუმით ვზომავთ: 1) თქვენი პოზიციები Google-ში, 2) საიტზე შემოსული ადამიანების რაოდენობა და 3) მათი ქცევა. ჩვენი მიზანია, საიტზე მოვიზიდოთ არა უბრალოდ ბევრი, არამედ თქვენი პროდუქტით რეალურად დაინტერესებული ადამიანები."}}',
-    '{"@type":"Question","name":"How do you measure results?","acceptedAnswer":{"@type":"Answer","text":"We measure success by three core criteria: 1) your Google rankings, 2) the volume of people coming to your site, and 3) their behavior. Our goal is not just to attract many people, but to bring in users genuinely interested in your product."}}')
+add('{"@type":"Question","name":"როგორ იზომება შედეგები?","acceptedAnswer":{"@type":"Answer","text":"წარმატებას სამი ძირითადი კრიტერიუმით ვზომავთ:</p><ul><li>თქვენი პოზიციები Google-ში</li><li>საიტზე შემოსული ადამიანების რაოდენობა</li><li>მათი ქცევა</li></ul><p>ჩვენი მიზანია, საიტზე მოვიზიდოთ არა უბრალოდ ბევრი, არამედ თქვენი პროდუქტით რეალურად დაინტერესებული ადამიანები."}}',
+    '{"@type":"Question","name":"How do you measure results?","acceptedAnswer":{"@type":"Answer","text":"We measure success by three core criteria:</p><ul><li>Your Google rankings</li><li>The volume of visitors coming to your site</li><li>Their on-site behavior</li></ul><p>Our goal is not just to attract many people, but to bring in users genuinely interested in your product."}}')
 
 add('{"@type":"Question","name":"რატომ უნდა ავირჩიოთ სააგენტო და არა In-House გუნდი?","acceptedAnswer":{"@type":"Answer","text":"პირველ რიგში, სირთულეს წააწყდებით კადრების აყვანის დროს. SEO კომპლექსური პროცესია სადაც პროექტზე გუნდი მუშაობს – SEO სპეციალისტი, სტრატეგოსი, კონტენტის მწერალი და ვებდეველოპერი."}}',
     '{"@type":"Question","name":"Why hire an agency instead of building an in-house team?","acceptedAnswer":{"@type":"Answer","text":"First, hiring is hard. SEO is a complex process that requires a full team — an SEO specialist, strategist, content writer, and web developer all working together. An agency gives you all of that on day one."}}')
@@ -260,6 +260,13 @@ BODY_TRANSLATIONS = {
     # Hero section
     '<img src="images/pyramid-top.webp" alt="SEO პოზიციები"': '<img src="images/pyramid-top.webp" alt="SEO rankings — be #1"',
     'იყავი<br>პირველი': 'Be<br>#1',
+
+    # H1 (V3 user pick: "AI-Powered" instead of "The AI Era's")
+    "The AI Era's": "AI-Powered",
+
+    # Hero subheading (with international angle per user request)
+    "Georgia's #1 SEO Agency — We put brands where customers search for answers.":
+        "Georgia's SEO agency for Tbilisi and international brands. We rank you #1 on Google, ChatGPT & every AI search platform.",
 
     # Image alts (clients)
     'alt="ფარმადეპო"': 'alt="Pharmadepo"',
@@ -439,8 +446,8 @@ BODY_TRANSLATIONS = {
     'a: "10xSEO-ში SEO მომსახურების ღირებულება 1880 ლარიდან იწყება. საბოლოო ფასი დამოკიდებულია სამუშაოს სპეციფიკასა და თქვენ მიერ დასახულ მიზნებზე. ჩვენ მაქსიმალურად ვერგებით პარტნიორი კომპანიის ინტერესებს, რათა თანამშრომლობა ორივე მხარისთვის მომგებიანი იყოს."':
         'a: "At 10xSEO, SEO services start from $695/month. The final price depends on the scope of work and your specific goals. We adapt to each partner\'s needs to ensure the engagement is profitable for both sides."',
     'q: "როგორ იზომება შედეგები?"': 'q: "How do you measure results?"',
-    'a: "წარმატებას სამი ძირითადი კრიტერიუმით ვზომავთ: 1) თქვენი პოზიციები Google-ში, 2) საიტზე შემოსული ადამიანების რაოდენობა და 3) მათი ქცევა. ჩვენი მიზანია, საიტზე მოვიზიდოთ არა უბრალოდ ბევრი, არამედ თქვენი პროდუქტით რეალურად დაინტერესებული ადამიანები."':
-        'a: "We measure success by three core criteria: 1) your Google rankings, 2) the volume of people coming to your site, and 3) their behavior. Our goal is not just to attract many people, but to bring in users genuinely interested in your product."',
+    'a: "წარმატებას სამი ძირითადი კრიტერიუმით ვზომავთ:</p><ul><li>თქვენი პოზიციები Google-ში</li><li>საიტზე შემოსული ადამიანების რაოდენობა</li><li>მათი ქცევა</li></ul><p>ჩვენი მიზანია, საიტზე მოვიზიდოთ არა უბრალოდ ბევრი, არამედ თქვენი პროდუქტით რეალურად დაინტერესებული ადამიანები."':
+        'a: "We measure success by three core criteria:</p><ul><li>Your Google rankings</li><li>The volume of visitors coming to your site</li><li>Their on-site behavior</li></ul><p>Our goal is not just to attract many people, but to bring in users genuinely interested in your product."',
     'q: "რატომ უნდა ავირჩიოთ სააგენტო და არა In-House გუნდი?"': 'q: "Why hire an agency instead of building an in-house team?"',
     'a: "პირველ რიგში, სირთულეს წააწყდებით კადრების აყვანის დროს. SEO კომპლექსური პროცესია სადაც პროექტზე გუნდი მუშაობს – SEO სპეციალისტი, სტრატეგოსი, კონტენტის მწერალი და ვებდეველოპერი."':
         'a: "First, hiring is hard. SEO is a complex process that requires a full team — an SEO specialist, strategist, content writer, and web developer all working together. An agency gives you all of that on day one."',
