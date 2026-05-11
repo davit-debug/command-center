@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>OG Image Designer Test — 10xSEO</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0b0f17; color: #e5e7eb;
+      min-height: 100vh; padding: 24px 16px 80px;
+    }
+    .wrap { max-width: 1280px; margin: 0 auto; }
+    header { text-align: center; margin-bottom: 32px; }
+    h1 {
+      font-size: 28px; font-weight: 800; margin-bottom: 8px;
+      background: linear-gradient(135deg, #8B5CF6, #14B8A6);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    header p { color: #9ca3af; font-size: 14px; }
+
+    /* Upload zone */
+    .upload-card {
+      background: #111827; border: 1px solid #1f2937;
+      border-radius: 16px; padding: 24px; margin-bottom: 24px;
+    }
+    .upload-zone {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 10px; padding: 40px 20px; border: 2px dashed rgba(139, 92, 246, 0.4);
+      border-radius: 12px; background: rgba(139, 92, 246, 0.04);
+      cursor: pointer; transition: all 0.2s ease; text-align: center;
+    }
+    .upload-zone:hover, .upload-zone.drag-over {
+      border-color: #8B5CF6; background: rgba(139, 92, 246, 0.1);
+    }
+    .upload-zone svg { width: 48px; height: 48px; color: #8B5CF6; opacity: 0.8; }
+    .upload-zone .title { font-size: 16px; font-weight: 600; color: #f3f4f6; }
+    .upload-zone .hint { font-size: 13px; color: #9ca3af; }
+
+    /* Validation */
+    .info-row { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
+    .file-name { font-size: 15px; font-weight: 600; color: #f3f4f6; }
+    .file-meta { font-size: 13px; color: #9ca3af; margin-top: 2px; }
+    .clear-btn {
+      background: transparent; border: 1px solid #374151; color: #9ca3af;
+      padding: 6px 12px; border-radius: 8px; font-size: 12px; cursor: pointer;
+      transition: all 0.2s;
+    }
+    .clear-btn:hover { background: #1f2937; color: #f3f4f6; }
+    .badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 5px 12px; border-radius: 6px; font-size: 13px; font-weight: 600;
+    }
+    .badge.ok { background: rgba(34, 197, 94, 0.15); color: #4ade80; }
+    .badge.warn { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+    .badge.err { background: rgba(239, 68, 68, 0.15); color: #f87171; }
+
+    /* Thumbnail gallery */
+    .thumbs-wrap {
+      margin-top: 18px; padding-top: 18px; border-top: 1px solid #1f2937;
+    }
+    .thumbs-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 12px;
+    }
+    .thumbs-title { font-size: 13px; font-weight: 600; color: #d1d5db; }
+    .thumbs-count { font-size: 12px; color: #9ca3af; }
+    .clear-all {
+      background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #f87171; padding: 5px 11px; border-radius: 6px;
+      font-size: 12px; cursor: pointer; transition: all 0.2s;
+    }
+    .clear-all:hover { background: rgba(239, 68, 68, 0.2); }
+    .thumbs-grid {
+      display: grid; gap: 12px;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
+    .thumb {
+      position: relative; cursor: pointer;
+      border-radius: 10px; overflow: hidden;
+      border: 2px solid transparent; transition: all 0.2s;
+      background: #0b0f17;
+    }
+    .thumb:hover { transform: translateY(-2px); border-color: #374151; }
+    .thumb.active { border-color: #8B5CF6; box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.3); }
+    .thumb-img {
+      width: 100%; aspect-ratio: 1.91/1; background: #1f2937;
+      display: block; object-fit: cover;
+    }
+    .thumb-info {
+      padding: 8px 10px; background: #111827;
+    }
+    .thumb-name {
+      font-size: 11px; color: #d1d5db; white-space: nowrap;
+      overflow: hidden; text-overflow: ellipsis; margin-bottom: 4px;
+    }
+    .thumb-status { display: flex; gap: 4px; align-items: center; }
+    .thumb-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+    }
+    .thumb-dot.ok { background: #4ade80; }
+    .thumb-dot.warn { background: #fbbf24; }
+    .thumb-dot.err { background: #f87171; }
+    .thumb-meta { font-size: 10px; color: #6b7280; }
+    .thumb-remove {
+      position: absolute; top: 6px; right: 6px;
+      width: 24px; height: 24px; border-radius: 50%;
+      background: rgba(0,0,0,0.7); color: #fff; border: none;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; opacity: 0; transition: opacity 0.2s;
+      font-size: 14px; line-height: 1;
+    }
+    .thumb:hover .thumb-remove { opacity: 1; }
+    .thumb-remove:hover { background: rgba(239, 68, 68, 0.9); }
+    .thumb-active-badge {
+      position: absolute; bottom: 8px; left: 8px;
+      background: #8B5CF6; color: #fff;
+      padding: 2px 8px; border-radius: 4px;
+      font-size: 10px; font-weight: 700;
+      display: none;
+    }
+    .thumb.active .thumb-active-badge { display: block; }
+
+    /* Previews grid */
+    .grid {
+      display: grid; gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    }
+    .preview-card {
+      background: #111827; border: 1px solid #1f2937;
+      border-radius: 16px; overflow: hidden;
+    }
+    .preview-header {
+      padding: 12px 18px; border-bottom: 1px solid #1f2937;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .preview-platform { font-weight: 700; font-size: 14px; color: #f3f4f6; display: flex; align-items: center; gap: 8px; }
+    .preview-spec { font-size: 11px; color: #6b7280; }
+    .preview-body { padding: 18px; background: #0b0f17; }
+
+    /* Empty state */
+    .empty-img {
+      background: #1f2937;
+      display: flex; align-items: center; justify-content: center;
+      color: #4b5563; font-size: 13px;
+    }
+    .empty-img svg { width: 40px; height: 40px; opacity: 0.4; }
+
+    /* ───── Facebook desktop ───── */
+    .fb-card {
+      max-width: 100%; border: 1px solid #dadde1; border-radius: 8px;
+      overflow: hidden; background: #fff; font-family: 'Helvetica', sans-serif;
+    }
+    .fb-card .img { width: 100%; aspect-ratio: 1.91/1; background: #e4e6eb; overflow: hidden; }
+    .fb-card .img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .fb-card .body { padding: 10px 12px; background: #f0f2f5; }
+    .fb-card .domain { font-size: 12px; color: #606770; text-transform: uppercase; letter-spacing: 0.3px; margin-bottom: 3px; }
+    .fb-card .title { font-size: 16px; font-weight: 600; color: #1c1e21; line-height: 1.3; margin-bottom: 4px; word-wrap: break-word; }
+    .fb-card .desc { font-size: 13px; color: #606770; line-height: 1.4;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+    /* ───── Facebook mobile (square crop demo) ───── */
+    .fb-mobile {
+      max-width: 320px; margin: 0 auto; border: 1px solid #dadde1; border-radius: 8px;
+      overflow: hidden; background: #fff; font-family: 'Helvetica', sans-serif;
+    }
+    .fb-mobile .img { width: 100%; aspect-ratio: 1.91/1; background: #e4e6eb; overflow: hidden; }
+    .fb-mobile .img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .fb-mobile .body { padding: 10px 12px; background: #f0f2f5; }
+    .fb-mobile .domain { font-size: 11px; color: #606770; text-transform: uppercase; margin-bottom: 2px; }
+    .fb-mobile .title { font-size: 14px; font-weight: 600; color: #1c1e21; line-height: 1.3; }
+
+    /* ───── LinkedIn ───── */
+    .li-card {
+      max-width: 100%; border: 1px solid #d0d4d9; border-radius: 4px;
+      overflow: hidden; background: #fff; font-family: -apple-system, sans-serif;
+    }
+    .li-card .img { width: 100%; aspect-ratio: 1.91/1; background: #eef3f8; overflow: hidden; }
+    .li-card .img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .li-card .body { padding: 12px 14px; background: #fff; border-top: 1px solid #e0e3e7; }
+    .li-card .title { font-size: 15px; font-weight: 600; color: #000; line-height: 1.4; margin-bottom: 4px;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .li-card .domain { font-size: 12px; color: #5e6770; }
+
+    /* ───── Twitter / X ───── */
+    .tw-card {
+      max-width: 100%; border: 1px solid #2f3336; border-radius: 16px;
+      overflow: hidden; background: #000; font-family: -apple-system, sans-serif;
+    }
+    .tw-card .img { width: 100%; aspect-ratio: 1.91/1; background: #16181c; overflow: hidden; position: relative; }
+    .tw-card .img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .tw-card .body { padding: 10px 14px; background: #000; border-top: 1px solid #2f3336; }
+    .tw-card .domain { font-size: 13px; color: #71767b; margin-bottom: 2px; }
+    .tw-card .title { font-size: 15px; font-weight: 400; color: #e7e9ea; line-height: 1.3;
+      display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+
+    /* ───── WhatsApp ───── */
+    .wa-card {
+      max-width: 380px; background: #d9fdd3; border-radius: 8px; overflow: hidden;
+      font-family: -apple-system, sans-serif; padding: 4px; margin: 0 auto;
+    }
+    .wa-inner { background: #fff; border-radius: 6px; overflow: hidden; }
+    .wa-card .img { width: 100%; aspect-ratio: 1.91/1; background: #f0f2f5; overflow: hidden; }
+    .wa-card .img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .wa-card .body { padding: 8px 12px 10px; }
+    .wa-card .title { font-size: 14px; font-weight: 600; color: #111b21; line-height: 1.3; margin-bottom: 2px;
+      display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+    .wa-card .desc { font-size: 12px; color: #667781; line-height: 1.3; margin-bottom: 4px;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .wa-card .domain { font-size: 11px; color: #8696a0; }
+
+    /* ───── Discord ───── */
+    .dc-card {
+      max-width: 100%; background: #2f3136; border-left: 4px solid #5865f2;
+      border-radius: 4px; padding: 10px 14px; font-family: 'gg sans', sans-serif;
+    }
+    .dc-card .domain { font-size: 12px; color: #b9bbbe; margin-bottom: 4px; }
+    .dc-card .title { font-size: 14px; font-weight: 600; color: #00b0f4; line-height: 1.3; margin-bottom: 4px; }
+    .dc-card .desc { font-size: 13px; color: #dcddde; line-height: 1.4; margin-bottom: 8px;
+      display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .dc-card .img { width: 100%; max-width: 400px; aspect-ratio: 1.91/1; border-radius: 4px; overflow: hidden; background: #202225; }
+    .dc-card .img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* ───── Slack ───── */
+    .sl-card {
+      max-width: 100%; background: #fff; border-left: 4px solid #1d9bd1; padding: 8px 14px;
+      font-family: 'Slack-Lato', -apple-system, sans-serif;
+    }
+    .sl-card .domain { font-size: 13px; font-weight: 700; color: #1d1c1d; margin-bottom: 4px; }
+    .sl-card .title { font-size: 15px; font-weight: 700; color: #1264a3; line-height: 1.3; margin-bottom: 4px; }
+    .sl-card .desc { font-size: 14px; color: #1d1c1d; line-height: 1.4; margin-bottom: 8px;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .sl-card .img { width: 100%; max-width: 360px; aspect-ratio: 1.91/1; border-radius: 6px; overflow: hidden; background: #f4f4f4; }
+    .sl-card .img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* ═══════════════════════════════════════════════════════════
+       REAL FACEBOOK SHARE — newsfeed simulation
+       ═══════════════════════════════════════════════════════════ */
+    .real-fb-section {
+      background: #18191a; border-radius: 16px; padding: 32px 16px;
+      margin-top: 40px;
+    }
+    .real-fb-title {
+      text-align: center; color: #f3f4f6; font-size: 22px; font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .real-fb-sub {
+      text-align: center; color: #9ca3af; font-size: 13px; margin-bottom: 28px;
+    }
+    .real-fb-grid {
+      display: grid; gap: 28px;
+      grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width: 900px) {
+      .real-fb-grid { grid-template-columns: 1fr; }
+    }
+    .real-fb-col h3 {
+      color: #d1d5db; font-size: 13px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.5px;
+      margin-bottom: 12px; text-align: center;
+    }
+
+    /* Facebook desktop post */
+    .rfb-post {
+      background: #242526; border-radius: 8px; overflow: hidden;
+      font-family: 'Helvetica', -apple-system, sans-serif;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+      max-width: 500px; margin: 0 auto;
+      color: #e4e6eb;
+    }
+    .rfb-post-header { padding: 12px 16px 0; display: flex; align-items: flex-start; gap: 8px; }
+    .rfb-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: linear-gradient(135deg, #8B5CF6, #14B8A6);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-weight: 800; font-size: 16px;
+      flex-shrink: 0;
+    }
+    .rfb-post-meta { flex: 1; min-width: 0; }
+    .rfb-page-name {
+      font-size: 15px; font-weight: 600; color: #e4e6eb;
+      display: flex; align-items: center; gap: 4px;
+    }
+    .rfb-verified { color: #2374e1; }
+    .rfb-post-time {
+      font-size: 13px; color: #b0b3b8;
+      display: flex; align-items: center; gap: 4px; margin-top: 1px;
+    }
+    .rfb-dot { color: #b0b3b8; }
+    .rfb-more {
+      width: 32px; height: 32px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: #b0b3b8; cursor: pointer;
+      font-size: 18px; line-height: 1;
+    }
+    .rfb-more:hover { background: rgba(255,255,255,0.05); }
+
+    .rfb-caption {
+      padding: 8px 16px 12px; font-size: 15px; color: #e4e6eb; line-height: 1.4;
+    }
+
+    /* The actual OG card inside the post */
+    .rfb-og {
+      border-top: 1px solid #3a3b3c;
+    }
+    .rfb-og .img { width: 100%; aspect-ratio: 1.91/1; background: #3a3b3c; overflow: hidden; }
+    .rfb-og .img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .rfb-og .body { padding: 10px 16px 12px; background: #3a3b3c; }
+    .rfb-og .domain {
+      font-size: 13px; color: #b0b3b8; text-transform: uppercase;
+      letter-spacing: 0.3px; margin-bottom: 3px;
+    }
+    .rfb-og .title {
+      font-size: 17px; font-weight: 600; color: #e4e6eb; line-height: 1.25;
+      margin-bottom: 4px; word-wrap: break-word;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .rfb-og .desc {
+      font-size: 14px; color: #b0b3b8; line-height: 1.35;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+
+    /* Engagement bar */
+    .rfb-engagement {
+      padding: 10px 16px; display: flex; justify-content: space-between;
+      font-size: 13px; color: #b0b3b8;
+    }
+    .rfb-reactions { display: flex; align-items: center; gap: 6px; }
+    .rfb-reaction-icons { display: flex; }
+    .rfb-reaction-icons span {
+      width: 18px; height: 18px; border-radius: 50%; border: 2px solid #242526;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 10px; margin-left: -4px;
+    }
+    .rfb-reaction-icons span:first-child { margin-left: 0; }
+    .rfb-react-like { background: #2374e1; }
+    .rfb-react-love { background: #e0245e; }
+    .rfb-react-care { background: #f7b125; }
+
+    /* Action buttons */
+    .rfb-actions {
+      border-top: 1px solid #3a3b3c;
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      padding: 4px 8px;
+    }
+    .rfb-action {
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+      padding: 8px; border-radius: 6px; cursor: pointer;
+      color: #b0b3b8; font-size: 14px; font-weight: 600;
+    }
+    .rfb-action:hover { background: rgba(255,255,255,0.05); }
+    .rfb-action svg { width: 18px; height: 18px; }
+
+    /* Mobile FB variant */
+    .rfb-mobile {
+      max-width: 360px; margin: 0 auto;
+      background: #242526; border-radius: 12px; overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .rfb-mobile .rfb-post-header { padding: 10px 14px 0; }
+    .rfb-mobile .rfb-avatar { width: 36px; height: 36px; font-size: 14px; }
+    .rfb-mobile .rfb-page-name { font-size: 14px; }
+    .rfb-mobile .rfb-post-time { font-size: 12px; }
+    .rfb-mobile .rfb-caption { padding: 6px 14px 10px; font-size: 14px; }
+    .rfb-mobile .rfb-og .body { padding: 8px 14px 10px; }
+    .rfb-mobile .rfb-og .domain { font-size: 11px; }
+    .rfb-mobile .rfb-og .title { font-size: 15px; }
+    .rfb-mobile .rfb-og .desc { font-size: 13px; -webkit-line-clamp: 1; }
+    .rfb-mobile .rfb-engagement { padding: 8px 14px; font-size: 12px; }
+    .rfb-mobile .rfb-actions { padding: 2px 6px; }
+    .rfb-mobile .rfb-action { font-size: 13px; padding: 7px; }
+
+    /* Custom inputs */
+    .input-row { display: grid; gap: 12px; grid-template-columns: 1fr 1fr; margin-bottom: 18px; }
+    .input-row.single { grid-template-columns: 1fr; }
+    .input-group label { display: block; font-size: 12px; font-weight: 600; color: #9ca3af; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .input-group input, .input-group textarea {
+      width: 100%; padding: 10px 14px; background: #0b0f17; border: 1px solid #1f2937;
+      color: #f3f4f6; border-radius: 8px; font-size: 14px; font-family: inherit;
+      transition: border-color 0.2s;
+    }
+    .input-group input:focus, .input-group textarea:focus { outline: none; border-color: #8B5CF6; }
+
+    /* Safe-zone overlay (FB safe zone visualization) */
+    .safe-zone-card {
+      background: #111827; border: 1px solid #1f2937; border-radius: 16px;
+      padding: 24px; margin-bottom: 24px;
+    }
+    .safe-zone-title { font-size: 14px; font-weight: 700; color: #f3f4f6; margin-bottom: 12px; }
+    .safe-zone-wrap {
+      position: relative; max-width: 600px; margin: 0 auto;
+      aspect-ratio: 1.91/1; background: #1f2937; border-radius: 8px; overflow: hidden;
+    }
+    .safe-zone-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .safe-zone-overlay {
+      position: absolute; inset: 0; pointer-events: none;
+    }
+    .safe-zone-box {
+      position: absolute; left: 15.83%; top: 15.87%; width: 68.33%; height: 68.25%;
+      border: 2px dashed #fbbf24; border-radius: 4px;
+    }
+    .safe-zone-label {
+      position: absolute; top: 8px; left: 8px;
+      background: rgba(251, 191, 36, 0.9); color: #000;
+      padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: 700;
+    }
+    .safe-zone-circle {
+      position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+      width: 109.47%; aspect-ratio: 1; border: 2px dashed rgba(255, 255, 255, 0.4); border-radius: 50%;
+    }
+    .safe-zone-help { font-size: 12px; color: #9ca3af; margin-top: 12px; text-align: center; line-height: 1.6; }
+    .safe-zone-help span.amber { color: #fbbf24; }
+    .safe-zone-help span.gray { color: #d1d5db; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>OG Image Designer Test</h1>
+      <p>ატვირთე სურათი და ნახე როგორ ჩნდება ყველა სოციალურ ქსელში — Facebook, LinkedIn, X, WhatsApp, Discord, Slack</p>
+    </header>
+
+    <!-- Upload -->
+    <div class="upload-card">
+      <label for="img-input" class="upload-zone" id="drop-zone">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+        </svg>
+        <div class="title">ჩააგდე ან აირჩიე ფოტოები</div>
+        <div class="hint">რამდენიც გინდა — ყველა ფორმატი • ყველა ზომა • ყველა წონა</div>
+        <input type="file" id="img-input" accept="image/*" multiple hidden>
+      </label>
+
+      <!-- Active image validation panel -->
+      <div id="validation-panel" style="display:none; margin-top:20px;">
+        <div class="info-row">
+          <div>
+            <div class="file-name" id="file-name">—</div>
+            <div class="file-meta" id="file-meta">—</div>
+          </div>
+          <button type="button" class="clear-btn" id="clear-btn">აქტიურის წაშლა</button>
+        </div>
+        <div class="badges" id="badges"></div>
+      </div>
+
+      <!-- Thumbnail gallery -->
+      <div id="thumbs-wrap" class="thumbs-wrap" style="display:none;">
+        <div class="thumbs-header">
+          <div>
+            <span class="thumbs-title">ყველა ატვირთული</span>
+            <span class="thumbs-count" id="thumbs-count">(0)</span>
+          </div>
+          <button type="button" class="clear-all" id="clear-all-btn">ყველას წაშლა</button>
+        </div>
+        <div class="thumbs-grid" id="thumbs-grid"></div>
+      </div>
+    </div>
+
+    <!-- Title/Desc/URL inputs -->
+    <div class="upload-card">
+      <div class="input-row single">
+        <div class="input-group">
+          <label>OG Title (გვერდის სათაური)</label>
+          <input type="text" id="og-title" maxlength="60" value="10xSEO — იყავი პირველი Google-ში და ChatGPT-ში" placeholder="გვერდის სათაური">
+        </div>
+      </div>
+      <div class="input-row single">
+        <div class="input-group">
+          <label>OG Description</label>
+          <input type="text" id="og-desc" maxlength="200" value="საქართველოს #1 SEO სააგენტო — Google, ChatGPT, ყველა AI პლატფორმა." placeholder="გვერდის აღწერა">
+        </div>
+      </div>
+      <div class="input-row">
+        <div class="input-group">
+          <label>OG URL (დომენი)</label>
+          <input type="text" id="og-url" value="https://10xseo.ge" placeholder="https://example.com">
+        </div>
+        <div class="input-group">
+          <label>ბრენდი (LinkedIn-ზე ჩანს)</label>
+          <input type="text" id="og-brand" value="10xseo.ge">
+        </div>
+      </div>
+    </div>
+
+    <!-- Safe Zone Visualization -->
+    <div class="safe-zone-card">
+      <div class="safe-zone-title">🎯 Safe Zone — სად მოთავსდეს ტექსტი/ლოგო</div>
+      <div class="safe-zone-wrap">
+        <img id="safe-zone-img" alt="">
+        <div class="safe-zone-overlay">
+          <div class="safe-zone-circle" title="WhatsApp/Telegram წრიული crop"></div>
+          <div class="safe-zone-box"></div>
+          <div class="safe-zone-label">SAFE 820×430</div>
+        </div>
+      </div>
+      <div class="safe-zone-help">
+        <span class="amber">━ ━ ━ ყვითელი:</span> Facebook safe zone — მთავარი ტექსტი/ლოგო აქ უნდა ჩატევოს •
+        <span class="gray">━ ━ ━ წრე:</span> WhatsApp/Telegram-ის circular crop
+      </div>
+    </div>
+
+    <!-- Previews grid -->
+    <div class="grid" id="grid">
+
+      <!-- Facebook Desktop -->
+      <div class="preview-card">
+        <div class="preview-header">
+          <div class="preview-platform">📘 Facebook Desktop</div>
+          <div class="preview-spec">1.91:1 • 524×274</div>
+        </div>
+        <div class="preview-body">
+          <div class="fb-card">
+            <div class="img" id="fb-img"></div>
+            <div class="body">
+              <div class="domain" id="fb-domain">10xseo.ge</div>
+              <div class="title" id="fb-title">გვერდის სათაური</div>
+              <div class="desc" id="fb-desc">აღწერა გამოჩნდება აქ...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Facebook Mobile -->
+      <div class="preview-card">
+        <div class="preview-header">
+          <div class="preview-platform">📱 Facebook Mobile</div>
+          <div class="preview-spec">1.91:1 • smaller</div>
+        </div>
+        <div class="preview-body">
+          <div class="fb-mobile">
+            <div class="img" id="fbm-img"></div>
+            <div class="body">
+              <div class="domain" id="fbm-domain">10XSEO.GE</div>
+              <div class="title" id="fbm-title">გვერდის სათაური</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LinkedIn -->
+      <div class="preview-card">
+        <div class="preview-header">
+          <div class="preview-platform">💼 LinkedIn</div>
+          <div class="preview-spec">1.91:1 • 552×289</div>
+        </div>
+        <div class="preview-body">
+          <div class="li-card">
+            <div class="img" id="li-img"></div>
+            <div class="body">
+              <div class="title" id="li-title">გვერდის სათაური</div>
+              <div class="domain" id="li-domain">10xseo.ge</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Twitter/X -->
+      <div class="preview-card">
+        <div class="preview-header">
+          <div class="preview-platform">𝕏 Twitter / X</div>
+          <div class="preview-spec">1.91:1 • summary_large_image</div>
+        </div>
+        <div class="preview-body">
+          <div class="tw-card">
+            <div class="img" id="tw-img"></div>
+            <div class="body">
+              <div class="domain" id="tw-domain">10xseo.ge</div>
+              <div class="title" id="tw-title">გვერდის სათაური</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WhatsApp -->
+      <div class="preview-card">
+        <div class="preview-header">
+          <div class="preview-platform">💬 WhatsApp</div>
+          <div class="preview-spec">1.91:1 • პრევიუ ბმულის ქვეშ</div>
+        </div>
+        <div class="preview-body">
+          <div class="wa-card">
+            <div class="wa-inner">
+              <div class="img" id="wa-img"></div>
+              <div class="body">
+                <div class="title" id="wa-title">გვერდის სათაური</div>
+                <div class="desc" id="wa-desc">აღწერა...</div>
+                <div class="domain" id="wa-domain">10xseo.ge</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Discord -->
+      <div class="preview-card">
+        <div class="preview-header">
+          <div class="preview-platform">🎮 Discord</div>
+          <div class="preview-spec">1.91:1 • embed</div>
+        </div>
+        <div class="preview-body">
+          <div class="dc-card">
+            <div class="domain" id="dc-domain">10xseo.ge</div>
+            <div class="title" id="dc-title">გვერდის სათაური</div>
+            <div class="desc" id="dc-desc">აღწერა...</div>
+            <div class="img" id="dc-img"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slack -->
+      <div class="preview-card">
+        <div class="preview-header">
+          <div class="preview-platform">💼 Slack</div>
+          <div class="preview-spec">1.91:1 • unfurl</div>
+        </div>
+        <div class="preview-body">
+          <div class="sl-card">
+            <div class="domain" id="sl-domain">10xseo.ge</div>
+            <div class="title" id="sl-title">გვერდის სათაური</div>
+            <div class="desc" id="sl-desc">აღწერა...</div>
+            <div class="img" id="sl-img"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ═══ Real Facebook share simulation ═══ -->
+    <div class="real-fb-section">
+      <div class="real-fb-title">📘 ნამდვილი Facebook გაზიარება</div>
+      <div class="real-fb-sub">ასე ნახავს მომხმარებელი feed-ში, როცა ვინმე გააზიარებს ბმულს</div>
+
+      <div class="real-fb-grid">
+
+        <!-- Desktop newsfeed post -->
+        <div class="real-fb-col">
+          <h3>💻 Desktop News Feed</h3>
+          <div class="rfb-post">
+            <div class="rfb-post-header">
+              <div class="rfb-avatar" id="rfb-avatar-d">10</div>
+              <div class="rfb-post-meta">
+                <div class="rfb-page-name">
+                  <span id="rfb-page-d">10xSEO</span>
+                  <svg class="rfb-verified" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L9.91 4.09 7 4l-1 2.91L3.09 9 5.18 12 3.09 15 6 17.09 7 20l2.91-.09L12 22l2.09-2.09L17 20l1-2.91L20.91 15 18.82 12l2.09-3L18 6.91 17 4l-2.91.09L12 2zm-1.41 14.59L6.5 12.5l1.41-1.41 2.68 2.67L16.18 8.5l1.41 1.42-7 7z"/></svg>
+                </div>
+                <div class="rfb-post-time">
+                  2 სთ <span class="rfb-dot">·</span>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                </div>
+              </div>
+              <div class="rfb-more">···</div>
+            </div>
+            <div class="rfb-caption" id="rfb-caption-d">აუცილებლად ნახეთ! 👇</div>
+            <div class="rfb-og">
+              <div class="img" id="rfb-img-d"></div>
+              <div class="body">
+                <div class="domain" id="rfb-domain-d">10XSEO.GE</div>
+                <div class="title" id="rfb-title-d">გვერდის სათაური</div>
+                <div class="desc" id="rfb-desc-d">აღწერა...</div>
+              </div>
+            </div>
+            <div class="rfb-engagement">
+              <div class="rfb-reactions">
+                <span class="rfb-reaction-icons">
+                  <span class="rfb-react-like">👍</span>
+                  <span class="rfb-react-love">❤️</span>
+                  <span class="rfb-react-care">🥰</span>
+                </span>
+                <span>247</span>
+              </div>
+              <div>32 კომენტარი · 18 გაზიარება</div>
+            </div>
+            <div class="rfb-actions">
+              <div class="rfb-action">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"/></svg>
+                Like
+              </div>
+              <div class="rfb-action">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                Comment
+              </div>
+              <div class="rfb-action">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+                Share
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile newsfeed post -->
+        <div class="real-fb-col">
+          <h3>📱 Mobile News Feed</h3>
+          <div class="rfb-post rfb-mobile">
+            <div class="rfb-post-header">
+              <div class="rfb-avatar" id="rfb-avatar-m">10</div>
+              <div class="rfb-post-meta">
+                <div class="rfb-page-name">
+                  <span id="rfb-page-m">10xSEO</span>
+                  <svg class="rfb-verified" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L9.91 4.09 7 4l-1 2.91L3.09 9 5.18 12 3.09 15 6 17.09 7 20l2.91-.09L12 22l2.09-2.09L17 20l1-2.91L20.91 15 18.82 12l2.09-3L18 6.91 17 4l-2.91.09L12 2zm-1.41 14.59L6.5 12.5l1.41-1.41 2.68 2.67L16.18 8.5l1.41 1.42-7 7z"/></svg>
+                </div>
+                <div class="rfb-post-time">2 სთ <span class="rfb-dot">·</span> 🌍</div>
+              </div>
+              <div class="rfb-more">···</div>
+            </div>
+            <div class="rfb-caption" id="rfb-caption-m">აუცილებლად ნახეთ! 👇</div>
+            <div class="rfb-og">
+              <div class="img" id="rfb-img-m"></div>
+              <div class="body">
+                <div class="domain" id="rfb-domain-m">10XSEO.GE</div>
+                <div class="title" id="rfb-title-m">გვერდის სათაური</div>
+                <div class="desc" id="rfb-desc-m">აღწერა...</div>
+              </div>
+            </div>
+            <div class="rfb-engagement">
+              <div class="rfb-reactions">
+                <span class="rfb-reaction-icons">
+                  <span class="rfb-react-like">👍</span>
+                  <span class="rfb-react-love">❤️</span>
+                </span>
+                <span>247</span>
+              </div>
+              <div>32 · 18</div>
+            </div>
+            <div class="rfb-actions">
+              <div class="rfb-action">👍 Like</div>
+              <div class="rfb-action">💬 Comment</div>
+              <div class="rfb-action">↗ Share</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Inputs
+    const fileInput = document.getElementById('img-input');
+    const dropZone = document.getElementById('drop-zone');
+    const validationPanel = document.getElementById('validation-panel');
+    const fileName = document.getElementById('file-name');
+    const fileMeta = document.getElementById('file-meta');
+    const badgesEl = document.getElementById('badges');
+    const clearBtn = document.getElementById('clear-btn');
+    const thumbsWrap = document.getElementById('thumbs-wrap');
+    const thumbsGrid = document.getElementById('thumbs-grid');
+    const thumbsCount = document.getElementById('thumbs-count');
+    const clearAllBtn = document.getElementById('clear-all-btn');
+
+    const titleInput = document.getElementById('og-title');
+    const descInput = document.getElementById('og-desc');
+    const urlInput = document.getElementById('og-url');
+    const brandInput = document.getElementById('og-brand');
+
+    // Image targets (all preview img containers + safe zone)
+    const imgTargets = ['fb-img','fbm-img','li-img','tw-img','wa-img','dc-img','sl-img','rfb-img-d','rfb-img-m'];
+
+    // Multi-image state
+    const images = []; // { id, name, dataUrl, width, height, size, type }
+    let activeId = null;
+    let nextId = 1;
+
+    function emptyImgHtml() {
+      return '<div class="empty-img" style="width:100%; height:100%; display:flex; align-items:center; justify-content:center;"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div>';
+    }
+
+    function setImage(dataUrl) {
+      imgTargets.forEach(id => {
+        const el = document.getElementById(id);
+        if (dataUrl) el.innerHTML = '<img src="' + dataUrl + '" alt="">';
+        else el.innerHTML = emptyImgHtml();
+      });
+      const safeImg = document.getElementById('safe-zone-img');
+      if (dataUrl) safeImg.src = dataUrl;
+      else safeImg.removeAttribute('src');
+    }
+
+    function getStatusLevel(img) {
+      // err > warn > ok
+      const ratio = img.width / img.height;
+      const target = 1200 / 630;
+      const dRatio = Math.abs(ratio - target) / target;
+      const sizeMB = img.size / (1024 * 1024);
+      if (img.width < 600 || img.height < 315) return 'err';
+      if (sizeMB > 8) return 'err';
+      if (dRatio > 0.1) return 'warn';
+      if (sizeMB > 5) return 'warn';
+      if (img.width !== 1200 || img.height !== 630) {
+        if (!(img.width >= 1200 && img.height >= 630 && dRatio < 0.05)) return 'warn';
+      }
+      return 'ok';
+    }
+
+    function renderThumbs() {
+      if (images.length === 0) {
+        thumbsWrap.style.display = 'none';
+        return;
+      }
+      thumbsWrap.style.display = 'block';
+      thumbsCount.textContent = '(' + images.length + ')';
+      thumbsGrid.innerHTML = images.map(img => {
+        const level = getStatusLevel(img);
+        const isActive = img.id === activeId;
+        return '<div class="thumb' + (isActive ? ' active' : '') + '" data-id="' + img.id + '">' +
+          '<img class="thumb-img" src="' + img.dataUrl + '" alt="">' +
+          '<button type="button" class="thumb-remove" data-remove="' + img.id + '" title="წაშლა">×</button>' +
+          '<div class="thumb-active-badge">აქტიური</div>' +
+          '<div class="thumb-info">' +
+            '<div class="thumb-name" title="' + img.name + '">' + img.name + '</div>' +
+            '<div class="thumb-status">' +
+              '<span class="thumb-dot ' + level + '"></span>' +
+              '<span class="thumb-meta">' + img.width + '×' + img.height + ' • ' + formatBytes(img.size) + '</span>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+      }).join('');
+
+      thumbsGrid.querySelectorAll('.thumb').forEach(el => {
+        el.addEventListener('click', e => {
+          if (e.target.closest('.thumb-remove')) return;
+          setActive(parseInt(el.dataset.id, 10));
+        });
+      });
+      thumbsGrid.querySelectorAll('.thumb-remove').forEach(btn => {
+        btn.addEventListener('click', e => {
+          e.stopPropagation();
+          removeImage(parseInt(btn.dataset.remove, 10));
+        });
+      });
+    }
+
+    function setActive(id) {
+      const img = images.find(x => x.id === id);
+      if (!img) return;
+      activeId = id;
+      setImage(img.dataUrl);
+      fileName.textContent = img.name;
+      fileMeta.textContent = img.width + ' × ' + img.height + ' px • ' + formatBytes(img.size);
+      badgesEl.innerHTML = validate(img, img.width, img.height);
+      validationPanel.style.display = 'block';
+      renderThumbs();
+    }
+
+    function removeImage(id) {
+      const idx = images.findIndex(x => x.id === id);
+      if (idx === -1) return;
+      images.splice(idx, 1);
+      if (activeId === id) {
+        if (images.length > 0) setActive(images[Math.max(0, idx - 1)].id);
+        else clearAll();
+      } else {
+        renderThumbs();
+      }
+    }
+
+    function clearAll() {
+      images.length = 0;
+      activeId = null;
+      fileInput.value = '';
+      validationPanel.style.display = 'none';
+      setImage(null);
+      renderThumbs();
+    }
+
+    function setText() {
+      const title = titleInput.value || 'გვერდის სათაური';
+      const desc = descInput.value || 'აღწერა გამოჩნდება აქ...';
+      const url = urlInput.value || 'https://example.com';
+      const brand = brandInput.value || 'example.com';
+      const domain = url.replace(/^https?:\/\//, '').split('/')[0] || 'example.com';
+
+      const map = {
+        'fb-title': title, 'fbm-title': title, 'li-title': title, 'tw-title': title,
+        'wa-title': title, 'dc-title': title, 'sl-title': title,
+        'fb-desc': desc, 'wa-desc': desc, 'dc-desc': desc, 'sl-desc': desc,
+        'fb-domain': domain, 'tw-domain': domain, 'wa-domain': domain,
+        'dc-domain': domain, 'sl-domain': brand,
+        'fbm-domain': domain.toUpperCase(),
+        'li-domain': brand,
+        // Real Facebook (desktop + mobile)
+        'rfb-title-d': title, 'rfb-title-m': title,
+        'rfb-desc-d': desc, 'rfb-desc-m': desc,
+        'rfb-domain-d': domain.toUpperCase(), 'rfb-domain-m': domain.toUpperCase(),
+        'rfb-page-d': brand.replace(/\.[a-z]{2,}$/i, '').replace(/^./, c => c.toUpperCase()),
+        'rfb-page-m': brand.replace(/\.[a-z]{2,}$/i, '').replace(/^./, c => c.toUpperCase()),
+      };
+      Object.entries(map).forEach(([id, val]) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = val;
+      });
+    }
+
+    function formatBytes(bytes) {
+      if (bytes < 1024) return bytes + ' B';
+      if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+      return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
+    }
+
+    function badge(type, text) {
+      return '<span class="badge ' + type + '">' + text + '</span>';
+    }
+
+    function validate(img, w, h) {
+      const out = [];
+      const ratio = w / h;
+      const target = 1200 / 630;
+      const dRatio = Math.abs(ratio - target) / target;
+      const sizeMB = img.size / (1024 * 1024);
+
+      // Dimensions
+      if (w === 1200 && h === 630) {
+        out.push(badge('ok', '✓ სრულყოფილი 1200×630'));
+      } else if (w >= 1200 && h >= 630 && dRatio < 0.05) {
+        out.push(badge('ok', '✓ ' + w + '×' + h + ' (კარგი)'));
+      } else if (w < 600 || h < 315) {
+        out.push(badge('err', '✗ ' + w + '×' + h + ' — ძალიან პატარა (მინ. 600×315)'));
+      } else if (dRatio > 0.1) {
+        out.push(badge('warn', '⚠ aspect ratio ' + ratio.toFixed(2) + ':1 (იდეალური 1.91:1)'));
+      } else {
+        out.push(badge('warn', '⚠ ' + w + '×' + h + ' (იდეალური 1200×630)'));
+      }
+
+      // File size (informational only — no upload restriction)
+      if (sizeMB > 8) out.push(badge('err', '✗ ' + formatBytes(img.size) + ' (FB ლიმიტი 8MB)'));
+      else if (sizeMB > 5) out.push(badge('warn', '⚠ ' + formatBytes(img.size) + ' (X ლიმიტი 5MB)'));
+      else if (sizeMB > 0.3) out.push(badge('ok', '✓ ' + formatBytes(img.size)));
+      else out.push(badge('ok', '✓ ' + formatBytes(img.size) + ' — სწრაფი'));
+
+      // Format
+      const ext = (img.name.split('.').pop() || '').toLowerCase();
+      if (ext === 'webp') out.push(badge('ok', '✓ WebP — ოპტიმალური'));
+      else if (['jpg','jpeg','png'].includes(ext)) out.push(badge('ok', '✓ ' + ext.toUpperCase()));
+      else if (ext === 'gif') out.push(badge('warn', '⚠ GIF — ანიმაცია არ ჩაიტვირთება'));
+      else if (ext) out.push(badge('warn', '⚠ ' + ext.toUpperCase() + ' — ნაკლებად მხარდაჭერილი'));
+
+      return out.join('');
+    }
+
+    function loadFile(file) {
+      return new Promise((resolve, reject) => {
+        if (!file || !file.type.startsWith('image/')) { resolve(null); return; }
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const dataUrl = e.target.result;
+          const img = new Image();
+          img.onload = function() {
+            resolve({
+              id: nextId++,
+              name: file.name,
+              dataUrl: dataUrl,
+              width: img.naturalWidth,
+              height: img.naturalHeight,
+              size: file.size,
+              type: file.type,
+            });
+          };
+          img.onerror = () => resolve(null);
+          img.src = dataUrl;
+        };
+        reader.onerror = () => resolve(null);
+        reader.readAsDataURL(file);
+      });
+    }
+
+    async function handleFiles(fileList) {
+      const files = Array.from(fileList || []).filter(f => f && f.type && f.type.startsWith('image/'));
+      if (files.length === 0) return;
+      const loaded = await Promise.all(files.map(loadFile));
+      const valid = loaded.filter(Boolean);
+      if (valid.length === 0) return;
+      images.push(...valid);
+      // Make the first newly-uploaded one active (if nothing's active yet, or always switch to the latest batch)
+      setActive(valid[0].id);
+    }
+
+    fileInput.addEventListener('change', e => {
+      handleFiles(e.target.files);
+      // Reset input so re-selecting the same file still triggers change
+      fileInput.value = '';
+    });
+
+    ['dragenter','dragover'].forEach(ev => {
+      dropZone.addEventListener(ev, e => {
+        e.preventDefault(); dropZone.classList.add('drag-over');
+      });
+    });
+    ['dragleave','drop'].forEach(ev => {
+      dropZone.addEventListener(ev, e => {
+        e.preventDefault(); dropZone.classList.remove('drag-over');
+      });
+    });
+    dropZone.addEventListener('drop', e => {
+      const dt = e.dataTransfer;
+      if (dt && dt.files) handleFiles(dt.files);
+    });
+
+    clearBtn.addEventListener('click', () => {
+      if (activeId !== null) removeImage(activeId);
+    });
+    clearAllBtn.addEventListener('click', clearAll);
+
+    // Page-wide paste support (multiple images at once)
+    document.addEventListener('paste', e => {
+      const items = (e.clipboardData || {}).items || [];
+      const files = [];
+      for (const item of items) {
+        if (item.type && item.type.startsWith('image/')) {
+          const file = item.getAsFile();
+          if (file) files.push(file);
+        }
+      }
+      if (files.length > 0) handleFiles(files);
+    });
+
+    [titleInput, descInput, urlInput, brandInput].forEach(i => i.addEventListener('input', setText));
+
+    // Initial render
+    setImage(null);
+    setText();
+  </script>
+</body>
+</html>
