@@ -294,6 +294,44 @@
         "https://10xseo.ge/wp-content/uploads/2026/02/Screenshot-2026-02-12-at-12.55.28-1-1024x350.png",
         "https://10xseo.ge/wp-content/uploads/2026/02/Screenshot-2026-02-12-at-13.01.22-1024x551.png"
       ]
+    },
+    {
+      "id": 9,
+      "slug": "318-percent-uk-shopify",
+      "title_en": "From 1,227 to 5,130 Monthly Clicks: How 1ClickBlinds Reached 318% Growth in 6 Months",
+      "title_ge": "1,227-დან 5,130 თვიურ კლიკამდე: როგორ მიაღწია 1ClickBlinds-მა 318% ზრდას 6 თვეში",
+      "url_en": "https://10xseo.ge/en/case-studies/318-percent-uk-shopify/",
+      "url_ge": "https://10xseo.ge/case-studies/318-percent-uk-shopify/",
+      "published": "2026-05-11",
+      "industry": "E-commerce (Shopify, UK blinds & shutters)",
+      "client_name": "1ClickBlinds",
+      "challenge": "Young Shopify store in one of the UK's most competitive niches (blinds & shutters), dominated by giants with massive marketing budgets and entrenched search authority. Most traffic came from branded searches only (30-40 daily clicks). Site-wide issues: Shopify-specific technical limitations, weak product page optimization, virtually no internal linking, no blog strategy, and almost no commercial-intent keyword coverage.",
+      "strategy": [
+        "Deep technical & content audit of the Shopify store",
+        "Keyword research and UK-market-specific keyword mapping (transactional → product pages, commercial → collections)",
+        "Full rewrite of meta data, titles, and product descriptions",
+        "High-value blog content (e.g., 'how to install blinds without drilling', 'choosing vertical blinds color') both reaching Google top-10",
+        "Internal linking from blog content to product pages",
+        "Outreach campaign based on competitor backlink analysis",
+        "$1,500 investment in premium-quality backlinks with strategic anchor distribution",
+        "Mobile-optimized experience tuned to UK Home & Interior buyer behavior"
+      ],
+      "results": {
+        "primary_metric": "318% growth in monthly clicks (1,227 → 5,130)",
+        "total_clicks_6mo": "18,880",
+        "total_impressions_6mo": "2.48 million",
+        "first_to_last_month_clicks": "1,354 → 5,130 (+279%)",
+        "first_to_last_month_impressions": "224,633 → 525,000",
+        "avg_position_change": "19.3 → 14.9 (improved 4.4 points)",
+        "ctr_change": "0.60% → 1.03% (nearly doubled)",
+        "non_branded_traffic_share": "89.1%",
+        "mobile_traffic_share": "72.8%",
+        "top_keyword": "'blackout blinds' — 2,951 clicks, position 5.79 (top 6 in UK)",
+        "top_page": "Non-Drill Honeycomb Blackout Blinds — 374,595 impressions, 7,450 clicks (≈45% of total traffic)",
+        "timeframe": "6 months"
+      },
+      "testimonials": null,
+      "images": []
     }
   ],
   "site_info": {
