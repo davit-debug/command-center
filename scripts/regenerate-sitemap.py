@@ -31,6 +31,13 @@ KA_ONLY = {
 }
 KA_ONLY_PREFIXES = ("blog/",)
 
+# EN-only blog posts (no KA counterpart — written natively in English).
+# These appear in the sitemap under /en/blog/ without an alternate hreflang.
+EN_ONLY = {
+    "en/blog/what-is-aeo.html",
+    "en/blog/aeo-optimization-agency-dubai.html",
+}
+
 # Priority + changefreq by page type
 def page_meta(rel: str) -> tuple[float, str]:
     """Return (priority, changefreq) for a page."""
