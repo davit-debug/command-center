@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>OG:Image Review — 10xSEO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{
+    background:#0a0a0a;color:#e5e7eb;
+    font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',Inter,sans-serif;
+    line-height:1.5
+  }
+  header{
+    position:sticky;top:0;z-index:10;
+    background:rgba(10,10,10,0.92);backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid #2a2a2a;
+    padding:14px 20px;
+  }
+  header h1{font-size:18px;font-weight:700;color:#fff;margin-bottom:2px}
+  header .meta{font-size:12px;color:#888}
+  header .actions{
+    display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;
+  }
+  header button{
+    padding:6px 12px;font-size:12px;font-weight:600;
+    background:#1f1f1f;color:#e5e7eb;
+    border:1px solid #333;border-radius:6px;
+    cursor:pointer;font-family:inherit;
+  }
+  header button:hover{background:#2a2a2a;border-color:#444}
+  header button.primary{background:#F2C341;color:#000;border-color:#F2C341}
+  header button.primary:hover{background:#fcd34d}
+
+  .wrap{max-width:1400px;margin:0 auto;padding:24px 20px 80px}
+
+  .section-title{
+    font-size:20px;color:#A78BFA;font-weight:700;
+    margin:36px 0 14px;padding-bottom:8px;
+    border-bottom:1px solid #2a2a2a;
+    display:flex;justify-content:space-between;align-items:baseline;
+  }
+  .section-title:first-child{margin-top:0}
+  .section-title .count{font-size:13px;color:#666;font-weight:400}
+
+  .card{
+    background:#141416;border:1px solid #262628;border-radius:12px;
+    padding:18px;margin-bottom:18px;
+    display:grid;grid-template-columns:1fr 1fr;gap:18px;
+    align-items:start;
+  }
+  @media (max-width:880px){
+    .card{grid-template-columns:1fr}
+  }
+
+  .card-img-wrap{
+    background:#000;border-radius:8px;overflow:hidden;
+    border:1px solid #333;
+  }
+  .card-img-wrap img{
+    width:100%;height:auto;display:block;
+  }
+
+  .card-info{display:flex;flex-direction:column;gap:10px}
+  .card-info .filename{
+    font-family:'SF Mono',Menlo,Monaco,monospace;
+    font-size:13px;color:#F2C341;font-weight:600;
+    word-break:break-all;
+  }
+  .card-info .pagepath{
+    font-size:12px;color:#9ca3af;
+    font-family:'SF Mono',Menlo,Monaco,monospace;
+  }
+  .card-info .url-row{
+    display:flex;gap:6px;flex-wrap:wrap;font-size:11px;
+  }
+  .card-info .url-row a{
+    background:#222;color:#aab;padding:3px 8px;border-radius:4px;
+    text-decoration:none;border:1px solid #333;
+    transition:all .15s;
+  }
+  .card-info .url-row a:hover{background:#2a2a2a;color:#F2C341;border-color:#F2C341}
+
+  .card-info textarea{
+    width:100%;min-height:120px;
+    background:#0a0a0a;color:#fff;
+    border:1px solid #333;border-radius:8px;
+    padding:12px 14px;font-size:14px;font-family:inherit;
+    line-height:1.55;resize:vertical;
+    transition:border-color .15s;
+  }
+  .card-info textarea:focus{
+    outline:none;border-color:#F2C341;
+  }
+  .card-info textarea::placeholder{color:#555}
+
+  .card-info .comment-label{
+    font-size:11px;color:#777;font-weight:600;
+    text-transform:uppercase;letter-spacing:1px;
+    display:flex;justify-content:space-between;
+  }
+  .card-info .comment-label .saved{color:#22C55E}
+
+  /* Status banner */
+  .status{
+    position:fixed;bottom:16px;right:16px;
+    background:#22C55E;color:#000;
+    padding:8px 14px;border-radius:6px;
+    font-size:13px;font-weight:600;
+    opacity:0;transition:opacity .3s;
+    pointer-events:none;z-index:20;
+  }
+  .status.show{opacity:1}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>OG:Image Review · 10xSEO</h1>
+  <div class="meta">44 images. დააწერე კომენტარი თითოეულის ქვემოთ — ავტომატურად ინახება ბრაუზერში. შემდეგ "Export"-ით კოპირდება clipboard-ზე.</div>
+  <div class="actions">
+    <button class="primary" onclick="exportComments()">📋 Export comments</button>
+    <button onclick="clearAll()">🗑 Clear all comments</button>
+    <button onclick="document.querySelectorAll('textarea').forEach(t=>{if(t.value.trim()){t.scrollIntoView({behavior:'smooth',block:'center'});t.focus();return false}})">⏭ Jump to first commented</button>
+  </div>
+</header>
+
+<div class="wrap">
+
+<div class="section-title">🏭 Industries <span class="count">4 images</span></div>
+<div data-cat="industries"></div>
+
+<div class="section-title">🛠 Tools <span class="count">7 images</span></div>
+<div data-cat="tools"></div>
+
+<div class="section-title">📊 Case Studies <span class="count">9 images</span></div>
+<div data-cat="case-studies"></div>
+
+<div class="section-title">🎯 Services <span class="count">12 images</span></div>
+<div data-cat="services"></div>
+
+<div class="section-title">📄 Pages — lexicons / indexes / info <span class="count">12 images</span></div>
+<div data-cat="pages"></div>
+
+</div>
+
+<div class="status" id="status"></div>
+
+<script>
+const PAGES = {
+  industries: [
+    {file:"construction-burj.jpg",     page:"industries/construction.html",          slogan:"სრული ციფრული მხარდაჭერა"},
+    {file:"ecommerce-tower.jpg",       page:"industries/ecommerce.html",             slogan:"E-commerce SEO · გლობალურ ბაზარზე"},
+    {file:"financial-tower.jpg",       page:"industries/financial-services.html",    slogan:"ფინანსური SEO · ბანკები · დაზღვევა"},
+    {file:"healthcare-tower.jpg",      page:"industries/healthcare.html",            slogan:"SEO კლინიკებისთვის · პირველი არჩევანი"},
+  ],
+  tools: [
+    {file:"tool-content-brief.jpg",    page:"tools/content-brief-builder.html",      slogan:"Content Brief Builder"},
+    {file:"tool-content-editor.jpg",   page:"tools/seo-content-editor.html",         slogan:"SEO Content Editor"},
+    {file:"tool-keyword-density.jpg",  page:"tools/keyword-density.html",            slogan:"Keyword Density Checker"},
+    {file:"tool-numbers-words.jpg",    page:"tools/numbers-to-words.html",           slogan:"რიცხვები სიტყვებში"},
+    {file:"tool-og-preview.jpg",       page:"tools/og-preview.html",                 slogan:"Open Graph Preview"},
+    {file:"tool-pixel-width.jpg",      page:"tools/pixel-width-checker.html",        slogan:"Pixel Width Checker"},
+    {file:"tool-readability.jpg",      page:"tools/readability-score.html",          slogan:"Readability Score"},
+  ],
+  "case-studies": [
+    {file:"case-250-percent.jpg",      page:"case-studies/250-percent-increase.html",                  slogan:"+250% ტრაფიკი · 3 თვე"},
+    {file:"case-270-percent.jpg",      page:"case-studies/270-percent-increase.html",                  slogan:"+270% ტრაფიკი · +45% გაყიდვა"},
+    {file:"case-3x-28days.jpg",        page:"case-studies/3x-in-28-days.html",                         slogan:"3-ჯერ ტრაფიკი · 28 დღე"},
+    {file:"case-4200-visitors.jpg",    page:"case-studies/4200-yoveltviuri-vizitori-4-tveshi.html",    slogan:"4,200+ ვიზიტორი თვეში"},
+    {file:"case-local-seo.jpg",        page:"case-studies/local-seo-result.html",                      slogan:"+60% ზარები · 2 თვე"},
+    {file:"case-crisis-mgmt.jpg",      page:"case-studies/seo-crisis-management.html",                 slogan:"ჯარიმიდან TOP 3 · B2B"},
+    {file:"case-crisis-top3.jpg",      page:"case-studies/seo-krizisidan-top-3mde.html",               slogan:"კრიზისიდან TOP 3 · 2 თვე"},
+    {file:"case-dental.jpg",           page:"case-studies/stomatologiuri-klinikis-seo.html",           slogan:"#1 Google · +600% · დენტ"},
+    {file:"case-2x-traffic.jpg",       page:"case-studies/trafikis-gaormageba-3-tveshi.html",          slogan:"2-ჯერ ტრაფიკი · სამშენებლო"},
+  ],
+  services: [
+    {file:"service-ai-seo.jpg",        page:"ai-seo.html",            slogan:"AI SEO · GEO · AEO"},
+    {file:"service-copywriting.jpg",   page:"copywriting.html",       slogan:"UI/UX კოპირაითინგი"},
+    {file:"service-seo-copy.jpg",      page:"seo-copywriting.html",   slogan:"SEO კოპირაითინგი"},
+    {file:"service-cro.jpg",           page:"cro.html",               slogan:"CRO · კონვერსიის ოპტიმიზაცია"},
+    {file:"service-google-ads.jpg",    page:"google-ads.html",        slogan:"Google Ads მენეჯმენტი"},
+    {file:"service-seo-audit.jpg",     page:"seo-audit.html",         slogan:"უფასო SEO აუდიტი"},
+    {file:"service-consultation.jpg",  page:"seo-consultation.html",  slogan:"1:1 SEO კონსულტაცია"},
+    {file:"service-seo-course.jpg",    page:"seo-course.html",        slogan:"SEO კურსი · 12 სესია"},
+    {file:"service-seo-mgmt.jpg",      page:"seo-management.html",    slogan:"ყოველთვიური SEO მომსახურება"},
+    {file:"service-seo-strategy.jpg",  page:"seo-strategy.html",      slogan:"SEO სტრატეგია"},
+    {file:"service-ra-aris-seo.jpg",   page:"ra-aris-seo.html",       slogan:"რა არის SEO?"},
+    {file:"service-seo-tools.jpg",     page:"seo-tools.html",         slogan:"უფასო SEO ინსტრუმენტები"},
+  ],
+  pages: [
+    {file:"page-seo-leqsikoni.jpg",     page:"seo-leqsikoni.html",     slogan:"SEO ლექსიკონი"},
+    {file:"page-ai-leqsikoni.jpg",      page:"ai-leqsikoni.html",      slogan:"AI ლექსიკონი"},
+    {file:"page-startup-leqsikoni.jpg", page:"startup-leqsikoni.html", slogan:"Startup ლექსიკონი"},
+    {file:"page-blog.jpg",              page:"blog.html",              slogan:"10XSEO ბლოგი"},
+    {file:"page-case-studies.jpg",      page:"case-studies.html",      slogan:"SEO შედეგები"},
+    {file:"page-portfolio.jpg",         page:"portfolio.html",         slogan:"38+ პარტნიორი"},
+    {file:"page-services.jpg",          page:"services.html",          slogan:"SEO სერვისები"},
+    {file:"page-about-us.jpg",          page:"about-us.html",          slogan:"#1 საქართველოში"},
+    {file:"page-contact-us.jpg",        page:"contact-us.html",        slogan:"დაგვიკავშირდი"},
+    {file:"page-vacancies.jpg",         page:"vacancies.html",         slogan:"შემოუერთდი 10xSEO გუნდს"},
+    {file:"page-lead-form.jpg",         page:"lead-form.html",         slogan:"უფასო კონსულტაცია"},
+    {file:"page-404.jpg",               page:"404.html",               slogan:"404 · გვერდი ვერ მოიძებნა"},
+  ],
+};
+
+const STORAGE_KEY = "10xseo_og_review_comments_v1";
+const comments = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+
+function makeCard(item) {
+  const saved = comments[item.file] || "";
+  const safeSlogan = item.slogan.replace(/</g, "&lt;");
+  return `
+    <div class="card">
+      <div class="card-img-wrap">
+        <img src="images/og/${item.file}" loading="lazy" alt="${safeSlogan}">
+      </div>
+      <div class="card-info">
+        <div class="filename">${item.file}</div>
+        <div class="pagepath">${item.page}</div>
+        <div style="font-size:13px;color:#bbb;font-style:italic">"${safeSlogan}"</div>
+        <div class="url-row">
+          <a href="images/og/${item.file}" target="_blank">📷 Open image</a>
+          <a href="${item.page}" target="_blank">📄 View page</a>
+          <a href="https://davit-debug.github.io/command-center/images/og/${item.file}" target="_blank">🔗 Live URL</a>
+        </div>
+        <div class="comment-label">
+          <span>კომენტარი</span>
+          <span class="saved" id="saved-${item.file}" style="opacity:0">✓ saved</span>
+        </div>
+        <textarea
+          data-file="${item.file}"
+          placeholder="დაწერე რა უნდა შეიცვალოს ამ og:image-ში..."
+          oninput="saveComment(this)">${saved.replace(/&/g,"&amp;").replace(/</g,"&lt;")}</textarea>
+      </div>
+    </div>
+  `;
+}
+
+function render() {
+  for (const cat in PAGES) {
+    const container = document.querySelector(`[data-cat="${cat}"]`);
+    container.innerHTML = PAGES[cat].map(makeCard).join("");
+  }
+}
+
+function saveComment(textarea) {
+  const file = textarea.dataset.file;
+  const value = textarea.value.trim();
+  if (value) comments[file] = value;
+  else delete comments[file];
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(comments));
+  // flash "saved" indicator
+  const indicator = document.getElementById(`saved-${file}`);
+  if (indicator) {
+    indicator.style.opacity = "1";
+    clearTimeout(indicator._t);
+    indicator._t = setTimeout(() => indicator.style.opacity = "0", 1500);
+  }
+}
+
+function exportComments() {
+  const filled = Object.entries(comments).filter(([_, v]) => v && v.trim());
+  if (filled.length === 0) {
+    showStatus("⚠️ ჯერ კომენტარი არ დაგიწერია");
+    return;
+  }
+  const text = filled.map(([file, c]) => `### ${file}\n${c}`).join("\n\n");
+  const fullText = `# OG:Image Review Comments — ${new Date().toISOString().split("T")[0]}\n\n${text}\n`;
+  navigator.clipboard.writeText(fullText).then(
+    () => showStatus(`✓ ${filled.length} კომენტარი copied to clipboard`),
+    () => {
+      // fallback: download
+      const blob = new Blob([fullText], {type: "text/markdown"});
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = `og-review-${new Date().toISOString().split("T")[0]}.md`;
+      a.click();
+      showStatus(`✓ ${filled.length} კომენტარი downloaded`);
+    }
+  );
+}
+
+function clearAll() {
+  if (!confirm(`ნამდვილად წაშლა ${Object.keys(comments).length} კომენტარის?`)) return;
+  localStorage.removeItem(STORAGE_KEY);
+  document.querySelectorAll("textarea").forEach(t => t.value = "");
+  Object.keys(comments).forEach(k => delete comments[k]);
+  showStatus("🗑 ყველა კომენტარი წაიშალა");
+}
+
+function showStatus(msg) {
+  const el = document.getElementById("status");
+  el.textContent = msg;
+  el.classList.add("show");
+  clearTimeout(el._t);
+  el._t = setTimeout(() => el.classList.remove("show"), 2500);
+}
+
+render();
+</script>
+</body>
+</html>
