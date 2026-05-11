@@ -71,16 +71,21 @@ def fix_file(en_path: Path) -> int:
 
     content = re.sub(r"url\((['\"]?)([^'\"\)\s]+)(['\"]?)\)", fix_css_url, content)
 
-    # 3. <script src="..."> and <link href="..."> to shared resources
+    # 3. Generic attribute fix: src, href, poster, data-src on any HTML tag
+    # (greedy [^>]* failed because it consumed past target attribute — use direct attr match)
     def fix_attr(m):
-        tag_start, attr, _quote, path, end = m.group(1), m.group(2), m.group(3), m.group(4), m.group(5)
+        attr = m.group(1)
+        _quote = m.group(2)
+        path = m.group(3)
+        end = m.group(4)
         new_path = adjust_path(path, needed_prefix)
         if new_path:
             fix_count[0] += 1
-            return f'{tag_start}{attr}={_quote}{new_path}{end}'
+            return f'{attr}={_quote}{new_path}{end}'
         return m.group(0)
 
-    content = re.sub(r'(<(?:script|link|img)[^>]*\s)(src|href)=("|\')([^"\']+)("|\')',
+    # Match each attr individually (not anchored to tag start)
+    content = re.sub(r'\b(src|href|poster|data-src)=("|\')([^"\']+)("|\')',
                      fix_attr, content)
 
     if content != original:
