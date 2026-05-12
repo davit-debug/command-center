@@ -19,6 +19,10 @@ EXCLUDE = {
     "en/404.html",
     "lead-form.html",
     "en/lead-form.html",
+    # Test/preview/admin pages (P0 audit finding: must not be indexed)
+    "og-review.html",
+    "og-test.html",
+    "cta-picker.html",
 }
 
 # Skipped from translation — these are KA-only (no /en/ counterpart).
