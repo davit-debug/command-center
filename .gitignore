@@ -30,7 +30,6 @@
 !about-final.html
 !about-variants.html
 !contact-us.html
-!lead-form.html
 !roi-calculator.html
 !services.html
 !why-10xseo.html
@@ -40,7 +39,6 @@
 !case-studies/
 !case-studies/**
 !case-studies-data.json
-!og-test.html
 
 # Design assets
 !fonts/
@@ -57,7 +55,6 @@
 !tools/**
 !about-new.html
 !about-preview.html
-!og-review.html
 !favicon.ico
 !favicon.svg
 !favicon-32x32.png
@@ -77,22 +74,6 @@
 # Tailwind build inputs
 !tailwind.config.js
 !tailwind.input.css
-
-# Internal tools (noindex)
-!cta.html
-!cta-picker.html
-!cta-microcopy.html
-!cta-segments.html
-!cta-sitemap.html
-!cta-lab.html
-!cta-ab.html
-!cta-paths.html
-!cta-heatmap.html
-!cta-report.html
-!cta-help.html
-!cta-localization.html
-!cta-forecast.html
-!cta-sessions.html
 
 # English translation (/en/ subfolder)
 !en/
