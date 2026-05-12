@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>CTA Picker — 10xSEO Internal</title>
+<style>
+  :root {
+    --bg: #0f172a;
+    --bg-alt: #1e293b;
+    --bg-card: #0d1117;
+    --border: #334155;
+    --text: #f1f5f9;
+    --text-dim: #94a3b8;
+    --primary: #8b5cf6;
+    --primary-dim: #a78bfa;
+    --success: #22c55e;
+    --warn: #f59e0b;
+    --danger: #ef4444;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    min-height: 100vh;
+  }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 24px 16px 80px; }
+  h1 { margin: 0 0 4px; font-size: 24px; }
+  h1 span { color: var(--primary-dim); }
+  .sub { color: var(--text-dim); font-size: 14px; margin: 0 0 24px; }
+  .panel {
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+  .panel h2 { margin: 0 0 12px; font-size: 16px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; }
+  label.field { display: block; margin-bottom: 12px; }
+  label.field > span { display: block; font-size: 13px; color: var(--text-dim); margin-bottom: 4px; }
+  input[type="text"], select {
+    width: 100%; padding: 10px 12px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    color: var(--text); border-radius: 8px;
+    font-family: inherit; font-size: 14px;
+  }
+  input[type="text"]:focus, select:focus { outline: none; border-color: var(--primary); }
+  button {
+    padding: 10px 18px; border: 0; border-radius: 8px;
+    background: var(--primary); color: white;
+    font-weight: 600; font-size: 14px; cursor: pointer;
+    font-family: inherit;
+  }
+  button:hover { background: var(--primary-dim); }
+  button.secondary { background: var(--bg-card); border: 1px solid var(--border); }
+  button.secondary:hover { background: var(--border); }
+  button:disabled { opacity: 0.4; cursor: not-allowed; }
+  .row { display: flex; gap: 8px; align-items: flex-end; flex-wrap: wrap; }
+  .row > .field { flex: 1; min-width: 240px; }
+  .cta {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px;
+    margin-bottom: 10px;
+    transition: border-color 0.15s;
+  }
+  .cta.selected { border-color: var(--primary); background: rgba(139,92,246,0.05); }
+  .cta-head { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
+  .cta-head input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--primary); cursor: pointer; }
+  .cta-head .id { font-family: ui-monospace, "SF Mono", monospace; font-size: 12px; color: var(--text-dim); }
+  .cta-head .ctx { font-size: 14px; font-weight: 600; }
+  .cta-head .line { font-size: 12px; color: var(--text-dim); margin-left: auto; }
+  .cta-current { font-size: 13px; color: var(--text-dim); margin-bottom: 8px; padding-left: 28px; }
+  .cta-current strong { color: var(--text); }
+  .cta-controls { padding-left: 28px; display: grid; gap: 8px; }
+  .cta-controls.hidden { display: none; }
+  .badge {
+    display: inline-block;
+    font-size: 11px; padding: 2px 6px; border-radius: 4px;
+    background: rgba(139,92,246,0.15); color: var(--primary-dim);
+    margin-left: 4px;
+  }
+  .actions {
+    position: sticky; bottom: 0;
+    background: var(--bg);
+    padding: 16px 0;
+    margin-top: 24px;
+    border-top: 1px solid var(--border);
+    display: flex; gap: 8px; flex-wrap: wrap;
+  }
+  .actions .count { margin-right: auto; align-self: center; font-size: 14px; color: var(--text-dim); }
+  textarea {
+    width: 100%; min-height: 200px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    color: var(--text); border-radius: 8px; padding: 12px;
+    font-family: ui-monospace, "SF Mono", monospace; font-size: 12px;
+    resize: vertical;
+  }
+  .alert { padding: 12px; border-radius: 8px; margin-bottom: 12px; font-size: 14px; }
+  .alert.err { background: rgba(239,68,68,0.1); border: 1px solid var(--danger); }
+  .alert.ok { background: rgba(34,197,94,0.1); border: 1px solid var(--success); }
+  .alert.warn { background: rgba(245,158,11,0.1); border: 1px solid var(--warn); }
+  details { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; margin-top: 8px; }
+  details summary { cursor: pointer; font-size: 13px; color: var(--text-dim); }
+  code { background: var(--bg-card); padding: 2px 6px; border-radius: 4px; font-size: 12px; }
+  .hint { font-size: 12px; color: var(--text-dim); margin-top: 6px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>CTA Picker <span>— interactive</span></h1>
+<p class="sub">Load any page, pick CTAs to swap, then download the modified HTML or copy a change list.</p>
+
+<div class="panel">
+  <h2>1. Load page</h2>
+  <div class="row">
+    <label class="field" style="flex:1">
+      <span>Source file (path from repo root)</span>
+      <input id="src" type="text" value="en/index.html" placeholder="en/index.html">
+    </label>
+    <button id="load">Load</button>
+  </div>
+  <p class="hint">Examples: <code>en/index.html</code>, <code>en/services.html</code>, <code>index.html</code> (Georgian homepage).</p>
+  <div id="loadStatus"></div>
+</div>
+
+<div id="picker" style="display:none">
+
+<div class="panel">
+  <h2>2. Define your swap presets</h2>
+  <p class="hint" style="margin-top:0">These are the destinations you can apply to any selected CTA. Edit text/URLs as you like.</p>
+  <div id="presets"></div>
+  <button class="secondary" id="addPreset" style="margin-top:8px">+ Add preset</button>
+</div>
+
+<div class="panel">
+  <h2>3. Pick CTAs to swap <span id="counter" style="font-weight:normal;color:var(--text-dim);font-size:13px;text-transform:none;letter-spacing:0">(0 CTAs found)</span></h2>
+  <p class="hint" style="margin-top:0">Check the boxes for CTAs you want to swap, then pick the target preset for each.</p>
+  <div id="ctas"></div>
+</div>
+
+<div class="actions">
+  <span class="count" id="selectionCount">0 selected</span>
+  <button class="secondary" id="preview">Preview change list</button>
+  <button class="secondary" id="copy">Copy change list</button>
+  <button id="download">Download modified HTML</button>
+</div>
+
+<div class="panel" id="outputPanel" style="display:none">
+  <h2>Change list <span style="font-weight:normal;color:var(--text-dim);font-size:13px;text-transform:none;letter-spacing:0">— paste back to Claude to apply</span></h2>
+  <textarea id="output" readonly></textarea>
+  <p class="hint">Or download the modified HTML above and replace the file in your repo. Either way, review the diff before committing.</p>
+</div>
+
+</div>
+
+</div>
+
+<script>
+// Preset definitions — edit these or add your own in the UI
+const DEFAULT_PRESETS = [
+  {
+    id: 'audit',
+    label: 'Free SEO Audit',
+    text_en: 'Free SEO Audit',
+    text_ka: 'უფასო SEO აუდიტი',
+    href: 'seo-audit.html',
+    icon: 'audit'  // magnifying glass
+  },
+  {
+    id: 'quote',
+    label: 'Get a Quote',
+    text_en: 'Get a Quote',
+    text_ka: 'მიიღეთ ფასი',
+    href: 'lead-form.html',
+    icon: 'arrow'
+  },
+  {
+    id: 'started',
+    label: 'Get Started',
+    text_en: 'Get Started',
+    text_ka: 'დაიწყეთ',
+    href: 'seo-management.html',
+    icon: 'arrow'
+  }
+];
+
+// Icon SVG paths
+const ICONS = {
+  audit:   '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>',
+  arrow:   '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>',
+  calendar:'<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>',
+  phone:   '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>'
+};
+
+let presets = JSON.parse(JSON.stringify(DEFAULT_PRESETS));
+let ctas = [];
+let sourceHTML = '';
+let sourcePath = '';
+
+// --- Presets UI ---
+function renderPresets() {
+  const c = document.getElementById('presets');
+  c.innerHTML = '';
+  presets.forEach((p, i) => {
+    const row = document.createElement('div');
+    row.className = 'row';
+    row.style.marginBottom = '8px';
+    row.innerHTML = `
+      <label class="field" style="flex:1">
+        <span>Label (preset ${i+1})</span>
+        <input type="text" data-i="${i}" data-k="label" value="${esc(p.label)}">
+      </label>
+      <label class="field" style="flex:1">
+        <span>Text (English)</span>
+        <input type="text" data-i="${i}" data-k="text_en" value="${esc(p.text_en)}">
+      </label>
+      <label class="field" style="flex:1">
+        <span>Text (Georgian)</span>
+        <input type="text" data-i="${i}" data-k="text_ka" value="${esc(p.text_ka)}">
+      </label>
+      <label class="field" style="flex:1">
+        <span>href</span>
+        <input type="text" data-i="${i}" data-k="href" value="${esc(p.href)}">
+      </label>
+      <button class="secondary" data-rm="${i}" title="Remove">×</button>
+    `;
+    c.appendChild(row);
+  });
+  c.querySelectorAll('input').forEach(inp => {
+    inp.addEventListener('input', e => {
+      const i = +e.target.dataset.i, k = e.target.dataset.k;
+      presets[i][k] = e.target.value;
+      renderCtaPicker();  // refresh dropdowns
+    });
+  });
+  c.querySelectorAll('[data-rm]').forEach(btn => {
+    btn.addEventListener('click', e => {
+      presets.splice(+e.target.dataset.rm, 1);
+      renderPresets();
+      renderCtaPicker();
+    });
+  });
+}
+
+document.getElementById('addPreset').addEventListener('click', () => {
+  presets.push({ id: 'custom-'+Date.now(), label: 'Custom', text_en: '', text_ka: '', href: '', icon: 'arrow' });
+  renderPresets();
+  renderCtaPicker();
+});
+
+// --- Load source file ---
+document.getElementById('load').addEventListener('click', loadSource);
+function loadSource() {
+  const path = document.getElementById('src').value.trim().replace(/^\//,'');
+  const status = document.getElementById('loadStatus');
+  status.innerHTML = '<div class="alert warn">Loading...</div>';
+  fetch(path, { cache: 'no-store' })
+    .then(r => r.ok ? r.text() : Promise.reject('HTTP '+r.status))
+    .then(text => {
+      sourceHTML = text;
+      sourcePath = path;
+      ctas = scanCTAs(text);
+      status.innerHTML = `<div class="alert ok">Loaded <code>${esc(path)}</code> — found ${ctas.length} CTA${ctas.length===1?'':'s'}.</div>`;
+      document.getElementById('picker').style.display = 'block';
+      document.getElementById('counter').textContent = `(${ctas.length} CTAs found)`;
+      renderCtaPicker();
+    })
+    .catch(err => {
+      status.innerHTML = `<div class="alert err">Failed to load: ${esc(String(err))}.<br>If running locally, serve via <code>python3 -m http.server</code> from the repo root.</div>`;
+    });
+}
+
+// --- CTA detection ---
+function scanCTAs(html) {
+  // Find <a> tags whose onclick calls openCalendly() OR which match common CTA classes.
+  // Use line-aware regex on the raw source to preserve line numbers.
+  const lines = html.split('\n');
+  const results = [];
+  const anchorOpen = /<a\b[^>]*>/g;
+  let pos = 0, lineIdx = 0;
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    let m;
+    anchorOpen.lastIndex = 0;
+    while ((m = anchorOpen.exec(line)) !== null) {
+      const tag = m[0];
+      // CTA if it triggers Calendly OR has tel:/audit href OR has CTA class signals
+      const isCalendly = /onclick="[^"]*openCalendly/.test(tag);
+      const isTel = /\bhref="tel:/.test(tag);
+      const isMailto = /\bhref="mailto:/.test(tag);
+      const hasAudit = /\bhref="[^"]*seo-audit\.html"/.test(tag);
+      const hasLeadForm = /\bhref="[^"]*lead-form\.html"/.test(tag);
+      const ctaClass = /\bclass="[^"]*(ai-cta-animate|call-btn|cta-btn)[^"]*"/.test(tag);
+      if (!(isCalendly || ctaClass || hasAudit || hasLeadForm)) continue;
+      // Pull anchor body to next </a> (within ~30 lines)
+      let body = '';
+      let endLine = i, endCol = -1;
+      const startInLine = m.index;
+      let scanStart = i, scanCol = startInLine + tag.length;
+      let chunk = lines[scanStart].slice(scanCol);
+      let scanEndIdx = chunk.indexOf('</a>');
+      while (scanEndIdx === -1 && scanStart < lines.length - 1 && scanStart - i < 30) {
+        body += chunk + '\n';
+        scanStart++;
+        chunk = lines[scanStart];
+        scanCol = 0;
+        scanEndIdx = chunk.indexOf('</a>');
+      }
+      if (scanEndIdx === -1) continue;
+      body += chunk.slice(0, scanEndIdx);
+      endLine = scanStart;
+      // Visible text = body with tags stripped
+      const visible = body.replace(/<[^>]+>/g,'').trim();
+      // Extract attributes
+      const hrefM = tag.match(/\bhref="([^"]*)"/);
+      const ariaM = tag.match(/\baria-label="([^"]*)"/);
+      const dataEnM = tag.match(/\bdata-en="([^"]*)"/);
+      const dataKaM = tag.match(/\bdata-ka="([^"]*)"/);
+      // Determine kind
+      let kind = 'other';
+      if (isCalendly) kind = 'calendly';
+      else if (isTel) kind = 'tel';
+      else if (isMailto) kind = 'mailto';
+      else if (hasAudit) kind = 'audit';
+      else if (hasLeadForm) kind = 'quote';
+      // Determine section context — look backward for nearest heading / id
+      let ctx = '';
+      for (let k = i; k >= Math.max(0, i-200); k--) {
+        const lk = lines[k];
+        const h = lk.match(/<h[1-3][^>]*>([^<]+)</);
+        if (h) { ctx = h[1].trim(); break; }
+        const idM = lk.match(/\bid="([^"]+)"/);
+        if (idM && !ctx) { ctx = '#' + idM[1]; }
+      }
+      if (!ctx) ctx = 'page';
+      results.push({
+        index: results.length,
+        line: i + 1,
+        endLine: endLine + 1,
+        kind,
+        href: hrefM ? hrefM[1] : '',
+        ariaLabel: ariaM ? ariaM[1] : '',
+        textEn: dataEnM ? dataEnM[1] : visible,
+        textKa: dataKaM ? dataKaM[1] : '',
+        visible,
+        ctx,
+        rawTag: tag,
+        rawBody: body,
+        startLineIdx: i,
+        startCol: startInLine,
+        scanEndLineIdx: scanStart,
+        scanEndCol: scanEndIdx
+      });
+    }
+  }
+  return results;
+}
+
+// --- CTA picker UI ---
+function renderCtaPicker() {
+  const c = document.getElementById('ctas');
+  c.innerHTML = '';
+  ctas.forEach(cta => {
+    const div = document.createElement('div');
+    div.className = 'cta' + (cta.selected ? ' selected' : '');
+    div.innerHTML = `
+      <div class="cta-head">
+        <input type="checkbox" data-i="${cta.index}" ${cta.selected?'checked':''}>
+        <span class="ctx">${esc(cta.ctx)}</span>
+        <span class="badge">${cta.kind}</span>
+        <span class="line">line ${cta.line}</span>
+      </div>
+      <div class="cta-current">
+        Current: <strong>"${esc(cta.visible || '—')}"</strong>
+        ${cta.href ? ' → <code>'+esc(cta.href)+'</code>' : ''}
+      </div>
+      <div class="cta-controls${cta.selected?'':' hidden'}">
+        <label class="field" style="margin-bottom:4px">
+          <span>Swap to</span>
+          <select data-i="${cta.index}" data-action="preset">
+            ${presets.map(p => `<option value="${p.id}" ${cta.targetPreset===p.id?'selected':''}>${esc(p.label)} — ${esc(p.text_en || '(no text)')} → ${esc(p.href || '(no href)')}</option>`).join('')}
+          </select>
+        </label>
+      </div>
+    `;
+    c.appendChild(div);
+  });
+  c.querySelectorAll('input[type=checkbox]').forEach(inp => {
+    inp.addEventListener('change', e => {
+      const i = +e.target.dataset.i;
+      ctas[i].selected = e.target.checked;
+      if (e.target.checked && !ctas[i].targetPreset && presets.length) {
+        ctas[i].targetPreset = presets[0].id;
+      }
+      renderCtaPicker();
+      updateCount();
+    });
+  });
+  c.querySelectorAll('select[data-action=preset]').forEach(sel => {
+    sel.addEventListener('change', e => {
+      const i = +e.target.dataset.i;
+      ctas[i].targetPreset = e.target.value;
+    });
+  });
+  updateCount();
+}
+
+function updateCount() {
+  const n = ctas.filter(c => c.selected).length;
+  document.getElementById('selectionCount').textContent = `${n} selected`;
+  document.getElementById('download').disabled = n === 0;
+  document.getElementById('preview').disabled = n === 0;
+  document.getElementById('copy').disabled = n === 0;
+}
+
+// --- Apply swaps: rebuild source HTML ---
+function applySwaps() {
+  // Operate on lines so we keep formatting & only touch the anchors selected.
+  let lines = sourceHTML.split('\n');
+  // Apply from BOTTOM to top so line indices stay stable.
+  const selected = ctas.filter(c => c.selected).sort((a,b) => b.startLineIdx - a.startLineIdx);
+  const changeLog = [];
+  selected.forEach(cta => {
+    const p = presets.find(x => x.id === cta.targetPreset);
+    if (!p) return;
+    // Compute replacement anchor (preserving class) — only replace href + onclick + visible text + data-en/ka + aria + icon
+    const newTag = rewriteAnchorTag(cta.rawTag, p);
+    const newBody = rewriteBody(cta.rawBody, p, cta);
+    // Replace the OLD tag in its start line
+    const startLine = lines[cta.startLineIdx];
+    const before = startLine.slice(0, cta.startCol);
+    const afterTagStart = startLine.slice(cta.startCol);
+    // Replace just the opening tag (first match of <a ...>)
+    const oldTagLen = cta.rawTag.length;
+    const newStartLine = before + newTag + afterTagStart.slice(oldTagLen);
+    lines[cta.startLineIdx] = newStartLine;
+    // Replace inner body across lines from start line (after tag) to scanEndLineIdx (before </a>)
+    if (cta.scanEndLineIdx === cta.startLineIdx) {
+      // body is on same line as opening tag
+      const sl = lines[cta.startLineIdx];
+      const tagEnd = before.length + newTag.length;
+      const closeIdx = sl.indexOf('</a>', tagEnd);
+      if (closeIdx !== -1) {
+        lines[cta.startLineIdx] = sl.slice(0, tagEnd) + newBody + sl.slice(closeIdx);
+      }
+    } else {
+      // multi-line body — replace lines between
+      const startSlice = lines[cta.startLineIdx];
+      // Everything after the new tag on the start line becomes new body's first line (or '')
+      const afterTag = startSlice.indexOf('>', startSlice.indexOf('<a')) + 1;  // crude but works
+      lines[cta.startLineIdx] = startSlice.slice(0, afterTag);
+      const endLineSlice = lines[cta.scanEndLineIdx];
+      const closeIdx = endLineSlice.indexOf('</a>');
+      lines[cta.scanEndLineIdx] = endLineSlice.slice(closeIdx);
+      // Wipe in-between lines
+      for (let k = cta.startLineIdx + 1; k < cta.scanEndLineIdx; k++) lines[k] = '';
+      // Insert the new body as one line right after the opening tag
+      lines[cta.startLineIdx] += '\n' + newBody;
+    }
+    changeLog.unshift({
+      line: cta.line, ctx: cta.ctx,
+      from: cta.visible, to: p.text_en,
+      hrefFrom: cta.href, hrefTo: p.href
+    });
+  });
+  return { html: lines.join('\n'), changeLog };
+}
+
+function rewriteAnchorTag(tag, p) {
+  let t = tag;
+  // Replace href
+  if (/\bhref="/.test(t)) t = t.replace(/\bhref="[^"]*"/, `href="${attr(p.href)}"`);
+  else t = t.replace(/<a\b/, `<a href="${attr(p.href)}"`);
+  // Remove onclick="openCalendly..."  (the new CTA does NOT open Calendly)
+  t = t.replace(/\s*onclick="[^"]*openCalendly[^"]*"/, '');
+  // Update data-en / data-ka
+  if (/\bdata-en="/.test(t)) t = t.replace(/\bdata-en="[^"]*"/, `data-en="${attr(p.text_en)}"`);
+  if (/\bdata-ka="/.test(t)) t = t.replace(/\bdata-ka="[^"]*"/, `data-ka="${attr(p.text_ka)}"`);
+  // Update aria-label if present (and was tied to old text)
+  if (/\baria-label="/.test(t)) t = t.replace(/\baria-label="[^"]*"/, `aria-label="${attr(p.text_en)}"`);
+  return t;
+}
+
+function rewriteBody(body, p, cta) {
+  // Strategy: if body has an <svg>, replace the inner <path> with our icon paths.
+  let newBody = body;
+  if (/<svg/.test(newBody)) {
+    newBody = newBody.replace(/(<svg\b[^>]*>)[\s\S]*?(<\/svg>)/, `$1${ICONS[p.icon] || ICONS.arrow}$2`);
+  }
+  // Replace the visible text node (text between tags).
+  // Replace the LAST non-tag text run (most CTAs are: <svg>...</svg>TEXT or TEXT<svg>...</svg>)
+  const textPlaceholder = ' TXT ';
+  // Replace any run of plain text (>2 chars) with placeholder, keep first replaced
+  const textRuns = [];
+  newBody = newBody.replace(/>([^<]+)</g, (m, txt) => {
+    if (txt.trim().length === 0) return m;
+    textRuns.push(txt);
+    return '>' + textPlaceholder + '<';
+  });
+  // Replace the first text placeholder with new text
+  let replaced = false;
+  newBody = newBody.replace(/ TXT /g, () => {
+    if (!replaced) { replaced = true; return esc(p.text_en); }
+    return '';  // strip any other text nodes (rare)
+  });
+  // If there were no text runs at all, just append the new text
+  if (textRuns.length === 0) {
+    newBody = newBody.trim() + esc(p.text_en);
+  }
+  return newBody;
+}
+
+// --- Buttons ---
+document.getElementById('preview').addEventListener('click', () => {
+  const { changeLog } = applySwaps();
+  showOutput(formatChangeList(changeLog));
+});
+document.getElementById('copy').addEventListener('click', async () => {
+  const { changeLog } = applySwaps();
+  const txt = formatChangeList(changeLog);
+  try {
+    await navigator.clipboard.writeText(txt);
+    showOutput(txt + '\n\n--- ✓ Copied to clipboard ---');
+  } catch {
+    showOutput(txt + '\n\n--- (clipboard blocked; copy manually) ---');
+  }
+});
+document.getElementById('download').addEventListener('click', () => {
+  const { html, changeLog } = applySwaps();
+  const blob = new Blob([html], { type: 'text/html' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = sourcePath.split('/').pop();
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  showOutput(formatChangeList(changeLog) + '\n\n--- ✓ Downloaded ' + sourcePath.split('/').pop() + ' — replace it in /'+sourcePath+' to apply ---');
+});
+
+function formatChangeList(log) {
+  if (!log.length) return '(no changes)';
+  const lines = [
+    `# CTA swaps for ${sourcePath}`,
+    `# Generated ${new Date().toISOString().slice(0,16).replace('T',' ')}`,
+    ''
+  ];
+  log.forEach(c => {
+    lines.push(`Line ${c.line}  [${c.ctx}]`);
+    lines.push(`  Text:  "${c.from}"  →  "${c.to}"`);
+    lines.push(`  Href:  ${c.hrefFrom || '(Calendly popup)'}  →  ${c.hrefTo}`);
+    lines.push('');
+  });
+  return lines.join('\n');
+}
+
+function showOutput(text) {
+  document.getElementById('outputPanel').style.display = 'block';
+  document.getElementById('output').value = text;
+}
+
+// --- Utils ---
+function esc(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function attr(s) { return String(s).replace(/"/g, '&quot;'); }
+
+// Init
+renderPresets();
+// Auto-load default
+loadSource();
+</script>
+</body>
+</html>

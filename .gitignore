@@ -78,6 +78,9 @@
 !tailwind.config.js
 !tailwind.input.css
 
+# Internal tools (noindex)
+!cta-picker.html
+
 # English translation (/en/ subfolder)
 !en/
 !en/**
