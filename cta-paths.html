@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>CTA Path Mapper</title>
+<style>
+  :root {
+    --bg: #0f172a; --bg-alt: #1e293b; --bg-card: #0d1117;
+    --border: #334155; --text: #f1f5f9; --text-dim: #94a3b8;
+    --primary: #8b5cf6; --primary-dim: #a78bfa;
+    --success: #22c55e; --warn: #f59e0b; --danger: #ef4444; --teal: #14b8a6;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; min-height: 100vh; }
+  .wrap { max-width: 1400px; margin: 0 auto; padding: 14px 14px 80px; }
+  .tools-nav { display: flex; gap: 4px; margin-bottom: 14px; flex-wrap: wrap; align-items: center; font-size: 13px; padding: 8px 12px; background: var(--bg-alt); border: 1px solid var(--border); border-radius: 8px; }
+  .tools-nav strong { color: var(--text-dim); margin-right: 8px; }
+  .tools-nav a { color: var(--text-dim); text-decoration: none; padding: 4px 10px; border-radius: 6px; }
+  .tools-nav a:hover { background: var(--bg-card); color: var(--text); }
+  .tools-nav a.current { background: var(--primary); color: white; font-weight: 600; }
+  h1 { margin: 0 0 4px; font-size: 24px; }
+  h1 span { color: var(--primary-dim); }
+  .sub { color: var(--text-dim); font-size: 14px; margin: 0 0 18px; }
+
+  .panel { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-bottom: 14px; }
+  .panel h2 { margin: 0 0 10px; font-size: 14px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; }
+
+  textarea { width: 100%; min-height: 140px; background: var(--bg-card); border: 1px solid var(--border); color: var(--text); border-radius: 7px; padding: 10px; font-family: ui-monospace, monospace; font-size: 12px; resize: vertical; }
+  input[type="text"], select { width: 100%; padding: 9px 12px; background: var(--bg-card); border: 1px solid var(--border); color: var(--text); border-radius: 7px; font-family: inherit; font-size: 14px; }
+  button { padding: 9px 18px; border: 0; border-radius: 7px; background: var(--primary); color: white; font-weight: 600; font-size: 14px; cursor: pointer; font-family: inherit; }
+  button:hover { background: var(--primary-dim); }
+  button.secondary { background: var(--bg-card); border: 1px solid var(--border); color: var(--text); }
+  button.secondary:hover { background: var(--border); }
+  .hint { font-size: 12px; color: var(--text-dim); margin-top: 6px; }
+  code { background: var(--bg-card); padding: 2px 6px; border-radius: 4px; font-size: 12px; }
+  .alert { padding: 10px 14px; border-radius: 7px; font-size: 13px; }
+  .alert.warn { background: rgba(245,158,11,0.1); border: 1px solid var(--warn); color: var(--warn); }
+  .alert.ok { background: rgba(34,197,94,0.1); border: 1px solid var(--success); color: var(--success); }
+
+  /* Stats cards */
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 14px; }
+  .stat {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px;
+    padding: 12px; text-align: center;
+  }
+  .stat .val { font-size: 24px; font-weight: 800; }
+  .stat .label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; }
+  .stat.ok .val { color: var(--success); }
+  .stat.warn .val { color: var(--warn); }
+  .stat.crit .val { color: var(--danger); }
+
+  /* Issue lists */
+  .issue-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 12px; }
+  .issue-block { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
+  .issue-block h3 { margin: 0 0 8px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .issue-block.dead h3 { color: var(--danger); }
+  .issue-block.orphan h3 { color: var(--warn); }
+  .issue-block.external h3 { color: var(--teal); }
+  .issue-block.loop h3 { color: var(--primary-dim); }
+  .issue-list { display: grid; gap: 4px; max-height: 280px; overflow-y: auto; }
+  .issue-item { font-size: 12px; padding: 6px 8px; background: var(--bg); border-radius: 6px; }
+  .issue-item .from { color: var(--text-dim); }
+  .issue-item .to { color: var(--text); font-weight: 600; }
+  .issue-item code { font-size: 11px; }
+
+  /* Graph rendering */
+  .graph-wrap {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px;
+    padding: 14px; overflow-x: auto;
+  }
+  .graph-row {
+    display: flex; align-items: center; gap: 8px;
+    padding: 6px 0; border-bottom: 1px solid var(--border);
+    font-size: 13px;
+  }
+  .graph-row:last-child { border-bottom: 0; }
+  .node {
+    padding: 4px 10px; background: var(--bg-alt); border: 1px solid var(--border);
+    border-radius: 6px; font-family: ui-monospace, monospace; font-size: 11px;
+    white-space: nowrap;
+  }
+  .node.internal { border-left: 3px solid var(--primary); }
+  .node.external { border-left: 3px solid var(--teal); color: var(--teal); }
+  .node.dead { border-left: 3px solid var(--danger); color: var(--danger); }
+  .node.tel { border-left: 3px solid var(--success); color: var(--success); }
+  .arrow { color: var(--text-dim); font-size: 14px; }
+  .cta-label { font-size: 11px; color: var(--text-dim); flex: 1; }
+  .progress { font-size: 12px; color: var(--text-dim); margin-top: 8px; }
+
+  /* Per-page accordions */
+  details.page-detail {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px;
+    margin-bottom: 6px;
+  }
+  details.page-detail summary {
+    padding: 10px 14px; cursor: pointer; font-size: 13px;
+    display: flex; gap: 10px; align-items: center;
+  }
+  details.page-detail summary .pname { font-weight: 600; font-family: ui-monospace, monospace; font-size: 12px; }
+  details.page-detail summary .pcount { color: var(--text-dim); font-size: 11px; margin-left: auto; }
+  details.page-detail summary::marker { color: var(--text-dim); }
+  details.page-detail .pcontent { padding: 4px 14px 12px; }
+  .lang-pill { display: inline-block; font-size: 10px; padding: 1px 7px; border-radius: 10px; font-weight: 600; }
+  .lang-en { background: rgba(59,130,246,0.2); color: #60a5fa; }
+  .lang-ka { background: rgba(245,158,11,0.2); color: #fbbf24; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav class="tools-nav">
+  <strong>CTA Tools:</strong>
+  <a href="cta.html">Hub</a>
+  <a href="cta-picker.html">Picker</a>
+  <a href="cta-microcopy.html">Microcopy</a>
+  <a href="cta-segments.html">Segments</a>
+  <a href="cta-sitemap.html">Sitemap</a>
+  <a href="cta-lab.html">Lab</a>
+  <a href="cta-ab.html">A/B</a>
+  <a href="cta-paths.html" class="current">Paths</a>
+  <a href="cta-heatmap.html">Heatmap</a>
+  <a href="cta-report.html">Report</a>
+  <a href="cta-help.html">Help</a>
+</nav>
+
+<h1>CTA Path Mapper <span>— where does each CTA lead?</span></h1>
+<p class="sub">Crawls a set of pages, builds the CTA destination graph, and flags: <strong>dead-ends</strong> (CTAs leading to pages with no further CTAs), <strong>orphan pages</strong> (pages with no incoming CTAs), <strong>missing exits</strong> (links to pages not in scope or 404), <strong>external destinations</strong> (Calendly, tel:, third-party). Lets you see the actual visitor journey.</p>
+
+<div class="panel">
+  <h2>1. Pages to crawl</h2>
+  <textarea id="srcList">en/index.html
+en/seo-management.html
+en/seo-consultation.html
+en/seo-strategy.html
+en/seo-audit.html
+en/cro.html
+en/ai-seo.html
+en/google-ads.html
+en/seo-copywriting.html
+en/copywriting.html
+en/services.html
+en/portfolio.html
+en/case-studies.html
+en/contact-us.html
+en/lead-form.html
+en/about-us.html
+en/blog.html
+en/blog/what-is-aeo.html
+en/blog/aeo-optimization-agency-dubai.html
+en/seo-tools.html</textarea>
+  <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
+    <button id="crawl">Crawl & build graph</button>
+    <button class="secondary" id="loadKa">Switch to Georgian pages</button>
+    <button class="secondary" id="loadEn">Switch to English pages</button>
+  </div>
+  <div class="progress" id="progress"></div>
+</div>
+
+<div id="tool" style="display:none">
+
+<div class="panel">
+  <h2>2. Site overview</h2>
+  <div class="stats" id="stats"></div>
+</div>
+
+<div class="panel">
+  <h2>3. Issues found</h2>
+  <div class="issue-grid" id="issues"></div>
+</div>
+
+<div class="panel">
+  <h2>4. Per-page outlinks</h2>
+  <p class="hint" style="margin-top:0">Each row = one CTA on a page. Click a page to expand. Internal = links to other crawled pages. Dead-end = links to crawled page with no CTAs. External = Calendly, tel:, mailto:, off-site.</p>
+  <div id="pageList"></div>
+</div>
+
+</div>
+
+</div>
+
+<script>
+const PAGE_SETS = {
+  en: `en/index.html
+en/seo-management.html
+en/seo-consultation.html
+en/seo-strategy.html
+en/seo-audit.html
+en/cro.html
+en/ai-seo.html
+en/google-ads.html
+en/seo-copywriting.html
+en/copywriting.html
+en/services.html
+en/portfolio.html
+en/case-studies.html
+en/contact-us.html
+en/lead-form.html
+en/about-us.html
+en/blog.html
+en/blog/what-is-aeo.html
+en/blog/aeo-optimization-agency-dubai.html
+en/seo-tools.html`,
+  ka: `index.html
+seo-management.html
+seo-consultation.html
+seo-strategy.html
+seo-audit.html
+cro.html
+ai-seo.html
+google-ads.html
+seo-copywriting.html
+copywriting.html
+services.html
+portfolio.html
+case-studies.html
+contact-us.html
+lead-form.html
+about-us.html
+blog.html
+seo-tools.html`
+};
+document.getElementById('loadKa').addEventListener('click', () => document.getElementById('srcList').value = PAGE_SETS.ka);
+document.getElementById('loadEn').addEventListener('click', () => document.getElementById('srcList').value = PAGE_SETS.en);
+
+let pages = [];
+
+function esc(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+function detectLang(html, path) {
+  const m = html.match(/<html\b[^>]*\blang="([^"]+)"/i);
+  if (m) {
+    if (/^ka\b/i.test(m[1])) return 'ka';
+    if (/^en\b/i.test(m[1])) return 'en';
+  }
+  return /^en\//.test(path) ? 'en' : 'ka';
+}
+
+function scanCTAs(html) {
+  const lines = html.split('\n');
+  const results = [];
+  const anchorOpen = /<a\b[^>]*>/g;
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    let m;
+    anchorOpen.lastIndex = 0;
+    while ((m = anchorOpen.exec(line)) !== null) {
+      const tag = m[0];
+      const isCalendly = /onclick="[^"]*openCalendly/.test(tag);
+      const isTel = /\bhref="tel:/.test(tag);
+      const isMailto = /\bhref="mailto:/.test(tag);
+      const hasAudit = /\bhref="[^"]*seo-audit\.html"/.test(tag);
+      const hasLeadForm = /\bhref="[^"]*lead-form\.html"/.test(tag);
+      const ctaClass = /\bclass="[^"]*(ai-cta-animate|call-btn|cta-btn)[^"]*"/.test(tag);
+      if (!(isCalendly || ctaClass || hasAudit || hasLeadForm)) continue;
+      let body = '';
+      const startInLine = m.index;
+      let scanStart = i, scanCol = startInLine + tag.length;
+      let chunk = lines[scanStart].slice(scanCol);
+      let scanEndIdx = chunk.indexOf('</a>');
+      while (scanEndIdx === -1 && scanStart < lines.length - 1 && scanStart - i < 30) {
+        body += chunk + '\n';
+        scanStart++; chunk = lines[scanStart]; scanCol = 0;
+        scanEndIdx = chunk.indexOf('</a>');
+      }
+      if (scanEndIdx === -1) continue;
+      body += chunk.slice(0, scanEndIdx);
+      const visible = body.replace(/<[^>]+>/g,'').trim();
+      const hrefM = tag.match(/\bhref="([^"]*)"/);
+      let kind = 'other';
+      if (isCalendly) kind = 'book';
+      else if (isTel) kind = 'call';
+      else if (isMailto) kind = 'email';
+      else if (hasAudit) kind = 'audit';
+      else if (hasLeadForm) kind = 'quote';
+      const clsAttr = (tag.match(/class="([^"]*)"/) || ['',''])[1];
+      const isButtonStyled = /ai-cta-animate|call-btn|cta-btn|\bbg-|\bpx-\d|\bpy-\d|\bp-\d|\bborder-\d|\brounded-/.test(clsAttr);
+      if (!isCalendly && !isButtonStyled) continue;
+      let ctx = '';
+      for (let k = i; k >= Math.max(0, i-200); k--) {
+        const lk = lines[k];
+        const h = lk.match(/<h[1-3][^>]*>([^<]+)</);
+        if (h) { ctx = h[1].trim(); break; }
+        const idM = lk.match(/\bid="([^"]+)"/);
+        if (idM && !ctx) ctx = '#' + idM[1];
+      }
+      if (!ctx) ctx = 'page';
+      results.push({ line: i + 1, kind, ctx, href: hrefM ? hrefM[1] : '', visible });
+    }
+  }
+  return results;
+}
+
+// Normalize a relative href to the absolute path it would resolve to from `fromPath`.
+// e.g., fromPath='en/seo-management.html', href='seo-audit.html' → 'en/seo-audit.html'
+//       fromPath='en/blog/what-is-aeo.html', href='../seo-audit.html' → 'en/seo-audit.html'
+function resolvePath(fromPath, href) {
+  if (!href || href.startsWith('http') || href.startsWith('tel:') || href.startsWith('mailto:') || href === '#' || href.startsWith('javascript:')) return href;
+  // Strip query/fragment
+  const cleanHref = href.split('#')[0].split('?')[0];
+  if (!cleanHref) return href;
+  // Build base from fromPath
+  const fromDir = fromPath.includes('/') ? fromPath.replace(/\/[^/]*$/, '/') : '';
+  // Use URL resolver via a fake base
+  try {
+    const fakeBase = 'http://x/' + fromDir;
+    const resolved = new URL(cleanHref, fakeBase).pathname.replace(/^\//,'');
+    return resolved;
+  } catch {
+    return cleanHref;
+  }
+}
+
+function classifyDestination(href, knownPages) {
+  if (!href || href === '#') return { type: 'calendly', display: 'Calendly popup' };
+  if (href.startsWith('tel:')) return { type: 'tel', display: href };
+  if (href.startsWith('mailto:')) return { type: 'mailto', display: href };
+  if (href.startsWith('http')) {
+    if (/calendly\.com/.test(href)) return { type: 'calendly', display: 'Calendly direct' };
+    return { type: 'external', display: href };
+  }
+  // Internal — does it match a known page?
+  if (knownPages.has(href)) return { type: 'internal', display: href };
+  return { type: 'unknown', display: href };  // links to a page not crawled
+}
+
+document.getElementById('crawl').addEventListener('click', async () => {
+  const list = document.getElementById('srcList').value.split('\n').map(l => l.trim()).filter(Boolean);
+  pages = [];
+  const prog = document.getElementById('progress');
+  prog.textContent = `Crawling 0 / ${list.length}…`;
+  let i = 0;
+  for (const path of list) {
+    i++;
+    prog.textContent = `Crawling ${i} / ${list.length} — ${path}`;
+    try {
+      const r = await fetch(path.replace(/^\//,''), { cache: 'no-store' });
+      if (!r.ok) { pages.push({ path, error: `HTTP ${r.status}` }); continue; }
+      const html = await r.text();
+      const lang = detectLang(html, path);
+      const ctas = scanCTAs(html);
+      pages.push({ path, lang, ctas });
+    } catch (e) {
+      pages.push({ path, error: String(e).slice(0, 80) });
+    }
+  }
+  prog.textContent = `✓ Crawled ${pages.length} pages, ${pages.filter(p=>p.error).length} failed`;
+  buildAnalysis();
+});
+
+let analysis = null;
+function buildAnalysis() {
+  const known = new Set(pages.filter(p => !p.error).map(p => p.path));
+  const incomingByPage = {};  // path → [{from, cta}]
+  const outgoingByPage = {};  // path → [{cta, target, dest_type}]
+  pages.filter(p => !p.error).forEach(p => incomingByPage[p.path] = []);
+
+  pages.filter(p => !p.error).forEach(p => {
+    outgoingByPage[p.path] = [];
+    p.ctas.forEach(cta => {
+      const resolved = resolvePath(p.path, cta.href);
+      const dest = classifyDestination(resolved, known);
+      outgoingByPage[p.path].push({ cta, resolved, dest });
+      if (dest.type === 'internal' && incomingByPage[resolved]) {
+        incomingByPage[resolved].push({ from: p.path, cta });
+      }
+    });
+  });
+
+  // Dead-ends: a CTA whose internal target page has zero conversion CTAs
+  const deadEnds = [];
+  Object.entries(outgoingByPage).forEach(([fromPath, outs]) => {
+    outs.forEach(o => {
+      if (o.dest.type !== 'internal') return;
+      const targetPage = pages.find(p => p.path === o.resolved);
+      if (!targetPage) return;
+      const targetConv = targetPage.ctas.filter(c => c.kind !== 'call' && c.kind !== 'email' && c.kind !== 'other').length;
+      if (targetConv === 0) {
+        deadEnds.push({ from: fromPath, to: o.resolved, cta: o.cta });
+      }
+    });
+  });
+
+  // Orphans: internal pages with zero incoming CTAs (excluding the homepage / contact pages)
+  const orphans = Object.entries(incomingByPage).filter(([path, ins]) => {
+    if (ins.length > 0) return false;
+    if (/(^|\/)(index|contact-us|lead-form)\.html$/.test(path)) return false;
+    return true;
+  }).map(([path]) => path);
+
+  // External destinations (Calendly, tel:, external)
+  const externals = {};
+  Object.entries(outgoingByPage).forEach(([fromPath, outs]) => {
+    outs.forEach(o => {
+      if (['internal', 'unknown'].includes(o.dest.type)) return;
+      const key = o.dest.display;
+      externals[key] = externals[key] || { count: 0, examples: [] };
+      externals[key].count++;
+      if (externals[key].examples.length < 3) externals[key].examples.push({ from: fromPath, cta: o.cta });
+    });
+  });
+
+  // Missing: links to pages not crawled
+  const missing = [];
+  Object.entries(outgoingByPage).forEach(([fromPath, outs]) => {
+    outs.forEach(o => {
+      if (o.dest.type === 'unknown') missing.push({ from: fromPath, target: o.resolved, cta: o.cta });
+    });
+  });
+
+  // Loops: A → B → A pattern (simple, 2-hop)
+  const loops = [];
+  Object.entries(outgoingByPage).forEach(([a, aOuts]) => {
+    aOuts.forEach(o => {
+      if (o.dest.type !== 'internal') return;
+      const b = o.resolved;
+      const bOuts = outgoingByPage[b] || [];
+      bOuts.forEach(o2 => {
+        if (o2.dest.type === 'internal' && o2.resolved === a) {
+          // Avoid double-counting by sorting key
+          const key = [a, b].sort().join(' ↔ ');
+          if (!loops.some(l => l.key === key)) {
+            loops.push({ key, a, b });
+          }
+        }
+      });
+    });
+  });
+
+  analysis = { known, incomingByPage, outgoingByPage, deadEnds, orphans, externals, missing, loops };
+  renderAll();
+}
+
+function renderAll() {
+  document.getElementById('tool').style.display = 'block';
+  renderStats();
+  renderIssues();
+  renderPageList();
+}
+
+function renderStats() {
+  const okPages = pages.filter(p => !p.error).length;
+  const totalCTAs = pages.filter(p => !p.error).reduce((a,p) => a + p.ctas.length, 0);
+  const totalConv = pages.filter(p => !p.error).reduce((a,p) => a + p.ctas.filter(c => c.kind !== 'call' && c.kind !== 'email' && c.kind !== 'other').length, 0);
+  document.getElementById('stats').innerHTML = `
+    <div class="stat ok"><div class="val">${okPages}</div><div class="label">Pages crawled</div></div>
+    <div class="stat"><div class="val">${totalCTAs}</div><div class="label">Total CTAs</div></div>
+    <div class="stat"><div class="val">${totalConv}</div><div class="label">Conversion CTAs</div></div>
+    <div class="stat ${analysis.deadEnds.length>0?'warn':'ok'}"><div class="val">${analysis.deadEnds.length}</div><div class="label">Dead-end paths</div></div>
+    <div class="stat ${analysis.orphans.length>0?'warn':'ok'}"><div class="val">${analysis.orphans.length}</div><div class="label">Orphan pages</div></div>
+    <div class="stat ${analysis.missing.length>0?'crit':'ok'}"><div class="val">${analysis.missing.length}</div><div class="label">Missing targets</div></div>
+    <div class="stat"><div class="val">${analysis.loops.length}</div><div class="label">2-hop loops</div></div>
+  `;
+}
+
+function renderIssues() {
+  const c = document.getElementById('issues');
+  c.innerHTML = '';
+
+  // Dead-ends
+  if (analysis.deadEnds.length) {
+    c.insertAdjacentHTML('beforeend', `
+      <div class="issue-block dead">
+        <h3>⚠ Dead-end paths (${analysis.deadEnds.length})</h3>
+        <p class="hint" style="margin-top:0">CTA leads to a page with no further CTAs. Visitor hits a content cul-de-sac.</p>
+        <div class="issue-list">
+          ${analysis.deadEnds.map(d => `
+            <div class="issue-item">
+              <span class="from">${esc(d.from)}</span> · <code>line ${d.cta.line}</code> "${esc(d.cta.visible)}" → <span class="to">${esc(d.to)}</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `);
+  }
+
+  // Orphans
+  if (analysis.orphans.length) {
+    c.insertAdjacentHTML('beforeend', `
+      <div class="issue-block orphan">
+        <h3>⚠ Orphan pages (${analysis.orphans.length})</h3>
+        <p class="hint" style="margin-top:0">Pages with zero incoming CTA links. Only reachable via nav or direct URL — wasted opportunity.</p>
+        <div class="issue-list">
+          ${analysis.orphans.map(p => `
+            <div class="issue-item">
+              <span class="to">${esc(p)}</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `);
+  }
+
+  // External destinations
+  if (Object.keys(analysis.externals).length) {
+    c.insertAdjacentHTML('beforeend', `
+      <div class="issue-block external">
+        <h3>↗ External destinations (${Object.keys(analysis.externals).length} unique)</h3>
+        <p class="hint" style="margin-top:0">Where the funnel exits the site. Calendly = booking commitment, tel: = phone path, external = lost to third-party.</p>
+        <div class="issue-list">
+          ${Object.entries(analysis.externals).map(([dest, info]) => `
+            <div class="issue-item">
+              <span class="to">${esc(dest)}</span>
+              <span style="color:var(--text-dim);font-size:11px;margin-left:6px">${info.count}× from ${info.examples.length}+ pages</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `);
+  }
+
+  // Missing (404s / out of scope)
+  if (analysis.missing.length) {
+    c.insertAdjacentHTML('beforeend', `
+      <div class="issue-block dead">
+        <h3>✗ Out-of-scope targets (${analysis.missing.length})</h3>
+        <p class="hint" style="margin-top:0">CTAs pointing to pages NOT in the crawl set. Either add the page to the list, or fix a 404 risk.</p>
+        <div class="issue-list">
+          ${analysis.missing.map(m => `
+            <div class="issue-item">
+              <span class="from">${esc(m.from)}</span> · "${esc(m.cta.visible)}" → <span class="to">${esc(m.target)}</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `);
+  }
+
+  // Loops
+  if (analysis.loops.length) {
+    c.insertAdjacentHTML('beforeend', `
+      <div class="issue-block loop">
+        <h3>↻ 2-hop loops (${analysis.loops.length})</h3>
+        <p class="hint" style="margin-top:0">Pages that link to each other in a tight loop. Sometimes intentional (services ↔ contact), often a sign of weak journey direction.</p>
+        <div class="issue-list">
+          ${analysis.loops.map(l => `
+            <div class="issue-item"><span class="to">${esc(l.key)}</span></div>
+          `).join('')}
+        </div>
+      </div>
+    `);
+  }
+
+  if (!c.innerHTML) {
+    c.innerHTML = '<p class="hint">No issues detected. Funnel paths look clean.</p>';
+  }
+}
+
+function renderPageList() {
+  const c = document.getElementById('pageList');
+  c.innerHTML = '';
+  pages.forEach(p => {
+    if (p.error) {
+      c.insertAdjacentHTML('beforeend', `<details class="page-detail"><summary><span class="pname">${esc(p.path)}</span><span style="color:var(--danger)">Failed: ${esc(p.error)}</span></summary></details>`);
+      return;
+    }
+    const outs = analysis.outgoingByPage[p.path] || [];
+    const ins = analysis.incomingByPage[p.path] || [];
+    c.insertAdjacentHTML('beforeend', `
+      <details class="page-detail">
+        <summary>
+          <span class="pname">${esc(p.path)}</span>
+          <span class="lang-pill lang-${p.lang}">${p.lang.toUpperCase()}</span>
+          <span class="pcount">${outs.length} CTA${outs.length===1?'':'s'} out · ${ins.length} CTA${ins.length===1?'':'s'} in</span>
+        </summary>
+        <div class="pcontent">
+          ${ins.length ? `<p class="hint" style="margin-top:0"><strong>Incoming CTAs (${ins.length}):</strong> ${ins.map(i => `<code>${esc(i.from)}</code> "${esc(i.cta.visible).slice(0,30)}"`).join(' · ')}</p>` : '<p class="hint" style="margin-top:0;color:var(--warn)">No incoming CTAs (orphan)</p>'}
+          ${outs.length ? `<p class="hint"><strong>Outgoing:</strong></p>${outs.map(o => `
+            <div class="graph-row">
+              <span class="cta-label">line ${o.cta.line} · ${esc(o.cta.ctx)} · "${esc(o.cta.visible).slice(0,40)}"</span>
+              <span class="arrow">→</span>
+              <span class="node ${o.dest.type === 'internal' ? 'internal' : o.dest.type === 'tel' ? 'tel' : o.dest.type === 'calendly' || o.dest.type === 'external' ? 'external' : 'dead'}">${esc(o.dest.display)}</span>
+            </div>
+          `).join('')}` : '<p class="hint">No CTAs on this page.</p>'}
+        </div>
+      </details>
+    `);
+  });
+}
+</script>
+</body>
+</html>
