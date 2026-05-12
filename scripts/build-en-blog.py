@@ -20,7 +20,7 @@ ARTICLE_1 = {
     "title": "What Is AEO? Answer Engine Optimization Explained — 10xSEO",
     "h1": "What Is AEO? Answer Engine Optimization Explained",
     "description": "AEO (Answer Engine Optimization) makes your brand the source AI engines cite. Learn what AEO is, how it differs from SEO, and how to start optimizing for ChatGPT, Gemini, and Perplexity.",
-    "image": "what-is-aeo.webp",
+    "image": "what-is-aeo-card.webp",
     "image_alt": "What Is AEO? Answer Engine Optimization explained by 10xSEO",
     "published": "2025-06-04",
     "modified": "2026-05-11",
@@ -142,7 +142,7 @@ ARTICLE_2 = {
     "title": "AEO Optimization Agency Dubai — ChatGPT SEO for the UAE | 10xSEO",
     "h1": "AEO Optimization Agency Dubai: ChatGPT SEO for the UAE Market",
     "description": "Looking for a top AEO Optimization Agency in Dubai? 10xSEO helps UAE brands win in AI search — ChatGPT optimization, Answer Engine SEO, and AI Overview rankings for the GCC market.",
-    "image": "aeo-optimization-agency-dubai.webp",
+    "image": "aeo-optimization-agency-dubai-card.webp",
     "image_alt": "AEO Optimization Agency Dubai — ChatGPT SEO for UAE businesses",
     "published": "2025-08-14",
     "modified": "2026-05-11",
@@ -360,7 +360,7 @@ def build_article(article):
     slug = article["slug"]
     url = f"https://10xseo.ge/en/blog/{slug}.html"
     image_path = f"../../images/blog/{article['image']}"
-    image_abs = f"https://10xseo.ge/images/blog/{article['image']}"
+    image_abs = f"https://10xseo.ge/images/blog/{article['image'].replace('.webp', '.png')}"
 
     # Build article body HTML
     intro_html = "\n            ".join(f'<p>{p}</p>' for p in article["intro"])
