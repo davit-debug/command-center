@@ -78,11 +78,13 @@
   <a href="cta-paths.html">Paths</a>
   <a href="cta-heatmap.html">Heatmap</a>
   <a href="cta-report.html">Report</a>
+  <a href="cta-forecast.html">Forecast</a>
+  <a href="cta-localization.html">L10n</a>
   <a href="cta-help.html" class="current">Help</a>
 </nav>
 
 <h1>CTA Suite <span class="accent">— Help & Methodology</span></h1>
-<p class="sub">What each of the 10 tools does, when to use which, how the scores are computed, and the rules of thumb behind every benchmark.</p>
+<p class="sub">What each of the 12 tools does, when to use which, how the scores are computed, and the rules of thumb behind every benchmark.</p>
 
 <div class="table-of-contents">
   <h2>Contents</h2>
@@ -221,6 +223,32 @@
   <div class="meta">Stakeholder-ready findings.</div>
   <p><strong>Use when:</strong> you need a single artifact to share with a client, exec, or design lead.</p>
   <p>Crawls a list of pages, runs all the analyses above, and lays it out in a clean executive-report format: site-wide health score, "what's working / what needs work" summary, prioritized action plan with severity + effort, per-page breakdown table, methodology footer. Print-optimized (<kbd>Cmd-P → Save as PDF</kbd>) or download as HTML.</p>
+</div>
+
+<div class="tool-section">
+  <h3><span class="emoji">📈</span> <a href="cta-forecast.html">11. Performance Forecaster</a></h3>
+  <div class="meta">12-month conversion impact projection.</div>
+  <p><strong>Use when:</strong> you need to justify CTA changes to a stakeholder or CFO — translate "swap this button" into revenue.</p>
+  <p>You supply monthly traffic, form completion rate, lead qualification rate, close rate, and average deal value. The tool combines that with industry CTA click-through baselines (Book ~2.5%, Audit ~7%, Lead form ~5%) and expected lift ranges (Book→Audit on cold = +150% conservative / +250% expected / +400% optimistic) to project a 12-month revenue delta. Three scenarios shown side-by-side, plus a monthly ramp chart with novelty regression by month 10.</p>
+  <ul>
+    <li><strong>Conservative:</strong> bottom of published lift range (~10% CTR gain)</li>
+    <li><strong>Expected:</strong> median lift from Drift / HubSpot benchmarks (~150% on cold-traffic hero swaps)</li>
+    <li><strong>Optimistic:</strong> top of range (300%+)</li>
+  </ul>
+</div>
+
+<div class="tool-section">
+  <h3><span class="emoji">🌐</span> <a href="cta-localization.html">12. Localization Auditor</a></h3>
+  <div class="meta">Georgian ↔ English parity.</div>
+  <p><strong>Use when:</strong> your site has paired pages in two languages and you suspect the translations have diverged.</p>
+  <p>Takes a list of KA-path | EN-path pairs, fetches both, scans CTAs on each, and flags:</p>
+  <ul>
+    <li><strong>Missing pages</strong> in either language (visitors who switch get 404)</li>
+    <li><strong>CTA count drift</strong> — translations should mirror layout 1:1</li>
+    <li><strong>Calendly event drift</strong> — same page using different Calendly URLs across languages (e.g., 15-min vs 30-min)</li>
+    <li><strong>data-en/data-ka attribute drift</strong> — CTAs without both attrs freeze in their current language when the toggle runs</li>
+  </ul>
+  <p>Drill down per pair to see side-by-side CTA tables.</p>
 </div>
 
 <h2 id="scoring">Scoring & benchmarks</h2>

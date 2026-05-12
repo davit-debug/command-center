@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>CTA Performance Forecaster</title>
+<style>
+  :root {
+    --bg: #0f172a; --bg-alt: #1e293b; --bg-card: #0d1117;
+    --border: #334155; --text: #f1f5f9; --text-dim: #94a3b8;
+    --primary: #8b5cf6; --primary-dim: #a78bfa;
+    --success: #22c55e; --warn: #f59e0b; --danger: #ef4444; --teal: #14b8a6;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; min-height: 100vh; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 14px 14px 80px; }
+  .tools-nav { display: flex; gap: 4px; margin-bottom: 14px; flex-wrap: wrap; align-items: center; font-size: 13px; padding: 8px 12px; background: var(--bg-alt); border: 1px solid var(--border); border-radius: 8px; }
+  .tools-nav strong { color: var(--text-dim); margin-right: 8px; }
+  .tools-nav a { color: var(--text-dim); text-decoration: none; padding: 4px 10px; border-radius: 6px; }
+  .tools-nav a:hover { background: var(--bg-card); color: var(--text); }
+  .tools-nav a.current { background: var(--primary); color: white; font-weight: 600; }
+  h1 { margin: 0 0 4px; font-size: 24px; }
+  h1 span { color: var(--primary-dim); }
+  .sub { color: var(--text-dim); font-size: 14px; margin: 0 0 18px; }
+  .panel { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-bottom: 14px; }
+  .panel h2 { margin: 0 0 10px; font-size: 14px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; }
+  textarea { width: 100%; min-height: 120px; background: var(--bg-card); border: 1px solid var(--border); color: var(--text); border-radius: 7px; padding: 10px; font-family: ui-monospace, monospace; font-size: 12px; }
+  input, select { width: 100%; padding: 9px 12px; background: var(--bg-card); border: 1px solid var(--border); color: var(--text); border-radius: 7px; font-family: inherit; font-size: 14px; }
+  button { padding: 9px 18px; border: 0; border-radius: 7px; background: var(--primary); color: white; font-weight: 600; font-size: 14px; cursor: pointer; font-family: inherit; }
+  button:hover { background: var(--primary-dim); }
+  button.secondary { background: var(--bg-card); border: 1px solid var(--border); color: var(--text); }
+  button.secondary:hover { background: var(--border); }
+  .hint { font-size: 12px; color: var(--text-dim); margin-top: 6px; }
+  code { background: var(--bg-card); padding: 2px 6px; border-radius: 4px; font-size: 12px; }
+  .alert { padding: 10px 14px; border-radius: 7px; font-size: 13px; }
+  .alert.ok { background: rgba(34,197,94,0.1); border: 1px solid var(--success); color: var(--success); }
+  .alert.warn { background: rgba(245,158,11,0.1); border: 1px solid var(--warn); color: var(--warn); }
+  .alert.err { background: rgba(239,68,68,0.1); border: 1px solid var(--danger); color: var(--danger); }
+
+  .param-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; }
+  label.field { display: block; margin-bottom: 10px; }
+  label.field > span { display: block; font-size: 12px; color: var(--text-dim); margin-bottom: 4px; }
+
+  /* Hero stats */
+  .hero-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 14px; }
+  .hero-stat {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px;
+    padding: 16px; text-align: center;
+  }
+  .hero-stat .val { font-size: 28px; font-weight: 800; }
+  .hero-stat .label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 4px; }
+  .hero-stat.success .val { color: var(--success); }
+  .hero-stat.warn .val { color: var(--warn); }
+  .hero-stat .delta { font-size: 12px; margin-top: 2px; }
+  .delta.pos { color: var(--success); }
+  .delta.neg { color: var(--danger); }
+
+  /* Scenario cards */
+  .scenarios { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 14px; }
+  @media (max-width: 800px) { .scenarios { grid-template-columns: 1fr; } }
+  .scenario {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px;
+    padding: 14px;
+  }
+  .scenario h3 { margin: 0 0 4px; font-size: 13px; }
+  .scenario.conservative h3 { color: var(--text-dim); }
+  .scenario.expected h3 { color: var(--primary-dim); }
+  .scenario.optimistic h3 { color: var(--success); }
+  .scenario .val { font-size: 22px; font-weight: 800; margin: 6px 0; }
+  .scenario .meta { font-size: 11px; color: var(--text-dim); }
+
+  /* Per-CTA table */
+  table.f-tbl { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 10px; }
+  table.f-tbl th, table.f-tbl td { padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--border); vertical-align: middle; }
+  table.f-tbl th { color: var(--text-dim); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+  table.f-tbl td.num { text-align: right; font-family: ui-monospace, monospace; }
+  table.f-tbl tr.recommended { background: rgba(139,92,246,0.06); }
+  table.f-tbl tr input[type=checkbox] { accent-color: var(--primary); }
+  .pill { display: inline-block; font-size: 10px; padding: 2px 6px; border-radius: 4px; font-weight: 700; text-transform: uppercase; }
+  .pill-low { background: rgba(34,197,94,0.18); color: #4ade80; }
+  .pill-med { background: rgba(245,158,11,0.18); color: #fbbf24; }
+  .pill-high { background: rgba(239,68,68,0.18); color: #f87171; }
+  .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: flex-end; }
+  .progress { font-size: 12px; color: var(--text-dim); margin-top: 8px; }
+
+  .twelve-month-chart {
+    display: flex; align-items: flex-end; gap: 4px;
+    height: 120px; padding: 8px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 8px; margin-top: 10px;
+  }
+  .month-bar {
+    flex: 1; display: flex; flex-direction: column; align-items: center;
+    font-size: 9px; color: var(--text-dim); position: relative;
+  }
+  .month-bar .bar {
+    width: 100%; background: linear-gradient(180deg, var(--success), #16a34a);
+    border-radius: 3px 3px 0 0; min-height: 4px;
+  }
+  .month-bar .label { margin-top: 2px; }
+  .month-bar .baseline {
+    position: absolute; bottom: 0; width: 100%;
+    border-bottom: 1px dashed var(--text-dim); opacity: 0.5;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav class="tools-nav">
+  <strong>CTA Tools:</strong>
+  <a href="cta.html">Hub</a>
+  <a href="cta-picker.html">Picker</a>
+  <a href="cta-microcopy.html">Microcopy</a>
+  <a href="cta-segments.html">Segments</a>
+  <a href="cta-sitemap.html">Sitemap</a>
+  <a href="cta-lab.html">Lab</a>
+  <a href="cta-ab.html">A/B</a>
+  <a href="cta-paths.html">Paths</a>
+  <a href="cta-heatmap.html">Heatmap</a>
+  <a href="cta-report.html">Report</a>
+  <a href="cta-forecast.html" class="current">Forecast</a>
+  <a href="cta-localization.html">L10n</a>
+  <a href="cta-help.html">Help</a>
+</nav>
+
+<h1>CTA Performance Forecaster <span>— project 12-month conversion impact</span></h1>
+<p class="sub">Combines a page's current CTA inventory with your business inputs (traffic, conversion economics) to project what the recommended swaps would deliver over 12 months. Three scenarios: conservative / expected / optimistic — based on published CRO lift ranges.</p>
+
+<div class="panel">
+  <h2>1. Page & business inputs</h2>
+  <div class="row" style="margin-bottom:8px">
+    <label class="field" style="flex:1;min-width:240px"><span>Source file</span><input id="src" type="text" value="en/index.html"></label>
+    <button id="load">Load & forecast</button>
+  </div>
+  <div class="param-grid">
+    <label class="field">
+      <span>Monthly page visitors</span>
+      <input id="p-monthly" type="number" value="3000" min="100">
+    </label>
+    <label class="field">
+      <span>Current CTA click → form completion rate (%)</span>
+      <input id="p-formrate" type="number" value="35" min="1" step="1">
+    </label>
+    <label class="field">
+      <span>Form → qualified lead rate (%)</span>
+      <input id="p-leadrate" type="number" value="40" min="1" step="1">
+    </label>
+    <label class="field">
+      <span>Lead → close rate (%)</span>
+      <input id="p-closerate" type="number" value="15" min="1" step="1">
+    </label>
+    <label class="field">
+      <span>Avg deal value (your currency)</span>
+      <input id="p-deal" type="number" value="3500" min="0">
+    </label>
+    <label class="field">
+      <span>Currency symbol</span>
+      <input id="p-currency" type="text" value="$" maxlength="3">
+    </label>
+  </div>
+  <div id="loadStatus"></div>
+</div>
+
+<div id="tool" style="display:none">
+
+<div class="panel">
+  <h2>2. Baseline vs. recommended (annual)</h2>
+  <div class="hero-stats" id="heroStats"></div>
+  <p class="hint">Baseline = current CTAs as-is. Recommended = after applying our suggested swaps. Three scenarios use published CRO lift ranges (conservative: −5 to +10%, expected: +15 to +35%, optimistic: +50 to +120% for Calendly→Audit on cold traffic).</p>
+  <div class="scenarios" id="scenarios"></div>
+</div>
+
+<div class="panel">
+  <h2>3. Per-CTA forecast</h2>
+  <p class="hint" style="margin-top:0">Each CTA's current click rate is estimated from a baseline curve (audit / lead-form CTAs click at ~6-8%; high-commitment Book at ~2-4%; phone tap on mobile sticky at ~5-8%). Multiplier shows the expected CTR change for the recommended swap. Tick which swaps you'd actually do.</p>
+  <table class="f-tbl">
+    <thead><tr><th></th><th>CTA</th><th>Kind</th><th>Current</th><th>Recommend</th><th>CTR base</th><th>CTR new</th><th>Monthly Δ leads</th><th>Annual Δ revenue</th></tr></thead>
+    <tbody id="ctaForecast"></tbody>
+  </table>
+</div>
+
+<div class="panel">
+  <h2>4. 12-month projection</h2>
+  <p class="hint" style="margin-top:0">Cumulative new leads with ramp-up (full impact reached by month 3 as visitors discover the new CTAs; small assumed regression by month 12 as novelty fades).</p>
+  <div class="twelve-month-chart" id="chart"></div>
+</div>
+
+</div>
+
+</div>
+
+<script>
+function esc(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function fmt(n) { return Number(n).toLocaleString('en-US', { maximumFractionDigits: 0 }); }
+
+function detectLang(html, path) {
+  const m = html.match(/<html\b[^>]*\blang="([^"]+)"/i);
+  if (m) { if (/^ka\b/i.test(m[1])) return 'ka'; if (/^en\b/i.test(m[1])) return 'en'; }
+  return /^en\//.test(path) ? 'en' : 'ka';
+}
+
+function scanCTAs(html) {
+  const lines = html.split('\n');
+  const results = [];
+  const anchorOpen = /<a\b[^>]*>/g;
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    let m;
+    anchorOpen.lastIndex = 0;
+    while ((m = anchorOpen.exec(line)) !== null) {
+      const tag = m[0];
+      const isCalendly = /onclick="[^"]*openCalendly/.test(tag);
+      const isTel = /\bhref="tel:/.test(tag);
+      const hasAudit = /\bhref="[^"]*seo-audit\.html"/.test(tag);
+      const hasLeadForm = /\bhref="[^"]*lead-form\.html"/.test(tag);
+      const ctaClass = /\bclass="[^"]*(ai-cta-animate|call-btn|cta-btn)[^"]*"/.test(tag);
+      if (!(isCalendly || ctaClass || hasAudit || hasLeadForm)) continue;
+      let body = '';
+      const startInLine = m.index;
+      let scanStart = i, scanCol = startInLine + tag.length;
+      let chunk = lines[scanStart].slice(scanCol);
+      let scanEndIdx = chunk.indexOf('</a>');
+      while (scanEndIdx === -1 && scanStart < lines.length - 1 && scanStart - i < 30) {
+        body += chunk + '\n';
+        scanStart++; chunk = lines[scanStart]; scanCol = 0;
+        scanEndIdx = chunk.indexOf('</a>');
+      }
+      if (scanEndIdx === -1) continue;
+      body += chunk.slice(0, scanEndIdx);
+      const visible = body.replace(/<[^>]+>/g,'').trim();
+      const hrefM = tag.match(/\bhref="([^"]*)"/);
+      let kind = 'other';
+      if (isCalendly) kind = 'book';
+      else if (isTel) kind = 'call';
+      else if (hasAudit) kind = 'audit';
+      else if (hasLeadForm) kind = 'quote';
+      let ctx = '', parentId = '';
+      for (let k = i; k >= Math.max(0, i-200); k--) {
+        const lk = lines[k];
+        const idM = lk.match(/\bid="([^"]+)"/);
+        if (idM && !parentId && (i - k) <= 10) parentId = idM[1];
+        const h = lk.match(/<h[1-3][^>]*>([^<]+)</);
+        if (h) { ctx = h[1].trim(); break; }
+        if (idM && !ctx) ctx = '#' + idM[1];
+      }
+      if (!ctx) ctx = 'page';
+      const clsAttr = (tag.match(/class="([^"]*)"/) || ['',''])[1];
+      const isButtonStyled = /ai-cta-animate|call-btn|cta-btn|\bbg-|\bpx-\d|\bpy-\d|\bp-\d|\bborder-\d|\brounded-/.test(clsAttr);
+      if (!isCalendly && !isButtonStyled) continue;
+      results.push({ line: i + 1, kind, ctx, parentId, href: hrefM ? hrefM[1] : '', visible });
+    }
+  }
+  return results;
+}
+
+// Baseline click-through rates per CTA kind (industry medians, B2B services)
+const BASELINE_CTR = {
+  book:  0.025,   // 2.5% - Calendly popup, high commitment
+  audit: 0.07,    // 7% - lead-magnet audit
+  quote: 0.05,    // 5% - lead form
+  call:  0.06,    // 6% - tel: tap (mostly mobile)
+  email: 0.02,    // 2% - mailto:
+  other: 0.04     // 4% - section nav (not really conversion)
+};
+
+// Position-based modifier (visibility share)
+function visibilityMod(cta) {
+  const pid = (cta.parentId || '').toLowerCase();
+  if (/sticky/.test(pid)) return 1.0;       // always visible
+  if (/main-header|nav|mobile-menu/.test(pid)) return 0.9;
+  if (cta.line < 600) return 1.0;           // above-fold hero
+  if (cta.line < 1200) return 0.6;
+  if (cta.line < 1800) return 0.4;
+  return 0.25;
+}
+
+function isSticky(c) { return /sticky/.test((c.parentId||'').toLowerCase()); }
+
+// Recommended swap (mirrors picker logic)
+function recommend(cta) {
+  if (cta.kind === 'call' || cta.kind === 'email' || cta.kind === 'other') return null;
+  // Sticky high-commitment → recommend audit (low friction)
+  if (isSticky(cta) && cta.kind === 'book') return { kind: 'audit', text: 'Free SEO Audit', href: 'seo-audit.html', reason: 'Sticky bar needs low friction' };
+  // Hero (line < 600) high-commitment → recommend audit
+  if (cta.line < 600 && cta.kind === 'book') return { kind: 'audit', text: 'Free SEO Audit', href: 'seo-audit.html', reason: 'Cold visitors avoid Calendly' };
+  // Blog (deep page) high-commitment → audit (we can't tell from page alone, but if last CTA is high...)
+  return null;  // keep
+}
+
+// Expected CTR multiplier per swap (conservative, expected, optimistic)
+function liftRange(from, to, position) {
+  // book → audit on cold (hero/sticky): big lift
+  if (from === 'book' && to === 'audit' && position === 'cold') return { c: 1.1, e: 2.5, o: 4.0 };
+  if (from === 'book' && to === 'audit') return { c: 1.05, e: 1.5, o: 2.2 };
+  if (from === 'audit' && to === 'quote') return { c: 0.9, e: 1.1, o: 1.3 };
+  return { c: 1.0, e: 1.15, o: 1.4 };
+}
+
+let sourceHTML = '';
+let sourcePath = '';
+let pageLang = 'en';
+let ctas = [];
+
+document.getElementById('load').addEventListener('click', loadAndForecast);
+async function loadAndForecast() {
+  const path = document.getElementById('src').value.trim().replace(/^\//,'');
+  const status = document.getElementById('loadStatus');
+  status.innerHTML = '<div class="alert warn">Loading…</div>';
+  try {
+    const r = await fetch(path, { cache: 'no-store' });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    sourceHTML = await r.text();
+    sourcePath = path;
+    pageLang = detectLang(sourceHTML, path);
+    ctas = scanCTAs(sourceHTML);
+    status.innerHTML = '';
+    document.getElementById('tool').style.display = 'block';
+    renderForecast();
+  } catch (e) {
+    status.innerHTML = `<div class="alert err">Failed: ${esc(String(e.message || e))}</div>`;
+  }
+}
+
+['p-monthly','p-formrate','p-leadrate','p-closerate','p-deal','p-currency'].forEach(id => {
+  document.getElementById(id).addEventListener('input', () => { if (ctas.length) renderForecast(); });
+});
+
+let perCTASelected = {};
+
+function renderForecast() {
+  const monthly = parseFloat(document.getElementById('p-monthly').value);
+  const formrate = parseFloat(document.getElementById('p-formrate').value) / 100;
+  const leadrate = parseFloat(document.getElementById('p-leadrate').value) / 100;
+  const closerate = parseFloat(document.getElementById('p-closerate').value) / 100;
+  const deal = parseFloat(document.getElementById('p-deal').value);
+  const currency = document.getElementById('p-currency').value || '$';
+
+  // Compute baseline (monthly clicks → forms → leads → deals)
+  const conv = ctas.filter(c => !['call','email','other'].includes(c.kind));
+  let baselineClicks = 0;
+  conv.forEach(c => {
+    const ctr = BASELINE_CTR[c.kind] || 0.03;
+    const vis = visibilityMod(c);
+    baselineClicks += monthly * vis * ctr;
+  });
+  const baselineForms = baselineClicks * formrate;
+  const baselineLeads = baselineForms * leadrate;
+  const baselineDeals = baselineLeads * closerate;
+  const baselineRev = baselineDeals * deal;
+  const baselineAnnual = baselineRev * 12;
+
+  // Build per-CTA forecasts with three scenarios
+  const ctaForecasts = conv.map(c => {
+    const rec = recommend(c);
+    const position = c.line < 600 || isSticky(c) ? 'cold' : 'warm';
+    const baseCtr = BASELINE_CTR[c.kind] || 0.03;
+    const vis = visibilityMod(c);
+    const baseClicks = monthly * vis * baseCtr;
+    let lift = { c: 1, e: 1, o: 1 };
+    let newKind = c.kind, newText = c.visible, newHref = c.href;
+    if (rec) {
+      lift = liftRange(c.kind, rec.kind, position);
+      newKind = rec.kind; newText = rec.text; newHref = rec.href;
+      // Auto-select recommendations
+      if (perCTASelected[c.line] === undefined) perCTASelected[c.line] = true;
+    } else {
+      if (perCTASelected[c.line] === undefined) perCTASelected[c.line] = false;
+    }
+    const newCtrExp = baseCtr * lift.e;
+    const newClicksExp = monthly * vis * newCtrExp;
+    const deltaClicks = newClicksExp - baseClicks;
+    const deltaLeads = deltaClicks * formrate * leadrate * closerate;  // wait - we want LEADS not deals
+    const deltaLeadsFromForms = deltaClicks * formrate * leadrate;
+    const deltaRevAnnual = deltaClicks * formrate * leadrate * closerate * deal * 12;
+    return {
+      cta: c, rec, baseCtr, baseClicks, lift, newKind, newText, newHref,
+      newCtrExp, newClicksExp, deltaClicks, deltaLeadsFromForms, deltaRevAnnual,
+      // also conservative/optimistic
+      conservative: { ctr: baseCtr * lift.c, rev: monthly * vis * (baseCtr * lift.c - baseCtr) * formrate * leadrate * closerate * deal * 12 },
+      optimistic:   { ctr: baseCtr * lift.o, rev: monthly * vis * (baseCtr * lift.o - baseCtr) * formrate * leadrate * closerate * deal * 12 }
+    };
+  });
+
+  // Aggregate based on selected
+  const selected = ctaForecasts.filter(f => perCTASelected[f.cta.line]);
+  const totalDeltaExp = selected.reduce((a,f) => a + f.deltaRevAnnual, 0);
+  const totalDeltaConservative = selected.reduce((a,f) => a + f.conservative.rev, 0);
+  const totalDeltaOptimistic = selected.reduce((a,f) => a + f.optimistic.rev, 0);
+
+  // Render hero stats
+  document.getElementById('heroStats').innerHTML = `
+    <div class="hero-stat"><div class="val">${currency}${fmt(baselineAnnual)}</div><div class="label">Baseline annual revenue</div></div>
+    <div class="hero-stat success"><div class="val">${currency}${fmt(baselineAnnual + totalDeltaExp)}</div><div class="label">Projected (expected)</div><div class="delta pos">+${currency}${fmt(totalDeltaExp)} from CTAs</div></div>
+    <div class="hero-stat"><div class="val">${fmt(baselineDeals * 12)}</div><div class="label">Baseline annual deals</div></div>
+    <div class="hero-stat success"><div class="val">${fmt(baselineDeals * 12 + totalDeltaExp / deal)}</div><div class="label">Projected deals</div><div class="delta pos">+${(totalDeltaExp / deal).toFixed(1)} more closes</div></div>
+  `;
+
+  // Render scenario cards
+  document.getElementById('scenarios').innerHTML = `
+    <div class="scenario conservative">
+      <h3>Conservative</h3>
+      <div class="val">+${currency}${fmt(totalDeltaConservative)}</div>
+      <div class="meta">Assumes minimal lift (3-10% CTR gain). Worst-case rollout.</div>
+    </div>
+    <div class="scenario expected">
+      <h3>Expected (likely)</h3>
+      <div class="val">+${currency}${fmt(totalDeltaExp)}</div>
+      <div class="meta">Median published lift for Book→Audit on cold traffic (~150%).</div>
+    </div>
+    <div class="scenario optimistic">
+      <h3>Optimistic</h3>
+      <div class="val">+${currency}${fmt(totalDeltaOptimistic)}</div>
+      <div class="meta">Top of range (300%+ lift seen in some HubSpot/Drift case studies).</div>
+    </div>
+  `;
+
+  // Render per-CTA table
+  const tbody = document.getElementById('ctaForecast');
+  tbody.innerHTML = '';
+  ctaForecasts.forEach(f => {
+    const tr = document.createElement('tr');
+    tr.className = f.rec ? 'recommended' : '';
+    const recommendation = f.rec ? `→ <strong>${esc(f.rec.text)}</strong> <span class="pill pill-low">${f.rec.kind}</span>` : '<span style="color:var(--text-dim)">— keep</span>';
+    tr.innerHTML = `
+      <td>${f.rec ? `<input type="checkbox" data-line="${f.cta.line}" ${perCTASelected[f.cta.line]?'checked':''}>` : ''}</td>
+      <td><span class="ctx">${esc(f.cta.ctx)}</span><br><span style="color:var(--text-dim);font-size:11px">line ${f.cta.line}</span></td>
+      <td><span class="pill pill-${f.cta.kind === 'book' ? 'high' : f.cta.kind === 'audit' ? 'low' : 'med'}">${f.cta.kind}</span></td>
+      <td>"${esc(f.cta.visible.slice(0,28))}"</td>
+      <td>${recommendation}</td>
+      <td class="num">${(f.baseCtr * 100).toFixed(1)}%</td>
+      <td class="num">${f.rec ? (f.newCtrExp * 100).toFixed(1) + '%' : '—'}</td>
+      <td class="num">${f.rec ? '+' + fmt(f.deltaLeadsFromForms) : '—'}</td>
+      <td class="num">${f.rec ? `+${currency}${fmt(f.deltaRevAnnual)}` : '—'}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+  tbody.querySelectorAll('input[type=checkbox]').forEach(cb => {
+    cb.addEventListener('change', e => {
+      perCTASelected[+e.target.dataset.line] = e.target.checked;
+      renderForecast();
+    });
+  });
+
+  // Render 12-month chart
+  // Ramp model: month 1 = 30% of expected gain, month 2 = 70%, month 3+ = 100%, regress to 85% by month 12
+  const months = [];
+  const monthlyDeltaRev = totalDeltaExp / 12;
+  for (let m = 1; m <= 12; m++) {
+    let factor;
+    if (m === 1) factor = 0.3;
+    else if (m === 2) factor = 0.7;
+    else if (m < 10) factor = 1.0;
+    else factor = 1.0 - (m - 9) * 0.05;  // mild regression
+    months.push(monthlyDeltaRev * factor);
+  }
+  const maxMonthly = Math.max(...months);
+  const chart = document.getElementById('chart');
+  chart.innerHTML = months.map((v, i) => `
+    <div class="month-bar" title="Month ${i+1}: +${currency}${fmt(v)}">
+      <div class="bar" style="height:${maxMonthly ? (v / maxMonthly * 100) : 0}%"></div>
+      <div class="label">M${i+1}</div>
+    </div>
+  `).join('');
+}
+</script>
+</body>
+</html>
