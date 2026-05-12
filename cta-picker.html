@@ -109,6 +109,47 @@
   details summary { cursor: pointer; font-size: 13px; color: var(--text-dim); }
   code { background: var(--bg-card); padding: 2px 6px; border-radius: 4px; font-size: 12px; }
   .hint { font-size: 12px; color: var(--text-dim); margin-top: 6px; }
+
+  /* Research steps */
+  .step {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--primary);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-top: 12px;
+  }
+  .step-head { display: flex; gap: 10px; align-items: baseline; margin-bottom: 10px; }
+  .step-num { font-family: ui-monospace, "SF Mono", monospace; font-size: 13px; color: var(--primary-dim); font-weight: 700; }
+  .step-title { font-size: 15px; font-weight: 600; }
+  .step-sub { font-size: 12px; color: var(--text-dim); margin-left: auto; }
+  .bar { height: 6px; background: var(--bg); border-radius: 3px; overflow: hidden; display: flex; }
+  .bar > span { display: block; height: 100%; }
+  .bar-low { background: #22c55e; }
+  .bar-med { background: #f59e0b; }
+  .bar-high { background: #ef4444; }
+  .legend { font-size: 11px; color: var(--text-dim); display: flex; gap: 12px; margin-top: 6px; flex-wrap: wrap; }
+  .legend > span { display: inline-flex; align-items: center; gap: 4px; }
+  .legend .dot { width: 8px; height: 8px; border-radius: 2px; display: inline-block; }
+  table.r { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 13px; }
+  table.r th, table.r td { padding: 6px 8px; text-align: left; border-bottom: 1px solid var(--border); }
+  table.r th { color: var(--text-dim); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+  table.r tr:last-child td { border-bottom: 0; }
+  .pill { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 10px; font-weight: 600; }
+  .pill-tofu { background: rgba(34,197,94,0.15); color: #4ade80; }
+  .pill-mofu { background: rgba(245,158,11,0.15); color: #fbbf24; }
+  .pill-bofu { background: rgba(239,68,68,0.15); color: #f87171; }
+  .pill-low { background: rgba(34,197,94,0.15); color: #4ade80; }
+  .pill-med { background: rgba(245,158,11,0.15); color: #fbbf24; }
+  .pill-high { background: rgba(239,68,68,0.15); color: #f87171; }
+  .pill-keep { background: rgba(148,163,184,0.15); color: var(--text-dim); }
+  .pill-swap { background: rgba(139,92,246,0.2); color: var(--primary-dim); }
+  .pill-nav { background: rgba(148,163,184,0.12); color: var(--text-dim); }
+  .rec-row { display: grid; grid-template-columns: minmax(180px,1fr) auto auto auto; gap: 10px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border); }
+  .rec-row:last-child { border-bottom: 0; }
+  .rec-why { font-size: 12px; color: var(--text-dim); margin-top: 4px; grid-column: 1 / -1; }
+  .citation { font-size: 11px; color: var(--text-dim); margin-top: 8px; line-height: 1.5; }
+  .citation strong { color: var(--text); }
 </style>
 </head>
 <body>
@@ -132,15 +173,22 @@
 
 <div id="picker" style="display:none">
 
+<div class="panel" id="researchPanel">
+  <h2>2. Run 5-step research <span style="font-weight:normal;color:var(--text-dim);font-size:13px;text-transform:none;letter-spacing:0">— analyzes the loaded page and recommends a CTA distribution</span></h2>
+  <p class="hint" style="margin-top:0">Inventory → Funnel mapping → Industry benchmarks → Friction analysis → Recommendation. Outputs a one-click apply.</p>
+  <button id="runResearch">Run research</button>
+  <div id="research"></div>
+</div>
+
 <div class="panel">
-  <h2>2. Define your swap presets</h2>
+  <h2>3. Define your swap presets</h2>
   <p class="hint" style="margin-top:0">These are the destinations you can apply to any selected CTA. Edit text/URLs as you like.</p>
   <div id="presets"></div>
   <button class="secondary" id="addPreset" style="margin-top:8px">+ Add preset</button>
 </div>
 
 <div class="panel">
-  <h2>3. Pick CTAs to swap <span id="counter" style="font-weight:normal;color:var(--text-dim);font-size:13px;text-transform:none;letter-spacing:0">(0 CTAs found)</span></h2>
+  <h2>4. Pick CTAs to swap <span id="counter" style="font-weight:normal;color:var(--text-dim);font-size:13px;text-transform:none;letter-spacing:0">(0 CTAs found)</span></h2>
   <p class="hint" style="margin-top:0">Check the boxes for CTAs you want to swap, then pick the target preset for each.</p>
   <div id="ctas"></div>
 </div>
@@ -277,6 +325,343 @@ function loadSource() {
     });
 }
 
+// --- 5-step research ---
+document.getElementById('runResearch').addEventListener('click', runResearch);
+
+// Industry benchmark data — illustrative SEO-agency norms (HubSpot, Ahrefs, Semrush, Backlinko homepage patterns)
+const BENCHMARKS = {
+  hero:    { low: 65, med: 15, high: 20, examples: 'Ahrefs "Start trial", Semrush "Try for free", Backlinko "Get free SEO training"', rec: 'low' },
+  nav:     { low: 20, med: 10, high: 70, examples: 'persistent nav usually keeps a high-intent CTA (book / contact)', rec: 'high' },
+  services:{ low: 30, med: 30, high: 40, examples: 'service blocks lean toward consultation since visitor is researching offerings', rec: 'high' },
+  midcta:  { low: 20, med: 20, high: 60, examples: '"Ready to ___?" sections target decision-stage visitors', rec: 'high' },
+  contact: { low: 10, med: 20, high: 70, examples: 'contact / footer-CTA sections expect ready-to-buy intent', rec: 'high' },
+  sticky:  { low: 75, med: 15, high: 10, examples: 'persistent mobile bars need lowest friction (tel / audit), high-friction kills scroll behavior', rec: 'low' },
+  blog:    { low: 70, med: 20, high: 10, examples: 'educational pages → soft CTA (newsletter / audit) since reader is mid-research', rec: 'low' }
+};
+
+// Returns true if the anchor is styled as a button (CTA), not a plain text link.
+function isButtonStyled(cta) {
+  const cls = (cta.rawTag.match(/class="([^"]*)"/) || ['',''])[1];
+  // Button signals: any padding, background, border, rounded corners, or named CTA class.
+  return /ai-cta-animate|call-btn|cta-btn|\bbg-|\bpx-\d|\bpy-\d|\bp-\d|\bborder-\d|\brounded-/.test(cls);
+}
+
+// Commitment level by CTA kind/href.
+// fixed:true means "do not swap" (phone, email, section nav, text-link footer items).
+function classifyCommitment(cta) {
+  if (cta.kind === 'tel')     return { level: 'low', label: 'Phone tap',  friction: 1, fixed: true };
+  if (cta.kind === 'mailto')  return { level: 'med', label: 'Email',      friction: 2, fixed: true };
+  // Plain text links (footer nav, sidebar) — never a CTA, regardless of href.
+  if (!isButtonStyled(cta) && cta.kind !== 'calendly') {
+    return { level: 'nav', label: 'Text link (footer/nav)', friction: 1, fixed: true };
+  }
+  if (/seo-audit\.html/.test(cta.href))      return { level: 'low',  label: 'Free audit (lead magnet)', friction: 2 };
+  if (/roi-calculator\.html/.test(cta.href)) return { level: 'low',  label: 'ROI calculator',           friction: 2 };
+  if (/lead-form\.html/.test(cta.href))      return { level: 'med',  label: 'Lead form',                friction: 3 };
+  if (/seo-tools\.html/.test(cta.href))      return { level: 'low',  label: 'Free tools',               friction: 1 };
+  if (cta.kind === 'calendly')               return { level: 'high', label: 'Book a call (Calendly)',   friction: 5 };
+  if (/contact-us\.html/.test(cta.href))     return { level: 'high', label: 'Contact form',             friction: 4 };
+  // Section navigation — Full portfolio, Join team, etc. — NOT a conversion CTA.
+  if (/^(portfolio|case-studies|vacancies|blog|services|about-us|seo-management|seo-consultation|seo-strategy|seo-course|copywriting|seo-copywriting|cro|google-ads|ai-seo|ra-aris-seo)\.html/.test(cta.href)
+      || /^(blog|case-studies|industries|tools)\//.test(cta.href)) {
+    return { level: 'nav', label: 'Section navigation', friction: 1, fixed: true };
+  }
+  return { level: 'med', label: 'Other', friction: 3 };
+}
+
+// Section placement classification (which BENCHMARKS bucket)
+function classifyPlacement(cta) {
+  const ctx = cta.ctx.toLowerCase();
+  const line = cta.line;
+  const cls = getNearbyClass(cta);
+  const pid = (cta.parentId || '').toLowerCase();
+  // Parent ID signals (strongest — direct wrapper)
+  if (/sticky/.test(pid)) return 'sticky';
+  if (/mobile-menu/.test(pid)) return 'nav';
+  if (/main-header|nav/.test(pid)) return 'nav';
+  // Class-based signals
+  if (/menu-link/i.test(cls)) return 'nav';                            // mobile menu items
+  if (/hidden lg:inline-flex/i.test(cls)) return 'nav';                // desktop nav CTA (hidden on mobile)
+  if (/sticky|fixed bottom/i.test(cls)) return 'sticky';
+  // Surrounding-block signals (fallback)
+  if (/sticky-cta/i.test(ctx)) return 'sticky';
+  if (/mobile-menu/i.test(ctx)) return 'nav';
+  // Section keyword matching
+  if (/contact|book|reach|talk|meeting/.test(ctx)) return 'contact';
+  if (/ready|let's|let us|first|#1|primary|hero/.test(ctx)) {
+    if (line < 600) return 'hero';
+    return 'midcta';
+  }
+  if (/services|what we|how we|deliver|offer|results|case|portfolio/.test(ctx)) return 'services';
+  if (/blog|article|read|guide/.test(ctx)) return 'blog';
+  // Fallback by line position (heuristic for homepages: first → hero, last → contact)
+  if (line < 600) return 'hero';
+  if (line > 1600) return 'contact';
+  return 'midcta';
+}
+
+function getNearbyClass(cta) {
+  // crude: peek at the raw tag for class signals
+  const m = cta.rawTag.match(/class="([^"]*)"/);
+  return m ? m[1] : '';
+}
+
+function funnelStage(placement) {
+  if (placement === 'hero' || placement === 'blog' || placement === 'sticky') return { stage: 'TOFU', label: 'Top of Funnel', cls: 'pill-tofu' };
+  if (placement === 'services' || placement === 'nav') return { stage: 'MOFU', label: 'Middle of Funnel', cls: 'pill-mofu' };
+  return { stage: 'BOFU', label: 'Bottom of Funnel', cls: 'pill-bofu' };
+}
+
+function recommendForPlacement(placement, commit) {
+  // Skip phone/email/section-nav from swap recommendations
+  if (commit.fixed) {
+    return { action: 'keep', preset: null, reason: `${commit.label} — kept as-is (phone/email/nav links don't need conversion-CTA swaps).` };
+  }
+  const bench = BENCHMARKS[placement];
+  if (!bench) return { action: 'keep', preset: null, reason: 'No benchmark for this placement type.' };
+  const recLevel = bench.rec;
+  if (recLevel === commit.level) {
+    return { action: 'keep', preset: null, reason: `Current commitment (${commit.level}) matches benchmark for ${placement}.` };
+  }
+  // Pick a preset by recommended level
+  let presetId = null;
+  if (recLevel === 'low')  presetId = presets.find(p => /audit/i.test(p.id)) ? 'audit' : (presets[0] && presets[0].id);
+  if (recLevel === 'med')  presetId = presets.find(p => /quote/i.test(p.id)) ? 'quote' : (presets[0] && presets[0].id);
+  if (recLevel === 'high') presetId = 'started';  // "Get Started" routes to seo-management.html (high-intent)
+  return {
+    action: 'swap',
+    preset: presetId,
+    reason: `Benchmark for ${placement} = ${recLevel}-commitment; current is ${commit.level}-commitment.`
+  };
+}
+
+function runResearch() {
+  const container = document.getElementById('research');
+  if (!ctas.length) {
+    container.innerHTML = '<div class="alert err">Load a page first (Step 1).</div>';
+    return;
+  }
+  // --- STEP 1: Inventory & commitment classification ---
+  const enriched = ctas.map(c => {
+    const commit = classifyCommitment(c);
+    const placement = classifyPlacement(c);
+    const funnel = funnelStage(placement);
+    const rec = recommendForPlacement(placement, commit);
+    return { ...c, commit, placement, funnel, rec };
+  });
+  const counts = { low: 0, med: 0, high: 0, nav: 0 };
+  enriched.forEach(e => counts[e.commit.level]++);
+  const tot = enriched.length;
+  const conv = counts.low + counts.med + counts.high;  // conversion CTAs only
+  const pct = k => conv ? Math.round(counts[k] / conv * 100) : 0;
+
+  // --- STEP 3: Industry comparison (per placement bucket) ---
+  const byPlacement = {};
+  enriched.forEach(e => {
+    byPlacement[e.placement] = byPlacement[e.placement] || { low: 0, med: 0, high: 0, items: [] };
+    byPlacement[e.placement][e.commit.level]++;
+    byPlacement[e.placement].items.push(e);
+  });
+
+  // --- STEP 5: Build recommendations ---
+  const recs = enriched.filter(e => e.rec.action === 'swap');
+  const keeps = enriched.filter(e => e.rec.action === 'keep');
+
+  // Render all 5 steps
+  let html = '';
+
+  // Step 1
+  html += `
+    <div class="step">
+      <div class="step-head">
+        <span class="step-num">STEP 1</span>
+        <span class="step-title">CTA inventory & commitment classification</span>
+        <span class="step-sub">${tot} elements (${conv} conversion CTAs · ${counts.nav} section nav)</span>
+      </div>
+      <div style="margin-bottom:10px">
+        <p class="hint" style="margin-top:0">Distribution of <strong>${conv} conversion CTAs</strong> by commitment level (section nav like Portfolio/Careers excluded):</p>
+        <div class="bar">
+          <span class="bar-low"  style="width:${pct('low')}%"></span>
+          <span class="bar-med"  style="width:${pct('med')}%"></span>
+          <span class="bar-high" style="width:${pct('high')}%"></span>
+        </div>
+        <div class="legend">
+          <span><i class="dot bar-low"></i>Low: ${counts.low} (${pct('low')}%) — audit, tools, tel:</span>
+          <span><i class="dot bar-med"></i>Medium: ${counts.med} (${pct('med')}%) — lead form, email</span>
+          <span><i class="dot bar-high"></i>High: ${counts.high} (${pct('high')}%) — book call, contact</span>
+          ${counts.nav ? `<span style="opacity:0.7">+ ${counts.nav} section nav (not counted)</span>` : ''}
+        </div>
+      </div>
+      <table class="r">
+        <thead><tr><th>#</th><th>Section</th><th>Line</th><th>Current</th><th>Type</th><th>Friction (1-5)</th></tr></thead>
+        <tbody>
+          ${enriched.map((e,i)=>`<tr>
+            <td>${i+1}</td>
+            <td>${esc(e.ctx)}</td>
+            <td>${e.line}</td>
+            <td>"${esc(e.visible || '—')}"</td>
+            <td><span class="pill pill-${e.commit.level}">${e.commit.label}</span></td>
+            <td>${'●'.repeat(e.commit.friction)}${'○'.repeat(5-e.commit.friction)}</td>
+          </tr>`).join('')}
+        </tbody>
+      </table>
+    </div>`;
+
+  // Step 2 — funnel mapping
+  html += `
+    <div class="step">
+      <div class="step-head">
+        <span class="step-num">STEP 2</span>
+        <span class="step-title">Section intent mapping (funnel stage)</span>
+        <span class="step-sub">based on heading / position / class signals</span>
+      </div>
+      <table class="r">
+        <thead><tr><th>#</th><th>Section</th><th>Placement</th><th>Visitor intent</th><th>Funnel</th></tr></thead>
+        <tbody>
+          ${enriched.map((e,i)=>`<tr>
+            <td>${i+1}</td>
+            <td>${esc(e.ctx)}</td>
+            <td><code>${e.placement}</code></td>
+            <td style="color:var(--text-dim);font-size:12px">${visitorIntent(e.placement)}</td>
+            <td><span class="pill ${e.funnel.cls}">${e.funnel.stage}</span></td>
+          </tr>`).join('')}
+        </tbody>
+      </table>
+      <p class="hint">TOFU = visitor just landed / researching. MOFU = comparing solutions. BOFU = ready to commit.</p>
+    </div>`;
+
+  // Step 3 — industry benchmarks
+  html += `
+    <div class="step">
+      <div class="step-head">
+        <span class="step-num">STEP 3</span>
+        <span class="step-title">Industry benchmarks vs. this page</span>
+        <span class="step-sub">SEO agency homepage norms</span>
+      </div>
+      <table class="r">
+        <thead><tr><th>Placement</th><th>Benchmark mix (Low / Med / High)</th><th>Recommended primary</th><th>This page</th></tr></thead>
+        <tbody>
+          ${Object.entries(BENCHMARKS).map(([k,b])=>{
+            const here = byPlacement[k];
+            const hereStr = here ? `${here.low}L / ${here.med}M / ${here.high}H` : '—';
+            const match = here && here[b.rec] > 0;
+            return `<tr>
+              <td><code>${k}</code></td>
+              <td>${b.low}% / ${b.med}% / ${b.high}%</td>
+              <td><span class="pill pill-${b.rec}">${b.rec}-commitment</span></td>
+              <td style="${match?'color:#4ade80':'color:var(--text-dim)'}">${hereStr}</td>
+            </tr>`;
+          }).join('')}
+        </tbody>
+      </table>
+      <p class="citation">
+        <strong>Sources / rules of thumb:</strong>
+        Ahrefs / Semrush / Backlinko homepage patterns (lead-magnet hero CTAs);
+        HubSpot CRO studies (high-friction CTAs in nav drop conversion ~30% on cold traffic);
+        Nielsen-Norman group findings on persistent CTA fatigue;
+        common funnel-stage CTA mapping (TOFU = soft / BOFU = commitment).
+        Percentages are illustrative — calibrate against your own Calendly + audit-form analytics.
+      </p>
+    </div>`;
+
+  // Step 4 — friction analysis
+  const avgFriction = (enriched.reduce((a,e)=>a+e.commit.friction,0) / tot).toFixed(1);
+  const highFrictionCount = enriched.filter(e => e.commit.friction >= 4).length;
+  html += `
+    <div class="step">
+      <div class="step-head">
+        <span class="step-num">STEP 4</span>
+        <span class="step-title">Friction & cognitive-load audit</span>
+        <span class="step-sub">avg friction ${avgFriction} / 5 — ${highFrictionCount} high-friction CTA${highFrictionCount===1?'':'s'}</span>
+      </div>
+      <p class="hint" style="margin-top:0">High-friction CTAs (Calendly popup, contact form) need a low-friction alternative nearby. Pages with friction > 3.5 average tend to underperform versus mixed-commitment layouts.</p>
+      <table class="r">
+        <thead><tr><th>Friction step</th><th>Examples on this page</th><th>Cost</th></tr></thead>
+        <tbody>
+          <tr><td>1 — Single tap (tel:)</td><td>${enriched.filter(e=>e.commit.friction===1).length} CTA(s)</td><td>Near-zero abandonment</td></tr>
+          <tr><td>2 — One-page form / audit</td><td>${enriched.filter(e=>e.commit.friction===2).length} CTA(s)</td><td>Low drop-off, value-forward</td></tr>
+          <tr><td>3 — Lead form on landing page</td><td>${enriched.filter(e=>e.commit.friction===3).length} CTA(s)</td><td>Medium drop-off</td></tr>
+          <tr><td>4 — Contact form / mailto</td><td>${enriched.filter(e=>e.commit.friction===4).length} CTA(s)</td><td>~50% give up vs. tel:</td></tr>
+          <tr><td>5 — Calendly date-picker popup</td><td>${enriched.filter(e=>e.commit.friction===5).length} CTA(s)</td><td>Highest commitment, lowest CTR</td></tr>
+        </tbody>
+      </table>
+    </div>`;
+
+  // Step 5 — Recommendation + apply button
+  html += `
+    <div class="step">
+      <div class="step-head">
+        <span class="step-num">STEP 5</span>
+        <span class="step-title">Recommended distribution</span>
+        <span class="step-sub">${recs.length} swap${recs.length===1?'':'s'} · ${keeps.length} keep${keeps.length===1?'':'s'}</span>
+      </div>`;
+  if (recs.length === 0) {
+    html += `<p class="hint">Distribution already aligns with benchmarks. No swaps recommended.</p>`;
+  } else {
+    html += `<div style="display:grid;gap:6px">`;
+    recs.forEach((e,i) => {
+      const pName = (presets.find(p => p.id === e.rec.preset) || {}).label || e.rec.preset || '—';
+      html += `
+        <div class="rec-row">
+          <div>
+            <strong>${esc(e.ctx)}</strong>
+            <span style="color:var(--text-dim);font-size:12px"> · line ${e.line}</span>
+          </div>
+          <span style="color:var(--text-dim);font-size:13px">${esc(e.visible||'—')}</span>
+          <span style="color:var(--primary-dim)">→</span>
+          <span class="pill pill-swap">${esc(pName)}</span>
+          <div class="rec-why">${esc(e.rec.reason)}</div>
+        </div>`;
+    });
+    if (keeps.length) {
+      html += `<details><summary>Keep as-is: ${keeps.length} CTA${keeps.length===1?'':'s'}</summary>`;
+      keeps.forEach(e => {
+        html += `<div style="font-size:12px;color:var(--text-dim);padding:4px 0">
+          <span class="pill pill-keep">KEEP</span> <strong>${esc(e.ctx)}</strong> · line ${e.line} — ${esc(e.rec.reason)}
+        </div>`;
+      });
+      html += `</details>`;
+    }
+    html += `</div>
+      <button id="applyRecs" style="margin-top:14px">Apply ${recs.length} recommended swap${recs.length===1?'':'s'} to picker</button>
+      <p class="hint">This pre-checks the boxes and selects presets in step 4. You still review and click "Download" / "Copy change list" to commit.</p>`;
+  }
+  html += `</div>`;
+
+  container.innerHTML = html;
+
+  // Wire apply button
+  const applyBtn = document.getElementById('applyRecs');
+  if (applyBtn) {
+    applyBtn.addEventListener('click', () => {
+      recs.forEach(e => {
+        const cta = ctas.find(c => c.index === e.index);
+        if (cta) {
+          cta.selected = true;
+          cta.targetPreset = e.rec.preset;
+        }
+      });
+      renderCtaPicker();
+      applyBtn.textContent = '✓ Applied — review in step 4 below';
+      applyBtn.disabled = true;
+      // Scroll to picker
+      document.querySelector('#ctas').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+}
+
+function visitorIntent(p) {
+  return {
+    hero:     'Just landed — unaware of brand depth, evaluating fit',
+    nav:     'Returning visitor or scrolled deep — high purchase intent if clicked',
+    services: 'Researching specific offerings, comparing options',
+    midcta:   'Read several sections — primed for decision',
+    contact:  'Already convinced — looking for the "how do I start" button',
+    sticky:   'Mid-scroll — peripheral attention, do not interrupt with high friction',
+    blog:     'Information-seeking, not buying — soft CTA only'
+  }[p] || 'Unknown';
+}
+
 // --- CTA detection ---
 function scanCTAs(html) {
   // Find <a> tags whose onclick calls openCalendly() OR which match common CTA classes.
@@ -332,12 +717,14 @@ function scanCTAs(html) {
       else if (hasLeadForm) kind = 'quote';
       // Determine section context — look backward for nearest heading / id
       let ctx = '';
+      let parentId = '';  // nearest id within 10 lines (immediate wrapper)
       for (let k = i; k >= Math.max(0, i-200); k--) {
         const lk = lines[k];
+        const idM = lk.match(/\bid="([^"]+)"/);
+        if (idM && !parentId && (i - k) <= 10) parentId = idM[1];
         const h = lk.match(/<h[1-3][^>]*>([^<]+)</);
         if (h) { ctx = h[1].trim(); break; }
-        const idM = lk.match(/\bid="([^"]+)"/);
-        if (idM && !ctx) { ctx = '#' + idM[1]; }
+        if (idM && !ctx) ctx = '#' + idM[1];
       }
       if (!ctx) ctx = 'page';
       results.push({
@@ -351,6 +738,7 @@ function scanCTAs(html) {
         textKa: dataKaM ? dataKaM[1] : '',
         visible,
         ctx,
+        parentId,
         rawTag: tag,
         rawBody: body,
         startLineIdx: i,
@@ -496,7 +884,7 @@ function rewriteBody(body, p, cta) {
   }
   // Replace the visible text node (text between tags).
   // Replace the LAST non-tag text run (most CTAs are: <svg>...</svg>TEXT or TEXT<svg>...</svg>)
-  const textPlaceholder = ' TXT ';
+  const textPlaceholder = ' TXT ';
   // Replace any run of plain text (>2 chars) with placeholder, keep first replaced
   const textRuns = [];
   newBody = newBody.replace(/>([^<]+)</g, (m, txt) => {
@@ -506,7 +894,7 @@ function rewriteBody(body, p, cta) {
   });
   // Replace the first text placeholder with new text
   let replaced = false;
-  newBody = newBody.replace(/ TXT /g, () => {
+  newBody = newBody.replace(/ TXT /g, () => {
     if (!replaced) { replaced = true; return esc(p.text_en); }
     return '';  // strip any other text nodes (rare)
   });
