@@ -354,7 +354,12 @@ function loadSource() {
       const langBadge = pageLang === 'ka'
         ? '<span style="display:inline-block;font-size:11px;padding:2px 8px;border-radius:10px;background:rgba(245,158,11,0.2);color:#fbbf24;font-weight:600;margin-left:6px">KA</span>'
         : '<span style="display:inline-block;font-size:11px;padding:2px 8px;border-radius:10px;background:rgba(59,130,246,0.2);color:#60a5fa;font-weight:600;margin-left:6px">EN</span>';
-      status.innerHTML = `<div class="alert ok">Loaded <code>${esc(path)}</code>${langBadge} — found ${ctas.length} CTA${ctas.length===1?'':'s'}. Swaps will use ${pageLang === 'ka' ? 'Georgian (text_ka)' : 'English (text_en)'} text.</div>`;
+      // Restore prior session if any
+      const restored = restoreSession();
+      const restoredMsg = restored.count > 0
+        ? ` <span style="display:inline-block;font-size:11px;padding:2px 8px;border-radius:10px;background:rgba(20,184,166,0.2);color:#5eead4;font-weight:600;margin-left:6px">↻ restored ${restored.count} pick${restored.count===1?'':'s'} from ${restored.ageStr}</span> <button class="secondary" onclick="resetSession()" style="margin-left:6px;padding:2px 8px;font-size:11px">Reset</button>`
+        : '';
+      status.innerHTML = `<div class="alert ok">Loaded <code>${esc(path)}</code>${langBadge}${restoredMsg} — found ${ctas.length} CTA${ctas.length===1?'':'s'}. Swaps will use ${pageLang === 'ka' ? 'Georgian (text_ka)' : 'English (text_en)'} text.</div>`;
       document.getElementById('picker').style.display = 'block';
       document.getElementById('counter').textContent = `(${ctas.length} CTAs found)`;
       renderCtaPicker();
@@ -363,6 +368,65 @@ function loadSource() {
       status.innerHTML = `<div class="alert err">Failed to load: ${esc(String(err))}.<br>If running locally, serve via <code>python3 -m http.server</code> from the repo root.</div>`;
     });
 }
+
+// === localStorage session save/restore ===
+function sessionKey() { return 'cta-picker:' + sourcePath; }
+
+function saveSession() {
+  if (!sourcePath) return;
+  const state = {
+    timestamp: Date.now(),
+    selections: ctas.filter(c => c.selected).map(c => ({ index: c.index, line: c.line, ctx: c.ctx, targetPreset: c.targetPreset })),
+    customPresets: presets.filter(p => !DEFAULT_PRESETS.some(d => d.id === p.id))
+  };
+  try { localStorage.setItem(sessionKey(), JSON.stringify(state)); } catch {}
+}
+
+function restoreSession() {
+  if (!sourcePath) return { count: 0 };
+  let raw;
+  try { raw = localStorage.getItem(sessionKey()); } catch { return { count: 0 }; }
+  if (!raw) return { count: 0 };
+  try {
+    const state = JSON.parse(raw);
+    // Restore custom presets
+    if (state.customPresets && state.customPresets.length) {
+      state.customPresets.forEach(cp => {
+        if (!presets.some(p => p.id === cp.id)) presets.push(cp);
+      });
+      renderPresets();
+    }
+    // Restore CTA selections by line+ctx (more stable than index)
+    let count = 0;
+    (state.selections || []).forEach(saved => {
+      const cta = ctas.find(c => c.line === saved.line && c.ctx === saved.ctx);
+      if (cta) {
+        cta.selected = true;
+        cta.targetPreset = saved.targetPreset;
+        count++;
+      }
+    });
+    const age = Date.now() - state.timestamp;
+    const min = Math.floor(age / 60000);
+    const ageStr = min < 1 ? 'just now' : min < 60 ? `${min}m ago` : min < 1440 ? `${Math.floor(min/60)}h ago` : `${Math.floor(min/1440)}d ago`;
+    return { count, ageStr };
+  } catch { return { count: 0 }; }
+}
+
+function resetSession() {
+  if (!confirm('Clear all selections for this page?')) return;
+  try { localStorage.removeItem(sessionKey()); } catch {}
+  ctas.forEach(c => { c.selected = false; c.targetPreset = null; });
+  renderCtaPicker();
+  alert('Session cleared.');
+}
+
+// Auto-save on any change — wrap renderCtaPicker
+const _origRenderCtaPicker = renderCtaPicker;
+renderCtaPicker = function() {
+  _origRenderCtaPicker();
+  saveSession();
+};
 
 // --- 5-step research ---
 document.getElementById('runResearch').addEventListener('click', runResearch);

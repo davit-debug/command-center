@@ -330,9 +330,14 @@ async function loadSource() {
     ctas = scanCTAs(sourceHTML);
     changes = {};
     selectedIdx = null;
+    // Restore prior session
+    const restored = restoreSession();
     status.innerHTML = '';
     const lb = pageLang === 'ka' ? 'KA' : 'EN';
-    document.getElementById('loadInfo').innerHTML = `<code>${esc(path)}</code> <span class="lang-pill lang-${pageLang}">${lb}</span> · ${ctas.length} CTAs`;
+    const restoredMsg = restored.count > 0
+      ? ` <span style="display:inline-block;font-size:11px;padding:2px 8px;border-radius:10px;background:rgba(20,184,166,0.2);color:#5eead4;font-weight:600;margin-left:6px">↻ ${restored.count} edit${restored.count===1?'':'s'} restored from ${restored.ageStr}</span>`
+      : '';
+    document.getElementById('loadInfo').innerHTML = `<code>${esc(path)}</code> <span class="lang-pill lang-${pageLang}">${lb}</span> · ${ctas.length} CTAs${restoredMsg}`;
     document.getElementById('layout').style.display = 'grid';
     document.getElementById('actions').style.display = 'flex';
     injectIntoIframe(sourceHTML);
@@ -342,6 +347,35 @@ async function loadSource() {
     status.innerHTML = `<div class="alert err">Failed: ${esc(String(e.message || e))}</div>`;
   }
 }
+
+// === localStorage session ===
+function sessionKey() { return 'cta-lab:' + sourcePath; }
+function saveSession() {
+  if (!sourcePath) return;
+  try { localStorage.setItem(sessionKey(), JSON.stringify({ timestamp: Date.now(), changes })); } catch {}
+}
+function restoreSession() {
+  if (!sourcePath) return { count: 0 };
+  let raw; try { raw = localStorage.getItem(sessionKey()); } catch { return { count: 0 }; }
+  if (!raw) return { count: 0 };
+  try {
+    const state = JSON.parse(raw);
+    if (state.changes) {
+      changes = state.changes;
+      // Re-validate: only restore changes for CTAs that still exist
+      Object.keys(changes).forEach(k => {
+        if (!ctas[+k]) delete changes[+k];
+      });
+    }
+    const age = Date.now() - state.timestamp;
+    const min = Math.floor(age / 60000);
+    const ageStr = min < 1 ? 'just now' : min < 60 ? `${min}m ago` : min < 1440 ? `${Math.floor(min/60)}h ago` : `${Math.floor(min/1440)}d ago`;
+    return { count: Object.keys(changes).length, ageStr };
+  } catch { return { count: 0 }; }
+}
+// Auto-save on changes — wrap updateChangeCount
+const _origUpdateChangeCount = updateChangeCount;
+updateChangeCount = function() { _origUpdateChangeCount(); saveSession(); };
 
 // === Inject into iframe ===
 function injectIntoIframe(html) {
