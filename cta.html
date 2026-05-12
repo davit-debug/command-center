@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>CTA Optimization Suite — 10xSEO Internal</title>
+<style>
+  :root {
+    --bg: #0f172a; --bg-alt: #1e293b; --bg-card: #0d1117;
+    --border: #334155; --text: #f1f5f9; --text-dim: #94a3b8;
+    --primary: #8b5cf6; --primary-dim: #a78bfa;
+    --success: #22c55e; --warn: #f59e0b; --danger: #ef4444; --teal: #14b8a6;
+    --low: #22c55e; --med: #f59e0b; --high: #ef4444;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: linear-gradient(180deg, var(--bg) 0%, #0a0f1e 100%); color: var(--text); line-height: 1.5; min-height: 100vh; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 16px 16px 80px; }
+
+  /* Top hero */
+  .hero {
+    background: linear-gradient(135deg, rgba(139,92,246,0.15) 0%, rgba(59,130,246,0.1) 50%, rgba(20,184,166,0.1) 100%);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 18px;
+  }
+  .hero h1 { margin: 0 0 6px; font-size: 28px; font-weight: 800; }
+  .hero h1 .accent { background: linear-gradient(90deg, #a78bfa, #60a5fa, #5eead4); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .hero p { color: var(--text-dim); font-size: 14px; margin: 0; max-width: 700px; }
+  .hero-actions { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+
+  /* Quick scan box */
+  .scan-bar {
+    display: flex; gap: 8px; flex-wrap: wrap; align-items: flex-end;
+    background: var(--bg-alt); border: 1px solid var(--border);
+    border-radius: 12px; padding: 12px; margin-bottom: 16px;
+  }
+  .scan-bar .field { flex: 1; min-width: 240px; }
+  .scan-bar label { display: block; font-size: 12px; color: var(--text-dim); margin-bottom: 4px; }
+  input[type="text"], select { width: 100%; padding: 9px 12px; background: var(--bg-card); border: 1px solid var(--border); color: var(--text); border-radius: 8px; font-family: inherit; font-size: 14px; }
+  input:focus, select:focus { outline: none; border-color: var(--primary); }
+  button { padding: 9px 18px; border: 0; border-radius: 8px; background: var(--primary); color: white; font-weight: 600; font-size: 14px; cursor: pointer; font-family: inherit; }
+  button:hover { background: var(--primary-dim); }
+  button.secondary { background: var(--bg-card); border: 1px solid var(--border); color: var(--text); }
+  button.secondary:hover { background: var(--border); }
+  button.large { padding: 12px 24px; font-size: 15px; }
+
+  /* Health score */
+  .health-grid {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  @media (max-width: 768px) { .health-grid { grid-template-columns: 1fr; } }
+  .score-card {
+    background: var(--bg-alt); border: 1px solid var(--border); border-radius: 12px;
+    padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  }
+  .score-circle {
+    width: 160px; height: 160px; border-radius: 50%;
+    background: conic-gradient(var(--success) 0deg, var(--success) 0deg, var(--border) 0deg);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; margin-bottom: 12px;
+  }
+  .score-circle::before {
+    content: ''; position: absolute; inset: 12px;
+    background: var(--bg-alt); border-radius: 50%;
+  }
+  .score-circle .val {
+    position: relative; font-size: 36px; font-weight: 800;
+  }
+  .score-label { font-size: 13px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
+  .score-grade { font-weight: 700; font-size: 14px; margin-top: 2px; }
+
+  .findings-card {
+    background: var(--bg-alt); border: 1px solid var(--border); border-radius: 12px; padding: 18px;
+  }
+  .findings-card h3 { margin: 0 0 12px; font-size: 14px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; }
+  .finding-list { display: grid; gap: 8px; }
+  .finding-item {
+    display: flex; gap: 10px; align-items: flex-start;
+    padding: 8px 12px; background: var(--bg-card); border-radius: 8px;
+    font-size: 13px;
+  }
+  .finding-icon {
+    flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700;
+  }
+  .icon-ok { background: rgba(34,197,94,0.2); color: var(--success); }
+  .icon-warn { background: rgba(245,158,11,0.2); color: var(--warn); }
+  .icon-crit { background: rgba(239,68,68,0.2); color: var(--danger); }
+  .icon-info { background: rgba(139,92,246,0.2); color: var(--primary-dim); }
+
+  /* Tool cards grid */
+  .tools-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 14px; margin-bottom: 18px;
+  }
+  .tool-card {
+    background: var(--bg-alt); border: 1px solid var(--border); border-radius: 12px;
+    padding: 18px; transition: all 0.15s;
+    text-decoration: none; color: var(--text); display: block;
+    position: relative; overflow: hidden;
+  }
+  .tool-card:hover { border-color: var(--primary); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(139,92,246,0.15); }
+  .tool-card .number {
+    position: absolute; top: 14px; right: 16px;
+    font-family: ui-monospace, monospace; font-size: 11px; color: var(--text-dim);
+    font-weight: 700;
+  }
+  .tool-card h3 { margin: 0 0 4px; font-size: 16px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+  .tool-card .emoji { font-size: 18px; }
+  .tool-card .pitch { color: var(--text-dim); font-size: 13px; margin: 0 0 12px; }
+  .tool-card .badges { display: flex; gap: 4px; flex-wrap: wrap; }
+  .tool-card .badge { font-size: 10px; padding: 2px 7px; border-radius: 10px; background: var(--bg-card); color: var(--text-dim); }
+  .tool-card .badge.hot { background: rgba(239,68,68,0.15); color: #f87171; }
+  .tool-card .badge.new { background: rgba(20,184,166,0.15); color: var(--teal); }
+  .tool-card .auto { color: var(--success); font-size: 11px; margin-top: 8px; }
+
+  /* Distribution bar (mini) */
+  .mini-bar { height: 8px; background: var(--bg-card); border-radius: 4px; overflow: hidden; display: flex; margin-top: 6px; }
+  .mini-bar > span { display: block; height: 100%; }
+  .mini-bar .b-low { background: var(--low); }
+  .mini-bar .b-med { background: var(--med); }
+  .mini-bar .b-high { background: var(--high); }
+
+  /* Section headers */
+  .section-h {
+    display: flex; align-items: baseline; gap: 8px;
+    margin: 24px 0 12px;
+  }
+  .section-h h2 { margin: 0; font-size: 18px; }
+  .section-h .meta { color: var(--text-dim); font-size: 12px; }
+
+  /* Status / alerts */
+  .alert { padding: 10px 14px; border-radius: 8px; font-size: 13px; }
+  .alert.warn { background: rgba(245,158,11,0.1); border: 1px solid var(--warn); color: var(--warn); }
+  .alert.ok { background: rgba(34,197,94,0.1); border: 1px solid var(--success); color: var(--success); }
+  .alert.err { background: rgba(239,68,68,0.1); border: 1px solid var(--danger); color: var(--danger); }
+
+  .hint { font-size: 12px; color: var(--text-dim); margin-top: 6px; }
+  code { background: var(--bg-card); padding: 2px 6px; border-radius: 4px; font-size: 12px; }
+
+  /* Activity stream */
+  .activity {
+    background: var(--bg-alt); border: 1px solid var(--border); border-radius: 12px;
+    padding: 16px; margin-bottom: 16px; font-family: ui-monospace, monospace;
+    font-size: 12px; color: var(--text-dim);
+    max-height: 200px; overflow-y: auto;
+  }
+  .activity .line { padding: 2px 0; }
+  .activity .line.ok::before { content: '✓ '; color: var(--success); }
+  .activity .line.warn::before { content: '⚠ '; color: var(--warn); }
+  .activity .line.err::before { content: '✗ '; color: var(--danger); }
+  .activity .line.info::before { content: '· '; color: var(--text-dim); }
+
+  /* Lang badge */
+  .lang-pill { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 10px; font-weight: 600; margin-left: 6px; }
+  .lang-en { background: rgba(59,130,246,0.2); color: #60a5fa; }
+  .lang-ka { background: rgba(245,158,11,0.2); color: #fbbf24; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="hero">
+  <h1>CTA Optimization Suite <span class="accent">— 10xSEO internal</span></h1>
+  <p>One landing for ten linked tools that analyze, score, and rewrite the conversion CTAs across your site. Drop a page path below, run a quick scan, and jump into whichever tool fits the work.</p>
+  <div class="hero-actions">
+    <button class="large" onclick="quickScan()">Quick scan current page</button>
+    <button class="secondary large" onclick="document.querySelector('.tools-grid').scrollIntoView({behavior:'smooth'})">Browse tools</button>
+  </div>
+</div>
+
+<div class="scan-bar">
+  <div class="field">
+    <label for="scanPath">Page path</label>
+    <input id="scanPath" type="text" value="en/index.html" placeholder="en/index.html or index.html">
+  </div>
+  <button onclick="quickScan()">Scan</button>
+</div>
+
+<div id="scanResult" style="display:none">
+  <div class="health-grid">
+    <div class="score-card">
+      <div id="scoreCircle" class="score-circle">
+        <span class="val" id="scoreValue">—</span>
+      </div>
+      <div class="score-label">Health score</div>
+      <div class="score-grade" id="scoreGrade">—</div>
+    </div>
+    <div class="findings-card">
+      <h3>Top findings <span id="scanLang" style="font-weight:normal;text-transform:none;letter-spacing:0"></span></h3>
+      <div class="finding-list" id="findings"></div>
+    </div>
+  </div>
+
+  <div class="activity" id="activity"></div>
+</div>
+
+<div class="section-h">
+  <h2>Tools</h2>
+  <span class="meta">10 specialized tools — pick the angle you need</span>
+</div>
+
+<div class="tools-grid">
+
+  <a class="tool-card" href="cta-picker.html">
+    <span class="number">01</span>
+    <h3><span class="emoji">🔬</span>Picker (Research)</h3>
+    <p class="pitch">5-step research: inventory, funnel mapping, industry benchmark, friction, recommendation. The classic.</p>
+    <div class="badges">
+      <span class="badge">research</span>
+      <span class="badge">swap</span>
+      <span class="badge">single-page</span>
+    </div>
+    <p class="auto">⚡ Auto-runs research on load</p>
+  </a>
+
+  <a class="tool-card" href="cta-microcopy.html">
+    <span class="number">02</span>
+    <h3><span class="emoji">✏️</span>Microcopy Studio</h3>
+    <p class="pitch">Same destinations, sharper words. 5 framework variants per CTA (curiosity / specificity / risk-reversal / social-proof / urgency).</p>
+    <div class="badges">
+      <span class="badge">copy</span>
+      <span class="badge">EN+KA</span>
+    </div>
+  </a>
+
+  <a class="tool-card" href="cta-segments.html">
+    <span class="number">03</span>
+    <h3><span class="emoji">🎯</span>Segments</h3>
+    <p class="pitch">Match each CTA to visitor temperature. Cold / Warm / Hot / Returning, with fit score and segment-optimized swap.</p>
+    <div class="badges">
+      <span class="badge">targeting</span>
+      <span class="badge">fit-score</span>
+    </div>
+  </a>
+
+  <a class="tool-card" href="cta-sitemap.html">
+    <span class="number">04</span>
+    <h3><span class="emoji">🗺️</span>Sitemap Distribution</h3>
+    <p class="pitch">Crawl 10+ pages. Site-wide distribution chart, per-page mix, inconsistency detection, batch swap recommendations.</p>
+    <div class="badges">
+      <span class="badge">multi-page</span>
+      <span class="badge">consistency</span>
+    </div>
+  </a>
+
+  <a class="tool-card" href="cta-lab.html">
+    <span class="number">05</span>
+    <h3><span class="emoji">🧪</span>Lab (Visual)</h3>
+    <p class="pitch">Live iframe preview with click-to-edit CTAs. Side-by-side before/after. See the change before you commit.</p>
+    <div class="badges">
+      <span class="badge new">NEW</span>
+      <span class="badge">visual</span>
+      <span class="badge">iframe</span>
+    </div>
+  </a>
+
+  <a class="tool-card" href="cta-ab.html">
+    <span class="number">06</span>
+    <h3><span class="emoji">⚖️</span>A/B Test Designer</h3>
+    <p class="pitch">For each CTA, generates hypothesis, control vs. variant, primary metric, sample size at 95% confidence. Test plan ready to ship.</p>
+    <div class="badges">
+      <span class="badge new">NEW</span>
+      <span class="badge">stats</span>
+    </div>
+  </a>
+
+  <a class="tool-card" href="cta-paths.html">
+    <span class="number">07</span>
+    <h3><span class="emoji">🛤️</span>Path Mapper</h3>
+    <p class="pitch">Where does each CTA actually lead? Visualizes journey graph, flags dead-ends, loops, and missing exits across the site.</p>
+    <div class="badges">
+      <span class="badge new">NEW</span>
+      <span class="badge">graph</span>
+    </div>
+  </a>
+
+  <a class="tool-card" href="cta-heatmap.html">
+    <span class="number">08</span>
+    <h3><span class="emoji">🌡️</span>Heatmap Simulator</h3>
+    <p class="pitch">Estimates visibility per CTA based on scroll-depth norms, fold position, and viewport simulation. See what % of users actually see each CTA.</p>
+    <div class="badges">
+      <span class="badge new">NEW</span>
+      <span class="badge">attention</span>
+    </div>
+  </a>
+
+  <a class="tool-card" href="cta-report.html">
+    <span class="number">09</span>
+    <h3><span class="emoji">📊</span>Report Generator</h3>
+    <p class="pitch">Exec-ready HTML report. Crawls site, runs all analyses, exports a stakeholder-friendly findings + action plan in one click.</p>
+    <div class="badges">
+      <span class="badge new">NEW</span>
+      <span class="badge">report</span>
+    </div>
+  </a>
+
+  <a class="tool-card" href="cta-help.html">
+    <span class="number">10</span>
+    <h3><span class="emoji">❓</span>Help & Methodology</h3>
+    <p class="pitch">How each tool works under the hood, how to interpret the scores, when to use which, and the data sources behind benchmarks.</p>
+    <div class="badges">
+      <span class="badge">docs</span>
+    </div>
+  </a>
+
+</div>
+
+<div class="hint" style="text-align:center;margin-top:24px">All tools are noindex/nofollow — internal use only · run on GitHub Pages or locally via <code>python3 -m http.server</code></div>
+
+</div>
+
+<script>
+// === Shared scanner (mirror of picker) ===
+function detectLang(html, path) {
+  const m = html.match(/<html\b[^>]*\blang="([^"]+)"/i);
+  if (m) {
+    if (/^ka\b/i.test(m[1])) return 'ka';
+    if (/^en\b/i.test(m[1])) return 'en';
+  }
+  return /^en\//.test(path) ? 'en' : 'ka';
+}
+
+function esc(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+function scanCTAs(html) {
+  const lines = html.split('\n');
+  const results = [];
+  const anchorOpen = /<a\b[^>]*>/g;
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    let m;
+    anchorOpen.lastIndex = 0;
+    while ((m = anchorOpen.exec(line)) !== null) {
+      const tag = m[0];
+      const isCalendly = /onclick="[^"]*openCalendly/.test(tag);
+      const isTel = /\bhref="tel:/.test(tag);
+      const isMailto = /\bhref="mailto:/.test(tag);
+      const hasAudit = /\bhref="[^"]*seo-audit\.html"/.test(tag);
+      const hasLeadForm = /\bhref="[^"]*lead-form\.html"/.test(tag);
+      const ctaClass = /\bclass="[^"]*(ai-cta-animate|call-btn|cta-btn)[^"]*"/.test(tag);
+      if (!(isCalendly || ctaClass || hasAudit || hasLeadForm)) continue;
+      let body = '';
+      const startInLine = m.index;
+      let scanStart = i, scanCol = startInLine + tag.length;
+      let chunk = lines[scanStart].slice(scanCol);
+      let scanEndIdx = chunk.indexOf('</a>');
+      while (scanEndIdx === -1 && scanStart < lines.length - 1 && scanStart - i < 30) {
+        body += chunk + '\n';
+        scanStart++; chunk = lines[scanStart]; scanCol = 0;
+        scanEndIdx = chunk.indexOf('</a>');
+      }
+      if (scanEndIdx === -1) continue;
+      body += chunk.slice(0, scanEndIdx);
+      const visible = body.replace(/<[^>]+>/g,'').trim();
+      const hrefM = tag.match(/\bhref="([^"]*)"/);
+      let kind = 'other';
+      if (isCalendly) kind = 'book';
+      else if (isTel) kind = 'call';
+      else if (isMailto) kind = 'email';
+      else if (hasAudit) kind = 'audit';
+      else if (hasLeadForm) kind = 'quote';
+      let ctx = '', parentId = '';
+      for (let k = i; k >= Math.max(0, i-200); k--) {
+        const lk = lines[k];
+        const idM = lk.match(/\bid="([^"]+)"/);
+        if (idM && !parentId && (i - k) <= 10) parentId = idM[1];
+        const h = lk.match(/<h[1-3][^>]*>([^<]+)</);
+        if (h) { ctx = h[1].trim(); break; }
+        if (idM && !ctx) ctx = '#' + idM[1];
+      }
+      if (!ctx) ctx = 'page';
+      const clsAttr = (tag.match(/class="([^"]*)"/) || ['',''])[1];
+      const isButtonStyled = /ai-cta-animate|call-btn|cta-btn|\bbg-|\bpx-\d|\bpy-\d|\bp-\d|\bborder-\d|\brounded-/.test(clsAttr);
+      if (!isCalendly && !isButtonStyled) continue;
+      results.push({ index: results.length, line: i + 1, kind, ctx, parentId, href: hrefM ? hrefM[1] : '', visible });
+    }
+  }
+  return results;
+}
+
+function commitLevel(c) {
+  if (c.kind === 'call' || c.kind === 'email') return 'nav';
+  if (c.kind === 'audit') return 'low';
+  if (c.kind === 'quote') return 'med';
+  if (c.kind === 'book') return 'high';
+  return 'nav';
+}
+
+function isSticky(c) { return /sticky/.test((c.parentId||'').toLowerCase()); }
+function isNav(c) {
+  const pid = (c.parentId || '').toLowerCase();
+  return /main-header|mobile-menu|nav/.test(pid);
+}
+
+// === Health score logic ===
+function computeHealth(ctas, lang) {
+  const conv = ctas.filter(c => commitLevel(c) !== 'nav');
+  if (!conv.length) return { score: 0, grade: 'F', findings: [{icon:'crit',text:'No conversion CTAs found on this page.'}] };
+
+  let score = 100;
+  const findings = [];
+  const counts = { low: 0, med: 0, high: 0 };
+  conv.forEach(c => counts[commitLevel(c)]++);
+  const totalConv = conv.length;
+  const pctLow = counts.low / totalConv;
+  const pctHigh = counts.high / totalConv;
+
+  // Penalty: too many high-commitment
+  if (pctHigh > 0.8) { score -= 25; findings.push({icon:'warn', text:`${Math.round(pctHigh*100)}% of CTAs are high-commitment (Book/Calendly). Industry healthy band: 25–45%.`}); }
+  else if (pctHigh > 0.6) { score -= 10; findings.push({icon:'info', text:`${Math.round(pctHigh*100)}% high-commitment. Slight skew — consider a low-friction alternative in the hero or sticky bar.`}); }
+
+  // Penalty: zero low-commitment
+  if (counts.low === 0) { score -= 15; findings.push({icon:'warn', text:'No low-friction CTAs (audit / tool / lead magnet). Cold visitors have no soft entry point.'}); }
+
+  // Penalty: sticky with high-friction
+  const stickyHighs = ctas.filter(c => isSticky(c) && commitLevel(c) === 'high');
+  if (stickyHighs.length) { score -= 20; findings.push({icon:'crit', text:`Sticky bar uses high-friction CTA. Always-visible CTAs need lowest friction (audit/tel:).`}); }
+
+  // Penalty: hero with only high-commitment
+  const heroCTAs = ctas.filter(c => c.line < 600);
+  const heroConvHighs = heroCTAs.filter(c => commitLevel(c) === 'high');
+  const heroConvLows = heroCTAs.filter(c => commitLevel(c) === 'low');
+  if (heroConvHighs.length && !heroConvLows.length) {
+    score -= 10; findings.push({icon:'info', text:'Hero offers only high-commitment CTA. Pair with a low-friction option for cold visitors.'});
+  }
+
+  // Penalty: copy quality
+  const weakCopy = conv.filter(c => {
+    const t = c.visible.toLowerCase();
+    return /^(click|submit|choose|select|here|go|open|აირჩიე)\b/.test(t) || t.split(/\s+/).length < 2;
+  });
+  if (weakCopy.length) { score -= 5 * Math.min(weakCopy.length, 3); findings.push({icon:'info', text:`${weakCopy.length} CTA${weakCopy.length===1?'':'s'} use weak copy ("Choose", "Submit"). Try Microcopy Studio.`}); }
+
+  // Positive findings
+  if (counts.low >= 1 && counts.high >= 1) { findings.push({icon:'ok', text:'Mixed commitment levels — good distribution across visitor temperatures.'}); }
+  if (!stickyHighs.length && ctas.some(isSticky)) { findings.push({icon:'ok', text:'Sticky bar uses appropriate low-friction CTA.'}); }
+
+  score = Math.max(0, Math.min(100, score));
+  let grade;
+  if (score >= 85) grade = 'A — strong';
+  else if (score >= 70) grade = 'B — solid';
+  else if (score >= 55) grade = 'C — average';
+  else if (score >= 40) grade = 'D — needs work';
+  else grade = 'F — overhaul';
+  return { score, grade, findings, conv, ctas };
+}
+
+function setScoreCircle(score) {
+  const deg = Math.round(score / 100 * 360);
+  const color = score >= 70 ? 'var(--success)' : score >= 50 ? 'var(--warn)' : 'var(--danger)';
+  document.getElementById('scoreCircle').style.background = `conic-gradient(${color} 0deg, ${color} ${deg}deg, var(--border) ${deg}deg)`;
+  document.getElementById('scoreValue').textContent = score;
+  document.getElementById('scoreValue').style.color = color;
+}
+
+function appendActivity(text, type='info') {
+  const a = document.getElementById('activity');
+  const line = document.createElement('div');
+  line.className = 'line ' + type;
+  line.textContent = text;
+  a.appendChild(line);
+  a.scrollTop = a.scrollHeight;
+}
+
+async function quickScan() {
+  const path = document.getElementById('scanPath').value.trim().replace(/^\//,'');
+  if (!path) return;
+  const result = document.getElementById('scanResult');
+  result.style.display = 'block';
+  document.getElementById('activity').innerHTML = '';
+  document.getElementById('findings').innerHTML = '';
+  appendActivity(`Fetching ${path}…`);
+  try {
+    const r = await fetch(path, { cache: 'no-store' });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const html = await r.text();
+    appendActivity(`Loaded ${(html.length/1024).toFixed(1)} KB`, 'ok');
+    const lang = detectLang(html, path);
+    appendActivity(`Language: ${lang.toUpperCase()}`, 'ok');
+    const ctas = scanCTAs(html);
+    appendActivity(`CTAs detected: ${ctas.length} (${ctas.filter(c=>commitLevel(c)!=='nav').length} conversion + ${ctas.filter(c=>commitLevel(c)==='nav').length} nav/phone)`, 'ok');
+    const health = computeHealth(ctas, lang);
+    setScoreCircle(health.score);
+    document.getElementById('scoreGrade').textContent = health.grade;
+    document.getElementById('scanLang').innerHTML = `<span class="lang-pill lang-${lang}">${lang.toUpperCase()}</span> · ${path}`;
+    const findEl = document.getElementById('findings');
+    health.findings.forEach(f => {
+      const div = document.createElement('div');
+      div.className = 'finding-item';
+      div.innerHTML = `<span class="finding-icon icon-${f.icon}">${f.icon === 'ok' ? '✓' : f.icon === 'warn' ? '!' : f.icon === 'crit' ? '!' : 'i'}</span><span>${esc(f.text)}</span>`;
+      findEl.appendChild(div);
+    });
+    appendActivity(`Health score: ${health.score}/100 (${health.grade})`, health.score >= 70 ? 'ok' : health.score >= 50 ? 'warn' : 'err');
+    appendActivity(`Done. Pick a tool above to dig in.`, 'info');
+  } catch (e) {
+    appendActivity(`Failed: ${e.message || e}`, 'err');
+    document.getElementById('findings').innerHTML = `<div class="finding-item"><span class="finding-icon icon-crit">!</span><span>Could not load ${esc(path)}. Check the path and try again.</span></div>`;
+    setScoreCircle(0);
+    document.getElementById('scoreGrade').textContent = 'Load failed';
+  }
+}
+
+// Auto-scan on load
+quickScan();
+</script>
+</body>
+</html>

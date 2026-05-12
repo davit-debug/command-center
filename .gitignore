@@ -79,10 +79,17 @@
 !tailwind.input.css
 
 # Internal tools (noindex)
+!cta.html
 !cta-picker.html
 !cta-microcopy.html
 !cta-segments.html
 !cta-sitemap.html
+!cta-lab.html
+!cta-ab.html
+!cta-paths.html
+!cta-heatmap.html
+!cta-report.html
+!cta-help.html
 
 # English translation (/en/ subfolder)
 !en/
