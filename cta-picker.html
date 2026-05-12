@@ -251,6 +251,17 @@ let presets = JSON.parse(JSON.stringify(DEFAULT_PRESETS));
 let ctas = [];
 let sourceHTML = '';
 let sourcePath = '';
+let pageLang = 'en';  // detected from <html lang="..."> or path
+
+function detectLang(html, path) {
+  const m = html.match(/<html\b[^>]*\blang="([^"]+)"/i);
+  if (m) {
+    if (/^ka\b/i.test(m[1])) return 'ka';
+    if (/^en\b/i.test(m[1])) return 'en';
+  }
+  // Fallback: path heuristic
+  return /^en\//.test(path) ? 'en' : 'ka';
+}
 
 // --- Presets UI ---
 function renderPresets() {
@@ -314,8 +325,12 @@ function loadSource() {
     .then(text => {
       sourceHTML = text;
       sourcePath = path;
+      pageLang = detectLang(text, path);
       ctas = scanCTAs(text);
-      status.innerHTML = `<div class="alert ok">Loaded <code>${esc(path)}</code> — found ${ctas.length} CTA${ctas.length===1?'':'s'}.</div>`;
+      const langBadge = pageLang === 'ka'
+        ? '<span style="display:inline-block;font-size:11px;padding:2px 8px;border-radius:10px;background:rgba(245,158,11,0.2);color:#fbbf24;font-weight:600;margin-left:6px">KA</span>'
+        : '<span style="display:inline-block;font-size:11px;padding:2px 8px;border-radius:10px;background:rgba(59,130,246,0.2);color:#60a5fa;font-weight:600;margin-left:6px">EN</span>';
+      status.innerHTML = `<div class="alert ok">Loaded <code>${esc(path)}</code>${langBadge} — found ${ctas.length} CTA${ctas.length===1?'':'s'}. Swaps will use ${pageLang === 'ka' ? 'Georgian (text_ka)' : 'English (text_en)'} text.</div>`;
       document.getElementById('picker').style.display = 'block';
       document.getElementById('counter').textContent = `(${ctas.length} CTAs found)`;
       renderCtaPicker();
@@ -386,14 +401,18 @@ function classifyPlacement(cta) {
   // Surrounding-block signals (fallback)
   if (/sticky-cta/i.test(ctx)) return 'sticky';
   if (/mobile-menu/i.test(ctx)) return 'nav';
-  // Section keyword matching
-  if (/contact|book|reach|talk|meeting/.test(ctx)) return 'contact';
-  if (/ready|let's|let us|first|#1|primary|hero/.test(ctx)) {
+  // Section keyword matching (English + Georgian)
+  // contact: კონტაქტი / დაგვიკავშირდი / დაჯავშნე / შეხვედრა
+  if (/contact|book|reach|talk|meeting|კონტაქტ|დაჯავშნე|დაგვიკავშირდი|შეხვედრ|დაგვირეკე/.test(ctx)) return 'contact';
+  // ready/cta: მზად ხარ / პირველი / დაიწყე / #1
+  if (/ready|let's|let us|first|#1|primary|hero|მზად ხარ|პირველი|დაიწყე/.test(ctx)) {
     if (line < 600) return 'hero';
     return 'midcta';
   }
-  if (/services|what we|how we|deliver|offer|results|case|portfolio/.test(ctx)) return 'services';
-  if (/blog|article|read|guide/.test(ctx)) return 'blog';
+  // services/results: მომსახურება / სერვისები / შედეგ / ქეის / პორტფოლიო
+  if (/services|what we|how we|deliver|offer|results|case|portfolio|მომსახურებ|სერვის|შედეგ|ქეის|პორტფოლიო|გუნდი/.test(ctx)) return 'services';
+  // blog: ბლოგი / სტატია
+  if (/blog|article|read|guide|ბლოგ|სტატია/.test(ctx)) return 'blog';
   // Fallback by line position (heuristic for homepages: first → hero, last → contact)
   if (line < 600) return 'hero';
   if (line > 1600) return 'contact';
@@ -773,7 +792,7 @@ function renderCtaPicker() {
         <label class="field" style="margin-bottom:4px">
           <span>Swap to</span>
           <select data-i="${cta.index}" data-action="preset">
-            ${presets.map(p => `<option value="${p.id}" ${cta.targetPreset===p.id?'selected':''}>${esc(p.label)} — ${esc(p.text_en || '(no text)')} → ${esc(p.href || '(no href)')}</option>`).join('')}
+            ${presets.map(p => `<option value="${p.id}" ${cta.targetPreset===p.id?'selected':''}>${esc(p.label)} — ${esc(presetText(p) || '(no text)')} → ${esc(p.href || '(no href)')}</option>`).join('')}
           </select>
         </label>
       </div>
@@ -854,11 +873,17 @@ function applySwaps() {
     }
     changeLog.unshift({
       line: cta.line, ctx: cta.ctx,
-      from: cta.visible, to: p.text_en,
+      from: cta.visible, to: presetText(p),
       hrefFrom: cta.href, hrefTo: p.href
     });
   });
   return { html: lines.join('\n'), changeLog };
+}
+
+// Returns the visible text for the current page language.
+function presetText(p) {
+  if (pageLang === 'ka') return p.text_ka || p.text_en || '';
+  return p.text_en || p.text_ka || '';
 }
 
 function rewriteAnchorTag(tag, p) {
@@ -868,11 +893,11 @@ function rewriteAnchorTag(tag, p) {
   else t = t.replace(/<a\b/, `<a href="${attr(p.href)}"`);
   // Remove onclick="openCalendly..."  (the new CTA does NOT open Calendly)
   t = t.replace(/\s*onclick="[^"]*openCalendly[^"]*"/, '');
-  // Update data-en / data-ka
+  // Update data-en / data-ka regardless of current page language (keeps language toggle correct)
   if (/\bdata-en="/.test(t)) t = t.replace(/\bdata-en="[^"]*"/, `data-en="${attr(p.text_en)}"`);
   if (/\bdata-ka="/.test(t)) t = t.replace(/\bdata-ka="[^"]*"/, `data-ka="${attr(p.text_ka)}"`);
-  // Update aria-label if present (and was tied to old text)
-  if (/\baria-label="/.test(t)) t = t.replace(/\baria-label="[^"]*"/, `aria-label="${attr(p.text_en)}"`);
+  // aria-label: use page-language text
+  if (/\baria-label="/.test(t)) t = t.replace(/\baria-label="[^"]*"/, `aria-label="${attr(presetText(p))}"`);
   return t;
 }
 
@@ -895,12 +920,12 @@ function rewriteBody(body, p, cta) {
   // Replace the first text placeholder with new text
   let replaced = false;
   newBody = newBody.replace(/ TXT /g, () => {
-    if (!replaced) { replaced = true; return esc(p.text_en); }
+    if (!replaced) { replaced = true; return esc(presetText(p)); }
     return '';  // strip any other text nodes (rare)
   });
   // If there were no text runs at all, just append the new text
   if (textRuns.length === 0) {
-    newBody = newBody.trim() + esc(p.text_en);
+    newBody = newBody.trim() + esc(presetText(p));
   }
   return newBody;
 }
