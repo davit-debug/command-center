@@ -110,6 +110,13 @@
   code { background: var(--bg-card); padding: 2px 6px; border-radius: 4px; font-size: 12px; }
   .hint { font-size: 12px; color: var(--text-dim); margin-top: 6px; }
 
+  /* Tools nav */
+  .tools-nav { display: flex; gap: 4px; margin-bottom: 18px; flex-wrap: wrap; align-items: center; font-size: 13px; padding: 8px 12px; background: var(--bg-alt); border: 1px solid var(--border); border-radius: 8px; }
+  .tools-nav strong { color: var(--text-dim); margin-right: 8px; }
+  .tools-nav a { color: var(--text-dim); text-decoration: none; padding: 4px 10px; border-radius: 6px; }
+  .tools-nav a:hover { background: var(--bg-card); color: var(--text); }
+  .tools-nav a.current { background: var(--primary); color: white; font-weight: 600; }
+
   /* Research steps */
   .step {
     background: var(--bg-card);
@@ -155,8 +162,16 @@
 <body>
 <div class="wrap">
 
+<nav class="tools-nav">
+  <strong>CTA Tools:</strong>
+  <a href="cta-picker.html" class="current">Picker (research)</a>
+  <a href="cta-microcopy.html">Microcopy</a>
+  <a href="cta-segments.html">Segments</a>
+  <a href="cta-sitemap.html">Sitemap</a>
+</nav>
+
 <h1>CTA Picker <span>— interactive</span></h1>
-<p class="sub">Load any page, pick CTAs to swap, then download the modified HTML or copy a change list.</p>
+<p class="sub">Load any page, pick CTAs to swap, then download the modified HTML or copy a change list. Pair with <a href="cta-microcopy.html" style="color:var(--primary-dim)">Microcopy</a>, <a href="cta-segments.html" style="color:var(--primary-dim)">Segments</a>, or <a href="cta-sitemap.html" style="color:var(--primary-dim)">Sitemap</a> for different angles.</p>
 
 <div class="panel">
   <h2>1. Load page</h2>

@@ -80,6 +80,9 @@
 
 # Internal tools (noindex)
 !cta-picker.html
+!cta-microcopy.html
+!cta-segments.html
+!cta-sitemap.html
 
 # English translation (/en/ subfolder)
 !en/

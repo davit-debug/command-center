@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>CTA Sitemap Distribution — 10xSEO Internal</title>
+<style>
+  :root {
+    --bg: #0f172a; --bg-alt: #1e293b; --bg-card: #0d1117;
+    --border: #334155; --text: #f1f5f9; --text-dim: #94a3b8;
+    --primary: #8b5cf6; --primary-dim: #a78bfa;
+    --success: #22c55e; --warn: #f59e0b; --danger: #ef4444; --teal: #14b8a6;
+    --low: #22c55e; --med: #f59e0b; --high: #ef4444;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; min-height: 100vh; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 16px 16px 80px; }
+  .tools-nav { display: flex; gap: 4px; margin-bottom: 18px; flex-wrap: wrap; align-items: center; font-size: 13px; padding: 8px 12px; background: var(--bg-alt); border: 1px solid var(--border); border-radius: 8px; }
+  .tools-nav strong { color: var(--text-dim); margin-right: 8px; }
+  .tools-nav a { color: var(--text-dim); text-decoration: none; padding: 4px 10px; border-radius: 6px; }
+  .tools-nav a:hover { background: var(--bg-card); color: var(--text); }
+  .tools-nav a.current { background: var(--primary); color: white; font-weight: 600; }
+  h1 { margin: 0 0 4px; font-size: 24px; }
+  h1 span { color: var(--primary-dim); }
+  .sub { color: var(--text-dim); font-size: 14px; margin: 0 0 24px; }
+  .panel { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-bottom: 16px; }
+  .panel h2 { margin: 0 0 12px; font-size: 16px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; }
+  textarea { width: 100%; padding: 10px 12px; background: var(--bg-card); border: 1px solid var(--border); color: var(--text); border-radius: 8px; font-family: ui-monospace, "SF Mono", monospace; font-size: 12px; min-height: 100px; resize: vertical; }
+  button { padding: 10px 18px; border: 0; border-radius: 8px; background: var(--primary); color: white; font-weight: 600; font-size: 14px; cursor: pointer; font-family: inherit; }
+  button:hover { background: var(--primary-dim); }
+  button.secondary { background: var(--bg-card); border: 1px solid var(--border); color: var(--text); }
+  button.secondary:hover { background: var(--border); }
+  button:disabled { opacity: 0.4; cursor: not-allowed; }
+  .hint { font-size: 12px; color: var(--text-dim); margin-top: 6px; }
+  code { background: var(--bg-card); padding: 2px 6px; border-radius: 4px; font-size: 12px; }
+  .alert { padding: 12px; border-radius: 8px; margin-top: 12px; font-size: 14px; }
+  .alert.err { background: rgba(239,68,68,0.1); border: 1px solid var(--danger); }
+  .alert.ok { background: rgba(34,197,94,0.1); border: 1px solid var(--success); }
+  .alert.warn { background: rgba(245,158,11,0.1); border: 1px solid var(--warn); }
+  .actions { position: sticky; bottom: 0; background: var(--bg); padding: 14px 0; margin-top: 18px; border-top: 1px solid var(--border); display: flex; gap: 8px; flex-wrap: wrap; }
+  .actions .count { margin-right: auto; align-self: center; font-size: 14px; color: var(--text-dim); }
+
+  .row { display: flex; gap: 8px; align-items: flex-end; flex-wrap: wrap; }
+  .row > .field { flex: 1; min-width: 240px; }
+  label.field { display: block; margin-bottom: 12px; }
+  label.field > span { display: block; font-size: 13px; color: var(--text-dim); margin-bottom: 4px; }
+  input[type="text"], select { width: 100%; padding: 10px 12px; background: var(--bg-card); border: 1px solid var(--border); color: var(--text); border-radius: 8px; font-family: inherit; font-size: 14px; }
+
+  /* Site distribution chart */
+  .bar { height: 14px; background: var(--bg); border-radius: 4px; overflow: hidden; display: flex; }
+  .bar > span { display: block; height: 100%; }
+  .bar-low { background: var(--low); }
+  .bar-med { background: var(--med); }
+  .bar-high { background: var(--high); }
+  .bar-nav { background: var(--text-dim); }
+  .legend { font-size: 12px; color: var(--text-dim); display: flex; gap: 14px; margin-top: 6px; flex-wrap: wrap; }
+  .legend > span { display: inline-flex; align-items: center; gap: 6px; }
+  .legend .dot { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+
+  /* Per-page rows */
+  table.pages { width: 100%; border-collapse: collapse; font-size: 13px; }
+  table.pages th, table.pages td { padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--border); vertical-align: middle; }
+  table.pages th { color: var(--text-dim); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+  table.pages td.mini { width: 130px; }
+  table.pages td.path { font-family: ui-monospace, monospace; font-size: 12px; }
+  table.pages td.path .ptype { display: inline-block; font-size: 10px; padding: 1px 6px; border-radius: 4px; background: rgba(139,92,246,0.18); color: var(--primary-dim); margin-left: 6px; }
+  table.pages td.fail { color: var(--danger); font-size: 12px; }
+  .bar-mini { width: 120px; height: 8px; background: var(--bg); border-radius: 4px; overflow: hidden; display: inline-flex; vertical-align: middle; }
+  .bar-mini > span { display: block; height: 100%; }
+
+  /* Recommendation cards */
+  .rec { padding: 12px 14px; background: var(--bg-card); border: 1px solid var(--border); border-left: 3px solid var(--primary); border-radius: 8px; margin-bottom: 10px; }
+  .rec.warn { border-left-color: var(--warn); }
+  .rec.crit { border-left-color: var(--danger); }
+  .rec-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .rec-head input[type=checkbox] { width: 16px; height: 16px; accent-color: var(--primary); }
+  .rec-head .title { font-weight: 600; }
+  .rec-head .severity { font-size: 11px; padding: 2px 8px; border-radius: 10px; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em; }
+  .sev-info { background: rgba(139,92,246,0.18); color: var(--primary-dim); }
+  .sev-warn { background: rgba(245,158,11,0.18); color: #fbbf24; }
+  .sev-crit { background: rgba(239,68,68,0.18); color: #f87171; }
+  .rec-body { margin-top: 8px; padding-left: 24px; font-size: 13px; color: var(--text-dim); }
+  .rec-body ul { margin: 6px 0; padding-left: 18px; }
+  .rec-body code { font-size: 11px; }
+
+  details { background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px; padding: 8px 12px; margin-top: 6px; }
+  details summary { cursor: pointer; font-size: 12px; color: var(--text-dim); }
+  .progress { font-size: 12px; color: var(--text-dim); margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav class="tools-nav">
+  <strong>CTA Tools:</strong>
+  <a href="cta-picker.html">Picker (research)</a>
+  <a href="cta-microcopy.html">Microcopy</a>
+  <a href="cta-segments.html">Segments</a>
+  <a href="cta-sitemap.html" class="current">Sitemap</a>
+</nav>
+
+<h1>CTA Sitemap Distribution <span>— consistency across the whole site</span></h1>
+<p class="sub">Crawls multiple pages, builds a site-wide CTA distribution chart, finds page-type inconsistencies (e.g., one service page missing a primary CTA, blog posts using high-friction Calendly), and recommends batch swaps. Tick the recommendations you accept, confirm, get a multi-file change list.</p>
+
+<div class="panel">
+  <h2>1. Pages to analyze</h2>
+  <p class="hint" style="margin-top:0">One path per line. Default is the English homepage + key inner pages. Edit freely. Mixed EN/KA is fine — each page is analyzed in its own language.</p>
+  <textarea id="srcList">en/index.html
+en/seo-management.html
+en/seo-consultation.html
+en/seo-audit.html
+en/cro.html
+en/ai-seo.html
+en/services.html
+en/portfolio.html
+en/case-studies.html
+en/contact-us.html
+en/blog/what-is-aeo.html
+en/blog/aeo-optimization-agency-dubai.html</textarea>
+  <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
+    <button id="crawl">Crawl & analyze</button>
+    <button class="secondary" id="loadKa">Switch to Georgian set</button>
+    <button class="secondary" id="loadEn">Switch to English set</button>
+  </div>
+  <div class="progress" id="progress"></div>
+</div>
+
+<div id="tool" style="display:none">
+
+<div class="panel">
+  <h2>2. Site-wide CTA distribution</h2>
+  <div id="overall"></div>
+</div>
+
+<div class="panel">
+  <h2>3. Per-page breakdown</h2>
+  <table class="pages">
+    <thead><tr><th>Page</th><th class="mini">CTA mix</th><th>Conv CTAs</th><th>Notes</th></tr></thead>
+    <tbody id="pageRows"></tbody>
+  </table>
+</div>
+
+<div class="panel">
+  <h2>4. Recommended changes <span id="recCount" style="font-weight:normal;color:var(--text-dim);font-size:13px;text-transform:none;letter-spacing:0"></span></h2>
+  <p class="hint" style="margin-top:0">Pick the recommendations you want to apply. Each one expands to show exact line-level swaps across one or more files.</p>
+  <div id="recs"></div>
+</div>
+
+<div class="actions">
+  <span class="count" id="selectionCount">0 recommendations selected</span>
+  <button class="secondary" id="copy">Copy change list (all files)</button>
+  <button id="confirm" disabled>Confirm — paste back to Claude to apply</button>
+</div>
+
+<div class="panel" id="outputPanel" style="display:none">
+  <h2>Change list</h2>
+  <textarea id="output" readonly style="min-height:300px"></textarea>
+  <p class="hint">This is a multi-file change list. Easiest workflow: paste it into Claude Code chat and ask "apply these CTA changes." The picker / microcopy tools handle single-file downloads; this tool's scope is too large for browser-side downloads to be safe.</p>
+</div>
+
+</div>
+
+</div>
+
+<script>
+const PAGE_SETS = {
+  en: `en/index.html
+en/seo-management.html
+en/seo-consultation.html
+en/seo-audit.html
+en/cro.html
+en/ai-seo.html
+en/services.html
+en/portfolio.html
+en/case-studies.html
+en/contact-us.html
+en/blog/what-is-aeo.html
+en/blog/aeo-optimization-agency-dubai.html`,
+  ka: `index.html
+seo-management.html
+seo-consultation.html
+seo-audit.html
+cro.html
+ai-seo.html
+services.html
+portfolio.html
+case-studies.html
+contact-us.html
+blog.html
+blog/copywriting.html`
+};
+document.getElementById('loadKa').addEventListener('click', () => document.getElementById('srcList').value = PAGE_SETS.ka);
+document.getElementById('loadEn').addEventListener('click', () => document.getElementById('srcList').value = PAGE_SETS.en);
+
+let pages = [];  // { path, html, lang, ctas: [...], pageType, error }
+let recommendations = [];
+
+function detectLang(html, path) {
+  const m = html.match(/<html\b[^>]*\blang="([^"]+)"/i);
+  if (m) {
+    if (/^ka\b/i.test(m[1])) return 'ka';
+    if (/^en\b/i.test(m[1])) return 'en';
+  }
+  return /^en\//.test(path) ? 'en' : 'ka';
+}
+function esc(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+// Page type from path
+function pageType(path) {
+  const p = path.toLowerCase();
+  if (/(^|\/)index\.html$/.test(p)) return 'home';
+  if (/blog\//.test(p) || /\bblog\.html$/.test(p)) return 'blog';
+  if (/case-studies\//.test(p)) return 'case-study';
+  if (/case-studies\.html$/.test(p)) return 'case-studies-index';
+  if (/industries\//.test(p)) return 'industry';
+  if (/tools\//.test(p) || /seo-tools\.html$/.test(p)) return 'tool';
+  if (/contact|lead-form/.test(p)) return 'contact';
+  if (/portfolio\.html$/.test(p)) return 'portfolio';
+  if (/seo-audit\.html$/.test(p)) return 'audit-page';
+  if (/seo-management|seo-consultation|seo-strategy|seo-copywriting|copywriting|cro|google-ads|ai-seo|seo-course/.test(p)) return 'service';
+  if (/about/.test(p)) return 'about';
+  if (/services\.html$/.test(p)) return 'services-index';
+  if (/vacancies|careers/.test(p)) return 'careers';
+  return 'other';
+}
+
+// === Scanner (mirrors picker) ===
+function scanCTAs(html) {
+  const lines = html.split('\n');
+  const results = [];
+  const anchorOpen = /<a\b[^>]*>/g;
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    let m;
+    anchorOpen.lastIndex = 0;
+    while ((m = anchorOpen.exec(line)) !== null) {
+      const tag = m[0];
+      const isCalendly = /onclick="[^"]*openCalendly/.test(tag);
+      const isTel = /\bhref="tel:/.test(tag);
+      const isMailto = /\bhref="mailto:/.test(tag);
+      const hasAudit = /\bhref="[^"]*seo-audit\.html"/.test(tag);
+      const hasLeadForm = /\bhref="[^"]*lead-form\.html"/.test(tag);
+      const ctaClass = /\bclass="[^"]*(ai-cta-animate|call-btn|cta-btn)[^"]*"/.test(tag);
+      if (!(isCalendly || ctaClass || hasAudit || hasLeadForm)) continue;
+      let body = '';
+      const startInLine = m.index;
+      let scanStart = i, scanCol = startInLine + tag.length;
+      let chunk = lines[scanStart].slice(scanCol);
+      let scanEndIdx = chunk.indexOf('</a>');
+      while (scanEndIdx === -1 && scanStart < lines.length - 1 && scanStart - i < 30) {
+        body += chunk + '\n';
+        scanStart++;
+        chunk = lines[scanStart];
+        scanCol = 0;
+        scanEndIdx = chunk.indexOf('</a>');
+      }
+      if (scanEndIdx === -1) continue;
+      body += chunk.slice(0, scanEndIdx);
+      const visible = body.replace(/<[^>]+>/g,'').trim();
+      const hrefM = tag.match(/\bhref="([^"]*)"/);
+      let kind = 'other';
+      if (isCalendly) kind = 'book';
+      else if (isTel) kind = 'call';
+      else if (isMailto) kind = 'email';
+      else if (hasAudit) kind = 'audit';
+      else if (hasLeadForm) kind = 'quote';
+      let ctx = '', parentId = '';
+      for (let k = i; k >= Math.max(0, i-200); k--) {
+        const lk = lines[k];
+        const idM = lk.match(/\bid="([^"]+)"/);
+        if (idM && !parentId && (i - k) <= 10) parentId = idM[1];
+        const h = lk.match(/<h[1-3][^>]*>([^<]+)</);
+        if (h) { ctx = h[1].trim(); break; }
+        if (idM && !ctx) ctx = '#' + idM[1];
+      }
+      if (!ctx) ctx = 'page';
+      const clsAttr = (tag.match(/class="([^"]*)"/) || ['',''])[1];
+      const isButtonStyled = /ai-cta-animate|call-btn|cta-btn|\bbg-|\bpx-\d|\bpy-\d|\bp-\d|\bborder-\d|\brounded-/.test(clsAttr);
+      if (!isCalendly && !isButtonStyled) continue;
+      results.push({ index: results.length, line: i + 1, kind, ctx, parentId, href: hrefM ? hrefM[1] : '', visible });
+    }
+  }
+  return results;
+}
+
+function commitLevel(cta) {
+  if (cta.kind === 'call' || cta.kind === 'email') return 'nav';
+  if (cta.kind === 'audit') return 'low';
+  if (cta.kind === 'quote') return 'med';
+  if (cta.kind === 'book') return 'high';
+  return 'med';
+}
+function isSticky(cta) { return /sticky/.test((cta.parentId||'').toLowerCase()); }
+function isNav(cta) {
+  const cls = '';  // we already filtered text links in scanner
+  const pid = (cta.parentId || '').toLowerCase();
+  return /main-header|nav|mobile-menu/.test(pid);
+}
+
+// === Crawl ===
+document.getElementById('crawl').addEventListener('click', async () => {
+  const list = document.getElementById('srcList').value.split('\n').map(l => l.trim()).filter(Boolean);
+  pages = [];
+  const prog = document.getElementById('progress');
+  prog.textContent = `Crawling 0 / ${list.length}...`;
+  let i = 0;
+  for (const path of list) {
+    i++;
+    prog.textContent = `Crawling ${i} / ${list.length} — ${path}`;
+    try {
+      const r = await fetch(path.replace(/^\//,''), { cache: 'no-store' });
+      if (!r.ok) { pages.push({ path, error: `HTTP ${r.status}` }); continue; }
+      const html = await r.text();
+      const lang = detectLang(html, path);
+      const ctas = scanCTAs(html);
+      const conv = ctas.filter(c => commitLevel(c) !== 'nav');
+      pages.push({ path, html, lang, ctas, conv, pageType: pageType(path) });
+    } catch (e) {
+      pages.push({ path, error: String(e).slice(0, 80) });
+    }
+  }
+  prog.textContent = `✓ Crawled ${pages.length} pages (${pages.filter(p => p.error).length} failed)`;
+  document.getElementById('tool').style.display = 'block';
+  renderOverall();
+  renderPageRows();
+  buildRecommendations();
+  renderRecs();
+});
+
+// === Overall distribution ===
+function renderOverall() {
+  const totals = { low: 0, med: 0, high: 0, nav: 0 };
+  pages.forEach(p => p.ctas?.forEach(c => totals[commitLevel(c)]++));
+  const conv = totals.low + totals.med + totals.high;
+  const pct = k => conv ? Math.round(totals[k] / conv * 100) : 0;
+  const failed = pages.filter(p => p.error).length;
+  const okPages = pages.length - failed;
+  document.getElementById('overall').innerHTML = `
+    <p style="margin:0 0 8px">Scanned <strong>${okPages}</strong> pages · ${conv} conversion CTAs · ${totals.nav} section nav / phone${failed ? ` · ${failed} failed` : ''}</p>
+    <div class="bar">
+      <span class="bar-low" style="width:${pct('low')}%"></span>
+      <span class="bar-med" style="width:${pct('med')}%"></span>
+      <span class="bar-high" style="width:${pct('high')}%"></span>
+    </div>
+    <div class="legend">
+      <span><i class="dot bar-low"></i>Low: ${totals.low} (${pct('low')}%) — audit, tools</span>
+      <span><i class="dot bar-med"></i>Medium: ${totals.med} (${pct('med')}%) — lead form, ROI</span>
+      <span><i class="dot bar-high"></i>High: ${totals.high} (${pct('high')}%) — book / Calendly</span>
+      <span style="opacity:0.6"><i class="dot bar-nav"></i>+ ${totals.nav} nav/phone (excluded)</span>
+    </div>
+    <p class="hint">Healthy SEO-agency sites typically run 35–55% Low + 15–25% Medium + 25–45% High. If High exceeds 70%, your funnel asks for commitment too early.</p>
+  `;
+}
+
+// === Per-page rows ===
+function renderPageRows() {
+  const c = document.getElementById('pageRows');
+  c.innerHTML = '';
+  pages.forEach(p => {
+    if (p.error) {
+      c.insertAdjacentHTML('beforeend', `<tr><td class="path">${esc(p.path)}</td><td colspan="3" class="fail">Failed: ${esc(p.error)}</td></tr>`);
+      return;
+    }
+    const counts = { low: 0, med: 0, high: 0 };
+    p.ctas.forEach(cta => { const lv = commitLevel(cta); if (counts[lv] !== undefined) counts[lv]++; });
+    const conv = counts.low + counts.med + counts.high;
+    const pct = k => conv ? counts[k] / conv * 100 : 0;
+    const stickyCTAs = p.ctas.filter(cta => isSticky(cta));
+    const stickyKinds = stickyCTAs.map(c => c.kind);
+    const stickyNote = stickyCTAs.length ? `sticky: ${stickyKinds.join(', ')}` : '';
+    const ideal = pageTypeIdeal(p.pageType);
+    const mismatch = ideal && conv > 0 && counts[ideal] / conv < 0.4;
+    c.insertAdjacentHTML('beforeend', `
+      <tr>
+        <td class="path">${esc(p.path)} <span class="ptype">${p.pageType}</span></td>
+        <td class="mini">
+          <span class="bar-mini">
+            <span class="bar-low" style="width:${pct('low')}%"></span>
+            <span class="bar-med" style="width:${pct('med')}%"></span>
+            <span class="bar-high" style="width:${pct('high')}%"></span>
+          </span>
+        </td>
+        <td>${counts.low}L · ${counts.med}M · ${counts.high}H  ${mismatch?'<span style="color:var(--warn);font-size:11px;margin-left:6px">⚠ off-pattern</span>':''}</td>
+        <td style="font-size:12px;color:var(--text-dim)">${stickyNote}${conv === 0 ? '<em style="color:var(--danger)">no conversion CTAs</em>' : ''}</td>
+      </tr>
+    `);
+  });
+}
+
+// Ideal commitment level by page type
+function pageTypeIdeal(type) {
+  return {
+    'home': 'low',         // hero should be low-friction lead magnet
+    'blog': 'low',         // educational → soft CTA
+    'tool': 'low',
+    'industry': 'med',     // research-phase
+    'case-study': 'high',  // visitor is convinced → ask for commit
+    'case-studies-index': 'high',
+    'service': 'high',     // detail page = decision stage
+    'services-index': 'med',
+    'audit-page': 'low',
+    'contact': 'high',
+    'about': 'med',
+    'portfolio': 'high',
+    'careers': null
+  }[type] || null;
+}
+
+// === Build recommendations ===
+function buildRecommendations() {
+  recommendations = [];
+  pages.filter(p => !p.error).forEach(p => {
+    const conv = p.ctas.filter(cta => commitLevel(cta) !== 'nav');
+
+    // R1: Sticky bar with high-commitment CTA → recommend audit swap
+    const stickyHigh = p.ctas.filter(cta => isSticky(cta) && commitLevel(cta) === 'high');
+    if (stickyHigh.length) {
+      recommendations.push({
+        id: 'sticky-' + p.path,
+        severity: 'crit',
+        title: `Sticky bar uses high-friction CTA on ${esc(p.path)}`,
+        body: `Mobile sticky bar should be lowest friction (audit / tel:). Currently has ${stickyHigh.length} Book Consultation in the always-visible bar — kills scroll behavior. Swap to Free SEO Audit.`,
+        files: [{ path: p.path, lang: p.lang, swaps: stickyHigh.map(cta => ({ line: cta.line, ctx: cta.ctx, from: cta.visible, to: p.lang === 'ka' ? 'უფასო SEO აუდიტი' : 'Free SEO Audit', hrefTo: 'seo-audit.html' })) }]
+      });
+    }
+
+    // R2: Hero with only high-commitment CTAs → recommend at least one low alternative
+    const heroCTAs = p.ctas.filter(c => c.line < 600 && commitLevel(c) === 'high');
+    const heroHasLow = p.ctas.some(c => c.line < 600 && commitLevel(c) === 'low');
+    if (p.pageType === 'home' && heroCTAs.length && !heroHasLow) {
+      recommendations.push({
+        id: 'hero-' + p.path,
+        severity: 'warn',
+        title: `Hero on ${esc(p.path)} has no low-friction alternative`,
+        body: `Cold visitors see only "Book Consultation" above the fold. Industry pattern: pair high-commitment with a low-friction option. Swap one Book → Free SEO Audit.`,
+        files: [{ path: p.path, lang: p.lang, swaps: [{ line: heroCTAs[0].line, ctx: heroCTAs[0].ctx, from: heroCTAs[0].visible, to: p.lang === 'ka' ? 'უფასო SEO აუდიტი' : 'Free SEO Audit', hrefTo: 'seo-audit.html' }] }]
+      });
+    }
+
+    // R3: Blog page with high-commitment CTAs → blog should be soft
+    if (p.pageType === 'blog' && conv.length) {
+      const blogHighs = conv.filter(c => commitLevel(c) === 'high');
+      if (blogHighs.length) {
+        recommendations.push({
+          id: 'blog-' + p.path,
+          severity: 'warn',
+          title: `Blog post ${esc(p.path)} pushes book-call too hard`,
+          body: `Educational pages should end with a soft CTA (newsletter / audit). ${blogHighs.length} high-commitment CTA(s) found. Replace with audit.`,
+          files: [{ path: p.path, lang: p.lang, swaps: blogHighs.map(cta => ({ line: cta.line, ctx: cta.ctx, from: cta.visible, to: p.lang === 'ka' ? 'უფასო SEO აუდიტი' : 'Free SEO Audit', hrefTo: 'seo-audit.html' })) }]
+        });
+      }
+    }
+
+    // R4: Page with NO conversion CTAs at all
+    if (conv.length === 0 && p.pageType !== 'careers') {
+      recommendations.push({
+        id: 'missing-' + p.path,
+        severity: 'crit',
+        title: `No conversion CTAs on ${esc(p.path)}`,
+        body: `This page has zero conversion CTAs. Page type "${p.pageType}" typically needs at least one. Add a CTA in hero + footer-cta section.`,
+        files: [],  // manual fix needed
+        manualOnly: true
+      });
+    }
+  });
+
+  // Site-wide checks
+  const stickyByLang = {};
+  pages.filter(p => !p.error).forEach(p => {
+    const sticky = p.ctas.filter(c => isSticky(c));
+    sticky.forEach(s => {
+      stickyByLang[p.lang] = stickyByLang[p.lang] || [];
+      stickyByLang[p.lang].push({ path: p.path, kind: s.kind });
+    });
+  });
+  Object.entries(stickyByLang).forEach(([lang, list]) => {
+    const kinds = [...new Set(list.map(s => s.kind))];
+    if (kinds.length > 1) {
+      recommendations.push({
+        id: 'sticky-inconsistent-' + lang,
+        severity: 'info',
+        title: `Sticky CTA inconsistent across ${lang.toUpperCase()} pages`,
+        body: `Sticky bar uses different CTA types: ${kinds.join(', ')}. Pick one pattern (audit recommended) and apply across all pages so visitors get a consistent funnel signal.`,
+        files: [],
+        manualOnly: true,
+        detail: list.map(s => `${s.path}: ${s.kind}`).join('\n')
+      });
+    }
+  });
+}
+
+// === Render recommendations ===
+function renderRecs() {
+  const c = document.getElementById('recs');
+  c.innerHTML = '';
+  if (recommendations.length === 0) {
+    c.innerHTML = '<p class="hint">No site-wide issues detected. CTA distribution looks healthy.</p>';
+    document.getElementById('recCount').textContent = '';
+    return;
+  }
+  document.getElementById('recCount').textContent = `(${recommendations.length} recommendation${recommendations.length===1?'':'s'})`;
+  recommendations.forEach(r => {
+    r.selected = r.severity === 'crit';  // auto-select critical ones
+    const div = document.createElement('div');
+    div.className = 'rec ' + (r.severity === 'crit' ? 'crit' : r.severity === 'warn' ? 'warn' : '');
+    div.dataset.id = r.id;
+    const swapsHTML = r.files.length ? `
+      <details><summary>Show ${r.files.reduce((a,f)=>a+f.swaps.length,0)} line-level swap(s)</summary>
+      ${r.files.map(f => `
+        <div style="margin-top:6px"><strong>${esc(f.path)}</strong></div>
+        <ul style="margin:4px 0;padding-left:18px">
+          ${f.swaps.map(s => `<li><code>line ${s.line}</code> [${esc(s.ctx)}]: "${esc(s.from)}" → "${esc(s.to)}" (href → <code>${esc(s.hrefTo)}</code>)</li>`).join('')}
+        </ul>
+      `).join('')}
+      </details>
+    ` : (r.detail ? `<details><summary>Show details</summary><pre style="font-size:11px;color:var(--text-dim);margin:6px 0">${esc(r.detail)}</pre></details>` : '');
+    div.innerHTML = `
+      <div class="rec-head">
+        ${r.manualOnly ? '<span class="severity sev-info">MANUAL</span>' : `<input type="checkbox" data-id="${r.id}" ${r.selected?'checked':''}>`}
+        <span class="title">${r.title}</span>
+        <span class="severity sev-${r.severity}">${r.severity === 'crit' ? 'CRITICAL' : r.severity === 'warn' ? 'WARN' : 'INFO'}</span>
+      </div>
+      <div class="rec-body">
+        ${r.body}
+        ${swapsHTML}
+      </div>
+    `;
+    c.appendChild(div);
+  });
+  c.querySelectorAll('input[type=checkbox]').forEach(cb => {
+    cb.addEventListener('change', e => {
+      const id = e.target.dataset.id;
+      const r = recommendations.find(x => x.id === id);
+      if (r) r.selected = e.target.checked;
+      updateCount();
+    });
+  });
+  updateCount();
+}
+
+function updateCount() {
+  const n = recommendations.filter(r => r.selected).length;
+  document.getElementById('selectionCount').textContent = `${n} recommendation${n===1?'':'s'} selected`;
+  document.getElementById('confirm').disabled = n === 0;
+  document.getElementById('copy').disabled = n === 0;
+}
+
+// === Output ===
+function buildChangeList() {
+  const sel = recommendations.filter(r => r.selected);
+  if (!sel.length) return '(no recommendations selected)';
+  const lines = [
+    `# Site-wide CTA changes — generated ${new Date().toISOString().slice(0,16).replace('T',' ')}`,
+    `# Tool: cta-sitemap.html  ·  ${sel.length} recommendation(s)`,
+    ''
+  ];
+  // Group by file
+  const byFile = {};
+  sel.forEach(r => {
+    if (r.manualOnly) {
+      lines.push(`## MANUAL: ${r.title}`);
+      lines.push(`#  ${r.body}`);
+      if (r.detail) lines.push('#  ' + r.detail.split('\n').join('\n#  '));
+      lines.push('');
+      return;
+    }
+    r.files.forEach(f => {
+      byFile[f.path] = byFile[f.path] || { path: f.path, lang: f.lang, swaps: [] };
+      f.swaps.forEach(s => byFile[f.path].swaps.push({ ...s, recId: r.id, recTitle: r.title }));
+    });
+  });
+  Object.values(byFile).forEach(f => {
+    lines.push(`## File: ${f.path}  (${f.lang.toUpperCase()})`);
+    f.swaps.sort((a,b) => a.line - b.line).forEach(s => {
+      lines.push(`Line ${s.line}  [${s.ctx}]`);
+      lines.push(`  reason:  ${s.recTitle}`);
+      lines.push(`  text:    "${s.from}"  →  "${s.to}"`);
+      lines.push(`  href:    →  ${s.hrefTo}`);
+      lines.push('');
+    });
+  });
+  return lines.join('\n');
+}
+
+document.getElementById('copy').addEventListener('click', async () => {
+  const txt = buildChangeList();
+  try { await navigator.clipboard.writeText(txt); show(txt + '\n\n--- ✓ Copied ---'); }
+  catch { show(txt); }
+});
+document.getElementById('confirm').addEventListener('click', () => {
+  show(buildChangeList() + '\n\n--- Paste this into Claude Code and say "apply these CTA changes" ---');
+});
+function show(t) {
+  document.getElementById('outputPanel').style.display = 'block';
+  document.getElementById('output').value = t;
+}
+</script>
+</body>
+</html>
