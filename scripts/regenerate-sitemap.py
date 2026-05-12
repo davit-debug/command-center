@@ -23,6 +23,9 @@ EXCLUDE = {
     "og-review.html",
     "og-test.html",
     "cta-picker.html",
+    "cta-microcopy.html",
+    "cta-segments.html",
+    "cta-sitemap.html",
 }
 
 # Skipped from translation — these are KA-only (no /en/ counterpart).

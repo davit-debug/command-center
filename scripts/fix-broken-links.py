@@ -30,6 +30,11 @@ EXTRA_FIXES = [
     ("en/industries/ecommerce.html", 'href="en/industries.html"', 'href="../services.html"', ""),
     ("en/industries/healthcare.html", 'href="../industries.html"', 'href="../services.html"', ""),
     ("en/industries/ecommerce.html", 'href="../industries.html"', 'href="../services.html"', ""),
+    # KA equivalents (missed in first pass)
+    ("industries/healthcare.html", 'href="../industries.html"', 'href="../services.html"', "missing page: → services"),
+    ("industries/ecommerce.html", 'href="../industries.html"', 'href="../services.html"', "missing page: → services"),
+    ("industries/construction.html", 'href="../industries.html"', 'href="../services.html"', ""),
+    ("industries/financial-services.html", 'href="../industries.html"', 'href="../services.html"', ""),
 ]
 
 
