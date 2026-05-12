@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>CTA Sessions — saved work across tools</title>
+<style>
+  :root {
+    --bg: #0f172a; --bg-alt: #1e293b; --bg-card: #0d1117;
+    --border: #334155; --text: #f1f5f9; --text-dim: #94a3b8;
+    --primary: #8b5cf6; --primary-dim: #a78bfa;
+    --success: #22c55e; --warn: #f59e0b; --danger: #ef4444; --teal: #14b8a6;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; min-height: 100vh; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 14px 14px 80px; }
+  .tools-nav { display: flex; gap: 4px; margin-bottom: 14px; flex-wrap: wrap; align-items: center; font-size: 13px; padding: 8px 12px; background: var(--bg-alt); border: 1px solid var(--border); border-radius: 8px; }
+  .tools-nav strong { color: var(--text-dim); margin-right: 8px; }
+  .tools-nav a { color: var(--text-dim); text-decoration: none; padding: 4px 10px; border-radius: 6px; }
+  .tools-nav a:hover { background: var(--bg-card); color: var(--text); }
+  .tools-nav a.current { background: var(--primary); color: white; font-weight: 600; }
+  h1 { margin: 0 0 4px; font-size: 24px; }
+  h1 span { color: var(--primary-dim); }
+  .sub { color: var(--text-dim); font-size: 14px; margin: 0 0 18px; }
+  .panel { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-bottom: 14px; }
+  .panel h2 { margin: 0 0 10px; font-size: 14px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; }
+  button { padding: 9px 18px; border: 0; border-radius: 7px; background: var(--primary); color: white; font-weight: 600; font-size: 14px; cursor: pointer; font-family: inherit; }
+  button:hover { background: var(--primary-dim); }
+  button.secondary { background: var(--bg-card); border: 1px solid var(--border); color: var(--text); }
+  button.secondary:hover { background: var(--border); }
+  button.danger { background: var(--danger); color: white; }
+  button.danger:hover { background: #dc2626; }
+  .hint { font-size: 12px; color: var(--text-dim); margin-top: 6px; }
+  code { background: var(--bg-card); padding: 2px 6px; border-radius: 4px; font-size: 12px; }
+
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; }
+  .stat { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 12px; text-align: center; }
+  .stat .val { font-size: 24px; font-weight: 800; }
+  .stat .label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; }
+
+  .session-card {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px;
+    padding: 14px 16px; margin-bottom: 10px;
+    display: grid; grid-template-columns: 1fr auto auto;
+    gap: 10px; align-items: center;
+  }
+  .session-card .info .tool { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; }
+  .session-card .info .path { font-family: ui-monospace, monospace; font-weight: 600; font-size: 13px; }
+  .session-card .info .detail { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+  .session-card .age { font-size: 12px; color: var(--text-dim); white-space: nowrap; }
+  .session-card .actions { display: flex; gap: 4px; }
+  .session-card .actions a { text-decoration: none; }
+  .session-card .actions button { padding: 6px 12px; font-size: 12px; }
+
+  .empty { padding: 40px; text-align: center; color: var(--text-dim); font-size: 14px; }
+  .empty code { font-size: 12px; }
+
+  .group-header { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin: 16px 0 6px; font-weight: 600; }
+
+  .tool-pill {
+    display: inline-block; font-size: 10px; padding: 2px 7px; border-radius: 10px;
+    font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .tp-picker { background: rgba(139,92,246,0.18); color: var(--primary-dim); }
+  .tp-lab { background: rgba(20,184,166,0.18); color: var(--teal); }
+  .tp-microcopy { background: rgba(59,130,246,0.18); color: #60a5fa; }
+  .tp-segments { background: rgba(245,158,11,0.18); color: #fbbf24; }
+  .tp-other { background: rgba(148,163,184,0.15); color: var(--text-dim); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav class="tools-nav">
+  <strong>CTA Tools:</strong>
+  <a href="cta.html">Hub</a>
+  <a href="cta-picker.html">Picker</a>
+  <a href="cta-microcopy.html">Microcopy</a>
+  <a href="cta-segments.html">Segments</a>
+  <a href="cta-sitemap.html">Sitemap</a>
+  <a href="cta-lab.html">Lab</a>
+  <a href="cta-ab.html">A/B</a>
+  <a href="cta-paths.html">Paths</a>
+  <a href="cta-heatmap.html">Heatmap</a>
+  <a href="cta-report.html">Report</a>
+  <a href="cta-forecast.html">Forecast</a>
+  <a href="cta-localization.html">L10n</a>
+  <a href="cta-sessions.html" class="current">Sessions</a>
+  <a href="cta-help.html">Help</a>
+</nav>
+
+<h1>CTA Sessions <span>— recent work across tools</span></h1>
+<p class="sub">Tools with localStorage support (Picker, Lab — more coming) save your selections so you can come back later. This page lists every saved session, grouped by tool. Click "Resume" to jump back in.</p>
+
+<div class="panel">
+  <h2>Overview</h2>
+  <div class="stats" id="stats"></div>
+</div>
+
+<div class="panel">
+  <h2>Saved sessions</h2>
+  <div id="sessions"></div>
+  <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+    <button class="danger" id="clearAll">Clear all sessions</button>
+    <button class="secondary" id="refresh">Refresh</button>
+    <button class="secondary" id="export">Export sessions (JSON)</button>
+  </div>
+</div>
+
+</div>
+
+<script>
+function esc(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function ageStr(ms) {
+  const sec = Math.floor((Date.now() - ms) / 1000);
+  if (sec < 60) return 'just now';
+  if (sec < 3600) return Math.floor(sec/60) + 'm ago';
+  if (sec < 86400) return Math.floor(sec/3600) + 'h ago';
+  return Math.floor(sec/86400) + 'd ago';
+}
+
+const TOOLS = {
+  picker: { url: 'cta-picker.html', label: 'Picker' },
+  lab: { url: 'cta-lab.html', label: 'Lab' },
+  microcopy: { url: 'cta-microcopy.html', label: 'Microcopy' },
+  segments: { url: 'cta-segments.html', label: 'Segments' },
+  sitemap: { url: 'cta-sitemap.html', label: 'Sitemap' },
+  forecast: { url: 'cta-forecast.html', label: 'Forecast' }
+};
+
+function loadSessions() {
+  const sessions = [];
+  try {
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      const match = key.match(/^cta-(picker|lab|microcopy|segments|sitemap|forecast):(.+)$/);
+      if (!match) continue;
+      const tool = match[1];
+      const path = match[2];
+      try {
+        const data = JSON.parse(localStorage.getItem(key));
+        sessions.push({ key, tool, path, data, timestamp: data.timestamp || 0 });
+      } catch {}
+    }
+  } catch {}
+  // Sort newest first
+  sessions.sort((a, b) => b.timestamp - a.timestamp);
+  return sessions;
+}
+
+function summarize(s) {
+  if (s.tool === 'picker') {
+    const n = (s.data.selections || []).length;
+    return `${n} CTA selection${n===1?'':'s'} marked for swap`;
+  }
+  if (s.tool === 'lab') {
+    const n = Object.keys(s.data.changes || {}).length;
+    return `${n} CTA edit${n===1?'':'s'} pending`;
+  }
+  if (s.tool === 'microcopy') {
+    const n = (s.data.picks || []).length;
+    return `${n} variant pick${n===1?'':'s'}`;
+  }
+  if (s.tool === 'segments') {
+    const n = (s.data.selected || []).length;
+    return `${n} segment swap${n===1?'':'s'}`;
+  }
+  return 'saved state';
+}
+
+function render() {
+  const sessions = loadSessions();
+  // Stats
+  const byTool = {};
+  sessions.forEach(s => { byTool[s.tool] = (byTool[s.tool] || 0) + 1; });
+  document.getElementById('stats').innerHTML = `
+    <div class="stat"><div class="val">${sessions.length}</div><div class="label">Saved sessions</div></div>
+    <div class="stat"><div class="val">${new Set(sessions.map(s => s.path)).size}</div><div class="label">Unique pages</div></div>
+    <div class="stat"><div class="val">${Object.keys(byTool).length}</div><div class="label">Tools used</div></div>
+    <div class="stat"><div class="val">${sessions.length ? ageStr(sessions[0].timestamp) : '—'}</div><div class="label">Most recent</div></div>
+  `;
+
+  // Sessions list
+  const c = document.getElementById('sessions');
+  if (!sessions.length) {
+    c.innerHTML = `<div class="empty">No saved sessions yet. Open <a href="cta-picker.html" style="color:var(--primary-dim)">Picker</a> or <a href="cta-lab.html" style="color:var(--primary-dim)">Lab</a>, make some selections, and they'll appear here automatically.</div>`;
+    return;
+  }
+  // Group by tool
+  const groups = {};
+  sessions.forEach(s => { groups[s.tool] = groups[s.tool] || []; groups[s.tool].push(s); });
+  c.innerHTML = '';
+  const toolOrder = ['picker', 'lab', 'microcopy', 'segments', 'sitemap', 'forecast'];
+  toolOrder.forEach(tool => {
+    if (!groups[tool]) return;
+    const head = document.createElement('div');
+    head.className = 'group-header';
+    head.textContent = TOOLS[tool].label + ` (${groups[tool].length})`;
+    c.appendChild(head);
+    groups[tool].forEach(s => {
+      const div = document.createElement('div');
+      div.className = 'session-card';
+      div.innerHTML = `
+        <div class="info">
+          <div><span class="tool-pill tp-${tool in TOOLS ? tool : 'other'}">${TOOLS[tool].label}</span> <span class="path">${esc(s.path)}</span></div>
+          <div class="detail">${esc(summarize(s))}</div>
+        </div>
+        <div class="age">${ageStr(s.timestamp)}</div>
+        <div class="actions">
+          <a href="${TOOLS[tool].url}?path=${encodeURIComponent(s.path)}"><button class="secondary">Resume</button></a>
+          <button class="secondary delete" data-key="${esc(s.key)}">×</button>
+        </div>
+      `;
+      c.appendChild(div);
+    });
+  });
+
+  c.querySelectorAll('button.delete').forEach(b => {
+    b.addEventListener('click', e => {
+      const key = e.target.dataset.key;
+      if (confirm('Delete this session?')) {
+        try { localStorage.removeItem(key); } catch {}
+        render();
+      }
+    });
+  });
+}
+
+document.getElementById('refresh').addEventListener('click', render);
+document.getElementById('clearAll').addEventListener('click', () => {
+  if (!confirm('Clear ALL CTA tool sessions? This cannot be undone.')) return;
+  const sessions = loadSessions();
+  sessions.forEach(s => { try { localStorage.removeItem(s.key); } catch {} });
+  render();
+});
+document.getElementById('export').addEventListener('click', () => {
+  const sessions = loadSessions();
+  const json = JSON.stringify(sessions.map(s => ({ key: s.key, data: s.data })), null, 2);
+  const blob = new Blob([json], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `cta-sessions-${new Date().toISOString().slice(0,10)}.json`;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+});
+
+render();
+</script>
+</body>
+</html>

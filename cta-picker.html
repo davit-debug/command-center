@@ -176,6 +176,7 @@
   <a href="cta-report.html">Report</a>
   <a href="cta-forecast.html">Forecast</a>
   <a href="cta-localization.html">L10n</a>
+  <a href="cta-sessions.html">Sessions</a>
   <a href="cta-help.html">Help</a>
 </nav>
 
@@ -1072,6 +1073,9 @@ function attr(s) { return String(s).replace(/"/g, '&quot;'); }
 
 // Init
 renderPresets();
+// Honor ?path= URL parameter (used by Sessions page Resume button)
+const _urlPath = new URLSearchParams(window.location.search).get('path');
+if (_urlPath) document.getElementById('src').value = _urlPath;
 // Auto-load default
 loadSource();
 </script>

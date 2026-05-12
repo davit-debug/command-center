@@ -104,6 +104,7 @@
   <a href="cta-report.html">Report</a>
   <a href="cta-forecast.html">Forecast</a>
   <a href="cta-localization.html">L10n</a>
+  <a href="cta-sessions.html">Sessions</a>
   <a href="cta-help.html">Help</a>
 </nav>
 
@@ -596,6 +597,9 @@ function show(text) {
 }
 
 // Init
+// Honor ?path= URL parameter (Resume from Sessions page)
+const _urlPath = new URLSearchParams(window.location.search).get('path');
+if (_urlPath) { const srcEl = document.getElementById('src'); if (srcEl) srcEl.value = _urlPath; }
 loadSource();
 </script>
 </body>
