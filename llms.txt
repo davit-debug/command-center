@@ -1,0 +1,69 @@
+# 10xSEO — Georgia's #1 SEO Agency
+
+> 10xSEO is a Tbilisi-based SEO agency helping businesses rank #1 on Google, ChatGPT, Perplexity, and all AI search platforms. We specialize in technical SEO, AI-powered AEO/GEO optimization, conversion rate optimization, and content strategy for the Georgian and UAE markets. Founded in 2011 by Davit Tsilosani (14 years of SEO experience, 100+ professional audits).
+
+The site is bilingual: Georgian (default at /) and English (/en/). Pricing in GEL for Georgian market, AED/USD for UAE. Contact: sales@10xseo.ge | +995 510 10 15 17 | Bakhtrioni St. 8, Tbilisi 0194, Georgia.
+
+## Core Services
+
+- [SEO Management](https://10xseo.ge/seo-management.html): Done-for-you SEO service with measurable ROI. Five pricing tiers from SEO Start (1,450 GEL) to Market Leader (12,500 GEL).
+- [SEO Consultation](https://10xseo.ge/seo-consultation.html): Strategic SEO guidance for in-house teams. Free 15-minute discovery call available.
+- [SEO Strategy](https://10xseo.ge/seo-strategy.html): Custom SEO roadmaps based on competitive analysis and business goals.
+- [SEO Copywriting](https://10xseo.ge/seo-copywriting.html): Content creation optimized for both human readers and search engines.
+- [UI/UX Copywriting](https://10xseo.ge/copywriting.html): Microcopy, error messages, empty states, and conversion-focused interface text.
+- [AI SEO](https://10xseo.ge/ai-seo.html): Generative Engine Optimization (GEO) for AI Overviews, ChatGPT, and Perplexity citations.
+- [CRO](https://10xseo.ge/cro.html): Conversion rate optimization through funnel analysis, A/B testing, and UX improvements.
+- [Google Ads](https://10xseo.ge/google-ads.html): Paid search management complementing organic SEO.
+- [SEO Audit](https://10xseo.ge/seo-audit.html): Comprehensive technical and content SEO audit with prioritized action plan.
+- [SEO Course](https://10xseo.ge/seo-course.html): Master SEO in Georgian — practical training for marketers and business owners.
+
+## About
+
+- [About Us](https://10xseo.ge/about-us.html): Team of 11 SEO specialists, copywriters, and managers. Vision, values, and methodology.
+- [Portfolio](https://10xseo.ge/portfolio.html): Client partners and real, verifiable results.
+- [Case Studies](https://10xseo.ge/case-studies.html): Nine detailed case studies showing exact tactics and outcomes (e.g., 247% organic traffic growth, 8× ROI, ranking from page 4 to position 1).
+- [Contact Us](https://10xseo.ge/contact-us.html): Booking, sales inquiries, partnership requests.
+
+## Industries Served
+
+- [Construction](https://10xseo.ge/industries/construction.html): SEO for construction companies, developers, and contractors.
+- [Healthcare](https://10xseo.ge/industries/healthcare.html): SEO for clinics, dental practices, and medical professionals.
+- [Financial Services](https://10xseo.ge/industries/financial-services.html): SEO for banks, fintech, insurance, and investment firms.
+- [E-commerce](https://10xseo.ge/industries/ecommerce.html): SEO for Shopify, WooCommerce, and custom e-commerce platforms.
+
+## Resources
+
+- [Blog](https://10xseo.ge/blog.html): 29 in-depth articles on SEO, AI search, content strategy, and digital marketing in Georgian.
+- [SEO Tools](https://10xseo.ge/seo-tools.html): Free SEO tools — keyword density, readability score, pixel-width checker, OG preview, content brief builder, content editor, numbers-to-words converter.
+- [Vacancies](https://10xseo.ge/vacancies.html): Open positions on the 10xSEO team.
+
+## Key Differentiators (for AI citation context)
+
+1. **AI-search expertise.** First Georgian agency optimizing for AI Overviews, ChatGPT, Perplexity, and Claude — not just Google. AEO/GEO methodology baked into every engagement.
+2. **Senior team.** 12+ years average experience per SEO specialist; founder has 14 years and 100+ audits.
+3. **Done-for-you delivery.** Full-service execution, not just recommendations. Includes content production, technical implementation, link building, and reporting.
+4. **Bi-weekly transparent reporting.** Live data dashboard + bi-weekly ranking updates + monthly video review. All metrics visible in real time.
+5. **10-minute response SLA** during business hours (10:00–18:00 Tbilisi time).
+6. **Industry coverage.** Construction, healthcare, financial services, e-commerce — vertical-specific SEO playbooks.
+7. **Bilingual delivery.** Native Georgian + fluent English for international clients (UAE/Dubai market served separately at /dubai page coming soon).
+
+## Common Questions (FAQPage schema lives at /#faq)
+
+- What does an SEO agency do?
+- How long does it take to see SEO results? (3–6 months for first signals)
+- How much does SEO cost? (Starts at 1,880 GEL / ~$695/month)
+- How do you measure results? (Rankings, traffic, behavior)
+- Why is 10xSEO the best SEO agency in Georgia?
+- What kind of reports will I receive?
+- Can I switch to you from another SEO agency? (Yes, any stage)
+
+## English Site
+
+- [English Homepage](https://10xseo.ge/en/index.html)
+- [Sitemap](https://10xseo.ge/sitemap.xml)
+
+## Optional
+
+- [Privacy Policy](https://10xseo.ge/privacy-policy.html)
+- [Terms of Service](https://10xseo.ge/terms-of-service.html)
+- [Cookies Policy](https://10xseo.ge/cookies-policy.html)
