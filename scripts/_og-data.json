@@ -1,0 +1,1026 @@
+[
+  {
+    "path": "404.html",
+    "cat": "other",
+    "img": "images/og/page-404.jpg",
+    "title": "404 — გვერდი ვერ მოიძებნა | 10xSEO",
+    "desc": "გვერდი, რომელსაც ეძებთ, არ არსებობს. დაბრუნდით მთავარ გვერდზე ან გაეცანით ჩვენს SEO სერვისებს.",
+    "url": "https://10xseo.ge/404.html"
+  },
+  {
+    "path": "about-us.html",
+    "cat": "other",
+    "img": "images/og/page-about-us.jpg",
+    "title": "ჩვენ შესახებ - 10xSEO",
+    "desc": "10xSEO — SEO სააგენტო, რომელიც ბრენდებს Google-სა და AI პლატფორმებზე #1 პოზიციაზე აყენებს. გაიცანი ჩვენი გუნდი, ხედვა და მიდგომა.",
+    "url": "https://10xseo.ge/about-us.html"
+  },
+  {
+    "path": "ai-leqsikoni.html",
+    "cat": "other",
+    "img": "images/og/page-ai-leqsikoni.jpg",
+    "title": "AI ლექსიკონი — 10XSEO",
+    "desc": "AI და GEO ტერმინების სრული ლექსიკონი ქართულად. LLM, Transformer, RAG, GEO, AI Overviews — ყველა ტერმინი ერთ სივრცეში.",
+    "url": "https://10xseo.ge/ai-leqsikoni/"
+  },
+  {
+    "path": "ai-seo.html",
+    "cat": "service",
+    "img": "images/og/service-ai-seo.jpg",
+    "title": "AI SEO — GEO & AEO ოპტიმიზაცია | 10XSEO",
+    "desc": "გახადეთ თქვენი ბრენდი ხილული AI საძიებო სისტემებში — ChatGPT, Gemini, Perplexity, Claude.  სერვისი.",
+    "url": "https://10xseo.ge/ai-seo/"
+  },
+  {
+    "path": "blog/2023-seo-stats.html",
+    "cat": "blog",
+    "img": "images/blog/2023-seo-stats.jpg",
+    "title": "2023 წლის SEO სტატისტიკური ფაქტები - 10XSEO",
+    "desc": "Ძებნების 26% დაასრულდა კლიკის , ანუ მესამე მხარის საიტზე გადასვლის გარეშე , რაც ნიშნავს იმას რომ მომხმარებლებმა მიიღეს ინფორმაცია პირდაპირ Google-ს საძიებო სისტემიდან , ცნობისათვის 2020 წელს ეს რიცხვი",
+    "url": "https://10xseo.ge/blog/2023-seo-stats.html"
+  },
+  {
+    "path": "blog/2024-seo-trendebi.html",
+    "cat": "blog",
+    "img": "images/blog/2024-seo-trendebi.jpg",
+    "title": "2024 წლის მნიშვნელოვანი SEO ტრენდები - 10XSEO",
+    "desc": "ამ სტატიაში განვიხილავთ 2024 წლის მნიშვნელოვან , მოსალოდნეო SEO ტრენდებს , გაეცანით რათა უფრო მომზადებული შეხვდეთ.",
+    "url": "https://10xseo.ge/blog/2024-seo-trendebi.html"
+  },
+  {
+    "path": "blog/2025-dzebnebi.html",
+    "cat": "blog",
+    "img": "images/blog/2025-dzebnebi.jpg",
+    "title": "რას ეძებდა საქართველო Google-ში 2025 წელს: შაურმა, სესხი, ხვიჩა და სხვ.",
+    "desc": "10xSEO-ს გუნდმა Ahrefs-ის მონაცემებზე დაყრდნობით საქართველოში 2025 წელს ყველაზე ძიებადი სიტყვები გაფილტრა. ნახეთ სტატისტიკა.",
+    "url": "https://10xseo.ge/blog/2025-dzebnebi.html"
+  },
+  {
+    "path": "blog/2025-wlis-martis-ganaxlebebi-dasrulda.html",
+    "cat": "blog",
+    "img": "images/blog/2025-wlis-martis-ganaxlebebi-dasrulda.jpg",
+    "title": "2025 წლის მარტის ძირითადი განახლებები დასრულებულია",
+    "desc": "გაიგე ამჯერად რისი შეცვლა გადაწყვიტეს საძიებო სისტემაში და რა ფაქტორებზე იქონია გავლენა მარტის განახლებამ.",
+    "url": "https://10xseo.ge/blog/2025-wlis-martis-ganaxlebebi-dasrulda.html"
+  },
+  {
+    "path": "blog/best-seo-agency-in-georgia.html",
+    "cat": "blog",
+    "img": "images/blog/best-seo-agency-in-georgia.jpg",
+    "title": "რატომ არის 10xSEO საუკეთესო SEO სააგენტო საქართველოში?",
+    "desc": "რატომ ირჩევენ ლიდერები 10xSEO-ს? რადგან ეს არის საუკეთესო SEO სააგენტო საქართველოში — სრული „Done-for-You“ მომსახურება, AI და AEO ოპტიმიზაცია",
+    "url": "https://10xseo.ge/blog/best-seo-agency-in-georgia.html"
+  },
+  {
+    "path": "blog/brand-mistakes.html",
+    "cat": "blog",
+    "img": "images/blog/brand-mistakes.jpg",
+    "title": "შეცდომები, რომლებიც ცნობილ ბრენდებს მსოფლიომ არ აპატია",
+    "desc": "მიდი, იხუმრე და შენი ბიზნესი დასამარდება. როგორ შეიძლება ერთმა წინადადებამ მილიონიანი იმპერია გააკოტროს? წაიკითხეთ ბიზნესის ისტორიაში ყველაზე ხმაურიანი ჩავარდნების შესახებ.",
+    "url": "https://10xseo.ge/blog/brand-mistakes.html"
+  },
+  {
+    "path": "blog/business-seo-stats.html",
+    "cat": "blog",
+    "img": "images/blog/business-seo-stats.jpg",
+    "title": "საინტერესო SEO სტატისტიკა ბიზნესისთვის - 10XSEO",
+    "desc": "SEO არის 21-ე საუკუნის ციფრული ალქიმია. მაგრამ შუა საუკუნეების ალქიმიისგან განსხვავებით, SEO-ს ეფექტურობა არ არის სპეკულაციის საკითხი – ეს არის მყარი მონაცემებით გამყარებული ფაქტი. 2024 წელს, SEO სტრა",
+    "url": "https://10xseo.ge/blog/business-seo-stats.html"
+  },
+  {
+    "path": "blog/cifruli-marketingi.html",
+    "cat": "blog",
+    "img": "images/blog/cifruli-marketingi.jpg",
+    "title": "ციფრული მარკეტინგი 2025 წელს: რატომ SEO ოპტიმიზაცია?",
+    "desc": "როგორ ცვლის SEO ოპტიმიზაცია თამაშის წესებს 2025-ში: ციფრული მარკეტინგი და უახლეს მეთოდები თქვენი ბიზნესის წარმატებისთვის.",
+    "url": "https://10xseo.ge/blog/cifruli-marketingi.html"
+  },
+  {
+    "path": "blog/cifruli-memkvidreoba.html",
+    "cat": "blog",
+    "img": "images/blog/cifruli-memkvidreoba.jpg",
+    "title": "რა ბედი ეწევა ჩვენს სოციალურ ქსელებს გარდაცვალების შემდეგ?",
+    "desc": "გაიგეთ, როგორ ფუნქციონირებს ციფრული მემკვიდრეობის სისტემა. სტატიაში დეტალურად არის აღწერილი ანგარიშის განკარგვის სამი შესაძლო სცენარი.",
+    "url": "https://10xseo.ge/blog/cifruli-memkvidreoba.html"
+  },
+  {
+    "path": "blog/copywriting.html",
+    "cat": "blog",
+    "img": "images/blog/seo-copywriting.jpg",
+    "title": "ქოფირაითინგი: სტრატეგია ეფექტური კომუნიკაციისთვის",
+    "desc": "ეფექტური ქოფირაითინგი ბიზნესისთვის: გაიგეთ, როგორ იქმნება სარეკლამო ტექსტები, რომლებიც ვიზიტორებს რეალურ კლიენტებად აქცევს.",
+    "url": "https://10xseo.ge/blog/copywriting.html"
+  },
+  {
+    "path": "blog/geotegirebis-gavlena-reitingze.html",
+    "cat": "blog",
+    "img": "images/blog/geotegirebis-gavlena-reitingze.jpg",
+    "title": "გეოტეგირების გავლენა ბიზნეს პროფილის რეიტინგზე",
+    "desc": "და მაინც, რა გავლენა აქვს ფოტოების გეოტეგირებას გუგლის ბიზნეს პროფაილის რეიტინგზე? გაიგე კვლევის შედეგად აღმოჩენილ მიგნებებზე.",
+    "url": "https://10xseo.ge/blog/geotegirebis-gavlena-reitingze.html"
+  },
+  {
+    "path": "blog/google-2024-core-update.html",
+    "cat": "blog",
+    "img": "images/blog/google-2024-core-update.jpg",
+    "title": "2024 წლის მარტის Google განახლება, სრული ინფორმაცია",
+    "desc": "აღნიშნულ გვერდზე ნახავთ განახლებად ინფორმაციას გუგლის 2024 წლის Core update შესახებ, მიიღებთ რეკომენდაციებს სამომავლოდ.",
+    "url": "https://10xseo.ge/blog/google-2024-core-update.html"
+  },
+  {
+    "path": "blog/google-sandbox.html",
+    "cat": "blog",
+    "img": "images/blog/google-sandbox.jpg",
+    "title": "Რა არის Google Sandbox ? - 10XSEO",
+    "desc": "Რატომ ხდება, რომ ზოგჯერ ახლად შექმნილი ვებსაიტი ყველანაირი ოპტიმიზაციის მიუხედავად, ვერ იკავებს მოწინავე პოზიციებს Google-ის ძიების შედეგებში. თუ საძიებო სისტემაში თქვენი ვებსაიტის რეიტინგს აკვირდებით",
+    "url": "https://10xseo.ge/blog/google-sandbox.html"
+  },
+  {
+    "path": "blog/how-instagram-detects-mood.html",
+    "cat": "blog",
+    "img": "images/blog/how-instagram-detects-mood.jpg",
+    "title": "როგორ ხვდება ინსტაგრამი, როდის ვართ ცუდ ხასიათზე?",
+    "desc": "როდესაც აპლიკაციას ხსნით, ალგორითმი არ ელოდება, როდის მოიწონებთ ფოტოს ან დაწერთ კომენტარს. ის გაცილებით ადრე იწყებს მუშაობას და აკვირდება იმას, რასაც თქვენ ვერ აკონტროლებთ",
+    "url": "https://10xseo.ge/blog/how-instagram-detects-mood.html"
+  },
+  {
+    "path": "blog/interaction-to-next-paint.html",
+    "cat": "blog",
+    "img": "images/blog/interaction-to-next-paint.jpg",
+    "title": "Ის რაც უნდა წაიკითხოს მან, ვისაც Google-ში რეიტინგის დაკარგვა არ სურს",
+    "desc": "Google-ის ახალი მეტრიკის Interaction to Next Paint-ის ოპტიმიზაცია. Ის რაც უნდა წაიკითხოს მან,  ვისაც Google-ში რეიტინგის დაკარგვა არ სურს.",
+    "url": "https://10xseo.ge/blog/interaction-to-next-paint.html"
+  },
+  {
+    "path": "blog/link-building-stats.html",
+    "cat": "blog",
+    "img": "images/blog/link-building-stats.jpg",
+    "title": "ბექლინკების სტატისტიკა - Link building",
+    "desc": "მარკეტოლოგების 46% ყოველწლიურად ხარჯავს $10,000 ან მეტს ლინკ ბილდინგისთვის, ხოლო 22% ხარჯავს $1,000-დან $2,500-მდე.",
+    "url": "https://10xseo.ge/blog/link-building-stats.html"
+  },
+  {
+    "path": "blog/local-seo.html",
+    "cat": "blog",
+    "img": "images/blog/local-seo.jpg",
+    "title": "ლოკალური SEO - როგორ მოვიზიდოთ კლიენტები Google Maps-დან",
+    "desc": "ლოკალური SEO-ს სტრატეგიები, პრაქტიკული რჩევები და რეალური შედეგები ავტორიტეტული ბიზნესების მაგალითზე",
+    "url": "https://10xseo.ge/blog/local-seo.html"
+  },
+  {
+    "path": "blog/ra-aris-aeo.html",
+    "cat": "blog",
+    "img": "images/blog/ra-aris-aeo.jpg",
+    "title": "AEO ოპტიმიზაცია — რა არის Answer Engine Optimization",
+    "desc": "Meta desc: გაიგე რა არის AEO (Answer Engine Optimization), როგორ მუშაობს Google-ის AI ძიებაში და რატომ არის AEO SEO-ს მომავალი. თუ გსურს, შენი საიტი გამოჩნდეს AI Mode პასუხებში — ეს სტატია შენთვისაა.",
+    "url": "https://10xseo.ge/blog/ra-aris-aeo.html"
+  },
+  {
+    "path": "blog/ra-aris-seo.html",
+    "cat": "blog",
+    "img": "images/blog/ra-aris-seo.jpg",
+    "title": "რა არის SEO ოპტიმიზაცია?",
+    "desc": "SEO ოპტიმიზაცია - ანუ როგორ ვაჩვენოთ საძიებო სისტემებს რომ პირველ პოზიციაზე სწორედ ჩვენ უნდა ვიყოთ?",
+    "url": "https://10xseo.ge/blog/ra-aris-seo.html"
+  },
+  {
+    "path": "blog/ra-dro-schireba-seos-shedegebis-misagebad.html",
+    "cat": "blog",
+    "img": "images/blog/ra-dro-schireba-seos-shedegebis-misagebad.jpg",
+    "title": "რა დრო სჭირდება SEO-ს შედეგების მისაღებად? - 10XSEO",
+    "desc": "რა დრო სჭირდება SEO-ს შედეგების მისაღებად? [+ რჩევები სწრაფი შედეგის მისაღწევად ] როგორც წესი, SEO-ს შედეგების მისაღებად Google-ის ვიდეოს მიხედვით 4-12 თვე სჭირდება. უმეტეს შემთხვევაში, SEO-ს პირველად",
+    "url": "https://10xseo.ge/blog/ra-dro-schireba-seos-shedegebis-misagebad.html"
+  },
+  {
+    "path": "blog/ratom-schirdeba-bizness-seo.html",
+    "cat": "blog",
+    "img": "images/blog/ratom-schirdeba-bizness-seo.jpg",
+    "title": "რატომ სჭირდება თქვენს ბიზნესს SEO? – 15 მიზეზი - 10XSEO",
+    "desc": "შეიტყვე 15 მიზეზი იმის შესახებ, თუ რატომ არის საჭირო SEO ბიზნესისთვის.",
+    "url": "https://10xseo.ge/blog/ratom-schirdeba-bizness-seo.html"
+  },
+  {
+    "path": "blog/seo-2025-top-stories.html",
+    "cat": "blog",
+    "img": "images/blog/seo-2025-top-stories.jpg",
+    "title": "SEO 2025: 10 მთავარი ამბავი და Google-ის მონოპოლიის რღვევა",
+    "desc": "10 ყველაზე მნიშვნელოვანი ამბავი, რომელმაც 2025 წელს ძიების წესები შეცვალა. Google-ის მონოპოლიის რღვევა და ახალი სტრატეგიები გადარჩენისთვის.",
+    "url": "https://10xseo.ge/blog/seo-2025-top-stories.html"
+  },
+  {
+    "path": "blog/seo-2025.html",
+    "cat": "blog",
+    "img": "images/blog/seo-2025.jpg",
+    "title": "SEO ოპტიმიზაცია 2025 წელს - ცვლილებები და ტრენდები",
+    "desc": "როგორია SEO ოპტიმიზაცია 2025 წელს - რა იცვლება და რომელ ტრენდებს არ უნდა ჩამორჩეთ AI-ის გამოყენებით?",
+    "url": "https://10xseo.ge/blog/seo-2025.html"
+  },
+  {
+    "path": "blog/seo-content.html",
+    "cat": "blog",
+    "img": "images/blog/seo-content.jpg",
+    "title": "7 რჩევა SEO კონტენტის შექმნის შესახებ - 10XSEO",
+    "desc": "როგორ დავწეროთ ისეთი ბლოგ პოსტი რომელიც Google-ში დაირანკება? 7 რჩევა   Თუ ოდესმე დაგიწერიათ ბლოგ პოსტი, თქვენ უკვე იცით რამდენ დროს მოითხოვს Ეს პროცესი. ხშირად საათებიც არ არის საკმარისი, ხოლო თუ თქვ",
+    "url": "https://10xseo.ge/blog/seo-content.html"
+  },
+  {
+    "path": "blog/seo-copywriting.html",
+    "cat": "blog",
+    "img": "images/blog/seo-copywriting.jpg",
+    "title": "SEO კოპირაითინგი - წარმატებული კონტენტის შესაქმნელად",
+    "desc": "რა არის SEO კოპირაითინგი და რატომ არის ის ასეთი მნიშვნელოვანი?- გზამკვლევი, როგორ უნდა ისწავლოთ ეფექტური ტექსტის შექმნა.",
+    "url": "https://10xseo.ge/blog/seo-copywriting.html"
+  },
+  {
+    "path": "blog/seo-for-business.html",
+    "cat": "blog",
+    "img": "images/blog/seo-for-business.jpg",
+    "title": "რატომ არის SEO აუცილებელი ყველა ბიზნესისთვის 2024 წელს? - 10XSEO",
+    "desc": "სარჩევი Რა არის SEO? საძიებო სისტემებისთვის ოპტიმიზაცია (SEO) ციფრული მარკეტინგული სტრატეგიაა, რომელიც საძიებო სისტემებს თქვენი ვებსაიტის პოვნაში ეხმარება. SEO – თი ვებსაიტი დაიკავებს მოწინავე პოზიციე",
+    "url": "https://10xseo.ge/blog/seo-for-business.html"
+  },
+  {
+    "path": "blog/seo-saagento.html",
+    "cat": "blog",
+    "img": "images/blog/seo-saagento.jpg",
+    "title": "SEO სააგენტოსთან თანამშრომლობის უპირატესობა",
+    "desc": "გაიგეთ რა უპირატესობა აქვს SEO სააგენტოსთან თანამშრომლობას და რის მიხედვით უნდა შეარჩიოთ ის | 10xSEO.ge",
+    "url": "https://10xseo.ge/blog/seo-saagento.html"
+  },
+  {
+    "path": "blog/seo-vs-ppc.html",
+    "cat": "blog",
+    "img": "images/blog/seo-vs-ppc.jpg",
+    "title": "&quot;სარეკლამო თაღლითებმა&quot; 2023 წელს 84 მილიარდი დოლარი მოიპარეს - 10XSEO",
+    "desc": "სარჩევი 84 მილიარდი დოლარი დაიკარგა 2023 წელს სარეკლამო თაღლითობის მეშვეობით. Რას ნიშნავს სარეკლამო თაღლითობა? Სარეკლამო თაღლითობა (ad fraud) არის ციფრული სარეკლამო სისტემის მოტყუების მცდელობა სარგებლ",
+    "url": "https://10xseo.ge/blog/seo-vs-ppc.html"
+  },
+  {
+    "path": "blog/soc-media-da-seo.html",
+    "cat": "blog",
+    "img": "images/blog/soc-media-da-seo.jpg",
+    "title": "Როგორ მოქმედებს სოციალური მედიის აქტივობა SEO რეიტინგზე?",
+    "desc": "Yandex-იდან გაჟონილი ინფორმაციით, გავიგეთ სოციალური მედიის ტრაფიკთან დაკავშირებული ორი სახის ფაქტორის შესახებ.",
+    "url": "https://10xseo.ge/blog/soc-media-da-seo.html"
+  },
+  {
+    "path": "blog.html",
+    "cat": "blog-index",
+    "img": "images/og/page-blog.jpg",
+    "title": "SEO ბლოგი — სტატიები, რჩევები და ტრენდები | 10XSEO",
+    "desc": "10xSEO ბლოგი — SEO სტრატეგია, ტექნიკური SEO, კონტენტ მარკეტინგი, ლინკ ბილდინგი და სხვა თემებზე ექსპერტული სტატიები.",
+    "url": "https://10xseo.ge/blog.html"
+  },
+  {
+    "path": "case-studies/250-percent-increase.html",
+    "cat": "case",
+    "img": "images/og/case-250-percent.jpg",
+    "title": "ტრაფიკის 250%-იანი ზრდა 3 თვეში | 10XSEO",
+    "desc": "ორგანული ტრაფიკი 2.5-ჯერ გაიზარდა მოკლე პერიოდში. Keyword Mapping, On-page ოპტიმიზაცია და ლინკ ბილდინგი.",
+    "url": "https://10xseo.ge/case-studies/250-percent-increase.html"
+  },
+  {
+    "path": "case-studies/270-percent-increase.html",
+    "cat": "case",
+    "img": "images/og/case-270-percent.jpg",
+    "title": "როგორ გავზარდეთ ტრეფიკი 270%-ით, გაყიდვები 45%-ით? | 10XSEO",
+    "desc": "ამერიკულ ბაზარზე მოქმედი ტექნოლოგიური სტარტაპი Shopify-ზე. ტრაფიკი 270%-ით გაიზარდა, გაყიდვები 45%-ით.",
+    "url": "https://10xseo.ge/case-studies/270-percent-increase.html"
+  },
+  {
+    "path": "case-studies/318-percent-uk-shopify.html",
+    "cat": "case",
+    "img": "images/og/case-318-percent-uk-shopify.jpg",
+    "title": "როგორ გავზარდეთ კლიკების რაოდენობა 318%-ით | 10XSEO",
+    "desc": "გაიგე როგორ მოვახდინეთ თვიური კლიკების 318%-იანი ზრდა ბრიტანულ ბაზარზე — 1ClickBlinds-ის Shopify ქეის სტადი 6 თვის შედეგებით.",
+    "url": "https://10xseo.ge/case-studies/318-percent-uk-shopify.html"
+  },
+  {
+    "path": "case-studies/3x-in-28-days.html",
+    "cat": "case",
+    "img": "images/og/case-3x-28days.jpg",
+    "title": "როგორ გავზარდეთ ტრაფიკი 28 დღეში 3-ჯერ? | 10XSEO",
+    "desc": "სრულიად ახალი პროექტი, 0-დან დაწყება. 28 დღეში ტრაფიკი 3-ჯერ გაიზარდა, 1500+ კლიკი თვეში, #1 პოზიცია.",
+    "url": "https://10xseo.ge/case-studies/3x-in-28-days.html"
+  },
+  {
+    "path": "case-studies/4200-yoveltviuri-vizitori-4-tveshi.html",
+    "cat": "case",
+    "img": "images/og/case-4200-visitors.jpg",
+    "title": "4200+ ყოველთვიური ვიზიტორი 4 თვეში | 10XSEO",
+    "desc": "სამედიცინო პროექტი, სადაც SEO საიტის გაშვებამდე დაიწყო. 4 თვეში 4200+ ყოველთვიური ვიზიტორი, +20-25% ზრდა ბოლო 28 დღეში.",
+    "url": "https://10xseo.ge/case-studies/4200-yoveltviuri-vizitori-4-tveshi.html"
+  },
+  {
+    "path": "case-studies/local-seo-result.html",
+    "cat": "case",
+    "img": "images/og/case-local-seo.jpg",
+    "title": "ზარების რაოდენობა +60% — ლოკალური SEO 2 თვეში | 10XSEO",
+    "desc": "ცნობილი ქართული ბრენდის ზარები 60%-ით გაიზარდა 2 თვეში. GMB ოპტიმიზაცია, 1500+ ზარი, +20,000 იმფრეშენი.",
+    "url": "https://10xseo.ge/case-studies/local-seo-result.html"
+  },
+  {
+    "path": "case-studies/seo-crisis-management.html",
+    "cat": "case",
+    "img": "images/og/case-crisis-mgmt.jpg",
+    "title": "SEO კრიზისიდან Google-ის ტოპ 3 პოზიციამდე | 10XSEO",
+    "desc": "B2B კომპანია Google-ის პენალტიდან Top 3 პოზიციამდე 2 თვეში. URL სტრუქტურის შეცვლა, 301 Redirect, შიდა ლინკბილდინგი.",
+    "url": "https://10xseo.ge/case-studies/seo-crisis-management.html"
+  },
+  {
+    "path": "case-studies/seo-krizisidan-top-3mde.html",
+    "cat": "case",
+    "img": "images/og/case-crisis-top3.jpg",
+    "title": "SEO კრიზისიდან Google-ის ტოპ 3 პოზიციამდე — 2 თვეში | 10XSEO",
+    "desc": "როგორ აღვადგინეთ Google-ის ჯარიმის მქონე გვერდი და მივაღწიეთ ტოპ 3 პოზიციას მხოლოდ 2 თვეში. B2B სექტორში SEO კრიზისის მართვის რეალური ქეის სტადი.",
+    "url": "https://10xseo.ge/case-studies/seo-krizisidan-top-3mde.html"
+  },
+  {
+    "path": "case-studies/stomatologiuri-klinikis-seo.html",
+    "cat": "case",
+    "img": "images/og/case-dental.jpg",
+    "title": "#1 პოზიცია Google-ში: 1.6K ვიზიტორი და 600%-იანი ზრდა 6 თვეში — ქეის სტადი | 10XSEO",
+    "desc": "#1 პოზიცია Google-ში: 1,620 ყოველთვიური ვიზიტორი (0-დან), 600%-იანი ზრდა, 63,000 იმპრესია 3 თვეში, 52% CTR იმპლანტის ფასი ქივორდზე.",
+    "url": "https://10xseo.ge/case-studies/stomatologiuri-klinikis-seo.html"
+  },
+  {
+    "path": "case-studies/trafikis-gaormageba-3-tveshi.html",
+    "cat": "case",
+    "img": "images/og/case-2x-traffic.jpg",
+    "title": "როგორ გავაორმაგეთ ტრაფიკი 3 თვეში? | 10XSEO",
+    "desc": "სამშენებლო სფეროში მომუშავე კომპანიის ტრაფიკი 100%-ით გაიზარდა 3 თვეში. ქივორდ მეპინგი, On-Page SEO და ბექლინკების სტრატეგია.",
+    "url": "https://10xseo.ge/case-studies/trafikis-gaormageba-3-tveshi.html"
+  },
+  {
+    "path": "case-studies.html",
+    "cat": "other",
+    "img": "images/og/page-case-studies.jpg",
+    "title": "შესრულებული პროექტები და შედეგები | 10xSEO",
+    "desc": "ნახეთ, როგორ ვაღწევთ შედეგებს: ვიზიტორთა რაოდენობის გასამმაგება, +270% ორგანული ზრდა და პირველი ადგილი ძიებაში. გაიგეთ მეტი ჩვენი გამოცდილების შესახებ.",
+    "url": "https://10xseo.ge/case-studies.html"
+  },
+  {
+    "path": "contact-us.html",
+    "cat": "other",
+    "img": "images/og/page-contact-us.jpg",
+    "title": "კონტაქტი — დაგვიკავშირდით | 10XSEO",
+    "desc": "SEO კონსულტაციისთვის დაგვიკავშირდით. ტელეფონი: 510 10 15 17, ელ.ფოსტა: sales@10xseo.ge. ბახტრიონის ქუჩა 8, თბილისი 0194.",
+    "url": "https://10xseo.ge/contact-us/"
+  },
+  {
+    "path": "copywriting.html",
+    "cat": "service",
+    "img": "images/og/service-copywriting.jpg",
+    "title": "UI/UX Copywriting — ინტერფეისის ტექსტები | 10XSEO",
+    "desc": "ღილაკები, ფორმები, error messages, onboarding — ინტერფეისის ტექსტები რომლებიც მომხმარებელს მოქმედებისკენ მიმართავს.",
+    "url": "https://10xseo.ge/copywriting/"
+  },
+  {
+    "path": "cro.html",
+    "cat": "service",
+    "img": "images/og/service-cro.jpg",
+    "title": "კონვერსიის ოპტიმიზაცია (CRO) — მეტი კლიენტი იგივე ტრაფიკით | 10XSEO",
+    "desc": "CRO სერვისი: გაზარდეთ კონვერსია A/B ტესტირება და მონაცემთა ანალიზით, UX ოპტიმიზაციით და data-driven მიდგომით.",
+    "url": "https://10xseo.ge/cro/"
+  },
+  {
+    "path": "en/404.html",
+    "cat": "en-other",
+    "img": "wp-content/uploads/2025/06/iyavi-pirveli.png",
+    "title": "404 — Page Not Found | 10xSEO",
+    "desc": "The page you're looking for doesn't exist. Return to 10xSEO's homepage or browse our SEO services for Tbilisi & international brands.",
+    "url": "https://10xseo.ge/en/404.html"
+  },
+  {
+    "path": "en/about-us.html",
+    "cat": "en-other",
+    "img": "wp-content/uploads/2025/06/iyavi-pirveli.png",
+    "title": "Meet 10xSEO | The SEO Agency Team in Tbilisi, Georgia",
+    "desc": "Meet 10xSEO — the SEO agency that ranks brands #1 on Google and AI platforms. Get to know our team, vision, and approach.",
+    "url": "https://10xseo.ge/en/about-us.html"
+  },
+  {
+    "path": "en/ai-seo.html",
+    "cat": "en-service",
+    "img": "images/og/ai-seo.jpg",
+    "title": "AI SEO (GEO/AEO) | Rank in ChatGPT, Gemini & Perplexity — 10xSEO",
+    "desc": "Get cited in ChatGPT, Gemini, Perplexity & Claude. 10xSEO's AI SEO service: GEO + AEO optimization for maximum brand visibility in AI search.",
+    "url": "https://10xseo.ge/ai-seo/"
+  },
+  {
+    "path": "en/blog/2025-search-trends.html",
+    "cat": "en-blog",
+    "img": "images/blog/2025-search-trends-card.png",
+    "title": "What Georgia Googled in 2025: Search Trends, Stats &amp; Surprises — 10xSEO",
+    "desc": "10xSEO analyzed Georgia's 30,000 most-searched keywords on Ahrefs. From Khvicha Kvaratskhelia to fast loans, shawarma to ChatGPT — see the full 2025 search trend data.",
+    "url": "https://10xseo.ge/en/blog/2025-search-trends.html"
+  },
+  {
+    "path": "en/blog/aeo-optimization-agency-dubai.html",
+    "cat": "en-blog",
+    "img": "images/blog/aeo-optimization-agency-dubai-card.png",
+    "title": "AEO Optimization Agency Dubai — ChatGPT SEO for the UAE | 10xSEO",
+    "desc": "Looking for a top AEO Optimization Agency in Dubai? 10xSEO helps UAE brands win in AI search — ChatGPT optimization, Answer Engine SEO, and AI Overview rankings for the GCC market.",
+    "url": "https://10xseo.ge/en/blog/aeo-optimization-agency-dubai.html"
+  },
+  {
+    "path": "en/blog/copywriting.html",
+    "cat": "en-blog",
+    "img": "images/blog/copywriting-card.png",
+    "title": "Copywriting: The Strategy Behind Words That Sell — 10xSEO",
+    "desc": "Copywriting is the discipline of writing words that move people to act. Learn what professional copywriting is, how it differs from content writing, and how to use it to turn website visitors into pay",
+    "url": "https://10xseo.ge/en/blog/copywriting.html"
+  },
+  {
+    "path": "en/blog/how-instagram-detects-mood.html",
+    "cat": "en-blog",
+    "img": "images/blog/how-instagram-detects-mood-card.png",
+    "title": "How Instagram Detects Your Mood — The AI Behind the Algorithm | 10xSEO",
+    "desc": "Instagram's algorithm reads your emotional state before you like a single post — tracking scroll speed, color preferences, and sleep patterns. Here's how the AI personalization engine actually works.",
+    "url": "https://10xseo.ge/en/blog/how-instagram-detects-mood.html"
+  },
+  {
+    "path": "en/blog/local-seo.html",
+    "cat": "en-blog",
+    "img": "images/blog/local-seo-card.png",
+    "title": "Local SEO: How to Rank in Google Maps and Attract More Customers — 10xSEO",
+    "desc": "Local SEO helps businesses appear in Google Maps and the local pack when customers search nearby. Learn how Google Business Profile, NAP consistency, and reviews drive local rankings — with real case ",
+    "url": "https://10xseo.ge/en/blog/local-seo.html"
+  },
+  {
+    "path": "en/blog/seo-copywriting.html",
+    "cat": "en-blog",
+    "img": "images/blog/seo-copywriting-card.png",
+    "title": "SEO Copywriting: Write Content That Ranks and Converts — 10xSEO",
+    "desc": "SEO copywriting is the practice of writing content that ranks in Google and converts readers into customers. Learn what it is, why it matters, and how to master it.",
+    "url": "https://10xseo.ge/en/blog/seo-copywriting.html"
+  },
+  {
+    "path": "en/blog/what-is-aeo-explained.html",
+    "cat": "en-blog",
+    "img": "images/blog/what-is-aeo-explained-card.png",
+    "title": "What Is AEO? Answer Engine Optimization Explained for 2025 — 10xSEO",
+    "desc": "AEO (Answer Engine Optimization) is the practice of making your content the source AI engines cite. Learn what AEO is, how it differs from SEO, and the exact steps to get cited in ChatGPT, Gemini, and",
+    "url": "https://10xseo.ge/en/blog/what-is-aeo-explained.html"
+  },
+  {
+    "path": "en/blog/what-is-aeo.html",
+    "cat": "en-blog",
+    "img": "images/blog/what-is-aeo-card.png",
+    "title": "What Is AEO? Answer Engine Optimization Explained — 10xSEO",
+    "desc": "AEO (Answer Engine Optimization) makes your brand the source AI engines cite. Learn what AEO is, how it differs from SEO, and how to start optimizing for ChatGPT, Gemini, and Perplexity.",
+    "url": "https://10xseo.ge/en/blog/what-is-aeo.html"
+  },
+  {
+    "path": "en/blog/what-is-seo.html",
+    "cat": "en-blog",
+    "img": "images/blog/what-is-seo-card.png",
+    "title": "What Is SEO? Search Engine Optimization Explained — 10xSEO",
+    "desc": "SEO (Search Engine Optimization) is the practice of improving a website so search engines rank it higher in organic results. Learn what SEO is, how it works, the types of SEO, and why it is the founda",
+    "url": "https://10xseo.ge/en/blog/what-is-seo.html"
+  },
+  {
+    "path": "en/blog.html",
+    "cat": "en-blog-index",
+    "img": "images/og/page-blog.jpg",
+    "title": "10xSEO Blog — SEO, AI & Digital Marketing Insights",
+    "desc": "Articles by 10xSEO experts on SEO strategy, AI search optimization, content marketing, and digital marketing in Georgia.",
+    "url": "https://10xseo.ge/en/blog.html"
+  },
+  {
+    "path": "en/case-studies/250-percent-increase.html",
+    "cat": "en-case",
+    "img": "wp-content/uploads/2025/06/iyavi-pirveli.png",
+    "title": "250% Traffic Growth in 3 Months — Case Study | 10xSEO",
+    "desc": "Organic traffic grew 2.5x in a short period. Keyword mapping, on-page optimization, and link building. Real 10xSEO case study.",
+    "url": "https://10xseo.ge/en/case-studies/250-percent-increase.html"
+  },
+  {
+    "path": "en/case-studies/270-percent-increase.html",
+    "cat": "en-case",
+    "img": "wp-content/uploads/2025/06/iyavi-pirveli.png",
+    "title": "How We Grew Traffic 270% & Sales 45% — Case Study | 10xSEO",
+    "desc": "A US-market tech startup on Shopify. Traffic grew 270%, sales 45%. Real 10xSEO case study with strategy breakdown.",
+    "url": "https://10xseo.ge/en/case-studies/270-percent-increase.html"
+  },
+  {
+    "path": "en/case-studies/3x-in-28-days.html",
+    "cat": "en-case",
+    "img": "wp-content/uploads/2025/06/iyavi-pirveli.png",
+    "title": "How We Tripled Traffic in 28 Days — Case Study | 10xSEO",
+    "desc": "Brand new project, started from zero. Traffic tripled in 28 days, 1500+ clicks per month, #1 position. Real 10xSEO case study.",
+    "url": "https://10xseo.ge/en/case-studies/3x-in-28-days.html"
+  },
+  {
+    "path": "en/case-studies/4200-yoveltviuri-vizitori-4-tveshi.html",
+    "cat": "en-case",
+    "img": "wp-content/uploads/2025/06/iyavi-pirveli.png",
+    "title": "4,200+ Monthly Visitors in 4 Months — Healthcare Case Study | 10xSEO",
+    "desc": "Healthcare project where SEO started before site launch. 4,200+ monthly visitors in 4 months, +20-25% growth in the last 28 days. 10xSEO case study.",
+    "url": "https://10xseo.ge/en/case-studies/4200-yoveltviuri-vizitori-4-tveshi.html"
+  },
+  {
+    "path": "en/case-studies/local-seo-result.html",
+    "cat": "en-case",
+    "img": "wp-content/uploads/2025/06/iyavi-pirveli.png",
+    "title": "+60% Phone Calls — Local SEO Case Study in 2 Months | 10xSEO",
+    "desc": "A well-known Georgian brand grew phone calls 60% in 2 months. GMB optimization, 1500+ calls, +20,000 impressions. Real 10xSEO local SEO case study.",
+    "url": "https://10xseo.ge/en/case-studies/local-seo-result.html"
+  },
+  {
+    "path": "en/case-studies/seo-crisis-management.html",
+    "cat": "en-case",
+    "img": "wp-content/uploads/2025/06/iyavi-pirveli.png",
+    "title": "From SEO Crisis to Google Top 3 — Recovery Case Study | 10xSEO",
+    "desc": "B2B company recovered from Google penalty to Top 3 in 2 months. URL restructure, 301 redirects, internal link building. 10xSEO crisis recovery case study.",
+    "url": "https://10xseo.ge/en/case-studies/seo-crisis-management.html"
+  },
+  {
+    "path": "en/case-studies/seo-krizisidan-top-3mde.html",
+    "cat": "en-case",
+    "img": "wp-content/uploads/2025/06/iyavi-pirveli.png",
+    "title": "SEO Crisis to Google Top 3 — 2-Month Recovery Case Study | 10xSEO",
+    "desc": "How we recovered a Google-penalized page and reached Top 3 in just 2 months. Real B2B SEO crisis management case study by 10xSEO.",
+    "url": "https://10xseo.ge/en/case-studies/seo-krizisidan-top-3mde.html"
+  },
+  {
+    "path": "en/case-studies/stomatologiuri-klinikis-seo.html",
+    "cat": "en-case",
+    "img": "wp-content/uploads/2025/06/iyavi-pirveli.png",
+    "title": "#1 on Google: 1.6K Visitors & 600% Growth in 6 Months — Dental Clinic Case Study | 10xSEO",
+    "desc": "#1 on Google: 1,620 monthly visitors (from zero), 600% growth, 63,000 impressions in 3 months, 52% CTR on",
+    "url": "https://10xseo.ge/en/case-studies/stomatologiuri-klinikis-seo.html"
+  },
+  {
+    "path": "en/case-studies/trafikis-gaormageba-3-tveshi.html",
+    "cat": "en-case",
+    "img": "wp-content/uploads/2025/06/iyavi-pirveli.png",
+    "title": "How We Doubled Traffic in 3 Months — Construction Case Study | 10xSEO",
+    "desc": "A construction company's traffic grew 100% in 3 months. Keyword mapping, on-page SEO, and backlink strategy. Real 10xSEO case study.",
+    "url": "https://10xseo.ge/en/case-studies/trafikis-gaormageba-3-tveshi.html"
+  },
+  {
+    "path": "en/case-studies.html",
+    "cat": "en-other",
+    "img": "wp-content/uploads/2025/06/iyavi-pirveli.png",
+    "title": "Case Studies — Real SEO Results from 10xSEO Clients",
+    "desc": "See how 10xSEO delivers results: 3x traffic growth, +270% organic, #1 Google rankings. Real case studies from Tbilisi & international brands.",
+    "url": "https://10xseo.ge/en/case-studies.html"
+  },
+  {
+    "path": "en/contact-us.html",
+    "cat": "en-other",
+    "img": "wp-content/uploads/2025/06/iyavi-pirveli.png",
+    "title": "Contact 10xSEO | Book a 15-Min SEO Consultation",
+    "desc": "Contact the SEO agency Tbilisi trusts. 10xSEO offers free 15-min consultations for businesses ready to rank #1 on Google + AI search.",
+    "url": "https://10xseo.ge/contact-us/"
+  },
+  {
+    "path": "en/copywriting.html",
+    "cat": "en-service",
+    "img": "images/og/copywriting.jpg",
+    "title": "UI/UX Copywriting — Words That Drive User Behavior | 10xSEO",
+    "desc": "Bad UI copy costs you customers. 10xSEO's UI/UX copywriters audit and rewrite your interface so visitors actually finish what they came to do.",
+    "url": "https://10xseo.ge/copywriting/"
+  },
+  {
+    "path": "en/cro.html",
+    "cat": "en-service",
+    "img": "images/og/cro.jpg",
+    "title": "Increase Conversions Without Increasing Ad Spend | 10xSEO CRO",
+    "desc": "CRO services from 10xSEO: improve conversion rates with data analysis & A/B testing. Turn visits into real sales without increasing your ad spend.",
+    "url": "https://10xseo.ge/cro/"
+  },
+  {
+    "path": "en/google-ads.html",
+    "cat": "en-service",
+    "img": "images/og/google-ads.jpg",
+    "title": "Google Ads Management — Targeted Campaigns That Convert | 10xSEO",
+    "desc": "Stop wasting Google Ads budget. 10xSEO manages search, shopping, display, and YouTube campaigns built around ROI — not impressions or vanity clicks.",
+    "url": "https://10xseo.ge/google-ads/"
+  },
+  {
+    "path": "en/index.html",
+    "cat": "en-home",
+    "img": "images/og/page-home-en.jpg",
+    "title": "#1 SEO Agency in Georgia | Rank on Google &amp; ChatGPT — 10xSEO",
+    "desc": "Top SEO agency in Tbilisi, Georgia. 10xSEO delivers #1 rankings on Google, ChatGPT, Perplexity &amp; all AI search. Book a free 15-min consult today.",
+    "url": "https://10xseo.ge/en/"
+  },
+  {
+    "path": "en/industries/construction.html",
+    "cat": "en-industry",
+    "img": "images/og/real-estate-seo.jpg",
+    "title": "Construction & Real Estate SEO — Scale Your Sales | 10xSEO",
+    "desc": "Stop wasting marketing on developer-buyer mismatch. 10xSEO's real estate SEO targets the exact searches your future buyers make — and turns them into tours.",
+    "url": "https://10xseo.ge/en/industries/construction.html"
+  },
+  {
+    "path": "en/industries/ecommerce.html",
+    "cat": "en-industry",
+    "img": "images/og/ecommerce-seo.jpg",
+    "title": "E-commerce SEO Services — Grow Online Sales | 10xSEO",
+    "desc": "E-commerce SEO: take your products to international markets via search engines. Full technical support for online stores and organic growth strategy.",
+    "url": "https://10xseo.ge/en/industries/ecommerce.html"
+  },
+  {
+    "path": "en/industries/financial-services.html",
+    "cat": "en-industry",
+    "img": "images/og/financial-seo.jpg",
+    "title": "YMYL-Compliant Financial Services SEO | 10xSEO Georgia",
+    "desc": "Financial services SEO for banks, insurance, fintech, and accounting firms. YMYL-compliant content, AEO visibility, and conversion-focused product pages.",
+    "url": "https://10xseo.ge/en/industries/financial-services.html"
+  },
+  {
+    "path": "en/industries/healthcare.html",
+    "cat": "en-industry",
+    "img": "images/og/healthcare-seo.jpg",
+    "title": "Medical SEO + AEO | 10xSEO",
+    "desc": "SEO & AEO strategies for clinics. Strengthen your Google rankings, attract patients, and rank in AI search answers. Healthcare SEO experts at 10xSEO.",
+    "url": "https://10xseo.ge/en/industries/healthcare.html"
+  },
+  {
+    "path": "en/lead-form.html",
+    "cat": "en-other",
+    "img": "wp-content/uploads/2025/06/iyavi-pirveli.png",
+    "title": "Free SEO Consultation — 10XSEO",
+    "desc": "Request a free SEO consultation from 10xSEO. Fill out the form and our team will contact you within 24 hours.",
+    "url": "https://10xseo.ge/lead-form/"
+  },
+  {
+    "path": "en/portfolio.html",
+    "cat": "en-other",
+    "img": "wp-content/uploads/2025/06/iyavi-pirveli.png",
+    "title": "Portfolio — Real SEO Results from 10xSEO Clients",
+    "desc": "10xSEO's clients and their real SEO results — 50+ partners, 247% average traffic growth, 8x ROI. Tbilisi-based agency serving Georgian and international brands.",
+    "url": "https://10xseo.ge/en/portfolio.html"
+  },
+  {
+    "path": "en/ra-aris-seo.html",
+    "cat": "en-other",
+    "img": "wp-content/uploads/2025/05/ra-aris-seo-683fe227690c4.webp",
+    "title": "What is SEO Optimization?",
+    "desc": "What is SEO? A complete guide to search engine optimization — how it works, why it matters, and how 10xSEO ranks Tbilisi & international brands #1 on Google.",
+    "url": "https://10xseo.ge/ra-aris-seo/"
+  },
+  {
+    "path": "en/roi-calculator.html",
+    "cat": "en-other",
+    "img": "images/og/roi-calculator.jpg",
+    "title": "Free SEO ROI Calculator | 10XSEO",
+    "desc": "Calculate your SEO return on investment instantly. Free interactive ROI calculator.",
+    "url": "https://10xseo.ge/roi-calculator/"
+  },
+  {
+    "path": "en/seo-audit.html",
+    "cat": "en-service",
+    "img": "images/og/seo-audit-og.png",
+    "title": "Free SEO Audit — Loom Video Analysis in 72 Hours | 10xSEO",
+    "desc": "Free SEO audit: 10-minute Loom video where our expert reviews your site's issues, analyzes competitors, and shows real growth potential. Delivered in 72 hours.",
+    "url": "https://10xseo.ge/seo-audit/"
+  },
+  {
+    "path": "en/seo-consultation.html",
+    "cat": "en-service",
+    "img": "images/og/seo-consultation.jpg",
+    "title": "SEO Consultation 1:1 — Expert Strategy Sessions | 10xSEO",
+    "desc": "Get 1:1 SEO consultation from a 14-year veteran. Solve technical SEO challenges, get clear answers, and a custom action plan. Book a session with 10xSEO.",
+    "url": "https://10xseo.ge/seo-consultation/"
+  },
+  {
+    "path": "en/seo-copywriting.html",
+    "cat": "en-service",
+    "img": "images/og/service-seo-copy.jpg",
+    "title": "Premium SEO Copywriting for Ambitious Brands | 10xSEO",
+    "desc": "SEO copywriting for business: homepages, blogs, articles, press releases. Content that ranks on Google's first page and converts visitors into customers.",
+    "url": "https://10xseo.ge/seo-copywriting/"
+  },
+  {
+    "path": "en/seo-course.html",
+    "cat": "en-service",
+    "img": "images/og/seo-course.jpg",
+    "title": "Learn SEO from Georgia's #1 Practitioner | 10xSEO Course",
+    "desc": "SEO course by Davit Tsilosani — 12 hands-on sessions, real-world examples, and an internship opportunity at 10xSEO. Learn from Georgia's leading practitioner.",
+    "url": "https://10xseo.ge/seo-course/"
+  },
+  {
+    "path": "en/seo-management.html",
+    "cat": "en-service",
+    "img": "images/og/seo-management-og.png",
+    "title": "Hire 10xSEO — Monthly SEO Management for Ambitious Brands",
+    "desc": "Stop juggling SEO yourself. 10xSEO's monthly management package handles everything: technical, content, links, AEO/GEO. Live dashboard + 10-min SLA.",
+    "url": "https://10xseo.ge/seo-management/"
+  },
+  {
+    "path": "en/seo-strategy.html",
+    "cat": "en-service",
+    "img": "images/og/seo-strategy.jpg",
+    "title": "Custom SEO Strategy + Roadmap | 10xSEO Georgia",
+    "desc": "Get a complete SEO strategy for your project: in-depth analysis, competitor research, market study, and step-by-step optimization roadmap from 10xSEO.",
+    "url": "https://10xseo.ge/seo-strategy/"
+  },
+  {
+    "path": "en/seo-tools.html",
+    "cat": "en-other",
+    "img": "wp-content/uploads/2025/06/iyavi-pirveli.png",
+    "title": "Free SEO Tools — Pixel Width, OG Preview, Content Editor, Brief Builder | 10XSEO",
+    "desc": "6 Free SEO Tools: Pixel Width Checker, Keyword Density, OG Preview, Readability, Content Editor, Brief Builder.",
+    "url": "https://10xseo.ge/seo-tools/"
+  },
+  {
+    "path": "en/services.html",
+    "cat": "en-other",
+    "img": "wp-content/uploads/2025/06/iyavi-pirveli.png",
+    "title": "SEO Services in Georgia | Management, AI SEO, CRO — 10xSEO",
+    "desc": "Hire Georgia's #1 SEO agency. We offer SEO management, AI SEO, CRO, Google Ads, copywriting & free SEO tools for Tbilisi & international brands.",
+    "url": "https://10xseo.ge/en/services.html"
+  },
+  {
+    "path": "en/tools/content-brief-builder.html",
+    "cat": "en-tool",
+    "img": "wp-content/uploads/2025/06/iyavi-pirveli.png",
+    "title": "Content Brief Builder — Content Brief Generator | 10XSEO",
+    "desc": "Create a structured content brief in seconds. Title options, H2/H3 outline, SEO checklist — a ready-made assignment for your copywriter. Free tool.",
+    "url": "https://10xseo.ge/tools/content-brief-builder/"
+  },
+  {
+    "path": "en/tools/keyword-density.html",
+    "cat": "en-tool",
+    "img": "wp-content/uploads/2025/06/iyavi-pirveli.png",
+    "title": "Keyword Density Checker — Analyze Keyword Frequency | 10XSEO",
+    "desc": "Analyze keyword density in your text. Avoid keyword stuffing and find the optimal balance. Free SEO tool by 10xSEO.",
+    "url": "https://10xseo.ge/tools/keyword-density/"
+  },
+  {
+    "path": "en/tools/numbers-to-words.html",
+    "cat": "en-tool",
+    "img": "wp-content/uploads/2025/06/iyavi-pirveli.png",
+    "title": "Numbers to Words — Georgian Number to Text Converter | 10XSEO",
+    "desc": "Convert numbers into Georgian written form. Ideal for contracts, invoices, and legal documents.",
+    "url": "https://10xseo.ge/tools/numbers-to-words/"
+  },
+  {
+    "path": "en/tools/og-preview.html",
+    "cat": "en-tool",
+    "img": "wp-content/uploads/2025/06/iyavi-pirveli.png",
+    "title": "Open Graph Preview — Social Media Preview | 10XSEO",
+    "desc": "See how your link will appear on Facebook, Twitter, and LinkedIn. Copy ready-to-use OG tags. Free tool by 10xSEO.",
+    "url": "https://10xseo.ge/tools/og-preview/"
+  },
+  {
+    "path": "en/tools/pixel-width-checker.html",
+    "cat": "en-tool",
+    "img": "wp-content/uploads/2025/06/iyavi-pirveli.png",
+    "title": "Meta Title & Description Pixel Width Checker — Free SEO Tool | 10XSEO",
+    "desc": "Check the exact pixel width of your Meta Title & Description. Google truncates by pixels, not characters. Free tool — supports Latin and Georgian text.",
+    "url": "https://10xseo.ge/tools/pixel-width-checker/"
+  },
+  {
+    "path": "en/tools/readability-score.html",
+    "cat": "en-tool",
+    "img": "wp-content/uploads/2025/06/iyavi-pirveli.png",
+    "title": "Readability Score — Text Readability Checker | 10XSEO",
+    "desc": "Assess your text's readability with the Flesch Reading Ease score. Complex sentences reduce engagement — simplify your SEO content.",
+    "url": "https://10xseo.ge/tools/readability-score/"
+  },
+  {
+    "path": "en/tools/seo-content-editor.html",
+    "cat": "en-tool",
+    "img": "wp-content/uploads/2025/06/iyavi-pirveli.png",
+    "title": "SEO Content Editor — Real-Time Content Optimization | 10XSEO",
+    "desc": "Write SEO-optimized content with real-time metrics. Keyword density, readability, headings — everything in one place. Free tool by 10xSEO.",
+    "url": "https://10xseo.ge/tools/seo-content-editor/"
+  },
+  {
+    "path": "en/vacancies.html",
+    "cat": "en-other",
+    "img": "wp-content/uploads/2025/06/iyavi-pirveli.png",
+    "title": "Careers at 10xSEO — Join Georgia's #1 SEO Agency Team",
+    "desc": "Join 10xSEO — Georgia's leading SEO agency. See current openings and send us your CV. Tbilisi-based, hybrid work, growth opportunities.",
+    "url": "https://10xseo.ge/en/vacancies.html"
+  },
+  {
+    "path": "google-ads.html",
+    "cat": "service",
+    "img": "images/og/service-google-ads.jpg",
+    "title": "Google Ads მენეჯმენტი - მიზნობრივი კამპანიები რეალური შედეგისთვის | 10xSEO | 10XSEO",
+    "desc": "Google Ads სერვისი: Search, Shopping, PMax, Display კამპანიები. მაქსიმალური ROI მინიმალური ხარჯით.",
+    "url": "https://10xseo.ge/google-ads/"
+  },
+  {
+    "path": "index.html",
+    "cat": "home",
+    "img": "images/og/page-home.jpg",
+    "title": "SEO სააგენტო - 10xSEO",
+    "desc": "SEO სააგენტო - 10xSEO საქართველოში საუკეთესო სეო სააგენტოა. ითანამშრომლე ჩვენთან - იყავი პირველი.",
+    "url": "https://10xseo.ge/"
+  },
+  {
+    "path": "industries/construction.html",
+    "cat": "industry",
+    "img": "images/og/construction-burj.jpg",
+    "title": "ციფრული დომინაცია დეველოპერებისთვის | 10xSEO",
+    "desc": "გაყიდეთ ობიექტები უფრო სწრაფად: კომპლექსური SEO და AI სტრატეგია მასშტაბური პროექტების რეალიზაციისთვის",
+    "url": "https://10xseo.ge/industries/construction.html"
+  },
+  {
+    "path": "industries/ecommerce.html",
+    "cat": "industry",
+    "img": "images/og/ecommerce-tower.jpg",
+    "title": "E-commerce SEO სერვისები: გაზარდეთ გაყიდვები ონლაინ | 10xSEO",
+    "desc": "E-commerce SEO: გაიტანეთ თქვენი პროდუქცია საერთაშორისო ბაზარზე საძიებო სისტემების დახმარებით. ონლაინმაღაზიების სრული ტექნიკური მხარდაჭერა და ორგანული ზრდის სტრატეგია",
+    "url": "https://10xseo.ge/industries/ecommerce.html"
+  },
+  {
+    "path": "industries/financial-services.html",
+    "cat": "industry",
+    "img": "images/og/financial-tower.jpg",
+    "title": "ციფრული ზრდა ფინანსურ სექტორში | SEO ოპტიმიზაცია | 10xSEO",
+    "desc": "ფინანსური ინსტიტუტების ციფრული ტრანსფორმაცია. SEO სტრატეგია, რომელიც თქვენს ბიზნესს ძიების პირველ გვერდზე დააწინაურებს.",
+    "url": "https://10xseo.ge/industries/financial-services.html"
+  },
+  {
+    "path": "industries/healthcare.html",
+    "cat": "industry",
+    "img": "images/og/healthcare-tower.jpg",
+    "title": "SEO სერვისი კლინიკებისთვის | 10xSEO",
+    "desc": "SEO და AEO სტრატეგიები სამედიცინო სფეროსთვის. იყავით პირველები ძიების შედეგებში",
+    "url": "https://10xseo.ge/industries/healthcare.html"
+  },
+  {
+    "path": "lead-form.html",
+    "cat": "other",
+    "img": "images/og/page-lead-form.jpg",
+    "title": "უფასო SEO კონსულტაცია — 10XSEO",
+    "desc": "მოითხოვეთ უფასო SEO კონსულტაცია 10XSEO-სგან. შეავსეთ ფორმა და ჩვენი გუნდი 24 საათში დაგიკავშირდებათ.",
+    "url": "https://10xseo.ge/lead-form/"
+  },
+  {
+    "path": "portfolio.html",
+    "cat": "other",
+    "img": "images/og/page-portfolio.jpg",
+    "title": "პორტფოლიო — 10XSEO",
+    "desc": "10XSEO-ს პარტნიორები და მათი რეალური შედეგები",
+    "url": "https://10xseo.ge/portfolio.html"
+  },
+  {
+    "path": "ra-aris-seo.html",
+    "cat": "other",
+    "img": "images/og/service-ra-aris-seo.jpg",
+    "title": "რა არის SEO ოპტიმიზაცია?",
+    "desc": "SEO ოპტიმიზაცია - ანუ როგორ ვაჩვენოთ საძიებო სისტემებს რომ პირველ პოზიციაზე სწორედ ჩვენ უნდა ვიყოთ?",
+    "url": "https://10xseo.ge/ra-aris-seo/"
+  },
+  {
+    "path": "roi-calculator.html",
+    "cat": "other",
+    "img": "images/og/roi-calculator.jpg",
+    "title": "უფასო SEO ROI კალკულატორი | 10XSEO",
+    "desc": "გამოთვალეთ SEO ინვესტიციის ანაზღაურება მყისიერად. უფასო ინტერაქტიული ROI კალკულატორი.",
+    "url": "https://10xseo.ge/roi-calculator/"
+  },
+  {
+    "path": "seo-audit.html",
+    "cat": "service",
+    "img": "images/og/service-seo-audit.jpg",
+    "title": "SEO აუდიტი - უფასო Loom ვიდეოანალიზი 72 საათში | 10xSEO",
+    "desc": "უფასო SEO აუდიტი: 10-წუთიანი Loom ვიდეო, სადაც ექსპერტი პირადად განიხილავს საიტზე არსებულ ხარვეზებს, აანალიზებს კონკურენტებს და ზრდის რეალურ პოტენციალს. მიიღეთ სეო აუდიტი 72 საათში.",
+    "url": "https://10xseo.ge/seo-audit/"
+  },
+  {
+    "path": "seo-consultation.html",
+    "cat": "service",
+    "img": "images/og/service-consultation.jpg",
+    "title": "SEO კონსულტაცია — 13 წლიანი გამოცდილება | 10XSEO",
+    "desc": "1-საათიანი SEO კონსულტაცია ექსპერტთან. რთული პრობლემები, შიდა გუნდის აწყობა, სტრატეგიის აუდიტი. ₾250 + დღგ.",
+    "url": "https://10xseo.ge/seo-consultation/"
+  },
+  {
+    "path": "seo-copywriting.html",
+    "cat": "service",
+    "img": "images/og/service-seo-copy.jpg",
+    "title": "SEO Copywriting — ტექსტები რომლებიც ყიდის | 10XSEO",
+    "desc": "პრემიუმ SEO კოპირაიტინგი: ტექსტები რომლებიც Google-ში რანკავს და კლიენტს კონვერტავს.",
+    "url": "https://10xseo.ge/seo-copywriting/"
+  },
+  {
+    "path": "seo-course.html",
+    "cat": "service",
+    "img": "images/og/service-seo-course.jpg",
+    "title": "SEO ოპტიმიზაციის ინტენსიური კურსი | 10XSEO",
+    "desc": "SEO-ს სრული პრაქტიკული კურსი: 12 ინტენსიური სამუშაო სესია დავით წილოსანთან. რეალური მაგალითები, მცირე ჯგუფები და კარიერული პერსპექტივა 10XSEO-ში",
+    "url": "https://10xseo.ge/seo-course/"
+  },
+  {
+    "path": "seo-leqsikoni.html",
+    "cat": "other",
+    "img": "images/og/page-seo-leqsikoni.jpg",
+    "title": "SEO ლექსიკონი — 10XSEO",
+    "desc": "SEO ტერმინების სრული ლექსიკონი ქართულად.",
+    "url": "https://10xseo.ge/seo-leqsikoni/"
+  },
+  {
+    "path": "seo-management.html",
+    "cat": "service",
+    "img": "images/og/service-seo-mgmt.jpg",
+    "title": "ყოველთვიური SEO მომსახურება",
+    "desc": "SEO მომსახურება მოიცავს სრული პასუხისმგებლობის აღებას პროცესებზე. ჩვენთან შენ მიიღებ საუკეთესო SEO სერვისს საქართველოში !",
+    "url": "https://10xseo.ge/seo-management/"
+  },
+  {
+    "path": "seo-strategy.html",
+    "cat": "service",
+    "img": "images/og/service-seo-strategy.jpg",
+    "title": "SEO სტრატეგია — შედეგზე ორიენტირებული სამოქმედო გეგმა | 10xSEO",
+    "desc": "მიიღეთ სრული SEO სტრატეგია თქვენი პროექტისთვის: კომპლექსური ანალიზი, ბაზრის კვლევა და ოპტიმიზაციის ეტაპობრივი გეგმა.",
+    "url": "https://10xseo.ge/seo-strategy/"
+  },
+  {
+    "path": "seo-tools.html",
+    "cat": "other",
+    "img": "images/og/service-seo-tools.jpg",
+    "title": "უფასო SEO ინსტრუმენტები — Pixel Width, OG Preview, Content Editor, Brief Builder | 10XSEO",
+    "desc": "6 უფასო SEO ინსტრუმენტი ქართული ტექსტისთვის: Pixel Width Checker, Keyword Density, OG Preview, Readability, Content Editor, Brief Builder.",
+    "url": "https://10xseo.ge/seo-tools/"
+  },
+  {
+    "path": "services.html",
+    "cat": "other",
+    "img": "images/og/page-services.jpg",
+    "title": "SEO სერვისები — სრული ეკოსისტემა თქვენი ბიზნესისთვის | 10XSEO",
+    "desc": "10XSEO სერვისები: SEO მომსახურება, AI SEO/GEO, კონვერსიის ოპტიმიზაცია, Google Ads, კოპირაიტინგი, SEO კურსი და უფასო ინსტრუმენტები. საქართველოს #1 SEO სააგენტო.",
+    "url": "https://10xseo.ge/services.html"
+  },
+  {
+    "path": "startup-leqsikoni.html",
+    "cat": "other",
+    "img": "images/og/page-startup-leqsikoni.jpg",
+    "title": "Startup ლექსიკონი — 10XSEO",
+    "desc": "Startup ტერმინების სრული ლექსიკონი ქართულად.",
+    "url": "https://10xseo.ge/startup-leqsikoni/"
+  },
+  {
+    "path": "tools/content-brief-builder.html",
+    "cat": "tool",
+    "img": "images/og/tool-content-brief.jpg",
+    "title": "Content Brief Builder — კონტენტ-ბრიფის გენერატორი | 10XSEO",
+    "desc": "შექმენით სტრუქტურირებული კონტენტ-ბრიფი წამებში. სათაურის ვარიანტები, H2/H3 outline, SEO checklist — კოპირაიტერისთვის მზა დავალება.",
+    "url": "https://10xseo.ge/tools/content-brief-builder/"
+  },
+  {
+    "path": "tools/keyword-density.html",
+    "cat": "tool",
+    "img": "images/og/tool-keyword-density.jpg",
+    "title": "Keyword Density Checker — საკვანძო სიტყვების სიხშირე | 10XSEO",
+    "desc": "გაანალიზეთ ტექსტში საკვანძო სიტყვების სიხშირე. თავიდან აიცილეთ keyword stuffing და იპოვეთ ოპტიმალური ბალანსი.",
+    "url": "https://10xseo.ge/tools/keyword-density/"
+  },
+  {
+    "path": "tools/numbers-to-words.html",
+    "cat": "tool",
+    "img": "images/og/tool-numbers-words.jpg",
+    "title": "რიცხვები სიტყვებში — ქართული რიცხვის წერითი ფორმა | 10XSEO",
+    "desc": "გადაიყვანეთ რიცხვი ქართულ წერით ფორმაში. იდეალურია ხელშეკრულებების, ინვოისების და იურიდიული დოკუმენტებისთვის.",
+    "url": "https://10xseo.ge/tools/numbers-to-words/"
+  },
+  {
+    "path": "tools/og-preview.html",
+    "cat": "tool",
+    "img": "images/og/tool-og-preview.jpg",
+    "title": "Open Graph Preview — სოციალური ქსელების პრევიუ | 10XSEO",
+    "desc": "ნახეთ როგორ გამოჩნდება თქვენი ბმული Facebook-ზე, Twitter-ზე და LinkedIn-ზე. დააკოპირეთ მზა OG ტეგები.",
+    "url": "https://10xseo.ge/tools/og-preview/"
+  },
+  {
+    "path": "tools/pixel-width-checker.html",
+    "cat": "tool",
+    "img": "images/og/tool-pixel-width.jpg",
+    "title": "Meta Title & Description Pixel Width Checker — უფასო SEO ინსტრუმენტი | 10XSEO",
+    "desc": "შეამოწმეთ Meta Title და Description ზუსტი პიქსელის სიგანე — ქართული ტექსტისთვის. Google სათაურს პიქსელებით ჭრის, არა სიმბოლოებით.",
+    "url": "https://10xseo.ge/tools/pixel-width-checker/"
+  },
+  {
+    "path": "tools/readability-score.html",
+    "cat": "tool",
+    "img": "images/og/tool-readability.jpg",
+    "title": "Readability Score — ტექსტის წაკითხვადობის შემოწმება | 10XSEO",
+    "desc": "შეაფასეთ ტექსტის წაკითხვადობა Flesch Reading Ease სკორით. რთული წინადადებები ამცირებენ ჩართულობას — გაამარტივეთ SEO კონტენტი.",
+    "url": "https://10xseo.ge/tools/readability-score/"
+  },
+  {
+    "path": "tools/seo-content-editor.html",
+    "cat": "tool",
+    "img": "images/og/tool-content-editor.jpg",
+    "title": "SEO Content Editor — კონტენტის ოპტიმიზაცია რეალურ დროში | 10XSEO",
+    "desc": "წერეთ SEO-ოპტიმიზებული კონტენტი რეალური დროის მეტრიკებით. Keyword density, წაკითხვადობა, სათაურები — ყველაფერი ერთ ადგილას.",
+    "url": "https://10xseo.ge/tools/seo-content-editor/"
+  },
+  {
+    "path": "vacancies.html",
+    "cat": "other",
+    "img": "images/og/page-vacancies.jpg",
+    "title": "ვაკანსიები - შემოუერთდით 10xSEO-ს გუნდს | 10XSEO",
+    "desc": "გახდი 10xSEO-ს გუნდის წევრი! იხილეთ მიმდინარე ვაკანსიები და გამოგვიგზავნეთ თქვენი CV.",
+    "url": "https://10xseo.ge/vacancies.html"
+  }
+]
