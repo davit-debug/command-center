@@ -22,7 +22,7 @@
   // ============================================================
   var CONFIG = {
     // Google Analytics 4 — Property → Admin → Data Streams → Web → Measurement ID
-    GA4_ID: '',                       // e.g. 'G-XXXXXXXXXX'
+    GA4_ID: 'G-XX9YG8BD37',           // reused from WP property (historical continuity)
 
     // Google Tag Manager (alternative-ი GA4-ის — თუ GTM გამოიყენებ, GA4_ID დატოვე ცარიელი)
     GTM_ID: '',                       // e.g. 'GTM-XXXXXXX'
@@ -33,11 +33,11 @@
                                        // recommended: false + html file ვერიფიკაცია
 
     // Hotjar — Site Settings → Tracking
-    HOTJAR_ID: '',                    // e.g. '1234567' (numeric)
+    HOTJAR_ID: '3838380',             // reused from WP
     HOTJAR_SV: 6,                     // Hotjar snippet version (default 6)
 
     // Meta (Facebook) Pixel — Events Manager → Settings → Pixel ID
-    META_PIXEL_ID: '',                // e.g. '123456789012345'
+    META_PIXEL_ID: '',                // user will provide new Pixel ID (old: 838083750969721 deprecated)
 
     // LinkedIn Insight Tag — Campaign Manager → Insight Tag
     LINKEDIN_PARTNER_ID: '',          // e.g. '1234567'
