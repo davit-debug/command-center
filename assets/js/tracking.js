@@ -567,6 +567,53 @@
       });
     }, true);
 
+    // ----- cta_view: fires once per CTA per page session when CTA enters viewport -----
+    // Combined with book_consultation_click etc., enables per-button CR% calculation:
+    //   CR% = (events with cta_location = X) / (cta_view events with cta_location = X)
+    if (typeof IntersectionObserver !== 'undefined') {
+      var _viewSeen = new WeakSet();
+      function markView(el) {
+        if (_viewSeen.has(el)) return;
+        _viewSeen.add(el);
+        var ctx = _resolveClickContext(el);
+        if (!ctx.cta_location || ctx.cta_location === 'unknown') return;
+        window.trackEvent('cta_view', {
+          cta_location: ctx.cta_location,
+          page_section: ctx.section,
+          page_path: location.pathname,
+          button_text: ctx.text
+        });
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+            markView(entry.target);
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: [0.5] });
+      function observeCtas() {
+        var seen = new Set();
+        // Explicit data-cta annotations (preferred)
+        document.querySelectorAll('[data-cta]').forEach(function (el) {
+          if (seen.has(el)) return; seen.add(el); io.observe(el);
+        });
+        // Calendly-trigger elements without data-cta (DOM-traversal fallback applies)
+        document.querySelectorAll('[onclick*="openCalendly"], [data-calendly]').forEach(function (el) {
+          if (seen.has(el)) return; seen.add(el); io.observe(el);
+        });
+        // Phone & email anchors (these are CTAs too)
+        document.querySelectorAll('a[href^="tel:"], a[href^="mailto:"]').forEach(function (el) {
+          if (seen.has(el)) return; seen.add(el); io.observe(el);
+        });
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', observeCtas, { once: true });
+      } else {
+        observeCtas();
+      }
+    }
+
     log('event listeners wired');
   })();
 
