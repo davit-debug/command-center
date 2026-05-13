@@ -318,83 +318,9 @@ Call Us
 
       <div class="bg-surface-alt dark:bg-surface-dark-alt rounded-2xl p-6 sm:p-8 border border-gray-100 dark:border-gray-800">
 
-        <form id="lead-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
-
-          <div class="space-y-5">
-
-            <!-- Name -->
-            <div>
-              <label for="lf-name" class="block text-sm font-medium text-heading dark:text-heading-dark mb-1.5">Full Name <span class="text-red-500">*</span></label>
-              <input type="text" id="lf-name" name="name" required autocomplete="name" placeholder="Your Full Name" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors text-sm">
-              <p class="field-error-msg">Please enter your full name</p>
-            </div>
-
-            <!-- Phone -->
-            <div>
-              <label for="lf-phone" class="block text-sm font-medium text-heading dark:text-heading-dark mb-1.5">Phone</label>
-              <div class="flex gap-2">
-                <span class="inline-flex items-center px-3 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-body-dark text-sm font-inter shrink-0">+995</span>
-                <input type="tel" id="lf-phone" name="phone" autocomplete="tel" placeholder="5XX XX XX XX" class="flex-1 w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors text-sm font-inter">
-              </div>
-            </div>
-
-            <!-- Email -->
-            <div>
-              <label for="lf-email" class="block text-sm font-medium text-heading dark:text-heading-dark mb-1.5">Email <span class="text-red-500">*</span></label>
-              <input type="email" id="lf-email" name="email" required autocomplete="email" placeholder="info@example.com" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors text-sm">
-              <p class="field-error-msg">Please enter a valid email address</p>
-            </div>
-
-            <!-- Website -->
-            <div>
-              <label for="lf-website" class="block text-sm font-medium text-heading dark:text-heading-dark mb-1.5">Website URL</label>
-              <input type="url" id="lf-website" name="website" autocomplete="url" placeholder="https://example.com" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors text-sm">
-            </div>
-
-            <!-- Service -->
-            <div>
-              <label for="lf-service" class="block text-sm font-medium text-heading dark:text-heading-dark mb-1.5">Which service are you interested in?</label>
-              <select id="lf-service" name="service" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors text-sm appearance-none" style="background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2224%22 height=%2224%22 fill=%22none%22 stroke=%22%2394a3b8%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M6 9l6 6 6-6%22/%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 12px center; background-size: 20px;">
-                <option value="">Select a service</option>
-                <option value="seo-management">SEO Management</option>
-                <option value="seo-consultation">SEO Consultation</option>
-                <option value="seo-strategy">SEO Strategy</option>
-                <option value="google-ads">Google Ads</option>
-                <option value="ai-seo">AI SEO / GEO</option>
-                <option value="copywriting">Copywriting</option>
-                <option value="cro">Conversion Rate Optimization</option>
-                <option value="seo-course">SEO Course</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-
-            <!-- Comment -->
-            <div>
-              <label for="lf-comment" class="block text-sm font-medium text-heading dark:text-heading-dark mb-1.5">Comment</label>
-              <textarea id="lf-comment" name="comment" rows="3" placeholder="Tell us about your challenge or project..." class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors text-sm resize-y"></textarea>
-            </div>
-
-          </div>
-
-          <!-- GDPR Consent — required -->
-          <div class="flex items-start gap-3 mt-6">
-            <input type="checkbox" id="gdpr-consent-leadform" name="gdpr_consent" required class="mt-1 w-4 h-4 shrink-0 rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-2 focus:ring-primary/40 cursor-pointer">
-            <label for="gdpr-consent-leadform" class="text-xs text-body/70 dark:text-body-dark/70 leading-relaxed cursor-pointer select-none">
-              I agree to 10xSEO processing my personal data to respond to my inquiry, in line with the <a href="privacy-policy.html" class="text-primary hover:underline">Privacy Policy</a>.
-            </label>
-          </div>
-          <!-- Submit -->
-          <button type="submit" id="btn-submit" class="w-full mt-6 inline-flex items-center justify-center gap-2 px-8 py-3.5 ai-cta-animate text-white font-bold rounded-xl hover:shadow-lg hover:shadow-primary/30 transition-all duration-200 text-base min-h-[44px]">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-            Send Request
-          </button>
-
-          <p class="text-xs text-body-dark/60 text-center mt-3 flex items-center justify-center gap-1">
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-            We'll reply within 24 hours. Your data is secure.
-          </p>
-
-        </form>
+        <!-- Tally EN Form rjGZd2 -->
+      <iframe data-tally-src="https://tally.so/embed/rjGZd2?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0" title="10xSEO Lead Form" style="border:0;"></iframe>
+      <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s)}</script>
 
         <!-- Success State -->
         <div id="form-success" class="hidden text-center py-12">

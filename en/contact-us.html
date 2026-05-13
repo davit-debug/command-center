@@ -349,75 +349,9 @@ Call Us
         <div class="lg:col-span-3">
           <div class="bg-surface-alt dark:bg-surface-dark-alt rounded-2xl p-6 sm:p-8 border border-gray-100 dark:border-gray-800">
             <h2 class="font-heading text-[22px] sm:text-[26px] font-bold text-heading dark:text-heading-dark mb-6">Send Us a Message</h2>
-            <form id="contact-form" class="space-y-5" novalidate>
-              <!-- Name -->
-              <div>
-                <label for="fullname" class="block text-sm font-medium text-heading dark:text-heading-dark mb-1.5">Full Name <span class="text-red-500">*</span></label>
-                <input type="text" id="fullname" name="fullname" required placeholder="Your Full Name" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors text-sm">
-              </div>
-              <!-- Phone + Email row -->
-              <div class="grid sm:grid-cols-2 gap-5">
-                <div>
-                  <label for="phone" class="block text-sm font-medium text-heading dark:text-heading-dark mb-1.5">Phone</label>
-                  <input type="tel" id="phone" name="phone" placeholder="5XX XX XX XX" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors text-sm font-inter">
-                </div>
-                <div>
-                  <label for="email" class="block text-sm font-medium text-heading dark:text-heading-dark mb-1.5">Email <span class="text-red-500">*</span></label>
-                  <input type="email" id="email" name="email" required placeholder="info@example.com" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors text-sm">
-                </div>
-              </div>
-              <!-- Company + Website row -->
-              <div class="grid sm:grid-cols-2 gap-5">
-                <div>
-                  <label for="company" class="block text-sm font-medium text-heading dark:text-heading-dark mb-1.5">Company</label>
-                  <input type="text" id="company" name="company" placeholder="Company Name" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors text-sm">
-                </div>
-                <div>
-                  <label for="website" class="block text-sm font-medium text-heading dark:text-heading-dark mb-1.5">Website URL</label>
-                  <input type="url" id="website" name="website" placeholder="https://example.com" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors text-sm">
-                </div>
-              </div>
-              <!-- Service select -->
-              <div>
-                <label for="service" class="block text-sm font-medium text-heading dark:text-heading-dark mb-1.5">Service</label>
-                <select id="service" name="service" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors text-sm appearance-none" style="background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2224%22 height=%2224%22 fill=%22none%22 stroke=%22%2394a3b8%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M6 9l6 6 6-6%22/%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 12px center; background-size: 20px;">
-                  <option value>Select a service</option>
-                  <option value="seo-management">SEO Management</option>
-                  <option value="local-seo">Local SEO</option>
-                  <option value="link-building">Link Building</option>
-                  <option value="web-development">Web Development</option>
-                  <option value="seo-consultation">SEO Consultation</option>
-                  <option value="google-ads">Google Ads</option>
-                  <option value="ai-seo">AI SEO / GEO</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-              <!-- Message -->
-              <div>
-                <label for="message" class="block text-sm font-medium text-heading dark:text-heading-dark mb-1.5">Message</label>
-                <textarea id="message" name="message" rows="4" placeholder="Tell us more about your business" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors text-sm resize-y"></textarea>
-              </div>
-              <!-- GDPR Consent — required -->
-              <div class="flex items-start gap-3">
-                <input type="checkbox" id="gdpr-consent-contact" name="gdpr_consent" required class="mt-1 w-4 h-4 shrink-0 rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-2 focus:ring-primary/40 cursor-pointer">
-                <label for="gdpr-consent-contact" class="text-xs text-body/70 dark:text-body-dark/70 leading-relaxed cursor-pointer select-none">
-                  I agree to 10xSEO processing my personal data to respond to my inquiry, in line with the <a href="privacy-policy.html" class="text-primary hover:underline">Privacy Policy</a>.
-                </label>
-              </div>
-              <!-- Submit -->
-              <button type="submit" id="submit-btn" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 ai-cta-animate text-white font-bold rounded-xl hover:shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5 transition-all duration-200 text-sm">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                Send
-              </button>
-              <!-- Success message -->
-              <div id="form-success" class="hidden mt-4 p-4 rounded-xl bg-success/10 border border-success/20 text-success text-sm font-medium">
-                Message sent successfully! We will contact you shortly.
-              </div>
-              <!-- Error message -->
-              <div id="form-error" class="hidden mt-4 p-4 rounded-xl bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-900/30 text-red-600 dark:text-red-400 text-sm font-medium">
-                Please fill out all required fields.
-              </div>
-            </form>
+            <!-- Tally EN Form #1 (rjGZd2) — Main contact form. -->
+            <iframe data-tally-src="https://tally.so/embed/rjGZd2?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0" title="10xSEO Contact Form" style="border:0;"></iframe>
+            <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s)}</script>
           </div>
         </div>
 
