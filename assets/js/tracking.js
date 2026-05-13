@@ -250,17 +250,190 @@
   }
 
   // ============================================================
+  // 10) UTM Capture + Attribution (last-touch, 30-day TTL)
+  // ============================================================
+  var ATTRIB_KEY = '_10x_attrib';
+  var ATTRIB_TTL_MS = 30 * 24 * 60 * 60 * 1000; // 30 days
+  var EXPLICIT_PARAMS = ['utm_source','utm_medium','utm_campaign','utm_term','utm_content',
+                        'gclid','fbclid','msclkid','li_fat_id','ttclid'];
+  var SEARCH_ENGINE_HOSTS = /(^|\.)(google|bing|yahoo|duckduckgo|yandex|baidu|ecosia|qwant|brave)\./i;
+
+  function _readStorage(key) {
+    try { return JSON.parse(localStorage.getItem(key) || 'null'); } catch (_) { return null; }
+  }
+  function _writeStorage(key, val) {
+    try { localStorage.setItem(key, JSON.stringify(val)); } catch (_) {}
+  }
+
+  function _captureExplicit() {
+    var qs = new URLSearchParams(location.search);
+    var found = {};
+    var hasAny = false;
+    EXPLICIT_PARAMS.forEach(function (p) {
+      var v = qs.get(p);
+      if (v) { found[p] = v; hasAny = true; }
+    });
+    if (!hasAny) return null;
+    found.captured_at = Date.now();
+    found.landing_page = location.pathname + location.search;
+    found.referrer = document.referrer || '';
+    return found;
+  }
+
+  function _deriveSynthetic() {
+    var ref = document.referrer;
+    if (!ref) return { source: 'direct', medium: '(none)', captured_at: Date.now() };
+    try {
+      var host = new URL(ref).hostname;
+      var isSelf = host === location.hostname || host.endsWith('.' + location.hostname);
+      if (isSelf) return null; // internal navigation — don't overwrite session attribution
+      var isSearch = SEARCH_ENGINE_HOSTS.test(host);
+      return {
+        source: host.replace(/^www\./, ''),
+        medium: isSearch ? 'organic' : 'referral',
+        captured_at: Date.now()
+      };
+    } catch (_) {
+      return { source: 'direct', medium: '(none)', captured_at: Date.now() };
+    }
+  }
+
+  // Run capture on init
+  var _activeAttribution = (function () {
+    var explicit = _captureExplicit();
+    if (explicit) {
+      _writeStorage(ATTRIB_KEY, explicit);
+      log('attribution captured (explicit):', explicit);
+      return explicit;
+    }
+    var stored = _readStorage(ATTRIB_KEY);
+    if (stored && stored.captured_at && (Date.now() - stored.captured_at) < ATTRIB_TTL_MS) {
+      log('attribution preserved (stored):', stored);
+      return stored;
+    }
+    if (stored) {
+      try { localStorage.removeItem(ATTRIB_KEY); } catch (_) {} // expired
+    }
+    var synthetic = _deriveSynthetic();
+    if (synthetic) log('attribution synthetic:', synthetic);
+    return synthetic;
+  })();
+
+  window.getAttribution = function () { return _activeAttribution; };
+
+  // Flatten attribution for event payload (prefixed to avoid clobbering event params)
+  function _attributionParams() {
+    var a = _activeAttribution || {};
+    return {
+      attrib_source: a.utm_source || a.source || '',
+      attrib_medium: a.utm_medium || a.medium || '',
+      attrib_campaign: a.utm_campaign || '',
+      attrib_content: a.utm_content || '',
+      attrib_term: a.utm_term || '',
+      attrib_landing_page: a.landing_page || '',
+      attrib_gclid: a.gclid || '',
+      attrib_fbclid: a.fbclid || '',
+      page_language: location.pathname.indexOf('/en/') === 0 ? 'en' : 'ka'
+    };
+  }
+
+  // ============================================================
+  // 11) Click-context resolver — find nearest data-cta + <section id>
+  // ============================================================
+  function _resolveClickContext(el) {
+    var ctx = { cta_location: '', section: '', text: '' };
+    if (!el || !el.closest) return ctx;
+    var ctaEl = el.closest('[data-cta]');
+    if (ctaEl) ctx.cta_location = ctaEl.getAttribute('data-cta');
+    var sectionEl = el.closest('section[id], header, footer, main, nav, aside');
+    if (sectionEl) ctx.section = sectionEl.id || sectionEl.tagName.toLowerCase();
+    var btn = el.closest('a, button');
+    if (btn) ctx.text = (btn.innerText || btn.textContent || '').trim().substring(0, 40);
+    if (!ctx.cta_location) {
+      ctx.cta_location = ctx.section ? (ctx.section + '-cta') : 'unknown';
+    }
+    return ctx;
+  }
+
+  // Track the last clicked element that triggers a Calendly open
+  // (since inline `onclick="openCalendly()"` doesn't expose the event)
+  var _lastCalendlyTrigger = null;
+  document.addEventListener('click', function (e) {
+    var t = e.target && e.target.closest ? e.target.closest('[onclick*="openCalendly"], [data-calendly]') : null;
+    if (t) _lastCalendlyTrigger = t;
+  }, true);
+
+  // ============================================================
   // Public helper: გადახდის/CTA-ის event tracking
   // გამოყენება: window.trackEvent('book_consultation', { source: 'header' })
+  // Attribution params auto-merged into every event.
   // ============================================================
   window.trackEvent = function (eventName, params) {
     params = params || {};
-    if (typeof window.gtag === 'function') window.gtag('event', eventName, params);
-    if (typeof window.fbq === 'function') window.fbq('trackCustom', eventName, params);
-    if (typeof window.lintrk === 'function') window.lintrk('track', { conversion_id: params.linkedin_conversion_id });
-    if (window.ttq && typeof window.ttq.track === 'function') window.ttq.track(eventName, params);
-    log('event:', eventName, params);
+    var attrib = _attributionParams();
+    var merged = {};
+    for (var k in attrib) if (Object.prototype.hasOwnProperty.call(attrib, k)) merged[k] = attrib[k];
+    for (var k2 in params) if (Object.prototype.hasOwnProperty.call(params, k2)) merged[k2] = params[k2];
+    if (typeof window.gtag === 'function') window.gtag('event', eventName, merged);
+    if (typeof window.fbq === 'function') window.fbq('trackCustom', eventName, merged);
+    if (typeof window.lintrk === 'function') window.lintrk('track', { conversion_id: merged.linkedin_conversion_id });
+    if (window.ttq && typeof window.ttq.track === 'function') window.ttq.track(eventName, merged);
+    log('event:', eventName, merged);
   };
+
+  // ============================================================
+  // 12) Calendly wrapper — inject UTM params + fire book_consultation_click
+  // Wraps the inline `openCalendly()` defined on every page.
+  // ============================================================
+  (function wrapCalendly() {
+    var CAL_URL = 'https://calendly.com/10xseo-sales/quick-seo-consultation-15-minutes';
+    var STYLE = 'background_color=0f172a&text_color=f8fafc&primary_color=8b5cf6';
+
+    function build(ctx) {
+      var a = _activeAttribution || {};
+      var params = new URLSearchParams();
+      params.set('utm_source', a.utm_source || a.source || 'direct');
+      params.set('utm_medium', a.utm_medium || a.medium || '(none)');
+      params.set('utm_campaign', a.utm_campaign || 'site_cta');
+      params.set('utm_content', (ctx.cta_location || 'unknown') + '|' + (ctx.section || 'no-section'));
+      params.set('utm_term', location.pathname);
+      return CAL_URL + '?' + params.toString() + '&' + STYLE;
+    }
+
+    function attemptWrap() {
+      if (typeof window.openCalendly !== 'function') return false;
+      if (window.openCalendly._10xWrapped) return true;
+      var orig = window.openCalendly;
+      window.openCalendly = function () {
+        var ctx = _resolveClickContext(_lastCalendlyTrigger);
+        var url = build(ctx);
+        window.trackEvent('book_consultation_click', {
+          cta_location: ctx.cta_location,
+          page_section: ctx.section,
+          page_path: location.pathname,
+          button_text: ctx.text
+        });
+        if (typeof window.Calendly !== 'undefined' && window._calendlyReady) {
+          window.Calendly.initPopupWidget({ url: url });
+        } else {
+          window.open(url, '_blank');
+        }
+        return false;
+      };
+      window.openCalendly._10xWrapped = true;
+      log('openCalendly wrapped');
+      return true;
+    }
+
+    if (!attemptWrap()) {
+      // Inline openCalendly may not have parsed yet when we run; try after DOMContentLoaded
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', attemptWrap, { once: true });
+      } else {
+        setTimeout(attemptWrap, 0);
+      }
+    }
+  })();
 
   log('tracking.js initialized');
 })();
