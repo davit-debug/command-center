@@ -435,5 +435,140 @@
     }
   })();
 
+  // ============================================================
+  // 13) Event taxonomy — delegated listeners (capture phase)
+  // ============================================================
+  (function wireEvents() {
+    var DOWNLOAD_EXT_RE = /\.(pdf|zip|xlsx?|docx?|csv|pptx?|rar|7z|dmg|exe)(\?|#|$)/i;
+    var INTERNAL_HOSTS = ['10xseo.ge', 'www.10xseo.ge', location.hostname];
+    var CALENDLY_HOSTS = ['calendly.com', 'assets.calendly.com'];
+
+    function isInternalHost(h) {
+      for (var i = 0; i < INTERNAL_HOSTS.length; i++) if (INTERNAL_HOSTS[i] === h) return true;
+      return false;
+    }
+    function isCalendlyHost(h) {
+      for (var i = 0; i < CALENDLY_HOSTS.length; i++) if (CALENDLY_HOSTS[i] === h) return true;
+      return false;
+    }
+
+    // ----- click handler: phone, email, outbound, file_download -----
+    document.addEventListener('click', function (e) {
+      var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+      if (!a) return;
+      var href = a.getAttribute('href') || '';
+      if (!href || href.charAt(0) === '#') return;
+      var ctx = _resolveClickContext(a);
+
+      if (/^tel:/i.test(href)) {
+        window.trackEvent('phone_click', {
+          phone_number: href.replace(/^tel:/i, '').trim(),
+          page_section: ctx.section, page_path: location.pathname
+        });
+        return;
+      }
+      if (/^mailto:/i.test(href)) {
+        window.trackEvent('email_click', {
+          email_target: href.replace(/^mailto:/i, '').split('?')[0],
+          page_section: ctx.section, page_path: location.pathname
+        });
+        return;
+      }
+      if (/^https?:\/\//i.test(href)) {
+        var host = '';
+        try { host = new URL(href).hostname; } catch (_) {}
+        if (!host) return;
+        if (isCalendlyHost(host)) return; // Calendly handled by wrapCalendly
+        if (DOWNLOAD_EXT_RE.test(href)) {
+          var ext = (href.match(DOWNLOAD_EXT_RE) || [])[1] || '';
+          window.trackEvent('file_download', {
+            file_name: href.split('/').pop().split('?')[0],
+            file_extension: ext.toLowerCase(),
+            link_url: href, page_section: ctx.section
+          });
+          return;
+        }
+        if (!isInternalHost(host)) {
+          window.trackEvent('outbound_click', {
+            link_url: href, link_domain: host,
+            link_text: ctx.text, page_section: ctx.section
+          });
+        }
+      }
+    }, true);
+
+    // ----- form_start (focusin one-shot per form) + form_submit -----
+    var _formsStarted = new WeakSet();
+    document.addEventListener('focusin', function (e) {
+      var form = e.target && e.target.closest ? e.target.closest('form') : null;
+      if (!form || _formsStarted.has(form)) return;
+      _formsStarted.add(form);
+      window.trackEvent('form_start', {
+        form_id: form.id || form.getAttribute('name') || 'unnamed',
+        page_path: location.pathname
+      });
+    }, true);
+
+    document.addEventListener('submit', function (e) {
+      var form = e.target;
+      if (!form || form.tagName !== 'FORM') return;
+      window.trackEvent('form_submit', {
+        form_id: form.id || form.getAttribute('name') || 'unnamed',
+        page_path: location.pathname
+      });
+    }, true);
+
+    // ----- scroll depth: fire once at 25/50/75/100% -----
+    var SCROLL_THRESHOLDS = [25, 50, 75, 100];
+    var _scrollFired = {};
+    var _scrollTimer = null;
+    function checkScroll() {
+      var doc = document.documentElement;
+      var scrollTop = window.pageYOffset || doc.scrollTop || 0;
+      var viewportH = window.innerHeight || doc.clientHeight;
+      var docH = Math.max(doc.scrollHeight, doc.offsetHeight, document.body.scrollHeight, document.body.offsetHeight);
+      var scrollable = docH - viewportH;
+      if (scrollable <= 0) return;
+      var pct = Math.min(100, Math.round(((scrollTop + viewportH) / docH) * 100));
+      for (var i = 0; i < SCROLL_THRESHOLDS.length; i++) {
+        var t = SCROLL_THRESHOLDS[i];
+        if (pct >= t && !_scrollFired[t]) {
+          _scrollFired[t] = true;
+          window.trackEvent('scroll', { percent_scrolled: t });
+        }
+      }
+    }
+    window.addEventListener('scroll', function () {
+      if (_scrollTimer) return;
+      _scrollTimer = setTimeout(function () { _scrollTimer = null; checkScroll(); }, 250);
+    }, { passive: true });
+
+    // ----- video_play / video_complete (lite-yt-embed + <video>) -----
+    document.addEventListener('play', function (e) {
+      var el = e.target;
+      if (!el) return;
+      var tag = el.tagName;
+      if (tag === 'VIDEO') {
+        window.trackEvent('video_play', {
+          video_url: el.currentSrc || el.src || 'inline',
+          video_title: el.getAttribute('title') || el.getAttribute('aria-label') || ''
+        });
+      }
+    }, true);
+
+    // lite-yt-embed dispatches no native 'play' on the wrapper; listen for iframe creation
+    document.addEventListener('click', function (e) {
+      var lyt = e.target && e.target.closest ? e.target.closest('lite-youtube') : null;
+      if (!lyt || lyt._10xVideoFired) return;
+      lyt._10xVideoFired = true;
+      window.trackEvent('video_play', {
+        video_url: 'https://youtube.com/watch?v=' + (lyt.getAttribute('videoid') || ''),
+        video_title: lyt.getAttribute('videotitle') || lyt.getAttribute('aria-label') || ''
+      });
+    }, true);
+
+    log('event listeners wired');
+  })();
+
   log('tracking.js initialized');
 })();
