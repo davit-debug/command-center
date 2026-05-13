@@ -71,6 +71,11 @@
 !assets/
 !assets/**
 
+# Legal pages (privacy / terms / cookies)
+!privacy-policy.html
+!terms-of-service.html
+!cookies-policy.html
+
 # Tailwind build inputs
 !tailwind.config.js
 !tailwind.input.css
