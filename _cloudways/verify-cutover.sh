@@ -131,12 +131,12 @@ REDIRECTS=(
   "/best-seo-agency-in-georgia/|/blog/best-seo-agency-in-georgia.html|8|"
   "/local-seo/|/blog/local-seo.html|4|"
   "/link-building/|/seo-management.html|3|no equivalent"
-  "/seo-saagento/|/|2|HIGH imp 1222 — to homepage"
+  "/seo-saagento/|/blog/seo-saagento.html|2|blog (user confirmed 2026-05-13)"
   "/cifruli-marketingi/|/blog/cifruli-marketingi.html|2|"
   "/contact-us/|/contact-us.html|2|"
   "/blog/|/blog.html|2|"
   "/ra-aris-aeo/|/blog/ra-aris-aeo.html|2|"
-  "/copywriting/|/copywriting.html|0|service page (commercial intent)"
+  "/copywriting/|/blog/copywriting.html|0|blog (user confirmed 2026-05-13)"
   "/seo-audit/|/seo-audit.html|0|"
   "/about-us/|/about-us.html|0|"
   "/portfolio/|/portfolio.html|0|"
@@ -173,7 +173,7 @@ hr
 info "5. Backlink-bearing URLs (preserve link equity)"
 
 BACKLINKS=(
-  "/seo-optimizacia/|/seo-management.html|3 referring domains"
+  "/seo-optimizacia/|/ra-aris-seo.html|3 referring domains (matches WP chain)"
   "/ufaso-seo-auditi/|/seo-audit.html|1 referring domain"
 )
 
@@ -235,19 +235,24 @@ TOP_URLS=(
   "en/" "en/seo-management.html" "en/contact-us.html" "en/blog.html"
 )
 
-declare -A STATUS_COUNTS=()
+# bash 3.2 compatible (macOS default): use plain vars instead of associative array
+SC_2xx=0; SC_3xx=0; SC_4xx=0; SC_5xx=0
+HAS_5XX=0
 for path in "${TOP_URLS[@]}"; do
   CODE=$(curl -sko /dev/null -w "%{http_code}" --max-time 10 "$BASE_URL/$path")
-  STATUS_COUNTS[$CODE]=$(( ${STATUS_COUNTS[$CODE]:-0} + 1 ))
-  if [[ "$CODE" =~ ^5 ]]; then
-    fail "5xx on /$path  ($CODE)"
-  fi
+  case "$CODE" in
+    2*) SC_2xx=$((SC_2xx+1)) ;;
+    3*) SC_3xx=$((SC_3xx+1)) ;;
+    4*) SC_4xx=$((SC_4xx+1)) ;;
+    5*) SC_5xx=$((SC_5xx+1)); HAS_5XX=1; fail "5xx on /$path  ($CODE)" ;;
+  esac
 done
 echo "   Status code distribution:"
-for code in "${!STATUS_COUNTS[@]}"; do
-  echo "     $code → ${STATUS_COUNTS[$code]} URLs"
-done
-if [ -z "${STATUS_COUNTS[500]:-}${STATUS_COUNTS[502]:-}${STATUS_COUNTS[503]:-}${STATUS_COUNTS[504]:-}" ]; then
+echo "     2xx → $SC_2xx URLs"
+echo "     3xx → $SC_3xx URLs"
+echo "     4xx → $SC_4xx URLs"
+echo "     5xx → $SC_5xx URLs"
+if [ "$HAS_5XX" = "0" ]; then
   pass "No 5xx errors on top 20 URLs"
 fi
 

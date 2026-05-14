@@ -74,21 +74,28 @@ The deploy workflow auto-promotes `_cloudways/.htaccess` and `_cloudways/robots.
 
 ---
 
-## D. Cutover (DNS flip)
+## D. Cutover (DNS flip) — STRICT ORDER REQUIRED
 
-**Pre-flight:**
+> ⚠️ **Verified via dry-run (2026-05-14):** Without step 4, requests to `10xseo.ge`
+> on Cloudways IP `157.245.32.108` hit the server's **default vhost (a different WP app)**
+> instead of our static site. **Step 4 MUST happen BEFORE step 6.**
+
+**Pre-flight (24h before):**
 1. **Backup current WordPress** — Cloudways or hosting provider, full backup (DB + files). Keep for ≥ 30 days.
 2. **Lower DNS TTL** at registrar 24 h before cutover: set A record TTL to 300 s (5 min). This makes rollback fast if needed.
 3. **Verify** the new site one more time at the temp URL.
 
-**Day of cutover:**
-4. **Cloudways → Application Settings → Domain Management** — add `10xseo.ge` and `www.10xseo.ge` as primary domain.
-5. **Cloudways → SSL Certificate** — generate Let's Encrypt for both `10xseo.ge` and `www.10xseo.ge`. This requires DNS to already point to Cloudways, so do step 6 first if needed.
-6. **DNS at registrar** — change `A` record for `10xseo.ge` to Cloudways server IP. (And `A` for `www` or a `CNAME www → 10xseo.ge`.)
-7. Wait 5–60 minutes for DNS propagation. Monitor with `dig 10xseo.ge` from a couple locations.
-8. After SSL is live, **enable HSTS** in `.htaccess` (uncomment the line — see `_cloudways/.htaccess` section 5).
-9. Test the live site cold: open Incognito → visit `10xseo.ge` and 5 deep URLs.
-10. **Search Console** — submit the new sitemap, request reindex on the homepage and top 10 pages.
+**Day of cutover (strict order):**
+4. **🔴 FIRST: Cloudways → Apps → 10xseo → Domain Management** — add `10xseo.ge` (Primary) + `www.10xseo.ge` (alias). **WITHOUT THIS, traffic goes to a default vhost.**
+5. **DNS at registrar** — change `A` record for `10xseo.ge` to `157.245.32.108`. Also `A` for `www` (or CNAME www → 10xseo.ge).
+6. **Wait 5–60 min** for DNS propagation. Monitor: `dig 10xseo.ge +short` (should return `157.245.32.108`).
+7. **Cloudways → SSL Certificate** — generate Let's Encrypt for `10xseo.ge` AND `www.10xseo.ge`. Requires step 5 + 6 first (HTTP-01 challenge needs DNS).
+8. **Verify SSL** — open `https://10xseo.ge/` in Incognito → no cert warning.
+9. **Cloudways → Manage Services → Varnish → Purge** — clear stale cache from temp-URL period.
+10. **After SSL works on every URL**, uncomment HSTS line in `_cloudways/.htaccess` and push.
+11. Cold test: Incognito + 5 deep URLs (`/`, `/seo-management.html`, `/blog.html`, `/case-studies.html`, `/en/`).
+12. **Search Console** → Sitemaps → Submit `https://10xseo.ge/sitemap.xml`.
+13. URL Inspection on top 10 pages → "Request Indexing".
 
 **Post-cutover monitoring (first 7 days):**
 - Daily: Search Console → Coverage report — watch for crawl errors or 404 spikes.
@@ -98,10 +105,36 @@ The deploy workflow auto-promotes `_cloudways/.htaccess` and `_cloudways/robots.
 
 ---
 
-## E. Rollback plan (if it goes sideways)
+## E. Rollback runbook (if it goes sideways)
 
-- DNS TTL is 300 s, so rollback = change `A` record back to old WP IP → ≤ 5 min for everyone to revert.
-- Old WP files & DB are still on the previous host, untouched. Don't delete the old account for at least 30 days.
+**Before cutover — capture these values:**
+- [ ] OLD WP A record IP (run: `dig 10xseo.ge +short` BEFORE flipping DNS) → ________________
+- [ ] Old WP control panel URL: ________________
+- [ ] Old WP admin credentials saved in password manager: ☐
+
+**Rollback triggers (any of these = revert):**
+- Homepage returns 5xx or wrong content > 5 min after DNS propagation
+- Critical redirect (e.g., `/ra-aris-seo/` — 81 clicks/mo) returns 404 or wrong destination
+- SSL cert error visible in Chrome incognito (and Cloudways SSL generation fails)
+- Search Console shows 20+ new 404 errors within first hour
+- Forms (Tally embeds) broken → contact / leads dropping
+
+**Rollback procedure (≤ 5 minutes end-to-end):**
+1. Registrar DNS → change A record back to OLD WP IP (recorded above)
+2. With TTL=300s, propagation = ~5 min globally
+3. Verify: `dig 10xseo.ge +short` from your machine returns OLD IP
+4. Verify: Open `https://10xseo.ge/` in incognito → WP loads
+5. Notify team: rollback completed at [time]; post-mortem TBD
+
+**Don't panic-do:**
+- ✗ Don't delete the 10xseo Cloudways app — preserve it for diagnosis
+- ✗ Don't delete WP files/DB — those are your fallback
+- ✗ Don't disable Cloudflare/SSL — let them re-converge
+
+**Post-rollback:**
+- Cloudways app stays deployed (free — paid per-server, not per-app)
+- Investigate root cause via Cloudways logs: `ssh master_qqcfjajpxj@157.245.32.108 'tail -100 ~/applications/mnxbbjxncp/logs/*.log'`
+- Fix → push → temp URL test → retry cutover when ready
 
 ---
 
