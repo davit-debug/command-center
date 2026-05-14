@@ -123,6 +123,12 @@
     RewriteRule ^website-info/[^/]+/?$   - [G,L]
     RewriteRule ^website-info/?$         - [G,L]
 
+    # ----- WP feeds (RSS) — 410 Gone, faster deindex
+    #       ORDER MATTERS: must come BEFORE /category/ rule or category catches /category/seo/feed/
+    RewriteRule ^feed/?$                                - [G,L]
+    RewriteRule ^comments/feed/?$                       - [G,L]
+    RewriteRule ^.*/feed/?$                             - [G,L]
+
     # ----- WordPress categories → blog index -----
     RewriteRule ^category/.*$            https://%{HTTP_HOST}/blog.html [R=301,L]
 
@@ -145,11 +151,6 @@
     # Both GE and EN versions point to EN blog (content is English-only — Dubai market)
     RewriteRule ^aeo-optimization-agency-dubai/?$       https://%{HTTP_HOST}/en/blog/aeo-optimization-agency-dubai.html [R=301,L]
     RewriteRule ^en/aeo-optimization-agency-dubai/?$    https://%{HTTP_HOST}/en/blog/aeo-optimization-agency-dubai.html [R=301,L]
-
-    # ----- WP feeds (RSS) — let them 410 (gone), not 301 → faster deindex -----
-    RewriteRule ^feed/?$                                - [G,L]
-    RewriteRule ^.*/feed/?$                             - [G,L]
-    RewriteRule ^comments/feed/?$                       - [G,L]
 
     # ----- Old WP /audit/SLUG/ pages (404 in GSC) → seo-audit -----
     RewriteRule ^audit/.*/?$                            https://%{HTTP_HOST}/seo-audit.html [R=301,L]
