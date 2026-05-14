@@ -51,7 +51,9 @@ jobs:
 
       - name: Rsync to Cloudways
         run: |
-          rsync -avz --delete \
+          # -rlvz (no -a): skip preserving owner/group/perms/dir-times since
+          # the master_xxx user doesn't own the destination directory (group www-data does).
+          rsync -rlvz --delete --no-perms --no-times --omit-dir-times \
             -e "ssh -i ~/.ssh/cloudways_key -o StrictHostKeyChecking=no" \
             --exclude='.git/' \
             --exclude='.github/' \
