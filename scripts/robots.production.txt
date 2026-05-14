@@ -1,0 +1,97 @@
+# robots.txt for 10xseo.ge
+# Last updated: 2026-05-13
+# Spec: https://www.robotstxt.org/orig.html
+# Google rules: https://developers.google.com/search/docs/crawling-indexing/robots/robots_txt
+
+# ============================================================
+# Default: allow all crawlers
+# ============================================================
+User-agent: *
+Allow: /
+Disallow: /og-per-home/
+Disallow: /og-per-service/
+Disallow: /og-per-faq/
+Disallow: /scripts/
+Disallow: /_archive/
+Disallow: /cta-variants-picker.html
+Disallow: /lead-form.html
+
+# ============================================================
+# AI / LLM crawlers — explicitly allowed
+# Listing each agent makes intent explicit (some sites block these
+# by default, and explicit allow protects against future config drift).
+# Reference: https://platform.openai.com/docs/bots
+# ============================================================
+
+# OpenAI
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# Anthropic
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Google AI (separate token from Googlebot)
+User-agent: Google-Extended
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Meta AI (Llama training)
+User-agent: FacebookBot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+# Amazon Alexa / Olympus
+User-agent: Amazonbot
+Allow: /
+
+# Other AI training / search
+User-agent: CCBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: PetalBot
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+# ============================================================
+# Sitemap
+# ============================================================
+Sitemap: https://10xseo.ge/sitemap.xml
