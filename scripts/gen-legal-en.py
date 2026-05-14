@@ -348,9 +348,6 @@ COOKIES_MAIN = """  <!-- ========== HERO ========== -->
             <tr class="border-t border-gray-100 dark:border-gray-800"><td class="px-3 py-3 font-mono text-xs">_ga_&lt;ID&gt;</td><td class="px-3 py-3">Google</td><td class="px-3 py-3">GA4 session state</td><td class="px-3 py-3">13 months</td><td class="px-3 py-3">Analytics</td></tr>
             <tr class="border-t border-gray-100 dark:border-gray-800"><td class="px-3 py-3 font-mono text-xs">_hjSession*</td><td class="px-3 py-3">Hotjar</td><td class="px-3 py-3">Session tracking</td><td class="px-3 py-3">30 minutes</td><td class="px-3 py-3">Behavioral</td></tr>
             <tr class="border-t border-gray-100 dark:border-gray-800"><td class="px-3 py-3 font-mono text-xs">_hjid</td><td class="px-3 py-3">Hotjar</td><td class="px-3 py-3">User identifier</td><td class="px-3 py-3">12 months</td><td class="px-3 py-3">Behavioral</td></tr>
-            <tr class="border-t border-gray-100 dark:border-gray-800"><td class="px-3 py-3 font-mono text-xs">_clck</td><td class="px-3 py-3">Microsoft</td><td class="px-3 py-3">Clarity user ID</td><td class="px-3 py-3">12 months</td><td class="px-3 py-3">Behavioral</td></tr>
-            <tr class="border-t border-gray-100 dark:border-gray-800"><td class="px-3 py-3 font-mono text-xs">_clsk</td><td class="px-3 py-3">Microsoft</td><td class="px-3 py-3">Clarity session</td><td class="px-3 py-3">1 day</td><td class="px-3 py-3">Behavioral</td></tr>
-            <tr class="border-t border-gray-100 dark:border-gray-800"><td class="px-3 py-3 font-mono text-xs">MUID</td><td class="px-3 py-3">Microsoft</td><td class="px-3 py-3">Cross-site user ID</td><td class="px-3 py-3">13 months</td><td class="px-3 py-3">Behavioral</td></tr>
             <tr class="border-t border-gray-100 dark:border-gray-800"><td class="px-3 py-3 font-mono text-xs">__cf_bm</td><td class="px-3 py-3">Calendly</td><td class="px-3 py-3">Booking widget session</td><td class="px-3 py-3">30 minutes</td><td class="px-3 py-3">Functional</td></tr>
             <tr class="border-t border-gray-100 dark:border-gray-800"><td class="px-3 py-3 font-mono text-xs">theme</td><td class="px-3 py-3">10xSEO</td><td class="px-3 py-3">Dark/light mode</td><td class="px-3 py-3">1 year</td><td class="px-3 py-3">Functional</td></tr>
           </tbody>
@@ -375,7 +372,6 @@ COOKIES_MAIN = """  <!-- ========== HERO ========== -->
       <ul class="list-disc pl-6 text-base text-body dark:text-body-dark mb-3 space-y-1">
         <li><strong>Google Analytics:</strong> <a href="https://tools.google.com/dlpage/gaoptout" class="text-primary dark:text-primary-light hover:underline" target="_blank" rel="noopener">Google Analytics Opt-out Browser Add-on</a></li>
         <li><strong>Hotjar:</strong> <a href="https://www.hotjar.com/legal/compliance/opt-out" class="text-primary dark:text-primary-light hover:underline" target="_blank" rel="noopener">Hotjar Opt-out</a></li>
-        <li><strong>Microsoft Clarity:</strong> Use the Global Privacy Control (GPC) signal in your browser, or clear MUID/_clck cookies.</li>
       </ul>
 
       <h2 id="uae" class="font-heading text-[22px] sm:text-[26px] font-bold text-heading dark:text-heading-dark mt-10 mb-4">7. UAE Residents</h2>
@@ -411,7 +407,7 @@ PAGES = {
     },
     'cookies-policy': {
         'title': 'Cookies Policy | 10xSEO',
-        'description': 'How 10xseo.ge uses cookies — analytics (GA4), behavioral (Hotjar, Clarity), and functional cookies. Manage your cookie preferences and opt out.',
+        'description': 'How 10xseo.ge uses cookies — analytics (GA4), behavioral (Hotjar), and functional cookies. Manage your cookie preferences and opt out.',
         'og_image_alt': 'Cookies Policy — 10xSEO',
         'breadcrumb': 'Cookies Policy',
         'main': COOKIES_MAIN,
