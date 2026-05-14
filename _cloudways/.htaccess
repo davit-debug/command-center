@@ -5,17 +5,13 @@
 # =============================================================================
 
 # -----------------------------------------------------------------------------
-# 0) Detect HTTPS when behind Cloudways' Nginx reverse proxy
-#    Without this, Apache thinks every request is HTTP and bakes "http://" into
-#    Location headers — creating an unnecessary HTTP→HTTPS hop on every redirect.
+# 0) Force https:// in Location headers when client is on HTTPS via Cloudways' Nginx
+#    Apache listens on HTTP locally (Cloudways terminates TLS at Nginx), so it
+#    bakes "http://" into 301 Location headers. Rewriting http→https in the
+#    outgoing Location header saves one HTTP→HTTPS hop per redirect.
 # -----------------------------------------------------------------------------
-<IfModule mod_setenvif.c>
-    SetEnvIf X-Forwarded-Proto "^https$" HTTPS=on
-</IfModule>
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-    RewriteCond %{HTTP:X-Forwarded-Proto} =https
-    RewriteRule .* - [E=HTTPS:on]
+<IfModule mod_headers.c>
+    Header always edit Location "^http://" "https://" "expr=%{HTTP:X-Forwarded-Proto} == 'https'"
 </IfModule>
 
 # -----------------------------------------------------------------------------
