@@ -5,6 +5,20 @@
 # =============================================================================
 
 # -----------------------------------------------------------------------------
+# 0) Detect HTTPS when behind Cloudways' Nginx reverse proxy
+#    Without this, Apache thinks every request is HTTP and bakes "http://" into
+#    Location headers — creating an unnecessary HTTP→HTTPS hop on every redirect.
+# -----------------------------------------------------------------------------
+<IfModule mod_setenvif.c>
+    SetEnvIf X-Forwarded-Proto "^https$" HTTPS=on
+</IfModule>
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTP:X-Forwarded-Proto} =https
+    RewriteRule .* - [E=HTTPS:on]
+</IfModule>
+
+# -----------------------------------------------------------------------------
 # 1) HTTPS + canonical host (force https://10xseo.ge — strip www)
 # -----------------------------------------------------------------------------
 <IfModule mod_rewrite.c>
