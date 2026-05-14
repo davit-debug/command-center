@@ -39,84 +39,84 @@
 <IfModule mod_rewrite.c>
 
     # ----- Case studies (sub-directory; trailing slash → .html) -----
-    RewriteRule ^case-studies/3x-in-28-days/?$                          /case-studies/3x-in-28-days.html [R=301,L]
-    RewriteRule ^case-studies/270-percent-increase/?$                   /case-studies/270-percent-increase.html [R=301,L]
-    RewriteRule ^case-studies/250-percent-increase/?$                   /case-studies/250-percent-increase.html [R=301,L]
-    RewriteRule ^case-studies/local-seo-result/?$                       /case-studies/local-seo-result.html [R=301,L]
-    RewriteRule ^case-studies/stomatologiuri-klinikis-seo/?$            /case-studies/stomatologiuri-klinikis-seo.html [R=301,L]
-    RewriteRule ^case-studies/4200-yoveltviuri-vizitori-4-tveshi/?$     /case-studies/4200-yoveltviuri-vizitori-4-tveshi.html [R=301,L]
-    RewriteRule ^case-studies/trafikis-gaormageba-3-tveshi/?$           /case-studies/trafikis-gaormageba-3-tveshi.html [R=301,L]
-    RewriteRule ^case-studies/seo-krizisidan-top-3mde/?$                /case-studies/seo-crisis-management.html [R=301,L]
+    RewriteRule ^case-studies/3x-in-28-days/?$                          https://%{HTTP_HOST}/case-studies/3x-in-28-days.html [R=301,L]
+    RewriteRule ^case-studies/270-percent-increase/?$                   https://%{HTTP_HOST}/case-studies/270-percent-increase.html [R=301,L]
+    RewriteRule ^case-studies/250-percent-increase/?$                   https://%{HTTP_HOST}/case-studies/250-percent-increase.html [R=301,L]
+    RewriteRule ^case-studies/local-seo-result/?$                       https://%{HTTP_HOST}/case-studies/local-seo-result.html [R=301,L]
+    RewriteRule ^case-studies/stomatologiuri-klinikis-seo/?$            https://%{HTTP_HOST}/case-studies/stomatologiuri-klinikis-seo.html [R=301,L]
+    RewriteRule ^case-studies/4200-yoveltviuri-vizitori-4-tveshi/?$     https://%{HTTP_HOST}/case-studies/4200-yoveltviuri-vizitori-4-tveshi.html [R=301,L]
+    RewriteRule ^case-studies/trafikis-gaormageba-3-tveshi/?$           https://%{HTTP_HOST}/case-studies/trafikis-gaormageba-3-tveshi.html [R=301,L]
+    RewriteRule ^case-studies/seo-krizisidan-top-3mde/?$                https://%{HTTP_HOST}/case-studies/seo-crisis-management.html [R=301,L]
 
     # English case studies (slug differences)
-    RewriteRule ^en/case-studies/doubled-traffic-in-3-months/?$         /en/case-studies/trafikis-gaormageba-3-tveshi.html [R=301,L]
+    RewriteRule ^en/case-studies/doubled-traffic-in-3-months/?$         https://%{HTTP_HOST}/en/case-studies/trafikis-gaormageba-3-tveshi.html [R=301,L]
 
     # ----- Blog posts (WP /slug/ → CC /blog/slug.html) -----
-    RewriteRule ^google-2024-core-update/?$                  /blog/google-2024-core-update.html [R=301,L]
-    RewriteRule ^interaction-to-next-paint/?$                /blog/interaction-to-next-paint.html [R=301,L]
-    RewriteRule ^seo-for-business/?$                         /blog/seo-for-business.html [R=301,L]
-    RewriteRule ^2024-seo-trendebi/?$                        /blog/2024-seo-trendebi.html [R=301,L]
-    RewriteRule ^seo-vs-ppc/?$                               /blog/seo-vs-ppc.html [R=301,L]
-    RewriteRule ^business-seo-stats/?$                       /blog/business-seo-stats.html [R=301,L]
-    RewriteRule ^google-sandbox/?$                           /blog/google-sandbox.html [R=301,L]
-    RewriteRule ^seo-content/?$                              /blog/seo-content.html [R=301,L]
-    RewriteRule ^2023-seo-stats/?$                           /blog/2023-seo-stats.html [R=301,L]
-    RewriteRule ^soc-media-da-seo/?$                         /blog/soc-media-da-seo.html [R=301,L]
-    RewriteRule ^link-building-stats/?$                      /blog/link-building-stats.html [R=301,L]
-    RewriteRule ^ra-dro-schireba-seos-shedegebis-misagebad/?$ /blog/ra-dro-schireba-seos-shedegebis-misagebad.html [R=301,L]
-    RewriteRule ^2025-wlis-martis-ganaxlebebi-dasrulda/?$    /blog/2025-wlis-martis-ganaxlebebi-dasrulda.html [R=301,L]
-    RewriteRule ^geotegirebis-gavlena-reitingze/?$           /blog/geotegirebis-gavlena-reitingze.html [R=301,L]
-    RewriteRule ^ratom-schirdeba-bizness-seo/?$              /blog/ratom-schirdeba-bizness-seo.html [R=301,L]
-    RewriteRule ^cifruli-marketingi/?$                       /blog/cifruli-marketingi.html [R=301,L]
-    RewriteRule ^ra-aris-aeo/?$                              /blog/ra-aris-aeo.html [R=301,L]
+    RewriteRule ^google-2024-core-update/?$                  https://%{HTTP_HOST}/blog/google-2024-core-update.html [R=301,L]
+    RewriteRule ^interaction-to-next-paint/?$                https://%{HTTP_HOST}/blog/interaction-to-next-paint.html [R=301,L]
+    RewriteRule ^seo-for-business/?$                         https://%{HTTP_HOST}/blog/seo-for-business.html [R=301,L]
+    RewriteRule ^2024-seo-trendebi/?$                        https://%{HTTP_HOST}/blog/2024-seo-trendebi.html [R=301,L]
+    RewriteRule ^seo-vs-ppc/?$                               https://%{HTTP_HOST}/blog/seo-vs-ppc.html [R=301,L]
+    RewriteRule ^business-seo-stats/?$                       https://%{HTTP_HOST}/blog/business-seo-stats.html [R=301,L]
+    RewriteRule ^google-sandbox/?$                           https://%{HTTP_HOST}/blog/google-sandbox.html [R=301,L]
+    RewriteRule ^seo-content/?$                              https://%{HTTP_HOST}/blog/seo-content.html [R=301,L]
+    RewriteRule ^2023-seo-stats/?$                           https://%{HTTP_HOST}/blog/2023-seo-stats.html [R=301,L]
+    RewriteRule ^soc-media-da-seo/?$                         https://%{HTTP_HOST}/blog/soc-media-da-seo.html [R=301,L]
+    RewriteRule ^link-building-stats/?$                      https://%{HTTP_HOST}/blog/link-building-stats.html [R=301,L]
+    RewriteRule ^ra-dro-schireba-seos-shedegebis-misagebad/?$ https://%{HTTP_HOST}/blog/ra-dro-schireba-seos-shedegebis-misagebad.html [R=301,L]
+    RewriteRule ^2025-wlis-martis-ganaxlebebi-dasrulda/?$    https://%{HTTP_HOST}/blog/2025-wlis-martis-ganaxlebebi-dasrulda.html [R=301,L]
+    RewriteRule ^geotegirebis-gavlena-reitingze/?$           https://%{HTTP_HOST}/blog/geotegirebis-gavlena-reitingze.html [R=301,L]
+    RewriteRule ^ratom-schirdeba-bizness-seo/?$              https://%{HTTP_HOST}/blog/ratom-schirdeba-bizness-seo.html [R=301,L]
+    RewriteRule ^cifruli-marketingi/?$                       https://%{HTTP_HOST}/blog/cifruli-marketingi.html [R=301,L]
+    RewriteRule ^ra-aris-aeo/?$                              https://%{HTTP_HOST}/blog/ra-aris-aeo.html [R=301,L]
     # /seo-saagento/ is an existing blog post — preserve URL semantics (blog → blog)
-    RewriteRule ^seo-saagento/?$                             /blog/seo-saagento.html [R=301,L]
-    RewriteRule ^seo-2025/?$                                 /blog/seo-2025.html [R=301,L]
-    RewriteRule ^seo-2025-top-stories/?$                     /blog/seo-2025-top-stories.html [R=301,L]
-    RewriteRule ^how-instagram-detects-mood/?$               /blog/how-instagram-detects-mood.html [R=301,L]
-    RewriteRule ^brand-mistakes/?$                           /blog/brand-mistakes.html [R=301,L]
-    RewriteRule ^cifruli-memkvidreoba/?$                     /blog/cifruli-memkvidreoba.html [R=301,L]
-    RewriteRule ^2025-dzebnebi/?$                            /blog/2025-dzebnebi.html [R=301,L]
+    RewriteRule ^seo-saagento/?$                             https://%{HTTP_HOST}/blog/seo-saagento.html [R=301,L]
+    RewriteRule ^seo-2025/?$                                 https://%{HTTP_HOST}/blog/seo-2025.html [R=301,L]
+    RewriteRule ^seo-2025-top-stories/?$                     https://%{HTTP_HOST}/blog/seo-2025-top-stories.html [R=301,L]
+    RewriteRule ^how-instagram-detects-mood/?$               https://%{HTTP_HOST}/blog/how-instagram-detects-mood.html [R=301,L]
+    RewriteRule ^brand-mistakes/?$                           https://%{HTTP_HOST}/blog/brand-mistakes.html [R=301,L]
+    RewriteRule ^cifruli-memkvidreoba/?$                     https://%{HTTP_HOST}/blog/cifruli-memkvidreoba.html [R=301,L]
+    RewriteRule ^2025-dzebnebi/?$                            https://%{HTTP_HOST}/blog/2025-dzebnebi.html [R=301,L]
     # /copywriting/ is an existing blog post on WP — keep blog → blog (user confirmed 2026-05-13)
-    RewriteRule ^copywriting/?$                              /blog/copywriting.html [R=301,L]
-    RewriteRule ^local-seo/?$                                /blog/local-seo.html [R=301,L]
-    RewriteRule ^best-seo-agency-in-georgia/?$               /blog/best-seo-agency-in-georgia.html [R=301,L]
+    RewriteRule ^copywriting/?$                              https://%{HTTP_HOST}/blog/copywriting.html [R=301,L]
+    RewriteRule ^local-seo/?$                                https://%{HTTP_HOST}/blog/local-seo.html [R=301,L]
+    RewriteRule ^best-seo-agency-in-georgia/?$               https://%{HTTP_HOST}/blog/best-seo-agency-in-georgia.html [R=301,L]
     # CHANGED based on GSC: /ra-aris-seo/ has 81 clicks / 4,972 imp over 90 days — top traffic source.
     # Going to the top-level dual-intent service page (better conversion than pure blog).
-    RewriteRule ^ra-aris-seo/?$                              /ra-aris-seo.html [R=301,L]
+    RewriteRule ^ra-aris-seo/?$                              https://%{HTTP_HOST}/ra-aris-seo.html [R=301,L]
 
     # English blog posts (mostly mirror GE slugs under /en/blog/)
-    RewriteRule ^en/what-is-aeo/?$                           /en/blog/what-is-aeo.html [R=301,L]
+    RewriteRule ^en/what-is-aeo/?$                           https://%{HTTP_HOST}/en/blog/what-is-aeo.html [R=301,L]
     # /en/best-seo-agency-in-georgia/ — EN blog version doesn't exist; redirect to about-us
     # (7 clicks / 487 imp in GSC; "best agency" semantic match = company about page)
-    RewriteRule ^en/best-seo-agency-in-georgia/?$            /en/about-us.html [R=301,L]
+    RewriteRule ^en/best-seo-agency-in-georgia/?$            https://%{HTTP_HOST}/en/about-us.html [R=301,L]
 
     # ----- Static service / info pages (trailing slash → .html) -----
-    RewriteRule ^seo-management/?$       /seo-management.html [R=301,L]
-    RewriteRule ^seo-audit/?$            /seo-audit.html [R=301,L]
-    RewriteRule ^seo-copywriting/?$      /seo-copywriting.html [R=301,L]
-    RewriteRule ^about-us/?$             /about-us.html [R=301,L]
-    RewriteRule ^contact-us/?$           /contact-us.html [R=301,L]
-    RewriteRule ^portfolio/?$            /portfolio.html [R=301,L]
-    RewriteRule ^blog/?$                 /blog.html [R=301,L]
-    RewriteRule ^seo-leqsikoni/?$        /seo-leqsikoni.html [R=301,L]
-    RewriteRule ^startup-leqsikoni/?$    /startup-leqsikoni.html [R=301,L]
-    RewriteRule ^case-studies/?$         /case-studies.html [R=301,L]
+    RewriteRule ^seo-management/?$       https://%{HTTP_HOST}/seo-management.html [R=301,L]
+    RewriteRule ^seo-audit/?$            https://%{HTTP_HOST}/seo-audit.html [R=301,L]
+    RewriteRule ^seo-copywriting/?$      https://%{HTTP_HOST}/seo-copywriting.html [R=301,L]
+    RewriteRule ^about-us/?$             https://%{HTTP_HOST}/about-us.html [R=301,L]
+    RewriteRule ^contact-us/?$           https://%{HTTP_HOST}/contact-us.html [R=301,L]
+    RewriteRule ^portfolio/?$            https://%{HTTP_HOST}/portfolio.html [R=301,L]
+    RewriteRule ^blog/?$                 https://%{HTTP_HOST}/blog.html [R=301,L]
+    RewriteRule ^seo-leqsikoni/?$        https://%{HTTP_HOST}/seo-leqsikoni.html [R=301,L]
+    RewriteRule ^startup-leqsikoni/?$    https://%{HTTP_HOST}/startup-leqsikoni.html [R=301,L]
+    RewriteRule ^case-studies/?$         https://%{HTTP_HOST}/case-studies.html [R=301,L]
 
     # ----- Pages with NO direct equivalent -----
-    RewriteRule ^link-building/?$        /seo-management.html [R=301,L]
+    RewriteRule ^link-building/?$        https://%{HTTP_HOST}/seo-management.html [R=301,L]
     # /web-development/ — 10xSEO no longer offers web dev; 410 = honest deindex signal
     RewriteRule ^web-development/?$      - [G,L]
-    RewriteRule ^get-an-offer/?$         /contact-us.html [R=301,L]
+    RewriteRule ^get-an-offer/?$         https://%{HTTP_HOST}/contact-us.html [R=301,L]
 
     # ----- Pages discovered via Ahrefs (NOT in original sitemap) -----
     # /seo-optimizacia/ has 3 referring domains — currently redirects to /ra-aris-seo/ on WP
     # Keep the same target to preserve existing redirect chain & user expectations
-    RewriteRule ^seo-optimizacia/?$      /ra-aris-seo.html [R=301,L]
+    RewriteRule ^seo-optimizacia/?$      https://%{HTTP_HOST}/ra-aris-seo.html [R=301,L]
     # /ufaso-seo-auditi/ has 1 referring domain — literal "free SEO audit"
-    RewriteRule ^ufaso-seo-auditi/?$     /seo-audit.html [R=301,L]
-    RewriteRule ^en/seo-optimizacia/?$   /en/ra-aris-seo.html [R=301,L]
-    RewriteRule ^en/ufaso-seo-auditi/?$  /en/seo-audit.html [R=301,L]
+    RewriteRule ^ufaso-seo-auditi/?$     https://%{HTTP_HOST}/seo-audit.html [R=301,L]
+    RewriteRule ^en/seo-optimizacia/?$   https://%{HTTP_HOST}/en/ra-aris-seo.html [R=301,L]
+    RewriteRule ^en/ufaso-seo-auditi/?$  https://%{HTTP_HOST}/en/seo-audit.html [R=301,L]
 
     # ----- Website-info pages — were SEO analyses of OTHER sites (not our portfolio);
     # 0 clicks in GSC. 410 Gone = honest deindex signal (user confirmed 2026-05-13)
@@ -124,27 +124,27 @@
     RewriteRule ^website-info/?$         - [G,L]
 
     # ----- WordPress categories → blog index -----
-    RewriteRule ^category/.*$            /blog.html [R=301,L]
+    RewriteRule ^category/.*$            https://%{HTTP_HOST}/blog.html [R=301,L]
 
     # ----- WordPress-only URL patterns (discovered via GSC) -----
     # Blog pagination: /blog/page/2/, /blog/page/3/, ...
-    RewriteRule ^blog/page/[0-9]+/?$     /blog.html [R=301,L]
-    RewriteRule ^en/blog/page/[0-9]+/?$  /en/blog.html [R=301,L]
+    RewriteRule ^blog/page/[0-9]+/?$     https://%{HTTP_HOST}/blog.html [R=301,L]
+    RewriteRule ^en/blog/page/[0-9]+/?$  https://%{HTTP_HOST}/en/blog.html [R=301,L]
     # Category pagination: /category/seo/page/2/, ...
-    RewriteRule ^category/.+/page/[0-9]+/?$    /blog.html [R=301,L]
-    RewriteRule ^en/category/.+/page/[0-9]+/?$ /en/blog.html [R=301,L]
+    RewriteRule ^category/.+/page/[0-9]+/?$    https://%{HTTP_HOST}/blog.html [R=301,L]
+    RewriteRule ^en/category/.+/page/[0-9]+/?$ https://%{HTTP_HOST}/en/blog.html [R=301,L]
     # WP tag pages
-    RewriteRule ^tag/.*$                 /blog.html [R=301,L]
-    RewriteRule ^en/tag/.*$              /en/blog.html [R=301,L]
+    RewriteRule ^tag/.*$                 https://%{HTTP_HOST}/blog.html [R=301,L]
+    RewriteRule ^en/tag/.*$              https://%{HTTP_HOST}/en/blog.html [R=301,L]
     # WP author pages (with optional pagination)
-    RewriteRule ^author/.*$              /about-us.html [R=301,L]
-    RewriteRule ^en/author/.*$           /en/about-us.html [R=301,L]
+    RewriteRule ^author/.*$              https://%{HTTP_HOST}/about-us.html [R=301,L]
+    RewriteRule ^en/author/.*$           https://%{HTTP_HOST}/en/about-us.html [R=301,L]
 
     # ----- WP pages with NO CC equivalent but real impressions in GSC -----
     # /aeo-optimization-agency-dubai/ — Dubai expansion page (134 imp on /en/, 3 on GE)
     # Both GE and EN versions point to EN blog (content is English-only — Dubai market)
-    RewriteRule ^aeo-optimization-agency-dubai/?$       /en/blog/aeo-optimization-agency-dubai.html [R=301,L]
-    RewriteRule ^en/aeo-optimization-agency-dubai/?$    /en/blog/aeo-optimization-agency-dubai.html [R=301,L]
+    RewriteRule ^aeo-optimization-agency-dubai/?$       https://%{HTTP_HOST}/en/blog/aeo-optimization-agency-dubai.html [R=301,L]
+    RewriteRule ^en/aeo-optimization-agency-dubai/?$    https://%{HTTP_HOST}/en/blog/aeo-optimization-agency-dubai.html [R=301,L]
 
     # ----- WP feeds (RSS) — let them 410 (gone), not 301 → faster deindex -----
     RewriteRule ^feed/?$                                - [G,L]
@@ -152,56 +152,56 @@
     RewriteRule ^comments/feed/?$                       - [G,L]
 
     # ----- Old WP /audit/SLUG/ pages (404 in GSC) → seo-audit -----
-    RewriteRule ^audit/.*/?$                            /seo-audit.html [R=301,L]
-    RewriteRule ^en/audit/.*/?$                         /en/seo-audit.html [R=301,L]
+    RewriteRule ^audit/.*/?$                            https://%{HTTP_HOST}/seo-audit.html [R=301,L]
+    RewriteRule ^en/audit/.*/?$                         https://%{HTTP_HOST}/en/seo-audit.html [R=301,L]
 
     # ----- Strip ad-platform click ID params (causes duplicate canonical issues in GSC)
     # Strips fbclid, gclid, msclkid — preserves utm_* (needed for analytics)
     RewriteCond %{QUERY_STRING} (^|&)(fbclid|gclid|msclkid)= [NC]
-    RewriteRule ^(.*)$ /$1? [R=301,L]
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1? [R=301,L]
 
     # ----- English mirror for the same static pages -----
-    RewriteRule ^en/seo-management/?$    /en/seo-management.html [R=301,L]
-    RewriteRule ^en/seo-audit/?$         /en/seo-audit.html [R=301,L]
-    RewriteRule ^en/seo-copywriting/?$   /en/seo-copywriting.html [R=301,L]
-    RewriteRule ^en/copywriting/?$       /en/blog/copywriting.html [R=301,L]
-    RewriteRule ^en/local-seo/?$         /en/blog/local-seo.html [R=301,L]
-    RewriteRule ^en/about-us/?$          /en/about-us.html [R=301,L]
-    RewriteRule ^en/contact-us/?$        /en/contact-us.html [R=301,L]
-    RewriteRule ^en/portfolio/?$         /en/portfolio.html [R=301,L]
-    RewriteRule ^en/blog/?$              /en/blog.html [R=301,L]
+    RewriteRule ^en/seo-management/?$    https://%{HTTP_HOST}/en/seo-management.html [R=301,L]
+    RewriteRule ^en/seo-audit/?$         https://%{HTTP_HOST}/en/seo-audit.html [R=301,L]
+    RewriteRule ^en/seo-copywriting/?$   https://%{HTTP_HOST}/en/seo-copywriting.html [R=301,L]
+    RewriteRule ^en/copywriting/?$       https://%{HTTP_HOST}/en/blog/copywriting.html [R=301,L]
+    RewriteRule ^en/local-seo/?$         https://%{HTTP_HOST}/en/blog/local-seo.html [R=301,L]
+    RewriteRule ^en/about-us/?$          https://%{HTTP_HOST}/en/about-us.html [R=301,L]
+    RewriteRule ^en/contact-us/?$        https://%{HTTP_HOST}/en/contact-us.html [R=301,L]
+    RewriteRule ^en/portfolio/?$         https://%{HTTP_HOST}/en/portfolio.html [R=301,L]
+    RewriteRule ^en/blog/?$              https://%{HTTP_HOST}/en/blog.html [R=301,L]
     # /en/seo-leqsikoni/ and /en/startup-leqsikoni/ — EN glossary pages don't exist; → blog
-    RewriteRule ^en/seo-leqsikoni/?$     /en/blog.html [R=301,L]
-    RewriteRule ^en/startup-leqsikoni/?$ /en/blog.html [R=301,L]
-    RewriteRule ^en/case-studies/?$      /en/case-studies.html [R=301,L]
-    RewriteRule ^en/link-building/?$     /en/seo-management.html [R=301,L]
+    RewriteRule ^en/seo-leqsikoni/?$     https://%{HTTP_HOST}/en/blog.html [R=301,L]
+    RewriteRule ^en/startup-leqsikoni/?$ https://%{HTTP_HOST}/en/blog.html [R=301,L]
+    RewriteRule ^en/case-studies/?$      https://%{HTTP_HOST}/en/case-studies.html [R=301,L]
+    RewriteRule ^en/link-building/?$     https://%{HTTP_HOST}/en/seo-management.html [R=301,L]
     RewriteRule ^en/web-development/?$   - [G,L]
-    RewriteRule ^en/get-an-offer/?$      /en/contact-us.html [R=301,L]
+    RewriteRule ^en/get-an-offer/?$      https://%{HTTP_HOST}/en/contact-us.html [R=301,L]
     RewriteRule ^en/website-info/[^/]+/?$ - [G,L]
     RewriteRule ^en/website-info/?$      - [G,L]
-    RewriteRule ^en/category/.*$         /en/blog.html [R=301,L]
+    RewriteRule ^en/category/.*$         https://%{HTTP_HOST}/en/blog.html [R=301,L]
 
     # ----- English case studies (sub-dir trailing slash → .html) -----
-    RewriteRule ^en/case-studies/3x-in-28-days/?$                       /en/case-studies/3x-in-28-days.html [R=301,L]
-    RewriteRule ^en/case-studies/270-percent-increase/?$                /en/case-studies/270-percent-increase.html [R=301,L]
-    RewriteRule ^en/case-studies/250-percent-increase/?$                /en/case-studies/250-percent-increase.html [R=301,L]
-    RewriteRule ^en/case-studies/local-seo-result/?$                    /en/case-studies/local-seo-result.html [R=301,L]
-    RewriteRule ^en/case-studies/stomatologiuri-klinikis-seo/?$         /en/case-studies/stomatologiuri-klinikis-seo.html [R=301,L]
-    RewriteRule ^en/case-studies/4200-yoveltviuri-vizitori-4-tveshi/?$  /en/case-studies/4200-yoveltviuri-vizitori-4-tveshi.html [R=301,L]
-    RewriteRule ^en/case-studies/trafikis-gaormageba-3-tveshi/?$        /en/case-studies/trafikis-gaormageba-3-tveshi.html [R=301,L]
-    RewriteRule ^en/case-studies/seo-krizisidan-top-3mde/?$             /en/case-studies/seo-crisis-management.html [R=301,L]
+    RewriteRule ^en/case-studies/3x-in-28-days/?$                       https://%{HTTP_HOST}/en/case-studies/3x-in-28-days.html [R=301,L]
+    RewriteRule ^en/case-studies/270-percent-increase/?$                https://%{HTTP_HOST}/en/case-studies/270-percent-increase.html [R=301,L]
+    RewriteRule ^en/case-studies/250-percent-increase/?$                https://%{HTTP_HOST}/en/case-studies/250-percent-increase.html [R=301,L]
+    RewriteRule ^en/case-studies/local-seo-result/?$                    https://%{HTTP_HOST}/en/case-studies/local-seo-result.html [R=301,L]
+    RewriteRule ^en/case-studies/stomatologiuri-klinikis-seo/?$         https://%{HTTP_HOST}/en/case-studies/stomatologiuri-klinikis-seo.html [R=301,L]
+    RewriteRule ^en/case-studies/4200-yoveltviuri-vizitori-4-tveshi/?$  https://%{HTTP_HOST}/en/case-studies/4200-yoveltviuri-vizitori-4-tveshi.html [R=301,L]
+    RewriteRule ^en/case-studies/trafikis-gaormageba-3-tveshi/?$        https://%{HTTP_HOST}/en/case-studies/trafikis-gaormageba-3-tveshi.html [R=301,L]
+    RewriteRule ^en/case-studies/seo-krizisidan-top-3mde/?$             https://%{HTTP_HOST}/en/case-studies/seo-crisis-management.html [R=301,L]
 
     # ----- Catch-all: any remaining /slug/ that ALSO exists as /slug.html -----
     # This is the safety net for anything we missed; only triggers when /slug.html exists.
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{DOCUMENT_ROOT}/$1.html -f
-    RewriteRule ^([^/]+)/?$ /$1.html [R=301,L]
+    RewriteRule ^([^/]+)/?$ https://%{HTTP_HOST}/$1.html [R=301,L]
 
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{DOCUMENT_ROOT}/en/$1.html -f
-    RewriteRule ^en/([^/]+)/?$ /en/$1.html [R=301,L]
+    RewriteRule ^en/([^/]+)/?$ https://%{HTTP_HOST}/en/$1.html [R=301,L]
 </IfModule>
 
 # -----------------------------------------------------------------------------
