@@ -5,6 +5,24 @@
 # =============================================================================
 
 # -----------------------------------------------------------------------------
+# -1) Tag social-share crawlers (defensive — Cloudways' mod_security may use)
+#     If Cloudways WAF still blocks Facebook/LinkedIn/Twitter despite this,
+#     disable Imunify360 for this app via Cloudways console.
+# -----------------------------------------------------------------------------
+<IfModule mod_setenvif.c>
+    SetEnvIfNoCase User-Agent "facebookexternalhit"     allowed_bot=1
+    SetEnvIfNoCase User-Agent "Facebot"                  allowed_bot=1
+    SetEnvIfNoCase User-Agent "Twitterbot"               allowed_bot=1
+    SetEnvIfNoCase User-Agent "LinkedInBot"              allowed_bot=1
+    SetEnvIfNoCase User-Agent "Slackbot"                 allowed_bot=1
+    SetEnvIfNoCase User-Agent "WhatsApp"                 allowed_bot=1
+    SetEnvIfNoCase User-Agent "Discordbot"               allowed_bot=1
+    SetEnvIfNoCase User-Agent "TelegramBot"              allowed_bot=1
+    SetEnvIfNoCase User-Agent "Pinterestbot"             allowed_bot=1
+    SetEnvIfNoCase User-Agent "Applebot"                 allowed_bot=1
+</IfModule>
+
+# -----------------------------------------------------------------------------
 # 0) Force https:// in Location headers when client is on HTTPS via Cloudways' Nginx
 #    Apache listens on HTTP locally (Cloudways terminates TLS at Nginx), so it
 #    bakes "http://" into 301 Location headers. Rewriting http→https in the
