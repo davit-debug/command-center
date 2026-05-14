@@ -252,9 +252,12 @@
   </url>
   <url>
     <loc>https://10xseo.ge/case-studies/318-percent-uk-shopify.html</loc>
-    <lastmod>2026-05-12</lastmod>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://10xseo.ge/case-studies/318-percent-uk-shopify.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://10xseo.ge/en/case-studies/318-percent-uk-shopify.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://10xseo.ge/case-studies/318-percent-uk-shopify.html"/>
   </url>
   <url>
     <loc>https://10xseo.ge/case-studies/3x-in-28-days.html</loc>
@@ -780,6 +783,15 @@
     <xhtml:link rel="alternate" hreflang="ka" href="https://10xseo.ge/case-studies/270-percent-increase.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://10xseo.ge/en/case-studies/270-percent-increase.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://10xseo.ge/case-studies/270-percent-increase.html"/>
+  </url>
+  <url>
+    <loc>https://10xseo.ge/en/case-studies/318-percent-uk-shopify.html</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://10xseo.ge/case-studies/318-percent-uk-shopify.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://10xseo.ge/en/case-studies/318-percent-uk-shopify.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://10xseo.ge/case-studies/318-percent-uk-shopify.html"/>
   </url>
   <url>
     <loc>https://10xseo.ge/en/case-studies/3x-in-28-days.html</loc>
