@@ -11,7 +11,9 @@
 #    outgoing Location header saves one HTTP→HTTPS hop per redirect.
 # -----------------------------------------------------------------------------
 <IfModule mod_headers.c>
-    Header always edit Location "^http://" "https://" "expr=%{HTTP:X-Forwarded-Proto} == 'https'"
+    # Unconditional — Cloudways' Nginx is always HTTPS-terminated; any HTTP
+    # client would already be 301'd to HTTPS before reaching Apache.
+    Header always edit Location "^http://" "https://"
 </IfModule>
 
 # -----------------------------------------------------------------------------
