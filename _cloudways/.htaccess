@@ -87,6 +87,8 @@
 
     # English blog posts (mostly mirror GE slugs under /en/blog/)
     RewriteRule ^en/what-is-aeo/?$                           https://%{HTTP_HOST}/en/blog/what-is-aeo.html [R=301,L]
+    # /en/how-instagram-detects-mood/ has matching EN blog file
+    RewriteRule ^en/how-instagram-detects-mood/?$            https://%{HTTP_HOST}/en/blog/how-instagram-detects-mood.html [R=301,L]
     # /en/best-seo-agency-in-georgia/ — EN blog version doesn't exist; redirect to about-us
     # (7 clicks / 487 imp in GSC; "best agency" semantic match = company about page)
     RewriteRule ^en/best-seo-agency-in-georgia/?$            https://%{HTTP_HOST}/en/about-us.html [R=301,L]
@@ -192,8 +194,7 @@
     RewriteRule ^en/case-studies/trafikis-gaormageba-3-tveshi/?$        https://%{HTTP_HOST}/en/case-studies/trafikis-gaormageba-3-tveshi.html [R=301,L]
     RewriteRule ^en/case-studies/seo-krizisidan-top-3mde/?$             https://%{HTTP_HOST}/en/case-studies/seo-crisis-management.html [R=301,L]
 
-    # ----- Catch-all: any remaining /slug/ that ALSO exists as /slug.html -----
-    # This is the safety net for anything we missed; only triggers when /slug.html exists.
+    # ----- Catch-all #1: /slug/ → /slug.html if the file exists -----
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{DOCUMENT_ROOT}/$1.html -f
@@ -203,6 +204,23 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{DOCUMENT_ROOT}/en/$1.html -f
     RewriteRule ^en/([^/]+)/?$ https://%{HTTP_HOST}/en/$1.html [R=301,L]
+
+    # ----- Catch-all #2: /blog/slug/ → /blog/slug.html if file exists (handles WP blog post URLs we missed)
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{DOCUMENT_ROOT}/blog/$1.html -f
+    RewriteRule ^([^/]+)/?$ https://%{HTTP_HOST}/blog/$1.html [R=301,L]
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{DOCUMENT_ROOT}/en/blog/$1.html -f
+    RewriteRule ^en/([^/]+)/?$ https://%{HTTP_HOST}/en/blog/$1.html [R=301,L]
+
+    # ----- Catch-all #3 (last resort): any unmapped /en/slug/ → /en/blog.html
+    # Catches 22 WP /en/ blog URLs that have no CC equivalent — better than 404
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^en/[^/]+/?$ https://%{HTTP_HOST}/en/blog.html [R=301,L]
 </IfModule>
 
 # -----------------------------------------------------------------------------
