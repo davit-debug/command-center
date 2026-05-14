@@ -1,0 +1,84 @@
+# =============================================================================
+# Deploy 10xseo.ge to Cloudways via rsync over SSH
+# Move this file to .github/workflows/cloudways-deploy.yml when ready to enable.
+# =============================================================================
+#
+# REQUIRED REPO SECRETS (Settings → Secrets and variables → Actions):
+#   CLOUDWAYS_SSH_HOST         e.g. 178.xxx.xxx.xxx (Cloudways app server IP)
+#   CLOUDWAYS_SSH_USER         e.g. master_xxxxxxxx (Cloudways app SSH user)
+#   CLOUDWAYS_SSH_KEY          full private key (PEM, generated locally and added to Cloudways)
+#   CLOUDWAYS_REMOTE_PATH      e.g. /home/master/applications/APP_NAME/public_html
+#
+# HOW TO GENERATE SSH KEY:
+#   1) ssh-keygen -t ed25519 -f ~/.ssh/cloudways_10xseo -N ""
+#   2) Cloudways Console → Server Management → Master Credentials → SSH Public Keys
+#      Paste contents of ~/.ssh/cloudways_10xseo.pub
+#   3) Copy contents of ~/.ssh/cloudways_10xseo (the private key) into the
+#      CLOUDWAYS_SSH_KEY repo secret.
+# =============================================================================
+
+name: Deploy to Cloudways
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:        # allow manual run from Actions tab
+
+concurrency:
+  group: cloudways-deploy
+  cancel-in-progress: false  # never cancel a deploy mid-flight
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.CLOUDWAYS_SSH_KEY }}" > ~/.ssh/cloudways_key
+          chmod 600 ~/.ssh/cloudways_key
+          ssh-keyscan -H ${{ secrets.CLOUDWAYS_SSH_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Move .htaccess and robots.txt into place
+        run: |
+          # The production-ready files live in _cloudways/ during dev.
+          # Promote them to the site root just before deploy.
+          cp _cloudways/.htaccess  ./.htaccess
+          cp _cloudways/robots.txt ./robots.txt
+
+      - name: Rsync to Cloudways
+        run: |
+          rsync -avz --delete \
+            -e "ssh -i ~/.ssh/cloudways_key -o StrictHostKeyChecking=no" \
+            --exclude='.git/' \
+            --exclude='.github/' \
+            --exclude='_cloudways/' \
+            --exclude='scripts/' \
+            --exclude='audit/' \
+            --exclude='*.md' \
+            --exclude='*.py' \
+            --exclude='*.pyc' \
+            --exclude='__pycache__/' \
+            --exclude='.DS_Store' \
+            --exclude='_decisions/' \
+            --exclude='_test_server.txt' \
+            ./ \
+            ${{ secrets.CLOUDWAYS_SSH_USER }}@${{ secrets.CLOUDWAYS_SSH_HOST }}:${{ secrets.CLOUDWAYS_REMOTE_PATH }}/
+
+      - name: Smoke test (Cloudways temp URL)
+        run: |
+          # Pre-cutover: test against Cloudways temp URL (DNS still on WP)
+          # After DNS flip, switch this to https://10xseo.ge/
+          sleep 5
+          BASE="https://phpstack-1272771-6417221.cloudwaysapps.com"
+          echo "Homepage:"
+          curl -sI "$BASE/" | head -1
+          echo "Redirect /seo-management/ -> .html:"
+          curl -sI "$BASE/seo-management/" | head -1
+          echo "Redirect /ra-aris-seo/ -> .html (top traffic source):"
+          curl -sI "$BASE/ra-aris-seo/" | head -1
+          echo "404 page:"
+          curl -sI "$BASE/this-does-not-exist" | head -1

@@ -1,0 +1,95 @@
+wp_url,cc_url,type,notes
+# === GSC 90-day data context (clicks / impressions): ===
+# Top traffic WP URLs: /ra-aris-seo/ (81/4972), /seo-management/ (30/1854),
+# /best-seo-agency-in-georgia/ (8/1155), /google-2024-core-update/ (5/47),
+# /local-seo/ (4/150), /link-building/ (3/162), /seo-saagento/ (2/1222 — HIGH imp),
+# /cifruli-marketingi/ (2/548), /contact-us/ (2/216), /blog/ (2/139), /ra-aris-aeo/ (2/92)
+# Zero-click but real impressions: /en/seo-optimizacia/ (196), /en/aeo-optim.../dubai/ (134),
+# /ratom-schirdeba-bizness-seo/ (42 GE + 90 EN), /get-an-offer/ (36 + 18 EN), /web-development/ (26)
+# === Static pages: trailing slash → .html ===
+/,/,homepage,no redirect needed
+/seo-management/,/seo-management.html,301,
+/seo-audit/,/seo-audit.html,301,
+/copywriting/,/blog/copywriting.html,301,Blog post — kept on blog for URL semantics consistency (user confirmed 2026-05-13)
+/seo-copywriting/,/seo-copywriting.html,301,
+/about-us/,/about-us.html,301,
+/contact-us/,/contact-us.html,301,
+/portfolio/,/portfolio.html,301,
+/blog/,/blog.html,301,
+/seo-leqsikoni/,/seo-leqsikoni.html,301,
+/startup-leqsikoni/,/startup-leqsikoni.html,301,
+/case-studies/,/case-studies.html,301,
+# === DISCOVERED VIA AHREFS — not in original WP sitemap ===
+/seo-optimizacia/,/ra-aris-seo.html,301,3 REFERRING DOMAINS — WP currently redirects to /ra-aris-seo/ (kept same target; user confirmed 2026-05-13)
+/ufaso-seo-auditi/,/seo-audit.html,301,1 REFERRING DOMAIN — literal "free SEO audit" maps to /seo-audit.html
+/en/seo-optimizacia/,/en/ra-aris-seo.html,301,Matches GE redirect chain
+/en/ufaso-seo-auditi/,/en/seo-audit.html,301,
+# === Pages with no direct equivalent — NEEDS USER DECISION ===
+/link-building/,/seo-management.html,301,REVIEW: no equivalent page on CC; default to seo-management
+/web-development/,/services.html,301,REVIEW: no equivalent; default to services
+/local-seo/,/blog/local-seo.html,301,WP is blog post (in post-sitemap)
+/get-an-offer/,/contact-us.html,301,REVIEW: no offer page; default to contact-us
+/best-seo-agency-in-georgia/,/blog/best-seo-agency-in-georgia.html,301,WP is blog post
+/seo-saagento/,/blog/seo-saagento.html,301,Blog post — kept on blog (user confirmed 2026-05-13)
+/ra-aris-seo/,/ra-aris-seo.html,301,CHANGED→top-level dual-intent page. 81 clicks/4972 imp — top traffic source. Better conversion
+/ra-aris-aeo/,/blog/ra-aris-aeo.html,301,WP is blog post
+/cifruli-marketingi/,/blog/cifruli-marketingi.html,301,WP is blog post
+/seo-2025/,/blog/seo-2025.html,301,WP is blog post
+# === Blog posts (all CC has them under /blog/) ===
+/google-2024-core-update/,/blog/google-2024-core-update.html,301,
+/interaction-to-next-paint/,/blog/interaction-to-next-paint.html,301,
+/seo-for-business/,/blog/seo-for-business.html,301,
+/2024-seo-trendebi/,/blog/2024-seo-trendebi.html,301,
+/seo-vs-ppc/,/blog/seo-vs-ppc.html,301,
+/business-seo-stats/,/blog/business-seo-stats.html,301,
+/google-sandbox/,/blog/google-sandbox.html,301,
+/seo-content/,/blog/seo-content.html,301,
+/2023-seo-stats/,/blog/2023-seo-stats.html,301,
+/soc-media-da-seo/,/blog/soc-media-da-seo.html,301,
+/link-building-stats/,/blog/link-building-stats.html,301,
+/ra-dro-schireba-seos-shedegebis-misagebad/,/blog/ra-dro-schireba-seos-shedegebis-misagebad.html,301,
+/2025-wlis-martis-ganaxlebebi-dasrulda/,/blog/2025-wlis-martis-ganaxlebebi-dasrulda.html,301,
+/geotegirebis-gavlena-reitingze/,/blog/geotegirebis-gavlena-reitingze.html,301,
+/ratom-schirdeba-bizness-seo/,/blog/ratom-schirdeba-bizness-seo.html,301,
+/seo-2025-top-stories/,/blog/seo-2025-top-stories.html,301,
+/how-instagram-detects-mood/,/blog/how-instagram-detects-mood.html,301,
+/brand-mistakes/,/blog/brand-mistakes.html,301,
+/cifruli-memkvidreoba/,/blog/cifruli-memkvidreoba.html,301,
+/2025-dzebnebi/,/blog/2025-dzebnebi.html,301,
+# === Case studies: /case-studies/SLUG/ → /case-studies/SLUG.html ===
+/case-studies/3x-in-28-days/,/case-studies/3x-in-28-days.html,301,
+/case-studies/270-percent-increase/,/case-studies/270-percent-increase.html,301,
+/case-studies/local-seo-result/,/case-studies/local-seo-result.html,301,
+/case-studies/stomatologiuri-klinikis-seo/,/case-studies/stomatologiuri-klinikis-seo.html,301,
+/case-studies/4200-yoveltviuri-vizitori-4-tveshi/,/case-studies/4200-yoveltviuri-vizitori-4-tveshi.html,301,
+/case-studies/seo-krizisidan-top-3mde/,/case-studies/seo-crisis-management.html,301,SLUG CHANGED on CC
+/case-studies/250-percent-increase/,/case-studies/250-percent-increase.html,301,
+/case-studies/trafikis-gaormageba-3-tveshi/,/case-studies/trafikis-gaormageba-3-tveshi.html,301,
+# === Website-info pages — NO equivalents ===
+/website-info/,/portfolio.html,301,REVIEW: 13 sub-pages too; could 410 if no traffic
+/website-info/myauto-ge/,/portfolio.html,301,REVIEW
+/website-info/extra-ge/,/portfolio.html,301,REVIEW
+/website-info/zoommer-ge/,/portfolio.html,301,REVIEW
+/website-info/myvideo-ge/,/portfolio.html,301,REVIEW
+/website-info/myhome-ge/,/portfolio.html,301,REVIEW
+/website-info/crystalbet-com/,/portfolio.html,301,REVIEW
+/website-info/amindi-ge/,/portfolio.html,301,REVIEW
+/website-info/ss-ge/,/portfolio.html,301,REVIEW
+/website-info/jobs-ge/,/portfolio.html,301,REVIEW
+/website-info/adjarabet-com/,/portfolio.html,301,REVIEW
+/website-info/aversi-ge/,/portfolio.html,301,REVIEW
+/website-info/alta-ge/,/portfolio.html,301,REVIEW
+/website-info/tkt-ge/,/portfolio.html,301,REVIEW
+# === Categories (WP-specific, no equivalent) ===
+/category/aeo/,/blog.html,301,
+/category/seo/,/blog.html,301,
+/category/edu/,/blog.html,301,
+/category/stat/,/blog.html,301,
+/category/bizn/,/blog.html,301,Georgian-encoded category — bizneSisthvis
+/category/news/,/blog.html,301,Georgian-encoded category — siakhleeebi
+# === English /en/ versions — ALL same pattern ===
+# Apply the rule: /en/SLUG/ → /en/SLUG.html
+# Special English cases:
+/en/best-seo-agency-in-georgia/,/en/about-us.html,301,FIXED: EN blog version doesn't exist; semantic match → about-us (7 clicks/487 imp)
+/en/what-is-aeo/,/en/blog/what-is-aeo.html,301,REVIEW: slug differs from GE (/ra-aris-aeo)
+/en/doubled-traffic-in-3-months/,/en/case-studies/doubled-traffic-in-3-months.html,301,REVIEW: GE & EN slugs differ

@@ -86,3 +86,7 @@
 
 # Local-only backup of pre-2026-05-10 logos (kept off git)
 images/_logo-backup-2026-05-10/
+
+# Cloudways migration toolkit (used by deploy workflow + audit trail)
+!_cloudways/
+!_cloudways/**
