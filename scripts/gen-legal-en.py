@@ -75,14 +75,14 @@ PRIVACY_MAIN = """  <!-- ========== HERO ========== -->
         <li><strong>Contact data</strong> — name, email, phone, company name, message — provided voluntarily through contact forms on our website.</li>
         <li><strong>Booking data</strong> — name, email, scheduled time, meeting notes — collected when you schedule a consultation via our Calendly widget.</li>
         <li><strong>Analytics data</strong> — page views, session duration, device type, browser, approximate location (country/city level), referral source — collected via Google Analytics 4. Identifiers are pseudonymized; IP addresses are anonymized before storage.</li>
-        <li><strong>Behavioral data</strong> — session recordings, mouse movements, clicks, scroll depth, heatmaps — collected via Hotjar and/or Microsoft Clarity. All form fields and personally identifiable information are masked by default; we do not capture passwords, payment card details, or sensitive personal data.</li>
+        <li><strong>Behavioral data</strong> — session recordings, mouse movements, clicks, scroll depth, heatmaps — collected via Hotjar. All form fields and personally identifiable information are masked by default; we do not capture passwords, payment card details, or sensitive personal data.</li>
         <li><strong>Server log data</strong> — IP address, user agent, request timestamps, HTTP status codes — collected automatically by our hosting provider for security, fraud prevention, and performance diagnostics.</li>
       </ul>
 
       <h2 id="legal-basis" class="font-heading text-[22px] sm:text-[26px] font-bold text-heading dark:text-heading-dark mt-10 mb-4">3. Legal Basis for Processing</h2>
       <p class="text-base text-body dark:text-body-dark mb-3 leading-relaxed">Under GDPR Article 6 and the Georgian Personal Data Protection Law, we process your data on the following legal bases:</p>
       <ul class="list-disc pl-6 text-base text-body dark:text-body-dark mb-3 space-y-2">
-        <li><strong>Consent</strong> (Art. 6(1)(a) GDPR) — for analytics cookies, behavioral tracking (Hotjar, Clarity), and marketing communications. You may withdraw consent at any time.</li>
+        <li><strong>Consent</strong> (Art. 6(1)(a) GDPR) — for analytics cookies, behavioral tracking (Hotjar), and marketing communications. You may withdraw consent at any time.</li>
         <li><strong>Contract performance</strong> (Art. 6(1)(b)) — when you engage us as a client; processing is necessary to deliver agreed services.</li>
         <li><strong>Legitimate interest</strong> (Art. 6(1)(f)) — for security logs, fraud prevention, and aggregate performance analysis. We balance this against your rights and freedoms.</li>
         <li><strong>Legal obligation</strong> (Art. 6(1)(c)) — for tax records, accounting, and regulatory reporting under Georgian law.</li>
@@ -93,7 +93,7 @@ PRIVACY_MAIN = """  <!-- ========== HERO ========== -->
         <li><strong>Contact form submissions</strong> — 24 months from last contact, then deleted or anonymized.</li>
         <li><strong>Client engagement records</strong> — 7 years after contract end, as required by Georgian Tax Code.</li>
         <li><strong>Analytics data</strong> — 14 months (GA4 default), then automatically deleted.</li>
-        <li><strong>Session recordings</strong> — 365 days, then automatically deleted by Hotjar/Clarity.</li>
+        <li><strong>Session recordings</strong> — 365 days, then automatically deleted by Hotjar.</li>
         <li><strong>Server logs</strong> — 90 days for security purposes, then rotated.</li>
       </ul>
 
@@ -108,7 +108,6 @@ PRIVACY_MAIN = """  <!-- ========== HERO ========== -->
             <tr class="border-t border-gray-100 dark:border-gray-800"><td class="px-4 py-3">Google LLC</td><td class="px-4 py-3">Analytics (GA4)</td><td class="px-4 py-3">USA (SCCs)</td></tr>
             <tr class="border-t border-gray-100 dark:border-gray-800"><td class="px-4 py-3">Calendly LLC</td><td class="px-4 py-3">Booking scheduling</td><td class="px-4 py-3">USA (SCCs)</td></tr>
             <tr class="border-t border-gray-100 dark:border-gray-800"><td class="px-4 py-3">Hotjar Ltd</td><td class="px-4 py-3">Behavioral analytics</td><td class="px-4 py-3">Malta (EU)</td></tr>
-            <tr class="border-t border-gray-100 dark:border-gray-800"><td class="px-4 py-3">Microsoft Corp</td><td class="px-4 py-3">Clarity analytics</td><td class="px-4 py-3">USA (SCCs)</td></tr>
             <tr class="border-t border-gray-100 dark:border-gray-800"><td class="px-4 py-3">Hosting provider</td><td class="px-4 py-3">Website hosting</td><td class="px-4 py-3">Georgia/EU</td></tr>
           </tbody>
         </table>
