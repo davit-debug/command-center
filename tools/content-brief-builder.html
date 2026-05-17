@@ -1227,11 +1227,28 @@
       a.click();
       setTimeout(() => { document.body.removeChild(a); URL.revokeObjectURL(url); }, 100);
     }
-    function deliverBrief(text, filename) {
+    async function deliverBrief(text, filename) {
       if (!text) { showToast(briefLang === 'ka' ? 'შეიყვანეთ მთავარი ქივორდი' : 'Enter primary keyword'); return; }
+      let copied = false;
+      try {
+        await navigator.clipboard.writeText(text);
+        copied = true;
+      } catch (e) {
+        try {
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          ta.style.position = 'fixed';
+          ta.style.opacity = '0';
+          document.body.appendChild(ta);
+          ta.select();
+          copied = document.execCommand('copy');
+          document.body.removeChild(ta);
+        } catch (e2) {}
+      }
       downloadText(text, filename);
-      navigator.clipboard.writeText(text).catch(() => {});
-      showToast(briefLang === 'ka' ? 'ჩამოიტვირთა + დაკოპირდა' : 'Downloaded + copied');
+      const ok = briefLang === 'ka';
+      if (copied) showToast(ok ? 'ჩამოიტვირთა + დაკოპირდა' : 'Downloaded + copied');
+      else showToast(ok ? 'ჩამოიტვირთა (კოპირება ვერ შესრულდა)' : 'Downloaded (copy failed)');
     }
     function safeFilename() {
       const kw = (document.getElementById('cb-mainKw').value.trim() || 'brief')
