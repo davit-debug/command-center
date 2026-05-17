@@ -44,7 +44,7 @@
 .v29-more-btn.v29-expanded svg { transform: rotate(180deg); }
 
 /* Lite YouTube Embed — brand styling */
-lite-youtube { border-radius: 16px; overflow: hidden; background-color: #0d1117; max-width: 100%; }
+lite-youtube { border-radius: 16px; overflow: hidden; background-color: #0d1117; max-width: 100% !important; width: 100%; }
 lite-youtube::before { display: none; }
 lite-youtube > .lty-playbtn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 68px; height: 48px; background-color: rgba(139,92,246,0.9); border-radius: 14px; transition: all 0.3s; border: none; filter: none; }
 lite-youtube:hover > .lty-playbtn { background-color: rgba(139,92,246,1); box-shadow: 0 0 30px rgba(139,92,246,0.5); transform: translate(-50%,-50%) scale(1.08); }
