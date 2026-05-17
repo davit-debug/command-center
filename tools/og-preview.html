@@ -319,7 +319,7 @@
   <section class="pt-24 lg:pt-28 pb-8 bg-surface dark:bg-surface-dark">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
       <h1 class="font-heading text-[28px] sm:text-[36px] lg:text-[44px] font-bold text-heading dark:text-heading-dark leading-[1.2] mb-4">Open Graph Preview</h1>
-      <p class="text-body dark:text-body-dark max-w-2xl mx-auto mb-2">ნახეთ როგორ გამოჩნდება თქვენი ბმული Facebook-ზე, Twitter-ზე და LinkedIn-ზე. დააკოპირეთ მზა OG ტეგები.</p>
+      <p class="text-body dark:text-body-dark max-w-2xl mx-auto mb-2">შეიყვანეთ თქვენი URL — ავტომატურად ვიპოვით OG ტეგებს და გაჩვენებთ, როგორ გამოჩნდება Facebook-ზე, Twitter-ზე და LinkedIn-ზე.</p>
       <a href="../seo-tools.html" class="text-sm text-primary dark:text-primary-light hover:underline">&larr; ყველა ინსტრუმენტი</a>
     </div>
   </section>
@@ -328,6 +328,19 @@
   <section class="pb-16 lg:pb-20 bg-surface dark:bg-surface-dark">
     <div class="max-w-4xl mx-auto px-4 sm:px-6">
       <div class="bg-surface-alt dark:bg-surface-dark-alt rounded-2xl border border-gray-100 dark:border-gray-800 p-6 sm:p-8">
+
+        <!-- Fetch from URL -->
+        <div class="mb-6 pb-6 border-b border-gray-200 dark:border-gray-800">
+          <label class="block text-sm font-semibold text-heading dark:text-heading-dark mb-2">შეიყვანეთ თქვენი URL — ავტომატურად ამოვიღებთ OG ტეგებს</label>
+          <div class="flex flex-col sm:flex-row gap-2">
+            <input type="url" id="og-fetch-url" placeholder="https://example.com/page" class="flex-1 px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark text-heading dark:text-heading-dark placeholder-gray-400 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all">
+            <button id="og-fetch-btn" class="px-6 py-3 rounded-xl font-semibold text-white ai-cta-animate inline-flex items-center justify-center gap-2 whitespace-nowrap">
+              <svg id="og-fetch-icon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+              <span id="og-fetch-label">OG ტეგების ამოღება</span>
+            </button>
+          </div>
+          <div id="og-fetch-status" class="text-xs mt-2 min-h-[16px]"></div>
+        </div>
 
         <!-- Inputs -->
         <div class="mb-5">
@@ -673,6 +686,150 @@
         this.classList.remove('text-body', 'dark:text-body-dark');
         updateOgPreview();
       });
+    });
+
+    // ========================================
+    // FETCH OG TAGS FROM URL (via CORS proxies)
+    // ========================================
+    const fetchUrlInput = document.getElementById('og-fetch-url');
+    const fetchBtn = document.getElementById('og-fetch-btn');
+    const fetchStatus = document.getElementById('og-fetch-status');
+    const fetchLabel = document.getElementById('og-fetch-label');
+
+    function setFetchStatus(msg, kind) {
+      fetchStatus.textContent = msg || '';
+      fetchStatus.className = 'text-xs mt-2 min-h-[16px] ' + (
+        kind === 'error' ? 'text-red-500' :
+        kind === 'success' ? 'text-success' :
+        kind === 'loading' ? 'text-primary dark:text-primary-light' : 'text-body dark:text-body-dark'
+      );
+    }
+
+    function pickMeta(doc, selectors) {
+      for (const sel of selectors) {
+        const el = doc.querySelector(sel);
+        if (el) {
+          const v = el.getAttribute('content') || el.getAttribute('value') || el.textContent || '';
+          if (v.trim()) return v.trim();
+        }
+      }
+      return '';
+    }
+
+    function resolveUrl(maybeRelative, base) {
+      if (!maybeRelative) return '';
+      try { return new URL(maybeRelative, base).href; } catch(e) { return maybeRelative; }
+    }
+
+    async function tryProxy(proxyName, targetUrl) {
+      let res, html;
+      if (proxyName === 'allorigins') {
+        res = await fetch('https://api.allorigins.win/get?url=' + encodeURIComponent(targetUrl), { cache: 'no-store' });
+        if (!res.ok) throw new Error('allorigins ' + res.status);
+        const data = await res.json();
+        html = data.contents;
+        if (!html) throw new Error('allorigins empty');
+      } else if (proxyName === 'corsproxy') {
+        res = await fetch('https://corsproxy.io/?' + encodeURIComponent(targetUrl), { cache: 'no-store' });
+        if (!res.ok) throw new Error('corsproxy ' + res.status);
+        html = await res.text();
+      } else if (proxyName === 'codetabs') {
+        res = await fetch('https://api.codetabs.com/v1/proxy/?quest=' + encodeURIComponent(targetUrl), { cache: 'no-store' });
+        if (!res.ok) throw new Error('codetabs ' + res.status);
+        html = await res.text();
+      } else {
+        throw new Error('unknown proxy');
+      }
+      return html;
+    }
+
+    async function fetchOgTags() {
+      let url = (fetchUrlInput.value || '').trim();
+      if (!url) { setFetchStatus('URL აუცილებელია', 'error'); fetchUrlInput.focus(); return; }
+      if (!/^https?:\/\//i.test(url)) url = 'https://' + url;
+      try { new URL(url); } catch(e) { setFetchStatus('არასწორი URL ფორმატი', 'error'); return; }
+
+      fetchBtn.disabled = true;
+      fetchBtn.style.opacity = '0.7';
+      fetchBtn.style.cursor = 'wait';
+      const origLabel = fetchLabel.textContent;
+      fetchLabel.textContent = 'იტვირთება...';
+      setFetchStatus('გვერდის ჩამოტვირთვა...', 'loading');
+
+      const proxies = ['allorigins', 'corsproxy', 'codetabs'];
+      let html = null;
+      let lastErr = null;
+      for (const p of proxies) {
+        try {
+          html = await tryProxy(p, url);
+          if (html && html.length > 50) break;
+        } catch (e) {
+          lastErr = e;
+          html = null;
+        }
+      }
+
+      fetchBtn.disabled = false;
+      fetchBtn.style.opacity = '';
+      fetchBtn.style.cursor = '';
+      fetchLabel.textContent = origLabel;
+
+      if (!html) {
+        setFetchStatus('გვერდის ჩამოტვირთვა ვერ მოხერხდა — შეავსეთ ველები ხელით (' + (lastErr ? lastErr.message : 'unknown') + ')', 'error');
+        return;
+      }
+
+      let doc;
+      try {
+        doc = new DOMParser().parseFromString(html, 'text/html');
+      } catch(e) {
+        setFetchStatus('HTML-ის გარჩევა ვერ მოხერხდა', 'error');
+        return;
+      }
+
+      const title = pickMeta(doc, [
+        'meta[property="og:title"]',
+        'meta[name="og:title"]',
+        'meta[name="twitter:title"]',
+        'title'
+      ]);
+      const desc = pickMeta(doc, [
+        'meta[property="og:description"]',
+        'meta[name="og:description"]',
+        'meta[name="twitter:description"]',
+        'meta[name="description"]'
+      ]);
+      const canonicalUrl = pickMeta(doc, [
+        'meta[property="og:url"]',
+        'link[rel="canonical"]'
+      ]) || url;
+      let image = pickMeta(doc, [
+        'meta[property="og:image:secure_url"]',
+        'meta[property="og:image"]',
+        'meta[name="og:image"]',
+        'meta[name="twitter:image"]',
+        'meta[name="twitter:image:src"]'
+      ]);
+      if (image) image = resolveUrl(image, url);
+      const finalUrl = canonicalUrl.startsWith('http') ? canonicalUrl : resolveUrl(canonicalUrl, url);
+
+      ogTitle.value = title;
+      ogDesc.value = desc;
+      ogUrl.value = finalUrl;
+      ogImage.value = image;
+      updateOgPreview();
+
+      const found = [title && 'title', desc && 'description', image && 'image'].filter(Boolean);
+      if (found.length === 0) {
+        setFetchStatus('OG ტეგები ვერ მოიძებნა გვერდზე', 'error');
+      } else {
+        setFetchStatus('მოიძებნა: ' + found.join(', '), 'success');
+      }
+    }
+
+    fetchBtn.addEventListener('click', fetchOgTags);
+    fetchUrlInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') { e.preventDefault(); fetchOgTags(); }
     });
   </script>
   <script>
