@@ -170,6 +170,20 @@
         .cluster-logo-item { width: 64px; height: 64px; border-radius: 50%; background: #ffffff; border: 2px solid rgba(139,92,246,0.15); display: flex; align-items: center; justify-content: center; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
         .cluster-logo-item img { width: 100%; height: 100%; object-fit: contain; padding: 6px; border-radius: 50%; }
         .cluster-logo-item.dark-bg { background: #1a1a2e; }
+        /* Mobile grid: blend-mode for clean logo display + dark bg for white-on-transparent logos */
+        .mobile-grid img { mix-blend-mode: multiply; }
+        .mobile-grid > div:has(img[src*="chronometri"]),
+        .mobile-grid > div:has(img[src*="centralmg"]),
+        .mobile-grid > div:has(img[src*="bedstar"]),
+        .mobile-grid > div:has(img[src*="milana"]) {
+          background: #1a1a2e !important;
+        }
+        .mobile-grid > div:has(img[src*="chronometri"]) img,
+        .mobile-grid > div:has(img[src*="centralmg"]) img,
+        .mobile-grid > div:has(img[src*="bedstar"]) img,
+        .mobile-grid > div:has(img[src*="milana"]) img {
+          mix-blend-mode: normal;
+        }
 
         /* Stat pill */
         .stat-pill { display: inline-flex; align-items: center; gap: 4px; background: rgba(33,199,67,0.1); border: 1px solid rgba(33,199,67,0.2); border-radius: 20px; padding: 4px 12px; font-size: 13px; color: #21C743; font-weight: 600; }
