@@ -75,6 +75,7 @@ lite-youtube > .lty-playbtn::after { display: none; }
   background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor; mask-composite: exclude;
+  pointer-events: none;
 }
 .dark .gradient-border { background: #0F0F0F; }
 .accent-glow { box-shadow: 0 0 40px rgba(139, 92, 246, 0.12); }

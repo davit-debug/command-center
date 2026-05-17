@@ -158,7 +158,8 @@
     }
 
     .gradient-border { position: relative; background: white; border-radius: 16px; overflow: hidden; }
-    .gradient-border::before { content: ''; position: absolute; inset: 0; padding: 1.5px; border-radius: 16px; background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; }
+    .gradient-border::before { content: ''; position: absolute; inset: 0; padding: 1.5px; border-radius: 16px; background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude;
+      pointer-events: none; }
     .dark .gradient-border { background: #0F0F0F; }
 
     .header-scrolled { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
