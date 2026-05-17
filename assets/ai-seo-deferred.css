@@ -135,3 +135,5 @@ lite-youtube > .lty-playbtn::after { display: none; }
 .menu-active .hamburger-line:nth-child(3) {
   transform: translateY(-8px) rotate(-45deg);
 }
+
+@media (max-width:768px){h1,h2,h3,h4,h5,h6,p{overflow-wrap:anywhere;word-wrap:break-word;-webkit-hyphens:auto;hyphens:auto}.grid>*{min-width:0}.service-card,[class*="card"]{min-width:0}}
