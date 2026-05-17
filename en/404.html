@@ -40,13 +40,7 @@
 <noscript><link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css"></noscript>
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript"></script>
   <script>
-  var _calendlyReady=false;
-  function openCalendly(){
-    if(_calendlyReady&&typeof Calendly!=='undefined'){Calendly.initPopupWidget({url:'https://calendly.com/10xseo-sales/quick-seo-consultation-15-minutes?background_color=0f172a&text_color=f8fafc&primary_color=8b5cf6'});}
-    else{window.open('https://calendly.com/10xseo-sales/quick-seo-consultation-15-minutes','_blank');}
-    return false;
-  }
-  document.addEventListener('mousemove',function _c(){_calendlyReady=true;document.removeEventListener('mousemove',_c);},{ once:true, passive:true });
+  function openCalendly(){if(typeof Calendly!=='undefined'){Calendly.initPopupWidget({url:'https://calendly.com/10xseo-sales/quick-seo-consultation-15-minutes?background_color=0f172a&text_color=f8fafc&primary_color=8b5cf6'});}else{window.open('https://calendly.com/10xseo-sales/quick-seo-consultation-15-minutes','_blank');}return false;}
   </script>
 
   
