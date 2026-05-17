@@ -40,18 +40,18 @@
   ]}
   </script>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"HowTo","name":"Real Estate Growth Stack — First 30-Day Action Plan","description":"18 concrete tasks from contract signing to day 30, divided into two phases: Audit & Research (Days 1-16) and Strategy & Implementation (Days 16-30).","totalTime":"P30D","step":[
+  {"@context":"https://schema.org","@type":"HowTo","name":"Real Estate Growth Stack — First 30-Day Action Plan","description":"16 concrete tasks from contract signing to day 30, divided into two phases: Audit & Research (Days 1-16) and Strategy & Implementation (Days 16-30).","totalTime":"P30D","step":[
     {"@type":"HowToStep","position":1,"name":"Audit & Research","text":"Days 1-16: Project deep dive, technical audit, Search Console audit, CRO audit, tasks for web developers, market research, competitor analysis, on-page and off-page audit."},
-    {"@type":"HowToStep","position":2,"name":"Strategy & Launch","text":"Days 16-30: Keyword research, keyword mapping, on-page optimization for priority pages, content plan creation, writing briefs, backlink strategy, content deployment, monthly reporting."}
+    {"@type":"HowToStep","position":2,"name":"Strategy & Launch","text":"Days 16-30: Keyword research, keyword mapping, on-page optimization for priority pages, content plan creation, writing briefs, backlink strategy, content deployment, video review."}
   ]}
   </script>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-    {"@type":"Question","name":"A competitor has been on the market for years and ranks on Google's first page. Is it realistic to challenge their position?","acceptedAnswer":{"@type":"Answer","text":"Yes. The AI search revolution (ChatGPT, Google AI Overviews) has radically changed the landscape in the last 18 months—older, backlink-heavy sites have less of an advantage. Our focus: AI/GEO, the local Map Pack, and in-depth topical content. Real case study: from 0 to Top 3 for 4 keywords in 6 months."}},
-    {"@type":"Question","name":"We have an in-house marketer and want to add your services. How are responsibilities divided?","acceptedAnswer":{"@type":"Answer","text":"We become your team's technical backbone. Our Project Lead is in daily contact with your marketer (Slack/WhatsApp). Strategic decisions are made jointly; execution is ours."}},
-    {"@type":"Question","name":"Will AI replace SEO?","acceptedAnswer":{"@type":"Answer","text":"Quite the opposite. AI hasn't replaced SEO; it has amplified its importance. Google AI Overviews, ChatGPT, and Perplexity all pull data from the same core sources: site quality, schema, and brand authority. AI search has only increased the value of strong SEO."}},
-    {"@type":"Question","name":"Contract termination—who owns what?","acceptedAnswer":{"@type":"Answer","text":"Upon termination, you own everything: content, schema, technical fixes, keyword research, competitor analysis, Google Ads account, backlinks, and GSC/GA4 access. What you don't keep: dashboard access, playbooks, vendor relationships."}},
-    {"@type":"Question","name":"What are the leading indicators that show SEO is working before sales increase?","acceptedAnswer":{"@type":"Answer","text":"Leading indicators: monthly traffic, time on site + scroll depth, brand search volume, and returning visitor percentage. When these metrics rise, the trailing metrics (actual sales) typically follow in months 6-9."}}
+    {"@type":"Question","name":"Competitor has been on the market for years and on Google's first page. How realistic is the chance of taking their positions?","acceptedAnswer":{"@type":"Answer","text":"Absolutely realistic. AI search has fundamentally changed the rules of the game. Today, the multi-year authority of old sites is no longer untouchable, because new algorithms prioritize content accuracy and GEO (Generative Engine Optimization) standards. Our approach precisely involves working in this untapped niche, which allows us — with the right strategy — to outpace competitors who have held leading positions on Google for years in just a few months."}},
+    {"@type":"Question","name":"If we have an internal marketer and want to add your services, how are functions distributed?","acceptedAnswer":{"@type":"Answer","text":"We become your team's technical foundation. Functions are distributed simply: the marketer shares priorities with us, which we use to base our digital strategy, and we manage the full technical process accordingly."}},
+    {"@type":"Question","name":"Is it worth investing in SEO when users are increasingly using artificial intelligence?","acceptedAnswer":{"@type":"Answer","text":"Absolutely worth it. AI didn't replace SEO, rather it increased its importance. Platforms like ChatGPT, Perplexity, and Google AI Overviews still get information from authoritative sites. With our GEO (Generative Engine Optimization) strategy, your brand will appear both in traditional search and in AI responses."}},
+    {"@type":"Question","name":"In case of contract termination, who owns the created content and data?","acceptedAnswer":{"@type":"Answer","text":"Upon contract termination, the full content transfers to your ownership. Google Ads and analytics accounts are in your ownership from the start, so your access to them is never restricted. Only the agency's internal platforms and working methodologies remain in our possession, and for any other files, you'll benefit from a 30-day grace period."}},
+    {"@type":"Question","name":"What is the indicator that, before sales begin, signals SEO is working?","acceptedAnswer":{"@type":"Answer","text":"We track the growth of qualified leads (calls, messages), brand search increase, and user behavior on the site. If these numbers improve in the first months, it means the strategy is working correctly and in subsequent months will inevitably be reflected in real sales."}}
   ]}
   </script>
   
@@ -111,37 +111,14 @@
     @keyframes tickerScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
     .ticker-scroll { animation: tickerScroll 60s linear infinite; }
     .ticker-fade { mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%); -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%); }
-    /* FAQ v29 — homepage pattern with category tabs + colored borders */
-    .v29-tab { padding: 8px 18px; border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; transition: all 0.3s; border: none; text-transform: uppercase; letter-spacing: 0.5px; }
-    .v29-tab:hover { opacity: 0.85; }
-    .v29-tab.v29-active { box-shadow: 0 0 16px rgba(0,0,0,0.3); }
-    .v29-tab[data-cat="all"] { background: rgba(20,184,166,0.15); color: #2DD4BF; }
-    .v29-tab[data-cat="general"] { background: rgba(236,72,153,0.15); color: #F472B6; }
-    .v29-tab[data-cat="price"] { background: rgba(245,158,11,0.15); color: #FBBF24; }
-    .v29-tab[data-cat="results"] { background: rgba(59,130,246,0.15); color: #60A5FA; }
+    /* FAQ v29 — homepage pattern (category tabs removed per copywriter feedback 2026-05-14) */
     .v29-card { border-radius: 16px; overflow: hidden; background: rgba(255,255,255,0.035); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.08); transition: all 0.35s; position: relative; }
-    .v29-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; border-radius: 14px 0 0 14px; opacity: 0; transition: opacity 0.3s; }
-    .v29-card[data-cat="General"]::before { background: #EC4899; }
-    .v29-card[data-cat="Results"]::before { background: #3B82F6; }
-    .v29-card[data-cat="Pricing"]::before { background: #F59E0B; }
-    .v29-card[data-cat="General"]:hover { border-color: rgba(236,72,153,0.25); }
-    .v29-card[data-cat="Results"]:hover { border-color: rgba(59,130,246,0.25); }
-    .v29-card[data-cat="Pricing"]:hover { border-color: rgba(245,158,11,0.25); }
-    .v29-card:hover::before { opacity: 0.5; }
-    .v29-card[data-cat="General"].v29-open { border-color: rgba(236,72,153,0.35); background: rgba(236,72,153,0.04); box-shadow: 0 0 30px rgba(236,72,153,0.06); }
-    .v29-card[data-cat="Results"].v29-open { border-color: rgba(59,130,246,0.35); background: rgba(59,130,246,0.04); box-shadow: 0 0 30px rgba(59,130,246,0.06); }
-    .v29-card[data-cat="Pricing"].v29-open { border-color: rgba(245,158,11,0.35); background: rgba(245,158,11,0.04); box-shadow: 0 0 30px rgba(245,158,11,0.06); }
-    .v29-card.v29-open::before { opacity: 1; }
-    .v29-card.v29-hidden { display: none; }
     .v29-cq { display: flex; align-items: center; padding: 18px 22px; cursor: pointer; gap: 16px; }
     .v29-cq .v29-badge { width: 38px; height: 38px; border-radius: 10px; background: rgba(212,160,23,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.3s; }
     .v29-open .v29-badge { background: rgba(212,160,23,0.2); box-shadow: 0 0 12px rgba(212,160,23,0.15); }
     .v29-cq .v29-badge svg { width: 16px; height: 16px; stroke: #D4A017; transition: transform 0.3s; }
     .v29-open .v29-badge svg { transform: rotate(180deg); stroke: #EAB308; }
     .v29-cq .v29-txt { flex: 1; font-weight: 600; color: #F1F5F9; font-size: 16px; line-height: 1.45; }
-    .v29-cat[data-key="general"] { font-size: 10px; font-weight: 700; color: #F472B6; background: rgba(236,72,153,0.15); padding: 3px 8px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; }
-    .v29-cat[data-key="price"] { font-size: 10px; font-weight: 700; color: #FBBF24; background: rgba(245,158,11,0.15); padding: 3px 8px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; }
-    .v29-cat[data-key="results"] { font-size: 10px; font-weight: 700; color: #60A5FA; background: rgba(59,130,246,0.15); padding: 3px 8px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; }
     .v29-ca { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1), padding 0.3s; padding: 0 22px 0 76px; }
     .v29-open .v29-ca { max-height: 600px; padding: 0 22px 18px 76px; }
     .v29-ca p { color: #CBD5E1; font-size: 14.5px; line-height: 1.8; }
@@ -469,8 +446,8 @@ Call Us
       <div class="absolute inset-0 bg-[#020710]"></div>
       <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6">
         <div class="text-center mb-10">
-          <p class="text-sm font-semibold text-primary uppercase tracking-wider mb-3">Our 5-Stage Model</p>
-          <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-white leading-[1.3]">Our <span class="gradient-text">5-Stage Model</span></h2>
+          <p class="text-sm font-semibold text-primary uppercase tracking-wider mb-3">10xSEO's 5-Stage Model</p>
+          <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-white leading-[1.3]">10xSEO's <span class="gradient-text">5-Stage Model</span></h2>
           <p class="text-base text-white/50 mt-4 max-w-2xl mx-auto">Each component is crucial, and together they form the powerful foundation that ensures your digital dominance in the market.</p>
         </div>
         <div class="mx-auto max-w-[640px] flex flex-col items-center gap-4">
@@ -537,8 +514,8 @@ Call Us
     <section id="process" class="py-20 lg:py-28 border-y border-white/5">
       <div class="max-w-6xl mx-auto px-4 sm:px-6">
         <div class="text-center mb-14 reveal">
-                    <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">First 30 Days: <span class="gradient-text">A Strategic Kickstart</span></h2>
-          <p class="text-lg text-white/50 max-w-3xl mx-auto">Within the first 30 days of our partnership, we complete 18 key tasks. You see the results of each one immediately.</p>
+                    <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4"><span class="gradient-text">A Strategic Kickstart</span></h2>
+          <p class="text-lg text-white/50 max-w-3xl mx-auto">Within the first 30 days of our partnership, we complete 16 key tasks. You see the results of each one immediately</p>
         </div>
         <div class="grid lg:grid-cols-2 gap-6 reveal">
           <!-- Period 1: Day 1-16 — Audit & Research -->
@@ -583,29 +560,17 @@ Call Us
               <li class="flex items-start gap-3">
                 <span class="text-purple-300/70 font-mono text-xs mt-1 shrink-0 w-5">06</span>
                 <div class="flex-1">
-                  <p class="text-sm text-white/85 leading-snug">On-Page & Off-Page Audit</p>
+                  <p class="text-sm text-white/85 leading-snug">Competitor X — Full Audit</p>
                 </div>
               </li>
               <li class="flex items-start gap-3">
                 <span class="text-purple-300/70 font-mono text-xs mt-1 shrink-0 w-5">07</span>
                 <div class="flex-1">
-                  <p class="text-sm text-white/85 leading-snug">General Competitor Overview</p>
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="text-purple-300/70 font-mono text-xs mt-1 shrink-0 w-5">08</span>
-                <div class="flex-1">
-                  <p class="text-sm text-white/85 leading-snug">Competitor X — Full Audit</p>
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="text-purple-300/70 font-mono text-xs mt-1 shrink-0 w-5">09</span>
-                <div class="flex-1">
                   <p class="text-sm text-white/85 leading-snug">On-Page Audit</p>
                 </div>
               </li>
               <li class="flex items-start gap-3">
-                <span class="text-purple-300/70 font-mono text-xs mt-1 shrink-0 w-5">10</span>
+                <span class="text-purple-300/70 font-mono text-xs mt-1 shrink-0 w-5">08</span>
                 <div class="flex-1">
                   <p class="text-sm text-white/85 leading-snug">Off-Page Audit</p>
                 </div>
@@ -622,51 +587,51 @@ Call Us
             </div>
             <ol class="space-y-3.5">
               <li class="flex items-start gap-3">
-                <span class="text-teal-300/70 font-mono text-xs mt-1 shrink-0 w-5">11</span>
+                <span class="text-teal-300/70 font-mono text-xs mt-1 shrink-0 w-5">09</span>
                 <div class="flex-1">
                   <p class="text-sm text-white/85 leading-snug">Keyword Research & Site Structure Mapping</p>
                 </div>
               </li>
               <li class="flex items-start gap-3">
-                <span class="text-teal-300/70 font-mono text-xs mt-1 shrink-0 w-5">12</span>
+                <span class="text-teal-300/70 font-mono text-xs mt-1 shrink-0 w-5">10</span>
                 <div class="flex-1">
                   <p class="text-sm text-white/85 leading-snug">On-Page Optimization for Priority Pages</p>
                 </div>
               </li>
               <li class="flex items-start gap-3">
-                <span class="text-teal-300/70 font-mono text-xs mt-1 shrink-0 w-5">13</span>
+                <span class="text-teal-300/70 font-mono text-xs mt-1 shrink-0 w-5">11</span>
                 <div class="flex-1">
                   <p class="text-sm text-white/85 leading-snug">Content Strategy & Calendar Creation</p>
                 </div>
               </li>
               <li class="flex items-start gap-3">
-                <span class="text-teal-300/70 font-mono text-xs mt-1 shrink-0 w-5">14</span>
+                <span class="text-teal-300/70 font-mono text-xs mt-1 shrink-0 w-5">12</span>
                 <div class="flex-1">
                   <p class="text-sm text-white/85 leading-snug">Preparing Content Briefs</p>
                 </div>
               </li>
               <li class="flex items-start gap-3">
-                <span class="text-teal-300/70 font-mono text-xs mt-1 shrink-0 w-5">15</span>
+                <span class="text-teal-300/70 font-mono text-xs mt-1 shrink-0 w-5">13</span>
                 <div class="flex-1">
                   <p class="text-sm text-white/85 leading-snug">Strategic Plan for Digital Authority Growth</p>
                 </div>
               </li>
               <li class="flex items-start gap-3">
-                <span class="text-teal-300/70 font-mono text-xs mt-1 shrink-0 w-5">16</span>
+                <span class="text-teal-300/70 font-mono text-xs mt-1 shrink-0 w-5">14</span>
                 <div class="flex-1">
                   <p class="text-sm text-white/85 leading-snug">Content Deployment on Website</p>
                 </div>
               </li>
               <li class="flex items-start gap-3">
-                <span class="text-teal-300/70 font-mono text-xs mt-1 shrink-0 w-5">17</span>
+                <span class="text-teal-300/70 font-mono text-xs mt-1 shrink-0 w-5">15</span>
                 <div class="flex-1">
-                  <p class="text-sm text-white/85 leading-snug">Monthly Report & Video Review</p>
+                  <p class="text-sm text-white/85 leading-snug">Video Review</p>
                 </div>
               </li>
               <li class="flex items-start gap-3">
-                <span class="text-teal-300/70 font-mono text-xs mt-1 shrink-0 w-5">18</span>
+                <span class="text-teal-300/70 font-mono text-xs mt-1 shrink-0 w-5">16</span>
                 <div class="flex-1">
-                  <p class="text-sm text-white/85 leading-snug">Monthly Report</p>
+                  <p class="text-sm text-white/85 leading-snug">Action Strategy Summary & Priority Setting</p>
                 </div>
               </li>
             </ol>
@@ -674,7 +639,7 @@ Call Us
         </div>
         <div class="mt-10 max-w-3xl mx-auto reveal">
           <div class="glass-card rounded-2xl p-5 lg:p-6 border-l-4 border-l-emerald-400/60">
-            <p class="text-sm text-white/70 leading-relaxed"><span class="text-emerald-400 font-semibold">📦 By Day 30, you receive:</span> Full Audit Report · Site Structure Plan · Keyword Map · Content Calendar · Backlink Strategy · First Live Changes on Your Site · Video Review.</p>
+            <p class="text-sm text-white/70 leading-relaxed"><span class="text-emerald-400 font-semibold">📦 By Day 30, you receive:</span> a full strategic audit, an optimized site structure, a keyword map, a content strategy and calendar, a backlink development plan, the first results reflected on your site, and a summary video review.</p>
           </div>
         </div>
       </div>
@@ -692,45 +657,25 @@ Call Us
           <p class="text-sm font-semibold uppercase tracking-wider mb-3" style="color:#D4A017">FAQ</p>
           <h2 class="font-heading text-[24px] sm:text-[30px] lg:text-[36px] font-bold text-white leading-[1.3]">Frequently Asked Questions</h2>
                   </div>
-        <div class="flex flex-wrap justify-center gap-2 mb-8 reveal" id="v29-tabs"></div>
         <div class="space-y-3 reveal" id="v29-items"></div>
       </div>
       <script>
         (function(){
           var faqData = [
-            { q: "My competitor has been on the market for years and ranks on the first page of Google. Is it realistic to challenge their position?", a: "Absolutely. AI search (ChatGPT, Google AI Overviews, Perplexity) has fundamentally changed the game. The landscape has shifted radically in the last 18 months—older, backlink-heavy sites have less of an advantage in the new AI-driven visibility. Our focus: AI/GEO (where your competitors aren't looking yet), the local Map Pack, and in-depth topical content. A real case study: from zero to Top 3 for 4 keywords in 6 months.", cat: "General" },
-            { q: "We have an in-house marketer. If we add your services, how are responsibilities divided?", a: "We become the technical backbone of your team. In practice: our Project Lead is in daily contact with your marketer (Slack/WhatsApp), strategic decisions are made jointly, and execution is handled by us. If your marketer also runs Google Ads, we manage the overall coordination to ensure there are no conflicts with their campaigns.", cat: "General" },
-            { q: "Is SEO still worth investing in now that users are increasingly turning to AI?", a: "Definitely. AI hasn't replaced SEO; it has amplified its importance. Google AI Overviews, ChatGPT, and Perplexity all pull data from the same sources as classic Google: site quality, schema, brand authority, and citations. In fact, AI search has increased the value of SEO—the era of backlinks is ending, and \"being cited in AI\" has become a new valuable metric. Our GEO strategy is designed for this: we build your site to be cited by AI platforms and ranked by traditional Google.", cat: "General" },
-            { q: "If we terminate the contract, who owns the content and data created?", a: "Upon contract termination, all content becomes your property. Your Google Ads and Analytics accounts are yours from the start. You keep: (1) All created content (blogs, landing pages, schema, technical fixes); (2) The complete dataset for keyword research, competitor analysis, and the content calendar (as an XLSX file); (3) The Google Ads account under your domain; (4) The list of backlinks we acquired; (5) Full access to your GSC/GA4. What you don't keep: access to our proprietary dashboard, our internal playbooks, and our vendor relationships. We offer a 30-day grace period to provide any remaining files.", cat: "Price" },
-            { q: "What are the leading indicators that show SEO is working before sales increase?", a: "We track the increase in qualified leads (calls, messages), growth in branded search, and user behavior on the site. We monitor: (1) Qualified leads/month (forms, calls, WhatsApp); (2) Time on site + scroll depth; (3) Brand search volume (people searching for your company name on Google); (4) Returning visitors %. When these leading indicators rise, the trailing metrics (actual sales) typically follow in months 6-9. If leading indicators are flat by month 4, we adjust the strategy.", cat: "Results" }
+            { q: "Competitor has been on the market for years and on Google's first page. How realistic is the chance of taking their positions?", a: "Absolutely realistic. AI search has fundamentally changed the rules of the game. Today, the multi-year authority of old sites is no longer untouchable, because new algorithms prioritize content accuracy and GEO (Generative Engine Optimization) standards. Our approach precisely involves working in this untapped niche, which allows us — with the right strategy — to outpace competitors who have held leading positions on Google for years in just a few months." },
+            { q: "If we have an internal marketer and want to add your services, how are functions distributed?", a: "We become your team's technical foundation. Functions are distributed simply: the marketer shares priorities with us, which we use to base our digital strategy, and we manage the full technical process accordingly." },
+            { q: "Is it worth investing in SEO when users are increasingly using artificial intelligence?", a: "Absolutely worth it. AI didn't replace SEO, rather it increased its importance. Platforms like ChatGPT, Perplexity, and Google AI Overviews still get information from authoritative sites. With our GEO (Generative Engine Optimization) strategy, your brand will appear both in traditional search and in AI responses." },
+            { q: "In case of contract termination, who owns the created content and data?", a: "Upon contract termination, the full content transfers to your ownership. Google Ads and analytics accounts are in your ownership from the start, so your access to them is never restricted. Only the agency's internal platforms and working methodologies remain in our possession, and for any other files, you'll benefit from a 30-day grace period." },
+            { q: "What is the indicator that, before sales begin, signals SEO is working?", a: "We track the growth of qualified leads (calls, messages), brand search increase, and user behavior on the site. If these numbers improve in the first months, it means the strategy is working correctly and in subsequent months will inevitably be reflected in real sales." }
           ];
-          var faqCategories = [
-            {name:"All", key:"all"}, {name:"General", key:"general"}, {name:"Price", key:"price"}, {name:"Results", key:"results"}
-          ];
-          var tabs=document.getElementById('v29-tabs'), list=document.getElementById('v29-items'), activeCat='All';
-          faqCategories.forEach(function(item){
-            var cat=item.name, t=document.createElement('button');
-            t.className='v29-tab'+(cat==='All'?' v29-active':'');
-            t.setAttribute('data-cat', item.key);
-            t.textContent=cat;
-            t.onclick=function(){ activeCat=cat; tabs.querySelectorAll('.v29-tab').forEach(function(b){b.classList.remove('v29-active');}); t.classList.add('v29-active'); filter(); };
-            tabs.appendChild(t);
-          });
-          var catKeyMap={"General":"general","Price":"price","Results":"results"};
+          var list=document.getElementById('v29-items');
           faqData.forEach(function(faq){
-            var d=document.createElement('div'), ck=catKeyMap[faq.cat]||'';
-            d.className='v29-card'; d.setAttribute('data-cat',faq.cat);
-            d.innerHTML='<div class="v29-cq"><div class="v29-badge"><svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></div><span class="v29-txt">'+faq.q+'</span><span class="v29-cat" data-key="'+ck+'">'+faq.cat+'</span></div><div class="v29-ca"><p>'+faq.a+'</p></div>';
+            var d=document.createElement('div');
+            d.className='v29-card';
+            d.innerHTML='<div class="v29-cq"><div class="v29-badge"><svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></div><span class="v29-txt">'+faq.q+'</span></div><div class="v29-ca"><p>'+faq.a+'</p></div>';
             d.querySelector('.v29-cq').onclick=function(){ var o=d.classList.contains('v29-open'); list.querySelectorAll('.v29-card').forEach(function(el){el.classList.remove('v29-open');}); if(!o) d.classList.add('v29-open'); };
             list.appendChild(d);
           });
-          function filter(){
-            list.querySelectorAll('.v29-card').forEach(function(el){
-              el.classList.remove('v29-open');
-              var match = activeCat==='All' || el.getAttribute('data-cat')===activeCat;
-              if(match) el.classList.remove('v29-hidden'); else el.classList.add('v29-hidden');
-            });
-          }
         })();
       </script>
     </section>
