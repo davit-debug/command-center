@@ -623,7 +623,10 @@
         const img = document.createElement('img');
         img.src = imageUrl;
         img.className = 'w-full h-full object-cover';
-        img.onerror = function() { this.parentElement.innerHTML = ogPlaceholderSvg; };
+        img.onerror = function() {
+          const host = document.getElementById('og-preview-image');
+          if (host) host.innerHTML = ogPlaceholderSvg;
+        };
         previewImage.innerHTML = '';
         previewImage.appendChild(img);
       } else {
@@ -721,21 +724,31 @@
       try { return new URL(maybeRelative, base).href; } catch(e) { return maybeRelative; }
     }
 
+    async function fetchWithTimeout(input, init, ms) {
+      const ctrl = new AbortController();
+      const t = setTimeout(() => ctrl.abort(), ms);
+      try {
+        return await fetch(input, Object.assign({}, init, { signal: ctrl.signal }));
+      } finally {
+        clearTimeout(t);
+      }
+    }
+
     async function tryProxy(proxyName, targetUrl) {
       let res, html;
-      if (proxyName === 'allorigins') {
-        res = await fetch('https://api.allorigins.win/get?url=' + encodeURIComponent(targetUrl), { cache: 'no-store' });
+      if (proxyName === 'codetabs') {
+        res = await fetchWithTimeout('https://api.codetabs.com/v1/proxy/?quest=' + encodeURIComponent(targetUrl), { cache: 'no-store' }, 12000);
+        if (!res.ok) throw new Error('codetabs ' + res.status);
+        html = await res.text();
+      } else if (proxyName === 'allorigins') {
+        res = await fetchWithTimeout('https://api.allorigins.win/get?url=' + encodeURIComponent(targetUrl), { cache: 'no-store' }, 12000);
         if (!res.ok) throw new Error('allorigins ' + res.status);
         const data = await res.json();
         html = data.contents;
         if (!html) throw new Error('allorigins empty');
       } else if (proxyName === 'corsproxy') {
-        res = await fetch('https://corsproxy.io/?' + encodeURIComponent(targetUrl), { cache: 'no-store' });
+        res = await fetchWithTimeout('https://corsproxy.io/?' + encodeURIComponent(targetUrl), { cache: 'no-store' }, 12000);
         if (!res.ok) throw new Error('corsproxy ' + res.status);
-        html = await res.text();
-      } else if (proxyName === 'codetabs') {
-        res = await fetch('https://api.codetabs.com/v1/proxy/?quest=' + encodeURIComponent(targetUrl), { cache: 'no-store' });
-        if (!res.ok) throw new Error('codetabs ' + res.status);
         html = await res.text();
       } else {
         throw new Error('unknown proxy');
@@ -756,7 +769,7 @@
       fetchLabel.textContent = 'იტვირთება...';
       setFetchStatus('გვერდის ჩამოტვირთვა...', 'loading');
 
-      const proxies = ['allorigins', 'corsproxy', 'codetabs'];
+      const proxies = ['codetabs', 'allorigins', 'corsproxy'];
       let html = null;
       let lastErr = null;
       for (const p of proxies) {
