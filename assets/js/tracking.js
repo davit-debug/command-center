@@ -386,7 +386,10 @@
   // Wraps the inline `openCalendly()` defined on every page.
   // ============================================================
   (function wrapCalendly() {
-    var CAL_URL = 'https://calendly.com/10xseo-sales/quick-seo-consultation-15-minutes';
+    var IS_EN = location.pathname.indexOf('/en/') !== -1 || /\/en$/.test(location.pathname);
+    var CAL_URL = IS_EN
+      ? 'https://calendly.com/10xseo-sales/quick-seo-consultation-15-minutes'
+      : 'https://calendly.com/10xseo-sales/30-seo-clone';
     var STYLE = 'background_color=0f172a&text_color=f8fafc&primary_color=8b5cf6';
 
     function build(ctx) {
