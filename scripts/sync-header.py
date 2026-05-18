@@ -69,6 +69,7 @@ EXCLUDE_DIRS = {'.git', '.claude', '.github', 'audit', 'node_modules', 'scripts'
 SKIP_URL_PREFIXES = (
     'http://', 'https://', '//', 'mailto:', 'tel:',
     'data:', '#', 'javascript:',
+    '/',  # root-relative absolute paths must not be re-prefixed per depth
 )
 
 HEADER_START_RE = re.compile(r'<header\s+id=["\']main-header["\']', re.IGNORECASE)
@@ -193,12 +194,12 @@ def swap_home_logo_to_default(block_html):
             .replace('images/logo-home.png', 'images/logo.png'))
 
 
-def rewrite_logo_links(block_html, depth):
-    """Convert href="#" → href="index.html" (or ../index.html etc.)
-    on the logo anchor and the mobile-menu home item."""
-    target = 'index.html'
-    if depth > 0:
-        target = '../' * depth + target
+def rewrite_logo_links(block_html, depth, is_en):
+    """Convert href="#" → absolute home path ("/" for KA, "/en/" for EN).
+    Absolute paths keep Google's canonicalization simple and let `/index.html`
+    be 301-stripped to `/` server-side. `depth` is no longer needed for the
+    target itself but kept for signature stability."""
+    target = '/en/' if is_en else '/'
 
     def logo_repl(m):
         return f'{m.group(1)}{m.group(2)}{target}{m.group(2)}{m.group(3)}'
@@ -264,7 +265,7 @@ def process_file(path, ka_source_block, en_source_block, dry_run=True):
 
     depth = compute_depth(path)
     adjusted = adjust_paths(source_block, depth)
-    adjusted = rewrite_logo_links(adjusted, depth)
+    adjusted = rewrite_logo_links(adjusted, depth, is_en_path(path))
     adjusted = swap_home_logo_to_default(adjusted)
 
     existing = html[s:e]

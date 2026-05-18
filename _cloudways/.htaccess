@@ -79,6 +79,17 @@
 </IfModule>
 
 # -----------------------------------------------------------------------------
+# 1b) Strip /index.html — canonical is /  (and /en/index.html → /en/)
+#     Apache's DirectoryIndex internally rewrites / → /index.html as a sub-
+#     request; THE_REQUEST inspects the raw HTTP request line so the rule only
+#     fires for external requests, preventing an infinite redirect loop.
+# -----------------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+    RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html[\s?] [NC]
+    RewriteRule ^(.*/)?index\.html$ /%1 [R=301,L]
+</IfModule>
+
+# -----------------------------------------------------------------------------
 # 2) WordPress → static-HTML 301 redirects
 #    Pattern: /slug/  →  /slug.html       (and /en/slug/ → /en/slug.html)
 # -----------------------------------------------------------------------------

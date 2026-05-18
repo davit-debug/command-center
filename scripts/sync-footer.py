@@ -64,6 +64,7 @@ EXCLUDE_DIRS = {'.git', '.claude', '.github', 'audit', 'node_modules', 'scripts'
 SKIP_URL_PREFIXES = (
     'http://', 'https://', '//', 'mailto:', 'tel:',
     'data:', '#', 'javascript:',
+    '/',  # root-relative absolute paths must not be re-prefixed per depth
 )
 
 OPEN_TAG_RE = re.compile(r'<footer\b[^>]*>', re.IGNORECASE)
