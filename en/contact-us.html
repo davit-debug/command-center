@@ -296,6 +296,11 @@ Industries
 </header>
 <div id="mobile-menu" class="lg:hidden fixed inset-0 top-16 bg-surface-dark z-[60] overflow-y-auto pointer-events-none">
 <nav class="max-w-md mx-auto px-6 py-8 flex flex-col gap-2" aria-label="Mobile navigation">
+<a href="/contact-us.html" hreflang="ka" id="lang-toggle-mobile" class="menu-link flex items-center justify-center gap-2 px-4 py-2.5 mb-2 text-sm font-semibold rounded-lg border border-gray-700 text-heading-dark hover:bg-gray-800/50" style="transition-delay:0.02s" aria-label="Switch to Georgian">
+<span class="opacity-50">EN</span>
+<span class="opacity-30">/</span>
+<span class="text-primary-light font-bold">ქართული</span>
+</a>
 <a href="/en/" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.05s" data-ka="მთავარი" data-en="Home">Home</a>
 <a href="about-us.html" class="menu-link block px-4 py-3 text-lg font-medium text-heading-dark rounded-xl hover:bg-gray-800/50" style="transition-delay:0.08s" data-ka="ჩვენს შესახებ" data-en="About Us">About Us</a>
 <hr class="menu-link my-3 border-gray-800" style="transition-delay:0.11s">
@@ -694,11 +699,14 @@ Free SEO Audit
       });
       mobileMenu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
-          menuOpen = false;
-          mobileMenu.classList.remove('menu-open');
-          mobileMenu.style.pointerEvents = 'none';
-          menuBtn.classList.remove('menu-active');
-          document.body.classList.remove('overflow-hidden');
+          setTimeout(() => {
+            menuOpen = false;
+            mobileMenu.classList.remove('menu-open');
+            mobileMenu.style.pointerEvents = 'none';
+            menuBtn.classList.remove('menu-active');
+            menuBtn.setAttribute('aria-expanded', 'false');
+            document.body.classList.remove('overflow-hidden');
+          }, 80);
         });
       });
     }

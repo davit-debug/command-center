@@ -618,11 +618,14 @@
       });
       mobileMenu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
-          menuOpen = false;
-          mobileMenu.classList.remove('menu-open');
-          mobileMenu.style.pointerEvents = 'none';
-          menuBtn.classList.remove('menu-active');
-          document.body.classList.remove('overflow-hidden');
+          setTimeout(() => {
+            menuOpen = false;
+            mobileMenu.classList.remove('menu-open');
+            mobileMenu.style.pointerEvents = 'none';
+            menuBtn.classList.remove('menu-active');
+            menuBtn.setAttribute('aria-expanded', 'false');
+            document.body.classList.remove('overflow-hidden');
+          }, 80);
         });
       });
     }

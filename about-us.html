@@ -1264,12 +1264,14 @@ if (menuBtn && mobileMenu) {
     }
   });
   mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
-    menuOpen = false;
-    menuBtn.setAttribute('aria-expanded', 'false');
-    mobileMenu.classList.remove('menu-open');
-    mobileMenu.style.pointerEvents = 'none';
-    menuBtn.classList.remove('menu-active');
-    document.body.classList.remove('overflow-hidden');
+    setTimeout(() => {
+      menuOpen = false;
+      menuBtn.setAttribute('aria-expanded', 'false');
+      mobileMenu.classList.remove('menu-open');
+      mobileMenu.style.pointerEvents = 'none';
+      menuBtn.classList.remove('menu-active');
+      document.body.classList.remove('overflow-hidden');
+    }, 80);
   }));
 }
 </script>
