@@ -51,6 +51,9 @@
     // Yandex Metrica (CIS market relevance)
     YANDEX_METRICA_ID: '',            // e.g. '12345678' (numeric)
 
+    // Ahrefs Web Analytics — Project Settings → Web Analytics → Tracking Code → data-key
+    AHREFS_WA_KEY: 'tRsC3vlcBKyqqXh/8oI2sQ',  // 10xseo.ge project (id 9845495)
+
     // Behavior flags
     RESPECT_DNT: false,               // true = Do-Not-Track header-ის მქონე user-ებზე არ ჩაიტვირთოს
     DEBUG: false                      // true = console.log-ი დიაგნოსტიკისთვის
@@ -265,7 +268,17 @@
   }
 
   // ============================================================
-  // 10) UTM Capture + Attribution (last-touch, 30-day TTL)
+  // 10) Ahrefs Web Analytics — async, deferred past LCP like the rest
+  // ============================================================
+  if (CONFIG.AHREFS_WA_KEY) {
+    _scheduleDeferredLoad(function () {
+      loadScript('https://analytics.ahrefs.com/analytics.js', { 'data-key': CONFIG.AHREFS_WA_KEY });
+      log('Ahrefs WA loaded (deferred):', CONFIG.AHREFS_WA_KEY);
+    });
+  }
+
+  // ============================================================
+  // 11) UTM Capture + Attribution (last-touch, 30-day TTL)
   // ============================================================
   var ATTRIB_KEY = '_10x_attrib';
   var ATTRIB_TTL_MS = 30 * 24 * 60 * 60 * 1000; // 30 days
