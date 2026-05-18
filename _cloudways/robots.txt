@@ -1,7 +1,3 @@
-# Production robots.txt for 10xseo.ge
-# DEPLOY this in place of the current staging robots.txt (which has Disallow: /)
-# Copy to: /robots.txt at site root
-
 User-agent: *
 Allow: /
 Disallow: /_cloudways/
@@ -12,10 +8,25 @@ Disallow: /audit/
 User-agent: GPTBot
 Allow: /
 
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
 User-agent: ClaudeBot
 Allow: /
 
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
 User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
 Allow: /
 
 User-agent: Google-Extended
@@ -24,5 +35,13 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
-# Sitemap
+User-agent: Bytespider
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
 Sitemap: https://10xseo.ge/sitemap.xml
