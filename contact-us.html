@@ -627,7 +627,7 @@
     const formSuccess = document.getElementById('form-success');
     const formError = document.getElementById('form-error');
 
-    contactForm.addEventListener('submit', function(e) {
+    contactForm?.addEventListener('submit', function(e) {
       e.preventDefault();
       formSuccess.classList.add('hidden');
       formError.classList.add('hidden');
