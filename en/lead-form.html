@@ -468,6 +468,10 @@ Call Us
     var errorDiv = document.getElementById('form-error');
     var retryBtn = document.getElementById('btn-retry');
 
+    // Form was migrated to Tally iframe; the native handler stays as dead code
+    // so we can swap back if Tally fails. Bail out cleanly when form is gone.
+    if (!form) return;
+
     function validateField(input) {
       var valid = true;
       if (input.required && !input.value.trim()) valid = false;
