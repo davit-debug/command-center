@@ -20,6 +20,27 @@
     SetEnvIfNoCase User-Agent "TelegramBot"              allowed_bot=1
     SetEnvIfNoCase User-Agent "Pinterestbot"             allowed_bot=1
     SetEnvIfNoCase User-Agent "Applebot"                 allowed_bot=1
+
+    # AI crawlers — GEO/AI-search optimization (must NOT be blocked by Imunify360)
+    SetEnvIfNoCase User-Agent "GPTBot"                   allowed_bot=1
+    SetEnvIfNoCase User-Agent "ChatGPT-User"             allowed_bot=1
+    SetEnvIfNoCase User-Agent "OAI-SearchBot"            allowed_bot=1
+    SetEnvIfNoCase User-Agent "ClaudeBot"                allowed_bot=1
+    SetEnvIfNoCase User-Agent "Claude-Web"               allowed_bot=1
+    SetEnvIfNoCase User-Agent "anthropic-ai"             allowed_bot=1
+    SetEnvIfNoCase User-Agent "PerplexityBot"            allowed_bot=1
+    SetEnvIfNoCase User-Agent "Perplexity-User"          allowed_bot=1
+    SetEnvIfNoCase User-Agent "Google-Extended"          allowed_bot=1
+    SetEnvIfNoCase User-Agent "Googlebot"                allowed_bot=1
+    SetEnvIfNoCase User-Agent "Bingbot"                  allowed_bot=1
+    SetEnvIfNoCase User-Agent "Bytespider"               allowed_bot=1
+    SetEnvIfNoCase User-Agent "CCBot"                    allowed_bot=1
+    SetEnvIfNoCase User-Agent "DuckAssistBot"            allowed_bot=1
+    SetEnvIfNoCase User-Agent "YouBot"                   allowed_bot=1
+    SetEnvIfNoCase User-Agent "Amazonbot"                allowed_bot=1
+    SetEnvIfNoCase User-Agent "Meta-ExternalAgent"       allowed_bot=1
+    SetEnvIfNoCase User-Agent "FacebookBot"              allowed_bot=1
+    SetEnvIfNoCase User-Agent "cohere-ai"                allowed_bot=1
 </IfModule>
 
 # -----------------------------------------------------------------------------
