@@ -586,7 +586,7 @@ Free SEO Audit
     // Theme toggle
     const themeToggle = document.getElementById('theme-toggle');
     if (localStorage.getItem('theme') !== 'light') document.documentElement.classList.add('dark');
-    themeToggle.addEventListener('click', () => {
+    themeToggle?.addEventListener('click', () => {
       document.documentElement.classList.toggle('dark');
       localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
     });

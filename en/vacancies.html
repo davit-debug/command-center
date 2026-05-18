@@ -686,7 +686,7 @@ Call Us
       html.classList.add('dark');
     }
     if (themeToggle) {
-      themeToggle.addEventListener('click', () => {
+      themeToggle?.addEventListener('click', () => {
         html.classList.toggle('dark');
         localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
       });
