@@ -12,13 +12,22 @@ ROOT = Path(__file__).parent.parent  # command-center/
 OUT = ROOT / "sitemap.xml"
 DOMAIN = "https://10xseo.ge"
 
-# Pages to EXCLUDE from sitemap (system pages, campaign landings)
+# Pages to EXCLUDE from sitemap (system pages, campaign landings, noindex)
 # Matched against rel path; both root and en/ variants excluded.
+# Rule: any page with <meta name="robots" content="noindex"> belongs here —
+# listing noindex URLs in sitemap is a Google policy violation.
 EXCLUDE = {
     "404.html",
     "en/404.html",
     "lead-form.html",
     "en/lead-form.html",
+    # Legal pages — noindex (low SEO value, not for organic discovery)
+    "privacy-policy.html",
+    "cookies-policy.html",
+    "terms-of-service.html",
+    "en/privacy-policy.html",
+    "en/cookies-policy.html",
+    "en/terms-of-service.html",
     # Test/preview/admin pages (P0 audit finding: must not be indexed)
     "og-review.html",
     "og-test.html",
@@ -104,15 +113,13 @@ def url_for(rel: str) -> str:
     """Convert rel path to public URL.
     - index.html → /
     - en/index.html → /en/
-    - seo-audit.html → /seo-audit/
-    - en/<page>.html → /en/<page>.html
+    - everything else → /<rel> (keep .html — matches canonical on each page
+      and .htaccess redirects clean URLs back to .html)
     """
     if rel == "index.html":
         return f"{DOMAIN}/"
     if rel == "en/index.html":
         return f"{DOMAIN}/en/"
-    if rel == "seo-audit.html":
-        return f"{DOMAIN}/seo-audit/"
     return f"{DOMAIN}/{rel}"
 
 
