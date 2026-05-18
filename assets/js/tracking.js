@@ -81,6 +81,18 @@
     return s;
   };
 
+  // Defer heavy 3rd-party network loads past LCP window
+  // (window.load + 3s — events fired earlier go into stub queues and flush on load)
+  var DEFER_LOAD_MS = 3000;
+  var _scheduleDeferredLoad = function (fn) {
+    var run = function () { setTimeout(fn, DEFER_LOAD_MS); };
+    if (document.readyState === 'complete') {
+      run();
+    } else {
+      window.addEventListener('load', run, { once: true });
+    }
+  };
+
   // DNT respect
   if (CONFIG.RESPECT_DNT && (navigator.doNotTrack === '1' || window.doNotTrack === '1')) {
     log('DNT enabled — skipping all tracking');
@@ -99,41 +111,44 @@
   }
 
   // ============================================================
-  // 2) Google Analytics 4
+  // 2) Google Analytics 4 — stub sync, network load deferred past LCP
   // ============================================================
   if (CONFIG.GA4_ID) {
-    loadScript('https://www.googletagmanager.com/gtag/js?id=' + CONFIG.GA4_ID);
     window.dataLayer = window.dataLayer || [];
     window.gtag = function () { window.dataLayer.push(arguments); };
     window.gtag('js', new Date());
     window.gtag('config', CONFIG.GA4_ID, { anonymize_ip: true });
-    log('GA4 loaded:', CONFIG.GA4_ID);
+    _scheduleDeferredLoad(function () {
+      loadScript('https://www.googletagmanager.com/gtag/js?id=' + CONFIG.GA4_ID);
+      log('GA4 script loaded (deferred):', CONFIG.GA4_ID);
+    });
   }
 
   // ============================================================
-  // 3) Google Tag Manager (alternative to GA4 above)
+  // 3) Google Tag Manager (alternative to GA4 above) — also deferred
   // ============================================================
   if (CONFIG.GTM_ID) {
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-    loadScript('https://www.googletagmanager.com/gtm.js?id=' + CONFIG.GTM_ID);
-    log('GTM loaded:', CONFIG.GTM_ID);
+    _scheduleDeferredLoad(function () {
+      loadScript('https://www.googletagmanager.com/gtm.js?id=' + CONFIG.GTM_ID);
+      log('GTM script loaded (deferred):', CONFIG.GTM_ID);
+    });
   }
 
   // ============================================================
-  // 4) Hotjar
+  // 4) Hotjar — stub sync, network load deferred past LCP
   // ============================================================
   if (CONFIG.HOTJAR_ID) {
-    (function (h, o, t, j) {
-      h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments); };
-      h._hjSettings = { hjid: CONFIG.HOTJAR_ID, hjsv: CONFIG.HOTJAR_SV };
-      var a = o.getElementsByTagName('head')[0];
-      var r = o.createElement('script');
+    window.hj = window.hj || function () { (window.hj.q = window.hj.q || []).push(arguments); };
+    window._hjSettings = { hjid: CONFIG.HOTJAR_ID, hjsv: CONFIG.HOTJAR_SV };
+    _scheduleDeferredLoad(function () {
+      var r = document.createElement('script');
       r.async = 1;
-      r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
-      a.appendChild(r);
-    })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
-    log('Hotjar loaded:', CONFIG.HOTJAR_ID);
+      r.src = 'https://static.hotjar.com/c/hotjar-' + window._hjSettings.hjid + '.js?sv=' + window._hjSettings.hjsv;
+      (document.getElementsByTagName('head')[0] || document.documentElement).appendChild(r);
+      log('Hotjar script loaded (deferred):', CONFIG.HOTJAR_ID);
+    });
   }
 
   // ============================================================
