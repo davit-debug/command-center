@@ -91,3 +91,5 @@ images/_logo-backup-2026-05-10/
 # Cloudways migration toolkit (used by deploy workflow + audit trail)
 !_cloudways/
 !_cloudways/**
+!blog/ui-ux-design-and-sales.html
+!en/blog/ui-ux-design-and-sales.html
