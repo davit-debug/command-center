@@ -326,10 +326,30 @@
     }
   }
 
+  // Map ad-platform click IDs to canonical source/medium when explicit UTMs are absent
+  var CLICK_ID_MAP = {
+    gclid:    { source: 'google',   medium: 'cpc' },
+    fbclid:   { source: 'facebook', medium: 'paid-social' },
+    msclkid:  { source: 'bing',     medium: 'cpc' },
+    li_fat_id:{ source: 'linkedin', medium: 'paid-social' },
+    ttclid:   { source: 'tiktok',   medium: 'paid-social' }
+  };
+  function _backfillSourceFromClickId(attrib) {
+    if (!attrib) return attrib;
+    if (attrib.utm_source || attrib.source) return attrib; // already set
+    for (var k in CLICK_ID_MAP) if (attrib[k]) {
+      attrib.source = CLICK_ID_MAP[k].source;
+      attrib.medium = CLICK_ID_MAP[k].medium;
+      return attrib;
+    }
+    return attrib;
+  }
+
   // Run capture on init
   var _activeAttribution = (function () {
     var explicit = _captureExplicit();
     if (explicit) {
+      _backfillSourceFromClickId(explicit);
       _writeStorage(ATTRIB_KEY, explicit);
       log('attribution captured (explicit):', explicit);
       return explicit;
@@ -464,6 +484,43 @@
         setTimeout(attemptWrap, 0);
       }
     }
+  })();
+
+  // ============================================================
+  // 12b) Calendly postMessage funnel — captures real booking completion
+  // Calendly widget posts messages from assets.calendly.com:
+  //   calendly.profile_page_viewed
+  //   calendly.event_type_viewed
+  //   calendly.date_and_time_selected
+  //   calendly.event_scheduled  ← actual conversion
+  // ============================================================
+  (function listenCalendlyMessages() {
+    var EVENT_MAP = {
+      'calendly.profile_page_viewed':    'book_consultation_profile_view',
+      'calendly.event_type_viewed':      'book_consultation_event_view',
+      'calendly.date_and_time_selected': 'book_consultation_time_selected',
+      'calendly.event_scheduled':        'book_consultation_completed'
+    };
+    window.addEventListener('message', function (e) {
+      // Only trust messages from calendly.com origins
+      var origin = e.origin || '';
+      if (!/^https:\/\/([a-z0-9-]+\.)?calendly\.com$/i.test(origin)) return;
+      var data = e.data;
+      if (!data || typeof data !== 'object') return;
+      var ev = data.event;
+      var mapped = EVENT_MAP[ev];
+      if (!mapped) return;
+      // Extract booking metadata when available (event_scheduled has payload.invitee + payload.event)
+      var payload = data.payload || {};
+      var meta = {
+        calendly_event: ev,
+        page_path: location.pathname
+      };
+      if (payload.invitee && payload.invitee.uri) meta.invitee_uri = payload.invitee.uri;
+      if (payload.event && payload.event.uri) meta.event_uri = payload.event.uri;
+      window.trackEvent(mapped, meta);
+      log('Calendly →', mapped, meta);
+    }, false);
   })();
 
   // ============================================================
