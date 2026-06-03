@@ -113,6 +113,9 @@
       animation: glowPulse 3s ease-in-out infinite;
       will-change: filter;
     }
+    @media (min-width: 1024px) {
+      .pyramid-col { margin-top: -6.75rem; }
+    }
     /* Gradient text */
     .gradient-text {
       background: linear-gradient(135deg, #8B5CF6, #3B82F6, #14B8A6);
@@ -511,7 +514,7 @@
 </div>
 </div>
 </div>
-<div class="hidden lg:flex justify-center items-center">
+<div class="hidden lg:flex justify-center items-center pyramid-col">
 <div class="relative flex items-center justify-center animate-float">
 <picture>
 <source media="(min-width: 1280px)" srcset="images/pyramid-top.webp">
