@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>10xSEO × ავერსი · Scope</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0a;--card:#0d1117;--border:#30363d;
+  --accent:#00ff88;--accent-dim:rgba(0,255,136,.10);--accent-mid:rgba(0,255,136,.28);
+  --text:#fff;--dim:rgba(255,255,255,.66);--muted:rgba(255,255,255,.42)
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Noto Sans Georgian',sans-serif;
+  background:var(--bg);color:var(--dim);line-height:1.7;
+  padding-left:248px;padding-top:54px;
+  -webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(rgba(255,255,255,.03) 1px,transparent 1px);
+  background-size:26px 26px;
+  overflow-x:hidden
+}
+.mono{font-family:'JetBrains Mono',monospace}
+h1,h2,h3{color:var(--text);font-weight:800;line-height:1.2;overflow-wrap:anywhere}
+a{color:inherit;text-decoration:none}
+
+/* ===== Dealbar ===== */
+.dealbar{
+  position:fixed;top:0;left:0;right:0;height:54px;z-index:70;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 24px;
+  background:rgba(10,10,10,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border)
+}
+.logo{display:flex;align-items:center;gap:9px;font-weight:900;font-size:19px;color:#fff;overflow-wrap:anywhere}
+.logo b{color:var(--accent)}
+.logo span{color:var(--muted);font-weight:600;font-size:14px}.logo-img{height:26px;width:auto;display:block;flex-shrink:0}
+.db-meta{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+
+/* ===== Left scroll-spy nav ===== */
+.dnav{
+  position:fixed;top:54px;left:0;width:248px;height:calc(100vh - 54px);overflow-y:auto;
+  padding:26px 14px;border-right:1px solid var(--border);background:rgba(13,17,23,.5);z-index:60
+}
+.dnav .lbl{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);padding:0 14px 12px}
+.dnav .lbl.grp{margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,.06)}
+.dnav a{
+  display:flex;align-items:center;gap:11px;padding:11px 14px;border-radius:8px;
+  color:var(--muted);font-size:14px;font-weight:500;transition:.2s;border-left:2px solid transparent;min-width:0
+}
+.dnav a:hover{color:var(--dim);background:rgba(255,255,255,.03)}
+.dnav a.active{color:var(--accent);background:var(--accent-dim);border-left-color:var(--accent);font-weight:600}
+.dnav a .idx{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);flex-shrink:0}
+.dnav a.active .idx{color:var(--accent)}
+.dnav a .tx{min-width:0;overflow-wrap:anywhere}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--border);flex-shrink:0}
+.dnav a.active .dot{background:var(--accent);box-shadow:0 0 8px var(--accent)}
+
+/* ===== Layout shell ===== */
+.wrap{max-width:980px;margin:0 auto;padding:0 36px}
+.sec{padding:84px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.sec:last-of-type{border-bottom:none}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.eyebrow .ln{height:1px;flex:1;background:linear-gradient(90deg,var(--accent-mid),transparent)}
+
+/* ===== Price header ===== */
+.phead{margin-bottom:14px}
+.pname{font-size:clamp(34px,6vw,60px);font-weight:900;letter-spacing:-.02em;line-height:1.05;color:#fff}
+.pname .star{color:var(--accent);font-size:.55em;vertical-align:.32em;margin-right:.18em;text-shadow:0 0 16px var(--accent-mid)}
+.pprice{font-family:'JetBrains Mono',monospace;font-weight:800;color:var(--accent);font-size:clamp(22px,3.4vw,32px);margin-top:14px;letter-spacing:-.01em}
+
+/* flagship glow band wrapper */
+.flag{position:relative;overflow-x:clip}
+.flag .glow{position:absolute;inset:-1px -36px;pointer-events:none;
+  background:radial-gradient(120% 60% at 0% 0%,rgba(0,255,136,.06),transparent 60%);
+  border-left:2px solid var(--accent);
+  -webkit-mask:linear-gradient(180deg,#000,#000 78%,transparent);mask:linear-gradient(180deg,#000,#000 78%,transparent)}
+
+/* ===== Lead intro paragraph ===== */
+.lead{font-size:clamp(17px,2vw,21px);color:var(--dim);line-height:1.75;max-width:760px;margin-top:34px;overflow-wrap:anywhere}
+
+/* ===== Section intro (full-service blocks) ===== */
+.sintro{font-size:clamp(16px,1.9vw,19px);color:var(--dim);line-height:1.75;max-width:780px;margin-top:30px;overflow-wrap:anywhere}
+
+/* ===== Subhead inside section ===== */
+.subh{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin:48px 0 22px;display:flex;align-items:center;gap:12px}
+.subh.ka{font-family:'Noto Sans Georgian',sans-serif;letter-spacing:normal;text-transform:none;font-size:15px;font-weight:700;color:var(--text)}
+.subh.divider{margin:54px 0 22px}
+.subh .ln{height:1px;flex:1;background:rgba(255,255,255,.08)}
+
+/* ===== Scope: feature blocks (with desc) ===== */
+.fblock{position:relative;padding:22px 0 22px 26px;border-left:2px solid var(--accent-mid);margin-bottom:10px}
+.fblock::before{content:"";position:absolute;left:-5px;top:30px;width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent-mid)}
+.fblock h3{font-size:clamp(18px,2.2vw,22px);font-weight:800;color:#fff;margin-bottom:0;overflow-wrap:anywhere}
+.fblock h3 a.lnk{color:var(--accent);font-weight:800;border-bottom:1px solid transparent;transition:border-color .2s}
+.fblock h3 a.lnk:hover{border-bottom-color:var(--accent-mid)}
+.fblock .desc{margin-top:14px}
+.fblock .desc p{color:var(--dim);font-size:15.5px;line-height:1.75;margin-top:10px;overflow-wrap:anywhere}
+.fblock .desc p:first-child{margin-top:0}
+.fblock .foot{color:var(--muted);font-size:13px;margin-top:14px}
+
+/* metric inset panel for CRO numbers */
+.metric{display:inline-flex;flex-direction:column;gap:6px;margin-top:18px;padding:18px 22px;
+  background:var(--accent-dim);border:1px solid var(--accent-mid);border-radius:12px;max-width:100%;min-width:0}
+.metric .m-jump{font-family:'JetBrains Mono',monospace;font-weight:800;font-size:clamp(22px,3.5vw,30px);color:var(--accent);letter-spacing:-.01em;overflow-wrap:anywhere}
+.metric .m-sub{color:var(--text);font-size:15px;font-weight:600;overflow-wrap:anywhere}
+
+/* ===== Scope: plain check list (no desc) ===== */
+.checks{list-style:none;display:flex;flex-direction:column;gap:2px;margin-top:6px}
+.checks li{display:flex;gap:14px;align-items:flex-start;padding:15px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.checks li:last-child{border-bottom:none}
+.checks .ck{flex-shrink:0;width:22px;height:22px;border-radius:6px;background:var(--accent-dim);border:1px solid var(--accent-mid);
+  color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;margin-top:2px}
+.checks .tx{color:var(--text);font-size:16px;font-weight:500;line-height:1.6;min-width:0;overflow-wrap:anywhere}
+
+/* ===== Team grid ===== */
+.team{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px}
+.tcell{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 22px;min-width:0;color:var(--dim);font-size:14.5px;line-height:1.65;overflow-wrap:anywhere}
+.tcell .role{color:#fff;font-weight:700}
+.tcell .rdesc{color:var(--dim)}
+
+/* ===== Cadence ===== */
+.cnote{font-size:clamp(16px,1.9vw,19px);color:var(--dim);line-height:1.7;max-width:760px;margin-top:6px;overflow-wrap:anywhere}
+.cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
+.ccard{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px 22px;position:relative;min-width:0;transition:.2s}
+.ccard:hover{border-color:var(--accent-mid)}
+.ccard .cnum{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:var(--accent);margin-bottom:12px}
+.ccard p{color:var(--text);font-size:15px;font-weight:500;line-height:1.6;overflow-wrap:anywhere}
+
+/* ===== Full-service: lead-term bullet blocks ===== */
+.svc{display:flex;flex-direction:column;gap:12px;margin-top:6px}
+.sitem{position:relative;background:var(--card);border:1px solid var(--border);border-left:2px solid var(--accent-mid);border-radius:12px;
+  padding:20px 24px;min-width:0;transition:border-color .2s}
+.sitem:hover{border-color:var(--accent-mid)}
+.sitem .lead-term{color:#fff;font-weight:800;font-size:16.5px;overflow-wrap:anywhere}
+.sitem .sdesc{color:var(--dim);font-size:15px;line-height:1.7;overflow-wrap:anywhere}
+
+/* ===== HOOK: outcome cards ===== */
+.ogrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px}
+.ocard{background:var(--card);border:1px solid var(--border);border-top:2px solid var(--accent);border-radius:14px;padding:24px 22px;min-width:0;transition:border-color .2s}
+.ocard:hover{border-color:var(--accent-mid)}
+.ocard .otag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent);margin-bottom:12px;overflow-wrap:anywhere}
+.ocard p{color:var(--text);font-size:15.5px;font-weight:500;line-height:1.65;overflow-wrap:anywhere}
+
+/* ===== STATS band ===== */
+.statband{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:6px}
+.statcell{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:26px 22px;min-width:0;text-align:left;transition:border-color .2s}
+.statcell:hover{border-color:var(--accent-mid)}
+.statcell .snum{font-family:'JetBrains Mono',monospace;font-weight:800;font-size:clamp(26px,3.6vw,36px);color:var(--accent);letter-spacing:-.02em;line-height:1.1;overflow-wrap:anywhere}
+.statcell .snum.ka{font-family:'Noto Sans Georgian',sans-serif;font-size:clamp(20px,2.6vw,26px)}
+.statcell .slabel{color:var(--dim);font-size:14px;margin-top:12px;line-height:1.55;overflow-wrap:anywhere}
+
+/* ===== REVIEWS ===== */
+.rhead{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-bottom:6px}
+.rbadge{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;
+  background:var(--accent-dim);border:1px solid var(--accent-mid);min-width:0}
+.rbadge .rnum{font-family:'JetBrains Mono',monospace;font-weight:800;font-size:16px;color:var(--accent)}
+.rbadge .rstars{color:#ffc83d;font-size:13px;letter-spacing:1px;white-space:nowrap}
+.rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px}
+.rcard{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px 22px;min-width:0;transition:border-color .2s}
+.rcard:hover{border-color:var(--accent-mid)}
+.rcard .stars{color:#ffc83d;font-size:14px;letter-spacing:2px;margin-bottom:14px;white-space:nowrap}
+.rcard .quote{color:var(--text);font-size:15.5px;font-style:italic;line-height:1.7;overflow-wrap:anywhere}
+.rcard .who{margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.06)}
+.rcard .who .nm{color:#fff;font-weight:700;font-size:15px;overflow-wrap:anywhere}
+.rcard .who .ro{color:var(--dim);font-size:13.5px;margin-top:3px;overflow-wrap:anywhere}
+.rcard .who .pj{color:var(--muted);font-size:12.5px;margin-top:7px;overflow-wrap:anywhere}
+.rfoot{margin-top:26px}
+.rfoot a{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--accent);
+  border-bottom:1px solid var(--accent-mid);padding-bottom:2px;transition:opacity .2s}
+.rfoot a:hover{opacity:.78}
+
+/* ===== CLIENTS logos ===== */
+.lgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:6px}
+.lchip{display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid rgba(255,255,255,.12);
+  border-radius:12px;padding:20px 18px;min-height:88px;min-width:0;transition:transform .2s}
+.lchip:hover{transform:translateY(-2px)}
+.lchip img{max-width:100%;max-height:46px;width:auto;height:auto;object-fit:contain;display:block}
+
+/* ===== GUARANTEE cards ===== */
+.ggrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:6px}
+.gcard{position:relative;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:26px 24px;min-width:0;transition:border-color .2s}
+.gcard:hover{border-color:var(--accent-mid)}
+.gcard .gshield{width:34px;height:34px;border-radius:9px;background:var(--accent-dim);border:1px solid var(--accent-mid);
+  color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;margin-bottom:16px}
+.gcard h3{font-size:18px;font-weight:800;color:#fff;margin-bottom:10px;overflow-wrap:anywhere}
+.gcard p{color:var(--dim);font-size:15px;line-height:1.7;overflow-wrap:anywhere}
+
+/* ===== EXCLUSIVITY callout ===== */
+.xcall{position:relative;background:linear-gradient(140deg,rgba(0,255,136,.08),rgba(0,255,136,.02) 55%,transparent);
+  border:1px solid var(--accent-mid);border-left:3px solid var(--accent);border-radius:16px;
+  padding:38px 36px;margin-top:6px;box-shadow:0 0 40px rgba(0,255,136,.06);overflow:hidden}
+.xcall::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(80% 120% at 100% 0%,rgba(0,255,136,.08),transparent 60%)}
+.xcall .xtag{position:relative;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1.6px;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.xcall h3{position:relative;font-size:clamp(22px,3vw,30px);font-weight:900;color:#fff;margin-bottom:14px;overflow-wrap:anywhere}
+.xcall p{position:relative;color:var(--text);font-size:clamp(16px,1.9vw,18px);line-height:1.75;max-width:720px;overflow-wrap:anywhere}
+
+/* ===== CTA ===== */
+.ctabox{background:var(--card);border:1px solid var(--accent-mid);border-radius:18px;padding:44px 38px;margin-top:6px;
+  box-shadow:0 0 50px rgba(0,255,136,.05)}
+.ctabox h2{font-size:clamp(26px,4vw,40px);font-weight:900;letter-spacing:-.02em;color:#fff;margin-bottom:16px;overflow-wrap:anywhere}
+.ctabox .ctext{font-size:clamp(16px,1.9vw,19px);color:var(--dim);line-height:1.7;max-width:680px;overflow-wrap:anywhere}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;margin-top:30px;padding:18px 30px;border-radius:12px;
+  background:var(--accent);color:#06120c;font-weight:800;font-size:16.5px;letter-spacing:.01em;
+  box-shadow:0 10px 30px rgba(0,255,136,.22);transition:transform .15s,box-shadow .2s;overflow-wrap:anywhere}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 38px rgba(0,255,136,.3)}
+.btn-primary .arr{font-family:'JetBrains Mono',monospace;font-weight:700}
+.ctacontact{margin-top:26px;color:var(--dim);font-size:15.5px;line-height:1.8;overflow-wrap:anywhere}
+.ctacontact a{color:var(--accent);font-weight:600;border-bottom:1px solid transparent;transition:border-color .2s;white-space:nowrap}
+.ctacontact a:hover{border-bottom-color:var(--accent-mid)}
+.ctacontact .sep{color:var(--muted);margin:0 6px}
+
+@media(max-width:1023px){
+  body{padding-left:0}
+  .dnav{display:none}
+  .db-meta.brandmeta{display:none}
+}
+@media(max-width:900px){
+  .sec{padding:60px 0}
+  .wrap{padding:0 22px}
+  .team{grid-template-columns:1fr}
+  .cgrid{grid-template-columns:1fr}
+  .flag .glow{inset:-1px -22px}
+  .ogrid{grid-template-columns:1fr}
+  .statband{grid-template-columns:repeat(2,1fr)}
+  .rgrid{grid-template-columns:1fr}
+  .lgrid{grid-template-columns:repeat(2,1fr)}
+  .ggrid{grid-template-columns:1fr}
+  .xcall{padding:30px 24px}
+  .ctabox{padding:34px 24px}
+}
+</style>
+</head>
+<body>
+
+<div class="dealbar">
+  <div class="logo"><img src="images/10xseo-logo.webp" alt="10xSEO" class="logo-img"> <span>× ავერსი</span></div>
+  <span class="db-meta">კონფიდენციალური</span>
+</div>
+
+<aside class="dnav" id="dnav">
+  <div class="lbl">შესავალი</div>
+  <a href="#hook" class="active"><span class="idx">00</span><span class="dot"></span><span class="tx">მიმოხილვა</span></a>
+  <div class="lbl grp">წინადადება</div>
+  <a href="#lideroba"><span class="idx">01</span><span class="dot"></span><span class="tx">ლიდერობა</span></a>
+  <a href="#legenda"><span class="idx">02</span><span class="dot"></span><span class="tx">მემკვიდრეობა</span></a>
+  <div class="lbl grp">სრული სერვისი</div>
+  <a href="#analytics"><span class="idx">03</span><span class="dot"></span><span class="tx">ანალიტიკა და სტრატეგია</span></a>
+  <a href="#technical"><span class="idx">04</span><span class="dot"></span><span class="tx">ტექნიკური SEO</span></a>
+  <a href="#onpage"><span class="idx">05</span><span class="dot"></span><span class="tx">ON-PAGE SEO</span></a>
+  <a href="#offpage"><span class="idx">06</span><span class="dot"></span><span class="tx">OFF-PAGE SEO</span></a>
+  <a href="#content"><span class="idx">07</span><span class="dot"></span><span class="tx">კონტენტი</span></a>
+  <div class="lbl grp">ნდობა</div>
+  <a href="#reviews"><span class="idx">08</span><span class="dot"></span><span class="tx">შეფასებები</span></a>
+  <a href="#clients"><span class="idx">09</span><span class="dot"></span><span class="tx">კლიენტები</span></a>
+  <div class="lbl grp">გარანტია</div>
+  <a href="#guarantee"><span class="idx">10</span><span class="dot"></span><span class="tx">გარანტია</span></a>
+  <a href="#exclusivity"><span class="idx">11</span><span class="dot"></span><span class="tx">ექსკლუზიურობა</span></a>
+  <div class="lbl grp">შემდეგი ნაბიჯი</div>
+  <a href="#cta"><span class="idx">12</span><span class="dot"></span><span class="tx">დაჯავშნე ზარი</span></a>
+</aside>
+
+<main>
+
+  <!-- ============ HOOK ============ -->
+  <section class="sec" id="hook">
+    <div class="wrap">
+      <div class="eyebrow"><span class="tx">კონფიდენციალური წინადადება · ავერსი</span><span class="ln"></span></div>
+      <div class="phead">
+        <div class="pname" style="font-size:clamp(30px,5.2vw,54px)">ლიდერობა, რომელიც AI-ის ეპოქაშიც გაგრძელდება</div>
+      </div>
+      <p class="lead">ავერსი დღეს თვეში დაახლოებით 1.2 მილიონ ორგანულ ვიზიტს იღებს - ეს ბაზრის ლიდერის შედეგია. თუმცა 2024 წლის პიკის შემდეგ ორგანული ხილვადობა დაახლოებით 30%-ით შემცირდა, ხოლო მომხმარებლის ძიება სწრაფად გადადის AI-ზე: ChatGPT, Gemini და Google AI Overviews. ჩვენი მიზანია, ეს ტენდენცია შემოგაბრუნოთ, სანამ კონკურენტი მოასწრებს.</p>
+
+      <div class="ogrid">
+        <div class="ocard">
+          <div class="otag">დაბრუნება</div>
+          <p>დაკარგული ორგანული ხილვადობის აღდგენა</p>
+        </div>
+        <div class="ocard">
+          <div class="otag">AI-ხილვადობა</div>
+          <p>გამოჩენა ChatGPT-სა და Google AI Overviews-ში</p>
+        </div>
+        <div class="ocard">
+          <div class="otag">შემოსავალი</div>
+          <p>ხილვადობის კონვერტაცია shop.aversi.ge-ის გაყიდვებად</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ლიდერობა ============ -->
+  <section class="sec" id="lideroba">
+    <div class="wrap">
+      <div class="eyebrow"><span class="idx">01</span><span class="ln"></span></div>
+      <div class="phead">
+        <div class="pname">ლიდერობა</div>
+        <div class="pprice">29,000 ლარი</div>
+      </div>
+
+      <div class="subh ka">რა შედის პაკეტში:<span class="ln"></span></div>
+
+      <ul class="checks">
+        <li><span class="ck">✓</span><span class="tx">მიგრაციის მხარდაჭერა</span></li>
+        <li><span class="ck">✓</span><span class="tx">ექსკლუზიური პარტნიორობა</span></li>
+        <li><span class="ck">✓</span><span class="tx">2 ენა</span></li>
+        <li><span class="ck">✓</span><span class="tx">კონტენტი: 10 ბლოგ-პოსტი თვეში (800-1500 სიტყვა)</span></li>
+        <li><span class="ck">✓</span><span class="tx">ბექლინკები: მინიმუმ 3000 ლარის ღირებულების</span></li>
+        <li><span class="ck">✓</span><span class="tx">ბექლინკებისთვის შედგენილი კონტენტი საჭირო მოცულობით</span></li>
+        <li><span class="ck">✓</span><span class="tx">AI SEO / GEO - რათა გამოჩნდეთ Google AI Overviews-ში, ChatGPT-სა და Gemini-ში</span></li>
+      </ul>
+
+      <div class="fblock">
+        <h3>ON-PAGE SEO: 250 გვერდი თვეში</h3>
+        <div class="desc">
+          <p>მოიცავს არსებული გვერდებისა და კონტენტის ოპტიმიზაციას</p>
+        </div>
+      </div>
+
+      <div class="subh ka">გუნდი, რომელიც პროექტზე იმუშავებს:<span class="ln"></span></div>
+      <div class="team">
+        <div class="tcell"><span class="role">კომპანიის დამფუძნებელი</span> - <span class="rdesc">სტრატეგიის შედგენა, მიგრაციის პროცესის მხარდაჭერა.</span></div>
+        <div class="tcell"><span class="role">SEO დირექტორი</span> - <span class="rdesc">პროცესების მენეჯმენტი, ხარისხის უზრუნველყოფა, მიკრო სტრატეგიული გადაწყვეტილებები.</span></div>
+        <div class="tcell"><span class="role">SENIOR SEO სპეციალისტი</span> - <span class="rdesc">15 წლიანი გამოცდილებით, მათ შორის ბოლო 5 წელი იქომერსში - პროექტის მენეჯმენტი, თასქების ძირითადი ნაწილი.</span></div>
+        <div class="tcell"><span class="role">კონტენტის მწერალი</span> - <span class="rdesc">კონტენტის შექმნა და რედაქტირება.</span></div>
+        <div class="tcell"><span class="role">კლიენტის წარმატების მენეჯერი</span> - <span class="rdesc">უზრუნველყოფს, რომ სერვისის მიწოდება იყოს სასიამოვნო და ემთხვეოდეს კლიენტის ბიზნეს მიზნებს.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ მემკვიდრეობა (flagship) ============ -->
+  <section class="sec flag" id="legenda">
+    <span class="glow" aria-hidden="true"></span>
+    <div class="wrap">
+      <div class="eyebrow"><span class="idx">02</span><span class="ln"></span></div>
+      <div class="phead">
+        <div class="pname"><span class="star">★</span>მემკვიდრეობა</div>
+        <div class="pprice">65,000 ლარი</div>
+      </div>
+
+      <p class="lead">აღნიშნულ პაკეტში შედის მაქსიმალური ღირებულება, რისი მოტანაც შეგვიძლია. ეს არ არის მხოლოდ SEO; აქ შედის ყველაფერი, რაც თქვენს ონლაინ ხილვადობას გააუმჯობესებს და შემდეგ მიღებულ ტრაფიკს სწორად აითვისებს.</p>
+
+      <div class="fblock">
+        <h3><a class="lnk" href="https://10xseo.ge/cro.html" target="_blank" rel="noopener">კონვერსიის ოპტიმიზაცია</a></h3>
+        <div class="desc">
+          <p>კონვერსიის ოპტიმიზაცია იწყება კონვერსიის მაჩვენებლის გაზომვით, გრძელდება მომხმარებლის ქცევის შესწავლით და შემდეგ A/B ტესტირებით.</p>
+          <p>მაგალითად: თუ იქომერს პლატფორმის თვიური შემოსავალია 1 მილიონი ლარი, ხოლო კონვერსიის მაჩვენებელი 5%, ამ მაჩვენებლის 25%-იანი ზრდა (მინიმალური რეალისტური მოლოდინი):</p>
+          <div class="metric">
+            <span class="m-jump">5% → 6.25%</span>
+            <span class="m-sub">თვეში დამატებით 250,000 ლარს დააგენერირებს</span>
+          </div>
+          <p class="foot">(ციფრები არის სადემონსტრაციო)</p>
+        </div>
+      </div>
+
+      <div class="fblock">
+        <h3><a class="lnk" href="https://10xseo.ge/ai-seo.html" target="_blank" rel="noopener">AI SEO / GEO</a></h3>
+        <div class="desc">
+          <p>ბაზარზე იცვლება მომხმარებლის ქცევა და უკვე დღეს თქვენს შესახებ პასუხი უნდა გასცეს ChatGPT-მ, Gemini-მ და მსგავსმა სისტემებმა. გარდა ამისა, Google-ის საძიებო შედეგებიც იცვლება და გადადის AI Overviews-ზე. საქართველოში ეს ცვლილება 1-2 წლის შემდეგ გახდება აქტუალური, თუმცა მისთვის მზადება დღესვე უნდა დაიწყოთ.</p>
+        </div>
+      </div>
+
+      <div class="fblock">
+        <h3>ლოკალური SEO</h3>
+        <div class="desc">
+          <p>ამჟამად ავერსს აქვს 377 აფთიაქი. მათი დასახელებები Google Maps-ზე გამოიყურება როგორც: Aversi 102, Aversi 37 და ა.შ. პროფილები არ არის ოპტიმიზირებული, ხოლო მომხმარებელთა შეფასებები არ არის მართული და პასუხგაცემული. საჭიროა ყველა პროფილის მოწესრიგება: ავერსი მომხმარებელს უნდა გამოუჩნდეს არა მხოლოდ ბრენდული ძიებისას, არამედ აფთიაქისა და pharmacy-ის ძიებისასაც, რათა მიიღოთ ახალი მომხმარებლები. ამისთვის საჭიროა ყველა პროფილისთვის სახელის შეცვლა, ქუჩის მისამართის დამატება, აღწერების გაწერა და ოპტიმიზაცია.</p>
+        </div>
+      </div>
+
+      <ul class="checks">
+        <li><span class="ck">✓</span><span class="tx">კონტენტი: 20 ბლოგ-პოსტი (800-1500 სიტყვა)</span></li>
+        <li><span class="ck">✓</span><span class="tx">ანოტაციების გამდიდრება: FAQ ან SAFETY-ADVICE</span></li>
+        <li><span class="ck">✓</span><span class="tx">ბექლინკების ბიუჯეტი: 10,000 ლარი (უმაღლესი ხარისხის ვებსაიტები)</span></li>
+      </ul>
+
+      <div class="fblock">
+        <h3>ON-PAGE SEO: 800 გვერდი თვეში</h3>
+        <div class="desc">
+          <p>Google უპირატესობას ანიჭებს განახლებულ კონტენტს. ON-PAGE ოპტიმიზაცია მოიცავს ყოველთვიურად 800 გვერდის ოპტიმიზაციასა და განახლებას, რაც იწყება საძიებო სიტყვების კვლევით და გრძელდება მათი ვებსაიტზე ინტეგრაციით.</p>
+        </div>
+      </div>
+
+      <div class="fblock">
+        <h3>ანოტაციების გამდიდრება: FAQ ან SAFETY-ADVICE</h3>
+        <div class="desc">
+          <p>ინდუსტრიის სტანდარტების შესაბამისად, ანოტაციები მდიდრდება მათთვის უნიკალური კონტენტის ფენის დამატებით - მაგალითად, FAQ და SAFETY-ADVICE. ანოტაციების გამდიდრების რამდენიმე მეთოდი არსებობს; მათ თქვენთან ერთად შევათანხმებთ, შევარჩევთ და განვახორციელებთ.</p>
+        </div>
+      </div>
+
+      <div class="subh ka">გუნდი:<span class="ln"></span></div>
+      <div class="team">
+        <div class="tcell"><span class="role">კომპანიის დამფუძნებელი</span> - <span class="rdesc">სტრატეგიის შედგენა, მიგრაციის პროცესის მხარდაჭერა, ინოვაციების დანერგვა, ბიზნეს საჭიროებების იდენტიფიკაცია.</span></div>
+        <div class="tcell"><span class="role">SEO დირექტორი</span> - <span class="rdesc">პროცესების მენეჯმენტი, ხარისხის უზრუნველყოფა, მიკრო სტრატეგიული გადაწყვეტილებები.</span></div>
+        <div class="tcell"><span class="role">SENIOR SEO სპეციალისტი</span> - <span class="rdesc">15 წლიანი გამოცდილებით, მათ შორის ბოლო 5 წელი იქომერსში - პროექტის მენეჯმენტი, თასქების ძირითადი ნაწილი.</span></div>
+        <div class="tcell"><span class="role">MIDDLE SEO სპეციალისტი</span> - <span class="rdesc">დაეხმარება SENIOR-ს ყოველდღიურ დავალებებში.</span></div>
+        <div class="tcell"><span class="role">Local SEO სპეციალისტი</span> - <span class="rdesc">მოაწესრიგებს ლოკაციების პროფილებს.</span></div>
+        <div class="tcell"><span class="role">მედია შემსყიდველი</span> - <span class="rdesc">მოიძიებს ბექლინკებისთვის საუკეთესო ვარიანტებს, დაუკავშირდება და შეათანხმებს საუკეთესო პირობებს.</span></div>
+        <div class="tcell"><span class="role">2 კონტენტის მწერალი</span> - <span class="rdesc">კონტენტის შექმნა და რედაქტირება.</span></div>
+        <div class="tcell"><span class="role">კლიენტის წარმატების მენეჯერი</span> - <span class="rdesc">უზრუნველყოფს, რომ სერვისის მიწოდება იყოს სასიამოვნო და ემთხვეოდეს კლიენტის ბიზნეს მიზნებს.</span></div>
+      </div>
+
+      <div class="subh divider"><span class="ln"></span></div>
+      <p class="cnote">გუნდი მუშაობს ეჯაილ პრინციპებით; იმავე პრინციპებით იმუშავებს თქვენს პროექტზეც, რაც უზრუნველყოფს მაქსიმალურ ეფექტურობას.</p>
+      <div class="cgrid">
+        <div class="ccard"><div class="cnum">01</div><p>კვირაში 2-ჯერ საერთო სამუშაო ჯგუფში გამოიგზავნება განახლება მიმდინარე პროცესების შესახებ.</p></div>
+        <div class="ccard"><div class="cnum">02</div><p>თვეში ერთხელ გვექნება სარეპორტო ზარი, სადაც განვიხილავთ შედეგებს.</p></div>
+        <div class="ccard"><div class="cnum">03</div><p>2 კვირაში ერთხელ გვექნება დაგეგმვის ზარი, სადაც დავგეგმავთ მიმდინარე შესასრულებელ სამუშაოებს.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ რას მოიცავს სრული SEO სერვისი ============ -->
+
+  <!-- 1. ანალიტიკა და სტრატეგია -->
+  <section class="sec" id="analytics">
+    <div class="wrap">
+      <div class="eyebrow"><span class="idx">03</span><span class="ln"></span></div>
+      <div class="phead">
+        <div class="pname" style="font-size:clamp(26px,4.4vw,42px)">რას მოიცავს სრული SEO სერვისი</div>
+      </div>
+      <div class="subh ka">ანალიტიკა და სტრატეგია<span class="ln"></span></div>
+      <div class="svc">
+        <div class="sitem"><span class="lead-term">ბაზრის კვლევა</span> <span class="sdesc">- ჩვენ ვიკვლევთ ბაზარს, რომ თქვენი რესურსი სწორი მიმართულებით დაიხარჯოს.</span></div>
+        <div class="sitem"><span class="lead-term">საძიებო სიტყვების ანალიზი</span> <span class="sdesc">- იმ საკვანძო სიტყვების იდენტიფიცირება, რომლებსაც თქვენი პოტენციური კლიენტები რეალურად ეძებენ.</span></div>
+        <div class="sitem"><span class="lead-term">Keyword Mapping</span> <span class="sdesc">- შერჩეული სიტყვების სტრატეგიული გადანაწილება საიტის შესაბამის გვერდებზე, მომხმარებლის განზრახვის მიხედვით.</span></div>
+        <div class="sitem"><span class="lead-term">კონკურენტების ანალიზი</span> <span class="sdesc">- ბაზრის ლიდერების ძლიერი მხარეების შესწავლა და თქვენი უპირატესობების გამოკვეთა.</span></div>
+        <div class="sitem"><span class="lead-term">კომპლექსური SEO აუდიტი</span> <span class="sdesc">- საიტის შინაარსობრივი და ტექნიკური მდგომარეობის შემოწმება ხარვეზების აღმოსაფხვრელად.</span></div>
+        <div class="sitem"><span class="lead-term">სამოქმედო გეგმის შემუშავება</span> <span class="sdesc">- ინდივიდუალური სტრატეგიის მომზადება ბაზარზე პოზიციების მოსაპოვებლად.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. ტექნიკური SEO ოპტიმიზაცია -->
+  <section class="sec" id="technical">
+    <div class="wrap">
+      <div class="eyebrow"><span class="idx">04</span><span class="ln"></span></div>
+      <div class="subh ka">ტექნიკური SEO ოპტიმიზაცია<span class="ln"></span></div>
+      <div class="svc">
+        <div class="sitem"><span class="lead-term">პასუხისმგებლობა</span> <span class="sdesc">- ჩვენი გუნდი პასუხისმგებლობას იღებს საიტის ტექნიკურ გამართულობაზე, Google-ის სტანდარტების შესაბამისად.</span></div>
+        <div class="sitem"><span class="lead-term">საიტის სისწრაფე და UX</span> <span class="sdesc">- Core Web Vitals-ის ოპტიმიზაცია მომხმარებლის საუკეთესო გამოცდილებისთვის.</span></div>
+        <div class="sitem"><span class="lead-term">ინდექსაციის მართვა</span> <span class="sdesc">- Robots.txt, Sitemap და Crawling ოპტიმიზაცია, რათა Google-მა შეუფერხებლად აღიქვას თქვენი ვებგვერდი.</span></div>
+        <div class="sitem"><span class="lead-term">მონაცემთა სტრუქტურირება</span> <span class="sdesc">- Schema Markup-ის კონფიგურაცია საძიებო შედეგებში საიტის ვიზუალური უპირატესობისთვის.</span></div>
+        <div class="sitem"><span class="lead-term">უწყვეტი მონიტორინგი</span> <span class="sdesc">- Site Health-ის რეგულარული კონტროლი და Search Console-ის მეშვეობით ხარვეზების დროულად გამოსწორება.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. ON-PAGE SEO ოპტიმიზაცია -->
+  <section class="sec" id="onpage">
+    <div class="wrap">
+      <div class="eyebrow"><span class="idx">05</span><span class="ln"></span></div>
+      <div class="subh ka">ON-PAGE SEO ოპტიმიზაცია<span class="ln"></span></div>
+      <div class="svc">
+        <div class="sitem"><span class="lead-term">გვერდების დამუშავება</span> <span class="sdesc">- შინაარსობრივად ვამუშავებთ თითოეულ გვერდს მაქსიმალური ხილვადობის მისაღწევად და გაყიდვების გასაზრდელად.</span></div>
+        <div class="sitem"><span class="lead-term">გვერდების ინდივიდუალური ოპტიმიზაცია</span> <span class="sdesc">- სტრატეგიულად შერჩეული საკვანძო სიტყვების იმპლემენტაცია შესაბამის გვერდებზე.</span></div>
+        <div class="sitem"><span class="lead-term">Meta მონაცემების მართვა</span> <span class="sdesc">- სათაურებისა და აღწერების დამუშავება, რათა გაიზარდოს საიტზე გადასვლის მაჩვენებელი (CTR).</span></div>
+        <div class="sitem"><span class="lead-term">H1-H6 თეგების სტრუქტურირება</span> <span class="sdesc">- შინაარსის სწორი იერარქია Google-ისთვის აღქმადობის, ხოლო მომხმარებლისთვის კითხვის გასამარტივებლად.</span></div>
+        <div class="sitem"><span class="lead-term">SEO კონტენტი</span> <span class="sdesc">- პროფესიონალი მწერლების მიერ შექმნილი ტექსტები, რომლებიც ერთდროულად პასუხობს Google-ის მოთხოვნებსა და ბიზნესის მიზნებს.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. OFF-PAGE SEO: მედია პუბლიკაციები -->
+  <section class="sec" id="offpage">
+    <div class="wrap">
+      <div class="eyebrow"><span class="idx">06</span><span class="ln"></span></div>
+      <div class="subh ka">OFF-PAGE SEO: მედია პუბლიკაციები<span class="ln"></span></div>
+      <div class="svc">
+        <div class="sitem"><span class="lead-term">საიტის ავტორიტეტის გაზრდა</span> <span class="sdesc">- ჩვენ ვზრდით თქვენი საიტის ავტორიტეტს რეიტინგულ პლატფორმებზე ხარისხიანი ბმულების (Backlinks) განთავსებით.</span></div>
+        <div class="sitem"><span class="lead-term">მედიაპარტნიორობა</span> <span class="sdesc">- ვთანამშრომლობთ წამყვან მედიაგამოცემებთან და ვაქვეყნებთ სტატიებს თქვენი ბრენდის შესახებ. ეს არის Google-ისთვის ნდობის უპირობო სიგნალი, რაც საგრძნობლად ზრდის საიტის ავტორიტეტს.</span></div>
+        <div class="sitem"><span class="lead-term">საერთაშორისო პრაქტიკა</span> <span class="sdesc">- გლობალურ ბაზარზე მუშაობის გამოცდილება საშუალებას გვაძლევს, თქვენი საიტისთვის გავლენიანი საერთაშორისო ბმულები გამოვიყენოთ, რაც ვებგვერდის რეიტინგს გლობალურ დონეზეც ამაღლებს.</span></div>
+        <div class="sitem"><span class="lead-term">რესურსების სტრატეგიული შერჩევა</span> <span class="sdesc">- ჩვენ ვმუშაობთ როგორც უფასო, ისე ფასიანი წყაროების ათვისებაზე, რათა შევქმნათ ბმულების ბუნებრივი და მრავალფეროვანი პორტფოლიო.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. კონტენტი -->
+  <section class="sec" id="content">
+    <div class="wrap">
+      <div class="eyebrow"><span class="idx">07</span><span class="ln"></span></div>
+      <div class="subh ka">კონტენტი<span class="ln"></span></div>
+      <div class="svc">
+        <div class="sitem"><span class="lead-term">ტექსტები</span> <span class="sdesc">- ჩვენ ვქმნით თქვენი ბიზნესის სპეციფიკაზე მორგებულ ტექსტებს, რომლებიც ბრენდის იმიჯსა და საძიებო სისტემების მოთხოვნებს შორის იდეალურ ბალანსს იცავს.</span></div>
+        <div class="sitem"><span class="lead-term">ჟურნალისტური ეთიკა და ხარისხი</span> <span class="sdesc">- ქოფირაითერთა გუნდი დაკომპლექტებულია ჟურნალისტური გამოცდილების მქონე ავტორებით, რომლებიც თემას საფუძვლიანად იკვლევენ და ქმნიან სიღრმისეულ შინაარსობრივ მასალებს.</span></div>
+        <div class="sitem"><span class="lead-term">უნიკალურობა და ავტორიტეტი</span> <span class="sdesc">- იქმნება ორიგინალური ტექსტური მასალა, რაც ზრდის მომხმარებლის ნდობას და ამყარებს თქვენი ბრენდის პოზიციას ბაზარზე.</span></div>
+        <div class="sitem"><span class="lead-term">სტრატეგიული თავსებადობა</span> <span class="sdesc">- ყველა მასალა იქმნება წინასწარ განსაზღვრული სტრუქტურის მიხედვით, რაც მას თანაბრად ეფექტურს ხდის როგორც საიტის შიდა (On-Page), ისე გარე (Off-Page) ოპტიმიზაციისთვის.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STATS band ============ -->
+  <section class="sec" id="stats">
+    <div class="wrap">
+      <div class="eyebrow"><span class="tx">დადასტურებული შედეგები</span><span class="ln"></span></div>
+      <div class="statband">
+        <div class="statcell">
+          <div class="snum">5.0 ★</div>
+          <div class="slabel">Clutch-რეიტინგი</div>
+        </div>
+        <div class="statcell">
+          <div class="snum">+45%</div>
+          <div class="slabel">გაყიდვების ზრდა (აშშ ბაზარი)</div>
+        </div>
+        <div class="statcell">
+          <div class="snum">16,755</div>
+          <div class="slabel">ზარი Google ბიზნეს-პროფილიდან (+1,500 მხოლოდ ბოლო 2 თვეში)</div>
+        </div>
+        <div class="statcell">
+          <div class="snum ka">ფარმა · ჯანდაცვა · იქომერსი</div>
+          <div class="slabel">სექტორები, სადაც უკვე ვმუშაობთ</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ REVIEWS ============ -->
+  <section class="sec" id="reviews">
+    <div class="wrap">
+      <div class="eyebrow"><span class="idx">08</span><span class="ln"></span></div>
+      <div class="rhead">
+        <h2 style="font-size:clamp(26px,4vw,40px);font-weight:900;letter-spacing:-.02em">რას ამბობენ ჩვენი კლიენტები</h2>
+        <span class="rbadge"><span class="rnum">5.0</span><span class="rstars">★★★★★</span></span>
+      </div>
+
+      <div class="rgrid">
+        <div class="rcard">
+          <div class="stars">★★★★★</div>
+          <p class="quote">"They are proactive, attentive to detail, and truly committed to achieving measurable success."</p>
+          <div class="who">
+            <div class="nm">Tako Gvasalia</div>
+            <div class="ro">Projects Manager, GERGILI</div>
+            <div class="pj">SEO Services for Environmental Protection Co</div>
+          </div>
+        </div>
+
+        <div class="rcard">
+          <div class="stars">★★★★★</div>
+          <p class="quote">"Their professionalism, meticulous attention to detail, and results-driven approach clearly set them apart."</p>
+          <div class="who">
+            <div class="nm">Nino Isakadze</div>
+            <div class="ro">Director of Sales, Kvareli Lake Resort</div>
+            <div class="pj">SEO &amp; Web Optimization for Resort Hotel Complex</div>
+          </div>
+        </div>
+
+        <div class="rcard">
+          <div class="stars">★★★★★</div>
+          <p class="quote">"I highly recommend them to every business."</p>
+          <div class="who">
+            <div class="nm">Kotejebi.ge</div>
+            <div class="ro">Founder, Kotejebi.ge</div>
+            <div class="pj">SEO &amp; Social Media Marketing for Construction Co</div>
+          </div>
+        </div>
+
+        <div class="rcard">
+          <div class="stars">★★★★★</div>
+          <p class="quote">"They know how to rank in extremely high competition, not just regular SEO."</p>
+          <div class="who">
+            <div class="nm">Shota Teliashvili</div>
+            <div class="ro">Founder, Avia.ge</div>
+            <div class="pj">SEO &amp; Content Optimization for Airline Ticket Platform</div>
+          </div>
+        </div>
+
+        <div class="rcard">
+          <div class="stars">★★★★★</div>
+          <p class="quote">"We had almost daily communication, developed plans together, and conducted regular monitoring."</p>
+          <div class="who">
+            <div class="nm">Natalia Darchiashvili</div>
+            <div class="ro">Head of Marketing, Todua Clinic</div>
+            <div class="pj">SEO &amp; Blog Writing for Medical Center</div>
+          </div>
+        </div>
+
+        <div class="rcard">
+          <div class="stars">★★★★★</div>
+          <p class="quote">"Communication is always on time."</p>
+          <div class="who">
+            <div class="nm">Maksym Yezik</div>
+            <div class="ro">Head of Development</div>
+            <div class="pj">SEO for Concrete Products Manufacturer</div>
+          </div>
+        </div>
+
+        <div class="rcard">
+          <div class="stars">★★★★★</div>
+          <p class="quote">"They are motivated to grow."</p>
+          <div class="who">
+            <div class="nm">Anastasia Martynenko</div>
+            <div class="ro">Designer, AMdesign</div>
+            <div class="pj">SEO Services for Website &amp; Brand Design Agency</div>
+          </div>
+        </div>
+
+        <div class="rcard">
+          <div class="stars">★★★★★</div>
+          <p class="quote">"10xSEO always delivers on time and has strict action plans, and we get everything documented."</p>
+          <div class="who">
+            <div class="nm">Davit Giorgadze</div>
+            <div class="ro">E-Commerce Manager, Elehear</div>
+            <div class="pj">SEO &amp; Content Writing for AI Hearing Aids Company</div>
+          </div>
+        </div>
+
+        <div class="rcard">
+          <div class="stars">★★★★★</div>
+          <p class="quote">"The enthusiasm and time 10xSEO puts into the work are remarkable."</p>
+          <div class="who">
+            <div class="nm">Department Head</div>
+            <div class="ro">Irao Insurance</div>
+            <div class="pj">SEO &amp; Content Writing for Insurance Company</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rfoot">
+        <a href="https://clutch.co/profile/10xseo#reviews" target="_blank" rel="noopener">ყველა შეფასება Clutch.co-ზე →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CLIENTS logos ============ -->
+  <section class="sec" id="clients">
+    <div class="wrap">
+      <div class="eyebrow"><span class="idx">09</span><span class="ln"></span></div>
+      <div class="phead">
+        <div class="pname" style="font-size:clamp(26px,4.4vw,42px)">კომპანიები, რომლებიც გვენდობიან</div>
+      </div>
+      <div class="lgrid" style="margin-top:34px">
+        <div class="lchip"><img src="images/clients/todua-clinic.webp" alt="თოდუას კლინიკა" loading="lazy"></div>
+        <div class="lchip"><img src="images/clients/irao.webp" alt="IRAO" loading="lazy"></div>
+        <div class="lchip"><img src="images/clients/elehear.webp" alt="ELEHEAR" loading="lazy"></div>
+        <div class="lchip"><img src="images/clients/avia.webp" alt="avia.ge" loading="lazy"></div>
+        <div class="lchip"><img src="images/clients/myhome.webp" alt="myhome.ge" loading="lazy"></div>
+        <div class="lchip"><img src="images/clients/belle-maison.webp" alt="Belle Maison" loading="lazy"></div>
+        <div class="lchip"><img src="images/clients/kvareli-lake.webp" alt="Kvareli Lake" loading="lazy"></div>
+        <div class="lchip"><img src="images/clients/horizon-sm.webp" alt="Horizon Batumi" loading="lazy"></div>
+        <div class="lchip"><img src="images/clients/koordinati.webp" alt="კოორდინატი" loading="lazy"></div>
+        <div class="lchip"><img src="images/clients/juba-sm.webp" alt="Jubá" loading="lazy"></div>
+        <div class="lchip"><img src="images/clients/chronometri.svg" alt="ქრონომეტრი" loading="lazy"></div>
+        <div class="lchip"><img src="images/clients/smile-studio.webp" alt="Smile Studio" loading="lazy"></div>
+        <div class="lchip"><img src="images/clients/ibccs-tax.webp" alt="ibccs.tax" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GUARANTEE / risk-reversal ============ -->
+  <section class="sec" id="guarantee">
+    <div class="wrap">
+      <div class="eyebrow"><span class="tx">რისკი ჩვენს მხარესაა</span><span class="ln"></span></div>
+      <div class="phead">
+        <div class="pname" style="font-size:clamp(26px,4.4vw,42px)">გადავწიოთ რისკი თქვენგან ჩვენკენ</div>
+      </div>
+      <div class="ggrid" style="margin-top:34px">
+        <div class="gcard">
+          <div class="gshield">✓</div>
+          <h3>გარანტირებული მოცულობა</h3>
+          <p>ყოველთვიური დელივერებლები (გვერდები, ბლოგ-პოსტები, ბმულები) ხელშეკრულებით ფიქსირდება. იხდით ზუსტად იმაში, რაც სრულდება.</p>
+        </div>
+        <div class="gcard">
+          <div class="gshield">✓</div>
+          <h3>სრული გამჭვირვალობა</h3>
+          <p>ყოველთვიური სარეპორტო ზარი და ცოცხალი მონაცემები: ხედავთ ზუსტად რა კეთდება და რა შედეგი მოაქვს.</p>
+        </div>
+        <div class="gcard">
+          <div class="gshield">✓</div>
+          <h3>თქვენი მონაცემები დაცულია</h3>
+          <p>მკაცრი data-firewall წერილობით: თქვენი სტრატეგია და მონაცემები არასდროს გამოიყენება სხვა კლიენტისთვის.</p>
+        </div>
+        <div class="gcard">
+          <div class="gshield">✓</div>
+          <h3>ფარმა-გამოცდილება</h3>
+          <p>ჩვენ უკვე ვმუშაობთ ფარმაცევტულ და სამედიცინო ბრენდებთან; თქვენს ბიუჯეტზე არ ვსწავლობთ.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EXCLUSIVITY / honest scarcity ============ -->
+  <section class="sec" id="exclusivity">
+    <div class="wrap">
+      <div class="xcall">
+        <div class="xtag">ექსკლუზიური პარტნიორობა</div>
+        <h3>ფარმა-სექტორის ექსკლუზიურობა</h3>
+        <p>„მემკვიდრეობა" პაკეტში სექტორში მხოლოდ ერთ პარტნიორს ვიღებთ. სანამ ეს ადგილი ავერსს უჭირავს, თქვენი პირდაპირი კონკურენტი ჩვენთან ვერ მოვა.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="sec" id="cta">
+    <div class="wrap">
+      <div class="eyebrow"><span class="idx">12</span><span class="ln"></span></div>
+      <div class="ctabox">
+        <h2>შემდეგი ნაბიჯი</h2>
+        <p class="ctext">მოდი, 30-წუთიან ზარზე გაგიწეროთ ავერსისთვის მორგებული ზუსტი გეგმა.</p>
+        <a class="btn-primary" href="https://calendly.com/10xseo-sales/30-seo-clone" target="_blank" rel="noopener">დაჯავშნე 30-წუთიანი ზარი <span class="arr">→</span></a>
+        <div class="ctacontact">
+          ან მოგვწერეთ - <a href="mailto:sales@10xseo.ge">sales@10xseo.ge</a><span class="sep">·</span><a href="tel:+995510101517">+995 510 10 15 17</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var id=e.target.id;document.querySelectorAll('.dnav a').forEach(function(n){n.classList.toggle('active',n.getAttribute('href')==='#'+id)})}})},{rootMargin:'-35% 0px -60% 0px'});
+['hook','lideroba','legenda','analytics','technical','onpage','offpage','content','stats','reviews','clients','guarantee','exclusivity','cta'].forEach(function(id){var el=document.getElementById(id);if(el)io.observe(el)});
+</script>
+</body>
+</html>
