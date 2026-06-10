@@ -231,7 +231,7 @@
 
   <!-- ========== HEADER ========== -->
     <header id="main-header" class="fixed top-0 left-0 right-0 z-50 h-16 lg:h-[72px] bg-white/80 dark:bg-surface-dark/80 header-scrolled border-b border-gray-100 dark:border-gray-800 transition-all duration-300">
-<script src="../assets/js/tracking.js" defer></script>
+<script src="../assets/js/tracking.js?v=20260610" defer></script>
 <div class="max-w-7xl mx-auto px-4 sm:px-6 h-full flex items-center justify-between">
 <a href="/en/" class="flex items-center shrink-0">
 <img src="../images/logo.webp" alt="10xSEO" decoding="async" class="h-auto w-40 lg:w-44 dark:mix-blend-screen" width="600" height="125">
@@ -358,6 +358,8 @@ Call Us
             <h2 class="font-heading text-[22px] sm:text-[26px] font-bold text-heading dark:text-heading-dark mb-6">Send Us a Message</h2>
             <!-- Tally EN Form #1 (rjGZd2) — Main contact form. -->
             <iframe data-tally-src="https://tally.so/embed/rjGZd2?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1&v=20260514" loading="lazy" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0" title="10xSEO Contact Form" style="border:0;"></iframe>
+            <!-- Sales Intelligence: stamp the first-party visitor id (_10x_vid) into the Tally embed BEFORE the loader below renders it, so the submission webhook can stitch this lead to its on-site journey. Add a hidden "visitor_id" field to form rjGZd2 (see sales-intel/HANDOFF-KA.md). -->
+            <script>(function(){try{var n="_10x_vid",m=document.cookie.match("(?:^|; )"+n+"=([^;]*)"),v=m?decodeURIComponent(m[1]):null;if(!v){v=(window.crypto&&crypto.randomUUID?crypto.randomUUID():"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,function(c){var r=Math.random()*16|0;return (c==="x"?r:(r&3|8)).toString(16);}));var d=new Date();d.setTime(d.getTime()+730*864e5);document.cookie=n+"="+encodeURIComponent(v)+"; Expires="+d.toUTCString()+"; Path=/; SameSite=Lax"+(location.protocol==="https:"?"; Secure":"");}var f=document.querySelector('iframe[data-tally-src]:not([src])');if(f){var s=f.getAttribute("data-tally-src")||"";if(s&&s.indexOf("visitor_id=")===-1){f.setAttribute("data-tally-src",s+(s.indexOf("?")>-1?"&":"?")+"visitor_id="+encodeURIComponent(v)+"&page_url="+encodeURIComponent(location.pathname));}}}catch(e){}})();</script>
             <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s)}</script>
           </div>
         </div>
