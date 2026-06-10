@@ -85,16 +85,35 @@
   };
 
   // Defer heavy 3rd-party network loads past LCP window
-  // (window.load + 3s — events fired earlier go into stub queues and flush on load)
+  // (window.load + 3s — events fired earlier go into stub queues and flush on load).
+  // A lead click (tel:/mailto:/Calendly) calls _flushDeferredLoads() immediately
+  // so the conversion event reaches GA4 instead of waiting for the timer.
   var DEFER_LOAD_MS = 3000;
+  var _deferredLoadQueue = [];
+  var _deferredLoadsFlushed = false;
+  var _flushDeferredLoads = function () {
+    if (_deferredLoadsFlushed) return;
+    _deferredLoadsFlushed = true;
+    var q = _deferredLoadQueue;
+    _deferredLoadQueue = [];
+    for (var qi = 0; qi < q.length; qi++) {
+      try { q[qi](); } catch (err) { log('deferred load failed', err); }
+    }
+    log('deferred loads flushed');
+  };
   var _scheduleDeferredLoad = function (fn) {
-    var run = function () { setTimeout(fn, DEFER_LOAD_MS); };
+    if (_deferredLoadsFlushed) { fn(); return; }
+    _deferredLoadQueue.push(fn);
+  };
+  // Timer path (original behavior): flush at window.load + 3s
+  (function () {
+    var run = function () { setTimeout(_flushDeferredLoads, DEFER_LOAD_MS); };
     if (document.readyState === 'complete') {
       run();
     } else {
       window.addEventListener('load', run, { once: true });
     }
-  };
+  })();
 
   // DNT respect
   if (CONFIG.RESPECT_DNT && (navigator.doNotTrack === '1' || window.doNotTrack === '1')) {
@@ -120,7 +139,7 @@
     window.dataLayer = window.dataLayer || [];
     window.gtag = function () { window.dataLayer.push(arguments); };
     window.gtag('js', new Date());
-    window.gtag('config', CONFIG.GA4_ID, { anonymize_ip: true });
+    window.gtag('config', CONFIG.GA4_ID, { anonymize_ip: true, transport_type: 'beacon' });
     _scheduleDeferredLoad(function () {
       loadScript('https://www.googletagmanager.com/gtag/js?id=' + CONFIG.GA4_ID);
       log('GA4 script loaded (deferred):', CONFIG.GA4_ID);
@@ -406,9 +425,20 @@
   // Track the last clicked element that triggers a Calendly open
   // (since inline `onclick="openCalendly()"` doesn't expose the event)
   var _lastCalendlyTrigger = null;
+  var _lastBookClickAt = 0; // de-dup guard: direct-anchor handler vs wrapped openCalendly (500ms window)
   document.addEventListener('click', function (e) {
     var t = e.target && e.target.closest ? e.target.closest('[onclick*="openCalendly"], [data-calendly]') : null;
-    if (t) _lastCalendlyTrigger = t;
+    if (t) {
+      _lastCalendlyTrigger = t;
+      _flushDeferredLoads(); // lead click — load gtag.js now instead of window.load+3s
+      // Lazy re-wrap: if openCalendly was defined after our initial wrap attempts,
+      // wrap it here — capture listeners run before the inline onclick fires,
+      // so this very click still goes through the wrapped version.
+      if (typeof window.openCalendly === 'function' && !window.openCalendly._10xWrapped &&
+          typeof _attemptCalendlyWrap === 'function') {
+        _attemptCalendlyWrap();
+      }
+    }
   }, true);
 
   // ============================================================
@@ -424,16 +454,141 @@
     for (var k2 in params) if (Object.prototype.hasOwnProperty.call(params, k2)) merged[k2] = params[k2];
     if (typeof window.gtag === 'function') window.gtag('event', eventName, merged);
     if (typeof window.fbq === 'function') window.fbq('trackCustom', eventName, merged);
-    if (typeof window.lintrk === 'function') window.lintrk('track', { conversion_id: merged.linkedin_conversion_id });
+    if (typeof window.lintrk === 'function' && merged.linkedin_conversion_id) window.lintrk('track', { conversion_id: merged.linkedin_conversion_id });
     if (window.ttq && typeof window.ttq.track === 'function') window.ttq.track(eventName, merged);
     log('event:', eventName, merged);
   };
 
   // ============================================================
+  // 11b) Sales Intelligence — first-party visitor id + /collect beacon
+  // Stitches the anonymous on-site journey (IP is captured server-side from
+  // the CF-Connecting-IP header) to leads that later convert via Calendly /
+  // Tally / email. The /collect beacon is GATED: flip SI.enabled = true once
+  // the leads.10xseo.ge Cloudflare tunnel is live (see sales-intel/HANDOFF-KA.md).
+  // The _10x_vid cookie + the Calendly/Tally passthrough run regardless — they
+  // are harmless before the backend exists and establish a stable vid early.
+  // ============================================================
+  var SI = {
+    enabled: false,                                  // ← flip to true after the tunnel is up
+    endpoint: 'https://leads.10xseo.ge/collect'
+  };
+  var SI_VID_COOKIE = '_10x_vid';
+  var SI_VID_TTL_DAYS = 730;                         // 2 years, first-party analytics cookie
+
+  function _siUuid() {
+    if (window.crypto && crypto.randomUUID) { try { return crypto.randomUUID(); } catch (_) {} }
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+      var r = (Math.random() * 16) | 0, v = c === 'x' ? r : (r & 0x3) | 0x8;
+      return v.toString(16);
+    });
+  }
+  function _siReadCookie(name) {
+    var m = document.cookie.match('(?:^|; )' + name.replace(/([.$?*|{}()\[\]\\\/\+^])/g, '\\$1') + '=([^;]*)');
+    return m ? decodeURIComponent(m[1]) : null;
+  }
+  function _siWriteCookie(name, val, days) {
+    var d = new Date(); d.setTime(d.getTime() + days * 864e5);
+    var secure = location.protocol === 'https:' ? '; Secure' : '';
+    document.cookie = name + '=' + encodeURIComponent(val) + '; Expires=' + d.toUTCString() +
+                      '; Path=/; SameSite=Lax' + secure;
+  }
+  function siVid() {
+    var v = _siReadCookie(SI_VID_COOKIE);
+    if (!v) { v = _siUuid(); _siWriteCookie(SI_VID_COOKIE, v, SI_VID_TTL_DAYS); }
+    return v;
+  }
+  function _siSessionId() {
+    try {
+      var s = sessionStorage.getItem('_10x_sid');
+      if (!s) { s = _siUuid(); sessionStorage.setItem('_10x_sid', s); }
+      return s;
+    } catch (_) { return 'nostore'; }
+  }
+  function siSend(type, params) {
+    if (!SI.enabled || !SI.endpoint || !navigator.sendBeacon) return false;
+    try {
+      var a = _activeAttribution || {};
+      var payload = {
+        vid: siVid(),
+        session_id: _siSessionId(),
+        type: type || 'pageview',
+        url: location.href,
+        path: location.pathname,
+        title: document.title || '',
+        referrer: document.referrer || '',
+        utm_source: a.utm_source || a.source || '',
+        utm_medium: a.utm_medium || a.medium || '',
+        utm_campaign: a.utm_campaign || '',
+        utm_content: a.utm_content || '',
+        utm_term: a.utm_term || '',
+        gclid: a.gclid || '',
+        fbclid: a.fbclid || '',
+        ua: navigator.userAgent || '',
+        ts: new Date().toISOString()
+      };
+      if (params) for (var k in params) {
+        if (Object.prototype.hasOwnProperty.call(params, k) && !(k in payload)) payload[k] = params[k];
+      }
+      // text/plain keeps this a CORS "simple request" (no preflight round-trip).
+      var blob = new Blob([JSON.stringify(payload)], { type: 'text/plain' });
+      return navigator.sendBeacon(SI.endpoint, blob);
+    } catch (e) { log('SI beacon failed', e); return false; }
+  }
+  // Establish vid now + expose a tiny debug/control surface.
+  window.SalesIntel = { vid: siVid, send: siSend, config: SI };
+  siVid();
+  // Mirror every trackEvent into /collect + fire an initial pageview.
+  (function siWire() {
+    var _origTrack = window.trackEvent;
+    window.trackEvent = function (name, params) {
+      try { _origTrack(name, params); } catch (e) {}
+      try { siSend(name, params || {}); } catch (e) {}
+    };
+    function firePageview() { siSend('pageview', {}); }
+    if (document.readyState === 'complete' || document.readyState === 'interactive') firePageview();
+    else document.addEventListener('DOMContentLoaded', firePageview, { once: true });
+  })();
+  // Tag session-recording tools with the visitor id so each lead's recordings
+  // can be looked up in Hotjar / MS Clarity by vid (sales-intel dashboard).
+  // Runs regardless of SI.enabled — hj/clarity stubs queue until their scripts
+  // load (deferred), so calling now is safe and costs nothing extra.
+  // Hotjar: User Attributes filtering requires a Business/Scale plan; the call
+  // is a harmless no-op on lower plans. Clarity: custom tags are free —
+  // Recordings → Filters → Custom tags → vid.
+  (function siTagRecorders() {
+    try {
+      var vid = siVid();
+      if (typeof window.hj === 'function') {
+        window.hj('identify', vid, { vid: vid });
+      }
+      if (typeof window.clarity === 'function') {
+        window.clarity('identify', vid);   // hashed custom-id (Clarity-side)
+        window.clarity('set', 'vid', vid); // plain custom tag → filterable in UI
+      }
+    } catch (e) { log('recorder tagging failed', e); }
+  })();
+  // Tally fallback: stitch visitor_id into any embed not yet given a src.
+  // (Contact pages patch synchronously before render — see contact-us.html.)
+  (function siPatchTally() {
+    try {
+      var vid = siVid();
+      var nodes = document.querySelectorAll('iframe[data-tally-src]:not([src])');
+      Array.prototype.forEach.call(nodes, function (f) {
+        var src = f.getAttribute('data-tally-src') || '';
+        if (src && src.indexOf('visitor_id=') === -1) {
+          f.setAttribute('data-tally-src', src + (src.indexOf('?') > -1 ? '&' : '?') +
+            'visitor_id=' + encodeURIComponent(vid) +
+            '&page_url=' + encodeURIComponent(location.pathname));
+        }
+      });
+    } catch (e) {}
+  })();
+
+  // ============================================================
   // 12) Calendly wrapper — inject UTM params + fire book_consultation_click
   // Wraps the inline `openCalendly()` defined on every page.
   // ============================================================
-  (function wrapCalendly() {
+  var _attemptCalendlyWrap = (function wrapCalendly() {
     var IS_EN = location.pathname.indexOf('/en/') !== -1 || /\/en$/.test(location.pathname);
     var CAL_URL = IS_EN
       ? 'https://calendly.com/10xseo-sales/quick-seo-consultation-15-minutes'
@@ -448,6 +603,10 @@
       params.set('utm_campaign', a.utm_campaign || 'site_cta');
       params.set('utm_content', (ctx.cta_location || 'unknown') + '|' + (ctx.section || 'no-section'));
       params.set('utm_term', location.pathname);
+      // Sales Intelligence: carry the visitor id through to the Calendly webhook.
+      // salesforce_uuid survives Calendly's redirect (plain UTMs can be stripped)
+      // and surfaces in the invitee.created webhook as tracking.salesforce_uuid.
+      try { params.set('salesforce_uuid', siVid()); } catch (_) {}
       return CAL_URL + '?' + params.toString() + '&' + STYLE;
     }
 
@@ -458,12 +617,16 @@
       window.openCalendly = function () {
         var ctx = _resolveClickContext(_lastCalendlyTrigger);
         var url = build(ctx);
-        window.trackEvent('book_consultation_click', {
-          cta_location: ctx.cta_location,
-          page_section: ctx.section,
-          page_path: location.pathname,
-          button_text: ctx.text
-        });
+        _flushDeferredLoads(); // lead click — force gtag.js before the popup opens
+        if (Date.now() - _lastBookClickAt > 500) { // skip if direct-anchor handler just fired
+          _lastBookClickAt = Date.now();
+          window.trackEvent('book_consultation_click', {
+            cta_location: ctx.cta_location,
+            page_section: ctx.section,
+            page_path: location.pathname,
+            button_text: ctx.text
+          });
+        }
         if (typeof window.Calendly !== 'undefined' && window._calendlyReady) {
           window.Calendly.initPopupWidget({ url: url });
         } else {
@@ -484,7 +647,29 @@
         setTimeout(attemptWrap, 0);
       }
     }
+    return attemptWrap;
   })();
+
+  // ============================================================
+  // 12a) Global openCalendly fallback — some pages ship without the inline
+  // head definition; define one here so every Calendly CTA still opens + tracks.
+  // ============================================================
+  if (typeof window.openCalendly === 'undefined') {
+    window.openCalendly = function () {
+      var isEn = document.documentElement.lang === 'en' || location.pathname.indexOf('/en/') === 0;
+      var url = isEn
+        ? 'https://calendly.com/10xseo-sales/quick-seo-consultation-15-minutes?background_color=0f172a&text_color=f8fafc&primary_color=8b5cf6'
+        : 'https://calendly.com/10xseo-sales/30-seo-clone?background_color=0f172a&text_color=f8fafc&primary_color=8b5cf6';
+      if (typeof Calendly !== 'undefined') {
+        Calendly.initPopupWidget({ url: url });
+      } else {
+        window.open(url, '_blank');
+      }
+      return false;
+    };
+    _attemptCalendlyWrap();
+    log('openCalendly fallback defined + wrapped');
+  }
 
   // ============================================================
   // 12b) Calendly postMessage funnel — captures real booking completion
@@ -524,6 +709,106 @@
   })();
 
   // ============================================================
+  // 12c) Tally postMessage funnel — form_view / form_submit from embeds
+  // Tally posts JSON strings (or objects) from https://tally.so:
+  //   Tally.FormLoaded / Tally.FormPageView (page 1) → form_view (once per formId;
+  //   embeds are lazy-loaded so this means "scrolled near viewport", not engagement —
+  //   kept distinct from the focusin-based form_start)
+  //   Tally.FormSubmitted                            → form_submit
+  // ============================================================
+  (function listenTallyMessages() {
+    var _tallyStarted = {}; // formId → true (de-dup per pageload)
+    window.addEventListener('message', function (e) {
+      var origin = e.origin || '';
+      if (!/^https:\/\/([a-z0-9-]+\.)?tally\.so$/i.test(origin)) return;
+      var data = e.data;
+      if (typeof data === 'string' && data.charAt(0) === '{') {
+        try { data = JSON.parse(data); } catch (_) { return; }
+      }
+      if (!data || typeof data !== 'object' || !data.event) return;
+      var payload = data.payload || {};
+      var params = {
+        form_id: payload.formId || 'tally',
+        form_name: payload.formName || '',
+        page_path: location.pathname,
+        form_provider: 'tally'
+      };
+      if (data.event === 'Tally.FormSubmitted') {
+        window.trackEvent('form_submit', params);
+        log('Tally →', 'form_submit', params);
+      } else if (data.event === 'Tally.FormLoaded' || data.event === 'Tally.FormPageView') {
+        // first page only + once per formId per pageload
+        if (data.event === 'Tally.FormPageView' && payload.page && payload.page > 1) return;
+        if (_tallyStarted[params.form_id]) return;
+        _tallyStarted[params.form_id] = true;
+        window.trackEvent('form_view', params);
+        log('Tally →', 'form_view', params);
+      }
+    }, false);
+  })();
+
+  // ============================================================
+  // 12d) Cloudflare ScrapeShield obfuscates mailto + its decoder 404s on this
+  // site; self-heal so links work and email_click fires.
+  // ============================================================
+  (function healCfEmails() {
+    function decode(hash) {
+      if (!hash || hash.length < 4) return '';
+      var key = parseInt(hash.substr(0, 2), 16);
+      if (isNaN(key)) return '';
+      var out = '';
+      for (var i = 2; i < hash.length; i += 2) {
+        out += String.fromCharCode(parseInt(hash.substr(i, 2), 16) ^ key);
+      }
+      return out;
+    }
+    function heal() {
+      var i, el, hash, decoded, span, href, txt;
+      // Obfuscated anchors: <a href="/cdn-cgi/l/email-protection#hash">[email protected]</a>
+      var anchors = document.querySelectorAll('a[href*="/cdn-cgi/l/email-protection"]');
+      for (i = 0; i < anchors.length; i++) {
+        el = anchors[i];
+        href = el.getAttribute('href') || '';
+        hash = href.indexOf('#') > -1 ? href.split('#')[1] : '';
+        if (!hash) hash = el.getAttribute('data-cfemail') || '';
+        span = el.querySelector('span.__cf_email__');
+        if (!hash && span) hash = span.getAttribute('data-cfemail') || '';
+        decoded = decode(hash);
+        if (!decoded || decoded.indexOf('@') === -1) continue;
+        el.setAttribute('href', 'mailto:' + decoded);
+        if (span) {
+          span.textContent = decoded;
+          span.removeAttribute('data-cfemail');
+        } else {
+          // CF renders the placeholder with a non-breaking space: [email&#160;protected]
+          txt = el.textContent || '';
+          if (/\[email[\s ]protected\]/.test(txt)) {
+            el.textContent = txt.replace(/\[email[\s ]protected\]/, decoded);
+          }
+        }
+        log('CF email healed (anchor):', decoded);
+      }
+      // Standalone obfuscated spans (not inside an anchor): text-only replace
+      var spans = document.querySelectorAll('span.__cf_email__[data-cfemail]');
+      for (i = 0; i < spans.length; i++) {
+        el = spans[i];
+        decoded = decode(el.getAttribute('data-cfemail') || '');
+        if (!decoded || decoded.indexOf('@') === -1) continue;
+        el.textContent = decoded;
+        el.removeAttribute('data-cfemail');
+        log('CF email healed (span):', decoded);
+      }
+    }
+    try { heal(); } catch (_) {}
+    // run once more after full DOM parse — cheap, idempotent
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function () { try { heal(); } catch (_) {} }, { once: true });
+    } else {
+      setTimeout(function () { try { heal(); } catch (_) {} }, 0);
+    }
+  })();
+
+  // ============================================================
   // 13) Event taxonomy — delegated listeners (capture phase)
   // ============================================================
   (function wireEvents() {
@@ -549,15 +834,19 @@
       var ctx = _resolveClickContext(a);
 
       if (/^tel:/i.test(href)) {
+        _flushDeferredLoads(); // lead click — load gtag.js now
         window.trackEvent('phone_click', {
           phone_number: href.replace(/^tel:/i, '').trim(),
+          cta_location: ctx.cta_location,
           page_section: ctx.section, page_path: location.pathname
         });
         return;
       }
       if (/^mailto:/i.test(href)) {
+        _flushDeferredLoads(); // lead click — load gtag.js now
         window.trackEvent('email_click', {
           email_target: href.replace(/^mailto:/i, '').split('?')[0],
+          cta_location: ctx.cta_location,
           page_section: ctx.section, page_path: location.pathname
         });
         return;
@@ -566,7 +855,22 @@
         var host = '';
         try { host = new URL(href).hostname; } catch (_) {}
         if (!host) return;
-        if (isCalendlyHost(host)) return; // Calendly handled by wrapCalendly
+        if (isCalendlyHost(host)) {
+          // Direct calendly.com anchor — wrapCalendly never runs for plain links,
+          // so track here; _lastBookClickAt guards the 500ms double-fire window.
+          _flushDeferredLoads(); // lead click — load gtag.js now
+          if (Date.now() - _lastBookClickAt > 500) {
+            _lastBookClickAt = Date.now();
+            window.trackEvent('book_consultation_click', {
+              cta_location: ctx.cta_location,
+              page_section: ctx.section,
+              page_path: location.pathname,
+              button_text: ctx.text,
+              calendly_direct_link: true
+            });
+          }
+          return;
+        }
         if (DOWNLOAD_EXT_RE.test(href)) {
           var ext = (href.match(DOWNLOAD_EXT_RE) || [])[1] || '';
           window.trackEvent('file_download', {
@@ -606,30 +910,7 @@
       });
     }, true);
 
-    // ----- scroll depth: fire once at 25/50/75/100% -----
-    var SCROLL_THRESHOLDS = [25, 50, 75, 100];
-    var _scrollFired = {};
-    var _scrollTimer = null;
-    function checkScroll() {
-      var doc = document.documentElement;
-      var scrollTop = window.pageYOffset || doc.scrollTop || 0;
-      var viewportH = window.innerHeight || doc.clientHeight;
-      var docH = Math.max(doc.scrollHeight, doc.offsetHeight, document.body.scrollHeight, document.body.offsetHeight);
-      var scrollable = docH - viewportH;
-      if (scrollable <= 0) return;
-      var pct = Math.min(100, Math.round(((scrollTop + viewportH) / docH) * 100));
-      for (var i = 0; i < SCROLL_THRESHOLDS.length; i++) {
-        var t = SCROLL_THRESHOLDS[i];
-        if (pct >= t && !_scrollFired[t]) {
-          _scrollFired[t] = true;
-          window.trackEvent('scroll', { percent_scrolled: t });
-        }
-      }
-    }
-    window.addEventListener('scroll', function () {
-      if (_scrollTimer) return;
-      _scrollTimer = setTimeout(function () { _scrollTimer = null; checkScroll(); }, 250);
-    }, { passive: true });
+    // scroll tracking removed 2026-06-10 — noise; EM scroll also disabled in GA4 admin.
 
     // ----- video_play / video_complete (lite-yt-embed + <video>) -----
     document.addEventListener('play', function (e) {
