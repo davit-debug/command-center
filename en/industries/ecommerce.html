@@ -137,13 +137,15 @@
     .v29-card[data-cat="\10DE\10DA\10D0\10E2\10E4\10DD\10E0\10DB\10D0"]::before{background:#14B8A6}
     .v29-card[data-cat="\10DE\10DA\10D0\10E2\10E4\10DD\10E0\10DB\10D0"]:hover{border-color:rgba(20,184,166,.25)}
     .v29-card[data-cat="\10DE\10DA\10D0\10E2\10E4\10DD\10E0\10DB\10D0"].v29-open{border-color:rgba(20,184,166,.35);background:rgba(20,184,166,.04)}
-    .v29-toggle{width:100%;display:flex;align-items:center;gap:12px;padding:16px 18px;cursor:pointer;border:none;background:none;text-align:left}
-    .v29-q{flex:1;font-size:15px;font-weight:500;color:rgba(255,255,255,.88);line-height:1.5}
-    .v29-chevron{width:20px;height:20px;color:rgba(255,255,255,.35);transition:.3s;flex-shrink:0}
-    .v29-open .v29-chevron{transform:rotate(180deg);color:#A78BFA}
-    .v29-body{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s ease}
-    .v29-open .v29-body{max-height:600px}
-    .v29-body-inner{padding:0 18px 16px;font-size:14px;line-height:1.7;color:rgba(255,255,255,.55)}
+    .v29-cq{display:flex;align-items:center;padding:18px 22px;cursor:pointer;gap:16px}
+    .v29-cq .v29-badge{width:38px;height:38px;border-radius:10px;background:rgba(139,92,246,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:.3s}
+    .v29-open .v29-badge{background:rgba(139,92,246,.22);box-shadow:0 0 12px rgba(139,92,246,.18)}
+    .v29-cq .v29-badge svg{width:16px;height:16px;stroke:#A78BFA;transition:transform .3s}
+    .v29-open .v29-badge svg{transform:rotate(180deg);stroke:#C4B5FD}
+    .v29-cq .v29-txt{flex:1;font-weight:600;color:#F1F5F9;font-size:16px;line-height:1.45}
+    .v29-ca{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(0.4,0,0.2,1),padding .3s;padding:0 22px 0 76px}
+    .v29-open .v29-ca{max-height:600px;padding:0 22px 18px 76px}
+    .v29-ca p{color:#CBD5E1;font-size:14.5px;line-height:1.8}
     .v29-cat{font-size:10px;font-weight:700;padding:3px 8px;border-radius:6px;text-transform:uppercase;letter-spacing:.5px;flex-shrink:0}
     .v29-cat[data-key="general"]{color:#A78BFA;background:rgba(139,92,246,.15)}
     .v29-cat[data-key="price"]{color:#F5A623;background:rgba(245,166,35,.15)}
@@ -155,7 +157,7 @@
 <body class="font-body bg-[#020710] text-[#94A3B8]">
   <a href="#main-content" class="skip-link">Skip to main content</a>
   <header id="main-header" class="fixed top-0 left-0 right-0 z-50 h-16 lg:h-[72px] bg-white/80 dark:bg-surface-dark/80 header-scrolled border-b border-gray-100 dark:border-gray-800 transition-all duration-300">
-<script src="../../assets/js/tracking.js?v=20260610" defer></script>
+<script src="../../assets/js/tracking.js?v=20260610b" defer></script>
 <div class="max-w-7xl mx-auto px-4 sm:px-6 h-full flex items-center justify-between">
 <a href="/en/" class="flex items-center shrink-0">
 <img src="../../images/logo.webp" alt="10xSEO" decoding="async" class="h-auto w-40 lg:w-44 dark:mix-blend-screen" width="600" height="125">

@@ -46,7 +46,7 @@
     TIKTOK_PIXEL_ID: '',              // e.g. 'CTGXXXXXXXXXXXX'
 
     // Microsoft Clarity (heatmaps + recordings, free alternative to Hotjar)
-    CLARITY_ID: '',                   // e.g. 'abc12dxyz'
+    CLARITY_ID: 'x2u6pjmjqo',         // 10xseo.ge project (clarity.microsoft.com)
 
     // Yandex Metrica (CIS market relevance)
     YANDEX_METRICA_ID: '',            // e.g. '12345678' (numeric)
@@ -58,6 +58,15 @@
     RESPECT_DNT: false,               // true = Do-Not-Track header-ის მქონე user-ებზე არ ჩაიტვირთოს
     DEBUG: false                      // true = console.log-ი დიაგნოსტიკისთვის
   };
+
+  // Staging guard — mirrors (GH Pages /command-center/, new.10xseo.ge, file://, localhost)
+  // must not pollute production analytics. Utility features (openCalendly fallback,
+  // cfemail heal, Tally vid passthrough) still run; only tracker network loads are zeroed.
+  if (location.hostname !== '10xseo.ge' && location.hostname !== 'www.10xseo.ge') {
+    CONFIG.GA4_ID = ''; CONFIG.GTM_ID = ''; CONFIG.HOTJAR_ID = ''; CONFIG.META_PIXEL_ID = '';
+    CONFIG.LINKEDIN_PARTNER_ID = ''; CONFIG.TIKTOK_PIXEL_ID = ''; CONFIG.CLARITY_ID = '';
+    CONFIG.YANDEX_METRICA_ID = ''; CONFIG.AHREFS_WA_KEY = '';
+  }
 
   // ============================================================
   // Helpers
@@ -247,18 +256,20 @@
   }
 
   // ============================================================
-  // 8) Microsoft Clarity
+  // 8) Microsoft Clarity — stub sync, network load deferred past LCP
+  // (same pattern as GA4/Hotjar; identify/set calls queue until load)
   // ============================================================
   if (CONFIG.CLARITY_ID) {
-    (function (c, l, a, r, i, t, y) {
-      c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
-      t = l.createElement(r);
+    window.clarity = window.clarity || function () { (window.clarity.q = window.clarity.q || []).push(arguments); };
+    _scheduleDeferredLoad(function () {
+      var t = document.createElement('script');
       t.async = 1;
-      t.src = 'https://www.clarity.ms/tag/' + i;
-      y = l.getElementsByTagName(r)[0];
-      y.parentNode.insertBefore(t, y);
-    })(window, document, 'clarity', 'script', CONFIG.CLARITY_ID);
-    log('Clarity loaded:', CONFIG.CLARITY_ID);
+      t.src = 'https://www.clarity.ms/tag/' + CONFIG.CLARITY_ID;
+      var y = document.getElementsByTagName('script')[0];
+      if (y && y.parentNode) { y.parentNode.insertBefore(t, y); }
+      else { (document.head || document.documentElement).appendChild(t); }
+      log('Clarity script loaded (deferred):', CONFIG.CLARITY_ID);
+    });
   }
 
   // ============================================================
