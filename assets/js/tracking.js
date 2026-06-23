@@ -32,12 +32,8 @@
     GSC_VERIFY_INJECT: false,         // true = JS-ით ჩასმა; false = ცოცხალი meta-ი ვაკეთებ ცალკე
                                        // recommended: false + html file ვერიფიკაცია
 
-    // Hotjar — Site Settings → Tracking
-    HOTJAR_ID: '3838380',             // reused from WP
-    HOTJAR_SV: 6,                     // Hotjar snippet version (default 6)
-
     // Meta (Facebook) Pixel — Events Manager → Settings → Pixel ID
-    META_PIXEL_ID: '',                // user will provide new Pixel ID (old: 838083750969721 deprecated)
+    META_PIXEL_ID: '838083750969721', // 10xseo.ge pixel
 
     // LinkedIn Insight Tag — Campaign Manager → Insight Tag
     LINKEDIN_PARTNER_ID: '',          // e.g. '1234567'
@@ -45,7 +41,7 @@
     // TikTok Pixel
     TIKTOK_PIXEL_ID: '',              // e.g. 'CTGXXXXXXXXXXXX'
 
-    // Microsoft Clarity (heatmaps + recordings, free alternative to Hotjar)
+    // Microsoft Clarity (heatmaps + recordings)
     CLARITY_ID: 'x2u6pjmjqo',         // 10xseo.ge project (clarity.microsoft.com)
 
     // Yandex Metrica (CIS market relevance)
@@ -63,7 +59,7 @@
   // must not pollute production analytics. Utility features (openCalendly fallback,
   // cfemail heal, Tally vid passthrough) still run; only tracker network loads are zeroed.
   if (location.hostname !== '10xseo.ge' && location.hostname !== 'www.10xseo.ge') {
-    CONFIG.GA4_ID = ''; CONFIG.GTM_ID = ''; CONFIG.HOTJAR_ID = ''; CONFIG.META_PIXEL_ID = '';
+    CONFIG.GA4_ID = ''; CONFIG.GTM_ID = ''; CONFIG.META_PIXEL_ID = '';
     CONFIG.LINKEDIN_PARTNER_ID = ''; CONFIG.TIKTOK_PIXEL_ID = ''; CONFIG.CLARITY_ID = '';
     CONFIG.YANDEX_METRICA_ID = ''; CONFIG.AHREFS_WA_KEY = '';
   }
@@ -168,22 +164,7 @@
   }
 
   // ============================================================
-  // 4) Hotjar — stub sync, network load deferred past LCP
-  // ============================================================
-  if (CONFIG.HOTJAR_ID) {
-    window.hj = window.hj || function () { (window.hj.q = window.hj.q || []).push(arguments); };
-    window._hjSettings = { hjid: CONFIG.HOTJAR_ID, hjsv: CONFIG.HOTJAR_SV };
-    _scheduleDeferredLoad(function () {
-      var r = document.createElement('script');
-      r.async = 1;
-      r.src = 'https://static.hotjar.com/c/hotjar-' + window._hjSettings.hjid + '.js?sv=' + window._hjSettings.hjsv;
-      (document.getElementsByTagName('head')[0] || document.documentElement).appendChild(r);
-      log('Hotjar script loaded (deferred):', CONFIG.HOTJAR_ID);
-    });
-  }
-
-  // ============================================================
-  // 5) Meta (Facebook) Pixel
+  // 4) Meta (Facebook) Pixel
   // ============================================================
   if (CONFIG.META_PIXEL_ID) {
     !(function (f, b, e, v, n, t, s) {
@@ -257,7 +238,7 @@
 
   // ============================================================
   // 8) Microsoft Clarity — stub sync, network load deferred past LCP
-  // (same pattern as GA4/Hotjar; identify/set calls queue until load)
+  // (same pattern as GA4; identify/set calls queue until load)
   // ============================================================
   if (CONFIG.CLARITY_ID) {
     window.clarity = window.clarity || function () { (window.clarity.q = window.clarity.q || []).push(arguments); };
@@ -559,19 +540,14 @@
     if (document.readyState === 'complete' || document.readyState === 'interactive') firePageview();
     else document.addEventListener('DOMContentLoaded', firePageview, { once: true });
   })();
-  // Tag session-recording tools with the visitor id so each lead's recordings
-  // can be looked up in Hotjar / MS Clarity by vid (sales-intel dashboard).
-  // Runs regardless of SI.enabled — hj/clarity stubs queue until their scripts
-  // load (deferred), so calling now is safe and costs nothing extra.
-  // Hotjar: User Attributes filtering requires a Business/Scale plan; the call
-  // is a harmless no-op on lower plans. Clarity: custom tags are free —
+  // Tag MS Clarity with the visitor id so each lead's recordings can be looked
+  // up by vid (sales-intel dashboard). Runs regardless of SI.enabled — the
+  // clarity stub queues until its script loads (deferred), so calling now is
+  // safe and costs nothing extra. Clarity custom tags are free —
   // Recordings → Filters → Custom tags → vid.
   (function siTagRecorders() {
     try {
       var vid = siVid();
-      if (typeof window.hj === 'function') {
-        window.hj('identify', vid, { vid: vid });
-      }
       if (typeof window.clarity === 'function') {
         window.clarity('identify', vid);   // hashed custom-id (Clarity-side)
         window.clarity('set', 'vid', vid); // plain custom tag → filterable in UI
