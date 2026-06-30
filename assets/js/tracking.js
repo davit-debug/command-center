@@ -25,7 +25,7 @@
     GA4_ID: 'G-XX9YG8BD37',           // reused from WP property (historical continuity)
 
     // Google Tag Manager (alternative-ი GA4-ის — თუ GTM გამოიყენებ, GA4_ID დატოვე ცარიელი)
-    GTM_ID: '',                       // e.g. 'GTM-XXXXXXX'
+    GTM_ID: 'GTM-KJMP26J6',           // 10xseo.ge container (account "10xSEO"). GA4 stays direct above — do NOT add a GA4 config tag inside GTM or page_views double-count.
 
     // Google Search Console — verification token (meta-ის content)
     GSC_VERIFY: '',                   // e.g. 'abc123_long_token_xyz'
