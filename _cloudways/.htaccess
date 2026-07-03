@@ -95,6 +95,9 @@
 # -----------------------------------------------------------------------------
 <IfModule mod_rewrite.c>
 
+    # ----- Consolidations (deleted duplicates → canonical pillar) -----
+    RewriteRule ^blog/ra-aris-seo\.html$                                https://%{HTTP_HOST}/ra-aris-seo.html [R=301,L]
+
     # ----- Case studies (sub-directory; trailing slash → .html) -----
     RewriteRule ^case-studies/3x-in-28-days/?$                          https://%{HTTP_HOST}/case-studies/3x-in-28-days.html [R=301,L]
     RewriteRule ^case-studies/270-percent-increase/?$                   https://%{HTTP_HOST}/case-studies/270-percent-increase.html [R=301,L]
