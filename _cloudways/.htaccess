@@ -218,10 +218,11 @@
     RewriteRule ^audit/.*/?$                            https://%{HTTP_HOST}/seo-audit.html [R=301,L]
     RewriteRule ^en/audit/.*/?$                         https://%{HTTP_HOST}/en/seo-audit.html [R=301,L]
 
-    # ----- Strip ad-platform click ID params (causes duplicate canonical issues in GSC)
-    # Strips fbclid, gclid, msclkid — preserves utm_* (needed for analytics)
-    RewriteCond %{QUERY_STRING} (^|&)(fbclid|gclid|msclkid)= [NC]
-    RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1? [R=301,L]
+    # NOTE (2026-07-21): removed the fbclid/gclid/msclkid strip rule that lived here.
+    # It 301-redirected ad clicks to the bare URL, deleting Google/Facebook click IDs
+    # before the page loaded — GA4 never saw Paid Search sessions and Google Ads
+    # conversion import stayed at zero. GSC duplicate-URL concerns are already
+    # handled by canonical tags on every page. Do NOT re-add.
 
     # ----- English mirror for the same static pages -----
     RewriteRule ^en/seo-management/?$    https://%{HTTP_HOST}/en/seo-management.html [R=301,L]
