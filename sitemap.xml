@@ -1042,4 +1042,22 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://10xseo.ge/en/blog/seo-for-development-companies.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://10xseo.ge/blog/seo-for-development-companies.html"/>
   </url>
+  <url>
+    <loc>https://10xseo.ge/blog/ecommerce-seo-mistakes.html</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://10xseo.ge/blog/ecommerce-seo-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://10xseo.ge/en/blog/ecommerce-seo-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://10xseo.ge/blog/ecommerce-seo-mistakes.html"/>
+  </url>
+  <url>
+    <loc>https://10xseo.ge/en/blog/ecommerce-seo-mistakes.html</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://10xseo.ge/blog/ecommerce-seo-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://10xseo.ge/en/blog/ecommerce-seo-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://10xseo.ge/blog/ecommerce-seo-mistakes.html"/>
+  </url>
 </urlset>
