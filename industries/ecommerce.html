@@ -542,7 +542,7 @@
         <p class="text-sm font-semibold uppercase tracking-wider mb-3 text-primary">FAQ</p>
         <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white">ხშირად დასმული კითხვები</h2>
       </div>
-      <div class="space-y-3" id="v29-items"></div>
+      <div class="space-y-3" id="v29-items"><div class="v29-card"><div class="v29-cq"><div class="v29-badge"><svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></div><span class="v29-txt">რა არის E-commerce SEO და რატომ არის ის აუცილებელი ჩემი მაღაზიისთვის?</span></div><div class="v29-ca"><p>E-commerce SEO დაგეხმარებათ, რომ მომხმარებელმა ნებისმიერი პროდუქტის ძებნისას, კონკურენტებზე წინ, თქვენი საიტი იპოვოს. ეს არის გზა, რომ Google-იდან კლიენტების სტაბილური ნაკადი მიიღოთ და თქვენი პროდუქცია ძიების შედეგებში ყოველთვის გამორჩეულად ჩანდეს.</p></div></div><div class="v29-card"><div class="v29-cq"><div class="v29-badge"><svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></div><span class="v29-txt">რამდენ ხანში ჩანს შედეგი?</span></div><div class="v29-ca"><p>პირველ დადებით ცვლილებებს საიტის ტექნიკური გამართვიდან 2-4 კვირაში შენიშნავთ. კატეგორიების დახვეწის ეფექტი 2-3 თვეში იკვეთება, ხოლო სტაბილური და სრული ორგანული ზრდისთვის, როგორც წესი, 4-6 თვეა საჭირო.</p></div></div><div class="v29-card"><div class="v29-cq"><div class="v29-badge"><svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></div><span class="v29-txt">რა ღირს ეს სერვისი?</span></div><div class="v29-ca"><p>SEO მომსახურების ღირებულება ინდივიდუალურია და დამოკიდებულია თქვენი მაღაზიის მასშტაბზე, პროდუქციის რაოდენობასა და კონკურენციაზე.</p></div></div><div class="v29-card"><div class="v29-cq"><div class="v29-badge"><svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></div><span class="v29-txt">აუცილებელია თუ არა გრძელვადიანი კონტრაქტის გაფორმება?</span></div><div class="v29-ca"><p>თანამშრომლობის ხანგრძლივობას თქვენი საჭიროებები განსაზღვრავს. ჩვენი გამოცდილებით, საუკეთესო მაჩვენებლები 6-12 თვეში ფიქსირდება.</p></div></div></div>
     </div>
     <script>
       (function(){
@@ -554,6 +554,7 @@
         ];
         var list = document.getElementById('v29-items');
         if (!list) return;
+        if(list){ list.innerHTML=''; }
         faqData.forEach(function(faq){
           var d = document.createElement('div');
           d.className = 'v29-card';

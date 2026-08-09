@@ -543,7 +543,7 @@ Call Us
         <p class="text-sm font-semibold uppercase tracking-wider mb-3 text-primary">FAQ</p>
         <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white">Frequently Asked Questions</h2>
       </div>
-      <div class="space-y-3" id="v29-items"></div>
+      <div class="space-y-3" id="v29-items"><div class="v29-card"><div class="v29-cq"><div class="v29-badge"><svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></div><span class="v29-txt">What is E-commerce SEO and why is it essential for my store?</span></div><div class="v29-ca"><p>E-commerce SEO helps customers find your site first when searching for any product. It&#x27;s the way to get a steady stream of clients from Google and ensure your products always stand out in search results.</p></div></div><div class="v29-card"><div class="v29-cq"><div class="v29-badge"><svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></div><span class="v29-txt">How long does it take to see results?</span></div><div class="v29-ca"><p>You&#x27;ll notice first positive changes from technical fixes within 2-4 weeks. Category refinement effects appear in 2-3 months, while stable, full organic growth typically takes 4-6 months.</p></div></div><div class="v29-card"><div class="v29-cq"><div class="v29-badge"><svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></div><span class="v29-txt">What does this service cost?</span></div><div class="v29-ca"><p>SEO service pricing is individual and depends on your store size, product volume, and competition level.</p></div></div><div class="v29-card"><div class="v29-cq"><div class="v29-badge"><svg fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></div><span class="v29-txt">Is a long-term contract required?</span></div><div class="v29-ca"><p>The duration of collaboration is determined by your needs. In our experience, the best results are seen in 6-12 months.</p></div></div></div>
     </div>
     <script>
       (function(){
@@ -555,6 +555,7 @@ Call Us
         ];
         var list = document.getElementById('v29-items');
         if (!list) return;
+        if(list){ list.innerHTML=''; }
         faqData.forEach(function(faq){
           var d = document.createElement('div');
           d.className = 'v29-card';
