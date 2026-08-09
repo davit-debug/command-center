@@ -70,17 +70,26 @@ jobs:
             ./ \
             ${{ secrets.CLOUDWAYS_SSH_USER }}@${{ secrets.CLOUDWAYS_SSH_HOST }}:${{ secrets.CLOUDWAYS_REMOTE_PATH }}/
 
-      - name: Smoke test (Cloudways temp URL)
+      - name: Smoke test (live site)
+        shell: bash -euo pipefail {0}
         run: |
-          # Pre-cutover: test against Cloudways temp URL (DNS still on WP)
-          # After DNS flip, switch this to https://10xseo.ge/
+          # Must hit the live host. The old pre-cutover temp URL
+          # (phpstack-1272771-6417221.cloudwaysapps.com) no longer has a matching
+          # TLS cert, and without pipefail its curl failure was swallowed by `head`,
+          # so this step passed unconditionally and a green check meant nothing.
           sleep 5
-          BASE="https://phpstack-1272771-6417221.cloudwaysapps.com"
-          echo "Homepage:"
-          curl -sI "$BASE/" | head -1
-          echo "Redirect /seo-management/ -> .html:"
-          curl -sI "$BASE/seo-management/" | head -1
-          echo "Redirect /ra-aris-seo/ -> .html (top traffic source):"
-          curl -sI "$BASE/ra-aris-seo/" | head -1
-          echo "404 page:"
-          curl -sI "$BASE/this-does-not-exist" | head -1
+          BASE="https://10xseo.ge"
+
+          check () {  # url, expected status
+            local code
+            code=$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 "$1")
+            echo "  $2 expected, got $code  <-  $1"
+            [ "$code" = "$2" ]
+          }
+
+          echo "Smoke test against $BASE"
+          check "$BASE/" 200
+          check "$BASE/seo-management.html" 200
+          check "$BASE/ra-aris-seo.html" 200
+          check "$BASE/this-does-not-exist" 404
+          echo "All smoke checks passed."
