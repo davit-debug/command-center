@@ -102,7 +102,7 @@ add('<link rel="canonical" href="https://10xseo.ge/">',
 
 # -------- 2. CALENDLY URL SWAP --------
 # Per user decision 2026-05-10: EN uses quick-seo-consultation-15-minutes
-add("calendly.com/10xseo-sales/30-seo-clone", "calendly.com/10xseo-sales/quick-seo-consultation-15-minutes")
+add("calendly.com/10xseog/10xseo-clone", "calendly.com/10xseog/10xseo-en")
 
 # -------- 3. ORGANIZATION JSON-LD (lines 222-258) --------
 add('"description": "SEO სააგენტო — 10xSEO საქართველოში საუკეთესო სეო სააგენტოა. Google-ში, ChatGPT-ში და ყველა AI პლატფორმაზე პირველობის მოპოვება.",\n  "foundingDate": "2011",',

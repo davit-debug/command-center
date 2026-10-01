@@ -578,8 +578,8 @@
   var _attemptCalendlyWrap = (function wrapCalendly() {
     var IS_EN = location.pathname.indexOf('/en/') !== -1 || /\/en$/.test(location.pathname);
     var CAL_URL = IS_EN
-      ? 'https://calendly.com/10xseo-sales/quick-seo-consultation-15-minutes'
-      : 'https://calendly.com/10xseo-sales/30-seo-clone';
+      ? 'https://calendly.com/10xseog/10xseo-en'
+      : 'https://calendly.com/10xseog/10xseo-clone';
     var STYLE = 'background_color=0f172a&text_color=f8fafc&primary_color=8b5cf6';
 
     function build(ctx) {
@@ -645,8 +645,8 @@
     window.openCalendly = function () {
       var isEn = document.documentElement.lang === 'en' || location.pathname.indexOf('/en/') === 0;
       var url = isEn
-        ? 'https://calendly.com/10xseo-sales/quick-seo-consultation-15-minutes?background_color=0f172a&text_color=f8fafc&primary_color=8b5cf6'
-        : 'https://calendly.com/10xseo-sales/30-seo-clone?background_color=0f172a&text_color=f8fafc&primary_color=8b5cf6';
+        ? 'https://calendly.com/10xseog/10xseo-en?background_color=0f172a&text_color=f8fafc&primary_color=8b5cf6'
+        : 'https://calendly.com/10xseog/10xseo-clone?background_color=0f172a&text_color=f8fafc&primary_color=8b5cf6';
       if (typeof Calendly !== 'undefined') {
         Calendly.initPopupWidget({ url: url });
       } else {

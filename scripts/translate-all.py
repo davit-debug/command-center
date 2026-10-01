@@ -69,8 +69,8 @@ def common_structural_replacements(ka_path: str, en_path: str):
         (f'<meta property="og:url" content="{ka_url}">',
          f'<meta property="og:url" content="{en_url}">'),
         # Calendly URL (separate English event per user decision 2026-05-10)
-        ('calendly.com/10xseo-sales/30-seo-clone',
-         'calendly.com/10xseo-sales/quick-seo-consultation-15-minutes'),
+        ('calendly.com/10xseog/10xseo-clone',
+         'calendly.com/10xseog/10xseo-en'),
         # JSON-LD inLanguage
         ('"inLanguage":"ka-GE"', '"inLanguage":"en-US"'),
         ('"inLanguage": "ka-GE"', '"inLanguage": "en-US"'),
