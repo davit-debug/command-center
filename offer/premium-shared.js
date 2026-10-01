@@ -195,8 +195,11 @@ const counterObs = new IntersectionObserver((entries) => {
 
 // --- Calendly integration ---
 function openCalendly() {
+  var url = 'https://calendly.com/10xseog/10xseo-clone';
   if (window.Calendly) {
-    Calendly.initPopupWidget({ url: 'https://calendly.com/10xseo/strategy-call' });
+    Calendly.initPopupWidget({ url: url });
+  } else {
+    window.open(url, '_blank');
   }
   offerAnalytics.trackCTAClick('calendly', 'schedule-call');
 }
