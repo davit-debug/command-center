@@ -97,6 +97,7 @@
 
     # ----- Consolidations (deleted duplicates → canonical pillar) -----
     RewriteRule ^blog/ra-dro-schireba-seos-shedegebis-misagebad\.html$     https://%{HTTP_HOST}/blog/seo-shedegebis-vadebi.html [R=301,L]
+    RewriteRule ^en/blog/seo-shedegebis-vadebi\.html$                       https://%{HTTP_HOST}/en/blog/how-long-does-seo-take.html [R=301,L]
     RewriteRule ^blog/ra-aris-seo\.html$                                https://%{HTTP_HOST}/ra-aris-seo.html [R=301,L]
 
     # ----- Case studies (sub-directory; trailing slash → .html) -----
