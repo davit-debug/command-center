@@ -1,0 +1,21 @@
+/* Blog FAQ — the site FAQ component (v29, as on seo-audit / seo-management), scoped to .blog-faq.
+   Answers stay open until blog-faq.js adds .js, so the text is readable without JS. */
+.blog-faq .v29-card { position: relative; overflow: hidden; border-radius: 16px; background: rgba(255,255,255,0.035); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.08); transition: all 0.35s; }
+.blog-faq .v29-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; border-radius: 14px 0 0 14px; background: #D4A017; opacity: 0; transition: opacity 0.3s; pointer-events: none; }
+.blog-faq .v29-card:hover { border-color: rgba(212,160,23,0.25); }
+.blog-faq .v29-card:hover::before { opacity: 0.5; }
+.blog-faq .v29-card.v29-open { border-color: rgba(212,160,23,0.35); background: rgba(212,160,23,0.04); box-shadow: 0 0 30px rgba(212,160,23,0.06); }
+.blog-faq .v29-card.v29-open::before { opacity: 1; }
+.blog-faq .v29-h { margin: 0; font: inherit; }
+.blog-faq .v29-cq { display: flex; align-items: center; gap: 16px; width: 100%; padding: 18px 22px; background: none; border: 0; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+.blog-faq .v29-cq:focus-visible { outline: 2px solid #D4A017; outline-offset: -2px; border-radius: 16px; }
+.blog-faq .v29-badge { display: flex; align-items: center; justify-content: center; flex-shrink: 0; width: 38px; height: 38px; border-radius: 10px; background: rgba(212,160,23,0.1); transition: all 0.3s; }
+.blog-faq .v29-open .v29-badge { background: rgba(212,160,23,0.2); box-shadow: 0 0 12px rgba(212,160,23,0.15); }
+.blog-faq .v29-badge svg { width: 16px; height: 16px; stroke: #D4A017; transition: transform 0.3s; }
+.blog-faq .v29-open .v29-badge svg { transform: rotate(180deg); stroke: #EAB308; }
+.blog-faq .v29-txt { flex: 1; font-family: 'FiraGO', sans-serif; font-size: 17px; font-weight: 600; line-height: 1.4; color: #F1F5F9; }
+.blog-faq .v29-ca { overflow: hidden; padding: 0 22px 18px 76px; }
+.blog-faq.js .v29-ca { max-height: 0; padding-bottom: 0; transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1), padding 0.3s; }
+.blog-faq.js .v29-open .v29-ca { padding-bottom: 18px; }
+.blog-faq .v29-ca p { margin: 0; font-size: 15px; line-height: 1.8; color: #CBD5E1; }
+@media (max-width: 639px) { .blog-faq .v29-ca { padding-left: 22px; } }
